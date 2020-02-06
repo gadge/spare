@@ -1,0 +1,34 @@
+{
+  "name": "@cliche/mag",
+  "version": "0.0.0",
+  "description": "Format number",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/cliche-mag.test.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeungw/cliche.git"
+  },
+  "keywords": [
+    "format"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoyeungw/cliche"
+  },
+  "homepage": "https://github.com/hoyeungw/cliche#readme"
+}
