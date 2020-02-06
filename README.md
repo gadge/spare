@@ -21,7 +21,7 @@ $ npm install @spare/<tool-name>
 
 ## Tools
 
-| Tool name             |                  |
+|                       |                  |
 | --------------------- | ---------------- |
 | [xr](packages/xr)     | Build a sentence |
 | [deco](packages/deco) | Stringify a json |

@@ -1,8 +1,8 @@
 import { lange } from '@spare/lange'
+import { lpad, rn, tb } from '@spare/util'
 import { Ar } from 'veho'
 import { Visual } from 'hatsu-matrix'
 import { BRK, BRC, IDX, PAL } from './theme'
-import { lpad, rn, tb } from '@spare/util'
 import { NumLoose, Typ } from 'typen'
 
 const { initial } = Typ
