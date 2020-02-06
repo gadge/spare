@@ -1,6 +1,6 @@
 {
   "name": "@spare/preci",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,12 +15,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/util": "^0.0.3",
-    "@spare/string": "^0.0.3",
+    "@spare/string": "^0.0.4",
+    "@spare/util": "^0.0.4",
     "hatsu-matrix": "^0.0.16",
     "veho": "^0.2.18"
-  },
-  "devDependencies": {
   },
   "repository": {
     "type": "git",
