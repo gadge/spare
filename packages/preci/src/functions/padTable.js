@@ -10,7 +10,7 @@ import {  hasChn, toFullAngle } from '@spare/string'
  * @param {*[][]} head
  * @param wordx
  * @param rawx
- * @param {Chalk[][]} [palx]
+ * @param {Hatsu[][]} [palx]
  * @param {boolean=false} [ansi]
  * @param {boolean=false} chinese
  * @return {{head: string[], blanc: string[], rows: string[][]}}
@@ -33,7 +33,7 @@ export const padTable = (head, wordx, rawx, palx, ansi = false, chinese = false)
  * @param {*[][]} head
  * @param wordx
  * @param rawx
- * @param {Chalk[][]} [palx]
+ * @param {Hatsu[][]} [palx]
  * @param {boolean=false} [ansi]
  * @return {{head: string[], blanc: string[], rows: string[][]}}
  */

@@ -24,10 +24,10 @@ export class Preci {
     if (!head || head >= length) [head, tail, dash] = [length, 0, false]
     // if (!tail || tail >= length) [head, tail, dash] = [head, 0, true]
     // if (head + tail >= length) [head, tail, dash] = [head, -1, true]
-    const ht = ar?.length, _ar = Array(ht)
-    for (let i = 0; i < head; i++) _ar[i] = ar[i]
-    for (let i = ht - tail; i < ht; i++) _ar[i] = ar[i]
-    return new Preci(_ar, head, tail, dash)
+    const len = ar?.length, vec = Array(len)
+    for (let i = 0; i < head; i++) vec[i] = ar[i]
+    for (let i = len - tail; i < len; i++) vec[i] = ar[i]
+    return new Preci(vec, head, tail, dash)
   }
 
   map (fn, mutate = false) {
@@ -39,13 +39,13 @@ export class Preci {
   toList (el) {
     const
       { ar, head, tail } = this,
-      ht = ar.length,
-      df = ht - (head + tail),
-      _ar = ar.slice()
+      len = ar.length,
+      diff = len - (head + tail),
+      list = ar.slice()
     this.dash && el
-      ? _ar.splice(head, df, el)
-      : _ar.splice(head, df)
-    return _ar
+      ? list.splice(head, diff, el)
+      : list.splice(head, diff)
+    return list
   }
 
   /**

@@ -1,6 +1,6 @@
+import { totx } from '@spare/util'
 import { Mx } from 'veho'
 import { cropMapMx, cropMx } from './utils/cropMx'
-import { totx } from '@spare/util'
 import { cropMapAr } from './utils/cropAr'
 
 export class PreX {

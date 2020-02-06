@@ -24,3 +24,4 @@ export const destructPreci = (arr, [h, t], { abstract, visual = {} } = {}) => {
     words = preci.stringify(abstract)
   return { raws, pals, words }
 }
+
