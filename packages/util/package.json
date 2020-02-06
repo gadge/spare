@@ -1,6 +1,6 @@
 {
   "name": "@spare/util",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A util toolset for @spare.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.0.2",
+    "@spare/lange": "^0.0.3",
     "typen": "^0.1.6"
   },
   "repository": {

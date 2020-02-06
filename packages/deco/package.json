@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A light and simple console debug tool.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.0.2",
-    "@spare/util": "^0.0.2",
+    "@spare/lange": "^0.0.3",
+    "@spare/util": "^0.0.3",
     "hatsu": "^0.0.15",
     "hatsu-matrix": "^0.0.16",
     "palett": "^0.0.16",
