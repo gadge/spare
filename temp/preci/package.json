@@ -15,7 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/util": "0.0.0"
+    "@spare/util": "^0.0.2",
+    "@spare/string": "^0.0.0"
   },
   "devDependencies": {
   },

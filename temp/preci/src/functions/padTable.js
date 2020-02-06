@@ -2,9 +2,8 @@ import { Ar, Mx } from 'veho'
 import { maxLen } from '@spare/util'
 import { lpad, numPad, rpad, zhChars } from '@spare/util'
 import { padMx } from './padMx'
-import { StrX } from '../../../src/brief/StrX'
+import {  hasChn, toFullAngle } from '@spare/string'
 
-const { hasChn, toFullAngle } = StrX
 /**
  *
  *
