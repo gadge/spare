@@ -34,7 +34,7 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [total-download-image]:https://img.shields.io/npm/dt/@spare/deco.svg?style=flat-square
 [license-image]: https://img.shields.io/npm/l/@spare/deco.svg?style=flat-square
 [commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/spare?style=flat-square
-[size]: https://packagephobia.now.sh/badge?p=@spare/deco
+[size]: https://flat.badgen.net/packagephobia/install/@spare/deco
 
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/deco

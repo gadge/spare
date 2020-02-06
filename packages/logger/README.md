@@ -33,7 +33,7 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [download-image]: https://img.shields.io/npm/dm/@spare/logger.svg?style=flat-square
 [total-download-image]:https://img.shields.io/npm/dt/@spare/logger.svg?style=flat-square
 [license-image]: https://img.shields.io/npm/l/@spare/logger.svg?style=flat-square
-[size]: https://packagephobia.now.sh/badge?p=@spare/logger
+[size]: https://flat.badgen.net/packagephobia/install/@spare/logger
 
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/logger

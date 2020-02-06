@@ -21,11 +21,14 @@ $ npm install @spare/<tool-name>
 
 ## Tools
 
-|                       |                  |
-| --------------------- | ---------------- |
-| [xr](packages/xr)     | Build a sentence |
-| [deco](packages/deco) | Stringify a json |
-|                       |                  |
+|                           |                         |
+| ------------------------- | ----------------------- |
+| [deco](packages/deco)     | Stringify a json        |
+| [lange](packages/lange)   | Get string length       |
+| [logger](packages/logger) | Wrapper for console.log |
+| [util](packages/util)     | Basic util              |
+| [xr](packages/xr)         | Build a sentence        |
+|                           |                         |
 
 ## License
 
@@ -34,14 +37,14 @@ $ npm install @spare/<tool-name>
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
 [//]: <> (Shields)
-[npm-image]: https://img.shields.io/npm/v/spare.svg?style=flat-square
-[quality-image]: http://npm.packagequality.com/shield/spare.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/spare.svg?style=flat-square
-[total-download-image]:https://img.shields.io/npm/dt/spare.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/spare.svg?style=flat-square
-[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/spare?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/@spare.svg?style=flat-square
+[quality-image]: http://npm.packagequality.com/shield/@spare.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/@spare.svg?style=flat-square
+[total-download-image]:https://img.shields.io/npm/dt/@spare.svg?style=flat-square
+[license-image]: https://img.shields.io/npm/l/@spare.svg?style=flat-square
+[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/@spare?style=flat-square
 
 [//]: <> (Link)
-[npm-url]: https://npmjs.org/package/spare
-[quality-url]: http://packagequality.com/#?package=spare
-[github-url]: https://github.com/hoyeungw/spare
+[npm-url]: https://npmjs.org/package/@spare
+[quality-url]: http://packagequality.com/#?package=@spare
+[github-url]: https://github.com/hoyeungw/@spare
