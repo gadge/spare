@@ -1,5 +1,5 @@
+import { isVisual } from '@spare/util'
 import { Visual } from 'hatsu-matrix'
-import { isVisual } from '../../isVisual'
 import { PreX } from '../PreX'
 
 export const destructPreX = (mx, [top, bottom], [left, right], {

@@ -26,6 +26,7 @@ $ npm install @spare/<tool-name>
 | [deco](packages/deco)     | Stringify a json        |
 | [lange](packages/lange)   | Get string length       |
 | [logger](packages/logger) | Wrapper for console.log |
+| [string](packages/string) | String helper           |
 | [util](packages/util)     | Basic util              |
 | [xr](packages/xr)         | Build a sentence        |
 |                           |                         |

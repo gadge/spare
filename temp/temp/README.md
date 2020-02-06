@@ -29,16 +29,16 @@ import { Temp } from '@spare/temp'
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
 [//]: <> (Shields)
-[npm-image]: https://img.shields.io/npm/v/@spare/deco.svg?style=flat-square
-[quality-image]: http://npm.packagequality.com/shield/@spare/deco.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@spare/deco.svg?style=flat-square
-[total-download-image]:https://img.shields.io/npm/dt/@spare/deco.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/@spare/deco.svg?style=flat-square
-[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/@spare/deco?style=flat-square
-[size]: https://packagephobia.now.sh/badge?p=@spare/deco
+[npm-image]: https://img.shields.io/npm/v/@spare/temp.svg?style=flat-square
+[quality-image]: http://npm.packagequality.com/shield/@spare/temp.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/@spare/temp.svg?style=flat-square
+[total-download-image]:https://img.shields.io/npm/dt/@spare/temp.svg?style=flat-square
+[license-image]: https://img.shields.io/npm/l/@spare/temp.svg?style=flat-square
+[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/@spare/temp?style=flat-square
+[size]: https://flat.badgen.net/packagephobia/install/@spare/temp
 
 [//]: <> (Link)
-[npm-url]: https://npmjs.org/package/@spare/deco
-[quality-url]: http://packagequality.com/#?package=@spare/deco
-[github-url]: https://github.com/hoyeungw/@spare/deco
-[size-url]: https://packagephobia.now.sh/result?p=@spare/deco
+[npm-url]: https://npmjs.org/package/@spare/temp
+[quality-url]: http://packagequality.com/#?package=@spare/temp
+[github-url]: https://github.com/hoyeungw/@spare/temp
+[size-url]: https://packagephobia.now.sh/result?p=@spare/temp

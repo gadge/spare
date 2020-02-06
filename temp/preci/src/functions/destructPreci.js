@@ -1,5 +1,5 @@
+import { isVisual } from '@spare/util'
 import { Visual } from 'hatsu-matrix'
-import { isVisual } from '../../isVisual'
 import { Preci } from '../Preci'
 
 /**
