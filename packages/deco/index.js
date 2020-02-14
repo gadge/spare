@@ -1,2 +1,2 @@
 export { deco, deca } from './src/deco'
-export { decoLog } from './src/decolog'
+export { delogger, delogNeL, delogger as decoLog } from './src/delogger'

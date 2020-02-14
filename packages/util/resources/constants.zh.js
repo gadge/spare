@@ -1,6 +1,6 @@
 export const DASH = '－'
 export const SPACE = '　'
-export const zhChars = {
+export const FAChars = {
   dash: DASH,
   space: SPACE
 }

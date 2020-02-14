@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@spare/util": "^0.0.4",
-    "@vect/callable": "^0.0.1",
-    "hatsu": "^0.0.15",
-    "palett": "^0.0.16"
+    "@vect/callable": "^0.0.4",
+    "hatsu": "^0.0.20",
+    "palett": "^0.0.21"
   },
   "repository": {
     "type": "git",

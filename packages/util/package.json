@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@spare/lange": "^0.0.4",
-    "typen": "^0.1.6"
+    "typen": "^0.1.9"
   },
   "repository": {
     "type": "git",

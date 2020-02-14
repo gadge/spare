@@ -17,8 +17,8 @@
   "dependencies": {
     "@spare/string": "^0.0.4",
     "@spare/util": "^0.0.4",
-    "hatsu-matrix": "^0.0.16",
-    "veho": "^0.2.18"
+    "hatsu-matrix": "^0.0.21",
+    "veho": "^0.2.23"
   },
   "repository": {
     "type": "git",

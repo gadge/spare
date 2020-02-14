@@ -1,13 +1,22 @@
+export {
+  noop, totx,
+  isTab, tabify, deNaTab, beforeNaTab, afterNaTab,
+  pr, br, bc, endsBracs,
+} from './src/stringHelpers'
+export { lpad, rpad, npad, } from './src/stringPads'
 export { isNumeric } from './src/isNumeric'
 export { isVisual } from './src/isVisual'
 export { readCrop } from './src/readCrop'
-export { coins, transpose, zip } from './src/vectorAlgebra'
+export { coins, tr, width } from './src/matrixHelpers'
+export { zip } from './src/vectorHelpers'
 export { rn, tb, aeu, RN, TB, AEU } from './resources/constants'
-export { DASH, SPACE, zhChars } from './resources/constants.zh'
-export { maxLen, vecPalPad, vecPad } from './src/vectorUtils'
+export { DASH, SPACE, FAChars } from './resources/constants.zh'
+export { maxLen, indexMaxLen } from './src/vectorStringProperties'
 export {
-  noop, totx,
-  lpad, rpad, numPad,
-  isTab, tabify, deNaTab, beforeNaTab, afterNaTab,
-  pr, br, bc, endsBracs,
-} from './src/stringUtils'
+  formatVector, padVector,
+} from './src/formatVector'
+export {
+  vecPad, vecPalPad
+} from './test/archive/padVec'
+export { formatMatrix } from './src/formatMatrix'
+export { formatTable } from './src/formatTable'

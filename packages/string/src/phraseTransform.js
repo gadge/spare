@@ -16,11 +16,11 @@ const camelToLowerDashed = (camel, de = ' ') =>
  * @param {string} dashed dashed phrase
  * @returns {string} camel phrase
  */
-const dashedToCamel = dashed => {
+const dashedToCamel = (dashed, de = '') => {
   const matches = dashed.match(DASHED)
   return matches
     ? matches[0].toLowerCase() + matches.slice(1)
-    .map(wd => wd[0].toUpperCase() + wd.slice(1).toLowerCase()).join()
+    .map(wd => wd[0].toUpperCase() + wd.slice(1).toLowerCase()).join(de)
     : dashed
 }
 

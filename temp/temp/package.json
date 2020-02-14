@@ -15,10 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/util": "^0.0.3"
+    "@spare/util": "^0.0.4"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hoyeungw/spare.git"
