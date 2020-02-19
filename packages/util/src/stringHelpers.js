@@ -1,6 +1,3 @@
-import { lange, hasAnsi } from '@spare/lange'
-import { isNumeric } from '../src/isNumeric'
-
 const noop = () => {}
 
 /**

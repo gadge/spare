@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@spare/lange": "^0.0.5",
+    "@vect/matrix": "^0.0.17",
+    "@vect/vector": "^0.0.17",
     "typen": "^0.1.9"
   },
   "repository": {

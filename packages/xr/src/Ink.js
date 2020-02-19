@@ -1,5 +1,4 @@
 import { tabify, totx } from '@spare/util'
-// import { Callable } from '@vect/callable'
 import { bracket, parenthesis } from './theme'
 import { render } from './render'
 import { preset } from './preset'

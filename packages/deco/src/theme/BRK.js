@@ -1,23 +1,24 @@
-import { Hatsu } from 'hatsu'
-import { Ob } from 'veho'
-
-const { hsl } = Hatsu
+import { hslToRgb } from '@palett/convert'
+import { Dye } from '@palett/dye'
+import { mapper } from '@vect/object-mapper'
+import { logger } from '@spare/logger'
 
 const L = '[ ', R = ' ]'
 
 const Tubes = {
-  0: hsl([199, 100, 63]),
-  1: hsl([201, 100, 68]),
-  2: hsl([203, 100, 72]),
-  3: hsl([205, 100, 76]),
-  5: hsl([207, 100, 84]),
-  4: hsl([209, 100, 80]),
-  6: hsl([211, 100, 88]),
+  0: Dye([199, 100, 63] |> hslToRgb),
+  1: Dye([201, 100, 68] |> hslToRgb),
+  2: Dye([203, 100, 72] |> hslToRgb),
+  3: Dye([205, 100, 76] |> hslToRgb),
+  5: Dye([207, 100, 84] |> hslToRgb),
+  4: Dye([209, 100, 80] |> hslToRgb),
+  6: Dye([211, 100, 88] |> hslToRgb),
+  7: Dye([214, 100, 90] |> hslToRgb),
 }
 
-const Puncs = Ob.mapValues(Tubes, hsl => [L|>hsl, R|>hsl])
+const Puncs = mapper(Tubes, dye => [L |> dye, R |> dye])
 
-export const BRK = Ob.mapValues(Puncs, ([L, R]) => content => L + content + R)
+export const BRK = mapper(Puncs, ([L, R]) => content => L + content + R)
 
 
 

@@ -15,13 +15,18 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
+    "@palett/cards": "^0.0.9",
+    "@palett/convert": "^0.0.9",
+    "@palett/dye": "^0.0.9",
+    "@palett/fluo-entries": "^0.0.9",
+    "@palett/fluo-vector": "^0.0.9",
+    "@palett/presets": "^0.0.9",
     "@spare/lange": "^0.0.5",
     "@spare/util": "^0.0.5",
-    "hatsu": "^0.0.20",
-    "hatsu-matrix": "^0.0.21",
-    "palett": "^0.0.21",
-    "typen": "^0.1.6",
-    "veho": "^0.2.23"
+    "@vect/column-mapper": "^0.0.17",
+    "@vect/entries-mapper": "^0.0.17",
+    "@vect/object-mapper": "^0.0.17",
+    "typen": "^0.1.6"
   },
   "repository": {
     "type": "git",

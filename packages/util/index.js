@@ -7,11 +7,9 @@ export { lpad, rpad, npad, } from './src/stringPads'
 export { isNumeric } from './src/isNumeric'
 export { isVisual } from './src/isVisual'
 export { readCrop } from './src/readCrop'
-export { coins, tr, width } from './src/matrixHelpers'
-export { zip } from './src/vectorHelpers'
 export { rn, tb, aeu, RN, TB, AEU } from './resources/constants'
 export { DASH, SPACE, FAChars } from './resources/constants.zh'
-export { maxLen, indexMaxLen } from './src/vectorStringProperties'
+export { maxLen, indexMaxLen, intDigits } from './src/vectorStringProperties'
 export {
   formatVector, padVector,
 } from './src/formatVector'

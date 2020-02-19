@@ -1,7 +1,7 @@
 {
-  "name": "@spare/xr",
-  "version": "0.0.5",
-  "description": "A sentence builder",
+  "name": "@spare/enttro",
+  "version": "0.0.0",
+  "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,13 +12,12 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/test.index.js"
+    "test": "node -r @babel/register test/entrigin.test.js"
   },
   "dependencies": {
     "@spare/util": "^0.0.5",
-    "@vect/callable": "^0.0.17",
-    "hatsu": "^0.0.20",
-    "palett": "^0.0.21"
+    "@spare/vettro": "^0.0.5",
+    "@vect/entries-margin": "^0.0.17"
   },
   "repository": {
     "type": "git",
@@ -35,6 +34,5 @@
   "bugs": {
     "url": "https://github.com/hoyeungw/spare"
   },
-  "homepage": "https://github.com/hoyeungw/spare#readme",
-  "gitHead": "bc2f5a3647ec3f6d7cf62539f64ce8cbfd3630a8"
+  "homepage": "https://github.com/hoyeungw/spare#readme"
 }
