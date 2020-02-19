@@ -1,6 +1,6 @@
 {
   "name": "@spare/brief-entries",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,15 +15,14 @@
     "test": "node -r @babel/register test/entries.test.js"
   },
   "dependencies": {
-    "@spare/util": "^0.0.5",
-    "@spare/lange": "^0.0.5",
-    "@spare/enttro": "^0.0.0",
-    "@palett/presets": "^0.0.9",
     "@palett/fluo-entries": "^0.0.9",
-    "@vect/entries-zipper": "^0.0.17",
-    "@vect/entries-indicator": "^0.0.17"
+    "@palett/presets": "^0.0.9",
+    "@spare/enttro": "^0.0.6",
+    "@spare/lange": "^0.0.6",
+    "@spare/util": "^0.0.6",
+    "@vect/entries-indicator": "^0.0.17",
+    "@vect/entries-zipper": "^0.0.17"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hoyeungw/spare.git"

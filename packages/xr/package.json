@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A sentence builder",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/util": "^0.0.5",
+    "@spare/util": "^0.0.6",
     "@vect/callable": "^0.0.17",
     "hatsu": "^0.0.20",
     "palett": "^0.0.21"
