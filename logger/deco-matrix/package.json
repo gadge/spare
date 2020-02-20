@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-matrix",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,9 +17,9 @@
   "dependencies": {
     "@palett/fluo-matrix": "^0.0.9",
     "@palett/presets": "^0.0.9",
-    "@spare/mattro": "^0.0.6",
-    "@spare/pad-matrix": "^0.0.6",
-    "@spare/util": "^0.0.6",
+    "@spare/mattro": "^0.1.0",
+    "@spare/pad-matrix": "^0.1.0",
+    "@spare/util": "^0.1.0",
     "@vect/matrix": "^0.0.18"
   },
   "repository": {
