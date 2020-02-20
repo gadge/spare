@@ -4,6 +4,7 @@ import { deco } from '../src/deco'
 import { simpleVectors } from '@foba/foo'
 import { FobaNum } from '@foba/vector'
 import { rand } from '@aryth/rand'
+import { Deco } from '../src/Deco'
 
 const Strangers = {
   empty: [],
@@ -21,7 +22,7 @@ export class VectorDecoTest {
   static test () {
     for (const [key, vector] of Object.entries(candidates)) {
       xr(key) |> logger
-      vector |> (_ => deco(_, { head: 4, tail: 4, indexed: true })) |> logNeL
+      vector |> Deco({ head: 4, tail: 4, indexed: true }) |> logNeL
     }
   }
 }

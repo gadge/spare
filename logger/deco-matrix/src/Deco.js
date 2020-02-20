@@ -4,7 +4,6 @@ import { cosmati } from './cosmati'
 
 /**
  *
- * @param {*[][]} matrix
  * @param {number} [direct] - pointwise = 0, rowwise = 1, columnwise = 2
  * @param {function(*):string} [abstract]
  * @param {{max:string|*[],min:string|*[],na:string|*[]}} [preset]
@@ -17,7 +16,7 @@ import { cosmati } from './cosmati'
  * @param {boolean} [ansi=false]
  * @returns {string}
  */
-export const deco = (matrix, {
+export const Deco = ({
     direct = ROWWISE,
     abstract,
     preset = FRESH,
@@ -29,9 +28,8 @@ export const deco = (matrix, {
     delimiter = ', ',
     ansi = false
   } = {}
-) => cosmati.call({
-    direct, abstract, preset, stringPreset,
-    top, left, bottom, right, delimiter, ansi
-  },
-  matrix)
+) => cosmati.bind({
+  direct, abstract, preset, stringPreset,
+  top, left, bottom, right, delimiter, ansi
+})
 

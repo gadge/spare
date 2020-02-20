@@ -3,7 +3,6 @@ import { cosmati } from './cosmati'
 
 /***
  *
- * @param {[*,*][]} entries
  * @param {function(*):string} [keyAbstract]
  * @param {function(*):string} [abstract]
  * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [preset]
@@ -15,7 +14,7 @@ import { cosmati } from './cosmati'
  * @param {boolean} [ansi=false]
  * @returns {string}
  */
-export const deco = (entries, {
+export const Deco = ({
   keyAbstract,
   abstract,
   preset = FRESH,
@@ -25,7 +24,6 @@ export const deco = (entries, {
   dash = ' > ',
   delimiter = ',\n',
   ansi = false
-} = {}) => cosmati.call(
-  { keyAbstract, abstract, preset, stringPreset, head, tail, dash, delimiter, ansi },
-  entries
-)
+} = {}) => cosmati.bind({
+  keyAbstract, abstract, preset, stringPreset, head, tail, dash, delimiter, ansi
+})

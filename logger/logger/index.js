@@ -11,8 +11,15 @@ export { logger, logNeL } from './src/logger'
 export const { Xr, xr } = XrEnv
 export const { Says, says } = Sayer
 export const { deco, deca, delogger, delogNeL } = Deco
+
 export const decoVector = DecoVector.deco
 export const decoEntries = DecoEntries.deco
 export const decoMatrix = DecoMatrix.deco
 export const decoTable = DecoTable.deco
 export const decoCrostab = DecoCrostab.deco
+
+export const DecoVector = DecoVector.Deco
+export const DecoEntries = DecoEntries.Deco
+export const DecoMatrix = DecoMatrix.Deco
+export const DecoTable = DecoTable.Deco
+export const DecoCrostab = DecoCrostab.Deco

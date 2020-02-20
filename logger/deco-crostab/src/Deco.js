@@ -4,7 +4,6 @@ import { cosmati } from './cosmati'
 
 /**
  *
- * @param {Object} crostab
  * @param {number} [direct] pointwise = 0, rowwise = 1, columnwise = 2
  * @param {function(*):string} [abstract]
  * @param {function(*):string} [bannerAbstract]
@@ -20,7 +19,7 @@ import { cosmati } from './cosmati'
  * @param {boolean} [fullAngle=false]
  * @returns {string}
  */
-export const deco = (crostab, {
+export const Deco = ({
     direct = POINTWISE,
     abstract,
     bannerAbstract,
@@ -36,11 +35,8 @@ export const deco = (crostab, {
     fullAngle = false,
   } = {}
 ) =>
-  cosmati.call(
-    {
-      direct, abstract, bannerAbstract, sideAbstract,
-      preset, stringPreset, labelPreset,
-      top, left, bottom, right, ansi, fullAngle,
-    },
-    crostab
-  )
+  cosmati.bind({
+    direct, abstract, bannerAbstract, sideAbstract,
+    preset, stringPreset, labelPreset,
+    top, left, bottom, right, ansi, fullAngle,
+  })

@@ -1,41 +1,25 @@
+import { FRESH, OCEAN } from '@palett/presets';
 import { AEU } from '@spare/util';
 import { enttro } from '@spare/enttro';
 import { padEntries } from '@spare/pad-entries';
-import { FRESH, OCEAN } from '@palett/presets';
 import { fluoEntries } from '@palett/fluo-entries';
 import { Duozipper } from '@vect/entries-zipper';
 
 const HR_ENTRY = ['..', '..'];
 
-/***
- *
- * @param {[*,*][]} entries
- * @param {string} [dash=' => ']
- * @param {string} [delimiter='\n']
- * @param {function(*):string} [keyAbstract]
- * @param {function(*):string} [abstract]
- * @param {number} [head]
- * @param {number} [tail]
- * @param {{ [max]:string|number[],
- *           [min]:string|number[],
- *           [na]: string|number[] }} [visual]
- * @param {boolean} [ansi=false]
- * @returns {string}
- */
-
-const deco = (entries, {
-  dash = ' > ',
-  delimiter = ',\n',
-  keyAbstract,
-  abstract,
-  head,
-  tail,
-  preset = FRESH,
-  stringPreset = OCEAN,
-  ansi = false
-} = {}) => {
-  var _delimiter;
-
+const cosmati = function (entries) {
+  if (!entries || !entries.length || entries[0].length !== 2) return AEU;
+  const {
+    keyAbstract,
+    abstract,
+    preset = FRESH,
+    stringPreset = OCEAN,
+    head,
+    tail,
+    dash = ' > ',
+    delimiter = ',\n',
+    ansi = false
+  } = this;
   const {
     raw,
     text
@@ -51,7 +35,7 @@ const deco = (entries, {
     stringPreset,
     colorant: true
   });
-  entries = (delimiter = (_delimiter = delimiter) !== null && _delimiter !== void 0 ? _delimiter : '\n').includes('\n') ? padEntries(text, {
+  entries = delimiter.includes('\n') ? padEntries(text, {
     raw,
     dye,
     ansi: preset || ansi
@@ -59,12 +43,81 @@ const deco = (entries, {
     var _t;
 
     return _t = t, d(_t);
-  }, (t, d) => {
-    var _t2;
-
-    return _t2 = t, d(_t2);
   })(text, dye) : text;
   return entries.length ? entries.map(([k, v]) => k + dash + v).join(delimiter) : AEU;
 };
 
-export { deco };
+/***
+ *
+ * @param {[*,*][]} entries
+ * @param {function(*):string} [keyAbstract]
+ * @param {function(*):string} [abstract]
+ * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [preset]
+ * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
+ * @param {number} [head]
+ * @param {number} [tail]
+ * @param {string} [dash=' => ']
+ * @param {string} [delimiter='\n']
+ * @param {boolean} [ansi=false]
+ * @returns {string}
+ */
+
+const deco = (entries, {
+  keyAbstract,
+  abstract,
+  preset = FRESH,
+  stringPreset = OCEAN,
+  head,
+  tail,
+  dash = ' > ',
+  delimiter = ',\n',
+  ansi = false
+} = {}) => cosmati.call({
+  keyAbstract,
+  abstract,
+  preset,
+  stringPreset,
+  head,
+  tail,
+  dash,
+  delimiter,
+  ansi
+}, entries);
+
+/***
+ *
+ * @param {function(*):string} [keyAbstract]
+ * @param {function(*):string} [abstract]
+ * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [preset]
+ * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
+ * @param {number} [head]
+ * @param {number} [tail]
+ * @param {string} [dash=' => ']
+ * @param {string} [delimiter='\n']
+ * @param {boolean} [ansi=false]
+ * @returns {string}
+ */
+
+const Deco = ({
+  keyAbstract,
+  abstract,
+  preset = FRESH,
+  stringPreset = OCEAN,
+  head,
+  tail,
+  dash = ' > ',
+  delimiter = ',\n',
+  ansi = false
+} = {}) => cosmati.bind({
+  keyAbstract,
+  abstract,
+  preset,
+  stringPreset,
+  head,
+  tail,
+  dash,
+  delimiter,
+  ansi
+});
+
+export { Deco, deco };

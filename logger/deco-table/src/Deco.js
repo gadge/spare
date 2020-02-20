@@ -1,14 +1,12 @@
+import { COLUMNWISE } from '@vect/matrix'
 import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
-import { POINTWISE } from '@vect/matrix'
 import { cosmati } from './cosmati'
 
 /**
  *
- * @param {Object} crostab
- * @param {number} [direct] pointwise = 0, rowwise = 1, columnwise = 2
+ * @param {number} [direct] - pointwise = 0, rowwise = 1, columnwise = 2
  * @param {function(*):string} [abstract]
- * @param {function(*):string} [bannerAbstract]
- * @param {function(*):string} [sideAbstract]
+ * @param {function(*):string} [headAbstract]
  * @param {{max:string|*[],min:string|*[],na:string|*[]}} [preset]
  * @param {{max:string|*[],min:string|*[],na:string|*[]}} [stringPreset]
  * @param {{max:string|*[],min:string|*[],na:string|*[]}} [labelPreset]
@@ -20,11 +18,10 @@ import { cosmati } from './cosmati'
  * @param {boolean} [fullAngle=false]
  * @returns {string}
  */
-export const deco = (crostab, {
-    direct = POINTWISE,
+export const Deco = ({
+    direct = COLUMNWISE,
     abstract,
-    bannerAbstract,
-    sideAbstract,
+    headAbstract,
     preset = FRESH,
     stringPreset = JUNGLE,
     labelPreset = SUBTLE,
@@ -35,12 +32,6 @@ export const deco = (crostab, {
     ansi = false,
     fullAngle = false,
   } = {}
-) =>
-  cosmati.call(
-    {
-      direct, abstract, bannerAbstract, sideAbstract,
-      preset, stringPreset, labelPreset,
-      top, left, bottom, right, ansi, fullAngle,
-    },
-    crostab
-  )
+) => cosmati.bind({
+  direct, abstract, headAbstract, preset, stringPreset, labelPreset, top, left, bottom, right, ansi, fullAngle
+})
