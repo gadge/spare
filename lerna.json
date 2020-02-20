@@ -1,8 +1,9 @@
 {
   "packages": [
+    "logger/*",
     "packages/*",
-    "renderers/*",
-    "brief/*"
+    "util-margin/*",
+    "util-padder/*"
   ],
   "version": "0.0.6",
   "npmClient": "yarn",

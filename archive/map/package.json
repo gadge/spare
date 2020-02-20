@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/brief-entries": "^0.0.0",
+    "@spare/deco-entries": "^0.0.0",
     "@spare/util": "^0.0.5",
     "palett": "^0.0.21"
   },

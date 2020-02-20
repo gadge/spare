@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@spare/lange": "^0.0.6",
-    "@vect/matrix": "^0.0.17",
-    "@vect/vector": "^0.0.17",
-    "typen": "^0.1.9"
+    "@typen/num-strict": "^0.0.1",
+    "@vect/matrix": "^0.0.18",
+    "@vect/vector": "^0.0.18"
   },
   "repository": {
     "type": "git",

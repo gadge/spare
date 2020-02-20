@@ -9,7 +9,7 @@ import { npad } from '@spare/util'
  * @param {boolean=false} [ansi]
  * @return {string[]}
  */
-export const BriefZipper = function ({
+export const DecoZipper = function ({
 } = {}) {
   const { serialZipper } = this
 

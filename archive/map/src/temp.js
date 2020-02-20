@@ -1,4 +1,4 @@
-import { hBrief as entsHBrief, vBrief as entsVBrief } from '@spare/brief-entries'
+import { hDeco as entsHDeco, vDeco as entsVDeco } from '@spare/logger-entries'
 import { Greys, Palett } from 'palett'
 
 /**
@@ -20,7 +20,7 @@ import { Greys, Palett } from 'palett'
  *         }} [visual]
  * @returns {string}
  */
-export const hBrief = (dict,
+export const hDeco = (dict,
   {
     delimiter = ':',
     keyAbstract,
@@ -37,7 +37,7 @@ export const hBrief = (dict,
     }
   } = {}
 ) => {
-  return entsHBrief([...dict.entries()], {
+  return entsHDeco([...dict.entries()], {
     delimiter,
     keyAbstract,
     abstract,
@@ -67,7 +67,7 @@ export const hBrief = (dict,
  * @param {boolean} [ansi=false]
  * @returns {string}
  */
-export const vBrief = (dict, {
+export const vDeco = (dict, {
   delimiter = ' -> ',
   keyAbstract,
   abstract,
@@ -82,7 +82,7 @@ export const vBrief = (dict, {
     }
   },
   ansi = false
-} = {}) => entsVBrief([...dict.entries()], {
+} = {}) => entsVDeco([...dict.entries()], {
   delimiter,
   keyAbstract,
   abstract,

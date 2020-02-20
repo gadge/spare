@@ -1,4 +1,4 @@
-export { lange } from './src/lange'
+export { Lange, lange } from './src/lange'
 
 export { hasAnsi } from './src/hasAnsi'
 

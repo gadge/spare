@@ -10,4 +10,6 @@ export const lange = tx => tx
   .replace(astralReg, '_')
   .length
 
+export const Lange = ansi => ansi ? lange : x => x.length
+
 

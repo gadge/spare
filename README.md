@@ -1,16 +1,23 @@
 # @spare
-:blowfish: A stringify tool to javascript object
+:blowfish: A stringify tool to js objects
 
-[![npm version][npm-image]][npm-url]
-[![npm quality][quality-image]][quality-url]
-[![npm download][download-image]][npm-url]
-[![npm total-download][total-download-image]][npm-url]
-[![github commit activity][commit-image]][github-url]
-[![npm license][license-image]][npm-url]
+[![github commit last][badge-github-last-commit]][url-github]
+[![github commit total][badge-github-commit-count]][url-github]
+
+[//]: <> (Shields)
+[badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/spare
+[badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/spare
+
+[//]: <> (Link)
+[url-github]: https://github.com/hoyeungw/spare
 
 ## Features
 
-- Use out-of-box
+- Alternative to native JSON.stringify() & console.table().
+- Stringify + colorify(by ansi)(@spare/deco & deco-modules)
+- Build recognizable tags for logging(@spare/xr).
+- Utility toolset: full angles transformation, ansi-coded string length, etc.
+- Color, margin configurable.
 - ES2015 syntax
 
 ## Install
@@ -21,31 +28,20 @@ $ npm install @spare/<tool-name>
 
 ## Tools
 
-|                           |                         |
-| ------------------------- | ----------------------- |
-| [deco](packages/deco)     | Stringify a json        |
-| [lange](packages/lange)   | Get string length       |
-| [logger](packages/logger) | Wrapper for console.log |
-| [string](packages/string) | String helper           |
-| [util](packages/util)     | Basic util              |
-| [xr](packages/xr)         | Build a sentence        |
-|                           |                         |
+|                                  |                                               |
+| -------------------------------- | --------------------------------------------  |
+| [**logger**](logger/logger)      | Console output everything                     |
+| [**xr**](logger/deco)            | Build sentence                                |
+| [**deco**](logger/deco)          | Stringify + colorant things                   |
+| [**deco**-vector](logger/deco)   | Deco array(vector)                            |
+| [**deco**-matrix](logger/deco)   | Deco 2d-array(matrix)                         |
+| [**deco**-entries](logger/deco)  | Deco entries                                  |
+| [**deco**-table](logger/deco)    | Deco table                                    |
+| [**deco**-crostab](logger/deco)  | Deco crostab                                  |
+| [**lange**](packages/lange)      | Get string length concerning ansi-code        |
+| [**string**](packages/string)    | String helper                                 |
+|                                  |                                               |
 
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2019-present, Haoyang (Vincent) Wang
-
-[//]: <> (Shields)
-[npm-image]: https://img.shields.io/npm/v/@spare.svg?style=flat-square
-[quality-image]: http://npm.packagequality.com/shield/@spare.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@spare.svg?style=flat-square
-[total-download-image]:https://img.shields.io/npm/dt/@spare.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/@spare.svg?style=flat-square
-[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/@spare?style=flat-square
-
-[//]: <> (Link)
-[npm-url]: https://npmjs.org/package/@spare
-[quality-url]: http://packagequality.com/#?package=@spare
-[github-url]: https://github.com/hoyeungw/@spare

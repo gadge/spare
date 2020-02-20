@@ -1,3 +1,3 @@
-export class Brief {
+export class Deco {
 
 }

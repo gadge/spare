@@ -2,9 +2,10 @@
   "name": "root",
   "private": true,
   "workspaces": [
+    "logger/*",
     "packages/*",
-    "renderers/*",
-    "brief/*"
+    "util-margin/*",
+    "util-padder/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
@@ -27,9 +28,11 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/register": "^7.8.3",
     "@babel/runtime": "^7.8.4",
+    "@cliche/mag": "^0.0.3",
+    "@foba/crostab": "^0.0.7",
     "@foba/foo": "^0.0.7",
-    "@foba/util": "^0.0.7",
     "@foba/object": "^0.0.7",
+    "@foba/util": "^0.0.7",
     "@foba/vector": "^0.0.7",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-json": "^4.0.1",
