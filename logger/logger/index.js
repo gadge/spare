@@ -1,25 +1,25 @@
 import * as Deco from '@spare/deco'
 import * as XrEnv from '@spare/xr'
 import * as Sayer from '@palett/says'
-import * as DecoVector from '@spare/deco-vector'
-import * as DecoEntries from '@spare/deco-entries'
-import * as DecoMatrix from '@spare/deco-matrix'
-import * as DecoTable from '@spare/deco-table'
-import * as DecoCrostab from '@spare/deco-crostab'
+import * as DecoVectorEnv from '@spare/deco-vector'
+import * as DecoEntriesEnv from '@spare/deco-entries'
+import * as DecoMatrixEnv from '@spare/deco-matrix'
+import * as DecoTableEnv from '@spare/deco-table'
+import * as DecoCrostabEnv from '@spare/deco-crostab'
 
 export { logger, logNeL } from './src/logger'
 export const { Xr, xr } = XrEnv
 export const { Says, says } = Sayer
 export const { deco, deca, delogger, delogNeL } = Deco
 
-export const decoVector = DecoVector.deco
-export const decoEntries = DecoEntries.deco
-export const decoMatrix = DecoMatrix.deco
-export const decoTable = DecoTable.deco
-export const decoCrostab = DecoCrostab.deco
+export const decoVector = DecoVectorEnv.deco
+export const decoEntries = DecoEntriesEnv.deco
+export const decoMatrix = DecoMatrixEnv.deco
+export const decoTable = DecoTableEnv.deco
+export const decoCrostab = DecoCrostabEnv.deco
 
-export const DecoVector = DecoVector.Deco
-export const DecoEntries = DecoEntries.Deco
-export const DecoMatrix = DecoMatrix.Deco
-export const DecoTable = DecoTable.Deco
-export const DecoCrostab = DecoCrostab.Deco
+export const DecoVector = DecoVectorEnv.Deco
+export const DecoEntries = DecoEntriesEnv.Deco
+export const DecoMatrix = DecoMatrixEnv.Deco
+export const DecoTable = DecoTableEnv.Deco
+export const DecoCrostab = DecoCrostabEnv.Deco

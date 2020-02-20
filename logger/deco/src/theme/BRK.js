@@ -1,7 +1,6 @@
 import { hslToRgb } from '@palett/convert'
 import { Dye } from '@palett/dye'
 import { mapper } from '@vect/object-mapper'
-import { logger } from '@spare/logger'
 
 const L = '[ ', R = ' ]'
 

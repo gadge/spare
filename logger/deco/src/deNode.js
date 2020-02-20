@@ -6,9 +6,9 @@ import { mutate as mutateEntries } from '@vect/entries-mapper'
 import { ColumnMutate } from '@vect/column-mapper'
 import { fluoVector } from '@palett/fluo-vector'
 import { fluoEntries } from '@palett/fluo-entries'
-import { BRK, BRC, PAL, IDX } from './theme'
-import { typ } from '@typen/typ'
 import { LPad } from '@spare/pad-string'
+import { typ } from '@typen/typ'
+import { BRK, BRC, PAL, IDX } from './theme'
 
 const keysMutate = ColumnMutate(0)
 

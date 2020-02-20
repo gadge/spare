@@ -1,4 +1,5 @@
-import { logger, logNeL } from '../src/deco'
+import { DecoEntries, delogger, logger } from '..'
+import { METRO } from '@palett/presets'
 
 const candidates = {
   ob: ({ foo: 'bar', kha: 'mia' }),
@@ -10,11 +11,7 @@ const candidates = {
   eps: Number.EPSILON
 }
 
-for (let k in candidates) {
-  logger(candidates[k])
-}
+candidates |> delogger
 
-for (let k in candidates) {
-  logNeL(candidates[k])
-}
+Object.entries(candidates) |> DecoEntries({ stringPreset: METRO }) |> logger
 
