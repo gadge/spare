@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-entries",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,7 +18,7 @@
     "@palett/fluo-entries": "^0.0.9",
     "@palett/presets": "^0.0.9",
     "@spare/enttro": "^0.1.0",
-    "@spare/pad-entries": "^0.1.0",
+    "@spare/pad-entries": "^0.1.1",
     "@spare/util": "^0.1.0",
     "@vect/entries-zipper": "^0.0.18"
   },
