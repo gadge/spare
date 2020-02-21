@@ -1,9 +1,9 @@
 import { xr } from '../src/xr'
-import { logger } from '@spare/logger'
+import { logger, says } from '@spare/logger'
 
 xr('william', 'shakespeare')
-  .works('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet') |> logger
+  .works('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet') |> says.historian
 
-xr().timestamp(new Date()) |> logger
+xr().timestamp(new Date()) |> says.elprimero
 
 xr('leo', 'tolstoy') |> logger

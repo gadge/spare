@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/entries.test.js"
   },
   "dependencies": {
-    "@palett/fluo-entries": "^0.0.10",
-    "@palett/presets": "^0.0.10",
+    "@palett/fluo-entries": "^0.0.11",
+    "@palett/presets": "^0.0.11",
     "@spare/enttro": "^0.1.2",
     "@spare/pad-entries": "^0.1.2",
     "@spare/util": "^0.1.2",

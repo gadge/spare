@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.0.8",
-    "@palett/fluo-matrix": "^0.0.10",
-    "@palett/fluo-vector": "^0.0.10",
-    "@palett/presets": "^0.0.10",
+    "@palett/fluo-matrix": "^0.0.11",
+    "@palett/fluo-vector": "^0.0.11",
+    "@palett/presets": "^0.0.11",
     "@spare/lange": "^0.1.2",
     "@spare/mattro": "^0.1.2",
     "@spare/pad-string": "^0.1.2",
