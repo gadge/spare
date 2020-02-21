@@ -38,8 +38,8 @@ $ npm install @spare/<tool-name>
 | [**deco**-entries](logger/deco)  | Deco entries                                  |
 | [**deco**-table](logger/deco)    | Deco table                                    |
 | [**deco**-crostab](logger/deco)  | Deco crostab                                  |
-| [**lange**](packages/lange)      | Get string length concerning ansi-code        |
-| [**string**](packages/string)    | String helper                                 |
+| [**lange**](string-helper/lange)      | Get string length concerning ansi-code        |
+| [**string**](string-helper/string)    | String helper                                 |
 |                                  |                                               |
 
 ## License

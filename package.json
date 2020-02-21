@@ -3,7 +3,7 @@
   "private": true,
   "workspaces": [
     "logger/*",
-    "packages/*",
+    "string-helper/*",
     "util-margin/*",
     "util-padder/*"
   ],

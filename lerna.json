@@ -1,7 +1,7 @@
 {
   "packages": [
     "logger/*",
-    "packages/*",
+    "string-helper/*",
     "util-margin/*",
     "util-padder/*"
   ],
