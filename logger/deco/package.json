@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.0.9",
-    "@palett/convert": "^0.0.9",
-    "@palett/dye": "^0.0.9",
-    "@palett/fluo-entries": "^0.0.9",
-    "@palett/fluo-vector": "^0.0.9",
+    "@palett/cards": "^0.0.10",
+    "@palett/convert": "^0.0.10",
+    "@palett/dye": "^0.0.10",
+    "@palett/fluo-entries": "^0.0.10",
+    "@palett/fluo-vector": "^0.0.10",
     "@spare/lange": "^0.1.0",
     "@spare/pad-string": "^0.1.1",
     "@spare/util": "^0.1.0",

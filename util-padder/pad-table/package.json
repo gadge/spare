@@ -15,13 +15,16 @@
     "test": "node -r @babel/register test/pad-table.test.js"
   },
   "dependencies": {
+    "@spare/util": "^0.1.0",
     "@spare/lange": "^0.1.0",
-    "@spare/pad-string": "^0.1.1",
     "@spare/string": "^0.1.0",
-    "@vect/columns-indicator": "^0.0.18",
-    "@vect/matrix-transpose": "^0.0.18",
-    "@vect/matrix-zipper": "^0.0.18",
+    "@spare/pad-string": "^0.1.1",
     "@vect/vector-mapper": "^0.0.18",
+    "@vect/vector-indicator": "^0.0.18",
+    "@vect/matrix-transpose": "^0.0.18",
+    "@vect/vector": "^0.0.18",
+    "@vect/matrix-zipper": "^0.0.18",
+    "@vect/columns-indicator": "^0.0.18",
     "@vect/vector-zipper": "^0.0.18"
   },
   "repository": {

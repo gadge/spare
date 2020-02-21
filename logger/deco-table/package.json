@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.0.9",
-    "@palett/fluo-vector": "^0.0.9",
-    "@palett/presets": "^0.0.9",
+    "@palett/fluo-matrix": "^0.0.10",
+    "@palett/fluo-vector": "^0.0.10",
+    "@palett/presets": "^0.0.10",
     "@spare/mattro": "^0.1.0",
     "@spare/pad-table": "^0.1.1",
     "@spare/util": "^0.1.0",

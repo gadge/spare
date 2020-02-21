@@ -5,31 +5,14 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var lange = require('@spare/lange');
 var padString = require('@spare/pad-string');
 var columnsIndicator = require('@vect/columns-indicator');
-var Mapper = require('@vect/vector-mapper');
+var vectorMapper = require('@vect/vector-mapper');
 var matrixZipper = require('@vect/matrix-zipper');
-var Zipper = require('@vect/vector-zipper');
+var vectorZipper = require('@vect/vector-zipper');
+var util = require('@spare/util');
 var string = require('@spare/string');
+var vectorIndicator = require('@vect/vector-indicator');
 var matrixTranspose = require('@vect/matrix-transpose');
-
-const DASH = '－';
-const SPACE = '　';
-
-const max = (a, b) => a > b ? a : b;
-
-const max$1 = function (vec) {
-  const fn = this;
-  return vec.reduce((p, x, i) => max(p, fn(x, i)), fn(vec[0], 0));
-};
-
-const Max = indicator => max$1.bind(indicator);
-
-const {
-  zipper,
-  mutazip,
-  Duozipper,
-  Trizipper,
-  Quazipper
-} = Zipper;
+var vector = require('@vect/vector');
 
 const LocalPad = ({
   dock,
@@ -69,12 +52,12 @@ const padTableFullAngle = (text, head, {
   dye,
   ansi = false,
   dash = '-',
-  localDash = DASH,
+  localDash = util.DASH,
   fill = ' ',
-  localFill = SPACE
+  localFill = util.SPACE
 } = {}) => {
   const columns = matrixTranspose.transpose([head].concat(text));
-  const [pads, chns] = [Mapper.mapper(columns, Max(lange.Lange(ansi))), Mapper.mapper(columns, col => col.some(string.hasChn))];
+  const [pads, chns] = [vectorMapper.mapper(columns, vectorIndicator.Max(lange.Lange(ansi))), vectorMapper.mapper(columns, col => col.some(string.hasChn))];
   const [padR, padN] = [LocalPad({
     dock: padString.RIGHT,
     ansi,
@@ -87,8 +70,8 @@ const padTableFullAngle = (text, head, {
     localFill
   })];
   return {
-    head: Trizipper(padR)(head, pads, chns),
-    hr: Duozipper((pad, cn) => (cn ? localDash : dash).repeat(pad))(pads, chns),
+    head: vector.Trizipper(padR)(head, pads, chns),
+    hr: vector.Duozipper((pad, cn) => (cn ? localDash : dash).repeat(pad))(pads, chns),
     rows: dye ? matrixZipper.Trizipper((x, v, d, i, j) => {
       var _padN;
 
@@ -126,12 +109,12 @@ const padTable = (text, head, {
   });
   const pads = columnsIndicator.maxBy([head].concat(text), lange.Lange(ansi));
   return {
-    head: headDye ? Zipper.Trizipper((x, d, p) => {
+    head: headDye ? vectorZipper.Trizipper((x, d, p) => {
       var _padder;
 
       return _padder = padder(x, p), d(_padder);
-    })(head, headDye, pads) : Zipper.Duozipper((x, p) => padder(x, p))(head, pads),
-    hr: Mapper.mapper(pads, p => '-'.repeat(p)),
+    })(head, headDye, pads) : vectorZipper.Duozipper((x, p) => padder(x, p))(head, pads),
+    hr: vectorMapper.mapper(pads, p => '-'.repeat(p)),
     rows: dye ? matrixZipper.Trizipper((x, v, d, i, j) => {
       var _padder2;
 

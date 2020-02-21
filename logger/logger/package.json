@@ -12,10 +12,10 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/test.index.js"
+    "test": "node -r @babel/register test/logger.test.js"
   },
   "dependencies": {
-    "@palett/says": "^0.0.9",
+    "@palett/says": "^0.0.10",
     "@spare/deco": "^0.1.1",
     "@spare/deco-crostab": "^0.1.1",
     "@spare/deco-entries": "^0.1.1",

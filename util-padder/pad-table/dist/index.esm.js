@@ -3,30 +3,12 @@ import { Pad, RIGHT, CENTRE } from '@spare/pad-string';
 import { maxBy } from '@vect/columns-indicator';
 import { mapper } from '@vect/vector-mapper';
 import { Trizipper as Trizipper$1, Duozipper as Duozipper$1 } from '@vect/matrix-zipper';
-import * as Zipper from '@vect/vector-zipper';
 import { Trizipper as Trizipper$2, Duozipper as Duozipper$2 } from '@vect/vector-zipper';
+import { DASH, SPACE } from '@spare/util';
 import { toFullAngle, hasChn } from '@spare/string';
+import { Max } from '@vect/vector-indicator';
 import { transpose } from '@vect/matrix-transpose';
-
-const DASH = '－';
-const SPACE = '　';
-
-const max = (a, b) => a > b ? a : b;
-
-const max$1 = function (vec) {
-  const fn = this;
-  return vec.reduce((p, x, i) => max(p, fn(x, i)), fn(vec[0], 0));
-};
-
-const Max = indicator => max$1.bind(indicator);
-
-const {
-  zipper,
-  mutazip,
-  Duozipper,
-  Trizipper,
-  Quazipper
-} = Zipper;
+import { Trizipper, Duozipper } from '@vect/vector';
 
 const LocalPad = ({
   dock,

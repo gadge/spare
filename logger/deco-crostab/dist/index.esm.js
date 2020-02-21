@@ -7,89 +7,12 @@ import { padTable } from '@spare/pad-table';
 import { fluoVector } from '@palett/fluo-vector';
 import { fluo } from '@palett/fluo-matrix';
 import { zipper } from '@vect/vector-zipper';
-
-const ansi = ['[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)', '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'];
-const astral = ['[\uD800-\uDBFF][\uDC00-\uDFFF]'];
-const ansiReg = new RegExp(ansi.join('|'), 'g');
-const astralReg = new RegExp(astral.join('|'), 'g');
-/**
- *
- * @param {string} tx
- * @returns {number}
- */
-
-const lange = tx => tx.replace(ansiReg, '').replace(astralReg, '_').length;
-
-const Lange = ansi => ansi ? lange : x => x.length;
-
-const hasAnsi = tx => ansiReg.test(tx);
-
-const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
-/**
- * Return if a string contains Chinese character.
- * halfAng = str.match(/[\u0000-\u00ff]/g) || [] //半角
- * chinese = str.match(/[\u4e00-\u9fa5]/g) || [] //中文
- * fullAng = str.match(/[\uff00-\uffff]/g) || [] //全角
- * @param {string} str
- * @returns {boolean}
- */
-
-const hasChn = str => str.search(FullAngleReg) !== -1;
-/**
- * Half-angle string -> Full-angle string
- * 半角转化为全角
- * a.全角空格为12288，半角空格为32
- * b.其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
- * @param {string} tx
- * @returns {string}
- * @constructor
- */
-
-
-const toFullAngle = tx => {
-  let t = '',
-      co;
-
-  for (let c of tx) {
-    co = c.charCodeAt(0);
-    t = co === 32 ? t + String.fromCharCode(12288) : co < 127 ? t + String.fromCharCode(co + 65248) : t + c;
-  }
-
-  return t;
-};
-
-const fixpad = (tx, pd) => hasAnsi(tx) ? tx.length + pd - lange(tx) : pd;
-
-const lpad = String.prototype.padStart;
-const rpad = String.prototype.padEnd;
-
-const LPad = ({
-  ansi = true,
-  fill
-} = {}) => ansi ? (tx, pd) => lpad.call(tx, fixpad(tx, pd), fill) : (tx, pd) => lpad.call(tx, pd, fill);
-
-const RPad = ({
-  ansi = true,
-  fill
-} = {}) => ansi ? (tx, pd) => rpad.call(tx, fixpad(tx, pd), fill) : (tx, pd) => rpad.call(tx, pd, fill);
-
-const max = (a, b) => a > b ? a : b;
-
-const max$1 = function (vec) {
-  const fn = this;
-  return vec.reduce((p, x, i) => max(p, fn(x, i)), fn(vec[0], 0));
-};
-
-const maxBy = (vec, indicator) => max$1.call(indicator, vec);
-
-const mapper = (ar, fn, l) => {
-  l = l || ar && ar.length;
-  const vec = Array(l);
-
-  for (--l; l >= 0; l--) vec[l] = fn(ar[l], l);
-
-  return vec;
-};
+import { hasChn, toFullAngle } from '@spare/string';
+import { Lange } from '@spare/lange';
+import { LPad, RPad } from '@spare/pad-string';
+import { max } from '@aryth/comparer';
+import { maxBy } from '@vect/vector-indicator';
+import { mapper } from '@vect/vector-mapper';
 
 const padSide = (side, title, {
   dye,

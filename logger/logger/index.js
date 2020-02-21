@@ -8,18 +8,24 @@ import * as DecoTableEnv from '@spare/deco-table'
 import * as DecoCrostabEnv from '@spare/deco-crostab'
 
 export { logger, logNeL } from './src/logger'
-export const { Xr, xr } = XrEnv
-export const { Says, says } = Sayer
-export const { deco, deca, delogger, delogNeL } = Deco
 
-export const decoVector = DecoVectorEnv.deco
-export const decoEntries = DecoEntriesEnv.deco
-export const decoMatrix = DecoMatrixEnv.deco
-export const decoTable = DecoTableEnv.deco
-export const decoCrostab = DecoCrostabEnv.deco
+/** @function */ export const Xr = XrEnv.Xr
+/** @function */ export const xr = XrEnv.xr
+/** @class */ export const Says = Sayer.Says
+/** @function */ export const says = Sayer.says
+/** @function */ export const deco = Deco.deco
+/** @function */ export const deca = Deco.deca
+/** @function */ export const delogger = Deco.delogger
+/** @function */ export const delogNeL = Deco.delogNeL
 
-export const DecoVector = DecoVectorEnv.Deco
-export const DecoEntries = DecoEntriesEnv.Deco
-export const DecoMatrix = DecoMatrixEnv.Deco
-export const DecoTable = DecoTableEnv.Deco
-export const DecoCrostab = DecoCrostabEnv.Deco
+/** @function */ export const decoVector = DecoVectorEnv.deco
+/** @function */ export const decoEntries = DecoEntriesEnv.deco
+/** @function */ export const decoMatrix = DecoMatrixEnv.deco
+/** @function */ export const decoTable = DecoTableEnv.deco
+/** @function */ export const decoCrostab = DecoCrostabEnv.deco
+
+/** @function */ export const DecoVector = DecoVectorEnv.Deco
+/** @function */ export const DecoEntries = DecoEntriesEnv.Deco
+/** @function */ export const DecoMatrix = DecoMatrixEnv.Deco
+/** @function */ export const DecoTable = DecoTableEnv.Deco
+/** @function */ export const DecoCrostab = DecoCrostabEnv.Deco

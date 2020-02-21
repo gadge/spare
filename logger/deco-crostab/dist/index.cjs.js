@@ -11,89 +11,12 @@ var padTable = require('@spare/pad-table');
 var fluoVector = require('@palett/fluo-vector');
 var fluoMatrix = require('@palett/fluo-matrix');
 var vectorZipper = require('@vect/vector-zipper');
-
-const ansi = ['[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)', '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'];
-const astral = ['[\uD800-\uDBFF][\uDC00-\uDFFF]'];
-const ansiReg = new RegExp(ansi.join('|'), 'g');
-const astralReg = new RegExp(astral.join('|'), 'g');
-/**
- *
- * @param {string} tx
- * @returns {number}
- */
-
-const lange = tx => tx.replace(ansiReg, '').replace(astralReg, '_').length;
-
-const Lange = ansi => ansi ? lange : x => x.length;
-
-const hasAnsi = tx => ansiReg.test(tx);
-
-const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
-/**
- * Return if a string contains Chinese character.
- * halfAng = str.match(/[\u0000-\u00ff]/g) || [] //半角
- * chinese = str.match(/[\u4e00-\u9fa5]/g) || [] //中文
- * fullAng = str.match(/[\uff00-\uffff]/g) || [] //全角
- * @param {string} str
- * @returns {boolean}
- */
-
-const hasChn = str => str.search(FullAngleReg) !== -1;
-/**
- * Half-angle string -> Full-angle string
- * 半角转化为全角
- * a.全角空格为12288，半角空格为32
- * b.其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
- * @param {string} tx
- * @returns {string}
- * @constructor
- */
-
-
-const toFullAngle = tx => {
-  let t = '',
-      co;
-
-  for (let c of tx) {
-    co = c.charCodeAt(0);
-    t = co === 32 ? t + String.fromCharCode(12288) : co < 127 ? t + String.fromCharCode(co + 65248) : t + c;
-  }
-
-  return t;
-};
-
-const fixpad = (tx, pd) => hasAnsi(tx) ? tx.length + pd - lange(tx) : pd;
-
-const lpad = String.prototype.padStart;
-const rpad = String.prototype.padEnd;
-
-const LPad = ({
-  ansi = true,
-  fill
-} = {}) => ansi ? (tx, pd) => lpad.call(tx, fixpad(tx, pd), fill) : (tx, pd) => lpad.call(tx, pd, fill);
-
-const RPad = ({
-  ansi = true,
-  fill
-} = {}) => ansi ? (tx, pd) => rpad.call(tx, fixpad(tx, pd), fill) : (tx, pd) => rpad.call(tx, pd, fill);
-
-const max = (a, b) => a > b ? a : b;
-
-const max$1 = function (vec) {
-  const fn = this;
-  return vec.reduce((p, x, i) => max(p, fn(x, i)), fn(vec[0], 0));
-};
-
-const maxBy = (vec, indicator) => max$1.call(indicator, vec);
-
-const mapper = (ar, fn, l) => {
-  l = l || ar && ar.length;
-  const vec = Array(l);
-
-  for (--l; l >= 0; l--) vec[l] = fn(ar[l], l);
-
-  return vec;
-};
+var string = require('@spare/string');
+var lange = require('@spare/lange');
+var padString = require('@spare/pad-string');
+var comparer = require('@aryth/comparer');
+var vectorIndicator = require('@vect/vector-indicator');
+var vectorMapper = require('@vect/vector-mapper');
 
 const padSide = (side, title, {
   dye,
@@ -101,14 +24,14 @@ const padSide = (side, title, {
   fullAngle
 } = {}) => {
   if (fullAngle) return padSideFullAngle(side, title, ansi);
-  const lpad = LPad({
+  const lpad = padString.LPad({
     ansi
   }),
-        rpad = RPad({
+        rpad = padString.RPad({
     ansi
   }),
-        lange = Lange(ansi);
-  const pad = max(lange(title), maxBy(side, lange));
+        lange$1 = lange.Lange(ansi);
+  const pad = comparer.max(lange$1(title), vectorIndicator.maxBy(side, lange$1));
   return {
     title: rpad(title, pad),
     hr: '-'.repeat(pad),
@@ -116,7 +39,7 @@ const padSide = (side, title, {
       var _lpad;
 
       return _lpad = lpad(x, pad), d(_lpad);
-    }) : mapper(side, x => lpad(x, pad))
+    }) : vectorMapper.mapper(side, x => lpad(x, pad))
   };
 };
 const padSideFullAngle = (side, title, {
@@ -125,28 +48,28 @@ const padSideFullAngle = (side, title, {
   dash = util.DASH,
   fill = util.SPACE
 } = {}) => {
-  const cn = hasChn(title) || side.some(hasChn);
+  const cn = string.hasChn(title) || side.some(string.hasChn);
   if (!cn) return padSide(side, title, {
     ansi
   });
-  const lpad = LPad({
+  const lpad = padString.LPad({
     ansi,
     fill
   }),
-        rpad = RPad({
+        rpad = padString.RPad({
     ansi,
     fill
   }),
-        lange = Lange(ansi);
-  const pad = max(lange(title), maxBy(side, lange));
+        lange$1 = lange.Lange(ansi);
+  const pad = comparer.max(lange$1(title), vectorIndicator.maxBy(side, lange$1));
   return {
-    title: rpad(toFullAngle(title), pad),
+    title: rpad(string.toFullAngle(title), pad),
     hr: dash.repeat(pad),
     side: dye ? vectorZipper.zipper(side, dye, (x, d) => {
       var _lpad2;
 
-      return _lpad2 = lpad(toFullAngle(x), pad), d(_lpad2);
-    }) : mapper(side, x => lpad(toFullAngle(x), pad))
+      return _lpad2 = lpad(string.toFullAngle(x), pad), d(_lpad2);
+    }) : vectorMapper.mapper(side, x => lpad(string.toFullAngle(x), pad))
   };
 };
 

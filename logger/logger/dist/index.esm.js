@@ -1,38 +1,68 @@
-import * as Deco from '@spare/deco';
-import * as XrEnv from '@spare/xr';
-import * as Sayer from '@palett/says';
-import { deco as deco$1, Deco as Deco$1 } from '@spare/deco-vector';
-import { deco as deco$2, Deco as Deco$2 } from '@spare/deco-entries';
-import { deco as deco$3, Deco as Deco$3 } from '@spare/deco-matrix';
-import { deco as deco$4, Deco as Deco$4 } from '@spare/deco-table';
-import { deco as deco$5, Deco as Deco$5 } from '@spare/deco-crostab';
+import { deco as deco$1, deca as deca$1, delogger as delogger$1, delogNeL as delogNeL$1 } from '@spare/deco';
+import { Xr as Xr$1, xr as xr$1 } from '@spare/xr';
+import { Says as Says$1, says as says$1 } from '@palett/says';
+import { deco as deco$2, Deco } from '@spare/deco-vector';
+import { deco as deco$3, Deco as Deco$1 } from '@spare/deco-entries';
+import { deco as deco$4, Deco as Deco$2 } from '@spare/deco-matrix';
+import { deco as deco$5, Deco as Deco$3 } from '@spare/deco-table';
+import { deco as deco$6, Deco as Deco$4 } from '@spare/deco-crostab';
 
 const logger = (x, ...p) => void console.log(x + '', ...p);
 const logNeL = (x, ...p) => void console.log(x + '', ...p, '\n');
 
-const {
-  Xr,
-  xr
-} = XrEnv;
-const {
-  Says,
-  says
-} = Sayer;
-const {
-  deco,
-  deca,
-  delogger,
-  delogNeL
-} = Deco;
-const decoVector = deco$1;
-const decoEntries = deco$2;
-const decoMatrix = deco$3;
-const decoTable = deco$4;
-const decoCrostab = deco$5;
-const DecoVector = Deco$1;
-const DecoEntries = Deco$2;
-const DecoMatrix = Deco$3;
-const DecoTable = Deco$4;
-const DecoCrostab = Deco$5;
+/** @function */
+
+const Xr = Xr$1;
+/** @function */
+
+const xr = xr$1;
+/** @class */
+
+const Says = Says$1;
+/** @function */
+
+const says = says$1;
+/** @function */
+
+const deco = deco$1;
+/** @function */
+
+const deca = deca$1;
+/** @function */
+
+const delogger = delogger$1;
+/** @function */
+
+const delogNeL = delogNeL$1;
+/** @function */
+
+const decoVector = deco$2;
+/** @function */
+
+const decoEntries = deco$3;
+/** @function */
+
+const decoMatrix = deco$4;
+/** @function */
+
+const decoTable = deco$5;
+/** @function */
+
+const decoCrostab = deco$6;
+/** @function */
+
+const DecoVector = Deco;
+/** @function */
+
+const DecoEntries = Deco$1;
+/** @function */
+
+const DecoMatrix = Deco$2;
+/** @function */
+
+const DecoTable = Deco$3;
+/** @function */
+
+const DecoCrostab = Deco$4;
 
 export { DecoCrostab, DecoEntries, DecoMatrix, DecoTable, DecoVector, Says, Xr, deca, deco, decoCrostab, decoEntries, decoMatrix, decoTable, decoVector, delogNeL, delogger, logNeL, logger, says, xr };

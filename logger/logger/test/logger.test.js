@@ -1,4 +1,4 @@
-import { DecoEntries, delogger, logger } from '..'
+import { DecoEntries, delogger, says } from '../index'
 import { METRO } from '@palett/presets'
 
 const candidates = {
@@ -13,5 +13,5 @@ const candidates = {
 
 candidates |> delogger
 
-Object.entries(candidates) |> DecoEntries({ stringPreset: METRO }) |> logger
+Object.entries(candidates) |> DecoEntries({ stringPreset: METRO }) |> says.logger
 
