@@ -1,6 +1,5 @@
 .idea
 temp
+archive
 node_modules
 yarn.lock
-string-helper/*/dist
-cliche/*/dist
