@@ -215,11 +215,11 @@ let deEn = function (entries, lv) {
       vw;
   mutate(entries, k => {
     if ((kw = lange(k = String(k))) > pad) pad = kw;
-    if (!wrap && (cap += kw) > 48) wrap = true;
+    if (!wrap && (cap += pad) > 48) wrap = true;
     return k;
   }, v => {
     v = String(deNode.call(this, v, lv + 1));
-    if (!wrap && (cap += (vw = lange(v)) > 48)) wrap = true;
+    if (!wrap && (cap += vw = lange(v)) > 48) wrap = true;
     return v;
   });
   if (wrap) keysMutate(entries, k => lpad(k, pad), entries.length);
