@@ -103,7 +103,7 @@ const deco = (table, {
   left = 0,
   bottom = 0,
   right = 0,
-  ansi = false,
+  ansi = true,
   fullAngle = false
 } = {}) => cosmati.call({
   direct,
@@ -148,7 +148,7 @@ const Deco = ({
   left = 0,
   bottom = 0,
   right = 0,
-  ansi = false,
+  ansi = true,
   fullAngle = false
 } = {}) => cosmati.bind({
   direct,
