@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/fluo-vector": "^0.0.11",
-    "@palett/presets": "^0.0.11",
+    "@palett/fluo-vector": "^0.0.12",
+    "@palett/presets": "^0.0.12",
     "@spare/deco-entries": "^0.1.5",
     "@spare/util": "^0.1.5",
     "@spare/vettro": "^0.1.5"

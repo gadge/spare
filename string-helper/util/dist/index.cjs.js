@@ -46,9 +46,12 @@ const endsBracs = tx => tx.endsWith(')') || tx.endsWith(']');
 const rn = '\r\n';
 const tb = '  ';
 const aeu = '(Ø)';
-const RN = rn;
-const TB = tb;
-const AEU = aeu;
+const ELLIP = '...';
+const CR = '\r';
+const LF = '\n';
+const RN = '\r\n';
+const TB = '  ';
+const AEU = '(Ø)';
 
 const DASH = '－';
 const SPACE = '　';
@@ -58,8 +61,11 @@ const FAChars = {
 };
 
 exports.AEU = AEU;
+exports.CR = CR;
 exports.DASH = DASH;
+exports.ELLIP = ELLIP;
 exports.FAChars = FAChars;
+exports.LF = LF;
 exports.RN = RN;
 exports.SPACE = SPACE;
 exports.TB = TB;

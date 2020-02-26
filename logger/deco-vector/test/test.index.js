@@ -1,4 +1,4 @@
-import { logger, logNeL } from '@spare/logger'
+import { logger, logNeL, says } from '@spare/logger'
 import { xr } from '@spare/xr'
 import { deco } from '../src/deco'
 import { simpleVectors } from '@foba/foo'
@@ -22,7 +22,7 @@ export class VectorDecoTest {
   static test () {
     for (const [key, vector] of Object.entries(candidates)) {
       xr(key) |> logger
-      vector |> Deco({ head: 4, tail: 4, indexed: true }) |> logNeL
+      vector |> Deco({ head: 4, tail: 4, indexed: true }) |> says[key]
     }
   }
 }

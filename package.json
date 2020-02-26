@@ -10,13 +10,15 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "prewatch": "npm run bootstrap",
+    "ckv": "yarn outdated --latest",
+    "upint": "yarn upgrade-interactive --latest",
     "build": "lerna exec --parallel -- rollup -c ../../rollup.config.js",
     "build-specific": "lerna exec --scope=@spare/deco -- rollup -c ../../rollup.config.js",
     "watch": "lerna exec --parallel -- rollup -c ../../rollup.config.js -w",
     "watch-specific": "lerna exec --scope=kalorie -- rollup -c ../../rollup.config.js -w"
   },
   "devDependencies": {
-    "@aryth/rand": "^0.0.8",
+    "@aryth/rand": "^0.0.10",
     "@babel/core": "^7.8.4",
     "@babel/plugin-external-helpers": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",

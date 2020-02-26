@@ -15,12 +15,12 @@
     "test": "node -r @babel/register test/entries.test.js"
   },
   "dependencies": {
-    "@palett/fluo-entries": "^0.0.11",
-    "@palett/presets": "^0.0.11",
+    "@palett/fluo-entries": "^0.0.12",
+    "@palett/presets": "^0.0.12",
     "@spare/enttro": "^0.1.5",
     "@spare/pad-entries": "^0.1.5",
     "@spare/util": "^0.1.5",
-    "@vect/entries-zipper": "^0.0.18"
+    "@vect/entries-zipper": "^0.0.27"
   },
   "repository": {
     "type": "git",

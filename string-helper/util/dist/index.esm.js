@@ -42,9 +42,12 @@ const endsBracs = tx => tx.endsWith(')') || tx.endsWith(']');
 const rn = '\r\n';
 const tb = '  ';
 const aeu = '(Ø)';
-const RN = rn;
-const TB = tb;
-const AEU = aeu;
+const ELLIP = '...';
+const CR = '\r';
+const LF = '\n';
+const RN = '\r\n';
+const TB = '  ';
+const AEU = '(Ø)';
 
 const DASH = '－';
 const SPACE = '　';
@@ -53,4 +56,4 @@ const FAChars = {
   space: SPACE
 };
 
-export { AEU, DASH, FAChars, RN, SPACE, TB, aeu, afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, noop, pr, rn, tabify, tb, totx };
+export { AEU, CR, DASH, ELLIP, FAChars, LF, RN, SPACE, TB, aeu, afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, noop, pr, rn, tabify, tb, totx };

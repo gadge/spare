@@ -2,7 +2,12 @@ export const rn = '\r\n'
 export const tb = '  '
 export const aeu = '(Ø)'
 
-export const RN = rn
-export const TB = tb
-export const AEU = aeu
+export const DASH = '-'
+export const SPACE = ' '
+export const ELLIP = '...'
+export const CR = '\r'
+export const LF = '\n'
+export const RN = '\r\n'
+export const TB = '  '
+export const AEU = '(Ø)'
 
