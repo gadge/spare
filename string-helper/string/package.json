@@ -1,6 +1,6 @@
 {
   "name": "@spare/string",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@spare/lange": "^0.1.5",
-    "@spare/util": "^0.1.7"
+    "@spare/util": "^0.1.8"
   },
   "repository": {
     "type": "git",
