@@ -19,5 +19,7 @@ const Puncs = mapper(Tubes, dye => [L |> dye, R |> dye])
 
 export const BRK = mapper(Puncs, ([L, R]) => content => L + content + R)
 
+export const brk = content => L + content + R
+
 
 

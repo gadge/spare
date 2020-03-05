@@ -1,18 +1,14 @@
-import { lange } from '@spare/lange'
-import { RN } from '@spare/util'
 import { ARRAY, OBJECT, MAP, SET, BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enums'
 import { isNumeric } from '@typen/num-loose'
-import { mutate as mutateEntries } from '@vect/entries-mapper'
-import { ColumnMutate } from '@vect/column-mapper'
 import { fluoVector } from '@palett/fluo-vector'
 import { fluoEntries } from '@palett/fluo-entries'
-import { LPad } from '@spare/pad-string'
 import { typ } from '@typen/typ'
-import { BRK, BRC, PAL, IDX } from './theme'
-
-const keysMutate = ColumnMutate(0)
-
-const lpad = LPad({ ansi: true })
+import { mutate as mutateEntries } from '@vect/entries-mapper'
+import { mutate as mutateVector } from '@vect/vector-mapper'
+import { BRK, BRC, PAL, IDX, brk, brc } from './theme'
+import { stringifyEntries } from './utils/stringifyEntries'
+import { stringifyVector } from './utils/stringifyVector'
+import { deFn } from './utils/deFn'
 
 /**
  *
@@ -21,6 +17,7 @@ const lpad = LPad({ ansi: true })
  * @return {string}
  */
 export function deNode (node, lv = 0) {
+  if (!this.color) return deNodePlain.call(this, node, lv)
   switch (typeof node) {
     case STR:
       return isNumeric(node) ? node : PAL.STR(node)
@@ -40,61 +37,53 @@ export function deNode (node, lv = 0) {
 }
 
 export const deOb = function (node, lv) {
-  const { hi, tb } = this
-  this.rn = RN + tb.repeat(lv)
+  const { hi } = this
   switch (node |> typ) {
     case ARRAY:
-      return lv >= hi ? '[array]' : deAr.call(this, node, lv) |> BRK[lv & 7]
+      return lv >= hi ? '[array]' : deVe.call(this, node.slice(), lv) |> BRK[lv & 7]
     case OBJECT :
-      return lv >= hi ? '{object}' : deEn.call(this, Object.entries(node), lv) |> BRC[lv & 7]
+      return lv >= hi ? '{object}' : deEn.call(this, Object.entries(node), lv) |>  BRC[lv & 7]
     case MAP:
       return lv >= hi ? '(map)' : deEn.call(this, [...node.entries()], lv) |> BRK[lv & 7]
     case SET:
-      return lv >= hi ? '(set)' : `set:[${deAr.call(this, [...node], lv)}]`
+      return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
     default:
       return `${node}`
   }
 }
 
-export let deAr = function (arr, lv) {
-  let { rn, tb, al } = this, cap = 0, wrap = false
-  arr = arr.map(v => {
-    v = String(deNode.call(this, v, lv + 1))
-    if (!wrap && (cap += lange(v)) > al) wrap = true
-    return v
-  })
-  fluoVector(arr, { mutate: true })
-  return wrap
-    ? `${rn}  ${arr.join(`,${rn + tb}`)}${rn}`
-    : arr.join(',')
+/**
+ *
+ * @param {*} node
+ * @param {number} [lv]
+ * @return {string}
+ */
+export function deNodePlain (node, lv = 0) {
+  const t = typeof node
+  if (t === OBJ) {
+    const { hi } = this, pt = node |> typ
+    if (pt === ARRAY) return lv >= hi ? '[array]' : deVe.call(this, node.slice(), lv) |> brk
+    if (pt === OBJECT) return lv >= hi ? '{object}' : deEn.call(this, Object.entries(node), lv) |> brc
+    if (pt === MAP) return lv >= hi ? '(map)' : deEn.call(this, [...node.entries()], lv) |> brk
+    if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
+    return `${node}`
+  }
+  if (t === FUN) return deFn.call(this, node)
+  return node
+}
+
+export let deVe = function (vector, lv) {
+  mutateVector(vector, v => String(deNode.call(this, v, lv + 1)))
+  if (this.color) fluoVector(vector, { mutate: true })
+  return stringifyVector.call(this, vector, lv)
 }
 
 export let deEn = function (entries, lv) {
-  const { vo, rn, tb } = this
-  let pad = 0, cap = 0, wrap = lv < vo, kw, vw
-  mutateEntries(entries,
-    k => {
-      if ((kw = lange(k = String(k))) > pad) pad = kw
-      if (!wrap && (cap += pad) > 48) wrap = true
-      return k
-    },
-    v => {
-      v = String(deNode.call(this, v, lv + 1))
-      if (!wrap && (cap += (vw = lange(v))) > 48) wrap = true
-      return v
-    })
-  if (wrap) keysMutate(entries, k => lpad(k, pad), entries.length)
-  entries = fluoEntries(entries, { mutate: true, stringPreset: IDX[lv & 7] })
-    .map(([k, v]) => `${k}: ${v}`)
-  return wrap
-    ? `${rn}  ${entries.join(`,${rn + tb}`)}${rn}`
-    : entries.join(', ')
+  mutateEntries(entries, k => String(k), v => String(deNode.call(this, v, lv + 1)))
+  if (this.color) fluoEntries(entries, { stringPreset: IDX[lv & 7], mutate: true })
+  return stringifyEntries.call(this, entries, lv)
 }
 
-export const deFn = function (fn) {
-  // const result = 'simple_lambda(x) => "".concat(x);'
-  // const reg = /{[\s]+(return)/g
-  // reg.exec(`${fn}`).map(it => `(${it})`)|> logger
-  fn = (fn = `${fn}`).startsWith('function') ? fn.slice(9) : fn
-  return fn |> PAL.FNC
-}
+
+
+

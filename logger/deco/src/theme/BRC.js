@@ -19,5 +19,6 @@ const Puncs = mapper(Tubes, hsl => [L|>hsl, R|>hsl])
 
 export const BRC = mapper(Puncs, ([L, R]) => content => L + content + R)
 
+export const brc = content => L + content + R
 
 

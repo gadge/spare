@@ -1,10 +1,10 @@
-import { Ink } from './Ink'
+import { Inka } from './Inka/Inka'
 
 /**
  *
- * @param label
- * @param items
- * @returns {(Ink|object<string,Ink>)}
+ * @param {string} word
+ * @param {boolean} color
+ * @returns {(Inka|object<string,Inka>)}
  * @constructor
  */
-export const Xr = (label, ...items) => new Ink(label, ...items)
+export const Xr = (word, color = true) => new Inka(word, color)

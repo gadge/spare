@@ -1,21 +1,21 @@
-import { lange } from '@spare/lange';
-import { RN, TB } from '@spare/util';
-import { SYM, UND, BOO, FUN, BIG, NUM, OBJ, STR, SET, MAP, OBJECT, ARRAY } from '@typen/enums';
-import { isNumeric } from '@typen/num-loose';
-import { mutate } from '@vect/entries-mapper';
-import { ColumnMutate } from '@vect/column-mapper';
-import { fluoVector } from '@palett/fluo-vector';
-import { fluoEntries } from '@palett/fluo-entries';
-import { LPad } from '@spare/pad-string';
-import { typ } from '@typen/typ';
-import { hslToRgb, hexToRgb, hslToHex } from '@palett/convert';
-import { Dye } from '@palett/dye';
-import { mapper } from '@vect/object-mapper';
-import { Cards } from '@palett/cards';
+import { lange } from '@spare/lange'
+import { RN, TB } from '@spare/util'
+import { SYM, UND, BOO, FUN, BIG, NUM, OBJ, STR, SET, MAP, OBJECT, ARRAY } from '@typen/enums'
+import { isNumeric } from '@typen/num-loose'
+import { mutate } from '@vect/entries-mapper'
+import { ColumnMutate } from '@vect/column-mapper'
+import { fluoVector } from '@palett/fluo-vector'
+import { fluoEntries } from '@palett/fluo-entries'
+import { LPad } from '@spare/pad-string'
+import { typ } from '@typen/typ'
+import { hslToRgb, hexToRgb, hslToHex } from '@palett/convert'
+import { Dye } from '@palett/dye'
+import { mapper } from '@vect/object-mapper'
+import { Cards } from '@palett/cards'
 
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
+var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8
 const L = '{ ',
-      R = ' }';
+  R = ' }'
 const Tubes = {
   0: Dye((_ref = [45, 100, 53], hslToRgb(_ref))),
   1: Dye((_ref2 = [44, 100, 59], hslToRgb(_ref2))),
@@ -25,17 +25,17 @@ const Tubes = {
   5: Dye((_ref6 = [40, 100, 78], hslToRgb(_ref6))),
   6: Dye((_ref7 = [39, 100, 82], hslToRgb(_ref7))),
   7: Dye((_ref8 = [37, 100, 86], hslToRgb(_ref8)))
-};
+}
 const Puncs = mapper(Tubes, hsl => {
-  var _L, _R;
+  var _L, _R
 
-  return [(_L = L, hsl(_L)), (_R = R, hsl(_R))];
-});
-const BRC = mapper(Puncs, ([L, R]) => content => L + content + R);
+  return [(_L = L, hsl(_L)), (_R = R, hsl(_R))]
+})
+const BRC = mapper(Puncs, ([L, R]) => content => L + content + R)
 
-var _ref$1, _ref2$1, _ref3$1, _ref4$1, _ref5$1, _ref6$1, _ref7$1, _ref8$1;
+var _ref$1, _ref2$1, _ref3$1, _ref4$1, _ref5$1, _ref6$1, _ref7$1, _ref8$1
 const L$1 = '[ ',
-      R$1 = ' ]';
+  R$1 = ' ]'
 const Tubes$1 = {
   0: Dye((_ref$1 = [199, 100, 63], hslToRgb(_ref$1))),
   1: Dye((_ref2$1 = [201, 100, 68], hslToRgb(_ref2$1))),
@@ -45,15 +45,16 @@ const Tubes$1 = {
   4: Dye((_ref6$1 = [209, 100, 80], hslToRgb(_ref6$1))),
   6: Dye((_ref7$1 = [211, 100, 88], hslToRgb(_ref7$1))),
   7: Dye((_ref8$1 = [214, 100, 90], hslToRgb(_ref8$1)))
-};
+}
 const Puncs$1 = mapper(Tubes$1, dye => {
-  var _L, _R;
+  var _L, _R
 
-  return [(_L = L$1, dye(_L)), (_R = R$1, dye(_R))];
-});
-const BRK = mapper(Puncs$1, ([L, R]) => content => L + content + R);
+  return [(_L = L$1, dye(_L)), (_R = R$1, dye(_R))]
+})
+const BRK = mapper(Puncs$1, ([L, R]) => content => L + content + R)
 
-var _Cards$brown$lighten_, _Cards$lightGreen$acc, _Cards$deepOrange$acc, _Cards$teal$lighten_, _Cards$brown$lighten_2, _Cards$blue$accent_, _Cards$amber$base, _Cards$green$accent_;
+var _Cards$brown$lighten_, _Cards$lightGreen$acc, _Cards$deepOrange$acc, _Cards$teal$lighten_, _Cards$brown$lighten_2,
+  _Cards$blue$accent_, _Cards$amber$base, _Cards$green$accent_
 /**
  *
  * @type {Object<string,function>}
@@ -68,9 +69,9 @@ const PAL = {
   BRK: Dye((_Cards$blue$accent_ = Cards.blue.accent_2, hexToRgb(_Cards$blue$accent_))),
   BRC: Dye((_Cards$amber$base = Cards.amber.base, hexToRgb(_Cards$amber$base))),
   FNC: Dye((_Cards$green$accent_ = Cards.green.accent_4, hexToRgb(_Cards$green$accent_)))
-};
+}
 
-var _ref$2, _ref2$2, _ref3$2, _ref4$2, _ref5$2, _ref6$2, _ref7$2, _ref8$2;
+var _ref$2, _ref2$2, _ref3$2, _ref4$2, _ref5$2, _ref6$2, _ref7$2, _ref8$2
 const IDXSigns = {
   0: Dye((_ref$2 = [20, 16, 93], hslToRgb(_ref$2))),
   1: Dye((_ref2$2 = [18, 18, 88], hslToRgb(_ref2$2))),
@@ -80,7 +81,7 @@ const IDXSigns = {
   5: Dye((_ref6$2 = [14, 26, 69], hslToRgb(_ref6$2))),
   6: Dye((_ref7$2 = [14, 28, 65], hslToRgb(_ref7$2))),
   7: Dye((_ref8$2 = [13, 28, 61], hslToRgb(_ref8$2)))
-};
+}
 const IDX = {
   0: {
     max: hslToHex([75, 90, 85]),
@@ -122,12 +123,13 @@ const IDX = {
     min: hslToHex([143, 92, 68]),
     na: Cards.grey.darken_2
   }
-};
+}
 
-const keysMutate = ColumnMutate(0);
+const keysMutate = ColumnMutate(0)
 const lpad = LPad({
   ansi: true
-});
+})
+
 /**
  *
  * @param {*} node
@@ -135,109 +137,110 @@ const lpad = LPad({
  * @return {string}
  */
 
-function deNode(node, lv = 0) {
+function deNode (node, lv = 0) {
   switch (typeof node) {
     case STR:
-      return isNumeric(node) ? node : PAL.STR(node);
+      return isNumeric(node) ? node : PAL.STR(node)
 
     case OBJ:
-      return deOb.call(this, node, lv);
+      return deOb.call(this, node, lv)
 
     case NUM:
     case BIG:
-      return node;
+      return node
 
     case FUN:
-      return deFn.call(this, node);
+      return deFn.call(this, node)
 
     case BOO:
-      return PAL.BOO(node);
+      return PAL.BOO(node)
 
     case UND:
     case SYM:
-      return PAL.UDF(node);
+      return PAL.UDF(node)
   }
 }
+
 const deOb = function (node, lv) {
-  var _node, _deAr$call, _deEn$call, _deEn$call2;
+  var _node, _deAr$call, _deEn$call, _deEn$call2
 
   const {
     hi,
     tb
-  } = this;
-  this.rn = RN + tb.repeat(lv);
+  } = this
+  this.rn = RN + tb.repeat(lv)
 
   switch (_node = node, typ(_node)) {
     case ARRAY:
-      return lv >= hi ? '[array]' : (_deAr$call = deAr.call(this, node, lv), BRK[lv & 7](_deAr$call));
+      return lv >= hi ? '[array]' : (_deAr$call = deAr.call(this, node, lv), BRK[lv & 7](_deAr$call))
 
     case OBJECT:
-      return lv >= hi ? '{object}' : (_deEn$call = deEn.call(this, Object.entries(node), lv), BRC[lv & 7](_deEn$call));
+      return lv >= hi ? '{object}' : (_deEn$call = deEn.call(this, Object.entries(node), lv), BRC[lv & 7](_deEn$call))
 
     case MAP:
-      return lv >= hi ? '(map)' : (_deEn$call2 = deEn.call(this, [...node.entries()], lv), BRK[lv & 7](_deEn$call2));
+      return lv >= hi ? '(map)' : (_deEn$call2 = deEn.call(this, [...node.entries()], lv), BRK[lv & 7](_deEn$call2))
 
     case SET:
-      return lv >= hi ? '(set)' : `set:[${deAr.call(this, [...node], lv)}]`;
+      return lv >= hi ? '(set)' : `set:[${deAr.call(this, [...node], lv)}]`
 
     default:
-      return `${node}`;
+      return `${node}`
   }
-};
+}
 let deAr = function (arr, lv) {
   let {
-    rn,
-    tb,
-    al
-  } = this,
-      cap = 0,
-      wrap = false;
+      rn,
+      tb,
+      al
+    } = this,
+    cap = 0,
+    wrap = false
   arr = arr.map(v => {
-    v = String(deNode.call(this, v, lv + 1));
-    if (!wrap && (cap += lange(v)) > al) wrap = true;
-    return v;
-  });
+    v = String(deNode.call(this, v, lv + 1))
+    if (!wrap && (cap += lange(v)) > al) wrap = true
+    return v
+  })
   fluoVector(arr, {
     mutate: true
-  });
-  return wrap ? `${rn}  ${arr.join(`,${rn + tb}`)}${rn}` : arr.join(',');
-};
+  })
+  return wrap ? `${rn}  ${arr.join(`,${rn + tb}`)}${rn}` : arr.join(',')
+}
 let deEn = function (entries, lv) {
   const {
     vo,
     rn,
     tb
-  } = this;
+  } = this
   let pad = 0,
-      cap = 0,
-      wrap = lv < vo,
-      kw,
-      vw;
+    cap = 0,
+    wrap = lv < vo,
+    kw,
+    vw
   mutate(entries, k => {
-    if ((kw = lange(k = String(k))) > pad) pad = kw;
-    if (!wrap && (cap += pad) > 48) wrap = true;
-    return k;
+    if ((kw = lange(k = String(k))) > pad) pad = kw
+    if (!wrap && (cap += pad) > 48) wrap = true
+    return k
   }, v => {
-    v = String(deNode.call(this, v, lv + 1));
-    if (!wrap && (cap += vw = lange(v)) > 48) wrap = true;
-    return v;
-  });
-  if (wrap) keysMutate(entries, k => lpad(k, pad), entries.length);
+    v = String(deNode.call(this, v, lv + 1))
+    if (!wrap && (cap += vw = lange(v)) > 48) wrap = true
+    return v
+  })
+  if (wrap) keysMutate(entries, k => lpad(k, pad), entries.length)
   entries = fluoEntries(entries, {
     mutate: true,
     stringPreset: IDX[lv & 7]
-  }).map(([k, v]) => `${k}: ${v}`);
-  return wrap ? `${rn}  ${entries.join(`,${rn + tb}`)}${rn}` : entries.join(', ');
-};
+  }).map(([k, v]) => `${k}: ${v}`)
+  return wrap ? `${rn}  ${entries.join(`,${rn + tb}`)}${rn}` : entries.join(', ')
+}
 const deFn = function (fn) {
-  var _fn;
+  var _fn
 
   // const result = 'simple_lambda(x) => "".concat(x);'
   // const reg = /{[\s]+(return)/g
   // reg.exec(`${fn}`).map(it => `(${it})`)|> logger
-  fn = (fn = `${fn}`).startsWith('function') ? fn.slice(9) : fn;
-  return _fn = fn, PAL.FNC(_fn);
-};
+  fn = (fn = `${fn}`).startsWith('function') ? fn.slice(9) : fn
+  return _fn = fn, PAL.FNC(_fn)
+}
 
 /**
  *
@@ -257,7 +260,7 @@ const deco = (ob, {
   vo,
   al,
   tb: TB
-}, ob);
+}, ob)
 const deca = ({
   hi = 8,
   vo = 0,
@@ -267,17 +270,17 @@ const deca = ({
   vo,
   al,
   tb: TB
-});
+})
 
 const delogger = x => {
-  var _x;
+  var _x
 
-  return void console.log((_x = x, deco(_x)));
-};
+  return void console.log((_x = x, deco(_x)))
+}
 const delogNeL = x => {
-  var _x2;
+  var _x2
 
-  return void console.log((_x2 = x, deco(_x2)), '\n');
-};
+  return void console.log((_x2 = x, deco(_x2)), '\n')
+}
 
-export { deNode, deca, deco, delogNeL, delogger };
+export { deNode, deca, deco, delogNeL, delogger }

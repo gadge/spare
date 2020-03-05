@@ -18,6 +18,7 @@ export const Vectors = {
   str_vec: VecFobaStr.flop(),
   num_vec: VecFobaNum.flop(),
   inno_set: new Set(VecFobaNum.flop()),
+  long_vec: VecFobaStr.flop({ size: 32 })
 }
 
 export const Matrices = {

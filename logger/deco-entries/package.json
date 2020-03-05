@@ -20,7 +20,7 @@
     "@spare/enttro": "^0.1.7",
     "@spare/pad-entries": "^0.1.7",
     "@spare/util": "^0.1.7",
-    "@vect/entries-zipper": "^0.0.27"
+    "@vect/entries-zipper": "^0.1.2"
   },
   "repository": {
     "type": "git",
