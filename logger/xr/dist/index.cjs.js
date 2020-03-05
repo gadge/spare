@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var util = require('@spare/util');
 var cards = require('@palett/cards');
 var convert = require('@palett/convert');
 var dye = require('@palett/dye');
+var util = require('@spare/util');
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -22,44 +22,84 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+function _classPrivateFieldGet(receiver, privateMap) {
+  var descriptor = privateMap.get(receiver);
+
+  if (!descriptor) {
+    throw new TypeError("attempted to get private field on non-instance");
+  }
+
+  if (descriptor.get) {
+    return descriptor.get.call(receiver);
+  }
+
+  return descriptor.value;
+}
+
+function _classPrivateFieldDestructureSet(receiver, privateMap) {
+  if (!privateMap.has(receiver)) {
+    throw new TypeError("attempted to set private field on non-instance");
+  }
+
+  var descriptor = privateMap.get(receiver);
+
+  if (descriptor.set) {
+    if (!("__destrObj" in descriptor)) {
+      descriptor.__destrObj = {
+        set value(v) {
+          descriptor.set.call(receiver, v);
+        }
+
+      };
+    }
+
+    return descriptor.__destrObj;
+  } else {
+    if (!descriptor.writable) {
+      throw new TypeError("attempted to set read only private field");
+    }
+
+    return descriptor;
+  }
+}
+
 var _Cards$blueGrey$base, _Cards$orange$lighten, _Cards$indigo$lighten;
 const bm = dye.Dye((_Cards$blueGrey$base = cards.Cards.blueGrey.base, convert.hexToRgb(_Cards$blueGrey$base)));
 const br = dye.Dye((_Cards$orange$lighten = cards.Cards.orange.lighten_3, convert.hexToRgb(_Cards$orange$lighten)));
 const pr = dye.Dye((_Cards$indigo$lighten = cards.Cards.indigo.lighten_1, convert.hexToRgb(_Cards$indigo$lighten)));
-const bracketMain = tx => bm('[') + tx + bm(']');
 const bracket = tx => br('[') + tx + br(']');
 const parenthesis = tx => pr('(') + tx + pr(')');
 
-const render = (tx, {
+const bracket$1 = tx => '[' + tx + ']';
+const parenthesis$1 = tx => '(' + tx + ')';
+
+/**
+ *
+ * @param {*} [text]
+ * @param {number} indent
+ * @param {string[]} queue
+ * @returns {string}
+ */
+const render = (text, {
   indent,
-  stream
+  queue
 }) => {
-  if (tx === null || tx === void 0 ? void 0 : tx.length) stream.push(tx);
-  return ' '.repeat(indent << 1) + stream.join(' ');
+  if (text === null || text === void 0 ? void 0 : text.length) queue.push(text);
+  return ' '.repeat(indent << 1) + queue.join(' ');
 };
 
-const preset = (label, ...items) => {
-  var _label;
+const toQueue = t => {
+  let queue = [],
+      l,
+      d;
 
-  let stream = [],
-      indent,
-      len;
-
-  if (label && (label = String(label)) && (len = label.length) && (indent = (_label = label, util.deNaTab(_label))) < len) {
-    var _label$slice;
-
-    stream.push((_label$slice = label.slice(indent), bracketMain(_label$slice)));
-  }
-
-  if (items.length) {
-    var _items$map$join;
-
-    stream.push((_items$map$join = items.map(util.totx).join(','), parenthesis(_items$map$join)));
+  if (t && (t = String(t)) && (l = t.length) && (d = util.deNaTab(t)) < l) {
+    queue.push(t.slice(d));
   }
 
   return {
-    indent,
-    stream
+    indent: d,
+    queue
   };
 };
 
@@ -74,39 +114,86 @@ class Callable extends Function {
 
 }
 /**
- * @type {object<string,string>}
+ * @type {Object<string,string>}
  */
 
 
 _Symbol$toPrimitive = Symbol.toPrimitive;
-class Ink extends Callable {
+class Inka extends Callable {
   /** @type {number} */
 
   /** @type {string[]} */
-  constructor(label, ...items) {
-    super(tx => render(tx, this));
+
+  /** @type {Function} */
+
+  /** @type {Function} */
+  constructor(word, color = true) {
+    var _word;
+
+    super(word => render(word, this));
 
     _defineProperty(this, "indent", void 0);
 
-    _defineProperty(this, "stream", void 0);
+    _defineProperty(this, "queue", void 0);
 
-    this.cr(label, ...items);
+    _brk.set(this, {
+      writable: true,
+      value: void 0
+    });
+
+    _prn.set(this, {
+      writable: true,
+      value: void 0
+    });
+
+    Object.assign(this, (_word = word, toQueue(_word)));
+    [_classPrivateFieldDestructureSet(this, _brk).value, _classPrivateFieldDestructureSet(this, _prn).value] = color ? [bracket, parenthesis] : [bracket$1, parenthesis$1];
     return new Proxy(this, {
-      /** @returns {Ink|function(...string):Ink} */
       get(target, p, receiver) {
         var _String;
 
-        if (p in target) return target[p];
-        target.stream.push((_String = String(p), bracket(_String)));
+        if (p in target) {
+          return target[p];
+        }
+
+        const {
+          queue
+        } = target;
+        queue.push((_String = String(p), _classPrivateFieldGet(target, _brk)(_String)));
         return (...items) => {
           var _items$map$join;
 
-          target.stream.push((_items$map$join = items.map(util.totx).join(', '), parenthesis(_items$map$join)));
-          return receiver;
+          return queue.push((_items$map$join = items.map(String).join(', '), _classPrivateFieldGet(target, _prn)(_items$map$join))), receiver;
         };
       }
 
     });
+  }
+
+  cr(word) {
+    var _word2;
+
+    return Object.assign(this, (_word2 = word, toQueue(_word2))), this;
+  }
+
+  asc() {
+    return this.indent++, this;
+  }
+
+  desc() {
+    return this.indent--, this;
+  }
+
+  p(...items) {
+    return this.queue.push(...items), this;
+  }
+
+  br(...items) {
+    return this.queue.push(items.map(parenthesis$1).join(',')), this;
+  }
+
+  toString() {
+    return render(null, this);
   }
 
   [_Symbol$toPrimitive](h) {
@@ -119,75 +206,29 @@ class Ink extends Callable {
         return this.indent;
 
       default:
-        throw new Error('ink Symbol.toPrimitive error');
+        throw new Error('inka Symbol.toPrimitive error');
     }
-  }
-
-  cr(label, ...items) {
-    const {
-      indent,
-      stream
-    } = preset(label, ...items);
-    this.indent = indent;
-    this.stream = stream;
-    return this;
-  }
-
-  asc() {
-    this.indent++;
-    return this;
-  }
-
-  desc() {
-    this.indent--;
-    return this;
-  }
-
-  tag(key, ...items) {
-    var _ref, _key, _items$map$join2;
-
-    this.stream.push((_ref = (_key = key, util.totx(_key)), util.tabify(_ref)));
-    if (items.length) this.stream.push((_items$map$join2 = items.map(util.totx).join(','), parenthesis(_items$map$join2)));
-    return this;
-  }
-
-  br(...items) {
-    this.stream.push(items.map(parenthesis).join(','));
-    return this;
-  }
-
-  p(...items) {
-    this.stream.push(...items);
-    return this;
-  }
-
-  get tx() {
-    return render(null, this);
-  }
-
-  get say() {
-    return render(null, this);
-  }
-
-  toString() {
-    return render(null, this);
   }
 
 }
 
+var _brk = new WeakMap();
+
+var _prn = new WeakMap();
+
 /**
  *
- * @param label
- * @param items
- * @returns {(Ink|object<string,Ink>)}
+ * @param {string} word
+ * @param {boolean} color
+ * @returns {(Inka|object<string,Inka>)}
  * @constructor
  */
 
-const Xr = (label, ...items) => new Ink(label, ...items);
+const Xr = (word, color = true) => new Inka(word, color);
 
-const ink = new Ink();
+const ink = new Inka();
 
-const xr = (label, ...items) => ink.cr(label, ...items);
+const xr = word => ink.cr(word);
 
 exports.Xr = Xr;
 exports.xr = xr;

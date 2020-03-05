@@ -74,15 +74,15 @@ const VLINE = ' | ',
 
 /**
  *
- * @param {Object} table
+ * @param {Object} crostab
  * @returns {string}
  */
 
-const cosmati = function (table) {
-  let matrix = table.rows || table.matrix,
-      banner = table.head || table.banner,
-      stand = table.side,
-      name = table.title || '';
+const cosmati = function (crostab) {
+  let matrix = crostab.rows || crostab.matrix,
+      banner = crostab.head || crostab.banner,
+      stand = crostab.side,
+      name = crostab.title || '';
   const [height, width] = size(matrix),
         labelWidth = banner && banner.length,
         labelHeight = stand && stand.length;

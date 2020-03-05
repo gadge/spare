@@ -2,20 +2,22 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var lange = require('@spare/lange');
-var util = require('@spare/util');
 var enums = require('@typen/enums');
 var numLoose = require('@typen/num-loose');
-var entriesMapper = require('@vect/entries-mapper');
-var columnMapper = require('@vect/column-mapper');
 var fluoVector = require('@palett/fluo-vector');
 var fluoEntries = require('@palett/fluo-entries');
-var padString = require('@spare/pad-string');
 var typ = require('@typen/typ');
+var entriesMapper = require('@vect/entries-mapper');
+var vectorMapper = require('@vect/vector-mapper');
 var convert = require('@palett/convert');
 var dye = require('@palett/dye');
 var objectMapper = require('@vect/object-mapper');
 var cards = require('@palett/cards');
+var lange = require('@spare/lange');
+var comparer = require('@aryth/comparer');
+var padString = require('@spare/pad-string');
+var columnMapper = require('@vect/column-mapper');
+var util = require('@spare/util');
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
 const L = '{ ',
@@ -36,6 +38,7 @@ const Puncs = objectMapper.mapper(Tubes, hsl => {
   return [(_L = L, hsl(_L)), (_R = R, hsl(_R))];
 });
 const BRC = objectMapper.mapper(Puncs, ([L, R]) => content => L + content + R);
+const brc = content => L + content + R;
 
 var _ref$1, _ref2$1, _ref3$1, _ref4$1, _ref5$1, _ref6$1, _ref7$1, _ref8$1;
 const L$1 = '[ ',
@@ -56,6 +59,7 @@ const Puncs$1 = objectMapper.mapper(Tubes$1, dye => {
   return [(_L = L$1, dye(_L)), (_R = R$1, dye(_R))];
 });
 const BRK = objectMapper.mapper(Puncs$1, ([L, R]) => content => L + content + R);
+const brk = content => L$1 + content + R$1;
 
 var _Cards$brown$lighten_, _Cards$lightGreen$acc, _Cards$deepOrange$acc, _Cards$teal$lighten_, _Cards$brown$lighten_2, _Cards$blue$accent_, _Cards$amber$base, _Cards$green$accent_;
 /**
@@ -128,10 +132,80 @@ const IDX = {
   }
 };
 
-const keysMutate = columnMapper.ColumnMutate(0);
+const joinVector = (list, lv) => {
+  const rn = util.LF + util.TB.repeat(lv);
+  return `${rn}  ${list.join(`,${rn + util.TB}`)}${rn}`;
+};
+
 const lpad = padString.LPad({
   ansi: true
 });
+const stringifyEntries = function (entries, lv) {
+  const {
+    vo
+  } = this,
+        {
+    pad,
+    wrap
+  } = wrapInfo.call(this, entries);
+  if (wrap || lv < vo) columnMapper.mutate(entries, 0, k => lpad(k, pad));
+  vectorMapper.mutate(entries, ([k, v]) => `${k}: ${v}`);
+  return (wrap || lv < vo) && entries.length > 1 ? joinVector(entries, lv) : entries.join(', ');
+};
+const wrapInfo = function (entries) {
+  const {
+    wo
+  } = this;
+  let w = 0,
+      wrap = false,
+      pad = 0;
+  vectorMapper.iterate(entries, ([k, v]) => {
+    k = lange.lange(k), v = lange.lange(v), pad = comparer.max(k, pad);
+    if (!wrap && (w += k + v) > wo) wrap = true;
+  });
+  return {
+    pad,
+    wrap
+  };
+};
+
+const stringifyVector = function (vector, lv) {
+  const {
+    va,
+    wa
+  } = this;
+  if (lv < va) return joinVector(vector, lv);
+  let rows = [],
+      w = 0,
+      row = [];
+  vectorMapper.iterate(vector, item => {
+    row.push(item), w += lange.lange(item);
+    if (w > wa) rows.push(row.join(', ')), row = [], w = 0;
+  });
+  return rows.length > 1 ? joinVector(rows, lv) : vector.join(', ');
+};
+
+const deFn = function (fn) {
+  let {
+    wf,
+    color
+  } = this,
+      des = `${fn}`;
+  if (wf <= 128) des = des.replace(/\s+/g, ' ');
+  if (des.startsWith(enums.FUN)) des = des.slice(9);
+  des = toLambda(des);
+  if (des.length > wf) des = Object.prototype.toString.call(fn);
+  return color ? PAL.FNC(des) : des;
+};
+const LB = '{ return',
+      RB = '}',
+      ARROW = '=>';
+const toLambda = des => {
+  const li = des.indexOf(LB),
+        ri = des.lastIndexOf(RB);
+  return li && ri ? des.slice(0, li) + ARROW + des.slice(li + LB.length, ri) : des;
+};
+
 /**
  *
  * @param {*} node
@@ -140,6 +214,8 @@ const lpad = padString.LPad({
  */
 
 function deNode(node, lv = 0) {
+  if (!this.color) return deNodePlain.call(this, node, lv);
+
   switch (typeof node) {
     case enums.STR:
       return numLoose.isNumeric(node) ? node : PAL.STR(node);
@@ -163,17 +239,15 @@ function deNode(node, lv = 0) {
   }
 }
 const deOb = function (node, lv) {
-  var _node, _deAr$call, _deEn$call, _deEn$call2;
+  var _node, _deVe$call, _deEn$call, _deEn$call2;
 
   const {
-    hi,
-    tb
+    hi
   } = this;
-  this.rn = util.RN + tb.repeat(lv);
 
   switch (_node = node, typ.typ(_node)) {
     case enums.ARRAY:
-      return lv >= hi ? '[array]' : (_deAr$call = deAr.call(this, node, lv), BRK[lv & 7](_deAr$call));
+      return lv >= hi ? '[array]' : (_deVe$call = deVe.call(this, node.slice(), lv), BRK[lv & 7](_deVe$call));
 
     case enums.OBJECT:
       return lv >= hi ? '{object}' : (_deEn$call = deEn.call(this, Object.entries(node), lv), BRC[lv & 7](_deEn$call));
@@ -182,65 +256,53 @@ const deOb = function (node, lv) {
       return lv >= hi ? '(map)' : (_deEn$call2 = deEn.call(this, [...node.entries()], lv), BRK[lv & 7](_deEn$call2));
 
     case enums.SET:
-      return lv >= hi ? '(set)' : `set:[${deAr.call(this, [...node], lv)}]`;
+      return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
 
     default:
       return `${node}`;
   }
 };
-let deAr = function (arr, lv) {
-  let {
-    rn,
-    tb,
-    al
-  } = this,
-      cap = 0,
-      wrap = false;
-  arr = arr.map(v => {
-    v = String(deNode.call(this, v, lv + 1));
-    if (!wrap && (cap += lange.lange(v)) > al) wrap = true;
-    return v;
-  });
-  fluoVector.fluoVector(arr, {
+/**
+ *
+ * @param {*} node
+ * @param {number} [lv]
+ * @return {string}
+ */
+
+function deNodePlain(node, lv = 0) {
+  const t = typeof node;
+
+  if (t === enums.OBJ) {
+    var _node2, _deVe$call2, _deEn$call3, _deEn$call4;
+
+    const {
+      hi
+    } = this,
+          pt = (_node2 = node, typ.typ(_node2));
+    if (pt === enums.ARRAY) return lv >= hi ? '[array]' : (_deVe$call2 = deVe.call(this, node.slice(), lv), brk(_deVe$call2));
+    if (pt === enums.OBJECT) return lv >= hi ? '{object}' : (_deEn$call3 = deEn.call(this, Object.entries(node), lv), brc(_deEn$call3));
+    if (pt === enums.MAP) return lv >= hi ? '(map)' : (_deEn$call4 = deEn.call(this, [...node.entries()], lv), brk(_deEn$call4));
+    if (pt === enums.SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
+    return `${node}`;
+  }
+
+  if (t === enums.FUN) return deFn.call(this, node);
+  return node;
+}
+let deVe = function (vector, lv) {
+  vectorMapper.mutate(vector, v => String(deNode.call(this, v, lv + 1)));
+  if (this.color) fluoVector.fluoVector(vector, {
     mutate: true
   });
-  return wrap ? `${rn}  ${arr.join(`,${rn + tb}`)}${rn}` : arr.join(',');
+  return stringifyVector.call(this, vector, lv);
 };
 let deEn = function (entries, lv) {
-  const {
-    vo,
-    rn,
-    tb
-  } = this;
-  let pad = 0,
-      cap = 0,
-      wrap = lv < vo,
-      kw,
-      vw;
-  entriesMapper.mutate(entries, k => {
-    if ((kw = lange.lange(k = String(k))) > pad) pad = kw;
-    if (!wrap && (cap += pad) > 48) wrap = true;
-    return k;
-  }, v => {
-    v = String(deNode.call(this, v, lv + 1));
-    if (!wrap && (cap += vw = lange.lange(v)) > 48) wrap = true;
-    return v;
+  entriesMapper.mutate(entries, k => String(k), v => String(deNode.call(this, v, lv + 1)));
+  if (this.color) fluoEntries.fluoEntries(entries, {
+    stringPreset: IDX[lv & 7],
+    mutate: true
   });
-  if (wrap) keysMutate(entries, k => lpad(k, pad), entries.length);
-  entries = fluoEntries.fluoEntries(entries, {
-    mutate: true,
-    stringPreset: IDX[lv & 7]
-  }).map(([k, v]) => `${k}: ${v}`);
-  return wrap ? `${rn}  ${entries.join(`,${rn + tb}`)}${rn}` : entries.join(', ');
-};
-const deFn = function (fn) {
-  var _fn;
-
-  // const result = 'simple_lambda(x) => "".concat(x);'
-  // const reg = /{[\s]+(return)/g
-  // reg.exec(`${fn}`).map(it => `(${it})`)|> logger
-  fn = (fn = `${fn}`).startsWith('function') ? fn.slice(9) : fn;
-  return _fn = fn, PAL.FNC(_fn);
+  return stringifyEntries.call(this, entries, lv);
 };
 
 /**
@@ -248,29 +310,47 @@ const deFn = function (fn) {
  * @param {*} ob
  * @param {number} [hi] - maximum level of object to show detail
  * @param {number} [vo] - maximum level to force vertical for object, root level = 0
- * @param {number} [al] - maximum string length to hold array contents
+ * @param {number} [va] - maximum level to force vertical for object, root level = 0
+ * @param {number} [wo] - maximum string length to hold object contents without wrap
+ * @param {number} [wa] - maximum string length to hold array contents without wrap
+ * @param {number} [wf] - maximum string length to hold function contents
+ * @param {boolean} [color=true]
  * @returns {string|number}
  */
 
 const deco = (ob, {
   hi = 8,
   vo = 0,
-  al = 64
+  va = 0,
+  wo = 32,
+  wa = 64,
+  wf = 64,
+  color = true
 } = {}) => deNode.call({
   hi,
   vo,
-  al,
-  tb: util.TB
+  va,
+  wo,
+  wa,
+  wf,
+  color
 }, ob);
 const deca = ({
   hi = 8,
   vo = 0,
-  al = 64
+  va = 0,
+  wa = 32,
+  wo = 64,
+  wf = 64,
+  color = true
 } = {}) => deNode.bind({
   hi,
   vo,
-  al,
-  tb: util.TB
+  va,
+  wo,
+  wa,
+  wf,
+  color
 });
 
 const delogger = x => {
