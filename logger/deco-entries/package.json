@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@palett/fluo-entries": "^0.0.16",
-    "@palett/presets": "^0.0.16",
+    "@palett/presets": "^0.0.17",
     "@spare/enttro": "^0.1.9",
     "@spare/pad-entries": "^0.1.9",
     "@spare/util": "^0.1.9",
