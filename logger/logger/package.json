@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/logger.test.js"
   },
   "dependencies": {
-    "@palett/says": "^0.0.12",
+    "@palett/says": "^0.0.16",
     "@spare/deco": "^0.1.8",
     "@spare/deco-crostab": "^0.1.8",
     "@spare/deco-entries": "^0.1.8",

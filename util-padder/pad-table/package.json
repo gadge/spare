@@ -19,13 +19,13 @@
     "@spare/pad-string": "^0.1.5",
     "@spare/string": "^0.1.8",
     "@spare/util": "^0.1.8",
-    "@vect/columns-indicator": "^0.1.4",
-    "@vect/matrix-transpose": "^0.1.2",
-    "@vect/matrix-zipper": "^0.1.2",
-    "@vect/vector": "^0.1.2",
-    "@vect/vector-indicator": "^0.1.2",
-    "@vect/vector-mapper": "^0.1.2",
-    "@vect/vector-zipper": "^0.1.2"
+    "@vect/columns-indicator": "^0.1.8",
+    "@vect/matrix-transpose": "^0.1.8",
+    "@vect/matrix-zipper": "^0.1.8",
+    "@vect/vector": "^0.1.8",
+    "@vect/vector-indicator": "^0.1.8",
+    "@vect/vector-mapper": "^0.1.8",
+    "@vect/vector-zipper": "^0.1.8"
   },
   "repository": {
     "type": "git",

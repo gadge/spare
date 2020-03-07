@@ -17,8 +17,8 @@
   "dependencies": {
     "@spare/lange": "^0.1.5",
     "@spare/pad-string": "^0.1.5",
-    "@vect/columns-indicator": "^0.1.4",
-    "@vect/matrix-zipper": "^0.1.2"
+    "@vect/columns-indicator": "^0.1.8",
+    "@vect/matrix-zipper": "^0.1.8"
   },
   "repository": {
     "type": "git",

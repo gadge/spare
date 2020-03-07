@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.0.11",
-    "@palett/fluo-matrix": "^0.0.12",
-    "@palett/fluo-vector": "^0.0.12",
-    "@palett/presets": "^0.0.12",
+    "@palett/fluo-matrix": "^0.0.16",
+    "@palett/fluo-vector": "^0.0.16",
+    "@palett/presets": "^0.0.16",
     "@spare/lange": "^0.1.5",
     "@spare/mattro": "^0.1.8",
     "@spare/pad-string": "^0.1.5",
@@ -26,10 +26,10 @@
     "@spare/string": "^0.1.8",
     "@spare/util": "^0.1.8",
     "@spare/vettro": "^0.1.8",
-    "@vect/matrix": "^0.1.3",
-    "@vect/vector-indicator": "^0.1.2",
-    "@vect/vector-mapper": "^0.1.2",
-    "@vect/vector-zipper": "^0.1.2"
+    "@vect/matrix": "^0.1.8",
+    "@vect/vector-indicator": "^0.1.8",
+    "@vect/vector-mapper": "^0.1.8",
+    "@vect/vector-zipper": "^0.1.8"
   },
   "repository": {
     "type": "git",
