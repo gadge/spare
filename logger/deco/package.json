@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "A light and simple console debug tool.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -23,7 +23,7 @@
     "@palett/fluo-vector": "^0.0.17",
     "@spare/lange": "^0.1.11",
     "@spare/pad-string": "^0.1.11",
-    "@spare/util": "^0.1.11",
+    "@spare/util": "^0.1.12",
     "@typen/enums": "^0.0.1",
     "@typen/num-loose": "^0.0.1",
     "@typen/typ": "^0.0.1",
