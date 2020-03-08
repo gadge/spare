@@ -1,12 +1,12 @@
-import { FRESH, JUNGLE } from '@palett/presets'
+import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
 import { COLUMNWISE } from '@vect/matrix'
 import { cosmati } from './cosmati'
-import { SUBTLE } from 'palett-presets'
 
 /**
  *
  * @param {*[][]} matrix
  * @param {*[]} fields
+ * @param {boolean} [indexed=true]
  * @param {number} [direct] - pointwise = 0, rowwise = 1, columnwise = 2
  * @param {function(*):string} [abstract]
  * @param {{max:string|*[],min:string|*[],na:string|*[]}} [preset]
@@ -22,6 +22,7 @@ import { SUBTLE } from 'palett-presets'
  */
 export const deco = (matrix, {
     fields,
+    indexed = true,
     direct = COLUMNWISE,
     abstract,
     preset = FRESH,
@@ -35,7 +36,7 @@ export const deco = (matrix, {
     ansi = false
   } = {}
 ) => cosmati.call({
-    fields, direct, abstract, preset, keyPreset, stringPreset,
+    fields, indexed, direct, abstract, preset, keyPreset, stringPreset,
     top, left, bottom, right, delimiter, ansi
   },
   matrix)

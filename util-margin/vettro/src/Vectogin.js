@@ -23,9 +23,7 @@ export class Vectogin {
       : this.clone(marginMapper(vec, fn, head, tail))
   }
 
-  stringify (fn, mutate = true) {
-    return this.map(fn ? (_ => String(fn(_))) : totx, mutate)
-  }
+  stringify (fn, mutate = true) { return this.map(fn ? (_ => String(fn(_))) : totx, mutate) }
 
   toVector (el) {
     const { vec, head, tail } = this,
@@ -42,7 +40,5 @@ export class Vectogin {
     return this
   }
 
-  clone (ar) {
-    return new Vectogin(ar, this.head, this.tail, this.dash)
-  }
+  clone (ar) { return new Vectogin(ar, this.head, this.tail, this.dash) }
 }

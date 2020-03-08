@@ -27,11 +27,11 @@
     "@typen/enums": "^0.0.1",
     "@typen/num-loose": "^0.0.1",
     "@typen/typ": "^0.0.1",
-    "@vect/column-indicator": "^0.1.8",
-    "@vect/column-mapper": "^0.1.8",
-    "@vect/entries-mapper": "^0.1.8",
-    "@vect/object-mapper": "^0.1.8",
-    "@vect/vector-mapper": "^0.1.8"
+    "@vect/column-indicator": "^0.1.10",
+    "@vect/column-mapper": "^0.1.10",
+    "@vect/entries-mapper": "^0.1.10",
+    "@vect/object-mapper": "^0.1.10",
+    "@vect/vector-mapper": "^0.1.10"
   },
   "repository": {
     "type": "git",

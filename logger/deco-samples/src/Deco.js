@@ -5,6 +5,7 @@ import { cosmati } from './cosmati'
 /**
  *
  * @param {*[]} [fields]
+ * @param {boolean} [indexed=true]
  * @param {number} [direct] - pointwise = 0, rowwise = 1, columnwise = 2
  * @param {function(*):string} [abstract]
  * @param {{max:string|*[],min:string|*[],na:string|*[]}} [preset]
@@ -20,6 +21,7 @@ import { cosmati } from './cosmati'
  */
 export const Deco = ({
     fields,
+    indexed = true,
     direct = COLUMNWISE,
     abstract,
     preset = FRESH,
@@ -33,7 +35,7 @@ export const Deco = ({
     ansi = false
   } = {}
 ) => cosmati.bind({
-  fields, direct, abstract, preset, keyPreset, stringPreset,
+  fields, indexed, direct, abstract, preset, keyPreset, stringPreset,
   top, left, bottom, right, delimiter, ansi
 })
 
