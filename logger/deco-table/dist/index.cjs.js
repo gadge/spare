@@ -50,7 +50,7 @@ const cosmati = function (table) {
     tail: right,
     abstract: headAbstract
   })];
-  const [dyeX, dyeB] = [preset && fluoMatrix.fluo(x.raw, {
+  const [dyeX, dyeB] = [preset && fluoMatrix.fluoMatrix(x.raw, {
     direct,
     preset,
     stringPreset,

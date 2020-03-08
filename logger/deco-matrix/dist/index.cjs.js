@@ -29,7 +29,7 @@ const cosmati = function (matrix$1) {
     raw,
     text
   } = mattro.mattro(matrix$1, this);
-  const dye = preset && fluoMatrix.fluo(raw, {
+  const dye = preset && fluoMatrix.fluoMatrix(raw, {
     direct,
     preset,
     stringPreset,

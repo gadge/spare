@@ -4,7 +4,7 @@ import { AEU, RN } from '@spare/util';
 import { vettro } from '@spare/vettro';
 import { mattro } from '@spare/mattro';
 import { fluoVector } from '@palett/fluo-vector';
-import { fluo } from '@palett/fluo-matrix';
+import { fluoMatrix } from '@palett/fluo-matrix';
 import { padTable } from '@spare/pad-table';
 
 /**
@@ -46,7 +46,7 @@ const cosmati = function (table) {
     tail: right,
     abstract: headAbstract
   })];
-  const [dyeX, dyeB] = [preset && fluo(x.raw, {
+  const [dyeX, dyeB] = [preset && fluoMatrix(x.raw, {
     direct,
     preset,
     stringPreset,

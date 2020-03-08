@@ -1,4 +1,4 @@
-## @spare/pad-matrix
+## @spare/pad-rows
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -14,12 +14,12 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/pad-matrix
+$ npm install @spare/pad-rows
 ```
 
 ## Usage
 ```js
-import { Temp } from '@spare/util-padder-matrix'
+import { Temp } from '@spare/util-padder-rows'
 ```
 
 ## Meta
@@ -28,14 +28,14 @@ import { Temp } from '@spare/util-padder-matrix'
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
 [//]: <> (Shields)
-[npm-image]: https://img.shields.io/npm/v/@spare/pad-matrix.svg?style=flat-square
-[quality-image]: http://npm.packagequality.com/shield/@spare/pad-matrix.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@spare/pad-matrix.svg?style=flat-square
-[total-download-image]:https://img.shields.io/npm/dt/@spare/pad-matrix.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/@spare/pad-matrix.svg?style=flat-square
-[size]: https://flat.badgen.net/packagephobia/install/@spare/pad-matrix
+[npm-image]: https://img.shields.io/npm/v/@spare/pad-rows.svg?style=flat-square
+[quality-image]: http://npm.packagequality.com/shield/@spare/pad-rows.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/@spare/pad-rows.svg?style=flat-square
+[total-download-image]:https://img.shields.io/npm/dt/@spare/pad-rows.svg?style=flat-square
+[license-image]: https://img.shields.io/npm/l/@spare/pad-rows.svg?style=flat-square
+[size]: https://flat.badgen.net/packagephobia/install/@spare/pad-rows
 
 [//]: <> (Link)
-[npm-url]: https://npmjs.org/package/@spare/pad-matrix
-[quality-url]: http://packagequality.com/#?package=@spare/pad-matrix
-[size-url]: https://packagephobia.now.sh/result?p=@spare/pad-matrix
+[npm-url]: https://npmjs.org/package/@spare/pad-rows
+[quality-url]: http://packagequality.com/#?package=@spare/pad-rows
+[size-url]: https://packagephobia.now.sh/result?p=@spare/pad-rows

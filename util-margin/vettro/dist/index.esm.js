@@ -1,6 +1,18 @@
 import { totx } from '@spare/util';
 import { marginCopy, marginMutate, marginMapper } from '@vect/vector-margin';
 
+const marginSizing = (ar, head, tail) => {
+  let l,
+      dash = true;
+  if (!ar || !(l = ar.length)) [head, tail, dash] = [0, 0, false];
+  if (!head && !tail || head >= l) [head, tail, dash] = [l, 0, false];
+  return {
+    head,
+    tail,
+    dash
+  };
+};
+
 class Vectogin {
   constructor(vec, head, tail, dash) {
     this.vec = vec;
@@ -10,11 +22,13 @@ class Vectogin {
   }
 
   static build(ar, h = 0, t = 0) {
-    let d = true,
-        l;
-    if (!ar || !(l = ar.length)) [ar, h, t, d] = [[], 0, 0, false];
-    if (!h && !t || h >= l) [h, t, d] = [l, 0, false];
-    return new Vectogin(marginCopy(ar, h, t, l), h, t, d);
+    const {
+      head,
+      tail,
+      dash
+    } = marginSizing(ar, h, t);
+    const cutVec = marginCopy(ar, head, tail);
+    return new Vectogin(cutVec, head, tail, dash);
   }
 
   map(fn, mutate = false) {
@@ -58,23 +72,26 @@ class Vectogin {
  * @param {*[]} arr
  * @param {number} [head]
  * @param {number} [tail]
+ * @param {boolean} [dash]
  * @param {function(*):string} [abstract]
- * @param {*} hr
- * @param {boolean} [pad]
+ * @param {string} [hr='..']
+ * @param {boolean} [validate=true]
  * @return {{raw:*[],text:*[]}}
  */
 
 const vettro = (arr, {
   head,
   tail,
+  dash,
   abstract,
-  hr = '...'
+  hr = '...',
+  validate = true
 } = {}) => {
-  let vn = Vectogin.build(arr, head, tail);
+  let vn = validate ? Vectogin.build(arr, head, tail) : new Vectogin(arr, head, tail, dash);
   return {
-    raw: vn.toVector(hr),
+    raw: vn.map(x => x).toVector(hr),
     text: vn.stringify(abstract).toVector(hr)
   };
 };
 
-export { Vectogin, vettro };
+export { Vectogin, marginSizing, vettro };

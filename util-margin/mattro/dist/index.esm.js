@@ -1,7 +1,26 @@
-import { totx } from '@spare/util';
 import { size } from '@vect/matrix-size';
+import { totx } from '@spare/util';
 import { marginCopy, marginMapper as marginMapper$1, marginMutate } from '@vect/matrix-margin';
 import { marginMapper } from '@vect/vector-margin';
+
+const marginSizing = (rows, top, bottom, left, right, height, width) => {
+  let dashX = true,
+      dashY = true;
+  if (!height || !width) [height, width] = size(rows);
+  if (!height || !width) [top, bottom, dashX, dashY] = [0, 0, false, false];
+  if (!top && !bottom || top >= height) [top, bottom, dashX] = [height, 0, false];
+  if (!left && !right || left >= width) [left, right, dashY] = [width, 0, false];
+  return {
+    top,
+    bottom,
+    left,
+    right,
+    height,
+    width,
+    dashX,
+    dashY
+  };
+};
 
 class Matrigin {
   constructor(matrix, top, bottom, left, right, height, width, dashX, dashY) {
@@ -16,15 +35,19 @@ class Matrigin {
     this.dashY = dashY;
   }
 
-  static build(mx, t, b, l, r, h, w) {
-    let dashX = true,
-        dashY = true;
-    if (!h || !w) [h, w] = size(mx);
-    if (!h || !w) [t, b, dashX, dashY] = [0, 0, false, false];
-    if (!t && !b || t >= h) [t, b, dashX] = [h, 0, false];
-    if (!l && !r || l >= w) [l, r, dashY] = [w, 0, false];
-    mx = marginCopy(mx, t, b, l, r, h, w);
-    return new Matrigin(mx, t, b, l, r, h, w, dashX, dashY);
+  static build(rows, t, b, l, r, h, w) {
+    const {
+      top,
+      bottom,
+      left,
+      right,
+      height,
+      width,
+      dashX,
+      dashY
+    } = marginSizing(rows, t, b, l, r, h, w);
+    const cutRows = marginCopy(rows, top, bottom, left, right, height, width);
+    return new Matrigin(cutRows, top, bottom, left, right, height, width, dashX, dashY);
   }
 
   get marginHeight() {
@@ -128,8 +151,11 @@ class Matrigin {
  * @param {number} [right]
  * @param {number} [height]
  * @param {number} [width]
+ * @param {boolean} [dashX]
+ * @param {boolean} [dashY]
  * @param {function(*):*} [abstract]
- * @param {boolean} [pad]
+ * @param {string} [hr='..']
+ * @param {boolean} [validate=true]
  * @returns {{raw:*[][],text:*[][]}}
  */
 
@@ -140,15 +166,19 @@ const mattro = (mx, {
   right,
   height,
   width,
-  abstract
+  dashX,
+  dashY,
+  abstract,
+  hr = '..',
+  validate = true
 } = {}) => {
-  const mn = Matrigin.build(mx, top, bottom, left, right, height, width),
-        raw = mn.toMatrix('..'),
-        text = mn.stringify(abstract).toMatrix('..');
+  const mn = validate ? Matrigin.build(mx, top, bottom, left, right, height, width) : new Matrigin(mx, top, bottom, left, right, height, width, dashX, dashY),
+        raw = mn.map(x => x).toMatrix(hr),
+        text = mn.stringify(abstract).toMatrix(hr);
   return {
     raw,
     text
   };
 };
 
-export { Matrigin, mattro };
+export { Matrigin, marginSizing, mattro };

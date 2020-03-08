@@ -8,6 +8,7 @@ var Sayer = require('@palett/says');
 var DecoVectorEnv = require('@spare/deco-vector');
 var DecoEntriesEnv = require('@spare/deco-entries');
 var DecoMatrixEnv = require('@spare/deco-matrix');
+var DecoSamplesEnv = require('@spare/deco-samples');
 var DecoTableEnv = require('@spare/deco-table');
 var DecoCrostabEnv = require('@spare/deco-crostab');
 
@@ -49,6 +50,9 @@ const decoEntries = DecoEntriesEnv.deco;
 const decoMatrix = DecoMatrixEnv.deco;
 /** @function */
 
+const decoSamples = DecoSamplesEnv.deco;
+/** @function */
+
 const decoTable = DecoTableEnv.deco;
 /** @function */
 
@@ -64,6 +68,9 @@ const DecoEntries = DecoEntriesEnv.Deco;
 const DecoMatrix = DecoMatrixEnv.Deco;
 /** @function */
 
+const DecoSamples = DecoSamplesEnv.Deco;
+/** @function */
+
 const DecoTable = DecoTableEnv.Deco;
 /** @function */
 
@@ -72,6 +79,7 @@ const DecoCrostab = DecoCrostabEnv.Deco;
 exports.DecoCrostab = DecoCrostab;
 exports.DecoEntries = DecoEntries;
 exports.DecoMatrix = DecoMatrix;
+exports.DecoSamples = DecoSamples;
 exports.DecoTable = DecoTable;
 exports.DecoVector = DecoVector;
 exports.Says = Says;
@@ -81,6 +89,7 @@ exports.deco = deco;
 exports.decoCrostab = decoCrostab;
 exports.decoEntries = decoEntries;
 exports.decoMatrix = decoMatrix;
+exports.decoSamples = decoSamples;
 exports.decoTable = decoTable;
 exports.decoVector = decoVector;
 exports.delogNeL = delogNeL;

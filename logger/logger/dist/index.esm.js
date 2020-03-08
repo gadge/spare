@@ -4,8 +4,9 @@ import { Says as Says$1, says as says$1 } from '@palett/says';
 import { deco as deco$2, Deco } from '@spare/deco-vector';
 import { deco as deco$3, Deco as Deco$1 } from '@spare/deco-entries';
 import { deco as deco$4, Deco as Deco$2 } from '@spare/deco-matrix';
-import { deco as deco$5, Deco as Deco$3 } from '@spare/deco-table';
-import { deco as deco$6, Deco as Deco$4 } from '@spare/deco-crostab';
+import { deco as deco$5, Deco as Deco$3 } from '@spare/deco-samples';
+import { deco as deco$6, Deco as Deco$4 } from '@spare/deco-table';
+import { deco as deco$7, Deco as Deco$5 } from '@spare/deco-crostab';
 
 const logger = (x, ...p) => void console.log(x + '', ...p);
 const logNeL = (x, ...p) => void console.log(x + '', ...p, '\n');
@@ -45,10 +46,13 @@ const decoEntries = deco$3;
 const decoMatrix = deco$4;
 /** @function */
 
-const decoTable = deco$5;
+const decoSamples = deco$5;
 /** @function */
 
-const decoCrostab = deco$6;
+const decoTable = deco$6;
+/** @function */
+
+const decoCrostab = deco$7;
 /** @function */
 
 const DecoVector = Deco;
@@ -60,9 +64,12 @@ const DecoEntries = Deco$1;
 const DecoMatrix = Deco$2;
 /** @function */
 
-const DecoTable = Deco$3;
+const DecoSamples = Deco$3;
 /** @function */
 
-const DecoCrostab = Deco$4;
+const DecoTable = Deco$4;
+/** @function */
 
-export { DecoCrostab, DecoEntries, DecoMatrix, DecoTable, DecoVector, Says, Xr, deca, deco, decoCrostab, decoEntries, decoMatrix, decoTable, decoVector, delogNeL, delogger, logNeL, logger, says, xr };
+const DecoCrostab = Deco$5;
+
+export { DecoCrostab, DecoEntries, DecoMatrix, DecoSamples, DecoTable, DecoVector, Says, Xr, deca, deco, decoCrostab, decoEntries, decoMatrix, decoSamples, decoTable, decoVector, delogNeL, delogger, logNeL, logger, says, xr };

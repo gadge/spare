@@ -4,7 +4,7 @@ import { AEU, RN } from '@spare/util'
 import { vettro } from '@spare/vettro'
 import { mattro } from '@spare/mattro'
 import { fluoVector } from '@palett/fluo-vector'
-import { fluo } from '@palett/fluo-matrix'
+import { fluoMatrix } from '@palett/fluo-matrix'
 import { padTable } from '@spare/pad-table'
 
 /**
@@ -25,7 +25,7 @@ export const cosmati = function (table) {
     vettro(banner, { head: left, tail: right, abstract: headAbstract }),
   ]
   const [dyeX, dyeB] = [
-    preset && fluo(x.raw, { direct, preset, stringPreset, colorant: true }),
+    preset && fluoMatrix(x.raw, { direct, preset, stringPreset, colorant: true }),
     labelPreset && fluoVector(b.raw, { preset: labelPreset, stringPreset: labelPreset, colorant: true }),
   ]
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })

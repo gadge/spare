@@ -28,19 +28,20 @@ $ npm install @spare/<tool-name>
 
 ## Tools
 
-|                                  |                                               |
-| -------------------------------- | --------------------------------------------  |
-| [**logger**](logger/logger)      | Console output everything                     |
-| [**xr**](logger/deco)            | Build sentence                                |
-| [**deco**](logger/deco)          | Stringify + colorant things                   |
-| [**deco**-vector](logger/deco)   | Deco array(vector)                            |
-| [**deco**-matrix](logger/deco)   | Deco 2d-array(matrix)                         |
-| [**deco**-entries](logger/deco)  | Deco entries                                  |
-| [**deco**-table](logger/deco)    | Deco table                                    |
-| [**deco**-crostab](logger/deco)  | Deco crostab                                  |
-| [**lange**](string-helper/lange)      | Get string length concerning ansi-code        |
-| [**string**](string-helper/string)    | String helper                                 |
-|                                  |                                               |
+|                                         |                                                 |
+| --------------------------------------- | ----------------------------------------------- |
+| [**logger**](logger/logger)             | Console output everything                       |
+| [**xr**](logger/xr)                     | Sentenced log content builder                   |
+| [**deco**](logger/deco)                 | Stringify + colorant things                     |
+| [**deco**-vector](logger/deco-vector)   | Stringify array(vector) with color highlight    |
+| [**deco**-matrix](logger/deco-matrix)   | Stringify 2d-array(matrix) with color highlight |
+| [**deco**-entries](logger/deco-entries) | Stringify entries with color highlight          |
+| [**deco**-samples](logger/deco-samples) | Stringify samples with color highlight          |
+| [**deco**-table](logger/deco-table)     | Stringify table with color highlight            |
+| [**deco**-crostab](logger/deco-crostab) | Stringify crostab with color highlight          |
+| [**lange**](string-helper/lange)        | Get string length concerning ansi-code          |
+| [**string**](string-helper/string)      | String helpers                                  |
+|                                         |                                                 |
 
 ## License
 

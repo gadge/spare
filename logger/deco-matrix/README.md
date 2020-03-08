@@ -1,4 +1,4 @@
-## @spare/deco-matrix
+## @spare/deco-rows
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,12 +15,12 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/deco-matrix
+$ npm install @spare/deco-rows
 ```
 
 ## Usage
 ```js
-import { Temp } from '@spare/logger-matrix'
+import { Temp } from '@spare/logger-rows'
 ```
 
 ## Meta
@@ -29,16 +29,16 @@ import { Temp } from '@spare/logger-matrix'
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
 [//]: <> (Shields)
-[npm-image]: https://img.shields.io/npm/v/@spare/deco-matrix.svg?style=flat-square
-[quality-image]: http://npm.packagequality.com/shield/@spare/deco-matrix.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@spare/deco-matrix.svg?style=flat-square
-[total-download-image]:https://img.shields.io/npm/dt/@spare/deco-matrix.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/@spare/deco-matrix.svg?style=flat-square
-[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/@spare/deco-matrix?style=flat-square
-[size]: https://flat.badgen.net/packagephobia/install/@spare/deco-matrix
+[npm-image]: https://img.shields.io/npm/v/@spare/deco-rows.svg?style=flat-square
+[quality-image]: http://npm.packagequality.com/shield/@spare/deco-rows.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/@spare/deco-rows.svg?style=flat-square
+[total-download-image]:https://img.shields.io/npm/dt/@spare/deco-rows.svg?style=flat-square
+[license-image]: https://img.shields.io/npm/l/@spare/deco-rows.svg?style=flat-square
+[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/@spare/deco-rows?style=flat-square
+[size]: https://flat.badgen.net/packagephobia/install/@spare/deco-rows
 
 [//]: <> (Link)
-[npm-url]: https://npmjs.org/package/@spare/deco-matrix
-[quality-url]: http://packagequality.com/#?package=@spare/deco-matrix
-[github-url]: https://github.com/hoyeungw/@spare/deco-matrix
-[size-url]: https://packagephobia.now.sh/result?p=@spare/deco-matrix
+[npm-url]: https://npmjs.org/package/@spare/deco-rows
+[quality-url]: http://packagequality.com/#?package=@spare/deco-rows
+[github-url]: https://github.com/hoyeungw/@spare/deco-rows
+[size-url]: https://packagephobia.now.sh/result?p=@spare/deco-rows

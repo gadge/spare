@@ -4,6 +4,7 @@ import * as Sayer from '@palett/says'
 import * as DecoVectorEnv from '@spare/deco-vector'
 import * as DecoEntriesEnv from '@spare/deco-entries'
 import * as DecoMatrixEnv from '@spare/deco-matrix'
+import * as DecoSamplesEnv from '@spare/deco-samples'
 import * as DecoTableEnv from '@spare/deco-table'
 import * as DecoCrostabEnv from '@spare/deco-crostab'
 
@@ -21,11 +22,13 @@ export { logger, logNeL } from './src/logger'
 /** @function */ export const decoVector = DecoVectorEnv.deco
 /** @function */ export const decoEntries = DecoEntriesEnv.deco
 /** @function */ export const decoMatrix = DecoMatrixEnv.deco
+/** @function */ export const decoSamples = DecoSamplesEnv.deco
 /** @function */ export const decoTable = DecoTableEnv.deco
 /** @function */ export const decoCrostab = DecoCrostabEnv.deco
 
 /** @function */ export const DecoVector = DecoVectorEnv.Deco
 /** @function */ export const DecoEntries = DecoEntriesEnv.Deco
 /** @function */ export const DecoMatrix = DecoMatrixEnv.Deco
+/** @function */ export const DecoSamples = DecoSamplesEnv.Deco
 /** @function */ export const DecoTable = DecoTableEnv.Deco
 /** @function */ export const DecoCrostab = DecoCrostabEnv.Deco

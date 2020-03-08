@@ -3,7 +3,7 @@ import { size, ROWWISE } from '@vect/matrix';
 import { AEU, RN } from '@spare/util';
 import { mattro } from '@spare/mattro';
 import { padMatrix } from '@spare/pad-matrix';
-import { fluo } from '@palett/fluo-matrix';
+import { fluoMatrix } from '@palett/fluo-matrix';
 
 /**
  *
@@ -25,7 +25,7 @@ const cosmati = function (matrix) {
     raw,
     text
   } = mattro(matrix, this);
-  const dye = preset && fluo(raw, {
+  const dye = preset && fluoMatrix(raw, {
     direct,
     preset,
     stringPreset,

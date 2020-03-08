@@ -1,7 +1,7 @@
 import { totx } from '@spare/util'
-import { size } from '@vect/matrix-size'
 import { marginCopy, marginMapper, marginMutate } from '@vect/matrix-margin'
 import { marginMapper as vectorMarginMapper } from '@vect/vector-margin'
+import { marginSizing } from './marginSizing'
 
 export class Matrigin {
   constructor (matrix, top, bottom, left, right, height, width, dashX, dashY) {
@@ -16,14 +16,10 @@ export class Matrigin {
     this.dashY = dashY
   }
 
-  static build (mx, t, b, l, r, h, w) {
-    let dashX = true, dashY = true
-    if (!h || !w) [h, w] = size(mx)
-    if (!h || !w) [t, b, dashX, dashY] = [0, 0, false, false]
-    if (!t && !b || t >= h) [t, b, dashX] = [h, 0, false]
-    if (!l && !r || l >= w) [l, r, dashY] = [w, 0, false]
-    mx = marginCopy(mx, t, b, l, r, h, w)
-    return new Matrigin(mx, t, b, l, r, h, w, dashX, dashY)
+  static build (rows, t, b, l, r, h, w) {
+    const { top, bottom, left, right, height, width, dashX, dashY } = marginSizing(rows, t, b, l, r, h, w)
+    const cutRows = marginCopy(rows, top, bottom, left, right, height, width,)
+    return new Matrigin(cutRows, top, bottom, left, right, height, width, dashX, dashY)
   }
 
   get marginHeight () { return this.top + this.bottom }

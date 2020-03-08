@@ -1,5 +1,6 @@
 import { totx } from '@spare/util'
 import { marginCopy, marginMapper, marginMutate } from '@vect/vector-margin'
+import { marginSizing } from './marginSizing'
 
 export class Vectogin {
   constructor (vec, head, tail, dash) {
@@ -10,10 +11,9 @@ export class Vectogin {
   }
 
   static build (ar, h = 0, t = 0) {
-    let d = true, l
-    if (!ar || !(l = ar.length)) [ar, h, t, d] = [[], 0, 0, false]
-    if (!h && !t || h >= l) [h, t, d] = [l, 0, false]
-    return new Vectogin(marginCopy(ar, h, t, l), h, t, d)
+    const { head, tail, dash } = marginSizing(ar, h, t)
+    const cutVec = marginCopy(ar, head, tail)
+    return new Vectogin(cutVec, head, tail, dash)
   }
 
   map (fn, mutate = false) {
