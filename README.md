@@ -30,17 +30,17 @@ $ npm install @spare/<tool-name>
 
 |                                         |                                                 |
 | --------------------------------------- | ----------------------------------------------- |
-| [**logger**](logger/logger)             | Console output everything                       |
-| [**xr**](logger/xr)                     | Sentenced log content builder                   |
-| [**deco**](logger/deco)                 | Stringify + colorant things                     |
-| [**deco**-vector](logger/deco-vector)   | Stringify array(vector) with color highlight    |
-| [**deco**-matrix](logger/deco-matrix)   | Stringify 2d-array(matrix) with color highlight |
-| [**deco**-entries](logger/deco-entries) | Stringify entries with color highlight          |
-| [**deco**-samples](logger/deco-samples) | Stringify samples with color highlight          |
-| [**deco**-table](logger/deco-table)     | Stringify table with color highlight            |
-| [**deco**-crostab](logger/deco-crostab) | Stringify crostab with color highlight          |
-| [**lange**](string-helper/lange)        | Get string length concerning ansi-code          |
-| [**string**](string-helper/string)      | String helpers                                  |
+| [**logger**](packages/logger/logger)             | Console output everything                       |
+| [**xr**](packages/logger/xr)                     | Sentenced log content builder                   |
+| [**deco**](packages/logger/deco)                 | Stringify + colorant things                     |
+| [**deco**-vector](packages/logger/deco-vector)   | Stringify array(vector) with color highlight    |
+| [**deco**-matrix](packages/logger/deco-matrix)   | Stringify 2d-array(matrix) with color highlight |
+| [**deco**-entries](packages/logger/deco-entries) | Stringify entries with color highlight          |
+| [**deco**-samples](packages/logger/deco-samples) | Stringify samples with color highlight          |
+| [**deco**-table](packages/logger/deco-table)     | Stringify table with color highlight            |
+| [**deco**-crostab](packages/logger/deco-crostab) | Stringify crostab with color highlight          |
+| [**lange**](packages/string/lange)        | Get string length concerning ansi-code          |
+| [**string**](packages/string/string)      | String helpers                                  |
 |                                         |                                                 |
 
 ## License
