@@ -1,7 +1,7 @@
 {
-  "name": "@spare/deco-entries",
+  "name": "@spare/enum-encodings",
   "version": "0.1.14",
-  "description": "A debugging tool",
+  "description": "String encodings",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,15 +12,7 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/entries.test.js"
-  },
-  "dependencies": {
-    "@palett/fluo-entries": "^0.0.16",
-    "@palett/presets": "^0.0.17",
-    "@spare/enttro": "^0.1.14",
-    "@spare/pad-entries": "^0.1.14",
-    "@spare/util": "^0.1.14",
-    "@vect/entries-zipper": "^0.1.12"
+    "test": "node -r @babel/register test/test.index.js"
   },
   "repository": {
     "type": "git",
@@ -38,5 +30,5 @@
     "url": "https://github.com/hoyeungw/spare"
   },
   "homepage": "https://github.com/hoyeungw/spare#readme",
-  "gitHead": "ebee2e056eda94e65378c6a1178ae62fd924fe4d"
+  "gitHead": "bc2f5a3647ec3f6d7cf62539f64ce8cbfd3630a8"
 }
