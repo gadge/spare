@@ -3,7 +3,7 @@
  * @param {*} [text]
  * @param {number} indent
  * @param {string[]} queue
- * @returns {string}
+ * @return {string}
  */
 export const render = (text, { indent, queue }) => {
   if (text?.length) queue.push(text)

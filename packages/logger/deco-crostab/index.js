@@ -1,6 +1,8 @@
 import { cosmetics } from './src/cosmetics'
 import { presetCrostabOptions } from '@spare/deco-util'
 
+export { cosmetics }
+
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
  */

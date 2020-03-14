@@ -21,6 +21,7 @@
     "@palett/dye": "^0.0.17",
     "@palett/fluo-entries": "^0.0.16",
     "@palett/fluo-vector": "^0.0.17",
+    "@spare/deco-util": "^0.1.17",
     "@spare/enum-chars": "^0.1.17",
     "@spare/lange": "^0.1.17",
     "@spare/pad-string": "^0.1.17",

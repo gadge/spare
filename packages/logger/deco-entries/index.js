@@ -1,6 +1,8 @@
 import { presetEntriesOptions } from '@spare/deco-util'
 import { cosmetics } from './src/cosmetics'
 
+export { cosmetics }
+
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
  */
@@ -20,6 +22,7 @@ import { cosmetics } from './src/cosmetics'
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const Deco = (options = {}) => cosmetics.bind(presetEntriesOptions(options))
@@ -40,8 +43,7 @@ export const Deco = (options = {}) => cosmetics.bind(presetEntriesOptions(option
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const deco = (entries, options = {}) => cosmetics.call(presetEntriesOptions(options), entries)
-
-export { cosmetics }

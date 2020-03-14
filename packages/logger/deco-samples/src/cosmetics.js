@@ -13,10 +13,6 @@ import { lookupKeys, selectValues } from '@vect/object-select'
 import { intExpon } from '@aryth/math'
 import { makeQuoteAbstract } from '@spare/deco-util'
 
-/**
- * @param {Object[]} samples
- * @returns {string}
- */
 export const cosmetics = function (samples) {
   let height, sample, keys, dye, rows
   if (!(height = samples.length)) return AEU
@@ -25,7 +21,7 @@ export const cosmetics = function (samples) {
     fields, indexed, abstract, direct,
     preset, keyPreset, stringPreset, ansi
   } = this
-  let { delimiter, quote, top, bottom, left, right, } = this
+  let { delimiter, quote, top, bottom, left, right, bracket, discrete } = this
   let [pick, head] = fields
     ? (lookupKeys.call(sample, fields) |> unwind)
     : [keys, keys.slice()]
@@ -57,6 +53,10 @@ export const cosmetics = function (samples) {
     mutazip(rows, indices, (line, index) => '(' + index + ') ' + line)
   }
   if (dashX) rows.splice(t, 0, '...')
-  return '[' + rows.join(`,${RN} `) + ']'
+  return discrete
+    ? rows
+    : bracket
+      ? '[' + rows.join(`,${RN} `) + ']'
+      : rows.join(`,${RN}`)
 }
 

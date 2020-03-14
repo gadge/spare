@@ -1,6 +1,8 @@
 import { cosmetics } from './src/cosmetics'
 import { presetSamplesOptions } from '@spare/deco-util'
 
+export { cosmetics }
+
 /**
  *
  * @param {Object} [options]
@@ -18,6 +20,7 @@ import { presetSamplesOptions } from '@spare/deco-util'
  * @param {string} [options.delimiter=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(options))
@@ -40,6 +43,7 @@ export const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(option
  * @param {string} [options.delimiter=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const deco = (samples, options = {}) => cosmetics.call(presetSamplesOptions(options), samples)

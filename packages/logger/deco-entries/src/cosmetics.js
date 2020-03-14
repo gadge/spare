@@ -9,11 +9,11 @@ import { HR_ENTRY } from '../utils/HR_ENTRY'
 export const cosmetics = function (entries) {
   if (!entries || !entries.length || entries[0].length !== 2) return AEU
   const { keyAbstract, abstract, preset, stringPreset, head, tail, ansi } = this
-  let { dash, delimiter, keyQuote, quote, bracket } = this
+  let { dash, delimiter, keyQuote, quote, bracket, discrete } = this
   const { raw, text } = enttro(entries, {
     head,
     tail,
-    keyAbstract: makeQuoteAbstract(keyAbstract, keyQuote || quote),
+    keyAbstract: makeQuoteAbstract(keyAbstract, keyQuote),
     abstract: makeQuoteAbstract(abstract, quote),
     hr: HR_ENTRY
   })
@@ -24,9 +24,13 @@ export const cosmetics = function (entries) {
     : preset
       ? Duozipper((t, d) => t |> d)(text, dye)
       : text
-  return entries.length
-    ? bracket
-      ? '[' + entries.map(([k, v]) => '[' + k + dash + v + ']').join(delimiter) + ']'
-      : entries.map(([k, v]) => k + dash + v).join(delimiter)
-    : AEU
+  const lines = bracket
+    ? entries.map(([k, v]) => '[' + k + dash + v + ']')
+    : entries.map(([k, v]) => k + dash + v)
+  return discrete
+    ? lines
+    : bracket
+      ? '[' + lines.join(delimiter) + ']'
+      : lines.join(delimiter)
+
 }

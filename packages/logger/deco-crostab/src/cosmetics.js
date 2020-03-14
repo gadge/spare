@@ -9,11 +9,6 @@ import { POINTWISE, size } from '@vect/matrix'
 import { padSide } from '../utils/padSide'
 import { HCONN, VLINE } from '../resources/conns'
 
-/**
- *
- * @param {Object} crostab
- * @returns {string}
- */
 export const cosmetics = function (crostab) {
   let matrix = crostab.rows || crostab.matrix, banner = crostab.head || crostab.banner,
     stand = crostab.side, name = crostab.title || ''
@@ -22,7 +17,7 @@ export const cosmetics = function (crostab) {
   const {
     direct = POINTWISE, abstract, bannerAbstract, sideAbstract,
     preset, stringPreset, labelPreset,
-    top, left, bottom, right, ansi, fullAngle,
+    top, left, bottom, right, ansi, fullAngle, discrete
   } = this
   const [x, b, s] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),
@@ -36,10 +31,11 @@ export const cosmetics = function (crostab) {
   ]
   let { title, hr: br, side } = padSide(s.text, name, { dye: dyeS, fullAngle })
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
-  return [
+  const lines = [
     title + VLINE + head.join(VLINE),
     br + HCONN + hr.join(HCONN)
   ].concat(
     zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE))
-  ).join(RN)
+  )
+  return discrete ? lines : lines.join(RN)
 }

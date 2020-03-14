@@ -10,4 +10,4 @@ const candidates = {
   ...Misc
 }
 
-candidates |> deca({ hi: 10 }) |> logger
+candidates |> deca({ hi: 10, wa: 10 }) |> logger

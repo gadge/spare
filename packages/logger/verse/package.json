@@ -1,5 +1,5 @@
 {
-  "name": "@spare/deco-util",
+  "name": "@spare/verse",
   "version": "0.1.17",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
@@ -12,11 +12,18 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/deco-util.test.js"
+    "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.0.17",
-    "@vect/matrix": "^0.1.12"
+    "@analys/crostab-init": "^0.0.13",
+    "@analys/table-init": "^0.0.13",
+    "@spare/deco-crostab": "^0.1.17",
+    "@spare/deco-entries": "^0.1.17",
+    "@spare/deco-matrix": "^0.1.17",
+    "@spare/deco-samples": "^0.1.17",
+    "@spare/deco-table": "^0.1.17",
+    "@spare/deco-util": "^0.1.17",
+    "@spare/deco-vector": "^0.1.17"
   },
   "repository": {
     "type": "git",
@@ -33,6 +40,5 @@
   "bugs": {
     "url": "https://github.com/hoyeungw/spare"
   },
-  "homepage": "https://github.com/hoyeungw/spare#readme",
-  "gitHead": "ebee2e056eda94e65378c6a1178ae62fd924fe4d"
+  "homepage": "https://github.com/hoyeungw/spare#readme"
 }

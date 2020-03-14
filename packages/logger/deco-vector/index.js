@@ -2,6 +2,8 @@ import { deco as decoEntries, Deco as DecoEntries } from '@spare/deco-entries'
 import { cosmetics } from './src/cosmetics'
 import { presetVectorOptions } from '@spare/deco-util'
 
+export { cosmetics }
+
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
  */
@@ -20,6 +22,7 @@ import { presetVectorOptions } from '@spare/deco-util'
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const Deco = (options = {}) => options.indexed
@@ -40,6 +43,7 @@ export const Deco = (options = {}) => options.indexed
  * @param {string} [options.delimiter=',\n']
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const deco = (vector, options = {}) =>

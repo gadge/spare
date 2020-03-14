@@ -1,5 +1,4 @@
-
-import{ Foba } from '@foba/table'
+import { Foba } from '@foba/table'
 import { says } from '@spare/logger'
 import { Deco } from '../index'
 

@@ -8,5 +8,6 @@ export const presetSamplesOptions = o => {
   o.keyPreset = o.keyPreset || SUBTLE
   o.stringPreset = o.stringPreset || JUNGLE
   o.delimiter = o.delimiter || ', '
+  o.bracket = o.bracket || true
   return o
 }

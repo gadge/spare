@@ -1,6 +1,8 @@
 import { cosmetics } from './src/cosmetics'
 import { presetTableOptions } from '@spare/deco-util'
 
+export { cosmetics }
+
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
  */
@@ -23,6 +25,7 @@ import { presetTableOptions } from '@spare/deco-util'
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.fullAngle]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const Deco = (options = {}) => cosmetics.bind(presetTableOptions(options))
@@ -46,6 +49,7 @@ export const Deco = (options = {}) => cosmetics.bind(presetTableOptions(options)
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.fullAngle]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const deco = (table, options = {}) => cosmetics.call(presetTableOptions(options), table)

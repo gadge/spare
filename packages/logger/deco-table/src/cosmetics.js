@@ -6,18 +6,13 @@ import { fluoVector } from '@palett/fluo-vector'
 import { fluoMatrix } from '@palett/fluo-matrix'
 import { padTable } from '@spare/pad-table'
 
-/**
- *
- * @param {Object} table
- * @returns {string}
- */
 export const cosmetics = function (table) {
   let matrix = table.rows || table.matrix, banner = table.head || table.banner
   const [height, width] = size(matrix), labelWidth = banner && banner.length
   if (!height || !width || !labelWidth) return AEU
   const {
     direct, abstract, headAbstract, preset, stringPreset, labelPreset,
-    top, left, bottom, right, ansi, fullAngle,
+    top, left, bottom, right, ansi, fullAngle, discrete,
   } = this
   const [x, b] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),
@@ -28,10 +23,11 @@ export const cosmetics = function (table) {
     labelPreset && fluoVector(b.raw, { preset: labelPreset, stringPreset: labelPreset, colorant: true }),
   ]
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
-  return [
+  const lines = [
     head.join(' | '),
     hr.join('-+-')
   ].concat(
     rows.map(row => row.join(' | '))
-  ).join(RN)
+  )
+  return discrete ? lines : lines.join(RN)
 }

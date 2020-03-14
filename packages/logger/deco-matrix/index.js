@@ -1,6 +1,8 @@
 import { cosmetics } from './src/cosmetics'
 import { presetMatrixOptions } from '@spare/deco-util'
 
+export { cosmetics }
+
 /***
  *
  * @param {Object} options
@@ -14,8 +16,9 @@ import { presetMatrixOptions } from '@spare/deco-util'
  * @param {number} [options.right]
  * @param {string} [options.delimiter=',\n']
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
+ * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
 export const Deco = (options = {}) => cosmetics.bind(presetMatrixOptions(options))
@@ -34,9 +37,10 @@ export const Deco = (options = {}) => cosmetics.bind(presetMatrixOptions(options
  * @param {number} [options.right]
  * @param {string} [options.delimiter=',\n']
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
+ * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
+ * @param {boolean} [options.discrete]
  * @returns {string}
  */
-export const deco = (matrix, options = {}) => cosmetics.call(options, matrix)
+export const deco = (matrix, options = {}) => cosmetics.call(presetMatrixOptions(options), matrix)
 
