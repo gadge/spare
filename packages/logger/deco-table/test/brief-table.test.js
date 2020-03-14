@@ -1,7 +1,7 @@
 
 import{ Foba } from '@foba/table'
 import { says } from '@spare/logger'
-import { Deco } from '../src/Deco'
+import { Deco } from '../index'
 
 const table = Foba.flop()
 

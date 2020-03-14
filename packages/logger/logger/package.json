@@ -23,7 +23,6 @@
     "@spare/deco-samples": "^0.1.16",
     "@spare/deco-table": "^0.1.16",
     "@spare/deco-vector": "^0.1.16",
-    "@spare/util": "^0.1.16",
     "@spare/xr": "^0.1.16"
   },
   "repository": {

@@ -1,8 +1,7 @@
-import { AEU, RN } from '@spare/util'
+import { AEU, RN } from '@spare/enum-chars'
 import { vettro } from '@spare/vettro'
 import { mattro } from '@spare/mattro'
 import { padTable } from '@spare/pad-table'
-import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
 import { fluoVector } from '@palett/fluo-vector'
 import { fluo } from '@palett/fluo-matrix'
 import { zipper } from '@vect/vector-zipper'
@@ -22,8 +21,8 @@ export const cosmetics = function (crostab) {
   if (!height || !width || !labelWidth || !labelHeight) return AEU
   const {
     direct = POINTWISE, abstract, bannerAbstract, sideAbstract,
-    preset = FRESH, stringPreset = JUNGLE, labelPreset = SUBTLE,
-    top = 0, left = 0, bottom = 0, right = 0, ansi = false, fullAngle = false,
+    preset, stringPreset, labelPreset,
+    top, left, bottom, right, ansi, fullAngle,
   } = this
   const [x, b, s] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),

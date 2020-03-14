@@ -2,12 +2,12 @@ import { Foba } from '@foba/crostab'
 import { delogger } from '@spare/deco'
 import { logger } from '@spare/logger'
 import { Directs } from '@vect/matrix'
-import { ClicheMag } from '@cliche/mag'
+import { Mag } from '@cliche/mag'
 import { isNumeric } from '@typen/num-strict'
 import { OCEAN } from '@palett/presets'
-import { Deco } from '../src/Deco'
+import { Deco } from '../index'
 
-const mag = new ClicheMag(0)
+const mag = new Mag(0)
 
 const crostab = Foba.flop()
 crostab |> delogger

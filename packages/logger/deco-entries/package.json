@@ -20,7 +20,7 @@
     "@spare/enttro": "^0.1.16",
     "@spare/enum-chars": "^0.1.15",
     "@spare/pad-entries": "^0.1.15",
-    "@spare/util": "^0.1.16",
+    "@spare/deco-util": "^0.1.16",
     "@vect/entries-zipper": "^0.1.12"
   },
   "repository": {

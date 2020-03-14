@@ -1,6 +1,5 @@
-import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
-import { COLUMNWISE, size } from '@vect/matrix'
-import { AEU, RN } from '@spare/util'
+import { size } from '@vect/matrix'
+import { AEU, RN } from '@spare/enum-chars'
 import { vettro } from '@spare/vettro'
 import { mattro } from '@spare/mattro'
 import { fluoVector } from '@palett/fluo-vector'
@@ -17,8 +16,8 @@ export const cosmetics = function (table) {
   const [height, width] = size(matrix), labelWidth = banner && banner.length
   if (!height || !width || !labelWidth) return AEU
   const {
-    direct = COLUMNWISE, abstract, headAbstract, preset = FRESH, stringPreset = JUNGLE, labelPreset = SUBTLE,
-    top = 0, left = 0, bottom = 0, right = 0, ansi = false, fullAngle = false,
+    direct, abstract, headAbstract, preset, stringPreset, labelPreset,
+    top, left, bottom, right, ansi, fullAngle,
   } = this
   const [x, b] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),

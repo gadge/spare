@@ -1,4 +1,4 @@
-import { RN, AEU } from '@spare/util'
+import { AEU, RN } from '@spare/enum-chars'
 import { marginSizing, Vectogin } from '@spare/vettro'
 import { padMatrix } from '@spare/pad-matrix'
 import { mattro } from '@spare/mattro'
@@ -9,8 +9,9 @@ import { mutazip } from '@vect/vector-zipper'
 import { size } from '@vect/matrix-size'
 import { marginMapper as marginMapperMatrix } from '@vect/matrix-margin'
 import { unwind } from '@vect/entries-unwind'
-import { selectValues, lookupKeys } from '@vect/object-select'
+import { lookupKeys, selectValues } from '@vect/object-select'
 import { intExpon } from '@aryth/math'
+import { makeQuoteAbstract } from '@spare/deco-util'
 
 /**
  * @param {Object[]} samples
@@ -22,8 +23,9 @@ export const cosmetics = function (samples) {
   if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return AEU
   const {
     fields, indexed, abstract, direct,
-    preset, keyPreset, stringPreset, delimiter, top, bottom, left, right, ansi
+    preset, keyPreset, stringPreset, ansi
   } = this
+  let { delimiter, quote, top, bottom, left, right, } = this
   let [pick, head] = fields
     ? (lookupKeys.call(sample, fields) |> unwind)
     : [keys, keys.slice()]
@@ -39,7 +41,7 @@ export const cosmetics = function (samples) {
   let [h, w] = size(rows)
   const { raw, text } = mattro(rows, {
     top: t, bottom: b, left: l, right: r, height: h, width: w, dashX, dashY,
-    abstract, hr: null, validate: false
+    abstract: makeQuoteAbstract(abstract, quote), hr: null, validate: false
   })
   if (preset) dye = fluoMatrix(raw, { direct, preset, stringPreset, colorant: true })
   if (keyPreset) head = fluoVector(head, { preset: keyPreset, stringPreset: keyPreset, colorant: false })

@@ -1,9 +1,9 @@
-import { RN, AEU } from '@spare/util'
+import { AEU, RN } from '@spare/enum-chars'
+import { makeQuoteAbstract } from '@spare/deco-util'
 import { mattro } from '@spare/mattro'
 import { padMatrix } from '@spare/pad-matrix'
-import { FRESH, JUNGLE } from '@palett/presets'
 import { fluoMatrix } from '@palett/fluo-matrix'
-import { ROWWISE, size } from '@vect/matrix'
+import { size } from '@vect/matrix'
 
 /**
  *
@@ -13,7 +13,8 @@ import { ROWWISE, size } from '@vect/matrix'
 export const cosmetics = function (matrix) {
   const [height, width] = size(matrix)
   if (!height || !width) return AEU
-  const { direct = ROWWISE, preset = FRESH, stringPreset = JUNGLE, delimiter = ', ', ansi = false } = this
+  const { direct, preset, stringPreset, delimiter, quote, ansi } = this
+  this.abstract = makeQuoteAbstract(this.abstract, quote)
   const { raw, text } = mattro(matrix, this)
   const dye = preset && fluoMatrix(raw, { direct, preset, stringPreset, colorant: true })
   matrix = padMatrix(text, { raw, dye, ansi })

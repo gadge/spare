@@ -3,7 +3,7 @@ import { xr } from '@spare/xr'
 import { simpleVectors } from '@foba/foo'
 import { FobaNum } from '@foba/vector'
 import { rand } from '@aryth/rand'
-import { Deco } from '../src/Deco'
+import { Deco } from '../index'
 import { stringify } from '../src/stringify'
 
 const Strangers = {

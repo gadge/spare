@@ -1,7 +1,7 @@
 import { AEU, ELLIP, LF, TB } from '@spare/enum-chars'
 import { vettro } from '@spare/vettro'
 import { fluoVector } from '@palett/fluo-vector'
-import { makeQuoteAbstract } from '@spare/util'
+import { makeQuoteAbstract } from '@spare/deco-util'
 
 export function cosmetics (vec) {
   if (!vec || !vec.length) return AEU

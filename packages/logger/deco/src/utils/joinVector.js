@@ -1,4 +1,4 @@
-import { LF, TB } from '@spare/util'
+import { LF, TB } from '@spare/enum-chars'
 
 export const joinVector = (list, lv) => {
   const rn = LF + TB.repeat(lv)

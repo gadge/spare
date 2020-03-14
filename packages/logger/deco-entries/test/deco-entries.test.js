@@ -2,7 +2,7 @@ import { simpleEntries } from '@foba/foo'
 import { logger } from '@spare/logger'
 import { OCEAN } from '@palett/presets'
 import { delogger } from '@spare/deco'
-import { Deco } from '../src/Deco'
+import { Deco } from '../index'
 
 let SimpleEntries = simpleEntries({ h: 12 })
 // SimpleEntries = { numeric: SimpleEntries.numeric }

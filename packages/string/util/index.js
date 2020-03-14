@@ -6,7 +6,7 @@ export {
 
 export {
   quoteString, makeQuoteAbstract
-} from './src/quoteString'
+} from '@spare/deco-util/src/quoteString'
 
 export {
   RN, TB, SP, AEU, ELLIP, CR, LF

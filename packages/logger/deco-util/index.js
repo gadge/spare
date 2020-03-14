@@ -1,2 +1,7 @@
 export { presetEntriesOptions } from './src/presetEntriesOptions'
 export { presetVectorOptions } from './src/presetVectorOptions'
+export { presetMatrixOptions } from './src/presetMatrixOptions'
+export { presetCrostabOptions } from './src/presetCrostabOptions'
+export { presetTableOptions } from './src/presetTableOptions'
+export { presetSamplesOptions } from './src/presetSamplesOptions'
+export { quoteString, makeQuoteAbstract } from './src/quoteString'

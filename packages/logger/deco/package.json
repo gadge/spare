@@ -23,7 +23,7 @@
     "@palett/fluo-vector": "^0.0.17",
     "@spare/lange": "^0.1.14",
     "@spare/pad-string": "^0.1.15",
-    "@spare/util": "^0.1.16",
+    "@spare/enum-chars": "^0.1.15",
     "@typen/enum-data-types": "^0.0.3",
     "@typen/enum-object-types": "^0.0.3",
     "@typen/enums": "^0.0.3",
