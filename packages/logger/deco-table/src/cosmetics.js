@@ -7,7 +7,7 @@ import { fluoMatrix } from '@palett/fluo-matrix'
 import { padTable } from '@spare/pad-table'
 
 export const cosmetics = function (table) {
-  let matrix = table.rows || table.matrix, banner = table.head || table.banner
+  let matrix = table.rows || table.matrix.bind(table), banner = table.head || table.banner
   const [height, width] = size(matrix), labelWidth = banner && banner.length
   if (!height || !width || !labelWidth) return AEU
   const {

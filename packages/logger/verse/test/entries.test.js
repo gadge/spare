@@ -8,5 +8,5 @@ let SimpleEntries = simpleEntries({ h: 12 })
 SimpleEntries |> delogger
 
 for (const [key, entries] of Object.entries(SimpleEntries)) {
-  entries |> Verse.entriesAsObject |> says[key]
+  entries |> Verse.entriesAsObject.bind(Verse) |> says[key]
 }

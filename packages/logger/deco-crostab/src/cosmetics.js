@@ -10,7 +10,7 @@ import { padSide } from '../utils/padSide'
 import { HCONN, VLINE } from '../resources/conns'
 
 export const cosmetics = function (crostab) {
-  let matrix = crostab.rows || crostab.matrix, banner = crostab.head || crostab.banner,
+  let matrix = crostab.rows || crostab.matrix.bind(crostab), banner = crostab.head || crostab.banner,
     stand = crostab.side, name = crostab.title || ''
   const [height, width] = size(matrix), labelWidth = banner && banner.length, labelHeight = stand && stand.length
   if (!height || !width || !labelWidth || !labelHeight) return AEU

@@ -7,33 +7,33 @@ import { matchSlice as matchSliceTable } from '@analys/table-init'
 import { matchSlice as matchSliceCrostab } from '@analys/crostab-init'
 
 export class Verse {
-  static vector = (vector, {
+  static vector (vector, {
     abstract, delimiter = ', ', quote = '\'',
-  } = {}) => cosmeticsVector.call({ abstract, delimiter, quote, bracket: true }, vector)
+  } = {}) { return cosmeticsVector.call({ abstract, delimiter, quote, bracket: true }, vector) }
 
-  static entries = (entries, {
+  static entries (entries, {
     keyAbstract, abstract, dash = ', ', delimiter = ',\n', quote = '\'',
-  } = {}) => cosmeticsEntries.call({ keyAbstract, abstract, dash, delimiter, quote, bracket: true }, entries)
+  } = {}) { return cosmeticsEntries.call({ keyAbstract, abstract, dash, delimiter, quote, bracket: true }, entries) }
 
-  static entriesAsObject = (entries, {
+  static entriesAsObject (entries, {
     keyAbstract, abstract, dash = ': ', delimiter = ',\n', keyQuote = null, quote = '\'', level = 0,
-  } = {}) => {
+  } = {}) {
     const lines = cosmeticsEntries
       .call({ keyAbstract, abstract, dash, delimiter, keyQuote, quote, bracket: false, discrete: true }, entries)
     return '{' + joinLines(lines, level) + '}'
   }
 
-  static matrix = (matrix, {
+  static matrix (matrix, {
     abstract, delimiter = ', ', quote = '\'', level = 0,
-  } = {}) => {
+  } = {}) {
     const lines = cosmeticsMatrix
       .call({ abstract, delimiter, quote, bracket: true, discrete: true }, matrix)
     return '[' + joinLines(lines, level) + ']'
   }
 
-  static crostab = (table, {
+  static crostab (table, {
     abstract, delimiter = ', ', quote = '\'', level = 0,
-  } = {}) => {
+  } = {}) {
     const { side, head, rows } = table |> matchSliceCrostab
     const sideText = Verse.vector(side)
     const headText = Verse.vector(head)
@@ -46,9 +46,9 @@ export class Verse {
     return '{' + joinLines(lines, level) + '}'
   }
 
-  static table = (table, {
+  static table (table, {
     abstract, delimiter = ', ', quote = '\'', level = 0,
-  } = {}) => {
+  } = {}) {
     const { head, rows } = table |> matchSliceTable
     const headText = Verse.vector(head)
     const rowsText = Verse.matrix(rows, { abstract, delimiter, quote, level: level + 1 })
@@ -59,9 +59,9 @@ export class Verse {
     return '{' + joinLines(lines, level) + '}'
   }
 
-  static samples = (samples, {
+  static samples (samples, {
     abstract, delimiter = ', ', quote = '\'', level = 0
-  } = {}) => {
+  } = {}) {
     const lines = cosmeticsSamples
       .call({ indexes: false, abstract, delimiter, quote, bracket: false, discrete: true }, samples)
     return '[' + joinLines(lines, level) + ']'

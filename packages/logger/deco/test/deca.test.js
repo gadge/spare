@@ -10,4 +10,13 @@ const candidates = {
   ...Misc
 }
 
-candidates |> deca({ hi: 6, va: 0, vo: 0, wa: 32, wo: 48, wf: 64, color: false }) |> logger
+candidates |> deca({
+  pr: false,
+  hi: 6,
+  va: 0,
+  vo: 0,
+  wa: 32,
+  wo: 48,
+  wf: 64,
+  qm: '\''
+}) |> logger

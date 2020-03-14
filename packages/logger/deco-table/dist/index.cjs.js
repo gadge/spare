@@ -12,7 +12,7 @@ var padTable = require('@spare/pad-table');
 var decoUtil = require('@spare/deco-util');
 
 const cosmetics = function (table) {
-  let matrix$1 = table.rows || table.matrix,
+  let matrix$1 = table.rows || table.matrix.bind(table),
       banner = table.head || table.banner;
   const [height, width] = matrix.size(matrix$1),
         labelWidth = banner && banner.length;

@@ -4,4 +4,4 @@ import { Verse } from '../src/Verse'
 
 const crostab = Foba.flop()
 
-crostab |> Verse.crostab |> logger
+crostab |> Verse.crostab.bind(Verse) |> logger

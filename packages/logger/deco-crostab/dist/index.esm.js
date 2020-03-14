@@ -74,7 +74,7 @@ const VLINE = ' | ',
       HCONN = '-+-';
 
 const cosmetics = function (crostab) {
-  let matrix = crostab.rows || crostab.matrix,
+  let matrix = crostab.rows || crostab.matrix.bind(crostab),
       banner = crostab.head || crostab.banner,
       stand = crostab.side,
       name = crostab.title || '';

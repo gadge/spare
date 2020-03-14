@@ -12,6 +12,6 @@ const miscRows = [
   FobaStr.flop({ size: 8 }),
   FobaStr.flop({ size: 8 }),
 ]
-randRows |> Verse.matrix |> logger
+randRows |> Verse.matrix.bind(Verse) |> logger
 
-miscRows |> Verse.matrix|> logger
+miscRows |> Verse.matrix.bind(Verse)|> logger
