@@ -1,4 +1,5 @@
 # @spare
+
 :blowfish: A stringify tool to js objects
 
 [![github commit last][badge-github-last-commit]][url-github]
@@ -28,20 +29,21 @@ $ npm install @spare/<tool-name>
 
 ## Tools
 
-|                                         |                                                 |
-| --------------------------------------- | ----------------------------------------------- |
+|                                                  |                                                 |
+| ------------------------------------------------ | ----------------------------------------------- |
 | [**logger**](packages/logger/logger)             | Console output everything                       |
 | [**xr**](packages/logger/xr)                     | Sentenced log content builder                   |
 | [**deco**](packages/logger/deco)                 | Stringify + colorant things                     |
+| [**verse**](packages/logger/verse)               | Stringify, ready to write to js or json file    |
 | [**deco**-vector](packages/logger/deco-vector)   | Stringify array(vector) with color highlight    |
 | [**deco**-matrix](packages/logger/deco-matrix)   | Stringify 2d-array(matrix) with color highlight |
 | [**deco**-entries](packages/logger/deco-entries) | Stringify entries with color highlight          |
 | [**deco**-samples](packages/logger/deco-samples) | Stringify samples with color highlight          |
 | [**deco**-table](packages/logger/deco-table)     | Stringify table with color highlight            |
 | [**deco**-crostab](packages/logger/deco-crostab) | Stringify crostab with color highlight          |
-| [**lange**](packages/string/lange)        | Get string length concerning ansi-code          |
-| [**string**](packages/string/string)      | String helpers                                  |
-|                                         |                                                 |
+| [**lange**](packages/string/lange)               | Get string length concerning ansi-code          |
+| [**string**](packages/string/string)             | String helpers                                  |
+|                                                  |                                                 |
 
 ## License
 
