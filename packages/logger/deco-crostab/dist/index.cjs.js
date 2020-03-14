@@ -82,7 +82,7 @@ const VLINE = ' | ',
  * @returns {string}
  */
 
-const cosmati = function (crostab) {
+const cosmetics = function (crostab) {
   let matrix$1 = crostab.rows || crostab.matrix,
       banner = crostab.head || crostab.banner,
       stand = crostab.side,
@@ -192,7 +192,7 @@ const deco = (crostab, {
   right = 0,
   ansi = true,
   fullAngle = false
-} = {}) => cosmati.call({
+} = {}) => cosmetics.call({
   direct,
   abstract,
   bannerAbstract,
@@ -240,7 +240,7 @@ const Deco = ({
   right = 0,
   ansi = true,
   fullAngle = false
-} = {}) => cosmati.bind({
+} = {}) => cosmetics.bind({
   direct,
   abstract,
   bannerAbstract,

@@ -5,9 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
 var numLoose = require('@typen/num-loose');
+var typ = require('@typen/typ');
 var fluoVector = require('@palett/fluo-vector');
 var fluoEntries = require('@palett/fluo-entries');
-var typ = require('@typen/typ');
 var entriesMapper = require('@vect/entries-mapper');
 var vectorMapper = require('@vect/vector-mapper');
 var convert = require('@palett/convert');
@@ -190,14 +190,14 @@ const stringifyVector = function (vector, lv) {
 const deFn = function (fn) {
   let {
     wf,
-    color
+    pr
   } = this,
       des = `${fn}`;
   if (wf <= 128) des = des.replace(/\s+/g, ' ');
   if (des.startsWith(enums.FUN)) des = des.slice(9);
   des = toLambda(des);
   if (des.length > wf) des = Object.prototype.toString.call(fn);
-  return color ? PAL.FNC(des) : des;
+  return pr ? PAL.FNC(des) : des;
 };
 const LB = '{ return',
       RB = '}',
@@ -242,7 +242,11 @@ function deNodePretty(node, lv = 0) {
   if (t === enumDataTypes.UND || t === enumDataTypes.SYM) return PAL.UDF(node);
 }
 function deNodePlain(node, lv = 0) {
-  const t = typeof node;
+  const t = typeof node,
+        {
+    qm
+  } = this;
+  if (t === enumDataTypes.STR) return qm ? qm + node + qm : node;
 
   if (t === enumDataTypes.OBJ) {
     var _deVe$call2, _deEn$call3, _deEn$call4;
@@ -263,14 +267,14 @@ function deNodePlain(node, lv = 0) {
 }
 let deVe = function (vector, lv) {
   vectorMapper.mutate(vector, v => String(deNode.call(this, v, lv + 1)));
-  if (this.color) fluoVector.fluoVector(vector, {
+  if (this.pr) fluoVector.fluoVector(vector, {
     mutate: true
   });
   return stringifyVector.call(this, vector, lv);
 };
 let deEn = function (entries, lv) {
   entriesMapper.mutate(entries, k => String(k), v => String(deNode.call(this, v, lv + 1)));
-  if (this.color) fluoEntries.fluoEntries(entries, {
+  if (this.pr) fluoEntries.fluoEntries(entries, {
     stringPreset: IDX[lv & 7],
     mutate: true
   });
@@ -280,40 +284,35 @@ let deEn = function (entries, lv) {
 /**
  *
  * @param {*} ob
+ * @param {boolean} [pr=true]
  * @param {number} [hi] - maximum level of object to show detail
  * @param {number} [va] - maximum level to force vertical for array, root level = 0
  * @param {number} [vo] - maximum level to force vertical for object, root level = 0
  * @param {number} [wa] - maximum string length to hold array contents without wrap
  * @param {number} [wo] - maximum string length to hold object contents without wrap
  * @param {number} [wf] - maximum string length to hold function contents
- * @param {boolean} [color=true]
+ * @param {?string} [qm=null] - quotation mark
  * @returns {string|number}
  */
 
 const deco = (ob, {
+  pr = true,
   hi = 8,
   va = 0,
   vo = 0,
   wa = 32,
   wo = 64,
   wf = 64,
-  pr = true
-} = {}) => pr ? deNode.call({
+  qm = null
+} = {}) => deNode.call({
+  pr,
   hi,
   va,
   vo,
   wa,
   wo,
   wf,
-  pr
-}, ob) : deNode.call({
-  hi,
-  va,
-  vo,
-  wa,
-  wo,
-  wf,
-  pr
+  qm
 }, ob);
 const deca = ({
   hi = 8,
@@ -322,23 +321,17 @@ const deca = ({
   wa = 32,
   wo = 64,
   wf = 64,
-  pr = true
-} = {}) => pr ? deNode.bind({
+  pr = true,
+  qm = null
+} = {}) => deNode.bind({
+  pr,
   hi,
   va,
   vo,
   wa,
   wo,
   wf,
-  pr
-}) : deNode.bind({
-  hi,
-  va,
-  vo,
-  wa,
-  wo,
-  wf,
-  pr
+  qm
 });
 
 const delogger = x => {

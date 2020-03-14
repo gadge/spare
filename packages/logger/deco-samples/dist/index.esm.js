@@ -19,7 +19,7 @@ import { intExpon } from '@aryth/math';
  * @returns {string}
  */
 
-const cosmati = function (samples) {
+const cosmetics = function (samples) {
   var _lookupKeys$call;
 
   let height, sample, keys, dye, rows;
@@ -139,7 +139,7 @@ const deco = (matrix, {
   right = 0,
   delimiter = ', ',
   ansi = false
-} = {}) => cosmati.call({
+} = {}) => cosmetics.call({
   fields,
   indexed,
   direct,
@@ -187,7 +187,7 @@ const Deco = ({
   right = 0,
   delimiter = ', ',
   ansi = false
-} = {}) => cosmati.bind({
+} = {}) => cosmetics.bind({
   fields,
   indexed,
   direct,

@@ -5,23 +5,43 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var presets = require('@palett/presets');
 var util = require('@spare/util');
 var vettro = require('@spare/vettro');
-var decoEntries = require('@spare/deco-entries');
 var fluoVector = require('@palett/fluo-vector');
+var decoEntries = require('@spare/deco-entries');
 
-function cosmati(vec) {
+// from x => typeof x
+const STR = 'string';
+
+const quoteString = function (x) {
+  const {
+    qt
+  } = this;
+  return typeof x === STR ? qt + x + qt : x;
+};
+
+function cosmetics(vec) {
   if (!vec || !vec.length) return util.AEU;
   const {
-    indexed
-  } = this;
-  if (indexed) return decoEntries.deco(Object.entries(vec), this);
-  const {
-    abstract,
     head,
     tail,
     preset = presets.FRESH,
-    stringPreset = presets.JUNGLE,
-    delimiter = ',\n'
+    stringPreset = presets.JUNGLE
   } = this;
+  let {
+    abstract,
+    de,
+    qt,
+    br
+  } = this;
+  if (br && de.includes(util.LF)) de += util.TB;
+  if (qt) abstract = abstract ? x => {
+    var _ref, _x;
+
+    return _ref = (_x = x, abstract(_x)), quoteString.bind({
+      qt
+    })(_ref);
+  } : quoteString.bind({
+    qt
+  });
   let {
     raw,
     text
@@ -36,17 +56,10 @@ function cosmati(vec) {
     preset,
     stringPreset
   });
-  return text.length ? text.join(delimiter) : util.AEU;
-} // * @this {{
-// *    abstract: function(*):string,
-// *    head: number,
-// *    tail: number,
-// *    preset: {max:string,min:string,na:string},
-// *    stringPreset: {max:string,min:string,na:string},
-// *    delimiter: string,
-// *    indexed: boolean,
-// *    dash: string,
-// * }}
+  let result = text.length ? text.join(de) : util.AEU;
+  if (br) result = '[ ' + result + ' ]';
+  return result;
+}
 
 /**
  *
@@ -57,8 +70,10 @@ function cosmati(vec) {
  * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
  * @param {number} [head]
  * @param {number} [tail]
- * @param {string} [delimiter]
- * @param {string} [dash]
+ * @param {string} da
+ * @param {string} de
+ * @param {?string} qt
+ * @param {boolean} br
  * @return {*}
  */
 
@@ -69,17 +84,31 @@ const deco = (vec, {
   stringPreset = presets.JUNGLE,
   head,
   tail,
-  delimiter = ',\n',
-  dash = ') '
-} = {}) => cosmati.call({
+  dash: da = ') ',
+  delimiter: de = ',\n',
+  quote: qt = null,
+  bracket: br = false
+} = {}) => indexed ? decoEntries.deco.call({
   indexed,
   abstract,
   preset,
   stringPreset,
   head,
   tail,
-  delimiter,
-  dash
+  da,
+  de,
+  qt,
+  br
+}, vec) : cosmetics.call({
+  abstract,
+  preset,
+  stringPreset,
+  head,
+  tail,
+  da,
+  de,
+  qt,
+  br
 }, vec);
 
 /**
@@ -92,6 +121,8 @@ const deco = (vec, {
  * @param {number} [tail]
  * @param {string} [delimiter]
  * @param {string} [dash]
+ * @param {?string} [quote]
+ * @param bracket
  * @return {*}
  */
 
@@ -102,17 +133,31 @@ const Deco = ({
   stringPreset = presets.JUNGLE,
   head,
   tail,
-  delimiter = ',\n',
-  dash = ') '
-} = {}) => cosmati.bind({
+  dash: da = ') ',
+  delimiter: de = ',\n',
+  quote: qt = null,
+  bracket: br = false
+} = {}) => indexed ? decoEntries.Deco({
   indexed,
   abstract,
   preset,
   stringPreset,
   head,
   tail,
-  delimiter,
-  dash
+  da,
+  de,
+  qt,
+  br
+}) : cosmetics.bind({
+  abstract,
+  preset,
+  stringPreset,
+  head,
+  tail,
+  da,
+  de,
+  qt,
+  br
 });
 
 exports.Deco = Deco;

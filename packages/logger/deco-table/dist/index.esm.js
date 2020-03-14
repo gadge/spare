@@ -13,7 +13,7 @@ import { padTable } from '@spare/pad-table';
  * @returns {string}
  */
 
-const cosmati = function (table) {
+const cosmetics = function (table) {
   let matrix = table.rows || table.matrix,
       banner = table.head || table.banner;
   const [height, width] = size(matrix),
@@ -101,7 +101,7 @@ const deco = (table, {
   right = 0,
   ansi = true,
   fullAngle = false
-} = {}) => cosmati.call({
+} = {}) => cosmetics.call({
   direct,
   abstract,
   headAbstract,
@@ -146,7 +146,7 @@ const Deco = ({
   right = 0,
   ansi = true,
   fullAngle = false
-} = {}) => cosmati.bind({
+} = {}) => cosmetics.bind({
   direct,
   abstract,
   headAbstract,

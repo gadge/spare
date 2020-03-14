@@ -15,7 +15,7 @@ var fluoMatrix = require('@palett/fluo-matrix');
  * @returns {string}
  */
 
-const cosmati = function (matrix$1) {
+const cosmetics = function (matrix$1) {
   const [height, width] = matrix.size(matrix$1);
   if (!height || !width) return util.AEU;
   const {
@@ -70,7 +70,7 @@ const deco = (matrix$1, {
   right = 0,
   delimiter = ', ',
   ansi = false
-} = {}) => cosmati.call({
+} = {}) => cosmetics.call({
   direct,
   abstract,
   preset,
@@ -109,7 +109,7 @@ const Deco = ({
   right = 0,
   delimiter = ', ',
   ansi = false
-} = {}) => cosmati.bind({
+} = {}) => cosmetics.bind({
   direct,
   abstract,
   preset,
