@@ -12,12 +12,13 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/entries.test.js"
+    "test": "node -r @babel/register test/deco-entries.test.js"
   },
   "dependencies": {
     "@palett/fluo-entries": "^0.0.16",
     "@palett/presets": "^0.0.17",
     "@spare/enttro": "^0.1.15",
+    "@spare/enum-chars": "^0.1.15",
     "@spare/pad-entries": "^0.1.15",
     "@spare/util": "^0.1.15",
     "@vect/entries-zipper": "^0.1.12"

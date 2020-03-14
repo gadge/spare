@@ -3,7 +3,15 @@ export {
   isTab, tabify, deNaTab, beforeNaTab, afterNaTab,
   pr, br, bc, endsBracs,
 } from './src/stringHelpers'
+
 export {
-  rn, tb, aeu, RN, TB, AEU, ELLIP, CR, LF
-} from './resources/constants'
-export { DASH, SPACE, FAChars } from './resources/fullAngles'
+  quoteString, makeQuoteAbstract
+} from './src/quoteString'
+
+export {
+  RN, TB, SP, AEU, ELLIP, CR, LF
+} from '@spare/enum-chars'
+
+export {
+  DASH, SP as SPACE
+} from '@spare/enum-full-angle-chars'

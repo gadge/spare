@@ -28,6 +28,4 @@ export class VectorDecoTest {
   }
 }
 
-
-
 VectorDecoTest.test()

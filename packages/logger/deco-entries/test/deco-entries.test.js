@@ -1,6 +1,6 @@
 import { simpleEntries } from '@foba/foo'
 import { logger } from '@spare/logger'
-import { AQUA, OCEAN, PLANET } from '@palett/presets'
+import { OCEAN } from '@palett/presets'
 import { delogger } from '@spare/deco'
 import { Deco } from '../src/Deco'
 
@@ -11,4 +11,5 @@ SimpleEntries |> delogger
 for (const [key, entries] of Object.entries(SimpleEntries)) {
   key |> logger
   entries |> Deco({ head: 5, tail: 2, stringPreset: OCEAN }) |> logger
+  // entries |> Deco({ dash: ',', delimiter: ',\n', bracket: true, quote: '\'' }) |> logger
 }

@@ -9,9 +9,9 @@ const STR = 'string';
 
 const quoteString = function (x) {
   const {
-    qt
+    quote
   } = this;
-  return typeof x === STR ? qt + x + qt : x;
+  return typeof x === STR ? quote + x + quote : x;
 };
 
 function cosmetics(vec) {
@@ -24,19 +24,19 @@ function cosmetics(vec) {
   } = this;
   let {
     abstract,
-    de,
-    qt,
-    br
+    delimiter,
+    quote,
+    bracket
   } = this;
-  if (br && de.includes(LF)) de += TB;
-  if (qt) abstract = abstract ? x => {
+  if (bracket && delimiter.includes(LF)) delimiter += TB;
+  if (quote) abstract = abstract ? x => {
     var _ref, _x;
 
     return _ref = (_x = x, abstract(_x)), quoteString.bind({
-      qt
+      quote
     })(_ref);
   } : quoteString.bind({
-    qt
+    quote
   });
   let {
     raw,
@@ -52,8 +52,8 @@ function cosmetics(vec) {
     preset,
     stringPreset
   });
-  let result = text.length ? text.join(de) : AEU;
-  if (br) result = '[ ' + result + ' ]';
+  let result = text.length ? text.join(delimiter) : AEU;
+  if (bracket) result = '[ ' + result + ' ]';
   return result;
 }
 
@@ -66,10 +66,10 @@ function cosmetics(vec) {
  * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
  * @param {number} [head]
  * @param {number} [tail]
- * @param {string} da
- * @param {string} de
- * @param {?string} qt
- * @param {boolean} br
+ * @param {string} dash
+ * @param {string} delimiter
+ * @param {?string} quote
+ * @param {boolean} bracket
  * @return {*}
  */
 
@@ -80,10 +80,10 @@ const deco = (vec, {
   stringPreset = JUNGLE,
   head,
   tail,
-  dash: da = ') ',
-  delimiter: de = ',\n',
-  quote: qt = null,
-  bracket: br = false
+  dash: dash = ') ',
+  delimiter: delimiter = ',\n',
+  quote: quote = null,
+  bracket: bracket = false
 } = {}) => indexed ? deco$1.call({
   indexed,
   abstract,
@@ -91,20 +91,20 @@ const deco = (vec, {
   stringPreset,
   head,
   tail,
-  da,
-  de,
-  qt,
-  br
+  dash,
+  delimiter,
+  quote,
+  bracket
 }, vec) : cosmetics.call({
   abstract,
   preset,
   stringPreset,
   head,
   tail,
-  da,
-  de,
-  qt,
-  br
+  dash,
+  delimiter,
+  quote,
+  bracket
 }, vec);
 
 /**
@@ -129,10 +129,10 @@ const Deco = ({
   stringPreset = JUNGLE,
   head,
   tail,
-  dash: da = ') ',
-  delimiter: de = ',\n',
-  quote: qt = null,
-  bracket: br = false
+  dash: dash = ') ',
+  delimiter: delimiter = ',\n',
+  quote: quote = null,
+  bracket: bracket = false
 } = {}) => indexed ? Deco$1({
   indexed,
   abstract,
@@ -140,20 +140,20 @@ const Deco = ({
   stringPreset,
   head,
   tail,
-  da,
-  de,
-  qt,
-  br
+  dash,
+  delimiter,
+  quote,
+  bracket
 }) : cosmetics.bind({
   abstract,
   preset,
   stringPreset,
   head,
   tail,
-  da,
-  de,
-  qt,
-  br
+  dash,
+  delimiter,
+  quote,
+  bracket
 });
 
 export { Deco, deco };

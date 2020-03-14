@@ -11,10 +11,10 @@ import { deco as decoEntries } from '@spare/deco-entries'
  * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
  * @param {number} [head]
  * @param {number} [tail]
- * @param {string} da
- * @param {string} de
- * @param {?string} qt
- * @param {boolean} br
+ * @param {string} dash
+ * @param {string} delimiter
+ * @param {?string} quote
+ * @param {boolean} bracket
  * @return {*}
  */
 export const deco = (vec, {
@@ -24,19 +24,19 @@ export const deco = (vec, {
   stringPreset = JUNGLE,
   head,
   tail,
-  dash: da = ') ',
-  delimiter: de = ',\n',
-  quote: qt = null,
-  bracket: br = false,
+  dash = ') ',
+  delimiter = ',\n',
+  quote,
+  bracket,
 } = {}) =>
   indexed
     ? decoEntries
       .call({
         indexed, abstract, preset, stringPreset,
-        head, tail, da, de, qt, br
+        head, tail, dash, delimiter, quote, bracket
       }, vec)
     : cosmetics
       .call({
         abstract, preset, stringPreset,
-        head, tail, da, de, qt, br
+        head, tail, dash, delimiter, quote, bracket
       }, vec)

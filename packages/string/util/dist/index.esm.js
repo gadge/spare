@@ -1,3 +1,7 @@
+import { STR } from '@typen/enum-data-types';
+export { AEU, CR, ELLIP, LF, RN, SP, TB } from '@spare/enum-chars';
+export { DASH, SP as SPACE } from '@spare/enum-full-angle-chars';
+
 const noop = () => {};
 /**
  *
@@ -39,21 +43,24 @@ const bc = tx => '{' + tx + '}';
 
 const endsBracs = tx => tx.endsWith(')') || tx.endsWith(']');
 
-const rn = '\r\n';
-const tb = '  ';
-const aeu = '(Ø)';
-const ELLIP = '...';
-const CR = '\r';
-const LF = '\n';
-const RN = '\r\n';
-const TB = '  ';
-const AEU = '(Ø)';
+const quoteString = function (x) {
+  const {
+    qt
+  } = this;
+  return typeof x === STR ? qt + x + qt : x;
+};
+const makeQuoteAbstract = (abstract, quote) => {
+  if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return abstract;
+  if (!abstract) return quoteString.bind({
+    qt: quote
+  });
+  return x => {
+    var _ref, _x;
 
-const DASH = '－';
-const SPACE = '　';
-const FAChars = {
-  dash: DASH,
-  space: SPACE
+    return _ref = (_x = x, abstract(_x)), quoteString.bind({
+      qt: quote
+    })(_ref);
+  };
 };
 
-export { AEU, CR, DASH, ELLIP, FAChars, LF, RN, SPACE, TB, aeu, afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, noop, pr, rn, tabify, tb, totx };
+export { afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, makeQuoteAbstract, noop, pr, quoteString, tabify, totx };

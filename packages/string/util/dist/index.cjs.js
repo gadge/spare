@@ -2,6 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var enumDataTypes = require('@typen/enum-data-types');
+var enumChars = require('@spare/enum-chars');
+var enumFullAngleChars = require('@spare/enum-full-angle-chars');
+
 const noop = () => {};
 /**
  *
@@ -43,33 +47,80 @@ const bc = tx => '{' + tx + '}';
 
 const endsBracs = tx => tx.endsWith(')') || tx.endsWith(']');
 
-const rn = '\r\n';
-const tb = '  ';
-const aeu = '(Ø)';
-const ELLIP = '...';
-const CR = '\r';
-const LF = '\n';
-const RN = '\r\n';
-const TB = '  ';
-const AEU = '(Ø)';
+const quoteString = function (x) {
+  const {
+    qt
+  } = this;
+  return typeof x === enumDataTypes.STR ? qt + x + qt : x;
+};
+const makeQuoteAbstract = (abstract, quote) => {
+  if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return abstract;
+  if (!abstract) return quoteString.bind({
+    qt: quote
+  });
+  return x => {
+    var _ref, _x;
 
-const DASH = '－';
-const SPACE = '　';
-const FAChars = {
-  dash: DASH,
-  space: SPACE
+    return _ref = (_x = x, abstract(_x)), quoteString.bind({
+      qt: quote
+    })(_ref);
+  };
 };
 
-exports.AEU = AEU;
-exports.CR = CR;
-exports.DASH = DASH;
-exports.ELLIP = ELLIP;
-exports.FAChars = FAChars;
-exports.LF = LF;
-exports.RN = RN;
-exports.SPACE = SPACE;
-exports.TB = TB;
-exports.aeu = aeu;
+Object.defineProperty(exports, 'AEU', {
+  enumerable: true,
+  get: function () {
+    return enumChars.AEU;
+  }
+});
+Object.defineProperty(exports, 'CR', {
+  enumerable: true,
+  get: function () {
+    return enumChars.CR;
+  }
+});
+Object.defineProperty(exports, 'ELLIP', {
+  enumerable: true,
+  get: function () {
+    return enumChars.ELLIP;
+  }
+});
+Object.defineProperty(exports, 'LF', {
+  enumerable: true,
+  get: function () {
+    return enumChars.LF;
+  }
+});
+Object.defineProperty(exports, 'RN', {
+  enumerable: true,
+  get: function () {
+    return enumChars.RN;
+  }
+});
+Object.defineProperty(exports, 'SP', {
+  enumerable: true,
+  get: function () {
+    return enumChars.SP;
+  }
+});
+Object.defineProperty(exports, 'TB', {
+  enumerable: true,
+  get: function () {
+    return enumChars.TB;
+  }
+});
+Object.defineProperty(exports, 'DASH', {
+  enumerable: true,
+  get: function () {
+    return enumFullAngleChars.DASH;
+  }
+});
+Object.defineProperty(exports, 'SPACE', {
+  enumerable: true,
+  get: function () {
+    return enumFullAngleChars.SP;
+  }
+});
 exports.afterNaTab = afterNaTab;
 exports.bc = bc;
 exports.beforeNaTab = beforeNaTab;
@@ -77,9 +128,9 @@ exports.br = br;
 exports.deNaTab = deNaTab;
 exports.endsBracs = endsBracs;
 exports.isTab = isTab;
+exports.makeQuoteAbstract = makeQuoteAbstract;
 exports.noop = noop;
 exports.pr = pr;
-exports.rn = rn;
+exports.quoteString = quoteString;
 exports.tabify = tabify;
-exports.tb = tb;
 exports.totx = totx;

@@ -12,7 +12,8 @@ import { Deco as DecoEntries } from '@spare/deco-entries'
  * @param {number} [tail]
  * @param {string} [delimiter]
  * @param {string} [dash]
- * @param {?string} [quote]
+ * @param {?string} [delimiter]
+ * @param quote
  * @param bracket
  * @return {*}
  */
@@ -23,16 +24,16 @@ export const Deco = ({
   stringPreset = JUNGLE,
   head,
   tail,
-  dash: da = ') ',
-  delimiter: de = ',\n',
-  quote: qt = null,
-  bracket: br = false
+  dash: dash = ') ',
+  delimiter: delimiter = ',\n',
+  quote: quote = null,
+  bracket: bracket = false
 } = {}) => indexed
   ? DecoEntries({
     indexed, abstract, preset, stringPreset,
-    head, tail, da, de, qt, br
+    head, tail, dash, delimiter, quote, bracket
   })
   : cosmetics.bind({
     abstract, preset, stringPreset,
-    head, tail, da, de, qt, br
+    head, tail, dash, delimiter, quote, bracket
   })
