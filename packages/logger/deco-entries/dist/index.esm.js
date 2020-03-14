@@ -1,9 +1,10 @@
-import { FRESH, OCEAN } from '@palett/presets';
-import { AEU, LF } from '@spare/util';
+import { AEU, LF, SP } from '@spare/enum-chars';
 import { enttro } from '@spare/enttro';
 import { padEntries } from '@spare/pad-entries';
 import { fluoEntries } from '@palett/fluo-entries';
 import { Duozipper } from '@vect/entries-zipper';
+import { makeQuoteAbstract } from '@spare/util';
+import { FRESH, OCEAN } from '@palett/presets';
 
 const HR_ENTRY = ['..', '..'];
 
@@ -16,11 +17,14 @@ const cosmetics = function (entries) {
     stringPreset,
     head,
     tail,
-    ansi,
-    da,
-    de,
-    qt,
-    br
+    ansi
+  } = this;
+  let {
+    dash,
+    delimiter,
+    keyQuote,
+    quote,
+    bracket
   } = this;
   const {
     raw,
@@ -28,8 +32,8 @@ const cosmetics = function (entries) {
   } = enttro(entries, {
     head,
     tail,
-    keyAbstract,
-    abstract,
+    keyAbstract: makeQuoteAbstract(keyAbstract, keyQuote || quote),
+    abstract: makeQuoteAbstract(abstract, quote),
     hr: HR_ENTRY
   });
   const dye = preset && fluoEntries(raw, {
@@ -37,101 +41,67 @@ const cosmetics = function (entries) {
     stringPreset,
     colorant: true
   });
-  entries = de.includes(LF) ? padEntries(text, {
+  entries = delimiter.includes(LF) ? (bracket ? delimiter += SP : null, padEntries(text, {
     raw,
     dye,
     ansi: preset || ansi
-  }) : preset ? Duozipper((t, d) => {
+  })) : preset ? Duozipper((t, d) => {
     var _t;
 
     return _t = t, d(_t);
   })(text, dye) : text;
-  return entries.length ? entries.map(([k, v]) => k + da + v).join(de) : AEU;
+  return entries.length ? bracket ? '[' + entries.map(([k, v]) => '[' + k + dash + v + ']').join(delimiter) + ']' : entries.map(([k, v]) => k + dash + v).join(delimiter) : AEU;
+};
+
+const presetEntriesOptions = o => {
+  o.preset = o.preset || FRESH;
+  o.preset = o.preset || OCEAN;
+  o.dash = o.dash || ' > ';
+  o.delimiter = o.delimiter || '\n';
+  return o;
 };
 
 /***
  *
+ * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
+ *
  * @param {[*,*][]} entries
- * @param {function(*):string} [keyAbstract]
- * @param {function(*):string} [abstract]
- * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [preset]
- * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
- * @param {number} [head]
- * @param {number} [tail]
- * @param {string} [da=' => ']
- * @param {string} [de='\n']
- * @param {?string} [qt=null]
- * @param {boolean} [br=false]
- * @param {boolean} [ansi=false]
+ * @param {Object} options
+ * @param {function(*):string} [options.keyAbstract]
+ * @param {function(*):string} [options.abstract]
+ * @param {Preset} [options.preset]
+ * @param {Preset} [options.stringPreset]
+ * @param {number} [options.head]
+ * @param {number} [options.tail]
+ * @param {string} [options.dash=' > ']
+ * @param {string} [options.delimiter='\n']
+ * @param {string} [options.quote]
+ * @param {boolean} [options.bracket]
+ * @param {boolean} [options.ansi]
  * @returns {string}
  */
 
-const deco = (entries, {
-  keyAbstract,
-  abstract,
-  preset = FRESH,
-  stringPreset = OCEAN,
-  head,
-  tail,
-  ansi = false,
-  dash: da = ' > ',
-  delimiter: de = ',\n',
-  quote: qt = null,
-  bracket: br = false
-} = {}) => cosmetics.call({
-  keyAbstract,
-  abstract,
-  preset,
-  stringPreset,
-  head,
-  tail,
-  ansi,
-  da,
-  de,
-  qt,
-  br
-}, entries);
+const deco = (entries, options = {}) => cosmetics.call(presetEntriesOptions(options), entries);
 
 /***
  *
- * @param {function(*):string} [keyAbstract]
- * @param {function(*):string} [abstract]
- * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [preset]
- * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
- * @param {number} [head]
- * @param {number} [tail]
- * @param {string} [dash=' => ']
- * @param {string} [de='\n']
- * @param qt
- * @param {boolean} [br=false]
- * @param {boolean} [ansi=false]
+ * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
+ *
+ * @param {Object} options
+ * @param {function(*):string} [options.keyAbstract]
+ * @param {function(*):string} [options.abstract]
+ * @param {Preset} [options.preset]
+ * @param {Preset} [options.stringPreset]
+ * @param {number} [options.head]
+ * @param {number} [options.tail]
+ * @param {string} [options.dash=' > ']
+ * @param {string} [options.delimiter='\n']
+ * @param {string} [options.quote]
+ * @param {boolean} [options.bracket]
+ * @param {boolean} [options.ansi]
  * @returns {string}
  */
 
-const Deco = ({
-  keyAbstract,
-  abstract,
-  preset = FRESH,
-  stringPreset = OCEAN,
-  head,
-  tail,
-  ansi = false,
-  dash: da = ' > ',
-  delimiter: de = ',\n',
-  quote: qt = null,
-  bracket: br = false
-} = {}) => cosmetics.bind({
-  keyAbstract,
-  abstract,
-  preset,
-  stringPreset,
-  head,
-  tail,
-  ansi,
-  da,
-  de,
-  qt,
-  br
-});
+const Deco = (options = {}) => cosmetics.bind(presetEntriesOptions(options));
 
 export { Deco, deco };
