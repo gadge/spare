@@ -1,6 +1,6 @@
 import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
 import { POINTWISE } from '@vect/matrix'
-import { cosmati } from './cosmati'
+import { cosmetics } from './cosmetics'
 
 /**
  *
@@ -36,7 +36,7 @@ export const deco = (crostab, {
     fullAngle = false,
   } = {}
 ) =>
-  cosmati.call(
+  cosmetics.call(
     {
       direct, abstract, bannerAbstract, sideAbstract,
       preset, stringPreset, labelPreset,

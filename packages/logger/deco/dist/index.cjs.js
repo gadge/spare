@@ -2,7 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enums = require('@typen/enums');
+var enumDataTypes = require('@typen/enum-data-types');
+var enumObjectTypes = require('@typen/enum-object-types');
 var numLoose = require('@typen/num-loose');
 var fluoVector = require('@palett/fluo-vector');
 var fluoEntries = require('@palett/fluo-entries');
@@ -18,6 +19,7 @@ var comparer = require('@aryth/comparer');
 var padString = require('@spare/pad-string');
 var columnMapper = require('@vect/column-mapper');
 var util = require('@spare/util');
+var enums = require('@typen/enums');
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
 const L = '{ ',
@@ -206,62 +208,9 @@ const toLambda = des => {
   return li && ri ? des.slice(0, li) + ARROW + des.slice(li + LB.length, ri) : des;
 };
 
-/**
- *
- * @param {*} node
- * @param {number} [lv]
- * @return {string}
- */
-
 function deNode(node, lv = 0) {
-  if (!this.color) return deNodePlain.call(this, node, lv);
-
-  switch (typeof node) {
-    case enums.STR:
-      return numLoose.isNumeric(node) ? node : PAL.STR(node);
-
-    case enums.OBJ:
-      return deOb.call(this, node, lv);
-
-    case enums.NUM:
-    case enums.BIG:
-      return node;
-
-    case enums.FUN:
-      return deFn.call(this, node);
-
-    case enums.BOO:
-      return PAL.BOO(node);
-
-    case enums.UND:
-    case enums.SYM:
-      return PAL.UDF(node);
-  }
+  return this.pr ? deNodePretty.call(this, node, lv) : deNodePlain.call(this, node, lv);
 }
-const deOb = function (node, lv) {
-  var _node, _deVe$call, _deEn$call, _deEn$call2;
-
-  const {
-    hi
-  } = this;
-
-  switch (_node = node, typ.typ(_node)) {
-    case enums.ARRAY:
-      return lv >= hi ? '[array]' : (_deVe$call = deVe.call(this, node.slice(), lv), BRK[lv & 7](_deVe$call));
-
-    case enums.OBJECT:
-      return lv >= hi ? '{object}' : (_deEn$call = deEn.call(this, Object.entries(node), lv), BRC[lv & 7](_deEn$call));
-
-    case enums.MAP:
-      return lv >= hi ? '(map)' : (_deEn$call2 = deEn.call(this, [...node.entries()], lv), BRK[lv & 7](_deEn$call2));
-
-    case enums.SET:
-      return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
-
-    default:
-      return `${node}`;
-  }
-};
 /**
  *
  * @param {*} node
@@ -269,24 +218,47 @@ const deOb = function (node, lv) {
  * @return {string}
  */
 
-function deNodePlain(node, lv = 0) {
+function deNodePretty(node, lv = 0) {
   const t = typeof node;
+  if (t === enumDataTypes.STR) return numLoose.isNumeric(node) ? node : PAL.STR(node);
+  if (t === enumDataTypes.NUM || t === enumDataTypes.BIG) return node;
 
-  if (t === enums.OBJ) {
-    var _node2, _deVe$call2, _deEn$call3, _deEn$call4;
+  if (t === enumDataTypes.OBJ) {
+    var _deVe$call, _deEn$call, _deEn$call2;
 
     const {
       hi
     } = this,
-          pt = (_node2 = node, typ.typ(_node2));
-    if (pt === enums.ARRAY) return lv >= hi ? '[array]' : (_deVe$call2 = deVe.call(this, node.slice(), lv), brk(_deVe$call2));
-    if (pt === enums.OBJECT) return lv >= hi ? '{object}' : (_deEn$call3 = deEn.call(this, Object.entries(node), lv), brc(_deEn$call3));
-    if (pt === enums.MAP) return lv >= hi ? '(map)' : (_deEn$call4 = deEn.call(this, [...node.entries()], lv), brk(_deEn$call4));
-    if (pt === enums.SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
+          pt = typ.typ(node);
+    if (pt === enumObjectTypes.ARRAY) return lv >= hi ? '[array]' : (_deVe$call = deVe.call(this, node.slice(), lv), BRK[lv & 7](_deVe$call));
+    if (pt === enumObjectTypes.OBJECT) return lv >= hi ? '{object}' : (_deEn$call = deEn.call(this, Object.entries(node), lv), BRC[lv & 7](_deEn$call));
+    if (pt === enumObjectTypes.MAP) return lv >= hi ? '(map)' : (_deEn$call2 = deEn.call(this, [...node.entries()], lv), BRK[lv & 7](_deEn$call2));
+    if (pt === enumObjectTypes.SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
     return `${node}`;
   }
 
-  if (t === enums.FUN) return deFn.call(this, node);
+  if (t === enumDataTypes.FUN) return deFn.call(this, node);
+  if (t === enumDataTypes.BOO) return PAL.BOO(node);
+  if (t === enumDataTypes.UND || t === enumDataTypes.SYM) return PAL.UDF(node);
+}
+function deNodePlain(node, lv = 0) {
+  const t = typeof node;
+
+  if (t === enumDataTypes.OBJ) {
+    var _deVe$call2, _deEn$call3, _deEn$call4;
+
+    const {
+      hi
+    } = this,
+          pt = typ.typ(node);
+    if (pt === enumObjectTypes.ARRAY) return lv >= hi ? '[array]' : (_deVe$call2 = deVe.call(this, node.slice(), lv), brk(_deVe$call2));
+    if (pt === enumObjectTypes.OBJECT) return lv >= hi ? '{object}' : (_deEn$call3 = deEn.call(this, Object.entries(node), lv), brc(_deEn$call3));
+    if (pt === enumObjectTypes.MAP) return lv >= hi ? '(map)' : (_deEn$call4 = deEn.call(this, [...node.entries()], lv), brk(_deEn$call4));
+    if (pt === enumObjectTypes.SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
+    return `${node}`;
+  }
+
+  if (t === enumDataTypes.FUN) return deFn.call(this, node);
   return node;
 }
 let deVe = function (vector, lv) {
@@ -325,15 +297,23 @@ const deco = (ob, {
   wa = 32,
   wo = 64,
   wf = 64,
-  color = true
-} = {}) => deNode.call({
+  pr = true
+} = {}) => pr ? deNode.call({
   hi,
   va,
   vo,
   wa,
   wo,
   wf,
-  color
+  pr
+}, ob) : deNode.call({
+  hi,
+  va,
+  vo,
+  wa,
+  wo,
+  wf,
+  pr
 }, ob);
 const deca = ({
   hi = 8,
@@ -342,15 +322,23 @@ const deca = ({
   wa = 32,
   wo = 64,
   wf = 64,
-  color = true
-} = {}) => deNode.bind({
+  pr = true
+} = {}) => pr ? deNode.bind({
   hi,
   va,
   vo,
   wa,
   wo,
   wf,
-  color
+  pr
+}) : deNode.bind({
+  hi,
+  va,
+  vo,
+  wa,
+  wo,
+  wf,
+  pr
 });
 
 const delogger = x => {

@@ -12,7 +12,7 @@ import { padTable } from '@spare/pad-table'
  * @param {Object} table
  * @returns {string}
  */
-export const cosmati = function (table) {
+export const cosmetics = function (table) {
   let matrix = table.rows || table.matrix, banner = table.head || table.banner
   const [height, width] = size(matrix), labelWidth = banner && banner.length
   if (!height || !width || !labelWidth) return AEU

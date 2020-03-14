@@ -1,5 +1,5 @@
 import { FRESH, OCEAN } from '@palett/presets'
-import { cosmati } from './cosmati'
+import { cosmetics } from './cosmetics'
 
 /***
  *
@@ -10,7 +10,9 @@ import { cosmati } from './cosmati'
  * @param {number} [head]
  * @param {number} [tail]
  * @param {string} [dash=' => ']
- * @param {string} [delimiter='\n']
+ * @param {string} [de='\n']
+ * @param qt
+ * @param {boolean} [br=false]
  * @param {boolean} [ansi=false]
  * @returns {string}
  */
@@ -21,9 +23,12 @@ export const Deco = ({
   stringPreset = OCEAN,
   head,
   tail,
-  dash = ' > ',
-  delimiter = ',\n',
-  ansi = false
-} = {}) => cosmati.bind({
-  keyAbstract, abstract, preset, stringPreset, head, tail, dash, delimiter, ansi
+  ansi = false,
+  dash: da = ' > ',
+  delimiter: de = ',\n',
+  quote: qt = null,
+  bracket: br = false
+} = {}) => cosmetics.bind({
+  keyAbstract, abstract, preset, stringPreset,
+  head, tail, ansi, da, de, qt, br
 })

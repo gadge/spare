@@ -1,6 +1,6 @@
 import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
 import { COLUMNWISE } from '@vect/matrix'
-import { cosmati } from './cosmati'
+import { cosmetics } from './cosmetics'
 
 /**
  *
@@ -33,7 +33,7 @@ export const deco = (table, {
     ansi = true,
     fullAngle = false,
   } = {}
-) => cosmati.call(
+) => cosmetics.call(
   { direct, abstract, headAbstract, preset, stringPreset, labelPreset, top, left, bottom, right, ansi, fullAngle },
   table
 )

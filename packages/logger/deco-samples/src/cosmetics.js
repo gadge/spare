@@ -16,7 +16,7 @@ import { intExpon } from '@aryth/math'
  * @param {Object[]} samples
  * @returns {string}
  */
-export const cosmati = function (samples) {
+export const cosmetics = function (samples) {
   let height, sample, keys, dye, rows
   if (!(height = samples.length)) return AEU
   if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return AEU

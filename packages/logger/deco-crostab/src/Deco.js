@@ -1,6 +1,6 @@
 import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
 import { POINTWISE } from '@vect/matrix'
-import { cosmati } from './cosmati'
+import { cosmetics } from './cosmetics'
 
 /**
  *
@@ -35,7 +35,7 @@ export const Deco = ({
     fullAngle = false,
   } = {}
 ) =>
-  cosmati.bind({
+  cosmetics.bind({
     direct, abstract, bannerAbstract, sideAbstract,
     preset, stringPreset, labelPreset,
     top, left, bottom, right, ansi, fullAngle,

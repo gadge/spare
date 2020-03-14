@@ -1,4 +1,5 @@
-import { FUN, SYM, UND, BOO, BIG, NUM, OBJ, STR, SET, MAP, OBJECT, ARRAY } from '@typen/enums';
+import { STR, NUM, BIG, OBJ, FUN as FUN$1, BOO, UND, SYM } from '@typen/enum-data-types';
+import { ARRAY, OBJECT, MAP, SET } from '@typen/enum-object-types';
 import { isNumeric } from '@typen/num-loose';
 import { fluoVector } from '@palett/fluo-vector';
 import { fluoEntries } from '@palett/fluo-entries';
@@ -14,6 +15,7 @@ import { max } from '@aryth/comparer';
 import { LPad } from '@spare/pad-string';
 import { mutate } from '@vect/column-mapper';
 import { TB, LF } from '@spare/util';
+import { FUN } from '@typen/enums';
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
 const L = '{ ',
@@ -202,62 +204,9 @@ const toLambda = des => {
   return li && ri ? des.slice(0, li) + ARROW + des.slice(li + LB.length, ri) : des;
 };
 
-/**
- *
- * @param {*} node
- * @param {number} [lv]
- * @return {string}
- */
-
 function deNode(node, lv = 0) {
-  if (!this.color) return deNodePlain.call(this, node, lv);
-
-  switch (typeof node) {
-    case STR:
-      return isNumeric(node) ? node : PAL.STR(node);
-
-    case OBJ:
-      return deOb.call(this, node, lv);
-
-    case NUM:
-    case BIG:
-      return node;
-
-    case FUN:
-      return deFn.call(this, node);
-
-    case BOO:
-      return PAL.BOO(node);
-
-    case UND:
-    case SYM:
-      return PAL.UDF(node);
-  }
+  return this.pr ? deNodePretty.call(this, node, lv) : deNodePlain.call(this, node, lv);
 }
-const deOb = function (node, lv) {
-  var _node, _deVe$call, _deEn$call, _deEn$call2;
-
-  const {
-    hi
-  } = this;
-
-  switch (_node = node, typ(_node)) {
-    case ARRAY:
-      return lv >= hi ? '[array]' : (_deVe$call = deVe.call(this, node.slice(), lv), BRK[lv & 7](_deVe$call));
-
-    case OBJECT:
-      return lv >= hi ? '{object}' : (_deEn$call = deEn.call(this, Object.entries(node), lv), BRC[lv & 7](_deEn$call));
-
-    case MAP:
-      return lv >= hi ? '(map)' : (_deEn$call2 = deEn.call(this, [...node.entries()], lv), BRK[lv & 7](_deEn$call2));
-
-    case SET:
-      return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
-
-    default:
-      return `${node}`;
-  }
-};
 /**
  *
  * @param {*} node
@@ -265,16 +214,39 @@ const deOb = function (node, lv) {
  * @return {string}
  */
 
-function deNodePlain(node, lv = 0) {
+function deNodePretty(node, lv = 0) {
   const t = typeof node;
+  if (t === STR) return isNumeric(node) ? node : PAL.STR(node);
+  if (t === NUM || t === BIG) return node;
 
   if (t === OBJ) {
-    var _node2, _deVe$call2, _deEn$call3, _deEn$call4;
+    var _deVe$call, _deEn$call, _deEn$call2;
 
     const {
       hi
     } = this,
-          pt = (_node2 = node, typ(_node2));
+          pt = typ(node);
+    if (pt === ARRAY) return lv >= hi ? '[array]' : (_deVe$call = deVe.call(this, node.slice(), lv), BRK[lv & 7](_deVe$call));
+    if (pt === OBJECT) return lv >= hi ? '{object}' : (_deEn$call = deEn.call(this, Object.entries(node), lv), BRC[lv & 7](_deEn$call));
+    if (pt === MAP) return lv >= hi ? '(map)' : (_deEn$call2 = deEn.call(this, [...node.entries()], lv), BRK[lv & 7](_deEn$call2));
+    if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`;
+    return `${node}`;
+  }
+
+  if (t === FUN$1) return deFn.call(this, node);
+  if (t === BOO) return PAL.BOO(node);
+  if (t === UND || t === SYM) return PAL.UDF(node);
+}
+function deNodePlain(node, lv = 0) {
+  const t = typeof node;
+
+  if (t === OBJ) {
+    var _deVe$call2, _deEn$call3, _deEn$call4;
+
+    const {
+      hi
+    } = this,
+          pt = typ(node);
     if (pt === ARRAY) return lv >= hi ? '[array]' : (_deVe$call2 = deVe.call(this, node.slice(), lv), brk(_deVe$call2));
     if (pt === OBJECT) return lv >= hi ? '{object}' : (_deEn$call3 = deEn.call(this, Object.entries(node), lv), brc(_deEn$call3));
     if (pt === MAP) return lv >= hi ? '(map)' : (_deEn$call4 = deEn.call(this, [...node.entries()], lv), brk(_deEn$call4));
@@ -282,7 +254,7 @@ function deNodePlain(node, lv = 0) {
     return `${node}`;
   }
 
-  if (t === FUN) return deFn.call(this, node);
+  if (t === FUN$1) return deFn.call(this, node);
   return node;
 }
 let deVe = function (vector, lv) {
@@ -321,15 +293,23 @@ const deco = (ob, {
   wa = 32,
   wo = 64,
   wf = 64,
-  color = true
-} = {}) => deNode.call({
+  pr = true
+} = {}) => pr ? deNode.call({
   hi,
   va,
   vo,
   wa,
   wo,
   wf,
-  color
+  pr
+}, ob) : deNode.call({
+  hi,
+  va,
+  vo,
+  wa,
+  wo,
+  wf,
+  pr
 }, ob);
 const deca = ({
   hi = 8,
@@ -338,15 +318,23 @@ const deca = ({
   wa = 32,
   wo = 64,
   wf = 64,
-  color = true
-} = {}) => deNode.bind({
+  pr = true
+} = {}) => pr ? deNode.bind({
   hi,
   va,
   vo,
   wa,
   wo,
   wf,
-  color
+  pr
+}) : deNode.bind({
+  hi,
+  va,
+  vo,
+  wa,
+  wo,
+  wf,
+  pr
 });
 
 const delogger = x => {

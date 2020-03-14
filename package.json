@@ -10,7 +10,7 @@
     "ckv": "yarn outdated --latest",
     "upint": "yarn upgrade-interactive --latest",
     "build": "lerna exec --parallel -- rollup -c ../../../rollup.config.js",
-    "build-specific": "lerna exec --scope=@spare/enum-encodings -- rollup -c ../../../rollup.config.js",
+    "build-specific": "lerna exec --scope=@spare/deco -- rollup -c ../../../rollup.config.js",
     "watch": "lerna exec --parallel -- rollup -c ../../../rollup.config.js -w",
     "watch-specific": "lerna exec --scope=kalorie -- rollup -c ../../../rollup.config.js -w"
   },

@@ -10,7 +10,7 @@ import { ROWWISE, size } from '@vect/matrix'
  * @param {*[][]} matrix
  * @returns {string}
  */
-export const cosmati = function (matrix) {
+export const cosmetics = function (matrix) {
   const [height, width] = size(matrix)
   if (!height || !width) return AEU
   const { direct = ROWWISE, preset = FRESH, stringPreset = JUNGLE, delimiter = ', ', ansi = false } = this

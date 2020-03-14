@@ -1,10 +1,10 @@
-import { logger, logNeL, says } from '@spare/logger'
+import { logger, says } from '@spare/logger'
 import { xr } from '@spare/xr'
-import { deco } from '../src/deco'
 import { simpleVectors } from '@foba/foo'
 import { FobaNum } from '@foba/vector'
 import { rand } from '@aryth/rand'
 import { Deco } from '../src/Deco'
+import { stringify } from '../src/stringify'
 
 const Strangers = {
   empty: [],
@@ -22,9 +22,12 @@ export class VectorDecoTest {
   static test () {
     for (const [key, vector] of Object.entries(candidates)) {
       xr(key) |> logger
-      vector |> Deco({ head: 4, tail: 4, indexed: true }) |> says[key]
+      stringify(vector) |> says[key]
+      vector |> Deco({ head: 4, tail: 4, indexed: false, bracket: true, quote: '\'' }) |> says[key]
     }
   }
 }
+
+
 
 VectorDecoTest.test()

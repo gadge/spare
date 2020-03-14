@@ -1,4 +1,4 @@
-import { deca} from '../index'
+import { deca } from '../src/deco'
 import { Basics, Matrices, Misc, Objects, Vectors } from './candidates'
 import { logger } from '@spare/logger'
 

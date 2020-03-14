@@ -1,5 +1,6 @@
 import { FRESH, JUNGLE } from '@palett/presets'
-import { cosmati } from './cosmati'
+import { cosmetics } from './cosmetics'
+import { Deco as DecoEntries } from '@spare/deco-entries'
 
 /**
  *
@@ -11,6 +12,8 @@ import { cosmati } from './cosmati'
  * @param {number} [tail]
  * @param {string} [delimiter]
  * @param {string} [dash]
+ * @param {?string} [quote]
+ * @param bracket
  * @return {*}
  */
 export const Deco = ({
@@ -20,9 +23,16 @@ export const Deco = ({
   stringPreset = JUNGLE,
   head,
   tail,
-  delimiter = ',\n',
-  dash = ') '
-} = {}) => cosmati.bind({
-  indexed, abstract, preset, stringPreset,
-  head, tail, delimiter, dash,
-})
+  dash: da = ') ',
+  delimiter: de = ',\n',
+  quote: qt = null,
+  bracket: br = false
+} = {}) => indexed
+  ? DecoEntries({
+    indexed, abstract, preset, stringPreset,
+    head, tail, da, de, qt, br
+  })
+  : cosmetics.bind({
+    abstract, preset, stringPreset,
+    head, tail, da, de, qt, br
+  })

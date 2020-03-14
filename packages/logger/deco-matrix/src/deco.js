@@ -1,6 +1,6 @@
 import { FRESH, JUNGLE } from '@palett/presets'
 import { ROWWISE } from '@vect/matrix'
-import { cosmati } from './cosmati'
+import { cosmetics } from './cosmetics'
 
 /**
  *
@@ -29,7 +29,7 @@ export const deco = (matrix, {
     delimiter = ', ',
     ansi = false
   } = {}
-) => cosmati.call({
+) => cosmetics.call({
     direct, abstract, preset, stringPreset,
     top, left, bottom, right, delimiter, ansi
   },

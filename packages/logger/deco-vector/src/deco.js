@@ -1,5 +1,6 @@
 import { FRESH, JUNGLE } from '@palett/presets'
-import { cosmati } from './cosmati'
+import { cosmetics } from './cosmetics'
+import { deco as decoEntries } from '@spare/deco-entries'
 
 /**
  *
@@ -10,8 +11,10 @@ import { cosmati } from './cosmati'
  * @param {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} [stringPreset]
  * @param {number} [head]
  * @param {number} [tail]
- * @param {string} [delimiter]
- * @param {string} [dash]
+ * @param {string} da
+ * @param {string} de
+ * @param {?string} qt
+ * @param {boolean} br
  * @return {*}
  */
 export const deco = (vec, {
@@ -21,10 +24,19 @@ export const deco = (vec, {
   stringPreset = JUNGLE,
   head,
   tail,
-  delimiter = ',\n',
-  dash = ') '
-} = {}) => cosmati.call({
-    indexed, abstract, preset, stringPreset,
-    head, tail, delimiter, dash
-  },
-  vec)
+  dash: da = ') ',
+  delimiter: de = ',\n',
+  quote: qt = null,
+  bracket: br = false,
+} = {}) =>
+  indexed
+    ? decoEntries
+      .call({
+        indexed, abstract, preset, stringPreset,
+        head, tail, da, de, qt, br
+      }, vec)
+    : cosmetics
+      .call({
+        abstract, preset, stringPreset,
+        head, tail, da, de, qt, br
+      }, vec)
