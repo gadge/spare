@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-table",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -21,7 +21,7 @@
     "@spare/deco-util": "^0.1.18",
     "@spare/enum-chars": "^0.1.18",
     "@spare/mattro": "^0.1.18",
-    "@spare/pad-table": "^0.1.18",
+    "@spare/pad-table": "^0.1.20",
     "@spare/vettro": "^0.1.18",
     "@vect/matrix": "^0.1.12"
   },
