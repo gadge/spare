@@ -2,33 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var phrasing = require('@spare/phrasing');
 var lange = require('@spare/lange');
 var util = require('@spare/util');
-
-const CAMEL = /[A-Z]+|[0-9]+/g;
-const DASHED = /[A-Za-z\d]+/g;
-
-/**
- * Camel case phrase -> Lowercase dashed phrase
- * @example 'TheWallstreetJournal2025WSJ' -> 'the wallstreet journal 2025 wsj'
- * @param {string} camel camel-case phrase
- * @param {string} de
- * @returns {string} lowercase dashed phrase
- */
-
-const camelToLowerDashed = (camel, de = ' ') => camel.replace(CAMEL, it => de + it.toLowerCase()).trim();
-/**
- * Dashed phrase -> Camel case phrase
- * @example 'THE_WALLSTREET_JOURNAL-2019.FOR.THE.FANS' -> 'theWallstreetJournal2019ForTheFans'
- * @param {string} dashed dashed phrase
- * @returns {string} camel phrase
- */
-
-
-const dashedToCamel = (dashed, de = '') => {
-  const matches = dashed.match(DASHED);
-  return matches ? matches[0].toLowerCase() + matches.slice(1).map(wd => wd[0].toUpperCase() + wd.slice(1).toLowerCase()).join(de) : dashed;
-};
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -127,9 +103,19 @@ const tag = (label, item) => {
   return `${key} (${text})`;
 };
 
+Object.defineProperty(exports, 'camelToLowerDashed', {
+  enumerable: true,
+  get: function () {
+    return phrasing.camelToSnake;
+  }
+});
+Object.defineProperty(exports, 'dashedToCamel', {
+  enumerable: true,
+  get: function () {
+    return phrasing.snakeToCamel;
+  }
+});
 exports.afterNonTab = afterNonTab;
-exports.camelToLowerDashed = camelToLowerDashed;
-exports.dashedToCamel = dashedToCamel;
 exports.hasChn = hasChn;
 exports.indexNonTab = indexNonTab;
 exports.narrow = narrow;

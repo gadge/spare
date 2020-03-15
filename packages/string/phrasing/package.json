@@ -1,5 +1,5 @@
 {
-  "name": "@spare/string",
+  "name": "@spare/phrasing",
   "version": "0.1.18",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
@@ -15,9 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.1.18",
-    "@spare/util": "^0.1.18",
-    "@spare/phrasing": "^0.1.18"
+    "@vect/vector-mapper": "^0.1.12"
   },
   "repository": {
     "type": "git",

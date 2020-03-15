@@ -218,8 +218,8 @@ var _prn = new WeakMap();
 
 /**
  *
- * @param {string} word
- * @param {boolean} color
+ * @param {string} [word]
+ * @param {boolean} [color]
  * @returns {(Inka|object<string,Inka>)}
  * @constructor
  */

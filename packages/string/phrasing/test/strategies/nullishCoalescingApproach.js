@@ -1,15 +1,14 @@
-import { dashedToCamel } from '../src/phraseTransform'
 import { logger } from '@spare/logger'
-import { DASHED } from '../src/enums/PhraseReg'
+import { WORD } from '../../resources/regexes'
 
 const dashedToUpperCamel = (dashed, de = '') =>
   dashed
-    ?.match(DASHED)
+    ?.match(WORD)
     ?.map(wd => wd[0].toUpperCase() + wd.slice(1).toLowerCase())
     .join(de)
   ?? dashed
 
-export class PhraseTransformTest {
+export class NullishCoalescingApproach {
   static test () {
     const candidates = [
       'logger-vector',
@@ -24,4 +23,4 @@ export class PhraseTransformTest {
   }
 }
 
-PhraseTransformTest.test()
+NullishCoalescingApproach.test()

@@ -38,6 +38,7 @@
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@valjoux/strategies": "^0.0.5",
     "crostab": "^0.3.9",
     "elprimero": "^0.1.47",
     "lerna": "^3.20.2",
