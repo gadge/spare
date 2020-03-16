@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@analys/crostab-init": "^0.0.13",
-    "@analys/table-init": "^0.0.13",
+    "@analys/crostab-init": "^0.0.14",
+    "@analys/table-init": "^0.0.14",
     "@spare/deco-crostab": "^0.1.20",
     "@spare/deco-entries": "^0.1.18",
     "@spare/deco-matrix": "^0.1.18",

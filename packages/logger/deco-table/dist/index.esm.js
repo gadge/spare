@@ -8,7 +8,7 @@ import { padTable } from '@spare/pad-table';
 import { presetTableOptions } from '@spare/deco-util';
 
 const cosmetics = function (table) {
-  let matrix = table.rows || table.matrix.bind(table),
+  let matrix = table.rows || table.matrix,
       banner = table.head || table.banner;
   const [height, width] = size(matrix),
         labelWidth = banner && banner.length;

@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.0.11",
+    "@aryth/comparer": "^0.0.13",
     "@palett/cards": "^0.0.17",
     "@palett/convert": "^0.0.17",
     "@palett/dye": "^0.0.17",
@@ -30,11 +30,11 @@
     "@typen/enums": "^0.0.3",
     "@typen/num-loose": "^0.0.3",
     "@typen/typ": "^0.0.3",
-    "@vect/column-indicator": "^0.1.12",
-    "@vect/column-mapper": "^0.1.12",
-    "@vect/entries-mapper": "^0.1.12",
-    "@vect/object-mapper": "^0.1.12",
-    "@vect/vector-mapper": "^0.1.12"
+    "@vect/column-indicator": "^0.1.15",
+    "@vect/column-mapper": "^0.1.15",
+    "@vect/entries-mapper": "^0.1.15",
+    "@vect/object-mapper": "^0.1.15",
+    "@vect/vector-mapper": "^0.1.15"
   },
   "repository": {
     "type": "git",

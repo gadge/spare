@@ -21,7 +21,7 @@
     "@spare/enum-chars": "^0.1.18",
     "@spare/mattro": "^0.1.18",
     "@spare/pad-matrix": "^0.1.18",
-    "@vect/matrix": "^0.1.12"
+    "@vect/matrix": "^0.1.15"
   },
   "repository": {
     "type": "git",

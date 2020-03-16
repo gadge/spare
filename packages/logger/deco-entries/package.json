@@ -21,7 +21,7 @@
     "@spare/enttro": "^0.1.18",
     "@spare/enum-chars": "^0.1.18",
     "@spare/pad-entries": "^0.1.18",
-    "@vect/entries-zipper": "^0.1.12"
+    "@vect/entries-zipper": "^0.1.15"
   },
   "repository": {
     "type": "git",
