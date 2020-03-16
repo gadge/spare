@@ -24,8 +24,8 @@ export class VectorDecoTest {
       vector |> Deco({
         head: 4,
         tail: 4,
-        indexed: false,
-        bracket: true,
+        indexed: true,
+        bracket: false,
         quote: '\'',
         discrete: false
       }) |> says[key]

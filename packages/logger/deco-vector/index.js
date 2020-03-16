@@ -26,7 +26,7 @@ export { cosmetics }
  * @returns {string}
  */
 export const Deco = (options = {}) => options.indexed
-  ? DecoEntries(presetVectorOptions(options))
+  ? vec => Object.entries(vec) |> DecoEntries(presetVectorOptions(options))
   : cosmetics.bind(presetVectorOptions(options))
 
 /***
@@ -48,5 +48,5 @@ export const Deco = (options = {}) => options.indexed
  */
 export const deco = (vector, options = {}) =>
   options.indexed
-    ? decoEntries(vector, presetVectorOptions(options))
+    ? decoEntries(Object.entries(vector), presetVectorOptions(options))
     : cosmetics.call(presetVectorOptions(options), vector)
