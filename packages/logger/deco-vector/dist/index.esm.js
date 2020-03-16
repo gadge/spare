@@ -60,7 +60,11 @@ function cosmetics(vec) {
  * @returns {string}
  */
 
-const Deco = (options = {}) => options.indexed ? Deco$1(presetVectorOptions(options)) : cosmetics.bind(presetVectorOptions(options));
+const Deco = (options = {}) => options.indexed ? vec => {
+  var _Object$entries;
+
+  return _Object$entries = Object.entries(vec), Deco$1(presetVectorOptions(options))(_Object$entries);
+} : cosmetics.bind(presetVectorOptions(options));
 /***
  *
  * @param {*[]} vector
@@ -79,6 +83,6 @@ const Deco = (options = {}) => options.indexed ? Deco$1(presetVectorOptions(opti
  * @returns {string}
  */
 
-const deco = (vector, options = {}) => options.indexed ? deco$1(vector, presetVectorOptions(options)) : cosmetics.call(presetVectorOptions(options), vector);
+const deco = (vector, options = {}) => options.indexed ? deco$1(Object.entries(vector), presetVectorOptions(options)) : cosmetics.call(presetVectorOptions(options), vector);
 
 export { Deco, cosmetics, deco };
