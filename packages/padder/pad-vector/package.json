@@ -17,7 +17,7 @@
   "dependencies": {
     "@spare/lange": "^0.1.18",
     "@spare/pad-string": "^0.1.18",
-    "@vect/vector-indicator": "^0.1.15",
+    "@vect/vector-indicator": "^0.1.17",
     "@vect/vector-zipper": "^0.1.15"
   },
   "repository": {

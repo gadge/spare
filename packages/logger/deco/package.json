@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.0.13",
-    "@palett/cards": "^0.0.17",
-    "@palett/convert": "^0.0.17",
-    "@palett/dye": "^0.0.17",
-    "@palett/fluo-entries": "^0.0.16",
-    "@palett/fluo-vector": "^0.0.17",
+    "@palett/cards": "^0.1.0",
+    "@palett/convert": "^0.1.0",
+    "@palett/dye": "^0.1.0",
+    "@palett/fluo-entries": "^0.1.0",
+    "@palett/fluo-vector": "^0.1.0",
     "@spare/deco-util": "^0.1.21",
     "@spare/enum-chars": "^0.1.18",
     "@spare/lange": "^0.1.18",
@@ -30,11 +30,11 @@
     "@typen/enums": "^0.0.3",
     "@typen/num-loose": "^0.0.3",
     "@typen/typ": "^0.0.3",
-    "@vect/column-indicator": "^0.1.15",
+    "@vect/column-indicator": "^0.1.17",
     "@vect/column-mapper": "^0.1.15",
     "@vect/entries-mapper": "^0.1.15",
     "@vect/object-mapper": "^0.1.15",
-    "@vect/vector-mapper": "^0.1.15"
+    "@vect/vector-mapper": "^0.1.16"
   },
   "repository": {
     "type": "git",
