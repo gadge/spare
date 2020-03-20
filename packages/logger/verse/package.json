@@ -19,11 +19,15 @@
     "@analys/table-init": "^0.1.2",
     "@spare/deco-crostab": "^0.2.0",
     "@spare/deco-entries": "^0.2.0",
+    "@spare/deco-object": "^0.2.0",
     "@spare/deco-matrix": "^0.2.0",
     "@spare/deco-samples": "^0.2.0",
     "@spare/deco-table": "^0.2.0",
     "@spare/deco-util": "^0.2.0",
-    "@spare/deco-vector": "^0.2.0"
+    "@spare/deco-vector": "^0.2.0",
+    "@spare/bracket": "^0.2.0",
+    "@spare/enum-brackets": "^0.2.0",
+    "@typen/num-loose": "^0.0.3"
   },
   "repository": {
     "type": "git",

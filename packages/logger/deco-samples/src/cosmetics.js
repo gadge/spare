@@ -1,4 +1,4 @@
-import { AEU, RN } from '@spare/enum-chars'
+import { AEU } from '@spare/enum-chars'
 import { marginSizing, Vectogin } from '@spare/vettro'
 import { padMatrix } from '@spare/pad-matrix'
 import { mattro } from '@spare/mattro'
@@ -11,7 +11,7 @@ import { marginMapper as marginMapperMatrix } from '@vect/matrix-margin'
 import { unwind } from '@vect/entries-unwind'
 import { lookupKeys, selectValues } from '@vect/object-select'
 import { intExpon } from '@aryth/math'
-import { makeQuoteAbstract } from '@spare/deco-util'
+import { liner, pipeQuote } from '@spare/deco-util'
 
 export const cosmetics = function (samples) {
   let height, sample, keys, dye, rows
@@ -21,7 +21,7 @@ export const cosmetics = function (samples) {
     fields, indexed, abstract, direct,
     preset, keyPreset, stringPreset, ansi
   } = this
-  let { delimiter, quote, top, bottom, left, right, bracket, discrete } = this
+  let { delim, quote, top, bottom, left, right, bracket, discrete, level } = this
   let [pick, head] = fields
     ? (lookupKeys.call(sample, fields) |> unwind)
     : [keys, keys.slice()]
@@ -37,15 +37,15 @@ export const cosmetics = function (samples) {
   let [h, w] = size(rows)
   const { raw, text } = mattro(rows, {
     top: t, bottom: b, left: l, right: r, height: h, width: w, dashX, dashY,
-    abstract: makeQuoteAbstract(abstract, quote), hr: null, validate: false
+    abstract: pipeQuote(abstract, quote), hr: null, validate: false
   })
   if (preset) dye = fluoMatrix(raw, { direct, preset, stringPreset, colorant: true })
   if (keyPreset) head = fluoVector(head, { preset: keyPreset, stringPreset: keyPreset, colorant: false })
   rows = padMatrix(text, { raw, dye, ansi })
   rows = marginMapperMatrix(rows, (x, i, j) => head[j] + ':' + x, t, b, l, r)
   dashY
-    ? mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delimiter)} }`))
-    : mutate(rows, line => `{ ${line.join(delimiter)} }`)
+    ? mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delim)} }`))
+    : mutate(rows, line => `{ ${line.join(delim)} }`)
   if (indexed) {
     const digits = intExpon(height) + 1
     let indices = rowsVG.map((_, i) => String(i).padStart(digits)).toVector()
@@ -53,10 +53,6 @@ export const cosmetics = function (samples) {
     mutazip(rows, indices, (line, index) => '(' + index + ') ' + line)
   }
   if (dashX) rows.splice(t, 0, '...')
-  return discrete
-    ? rows
-    : bracket
-      ? '[' + rows.join(`,${RN} `) + ']'
-      : rows.join(`,${RN}`)
+  return liner(rows, { discrete, delim: ',\n', bracket, level })
 }
 

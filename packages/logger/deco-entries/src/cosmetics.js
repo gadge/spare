@@ -1,5 +1,5 @@
-import { AEU, LF, SP } from '@spare/enum-chars'
-import { makeQuoteAbstract } from '@spare/deco-util'
+import { liner, pipeQuote } from '@spare/deco-util'
+import { bracket as brk } from '@spare/bracket'
 import { enttro } from '@spare/enttro'
 import { padEntries } from '@spare/pad-entries'
 import { fluoEntries } from '@palett/fluo-entries'
@@ -7,30 +7,27 @@ import { Duozipper } from '@vect/entries-zipper'
 import { HR_ENTRY } from '../utils/HR_ENTRY'
 
 export const cosmetics = function (entries) {
-  if (!entries || !entries.length || entries[0].length !== 2) return AEU
-  const { keyAbstract, abstract, preset, stringPreset, head, tail, ansi } = this
-  let { dash, delimiter, keyQuote, quote, bracket, discrete } = this
+  if (!entries) return String(entries)
+  if (!entries?.length) return liner([], this)
+  const {
+    keyAbstract, abstract, preset, stringPreset, head, tail, ansi,
+    dash, delim, keyQuote, quote, bracket
+  } = this
   const { raw, text } = enttro(entries, {
-    head,
-    tail,
-    keyAbstract: makeQuoteAbstract(keyAbstract, keyQuote),
-    abstract: makeQuoteAbstract(abstract, quote),
+    head, tail,
+    keyAbstract: pipeQuote(keyAbstract, keyQuote),
+    abstract: pipeQuote(abstract, quote),
     hr: HR_ENTRY
   })
   const dye = preset && fluoEntries(raw, { preset, stringPreset, colorant: true })
-  entries = delimiter.includes(LF)
-    ? (bracket ? (delimiter += SP) : null,
-      padEntries(text, { raw, dye, ansi: preset || ansi }))
+  entries = /\n/.test(delim)
+    ? padEntries(text, { raw, dye, ansi: preset || ansi })
     : preset
       ? Duozipper((t, d) => t |> d)(text, dye)
       : text
   const lines = bracket
-    ? entries.map(([k, v]) => '[' + k + dash + v + ']')
-    : entries.map(([k, v]) => k + dash + v)
-  return discrete
-    ? lines
-    : bracket
-      ? '[' + lines.join(delimiter) + ']'
-      : lines.join(delimiter)
+    ? entries.map(([k, v]) => brk(k + dash + v))
+    : entries.map(([k, v]) => k + dash + v.trimRight())
+  return liner(lines, this)
 
 }

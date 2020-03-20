@@ -21,7 +21,7 @@ export { cosmetics }
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
@@ -45,7 +45,7 @@ export const Deco = (options = {}) => cosmetics.bind(presetCrostabOptions(option
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]

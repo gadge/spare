@@ -19,6 +19,7 @@
     "@spare/deco": "^0.2.0",
     "@spare/deco-crostab": "^0.2.0",
     "@spare/deco-entries": "^0.2.0",
+    "@spare/deco-object": "^0.2.0",
     "@spare/deco-matrix": "^0.2.0",
     "@spare/deco-samples": "^0.2.0",
     "@spare/deco-table": "^0.2.0",

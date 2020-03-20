@@ -2,29 +2,30 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
 var decoUtil = require('@spare/deco-util');
 var mattro = require('@spare/mattro');
 var padMatrix = require('@spare/pad-matrix');
 var fluoMatrix = require('@palett/fluo-matrix');
 var matrix = require('@vect/matrix');
 
+const bracket = x => '[' + x + ']';
+
 const cosmetics = function (matrix$1) {
+  if (!matrix$1) return String(matrix$1);
   const [height, width] = matrix.size(matrix$1);
-  if (!height || !width) return enumChars.AEU;
+  if (!height || !width) return decoUtil.liner([], this);
   const {
     direct,
     preset,
     stringPreset,
     quote,
     ansi,
-    bracket,
-    discrete
+    discrete,
+    delim,
+    bracket: bracket$1,
+    level
   } = this;
-  let {
-    delimiter
-  } = this;
-  this.abstract = decoUtil.makeQuoteAbstract(this.abstract, quote);
+  this.abstract = decoUtil.pipeQuote(this.abstract, quote);
   const {
     raw,
     text
@@ -40,8 +41,17 @@ const cosmetics = function (matrix$1) {
     dye,
     ansi
   });
-  const lines = bracket ? rows.map(line => `[${line.join(delimiter)}]`) : rows.map(line => `${line.join(delimiter)}`);
-  return discrete ? lines : bracket ? '[' + lines.join(`,${enumChars.RN} `) + ']' : lines.join(`,${enumChars.RN}`);
+  const lines = bracket$1 ? rows.map(line => {
+    var _line$join;
+
+    return _line$join = line.join(delim), bracket(_line$join);
+  }) : rows.map(line => line.join(delim));
+  return decoUtil.liner(lines, {
+    discrete,
+    delim: ',\n',
+    bracket: bracket$1,
+    level
+  });
 };
 
 /***
@@ -55,11 +65,12 @@ const cosmetics = function (matrix$1) {
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
@@ -76,11 +87,12 @@ const Deco = (options = {}) => cosmetics.bind(decoUtil.presetMatrixOptions(optio
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 

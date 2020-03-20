@@ -1,4 +1,4 @@
-import { DASH, AEU, RN } from '@spare/enum-chars';
+import { DASH, AEU } from '@spare/enum-chars';
 import { vettro } from '@spare/vettro';
 import { mattro } from '@spare/mattro';
 import { padTable } from '@spare/pad-table';
@@ -13,7 +13,7 @@ import { LPad, RPad } from '@spare/pad-string';
 import { max } from '@aryth/comparer';
 import { maxBy } from '@vect/vector-indicator';
 import { mapper } from '@vect/vector-mapper';
-import { presetCrostabOptions } from '@spare/deco-util';
+import { liner, presetCrostabOptions } from '@spare/deco-util';
 
 const padSide = (side, title, {
   dye,
@@ -96,7 +96,8 @@ const cosmetics = function (crostab) {
     right,
     ansi,
     fullAngle,
-    discrete
+    discrete,
+    level
   } = this;
   const [x, b, s] = [mattro(matrix, {
     top,
@@ -149,7 +150,10 @@ const cosmetics = function (crostab) {
     fullAngle
   });
   const lines = [title + VLINE + head.join(VLINE), br + HCONN + hr.join(HCONN)].concat(zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE)));
-  return discrete ? lines : lines.join(RN);
+  return liner(lines, {
+    discrete,
+    level
+  });
 };
 
 /**
@@ -170,7 +174,7 @@ const cosmetics = function (crostab) {
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
@@ -194,7 +198,7 @@ const Deco = (options = {}) => cosmetics.bind(presetCrostabOptions(options));
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]

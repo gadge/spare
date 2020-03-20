@@ -53,7 +53,7 @@ const quoteString = function (x) {
   } = this;
   return typeof x === enumDataTypes.STR ? qt + x + qt : x;
 };
-const makeQuoteAbstract = (abstract, quote) => {
+const pipeQuote = (abstract, quote) => {
   if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return abstract;
   if (!abstract) return quoteString.bind({
     qt: quote
@@ -128,8 +128,8 @@ exports.br = br;
 exports.deNaTab = deNaTab;
 exports.endsBracs = endsBracs;
 exports.isTab = isTab;
-exports.makeQuoteAbstract = makeQuoteAbstract;
 exports.noop = noop;
+exports.pipeQuote = pipeQuote;
 exports.pr = pr;
 exports.quoteString = quoteString;
 exports.tabify = tabify;

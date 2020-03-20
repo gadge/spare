@@ -17,10 +17,11 @@ export { cosmetics }
  * @param {number} [options.left=0]
  * @param {number} [options.bottom=0]
  * @param {number} [options.right=0]
- * @param {string} [options.delimiter=',']
+ * @param {string} [options.delim=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 export const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(options))
@@ -40,10 +41,11 @@ export const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(option
  * @param {number} [options.left=0]
  * @param {number} [options.bottom=0]
  * @param {number} [options.right=0]
- * @param {string} [options.delimiter=',']
+ * @param {string} [options.delim=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 export const deco = (samples, options = {}) => cosmetics.call(presetSamplesOptions(options), samples)

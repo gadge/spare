@@ -16,9 +16,11 @@
   },
   "dependencies": {
     "@palett/presets": "^0.1.0",
+    "@spare/bracket": "^0.2.0",
+    "@spare/enum-brackets": "^0.2.0",
     "@spare/enum-chars": "^0.2.0",
     "@typen/enum-data-types": "^0.0.3",
-    "@vect/matrix": "^0.1.17"
+    "@vect/matrix": "^0.1.18"
   },
   "repository": {
     "type": "git",

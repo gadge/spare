@@ -7,6 +7,7 @@ var XrEnv = require('@spare/xr');
 var Sayer = require('@palett/says');
 var DecoVectorEnv = require('@spare/deco-vector');
 var DecoEntriesEnv = require('@spare/deco-entries');
+var DecoObjectEnv = require('@spare/deco-object');
 var DecoMatrixEnv = require('@spare/deco-matrix');
 var DecoSamplesEnv = require('@spare/deco-samples');
 var DecoTableEnv = require('@spare/deco-table');
@@ -15,70 +16,77 @@ var DecoCrostabEnv = require('@spare/deco-crostab');
 const logger = (x, ...p) => void console.log(x + '', ...p);
 const logNeL = (x, ...p) => void console.log(x + '', ...p, '\n');
 
-/** @function */
+/** @type {Function} */
 
 const Xr = XrEnv.Xr;
-/** @function */
+/** @type {Function} */
 
 const xr = XrEnv.xr;
 /** @class */
 
 const Says = Sayer.Says;
-/** @function */
+/** @type {Function} */
 
 const says = Sayer.says;
-/** @function */
+/** @type {Function} */
 
 const deco = Deco.deco;
-/** @function */
+/** @type {Function} */
 
 const deca = Deco.deca;
-/** @function */
+/** @type {Function} */
 
 const delogger = Deco.delogger;
-/** @function */
+/** @type {Function} */
 
 const delogNeL = Deco.delogNeL;
-/** @function */
+/** @type {Function} */
 
 const decoVector = DecoVectorEnv.deco;
-/** @function */
+/** @type {Function} */
 
 const decoEntries = DecoEntriesEnv.deco;
-/** @function */
+/** @type {Function} */
+
+const decoObject = DecoObjectEnv.deco;
+/** @type {Function} */
 
 const decoMatrix = DecoMatrixEnv.deco;
-/** @function */
+/** @type {Function} */
 
 const decoSamples = DecoSamplesEnv.deco;
-/** @function */
+/** @type {Function} */
 
 const decoTable = DecoTableEnv.deco;
-/** @function */
+/** @type {Function} */
 
 const decoCrostab = DecoCrostabEnv.deco;
-/** @function */
+/** @type {Function} */
 
 const DecoVector = DecoVectorEnv.Deco;
-/** @function */
+/** @type {Function} */
 
 const DecoEntries = DecoEntriesEnv.Deco;
-/** @function */
+/** @type {Function} */
+
+const DecoObject = DecoObjectEnv.Deco;
+/** @type {Function} */
 
 const DecoMatrix = DecoMatrixEnv.Deco;
-/** @function */
+/** @type {Function} */
 
 const DecoSamples = DecoSamplesEnv.Deco;
-/** @function */
+/** @type {Function} */
 
 const DecoTable = DecoTableEnv.Deco;
-/** @function */
+/** @type {Function} */
 
 const DecoCrostab = DecoCrostabEnv.Deco;
 
 exports.DecoCrostab = DecoCrostab;
 exports.DecoEntries = DecoEntries;
 exports.DecoMatrix = DecoMatrix;
+exports.DecoObject = DecoObject;
 exports.DecoSamples = DecoSamples;
 exports.DecoTable = DecoTable;
 exports.DecoVector = DecoVector;
@@ -89,6 +97,7 @@ exports.deco = deco;
 exports.decoCrostab = decoCrostab;
 exports.decoEntries = decoEntries;
 exports.decoMatrix = decoMatrix;
+exports.decoObject = decoObject;
 exports.decoSamples = decoSamples;
 exports.decoTable = decoTable;
 exports.decoVector = decoVector;

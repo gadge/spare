@@ -1,22 +1,37 @@
-import { FRESH, OCEAN, JUNGLE, SUBTLE } from '@palett/presets';
+import { FRESH, OCEAN, PLANET, JUNGLE, SUBTLE } from '@palett/presets';
+import { NONE, BRK, BRC } from '@spare/enum-brackets';
+import { LF, TB, CO } from '@spare/enum-chars';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/matrix';
 import { STR } from '@typen/enum-data-types';
-import { LF, TB } from '@spare/enum-chars';
+import { br } from '@spare/bracket';
 
 const presetEntriesOptions = o => {
   o.preset = o.preset || FRESH;
-  o.preset = o.preset || OCEAN;
+  o.stringPreset = o.stringPreset || OCEAN;
   o.dash = o.dash || ' > ';
-  o.delimiter = o.delimiter || '\n';
+  o.delim = o.delim || LF;
+  o.bracket = !o.bracket ? NONE : BRK;
+  return o;
+};
+
+const presetObjectOptions = o => {
+  o.preset = o.preset || FRESH;
+  o.stringPreset = o.stringPreset || PLANET;
+  o.dash = o.dash || ': ';
+  o.delim = o.delim || ',' + LF;
+  o.bracket = !o.bracket ? NONE : BRC;
   return o;
 };
 
 const presetVectorOptions = o => {
-  o.indexed = o.indexed || true;
+  var _o$indexed;
+
+  o.indexed = (_o$indexed = o.indexed) !== null && _o$indexed !== void 0 ? _o$indexed : true;
   o.preset = o.preset || FRESH;
   o.stringPreset = o.stringPreset || JUNGLE;
   o.dash = o.dash || ') ';
-  o.delimiter = o.delimiter || ',\n';
+  o.delim = o.delim || ',' + LF;
+  o.bracket = !o.bracket ? NONE : BRK;
   return o;
 };
 
@@ -24,25 +39,30 @@ const presetMatrixOptions = o => {
   o.direct = o.direct || ROWWISE;
   o.preset = o.preset || FRESH;
   o.preset = o.preset || OCEAN;
-  o.delimiter = o.delimiter || ', ';
+  o.delim = o.delim || ', ';
+  o.bracket = !o.bracket ? NONE : BRK;
   return o;
 };
 
 const presetCrostabOptions = o => {
-  o.direct = o.direct || POINTWISE;
+  var _o$direct, _o$ansi;
+
+  o.direct = (_o$direct = o.direct) !== null && _o$direct !== void 0 ? _o$direct : POINTWISE;
   o.preset = o.preset || FRESH;
   o.stringPreset = o.stringPreset || JUNGLE;
   o.labelPreset = o.labelPreset || SUBTLE;
-  o.ansi = o.ansi || true;
+  o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
 
 const presetTableOptions = o => {
-  o.direct = o.direct || COLUMNWISE;
+  var _o$direct, _o$ansi;
+
+  o.direct = (_o$direct = o.direct) !== null && _o$direct !== void 0 ? _o$direct : COLUMNWISE;
   o.preset = o.preset || FRESH;
   o.stringPreset = o.stringPreset || JUNGLE;
   o.labelPreset = o.labelPreset || SUBTLE;
-  o.ansi = o.ansi || true;
+  o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
 
@@ -52,8 +72,8 @@ const presetSamplesOptions = o => {
   o.preset = o.preset || FRESH;
   o.keyPreset = o.keyPreset || SUBTLE;
   o.stringPreset = o.stringPreset || JUNGLE;
-  o.delimiter = o.delimiter || ', ';
-  o.bracket = o.bracket || true;
+  o.delim = o.delim || ', ';
+  o.bracket = !o.bracket ? NONE : BRK;
   return o;
 };
 
@@ -63,7 +83,7 @@ const quoteString = function (x) {
   } = this;
   return typeof x === STR ? qt + x + qt : x;
 };
-const makeQuoteAbstract = (abstract, quote) => {
+const pipeQuote = (abstract, quote) => {
   if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return abstract;
   if (!abstract) return quoteString.bind({
     qt: quote
@@ -77,9 +97,16 @@ const makeQuoteAbstract = (abstract, quote) => {
   };
 };
 
-const joinLines = (lines, level) => {
-  const rn = LF + TB.repeat(level);
-  return `${rn}  ${lines.join(`,${rn + TB}`)}${rn}`;
+const joinLines = (lines, level, hover = true) => {
+  const ind = TB.repeat(level),
+        lfi = LF + ind;
+  return hover ? `${lfi + TB}${lines.join(CO + lfi + TB)}${CO + lfi}` : `${ind + TB}${lines.join(CO + lfi + TB)}${CO}`;
 };
+const liner = (lines, {
+  discrete = false,
+  delim = LF,
+  bracket = NONE,
+  level = 0
+} = {}) => discrete ? lines : lines.length && /\n/.test(delim) ? br(joinLines(lines, level, bracket), bracket) : br(lines.join(delim), bracket);
 
-export { joinLines, makeQuoteAbstract, presetCrostabOptions, presetEntriesOptions, presetMatrixOptions, presetSamplesOptions, presetTableOptions, presetVectorOptions, quoteString };
+export { joinLines, liner, pipeQuote, presetCrostabOptions, presetEntriesOptions, presetMatrixOptions, presetObjectOptions, presetSamplesOptions, presetTableOptions, presetVectorOptions, quoteString };

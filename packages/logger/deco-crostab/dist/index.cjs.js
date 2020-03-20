@@ -100,7 +100,8 @@ const cosmetics = function (crostab) {
     right,
     ansi,
     fullAngle,
-    discrete
+    discrete,
+    level
   } = this;
   const [x, b, s] = [mattro.mattro(matrix$1, {
     top,
@@ -153,7 +154,10 @@ const cosmetics = function (crostab) {
     fullAngle
   });
   const lines = [title + VLINE + head.join(VLINE), br + HCONN + hr.join(HCONN)].concat(vectorZipper.zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE)));
-  return discrete ? lines : lines.join(enumChars.RN);
+  return decoUtil.liner(lines, {
+    discrete,
+    level
+  });
 };
 
 /**
@@ -174,7 +178,7 @@ const cosmetics = function (crostab) {
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
@@ -198,7 +202,7 @@ const Deco = (options = {}) => cosmetics.bind(decoUtil.presetCrostabOptions(opti
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]

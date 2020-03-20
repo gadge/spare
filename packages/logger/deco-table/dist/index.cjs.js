@@ -30,7 +30,8 @@ const cosmetics = function (table) {
     right,
     ansi,
     fullAngle,
-    discrete
+    discrete,
+    level
   } = this;
   const [x, b] = [mattro.mattro(matrix$1, {
     top,
@@ -67,7 +68,10 @@ const cosmetics = function (table) {
     fullAngle
   });
   const lines = [head.join(' | '), hr.join('-+-')].concat(rows.map(row => row.join(' | ')));
-  return discrete ? lines : lines.join(enumChars.RN);
+  return decoUtil.liner(lines, {
+    discrete,
+    level
+  });
 };
 
 /**
@@ -87,12 +91,13 @@ const cosmetics = function (table) {
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.fullAngle]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
@@ -111,12 +116,13 @@ const Deco = (options = {}) => cosmetics.bind(decoUtil.presetTableOptions(option
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.fullAngle]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 

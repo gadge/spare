@@ -1,4 +1,4 @@
-import { AEU, RN } from '@spare/enum-chars';
+import { AEU } from '@spare/enum-chars';
 import { marginSizing, Vectogin } from '@spare/vettro';
 import { padMatrix } from '@spare/pad-matrix';
 import { mattro } from '@spare/mattro';
@@ -11,7 +11,7 @@ import { marginMapper } from '@vect/matrix-margin';
 import { unwind } from '@vect/entries-unwind';
 import { lookupKeys, selectValues } from '@vect/object-select';
 import { intExpon } from '@aryth/math';
-import { makeQuoteAbstract, presetSamplesOptions } from '@spare/deco-util';
+import { pipeQuote, liner, presetSamplesOptions } from '@spare/deco-util';
 
 const cosmetics = function (samples) {
   var _lookupKeys$call;
@@ -30,14 +30,15 @@ const cosmetics = function (samples) {
     ansi
   } = this;
   let {
-    delimiter,
+    delim,
     quote,
     top,
     bottom,
     left,
     right,
     bracket,
-    discrete
+    discrete,
+    level
   } = this;
   let [pick, head] = fields ? (_lookupKeys$call = lookupKeys.call(sample, fields), unwind(_lookupKeys$call)) : [keys, keys.slice()];
   const {
@@ -67,7 +68,7 @@ const cosmetics = function (samples) {
     width: w,
     dashX,
     dashY,
-    abstract: makeQuoteAbstract(abstract, quote),
+    abstract: pipeQuote(abstract, quote),
     hr: null,
     validate: false
   });
@@ -88,7 +89,7 @@ const cosmetics = function (samples) {
     ansi
   });
   rows = marginMapper(rows, (x, i, j) => head[j] + ':' + x, t, b, l, r);
-  dashY ? mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delimiter)} }`)) : mutate(rows, line => `{ ${line.join(delimiter)} }`);
+  dashY ? mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delim)} }`)) : mutate(rows, line => `{ ${line.join(delim)} }`);
 
   if (indexed) {
     const digits = intExpon(height) + 1;
@@ -102,7 +103,12 @@ const cosmetics = function (samples) {
   }
 
   if (dashX) rows.splice(t, 0, '...');
-  return discrete ? rows : bracket ? '[' + rows.join(`,${RN} `) + ']' : rows.join(`,${RN}`);
+  return liner(rows, {
+    discrete,
+    delim: ',\n',
+    bracket,
+    level
+  });
 };
 
 /**
@@ -119,10 +125,11 @@ const cosmetics = function (samples) {
  * @param {number} [options.left=0]
  * @param {number} [options.bottom=0]
  * @param {number} [options.right=0]
- * @param {string} [options.delimiter=',']
+ * @param {string} [options.delim=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
@@ -142,10 +149,11 @@ const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(options));
  * @param {number} [options.left=0]
  * @param {number} [options.bottom=0]
  * @param {number} [options.right=0]
- * @param {string} [options.delimiter=',']
+ * @param {string} [options.delim=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 

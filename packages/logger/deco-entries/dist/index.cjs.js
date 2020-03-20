@@ -3,16 +3,20 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var decoUtil = require('@spare/deco-util');
-var enumChars = require('@spare/enum-chars');
 var enttro = require('@spare/enttro');
 var padEntries = require('@spare/pad-entries');
 var fluoEntries = require('@palett/fluo-entries');
 var entriesZipper = require('@vect/entries-zipper');
 
+const bracket = x => '[' + x + ']';
+
 const HR_ENTRY = ['..', '..'];
 
 const cosmetics = function (entries) {
-  if (!entries || !entries.length || entries[0].length !== 2) return enumChars.AEU;
+  var _entries;
+
+  if (!entries) return String(entries);
+  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return decoUtil.liner([], this);
   const {
     keyAbstract,
     abstract,
@@ -20,15 +24,12 @@ const cosmetics = function (entries) {
     stringPreset,
     head,
     tail,
-    ansi
-  } = this;
-  let {
+    ansi,
     dash,
-    delimiter,
+    delim,
     keyQuote,
     quote,
-    bracket,
-    discrete
+    bracket: bracket$1
   } = this;
   const {
     raw,
@@ -36,8 +37,8 @@ const cosmetics = function (entries) {
   } = enttro.enttro(entries, {
     head,
     tail,
-    keyAbstract: decoUtil.makeQuoteAbstract(keyAbstract, keyQuote),
-    abstract: decoUtil.makeQuoteAbstract(abstract, quote),
+    keyAbstract: decoUtil.pipeQuote(keyAbstract, keyQuote),
+    abstract: decoUtil.pipeQuote(abstract, quote),
     hr: HR_ENTRY
   });
   const dye = preset && fluoEntries.fluoEntries(raw, {
@@ -45,17 +46,17 @@ const cosmetics = function (entries) {
     stringPreset,
     colorant: true
   });
-  entries = delimiter.includes(enumChars.LF) ? (bracket ? delimiter += enumChars.SP : null, padEntries.padEntries(text, {
+  entries = /\n/.test(delim) ? padEntries.padEntries(text, {
     raw,
     dye,
     ansi: preset || ansi
-  })) : preset ? entriesZipper.Duozipper((t, d) => {
+  }) : preset ? entriesZipper.Duozipper((t, d) => {
     var _t;
 
     return _t = t, d(_t);
   })(text, dye) : text;
-  const lines = bracket ? entries.map(([k, v]) => '[' + k + dash + v + ']') : entries.map(([k, v]) => k + dash + v);
-  return discrete ? lines : bracket ? '[' + lines.join(delimiter) + ']' : lines.join(delimiter);
+  const lines = bracket$1 ? entries.map(([k, v]) => bracket(k + dash + v)) : entries.map(([k, v]) => k + dash + v.trimRight());
+  return decoUtil.liner(lines, this);
 };
 
 /**
@@ -72,12 +73,14 @@ const cosmetics = function (entries) {
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=' > ']
- * @param {string} [options.delimiter='\n']
+ * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
+ * @param {number} [options.level]
  * @returns {string}
  */
 
@@ -93,12 +96,13 @@ const Deco = (options = {}) => cosmetics.bind(decoUtil.presetEntriesOptions(opti
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=' > ']
- * @param {string} [options.delimiter='\n']
+ * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 

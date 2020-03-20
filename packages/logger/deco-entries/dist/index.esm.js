@@ -1,14 +1,18 @@
-import { makeQuoteAbstract, presetEntriesOptions } from '@spare/deco-util';
-import { AEU, LF, SP } from '@spare/enum-chars';
+import { liner, pipeQuote, presetEntriesOptions } from '@spare/deco-util';
 import { enttro } from '@spare/enttro';
 import { padEntries } from '@spare/pad-entries';
 import { fluoEntries } from '@palett/fluo-entries';
 import { Duozipper } from '@vect/entries-zipper';
 
+const bracket = x => '[' + x + ']';
+
 const HR_ENTRY = ['..', '..'];
 
 const cosmetics = function (entries) {
-  if (!entries || !entries.length || entries[0].length !== 2) return AEU;
+  var _entries;
+
+  if (!entries) return String(entries);
+  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner([], this);
   const {
     keyAbstract,
     abstract,
@@ -16,15 +20,12 @@ const cosmetics = function (entries) {
     stringPreset,
     head,
     tail,
-    ansi
-  } = this;
-  let {
+    ansi,
     dash,
-    delimiter,
+    delim,
     keyQuote,
     quote,
-    bracket,
-    discrete
+    bracket: bracket$1
   } = this;
   const {
     raw,
@@ -32,8 +33,8 @@ const cosmetics = function (entries) {
   } = enttro(entries, {
     head,
     tail,
-    keyAbstract: makeQuoteAbstract(keyAbstract, keyQuote),
-    abstract: makeQuoteAbstract(abstract, quote),
+    keyAbstract: pipeQuote(keyAbstract, keyQuote),
+    abstract: pipeQuote(abstract, quote),
     hr: HR_ENTRY
   });
   const dye = preset && fluoEntries(raw, {
@@ -41,17 +42,17 @@ const cosmetics = function (entries) {
     stringPreset,
     colorant: true
   });
-  entries = delimiter.includes(LF) ? (bracket ? delimiter += SP : null, padEntries(text, {
+  entries = /\n/.test(delim) ? padEntries(text, {
     raw,
     dye,
     ansi: preset || ansi
-  })) : preset ? Duozipper((t, d) => {
+  }) : preset ? Duozipper((t, d) => {
     var _t;
 
     return _t = t, d(_t);
   })(text, dye) : text;
-  const lines = bracket ? entries.map(([k, v]) => '[' + k + dash + v + ']') : entries.map(([k, v]) => k + dash + v);
-  return discrete ? lines : bracket ? '[' + lines.join(delimiter) + ']' : lines.join(delimiter);
+  const lines = bracket$1 ? entries.map(([k, v]) => bracket(k + dash + v)) : entries.map(([k, v]) => k + dash + v.trimRight());
+  return liner(lines, this);
 };
 
 /**
@@ -68,12 +69,14 @@ const cosmetics = function (entries) {
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=' > ']
- * @param {string} [options.delimiter='\n']
+ * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
+ * @param {number} [options.level]
  * @returns {string}
  */
 
@@ -89,12 +92,13 @@ const Deco = (options = {}) => cosmetics.bind(presetEntriesOptions(options));
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=' > ']
- * @param {string} [options.delimiter='\n']
+ * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 

@@ -1,4 +1,3 @@
-import { deco as decoEntries, Deco as DecoEntries } from '@spare/deco-entries'
 import { cosmetics } from './src/cosmetics'
 import { presetVectorOptions } from '@spare/deco-util'
 
@@ -18,16 +17,15 @@ export { cosmetics }
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=') ']
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
-export const Deco = (options = {}) => options.indexed
-  ? vec => Object.entries(vec) |> DecoEntries(presetVectorOptions(options))
-  : cosmetics.bind(presetVectorOptions(options))
+export const Deco = (options = {}) => cosmetics.bind(presetVectorOptions(options))
 
 /***
  *
@@ -40,13 +38,13 @@ export const Deco = (options = {}) => options.indexed
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=') ']
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
+ * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 export const deco = (vector, options = {}) =>
-  options.indexed
-    ? decoEntries(Object.entries(vector), presetVectorOptions(options))
-    : cosmetics.call(presetVectorOptions(options), vector)
+     cosmetics.call(presetVectorOptions(options), vector)

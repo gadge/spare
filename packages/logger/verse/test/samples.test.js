@@ -5,4 +5,4 @@ import { Verse } from '../src/Verse'
 
 const samples = Foba['BistroDutyRoster'] |> tableToSamples
 
-samples |> Verse.samples.bind(Verse) |> logNeL
+samples |> Verse.samples |> logNeL

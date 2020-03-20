@@ -31,17 +31,21 @@ $ npm install @spare/<tool-name>
 
 |                                                  |                                                 |
 | ------------------------------------------------ | ----------------------------------------------- |
-| [**logger**](packages/logger/logger)             | Console output everything                       |
+| [**logger**](packages/logger/logger)             | console.log with prettier format                |
 | [**xr**](packages/logger/xr)                     | Sentenced log content builder                   |
 | [**deco**](packages/logger/deco)                 | Stringify + colorant things                     |
 | [**verse**](packages/logger/verse)               | Stringify, ready to write to js or json file    |
 | [**deco**-vector](packages/logger/deco-vector)   | Stringify array(vector) with color highlight    |
 | [**deco**-matrix](packages/logger/deco-matrix)   | Stringify 2d-array(matrix) with color highlight |
+| [**deco**-object](packages/logger/deco-object)   | Stringify object with color highlight           |
 | [**deco**-entries](packages/logger/deco-entries) | Stringify entries with color highlight          |
 | [**deco**-samples](packages/logger/deco-samples) | Stringify samples with color highlight          |
 | [**deco**-table](packages/logger/deco-table)     | Stringify table with color highlight            |
 | [**deco**-crostab](packages/logger/deco-crostab) | Stringify crostab with color highlight          |
+| [**verse**](packages/logger/verse)               | ES6 style JSON.stringify alternative            |
 | [**lange**](packages/string/lange)               | Get string length concerning ansi-code          |
+| [**bracket**](packages/string/bracket)           | Add parenthesis/bracket/brace/angle-bracket     |
+| [**phrasing**](packages/string/phrasing)         | Convert among snake/kebab/camel/pascal phrasings|
 | [**string**](packages/string/string)             | String helpers                                  |
 |                                                  |                                                 |
 

@@ -1,4 +1,4 @@
-import { AEU, RN } from '@spare/enum-chars'
+import { AEU } from '@spare/enum-chars'
 import { vettro } from '@spare/vettro'
 import { mattro } from '@spare/mattro'
 import { padTable } from '@spare/pad-table'
@@ -8,6 +8,7 @@ import { zipper } from '@vect/vector-zipper'
 import { POINTWISE, size } from '@vect/matrix'
 import { padSide } from '../utils/padSide'
 import { HCONN, VLINE } from '../resources/conns'
+import { liner } from '@spare/deco-util'
 
 export const cosmetics = function (crostab) {
   let matrix = crostab.rows || crostab.matrix, banner = crostab.head || crostab.banner,
@@ -17,7 +18,7 @@ export const cosmetics = function (crostab) {
   const {
     direct = POINTWISE, abstract, bannerAbstract, sideAbstract,
     preset, stringPreset, labelPreset,
-    top, left, bottom, right, ansi, fullAngle, discrete
+    top, left, bottom, right, ansi, fullAngle, discrete, level
   } = this
   const [x, b, s] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),
@@ -37,5 +38,5 @@ export const cosmetics = function (crostab) {
   ].concat(
     zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE))
   )
-  return discrete ? lines : lines.join(RN)
+  return liner(lines, { discrete, level })
 }

@@ -5,6 +5,7 @@ import { mattro } from '@spare/mattro'
 import { fluoVector } from '@palett/fluo-vector'
 import { fluoMatrix } from '@palett/fluo-matrix'
 import { padTable } from '@spare/pad-table'
+import { liner } from '@spare/deco-util'
 
 export const cosmetics = function (table) {
   let matrix = table.rows || table.matrix, banner = table.head || table.banner
@@ -12,7 +13,7 @@ export const cosmetics = function (table) {
   if (!height || !width || !labelWidth) return AEU
   const {
     direct, abstract, headAbstract, preset, stringPreset, labelPreset,
-    top, left, bottom, right, ansi, fullAngle, discrete,
+    top, left, bottom, right, ansi, fullAngle, discrete,level
   } = this
   const [x, b] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),
@@ -29,5 +30,5 @@ export const cosmetics = function (table) {
   ].concat(
     rows.map(row => row.join(' | '))
   )
-  return discrete ? lines : lines.join(RN)
+  return liner(lines,{discrete,level})
 }

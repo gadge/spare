@@ -1,5 +1,5 @@
-import { FobaNum, FobaStr } from '@foba/object'
-import { FobaNum as VecFobaNum, FobaStr as VecFobaStr } from '@foba/vector'
+import { NumberObjectCollection, StringObjectCollection } from '@foba/object'
+import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
 import { randMatrix, simpleObjects } from '@foba/foo'
 import { flop, rand } from '@aryth/rand'
 
@@ -9,16 +9,16 @@ export const Basics = {
   null: null,
   undefined: undefined,
   boolean: Boolean(rand(2)),
-  string: VecFobaStr.flop() |> flop,
-  number: VecFobaNum.flop() |> flop,
+  string: StringVectorCollection.flopShuffle({}) |> flop,
+  number: NumberVectorCollection.flopShuffle({}) |> flop,
 }
 
 export const Vectors = {
   void_vec: [],
-  str_vec: VecFobaStr.flop(),
-  num_vec: VecFobaNum.flop(),
-  inno_set: new Set(VecFobaNum.flop()),
-  long_vec: VecFobaStr.flop({ size: 32 })
+  str_vec: StringVectorCollection.flopShuffle({}),
+  num_vec: NumberVectorCollection.flopShuffle({}),
+  inno_set: new Set(NumberVectorCollection.flopShuffle({})),
+  long_vec: StringVectorCollection.flopShuffle({ size: 32 })
 }
 
 export const Matrices = {
@@ -27,24 +27,28 @@ export const Matrices = {
   inno_matrix: randNumMatrix,
   void_matrix: [[]],
   nest_matrix: [[[[[[[[[]]]]]]]]],
-  inno_entries: (Object.entries(FobaStr.flop())),
+  inno_entries: (Object.entries(StringObjectCollection.flopShuffle({}))),
 }
 
 export const Misc = {
-  inno_map: new Map(Object.entries(FobaNum.flop())),
+  inno_map: new Map(Object.entries(NumberObjectCollection.flopShuffle({}))),
   inno_lambda: x => `${x}`,
 }
 
 export const Objects = {
-  inno_object: FobaStr.flop(),
+  inno_object: StringObjectCollection.flopShuffle({}),
   nest_object: {
     aA: '123',
     bB: { cD: '456', dD: { eE: '789', fF: { gG: '135', hH: { iI: '246', jJ: { kK: '357', lL: '...' } } } } }
   },
   json: {
-    foo: VecFobaNum.flop(),
+    foo: NumberVectorCollection.flopShuffle({}),
     bar: simpleObjects(),
-    shake: [[VecFobaNum.flop(), VecFobaNum.flop(), VecFobaNum.flop()]],
+    kha: [[
+      NumberVectorCollection.flopShuffle({}),
+      NumberVectorCollection.flopShuffle({}),
+      NumberVectorCollection.flopShuffle({})
+    ]],
   }
 }
 

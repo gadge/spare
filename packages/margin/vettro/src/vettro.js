@@ -3,12 +3,12 @@ import { Vectogin } from './Vectogin'
 /**
  *
  * @param {*[]} arr
- * @param {number} [head]
- * @param {number} [tail]
- * @param {boolean} [dash]
- * @param {function(*):string} [abstract]
- * @param {string} [hr='..']
- * @param {boolean} [validate=true]
+ * @param {*|number} [head]
+ * @param {*|number} [tail]
+ * @param {*|boolean} [dash]
+ * @param {*|function(*):string} [abstract]
+ * @param {*|string} [hr='..']
+ * @param {*|boolean} [validate=true]
  * @return {{raw:*[],text:*[]}}
  */
 export const vettro = (arr, {

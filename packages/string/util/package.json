@@ -20,7 +20,7 @@
     "@spare/lange": "^0.2.0",
     "@typen/enum-data-types": "^0.0.3",
     "@typen/num-strict": "^0.0.3",
-    "@vect/matrix": "^0.1.17",
+    "@vect/matrix": "^0.1.18",
     "@vect/vector": "^0.1.17"
   },
   "repository": {

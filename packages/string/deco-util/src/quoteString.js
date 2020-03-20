@@ -5,7 +5,7 @@ export const quoteString = function (x) {
   return (typeof x === STR) ? (qt + x + qt) : x
 }
 
-export const makeQuoteAbstract = (abstract, quote) => {
+export const pipeQuote = (abstract, quote) => {
   if (!quote?.length) return abstract
   if (!abstract) return quoteString.bind({ qt: quote })
   return x => x |> abstract |> quoteString.bind({ qt: quote })

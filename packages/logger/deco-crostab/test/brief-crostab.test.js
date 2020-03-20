@@ -1,4 +1,4 @@
-import { Foba } from '@foba/crostab'
+import { CrostabCollection } from '@foba/crostab'
 import { delogger } from '@spare/deco'
 import { logger } from '@spare/logger'
 import { POINTWISE } from '@vect/enum-matrix-directions'
@@ -6,10 +6,11 @@ import { Mag } from '@cliche/mag'
 import { isNumeric } from '@typen/num-strict'
 import { OCEAN } from '@palett/presets'
 import { Deco } from '../index'
+import { flopValue } from '@aryth/rand'
 
 const mag = new Mag(0)
 
-const crostab = Foba.flop()
+const crostab = CrostabCollection |> flopValue
 crostab |> delogger
 
 crostab |> Deco({

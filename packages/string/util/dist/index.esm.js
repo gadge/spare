@@ -49,7 +49,7 @@ const quoteString = function (x) {
   } = this;
   return typeof x === STR ? qt + x + qt : x;
 };
-const makeQuoteAbstract = (abstract, quote) => {
+const pipeQuote = (abstract, quote) => {
   if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return abstract;
   if (!abstract) return quoteString.bind({
     qt: quote
@@ -63,4 +63,4 @@ const makeQuoteAbstract = (abstract, quote) => {
   };
 };
 
-export { afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, makeQuoteAbstract, noop, pr, quoteString, tabify, totx };
+export { afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, noop, pipeQuote, pr, quoteString, tabify, totx };

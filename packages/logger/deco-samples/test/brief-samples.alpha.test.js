@@ -7,7 +7,7 @@ const samples = Foba.flop() |> tableToSamples
 
 const entriesCollection = mapper(samples, sample => Object.entries(sample))
 for (let entries of entriesCollection) {
-  entries |> DecoEntries({ dash: ':', delimiter: ', ' }) |> logger
+  entries |> DecoEntries({ dash: ':', delim: ', ' }) |> logger
 }
 samples |> deca({ wo: 256 }) |> logger
 

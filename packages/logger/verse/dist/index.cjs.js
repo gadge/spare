@@ -4,88 +4,97 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var decoVector = require('@spare/deco-vector');
 var decoEntries = require('@spare/deco-entries');
+var decoObject = require('@spare/deco-object');
 var decoMatrix = require('@spare/deco-matrix');
 var decoSamples = require('@spare/deco-samples');
 var decoUtil = require('@spare/deco-util');
 var tableInit = require('@analys/table-init');
 var crostabInit = require('@analys/crostab-init');
+var bracket = require('@spare/bracket');
+var numLoose = require('@typen/num-loose');
+var enumBrackets = require('@spare/enum-brackets');
+
+const keyer = x => /\W/.test(x) || numLoose.isNumeric(x) ? '\'' + x + '\'' : x;
 
 class Verse {
   static vector(vector, {
     abstract,
-    delimiter = ', ',
-    quote = '\''
+    delim = ', ',
+    quote = '\'',
+    level
   } = {}) {
     return decoVector.cosmetics.call({
       abstract,
-      delimiter,
+      delim,
       quote,
-      bracket: true
+      bracket: enumBrackets.BRACKET,
+      level
     }, vector);
   }
 
   static entries(entries, {
-    keyAbstract,
+    keyAbstract = keyer,
     abstract,
     dash = ', ',
-    delimiter = ',\n',
-    quote = '\''
+    delim = ',\n',
+    quote = '\'',
+    level
   } = {}) {
     return decoEntries.cosmetics.call({
       keyAbstract,
       abstract,
       dash,
-      delimiter,
+      delim,
       quote,
-      bracket: true
+      bracket: enumBrackets.BRACKET,
+      level
     }, entries);
   }
 
-  static entriesAsObject(entries, {
-    keyAbstract,
+  static object(o, {
+    keyAbstract = keyer,
     abstract,
     dash = ': ',
-    delimiter = ',\n',
-    keyQuote = null,
+    delim = ',\n',
     quote = '\'',
-    level = 0
+    level
   } = {}) {
-    const lines = decoEntries.cosmetics.call({
+    return decoObject.cosmetics.call({
       keyAbstract,
       abstract,
       dash,
-      delimiter,
-      keyQuote,
+      delim,
       quote,
-      bracket: false,
-      discrete: true
-    }, entries);
-    return '{' + decoUtil.joinLines(lines, level) + '}';
+      bracket: enumBrackets.BRACE,
+      level
+    }, o);
   }
 
   static matrix(matrix, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
+    var _joinLines;
+
     const lines = decoMatrix.cosmetics.call({
       abstract,
-      delimiter,
+      delim,
       quote,
-      bracket: true,
+      bracket: enumBrackets.BRACKET,
       discrete: true
     }, matrix);
-    return '[' + decoUtil.joinLines(lines, level) + ']';
+    return _joinLines = decoUtil.joinLines(lines, level), bracket.bracket(_joinLines);
   }
 
   static crostab(table, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
-    var _table;
+    var _table, _joinLines2;
 
     const {
       side,
@@ -96,21 +105,21 @@ class Verse {
     const headText = Verse.vector(head);
     const rowsText = Verse.matrix(rows, {
       abstract,
-      delimiter,
+      delim,
       quote,
       level: level + 1
     });
     const lines = ['side' + ': ' + sideText, 'head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return '{' + decoUtil.joinLines(lines, level) + '}';
+    return _joinLines2 = decoUtil.joinLines(lines, level), bracket.brace(_joinLines2);
   }
 
   static table(table, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
-    var _table2;
+    var _table2, _joinLines3;
 
     const {
       head,
@@ -119,29 +128,57 @@ class Verse {
     const headText = Verse.vector(head);
     const rowsText = Verse.matrix(rows, {
       abstract,
-      delimiter,
+      delim,
       quote,
       level: level + 1
     });
     const lines = ['head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return '{' + decoUtil.joinLines(lines, level) + '}';
+    return _joinLines3 = decoUtil.joinLines(lines, level), bracket.brace(_joinLines3);
   }
 
   static samples(samples, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
+    var _joinLines4;
+
     const lines = decoSamples.cosmetics.call({
       indexes: false,
       abstract,
-      delimiter,
+      delim,
       quote,
       bracket: false,
       discrete: true
     }, samples);
-    return '[' + decoUtil.joinLines(lines, level) + ']';
+    return _joinLines4 = decoUtil.joinLines(lines, level), bracket.bracket(_joinLines4);
+  }
+
+  static entriesAsObject(entries, {
+    keyAbstract = keyer,
+    abstract,
+    dash = ': ',
+    delim = ',\n',
+    keyQuote = null,
+    quote = '\'',
+    level = 0
+  } = {}) {
+    const lines = decoEntries.cosmetics.call({
+      keyAbstract,
+      abstract,
+      dash,
+      delim,
+      keyQuote,
+      quote,
+      bracket: false,
+      discrete: true
+    }, entries);
+    return decoUtil.liner(lines, {
+      bracket: enumBrackets.BRACE,
+      delim,
+      level
+    });
   }
 
 }

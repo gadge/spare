@@ -1,7 +1,7 @@
-import { Foba } from '@foba/table'
+import { TableCollection } from '@foba/table'
 import { says } from '@spare/logger'
-import { verseTable } from '../src/verse'
+import { Verse } from '../src/Verse'
 
-const table = Foba.flop()
+const table = TableCollection.flopShuffle()
 
-table |> verseTable |> says['table']
+table |> Verse.table |> says['table']

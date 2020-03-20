@@ -5,7 +5,7 @@ export {
 } from './src/stringHelpers'
 
 export {
-  quoteString, makeQuoteAbstract
+  quoteString, pipeQuote
 } from '@spare/deco-util/src/quoteString'
 
 export {

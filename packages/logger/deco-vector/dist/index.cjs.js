@@ -2,35 +2,30 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var decoEntries = require('@spare/deco-entries');
 var enumChars = require('@spare/enum-chars');
 var vettro = require('@spare/vettro');
+var decoEntries = require('@spare/deco-entries');
 var fluoVector = require('@palett/fluo-vector');
 var decoUtil = require('@spare/deco-util');
 
 function cosmetics(vec) {
-  if (!vec || !vec.length) return enumChars.AEU;
+  if (this === null || this === void 0 ? void 0 : this.indexed) return decoEntries.cosmetics.call(this, Object.entries(vec));
+  if (!vec) return String(vec);
   const {
     head,
     tail,
     preset,
-    stringPreset
-  } = this;
-  let {
+    stringPreset,
     abstract,
-    delimiter,
-    quote,
-    bracket,
-    discrete
+    quote
   } = this;
-  if (bracket && delimiter.includes(enumChars.LF)) delimiter += enumChars.TB;
   let {
     raw,
     text
   } = vettro.vettro(vec, {
     head,
     tail,
-    abstract: decoUtil.makeQuoteAbstract(abstract, quote),
+    abstract: decoUtil.pipeQuote(abstract, quote),
     hr: enumChars.ELLIP
   });
   if (preset) fluoVector.fluoVector(text, {
@@ -39,7 +34,7 @@ function cosmetics(vec) {
     stringPreset,
     mutate: true
   });
-  return discrete ? text : bracket ? '[ ' + text.join(delimiter) + ' ]' : text.join(delimiter);
+  return decoUtil.liner(text, this);
 }
 
 /**
@@ -56,19 +51,16 @@ function cosmetics(vec) {
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=') ']
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const Deco = (options = {}) => options.indexed ? vec => {
-  var _Object$entries;
-
-  return _Object$entries = Object.entries(vec), decoEntries.Deco(decoUtil.presetVectorOptions(options))(_Object$entries);
-} : cosmetics.bind(decoUtil.presetVectorOptions(options));
+const Deco = (options = {}) => cosmetics.bind(decoUtil.presetVectorOptions(options));
 /***
  *
  * @param {*[]} vector
@@ -80,14 +72,16 @@ const Deco = (options = {}) => options.indexed ? vec => {
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=') ']
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
+ * @param {number} [options.bracket=BRK] - BRK = 1
+ * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const deco = (vector, options = {}) => options.indexed ? decoEntries.deco(Object.entries(vector), decoUtil.presetVectorOptions(options)) : cosmetics.call(decoUtil.presetVectorOptions(options), vector);
+const deco = (vector, options = {}) => cosmetics.call(decoUtil.presetVectorOptions(options), vector);
 
 exports.Deco = Deco;
 exports.cosmetics = cosmetics;

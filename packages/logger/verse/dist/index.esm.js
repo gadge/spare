@@ -1,87 +1,96 @@
 import { cosmetics } from '@spare/deco-vector';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
-import { cosmetics as cosmetics$2 } from '@spare/deco-matrix';
-import { cosmetics as cosmetics$3 } from '@spare/deco-samples';
-import { joinLines } from '@spare/deco-util';
+import { cosmetics as cosmetics$2 } from '@spare/deco-object';
+import { cosmetics as cosmetics$3 } from '@spare/deco-matrix';
+import { cosmetics as cosmetics$4 } from '@spare/deco-samples';
+import { joinLines, liner } from '@spare/deco-util';
 import { matchSlice as matchSlice$1 } from '@analys/table-init';
 import { matchSlice } from '@analys/crostab-init';
+import { bracket, brace } from '@spare/bracket';
+import { isNumeric } from '@typen/num-loose';
+import { BRACKET, BRACE } from '@spare/enum-brackets';
+
+const keyer = x => /\W/.test(x) || isNumeric(x) ? '\'' + x + '\'' : x;
 
 class Verse {
   static vector(vector, {
     abstract,
-    delimiter = ', ',
-    quote = '\''
+    delim = ', ',
+    quote = '\'',
+    level
   } = {}) {
     return cosmetics.call({
       abstract,
-      delimiter,
+      delim,
       quote,
-      bracket: true
+      bracket: BRACKET,
+      level
     }, vector);
   }
 
   static entries(entries, {
-    keyAbstract,
+    keyAbstract = keyer,
     abstract,
     dash = ', ',
-    delimiter = ',\n',
-    quote = '\''
+    delim = ',\n',
+    quote = '\'',
+    level
   } = {}) {
     return cosmetics$1.call({
       keyAbstract,
       abstract,
       dash,
-      delimiter,
+      delim,
       quote,
-      bracket: true
+      bracket: BRACKET,
+      level
     }, entries);
   }
 
-  static entriesAsObject(entries, {
-    keyAbstract,
+  static object(o, {
+    keyAbstract = keyer,
     abstract,
     dash = ': ',
-    delimiter = ',\n',
-    keyQuote = null,
+    delim = ',\n',
     quote = '\'',
-    level = 0
+    level
   } = {}) {
-    const lines = cosmetics$1.call({
+    return cosmetics$2.call({
       keyAbstract,
       abstract,
       dash,
-      delimiter,
-      keyQuote,
+      delim,
       quote,
-      bracket: false,
-      discrete: true
-    }, entries);
-    return '{' + joinLines(lines, level) + '}';
+      bracket: BRACE,
+      level
+    }, o);
   }
 
   static matrix(matrix, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
-    const lines = cosmetics$2.call({
+    var _joinLines;
+
+    const lines = cosmetics$3.call({
       abstract,
-      delimiter,
+      delim,
       quote,
-      bracket: true,
+      bracket: BRACKET,
       discrete: true
     }, matrix);
-    return '[' + joinLines(lines, level) + ']';
+    return _joinLines = joinLines(lines, level), bracket(_joinLines);
   }
 
   static crostab(table, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
-    var _table;
+    var _table, _joinLines2;
 
     const {
       side,
@@ -92,21 +101,21 @@ class Verse {
     const headText = Verse.vector(head);
     const rowsText = Verse.matrix(rows, {
       abstract,
-      delimiter,
+      delim,
       quote,
       level: level + 1
     });
     const lines = ['side' + ': ' + sideText, 'head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return '{' + joinLines(lines, level) + '}';
+    return _joinLines2 = joinLines(lines, level), brace(_joinLines2);
   }
 
   static table(table, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
-    var _table2;
+    var _table2, _joinLines3;
 
     const {
       head,
@@ -115,29 +124,57 @@ class Verse {
     const headText = Verse.vector(head);
     const rowsText = Verse.matrix(rows, {
       abstract,
-      delimiter,
+      delim,
       quote,
       level: level + 1
     });
     const lines = ['head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return '{' + joinLines(lines, level) + '}';
+    return _joinLines3 = joinLines(lines, level), brace(_joinLines3);
   }
 
   static samples(samples, {
     abstract,
-    delimiter = ', ',
+    delim = ', ',
     quote = '\'',
     level = 0
   } = {}) {
-    const lines = cosmetics$3.call({
+    var _joinLines4;
+
+    const lines = cosmetics$4.call({
       indexes: false,
       abstract,
-      delimiter,
+      delim,
       quote,
       bracket: false,
       discrete: true
     }, samples);
-    return '[' + joinLines(lines, level) + ']';
+    return _joinLines4 = joinLines(lines, level), bracket(_joinLines4);
+  }
+
+  static entriesAsObject(entries, {
+    keyAbstract = keyer,
+    abstract,
+    dash = ': ',
+    delim = ',\n',
+    keyQuote = null,
+    quote = '\'',
+    level = 0
+  } = {}) {
+    const lines = cosmetics$1.call({
+      keyAbstract,
+      abstract,
+      dash,
+      delim,
+      keyQuote,
+      quote,
+      bracket: false,
+      discrete: true
+    }, entries);
+    return liner(lines, {
+      bracket: BRACE,
+      delim,
+      level
+    });
   }
 
 }

@@ -1,0 +1,34 @@
+{
+  "name": "@spare/enum-brackets",
+  "version": "0.2.0",
+  "description": "String brackets",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/test.index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeungw/spare.git"
+  },
+  "keywords": [
+    "test",
+    "console",
+    "debug",
+    "print"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoyeungw/spare"
+  },
+  "homepage": "https://github.com/hoyeungw/spare#readme",
+  "gitHead": "bc2f5a3647ec3f6d7cf62539f64ce8cbfd3630a8"
+}

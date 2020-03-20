@@ -3,24 +3,39 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presets = require('@palett/presets');
+var enumBrackets = require('@spare/enum-brackets');
+var enumChars = require('@spare/enum-chars');
 var matrix = require('@vect/matrix');
 var enumDataTypes = require('@typen/enum-data-types');
-var enumChars = require('@spare/enum-chars');
+var bracket = require('@spare/bracket');
 
 const presetEntriesOptions = o => {
   o.preset = o.preset || presets.FRESH;
-  o.preset = o.preset || presets.OCEAN;
+  o.stringPreset = o.stringPreset || presets.OCEAN;
   o.dash = o.dash || ' > ';
-  o.delimiter = o.delimiter || '\n';
+  o.delim = o.delim || enumChars.LF;
+  o.bracket = !o.bracket ? enumBrackets.NONE : enumBrackets.BRK;
+  return o;
+};
+
+const presetObjectOptions = o => {
+  o.preset = o.preset || presets.FRESH;
+  o.stringPreset = o.stringPreset || presets.PLANET;
+  o.dash = o.dash || ': ';
+  o.delim = o.delim || ',' + enumChars.LF;
+  o.bracket = !o.bracket ? enumBrackets.NONE : enumBrackets.BRC;
   return o;
 };
 
 const presetVectorOptions = o => {
-  o.indexed = o.indexed || true;
+  var _o$indexed;
+
+  o.indexed = (_o$indexed = o.indexed) !== null && _o$indexed !== void 0 ? _o$indexed : true;
   o.preset = o.preset || presets.FRESH;
   o.stringPreset = o.stringPreset || presets.JUNGLE;
   o.dash = o.dash || ') ';
-  o.delimiter = o.delimiter || ',\n';
+  o.delim = o.delim || ',' + enumChars.LF;
+  o.bracket = !o.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   return o;
 };
 
@@ -28,25 +43,30 @@ const presetMatrixOptions = o => {
   o.direct = o.direct || matrix.ROWWISE;
   o.preset = o.preset || presets.FRESH;
   o.preset = o.preset || presets.OCEAN;
-  o.delimiter = o.delimiter || ', ';
+  o.delim = o.delim || ', ';
+  o.bracket = !o.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   return o;
 };
 
 const presetCrostabOptions = o => {
-  o.direct = o.direct || matrix.POINTWISE;
+  var _o$direct, _o$ansi;
+
+  o.direct = (_o$direct = o.direct) !== null && _o$direct !== void 0 ? _o$direct : matrix.POINTWISE;
   o.preset = o.preset || presets.FRESH;
   o.stringPreset = o.stringPreset || presets.JUNGLE;
   o.labelPreset = o.labelPreset || presets.SUBTLE;
-  o.ansi = o.ansi || true;
+  o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
 
 const presetTableOptions = o => {
-  o.direct = o.direct || matrix.COLUMNWISE;
+  var _o$direct, _o$ansi;
+
+  o.direct = (_o$direct = o.direct) !== null && _o$direct !== void 0 ? _o$direct : matrix.COLUMNWISE;
   o.preset = o.preset || presets.FRESH;
   o.stringPreset = o.stringPreset || presets.JUNGLE;
   o.labelPreset = o.labelPreset || presets.SUBTLE;
-  o.ansi = o.ansi || true;
+  o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
 
@@ -56,8 +76,8 @@ const presetSamplesOptions = o => {
   o.preset = o.preset || presets.FRESH;
   o.keyPreset = o.keyPreset || presets.SUBTLE;
   o.stringPreset = o.stringPreset || presets.JUNGLE;
-  o.delimiter = o.delimiter || ', ';
-  o.bracket = o.bracket || true;
+  o.delim = o.delim || ', ';
+  o.bracket = !o.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   return o;
 };
 
@@ -67,7 +87,7 @@ const quoteString = function (x) {
   } = this;
   return typeof x === enumDataTypes.STR ? qt + x + qt : x;
 };
-const makeQuoteAbstract = (abstract, quote) => {
+const pipeQuote = (abstract, quote) => {
   if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return abstract;
   if (!abstract) return quoteString.bind({
     qt: quote
@@ -81,16 +101,25 @@ const makeQuoteAbstract = (abstract, quote) => {
   };
 };
 
-const joinLines = (lines, level) => {
-  const rn = enumChars.LF + enumChars.TB.repeat(level);
-  return `${rn}  ${lines.join(`,${rn + enumChars.TB}`)}${rn}`;
+const joinLines = (lines, level, hover = true) => {
+  const ind = enumChars.TB.repeat(level),
+        lfi = enumChars.LF + ind;
+  return hover ? `${lfi + enumChars.TB}${lines.join(enumChars.CO + lfi + enumChars.TB)}${enumChars.CO + lfi}` : `${ind + enumChars.TB}${lines.join(enumChars.CO + lfi + enumChars.TB)}${enumChars.CO}`;
 };
+const liner = (lines, {
+  discrete = false,
+  delim = enumChars.LF,
+  bracket: bracket$1 = enumBrackets.NONE,
+  level = 0
+} = {}) => discrete ? lines : lines.length && /\n/.test(delim) ? bracket.br(joinLines(lines, level, bracket$1), bracket$1) : bracket.br(lines.join(delim), bracket$1);
 
 exports.joinLines = joinLines;
-exports.makeQuoteAbstract = makeQuoteAbstract;
+exports.liner = liner;
+exports.pipeQuote = pipeQuote;
 exports.presetCrostabOptions = presetCrostabOptions;
 exports.presetEntriesOptions = presetEntriesOptions;
 exports.presetMatrixOptions = presetMatrixOptions;
+exports.presetObjectOptions = presetObjectOptions;
 exports.presetSamplesOptions = presetSamplesOptions;
 exports.presetTableOptions = presetTableOptions;
 exports.presetVectorOptions = presetVectorOptions;

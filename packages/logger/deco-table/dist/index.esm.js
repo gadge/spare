@@ -1,11 +1,11 @@
 import { size } from '@vect/matrix';
-import { AEU, RN } from '@spare/enum-chars';
+import { AEU } from '@spare/enum-chars';
 import { vettro } from '@spare/vettro';
 import { mattro } from '@spare/mattro';
 import { fluoVector } from '@palett/fluo-vector';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { padTable } from '@spare/pad-table';
-import { presetTableOptions } from '@spare/deco-util';
+import { liner, presetTableOptions } from '@spare/deco-util';
 
 const cosmetics = function (table) {
   let matrix = table.rows || table.matrix,
@@ -26,7 +26,8 @@ const cosmetics = function (table) {
     right,
     ansi,
     fullAngle,
-    discrete
+    discrete,
+    level
   } = this;
   const [x, b] = [mattro(matrix, {
     top,
@@ -63,7 +64,10 @@ const cosmetics = function (table) {
     fullAngle
   });
   const lines = [head.join(' | '), hr.join('-+-')].concat(rows.map(row => row.join(' | ')));
-  return discrete ? lines : lines.join(RN);
+  return liner(lines, {
+    discrete,
+    level
+  });
 };
 
 /**
@@ -83,12 +87,13 @@ const cosmetics = function (table) {
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.fullAngle]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
@@ -107,12 +112,13 @@ const Deco = (options = {}) => cosmetics.bind(presetTableOptions(options));
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
  * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.fullAngle]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 

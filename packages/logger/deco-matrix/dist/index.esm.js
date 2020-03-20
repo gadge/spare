@@ -1,26 +1,27 @@
-import { AEU, RN } from '@spare/enum-chars';
-import { makeQuoteAbstract, presetMatrixOptions } from '@spare/deco-util';
+import { liner, pipeQuote, presetMatrixOptions } from '@spare/deco-util';
 import { mattro } from '@spare/mattro';
 import { padMatrix } from '@spare/pad-matrix';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { size } from '@vect/matrix';
 
+const bracket = x => '[' + x + ']';
+
 const cosmetics = function (matrix) {
+  if (!matrix) return String(matrix);
   const [height, width] = size(matrix);
-  if (!height || !width) return AEU;
+  if (!height || !width) return liner([], this);
   const {
     direct,
     preset,
     stringPreset,
     quote,
     ansi,
-    bracket,
-    discrete
+    discrete,
+    delim,
+    bracket: bracket$1,
+    level
   } = this;
-  let {
-    delimiter
-  } = this;
-  this.abstract = makeQuoteAbstract(this.abstract, quote);
+  this.abstract = pipeQuote(this.abstract, quote);
   const {
     raw,
     text
@@ -36,8 +37,17 @@ const cosmetics = function (matrix) {
     dye,
     ansi
   });
-  const lines = bracket ? rows.map(line => `[${line.join(delimiter)}]`) : rows.map(line => `${line.join(delimiter)}`);
-  return discrete ? lines : bracket ? '[' + lines.join(`,${RN} `) + ']' : lines.join(`,${RN}`);
+  const lines = bracket$1 ? rows.map(line => {
+    var _line$join;
+
+    return _line$join = line.join(delim), bracket(_line$join);
+  }) : rows.map(line => line.join(delim));
+  return liner(lines, {
+    discrete,
+    delim: ',\n',
+    bracket: bracket$1,
+    level
+  });
 };
 
 /***
@@ -51,11 +61,12 @@ const cosmetics = function (matrix) {
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
@@ -72,11 +83,12 @@ const Deco = (options = {}) => cosmetics.bind(presetMatrixOptions(options));
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delimiter=',\n']
+ * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
  * @param {boolean} [options.bracket]
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 

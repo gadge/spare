@@ -1,7 +1,8 @@
-import { Foba } from '@foba/crostab'
+import { CrostabCollection } from '@foba/crostab'
 import { logger } from '@spare/logger'
 import { Verse } from '../src/Verse'
+import { flopValue } from '@aryth/rand'
 
-const crostab = Foba.flop()
+const crostab = CrostabCollection |> flopValue
 
-crostab |> Verse.crostab.bind(Verse) |> logger
+crostab |> Verse.crostab |> logger

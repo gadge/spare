@@ -34,14 +34,15 @@ const cosmetics = function (samples) {
     ansi
   } = this;
   let {
-    delimiter,
+    delim,
     quote,
     top,
     bottom,
     left,
     right,
     bracket,
-    discrete
+    discrete,
+    level
   } = this;
   let [pick, head] = fields ? (_lookupKeys$call = objectSelect.lookupKeys.call(sample, fields), entriesUnwind.unwind(_lookupKeys$call)) : [keys, keys.slice()];
   const {
@@ -71,7 +72,7 @@ const cosmetics = function (samples) {
     width: w,
     dashX,
     dashY,
-    abstract: decoUtil.makeQuoteAbstract(abstract, quote),
+    abstract: decoUtil.pipeQuote(abstract, quote),
     hr: null,
     validate: false
   });
@@ -92,7 +93,7 @@ const cosmetics = function (samples) {
     ansi
   });
   rows = matrixMargin.marginMapper(rows, (x, i, j) => head[j] + ':' + x, t, b, l, r);
-  dashY ? vectorMapper.mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delimiter)} }`)) : vectorMapper.mutate(rows, line => `{ ${line.join(delimiter)} }`);
+  dashY ? vectorMapper.mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delim)} }`)) : vectorMapper.mutate(rows, line => `{ ${line.join(delim)} }`);
 
   if (indexed) {
     const digits = math.intExpon(height) + 1;
@@ -106,7 +107,12 @@ const cosmetics = function (samples) {
   }
 
   if (dashX) rows.splice(t, 0, '...');
-  return discrete ? rows : bracket ? '[' + rows.join(`,${enumChars.RN} `) + ']' : rows.join(`,${enumChars.RN}`);
+  return decoUtil.liner(rows, {
+    discrete,
+    delim: ',\n',
+    bracket,
+    level
+  });
 };
 
 /**
@@ -123,10 +129,11 @@ const cosmetics = function (samples) {
  * @param {number} [options.left=0]
  * @param {number} [options.bottom=0]
  * @param {number} [options.right=0]
- * @param {string} [options.delimiter=',']
+ * @param {string} [options.delim=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
@@ -146,10 +153,11 @@ const Deco = (options = {}) => cosmetics.bind(decoUtil.presetSamplesOptions(opti
  * @param {number} [options.left=0]
  * @param {number} [options.bottom=0]
  * @param {number} [options.right=0]
- * @param {string} [options.delimiter=',']
+ * @param {string} [options.delim=',']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
  * @param {boolean} [options.discrete]
+ * @param {number} [options.level=0]
  * @returns {string}
  */
 
