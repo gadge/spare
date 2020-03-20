@@ -85,7 +85,7 @@ class Verse {
       bracket: enumBrackets.BRACKET,
       discrete: true
     }, matrix);
-    return _joinLines = decoUtil.joinLines(lines, level), bracket.bracket(_joinLines);
+    return _joinLines = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines);
   }
 
   static crostab(table, {
@@ -110,7 +110,7 @@ class Verse {
       level: level + 1
     });
     const lines = ['side' + ': ' + sideText, 'head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return _joinLines2 = decoUtil.joinLines(lines, level), bracket.brace(_joinLines2);
+    return _joinLines2 = decoUtil.joinLines(lines, delim, level), bracket.brace(_joinLines2);
   }
 
   static table(table, {
@@ -133,7 +133,7 @@ class Verse {
       level: level + 1
     });
     const lines = ['head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return _joinLines3 = decoUtil.joinLines(lines, level), bracket.brace(_joinLines3);
+    return _joinLines3 = decoUtil.joinLines(lines, delim, level), bracket.brace(_joinLines3);
   }
 
   static samples(samples, {
@@ -152,7 +152,7 @@ class Verse {
       bracket: false,
       discrete: true
     }, samples);
-    return _joinLines4 = decoUtil.joinLines(lines, level), bracket.bracket(_joinLines4);
+    return _joinLines4 = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines4);
   }
 
   static entriesAsObject(entries, {

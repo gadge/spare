@@ -51,6 +51,7 @@ const presetCrostabOptions = o => {
   o.preset = o.preset || FRESH;
   o.stringPreset = o.stringPreset || JUNGLE;
   o.labelPreset = o.labelPreset || SUBTLE;
+  o.delim = o.delim || LF;
   o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
@@ -62,6 +63,7 @@ const presetTableOptions = o => {
   o.preset = o.preset || FRESH;
   o.stringPreset = o.stringPreset || JUNGLE;
   o.labelPreset = o.labelPreset || SUBTLE;
+  o.delim = o.delim || LF;
   o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
@@ -97,16 +99,16 @@ const pipeQuote = (abstract, quote) => {
   };
 };
 
-const joinLines = (lines, level, hover = true) => {
-  const ind = TB.repeat(level),
-        lfi = LF + ind;
-  return hover ? `${lfi + TB}${lines.join(CO + lfi + TB)}${CO + lfi}` : `${ind + TB}${lines.join(CO + lfi + TB)}${CO}`;
+const joinLines = (lines, de = '', lv, hover = true) => {
+  const IND = TB.repeat(lv),
+        LFI = LF + IND;
+  return hover ? `${LFI + TB}${lines.join(de + LFI + TB)}${de + LFI}` : `${IND + TB}${lines.join(de + LFI + TB)}${de}`;
 };
 const liner = (lines, {
   discrete = false,
   delim = LF,
   bracket = NONE,
   level = 0
-} = {}) => discrete ? lines : lines.length && /\n/.test(delim) ? br(joinLines(lines, level, bracket), bracket) : br(lines.join(delim), bracket);
+} = {}) => discrete ? lines : lines.length && /\n/.test(delim) ? br(joinLines(lines, /,/.test(delim) ? CO : '', level, bracket), bracket) : br(lines.join(delim), bracket);
 
 export { joinLines, liner, pipeQuote, presetCrostabOptions, presetEntriesOptions, presetMatrixOptions, presetObjectOptions, presetSamplesOptions, presetTableOptions, presetVectorOptions, quoteString };

@@ -31,6 +31,7 @@ const cosmetics = function (table) {
     ansi,
     fullAngle,
     discrete,
+    delim,
     level
   } = this;
   const [x, b] = [mattro.mattro(matrix$1, {
@@ -70,6 +71,7 @@ const cosmetics = function (table) {
   const lines = [head.join(' | '), hr.join('-+-')].concat(rows.map(row => row.join(' | ')));
   return decoUtil.liner(lines, {
     discrete,
+    delim,
     level
   });
 };

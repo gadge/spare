@@ -55,6 +55,7 @@ const presetCrostabOptions = o => {
   o.preset = o.preset || presets.FRESH;
   o.stringPreset = o.stringPreset || presets.JUNGLE;
   o.labelPreset = o.labelPreset || presets.SUBTLE;
+  o.delim = o.delim || enumChars.LF;
   o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
@@ -66,6 +67,7 @@ const presetTableOptions = o => {
   o.preset = o.preset || presets.FRESH;
   o.stringPreset = o.stringPreset || presets.JUNGLE;
   o.labelPreset = o.labelPreset || presets.SUBTLE;
+  o.delim = o.delim || enumChars.LF;
   o.ansi = (_o$ansi = o.ansi) !== null && _o$ansi !== void 0 ? _o$ansi : true;
   return o;
 };
@@ -101,17 +103,17 @@ const pipeQuote = (abstract, quote) => {
   };
 };
 
-const joinLines = (lines, level, hover = true) => {
-  const ind = enumChars.TB.repeat(level),
-        lfi = enumChars.LF + ind;
-  return hover ? `${lfi + enumChars.TB}${lines.join(enumChars.CO + lfi + enumChars.TB)}${enumChars.CO + lfi}` : `${ind + enumChars.TB}${lines.join(enumChars.CO + lfi + enumChars.TB)}${enumChars.CO}`;
+const joinLines = (lines, de = '', lv, hover = true) => {
+  const IND = enumChars.TB.repeat(lv),
+        LFI = enumChars.LF + IND;
+  return hover ? `${LFI + enumChars.TB}${lines.join(de + LFI + enumChars.TB)}${de + LFI}` : `${IND + enumChars.TB}${lines.join(de + LFI + enumChars.TB)}${de}`;
 };
 const liner = (lines, {
   discrete = false,
   delim = enumChars.LF,
   bracket: bracket$1 = enumBrackets.NONE,
   level = 0
-} = {}) => discrete ? lines : lines.length && /\n/.test(delim) ? bracket.br(joinLines(lines, level, bracket$1), bracket$1) : bracket.br(lines.join(delim), bracket$1);
+} = {}) => discrete ? lines : lines.length && /\n/.test(delim) ? bracket.br(joinLines(lines, /,/.test(delim) ? enumChars.CO : '', level, bracket$1), bracket$1) : bracket.br(lines.join(delim), bracket$1);
 
 exports.joinLines = joinLines;
 exports.liner = liner;

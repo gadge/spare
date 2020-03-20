@@ -15,6 +15,7 @@ import { max } from '@aryth/comparer';
 import { LPad } from '@spare/pad-string';
 import { joinLines } from '@spare/deco-util';
 import { mutate } from '@vect/column-mapper';
+import { CO } from '@spare/enum-chars';
 import { FUN } from '@typen/enums';
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
@@ -143,7 +144,7 @@ const stringifyEntries = function (entries, lv) {
   } = wrapInfo.call(this, entries);
   if (wrap || lv < vo) mutate(entries, 0, k => lpad(k, pad));
   mutate$1(entries, ([k, v]) => `${k}: ${v}`);
-  return (wrap || lv < vo) && entries.length > 1 ? joinLines(entries, lv) : entries.join(', ');
+  return (wrap || lv < vo) && entries.length > 1 ? joinLines(entries, CO, lv) : entries.join(', ');
 };
 const wrapInfo = function (entries) {
   const {
@@ -175,7 +176,7 @@ const stringifyVector = function (vector, lv) {
     row.push(item), w += lange(item);
     if (w > wa) rows.push(row.join(', ')), row = [], w = 0;
   });
-  return rows.length > 1 ? joinLines(rows, lv) : vector.join(', ');
+  return rows.length > 1 ? joinLines(rows, CO, lv) : vector.join(', ');
 };
 
 const deFn = function (fn) {

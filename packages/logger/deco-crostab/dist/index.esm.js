@@ -97,6 +97,7 @@ const cosmetics = function (crostab) {
     ansi,
     fullAngle,
     discrete,
+    delim,
     level
   } = this;
   const [x, b, s] = [mattro(matrix, {
@@ -152,6 +153,7 @@ const cosmetics = function (crostab) {
   const lines = [title + VLINE + head.join(VLINE), br + HCONN + hr.join(HCONN)].concat(zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE)));
   return liner(lines, {
     discrete,
+    delim,
     level
   });
 };

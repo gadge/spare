@@ -81,7 +81,7 @@ class Verse {
       bracket: BRACKET,
       discrete: true
     }, matrix);
-    return _joinLines = joinLines(lines, level), bracket(_joinLines);
+    return _joinLines = joinLines(lines, delim, level), bracket(_joinLines);
   }
 
   static crostab(table, {
@@ -106,7 +106,7 @@ class Verse {
       level: level + 1
     });
     const lines = ['side' + ': ' + sideText, 'head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return _joinLines2 = joinLines(lines, level), brace(_joinLines2);
+    return _joinLines2 = joinLines(lines, delim, level), brace(_joinLines2);
   }
 
   static table(table, {
@@ -129,7 +129,7 @@ class Verse {
       level: level + 1
     });
     const lines = ['head' + ': ' + headText, 'rows' + ': ' + rowsText];
-    return _joinLines3 = joinLines(lines, level), brace(_joinLines3);
+    return _joinLines3 = joinLines(lines, delim, level), brace(_joinLines3);
   }
 
   static samples(samples, {
@@ -148,7 +148,7 @@ class Verse {
       bracket: false,
       discrete: true
     }, samples);
-    return _joinLines4 = joinLines(lines, level), bracket(_joinLines4);
+    return _joinLines4 = joinLines(lines, delim, level), bracket(_joinLines4);
   }
 
   static entriesAsObject(entries, {

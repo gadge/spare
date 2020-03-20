@@ -30,7 +30,7 @@ export class Verse {
   } = {}) {
     const lines = cosmeticsMatrix
       .call({ abstract, delim, quote, bracket: BRACKET, discrete: true }, matrix)
-    return joinLines(lines, level) |> doBracket
+    return joinLines(lines, delim, level) |> doBracket
   }
 
   static crostab (table, {
@@ -45,7 +45,7 @@ export class Verse {
       'head' + ': ' + headText,
       'rows' + ': ' + rowsText
     ]
-    return joinLines(lines, level) |> brace
+    return joinLines(lines,delim, level) |> brace
   }
 
   static table (table, {
@@ -58,7 +58,7 @@ export class Verse {
       'head' + ': ' + headText,
       'rows' + ': ' + rowsText
     ]
-    return joinLines(lines, level) |> brace
+    return joinLines(lines, delim, level) |> brace
   }
 
   static samples (samples, {
@@ -66,7 +66,7 @@ export class Verse {
   } = {}) {
     const lines = cosmeticsSamples
       .call({ indexes: false, abstract, delim, quote, bracket: false, discrete: true }, samples)
-    return joinLines(lines, level) |> doBracket
+    return joinLines(lines, delim, level) |> doBracket
   }
 
   static entriesAsObject (entries, {

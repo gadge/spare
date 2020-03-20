@@ -1,5 +1,5 @@
 import { size } from '@vect/matrix'
-import { AEU, RN } from '@spare/enum-chars'
+import { AEU } from '@spare/enum-chars'
 import { vettro } from '@spare/vettro'
 import { mattro } from '@spare/mattro'
 import { fluoVector } from '@palett/fluo-vector'
@@ -13,7 +13,7 @@ export const cosmetics = function (table) {
   if (!height || !width || !labelWidth) return AEU
   const {
     direct, abstract, headAbstract, preset, stringPreset, labelPreset,
-    top, left, bottom, right, ansi, fullAngle, discrete,level
+    top, left, bottom, right, ansi, fullAngle, discrete, delim, level
   } = this
   const [x, b] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),
@@ -30,5 +30,5 @@ export const cosmetics = function (table) {
   ].concat(
     rows.map(row => row.join(' | '))
   )
-  return liner(lines,{discrete,level})
+  return liner(lines, { discrete, delim, level })
 }

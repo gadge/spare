@@ -18,7 +18,7 @@ export const cosmetics = function (crostab) {
   const {
     direct = POINTWISE, abstract, bannerAbstract, sideAbstract,
     preset, stringPreset, labelPreset,
-    top, left, bottom, right, ansi, fullAngle, discrete, level
+    top, left, bottom, right, ansi, fullAngle, discrete, delim, level
   } = this
   const [x, b, s] = [
     mattro(matrix, { top, bottom, left, right, height, width, abstract }),
@@ -38,5 +38,5 @@ export const cosmetics = function (crostab) {
   ].concat(
     zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE))
   )
-  return liner(lines, { discrete, level })
+  return liner(lines, { discrete, delim, level })
 }

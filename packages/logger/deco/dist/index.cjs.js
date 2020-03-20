@@ -19,6 +19,7 @@ var comparer = require('@aryth/comparer');
 var padString = require('@spare/pad-string');
 var decoUtil = require('@spare/deco-util');
 var columnMapper = require('@vect/column-mapper');
+var enumChars = require('@spare/enum-chars');
 var enums = require('@typen/enums');
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
@@ -147,7 +148,7 @@ const stringifyEntries = function (entries, lv) {
   } = wrapInfo.call(this, entries);
   if (wrap || lv < vo) columnMapper.mutate(entries, 0, k => lpad(k, pad));
   vectorMapper.mutate(entries, ([k, v]) => `${k}: ${v}`);
-  return (wrap || lv < vo) && entries.length > 1 ? decoUtil.joinLines(entries, lv) : entries.join(', ');
+  return (wrap || lv < vo) && entries.length > 1 ? decoUtil.joinLines(entries, enumChars.CO, lv) : entries.join(', ');
 };
 const wrapInfo = function (entries) {
   const {
@@ -179,7 +180,7 @@ const stringifyVector = function (vector, lv) {
     row.push(item), w += lange.lange(item);
     if (w > wa) rows.push(row.join(', ')), row = [], w = 0;
   });
-  return rows.length > 1 ? decoUtil.joinLines(rows, lv) : vector.join(', ');
+  return rows.length > 1 ? decoUtil.joinLines(rows, enumChars.CO, lv) : vector.join(', ');
 };
 
 const deFn = function (fn) {
