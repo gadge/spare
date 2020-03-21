@@ -1,4 +1,4 @@
-import { PAL } from '../theme'
+import { PAL } from '../../../src/theme'
 import { FUN } from '@typen/enums'
 
 export const deFn = function (fn) {
@@ -18,3 +18,5 @@ export const toLambda = des => {
     ? des.slice(0, li) + ARROW + des.slice(li + LB.length, ri)
     : des
 }
+
+

@@ -9,7 +9,7 @@ import { mutate as mutateVector } from '@vect/vector-mapper'
 import { BRC, brc, brk, BRK, IDX, PAL } from './theme'
 import { stringifyEntries } from './utils/stringifyEntries'
 import { stringifyVector } from './utils/stringifyVector'
-import { deFn } from './utils/deFn'
+import { decoFunc } from './utils/decoFunc'
 
 export function deNode (node, lv = 0) {
   return this.pr
@@ -35,7 +35,7 @@ export function deNodePretty (node, lv = 0) {
     if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
     return `${node}`
   }
-  if (t === FUN) return deFn.call(this, node)
+  if (t === FUN) return decoFunc.call(this, node)
   if (t === BOO) return PAL.BOO(node)
   if (t === UND || t === SYM) return PAL.UDF(node)
 }
@@ -51,7 +51,7 @@ export function deNodePlain (node, lv = 0) {
     if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
     return `${node}`
   }
-  if (t === FUN) return deFn.call(this, node)
+  if (t === FUN) return decoFunc.call(this, node)
   return node
 }
 
