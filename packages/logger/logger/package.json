@@ -1,6 +1,6 @@
 {
   "name": "@spare/logger",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@palett/says": "^0.1.0",
-    "@spare/deco": "^0.2.2",
+    "@spare/deco": "^0.2.3",
     "@spare/deco-crostab": "^0.2.2",
     "@spare/deco-entries": "^0.2.2",
     "@spare/deco-matrix": "^0.2.2",
