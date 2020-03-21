@@ -20,7 +20,8 @@ var padString = require('@spare/pad-string');
 var decoUtil = require('@spare/deco-util');
 var columnMapper = require('@vect/column-mapper');
 var enumChars = require('@spare/enum-chars');
-var enums = require('@typen/enums');
+var bracket = require('@spare/bracket');
+var translator = require('@glossa/translator');
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
 const L = '{ ',
@@ -183,25 +184,43 @@ const stringifyVector = function (vector, lv) {
   return rows.length > 1 ? decoUtil.joinLines(rows, enumChars.CO, lv) : vector.join(', ');
 };
 
-const deFn = function (fn) {
-  let {
-    wf,
+var _Blue$lighten_, _LightBlue$accent_, _LightBlue$lighten_, _Lime$lighten_, _ref$3, _function, _Grey$base, _return, _Brown$lighten_;
+const LAMB_REG = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs;
+const THIS_REG = /\bthis\b/;
+const FUNC_INI = /^function/;
+const MULTI_LF = /\n\s*(\n\s*)/g;
+const nameDye = dye.Dye((_Blue$lighten_ = cards.Blue.lighten_2, convert.hexToRgb(_Blue$lighten_)));
+const argsDye = dye.Dye((_LightBlue$accent_ = cards.LightBlue.accent_2, convert.hexToRgb(_LightBlue$accent_)));
+const bodyDye = dye.Dye((_LightBlue$lighten_ = cards.LightBlue.lighten_3, convert.hexToRgb(_LightBlue$lighten_)));
+const arrowDye = dye.Dye((_Lime$lighten_ = cards.Lime.lighten_1, convert.hexToRgb(_Lime$lighten_)));
+const Preset = (_ref$3 = [[/function/gi, (_function = 'function', dye.Dye((_Grey$base = cards.Grey.base, convert.hexToRgb(_Grey$base)))(_function))], [/return/gi, (_return = 'return', dye.Dye((_Brown$lighten_ = cards.Brown.lighten_3, convert.hexToRgb(_Brown$lighten_)))(_return))], [/\bthis\b/gi, x => {
+  var _x, _BlueGrey$accent_;
+
+  return _x = x, dye.Dye((_BlueGrey$accent_ = cards.BlueGrey.accent_2, convert.hexToRgb(_BlueGrey$accent_)))(_x);
+}], [/\b(if|else|while|do|switch|for)\b/gi, x => {
+  var _x2, _Purple$lighten_;
+
+  return _x2 = x, dye.Dye((_Purple$lighten_ = cards.Purple.lighten_3, convert.hexToRgb(_Purple$lighten_)))(_x2);
+}], [/\b(var|let|const)\b/gi, x => {
+  var _x3, _DeepPurple$lighten_;
+
+  return _x3 = x, dye.Dye((_DeepPurple$lighten_ = cards.DeepPurple.lighten_3, convert.hexToRgb(_DeepPurple$lighten_)))(_x3);
+}]], translator.makeReplaceable(_ref$3));
+const decoFunc = function (func) {
+  const {
     pr
-  } = this,
-      des = `${fn}`;
-  if (wf <= 128) des = des.replace(/\s+/g, ' ');
-  if (des.startsWith(enums.FUN)) des = des.slice(9);
-  des = toLambda(des);
-  if (des.length > wf) des = Object.prototype.toString.call(fn);
-  return pr ? PAL.FNC(des) : des;
-};
-const LB = '{ return',
-      RB = '}',
-      ARROW = '=>';
-const toLambda = des => {
-  const li = des.indexOf(LB),
-        ri = des.lastIndexOf(RB);
-  return li && ri ? des.slice(0, li) + ARROW + des.slice(li + LB.length, ri) : des;
+  } = this;
+  let text = func.toString().replace(MULTI_LF, (_, p1) => p1);
+  const temp = text.replace(/\s+/g, ' ');
+  if (temp.length <= 160) text = temp.replace(/;\s*}/g, ' }');
+  if (!THIS_REG.test(text)) text = pr ? text.replace(LAMB_REG, (_, name, args, body) => nameDye(name) + enumChars.SP + bracket.parenth(argsDye(args)) + enumChars.SP + arrowDye('=>') + bodyDye(body)) : text.replace(LAMB_REG, (_, name, args, body) => name + enumChars.SP + bracket.parenth(args) + enumChars.SP + '=>' + body);
+  text = text.replace(FUNC_INI, '').trim();
+
+  if (pr) {
+    text = text.replace(Preset);
+  }
+
+  return text;
 };
 
 function deNode(node, lv = 0) {
@@ -233,7 +252,7 @@ function deNodePretty(node, lv = 0) {
     return `${node}`;
   }
 
-  if (t === enumDataTypes.FUN) return deFn.call(this, node);
+  if (t === enumDataTypes.FUN) return decoFunc.call(this, node);
   if (t === enumDataTypes.BOO) return PAL.BOO(node);
   if (t === enumDataTypes.UND || t === enumDataTypes.SYM) return PAL.UDF(node);
 }
@@ -258,7 +277,7 @@ function deNodePlain(node, lv = 0) {
     return `${node}`;
   }
 
-  if (t === enumDataTypes.FUN) return deFn.call(this, node);
+  if (t === enumDataTypes.FUN) return decoFunc.call(this, node);
   return node;
 }
 let deVe = function (vector, lv) {

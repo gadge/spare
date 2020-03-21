@@ -1,4 +1,4 @@
-import { STR, NUM, BIG, OBJ, FUN as FUN$1, BOO, UND, SYM } from '@typen/enum-data-types';
+import { STR, NUM, BIG, OBJ, FUN, BOO, UND, SYM } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, MAP, SET } from '@typen/enum-object-types';
 import { isNumeric } from '@typen/num-loose';
 import { typ } from '@typen/typ';
@@ -9,14 +9,15 @@ import { mutate as mutate$1, iterate } from '@vect/vector-mapper';
 import { hslToRgb, hexToRgb, hslToHex } from '@palett/convert';
 import { Dye } from '@palett/dye';
 import { mapper } from '@vect/object-mapper';
-import { Cards } from '@palett/cards';
+import { Cards, Blue, LightBlue, Lime, Grey, Brown, BlueGrey, Purple, DeepPurple } from '@palett/cards';
 import { lange } from '@spare/lange';
 import { max } from '@aryth/comparer';
 import { LPad } from '@spare/pad-string';
 import { joinLines } from '@spare/deco-util';
 import { mutate } from '@vect/column-mapper';
-import { CO } from '@spare/enum-chars';
-import { FUN } from '@typen/enums';
+import { CO, SP } from '@spare/enum-chars';
+import { parenth } from '@spare/bracket';
+import { makeReplaceable } from '@glossa/translator';
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
 const L = '{ ',
@@ -179,25 +180,43 @@ const stringifyVector = function (vector, lv) {
   return rows.length > 1 ? joinLines(rows, CO, lv) : vector.join(', ');
 };
 
-const deFn = function (fn) {
-  let {
-    wf,
+var _Blue$lighten_, _LightBlue$accent_, _LightBlue$lighten_, _Lime$lighten_, _ref$3, _function, _Grey$base, _return, _Brown$lighten_;
+const LAMB_REG = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs;
+const THIS_REG = /\bthis\b/;
+const FUNC_INI = /^function/;
+const MULTI_LF = /\n\s*(\n\s*)/g;
+const nameDye = Dye((_Blue$lighten_ = Blue.lighten_2, hexToRgb(_Blue$lighten_)));
+const argsDye = Dye((_LightBlue$accent_ = LightBlue.accent_2, hexToRgb(_LightBlue$accent_)));
+const bodyDye = Dye((_LightBlue$lighten_ = LightBlue.lighten_3, hexToRgb(_LightBlue$lighten_)));
+const arrowDye = Dye((_Lime$lighten_ = Lime.lighten_1, hexToRgb(_Lime$lighten_)));
+const Preset = (_ref$3 = [[/function/gi, (_function = 'function', Dye((_Grey$base = Grey.base, hexToRgb(_Grey$base)))(_function))], [/return/gi, (_return = 'return', Dye((_Brown$lighten_ = Brown.lighten_3, hexToRgb(_Brown$lighten_)))(_return))], [/\bthis\b/gi, x => {
+  var _x, _BlueGrey$accent_;
+
+  return _x = x, Dye((_BlueGrey$accent_ = BlueGrey.accent_2, hexToRgb(_BlueGrey$accent_)))(_x);
+}], [/\b(if|else|while|do|switch|for)\b/gi, x => {
+  var _x2, _Purple$lighten_;
+
+  return _x2 = x, Dye((_Purple$lighten_ = Purple.lighten_3, hexToRgb(_Purple$lighten_)))(_x2);
+}], [/\b(var|let|const)\b/gi, x => {
+  var _x3, _DeepPurple$lighten_;
+
+  return _x3 = x, Dye((_DeepPurple$lighten_ = DeepPurple.lighten_3, hexToRgb(_DeepPurple$lighten_)))(_x3);
+}]], makeReplaceable(_ref$3));
+const decoFunc = function (func) {
+  const {
     pr
-  } = this,
-      des = `${fn}`;
-  if (wf <= 128) des = des.replace(/\s+/g, ' ');
-  if (des.startsWith(FUN)) des = des.slice(9);
-  des = toLambda(des);
-  if (des.length > wf) des = Object.prototype.toString.call(fn);
-  return pr ? PAL.FNC(des) : des;
-};
-const LB = '{ return',
-      RB = '}',
-      ARROW = '=>';
-const toLambda = des => {
-  const li = des.indexOf(LB),
-        ri = des.lastIndexOf(RB);
-  return li && ri ? des.slice(0, li) + ARROW + des.slice(li + LB.length, ri) : des;
+  } = this;
+  let text = func.toString().replace(MULTI_LF, (_, p1) => p1);
+  const temp = text.replace(/\s+/g, ' ');
+  if (temp.length <= 160) text = temp.replace(/;\s*}/g, ' }');
+  if (!THIS_REG.test(text)) text = pr ? text.replace(LAMB_REG, (_, name, args, body) => nameDye(name) + SP + parenth(argsDye(args)) + SP + arrowDye('=>') + bodyDye(body)) : text.replace(LAMB_REG, (_, name, args, body) => name + SP + parenth(args) + SP + '=>' + body);
+  text = text.replace(FUNC_INI, '').trim();
+
+  if (pr) {
+    text = text.replace(Preset);
+  }
+
+  return text;
 };
 
 function deNode(node, lv = 0) {
@@ -229,7 +248,7 @@ function deNodePretty(node, lv = 0) {
     return `${node}`;
   }
 
-  if (t === FUN$1) return deFn.call(this, node);
+  if (t === FUN) return decoFunc.call(this, node);
   if (t === BOO) return PAL.BOO(node);
   if (t === UND || t === SYM) return PAL.UDF(node);
 }
@@ -254,7 +273,7 @@ function deNodePlain(node, lv = 0) {
     return `${node}`;
   }
 
-  if (t === FUN$1) return deFn.call(this, node);
+  if (t === FUN) return decoFunc.call(this, node);
   return node;
 }
 let deVe = function (vector, lv) {
