@@ -16,6 +16,9 @@ var enumBrackets = require('@spare/enum-brackets');
 
 const keyer = x => /\W/.test(x) || numLoose.isNumeric(x) ? '\'' + x + '\'' : x;
 
+const SIDE = 'side',
+      HEAD = 'head',
+      ROWS = 'rows';
 class Verse {
   static vector(vector, {
     read,
@@ -101,15 +104,25 @@ class Verse {
       head,
       rows
     } = (_table = table, crostabInit.matchSlice(_table));
-    const sideText = Verse.vector(side);
-    const headText = Verse.vector(head);
+    const sideText = Verse.vector(side, {
+      read,
+      delim,
+      quote,
+      level: level + 1
+    });
+    const headText = Verse.vector(head, {
+      read,
+      delim,
+      quote,
+      level: level + 1
+    });
     const rowsText = Verse.matrix(rows, {
       read,
       delim,
       quote,
       level: level + 1
     });
-    const lines = ['side' + ': ' + sideText, 'head' + ': ' + headText, 'rows' + ': ' + rowsText];
+    const lines = [SIDE + ': ' + sideText, HEAD + ': ' + headText, ROWS + ': ' + rowsText];
     return _joinLines2 = decoUtil.joinLines(lines, delim, level), bracket.brace(_joinLines2);
   }
 
@@ -125,14 +138,19 @@ class Verse {
       head,
       rows
     } = (_table2 = table, tableInit.matchSlice(_table2));
-    const headText = Verse.vector(head);
+    const headText = Verse.vector(head, {
+      read,
+      delim,
+      quote,
+      level: level + 1
+    });
     const rowsText = Verse.matrix(rows, {
       read,
       delim,
       quote,
       level: level + 1
     });
-    const lines = ['head' + ': ' + headText, 'rows' + ': ' + rowsText];
+    const lines = [HEAD + ': ' + headText, ROWS + ': ' + rowsText];
     return _joinLines3 = decoUtil.joinLines(lines, delim, level), bracket.brace(_joinLines3);
   }
 
