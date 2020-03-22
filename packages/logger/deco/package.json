@@ -24,6 +24,7 @@
     "@palett/fluo-vector": "^0.1.0",
     "@spare/bracket": "^0.3.0",
     "@spare/deco-util": "^0.3.0",
+    "@spare/preset-deco": "^0.3.0",
     "@spare/enum-chars": "^0.3.0",
     "@spare/lange": "^0.3.0",
     "@spare/pad-string": "^0.3.0",

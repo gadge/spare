@@ -5,7 +5,8 @@ import { mattro } from '@spare/mattro';
 import { fluoVector } from '@palett/fluo-vector';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { padTable } from '@spare/pad-table';
-import { liner, presetTableOptions } from '@spare/deco-util';
+import { liner } from '@spare/deco-util';
+import { presetTable } from '@spare/preset-deco';
 
 const cosmetics = function (table) {
   let matrix = table.rows || table.matrix,
@@ -79,51 +80,51 @@ const cosmetics = function (table) {
 /***
  *
  * @param {Object} options
- * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.read]
- * @param {function(*):string} [options.headRead]
- * @param {Preset} [options.preset=FRESH]
- * @param {Preset} [options.stringPreset=JUNGLE]
- * @param {Preset} [options.labelPreset=SUBTLE]
+ * @param {Function} [options.read]
+ * @param {Function} [options.headRead]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=JUNGLE]
+ * @param {Object} [options.labelPreset=SUBTLE]
+ * @param {number} [options.direct=COLUMNWISE]
  * @param {number} [options.top]
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
+ * @param {boolean} [options.discrete]
  * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
- * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
- * @param {boolean} [options.ansi]
+ * @param {boolean} [options.quote] - currently not functional, keeps for future fix
+ * @param {boolean} [options.ansi=true]
  * @param {boolean} [options.fullAngle]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetTableOptions(options));
+const Deco = (options = {}) => cosmetics.bind(presetTable(options));
 /***
  *
  * @param {Object} table
  * @param {Object} options
- * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.read]
- * @param {function(*):string} [options.headRead]
- * @param {Preset} [options.preset=FRESH]
- * @param {Preset} [options.stringPreset=JUNGLE]
- * @param {Preset} [options.labelPreset=SUBTLE]
+ * @param {Function} [options.read]
+ * @param {Function} [options.headRead]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=JUNGLE]
+ * @param {Object} [options.labelPreset=SUBTLE]
+ * @param {number} [options.direct=COLUMNWISE]
  * @param {number} [options.top]
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
+ * @param {boolean} [options.discrete]
  * @param {string} [options.delim=',\n']
  * @param {string} [options.quote] - currently not functional, keeps for future fix
- * @param {boolean} [options.bracket] - currently not functional, keeps for future fix
- * @param {boolean} [options.ansi]
+ * @param {boolean} [options.quote] - currently not functional, keeps for future fix
+ * @param {boolean} [options.ansi=true]
  * @param {boolean} [options.fullAngle]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const deco = (table, options = {}) => cosmetics.call(presetTableOptions(options), table);
+const deco = (table, options = {}) => cosmetics.call(presetTable(options), table);
 
 export { Deco, cosmetics, deco };

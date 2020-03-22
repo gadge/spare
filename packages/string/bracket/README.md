@@ -1,4 +1,4 @@
-## @spare/bracket
+## @spare/quote
 A function returning string length,
 s.t. 
     skipping ansi (escape) codes,
@@ -18,19 +18,19 @@ s.t.
 
 ## Install
 ```console
-$ npm install @spare/bracket
+$ npm install @spare/quote
 ```
 
 ## Usage
 ```js
-import { bracket } from '@spare/bracket'
+import { quote } from '@spare/quote'
 const list = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',
   '\u{1F3C3}2\u{1F525}7',
 ]
 for (let tx of list) {
-  console.log(`[${tx}] [length] (${tx.length}) [bracket] (${bracket(tx)})`)
+  console.log(`[${tx}] [length] (${tx.length}) [quote] (${quote(tx)})`)
 }
 ```
 

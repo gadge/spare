@@ -7,6 +7,7 @@ var vettro = require('@spare/vettro');
 var decoEntries = require('@spare/deco-entries');
 var fluoVector = require('@palett/fluo-vector');
 var decoUtil = require('@spare/deco-util');
+var presetDeco = require('@spare/preset-deco');
 
 function cosmetics(vec) {
   if (this === null || this === void 0 ? void 0 : this.indexed) return decoEntries.cosmetics.call(this, Object.entries(vec));
@@ -45,43 +46,43 @@ function cosmetics(vec) {
  *
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=JUNGLE]
  * @param {number} [options.head]
  * @param {number} [options.tail]
+ * @param {boolean} [options.discrete]
  * @param {string} [options.dash=') ']
  * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
  * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(decoUtil.presetVectorOptions(options));
+const Deco = (options = {}) => cosmetics.bind(presetDeco.presetVector(options));
 /***
  *
  * @param {*[]} vector
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=JUNGLE]
  * @param {number} [options.head]
  * @param {number} [options.tail]
+ * @param {boolean} [options.discrete]
  * @param {string} [options.dash=') ']
  * @param {string} [options.delim=',\n']
  * @param {string} [options.quote]
  * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const deco = (vector, options = {}) => cosmetics.call(decoUtil.presetVectorOptions(options), vector);
+const deco = (vector, options = {}) => cosmetics.call(presetDeco.presetVector(options), vector);
 
 exports.Deco = Deco;
 exports.cosmetics = cosmetics;

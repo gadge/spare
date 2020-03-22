@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var presetDeco = require('@spare/preset-deco');
 var decoUtil = require('@spare/deco-util');
 var enttro = require('@spare/enttro');
 var padEntries = require('@spare/pad-entries');
@@ -66,47 +67,46 @@ const cosmetics = function (entries) {
 /**
  *
  * @param {Object} options
- * @param {function(*):string} [options.keyRead]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.utils]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.head]
  * @param {number} [options.tail]
- * @param {string} [options.dash=' > ']
- * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
+ * @param {boolean} [options.discrete]
+ * @param {string} [options.dash=' > ']
+ * @param {string} [options.delim='\n']
  * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
- * @param {number} [options.level]
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(decoUtil.presetEntriesOptions(options));
+const Deco = (options = {}) => cosmetics.bind(presetDeco.presetEntries(options));
 /***
  *
  * @param {[*,*][]} entries
  * @param {Object} options
- * @param {function(*):string} [options.keyRead]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.utils]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.head]
  * @param {number} [options.tail]
- * @param {string} [options.dash=' > ']
- * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
+ * @param {boolean} [options.discrete]
+ * @param {string} [options.dash=' > ']
+ * @param {string} [options.delim='\n']
  * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const deco = (entries, options = {}) => cosmetics.call(decoUtil.presetEntriesOptions(options), entries);
+const deco = (entries, options = {}) => cosmetics.call(presetDeco.presetEntries(options), entries);
 
 exports.Deco = Deco;
 exports.cosmetics = cosmetics;

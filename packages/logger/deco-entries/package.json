@@ -18,6 +18,7 @@
     "@palett/fluo-entries": "^0.1.0",
     "@palett/presets": "^0.1.0",
     "@spare/deco-util": "^0.3.0",
+    "@spare/preset-deco": "^0.3.0",
     "@spare/enttro": "^0.3.0",
     "@spare/enum-chars": "^0.3.0",
     "@spare/pad-entries": "^0.3.0",

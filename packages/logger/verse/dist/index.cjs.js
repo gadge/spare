@@ -7,196 +7,200 @@ var decoEntries = require('@spare/deco-entries');
 var decoObject = require('@spare/deco-object');
 var decoMatrix = require('@spare/deco-matrix');
 var decoSamples = require('@spare/deco-samples');
-var decoUtil = require('@spare/deco-util');
 var tableInit = require('@analys/table-init');
 var crostabInit = require('@analys/crostab-init');
 var bracket = require('@spare/bracket');
-var numLoose = require('@typen/num-loose');
+var decoUtil = require('@spare/deco-util');
 var enumBrackets = require('@spare/enum-brackets');
-
-const keyer = x => /\W/.test(x) || numLoose.isNumeric(x) ? '\'' + x + '\'' : x;
+var presetVerse = require('@spare/preset-verse');
 
 const SIDE = 'side',
       HEAD = 'head',
       ROWS = 'rows';
 class Verse {
-  static vector(vector, {
-    read,
-    delim = ', ',
-    quote = '\'',
-    level
-  } = {}) {
-    return decoVector.cosmetics.call({
-      read,
-      delim,
-      quote,
-      bracket: enumBrackets.BRACKET,
-      level
-    }, vector);
+  /**
+   * @param {Array} vector
+   * @param {Object} p
+   * @param {Function} [p.read]
+   * @param {string} [p.delim=', ']
+   * @param {string} [p.quote='\'']
+   * @param {number} [p.level]
+   * @return {string}
+   */
+  static vector(vector, p = {}) {
+    return decoVector.cosmetics.call(presetVerse.presetVector(p), vector);
   }
+  /**
+   *
+   * @param {[*,*][]} entries
+   * @param {Object} p
+   * @param {Function} [p.keyRead]
+   * @param {Function} [p.read]
+   * @param {string} [p.keyQuote]
+   * @param {string} [p.quote='\'']
+   * @param {string} [p.dash=', ']
+   * @param {string} [p.delim=',\n']
+   * @param {boolean} [p.objectify=false]
+   * @param {number} [p.level]
+   * @return {string}
+   */
 
-  static entries(entries, {
-    keyRead = keyer,
-    read,
-    dash = ', ',
-    delim = ',\n',
-    quote = '\'',
-    level
-  } = {}) {
-    return decoEntries.cosmetics.call({
-      keyRead,
-      read,
-      dash,
-      delim,
-      quote,
-      bracket: enumBrackets.BRACKET,
-      level
-    }, entries);
-  }
 
-  static object(o, {
-    keyRead = keyer,
-    read,
-    dash = ': ',
-    delim = ',\n',
-    quote = '\'',
-    level
-  } = {}) {
-    return decoObject.cosmetics.call({
-      keyRead,
-      read,
-      dash,
-      delim,
-      quote,
-      bracket: enumBrackets.BRACE,
-      level
-    }, o);
-  }
+  static entries(entries, p = {}) {
+    var _p;
 
-  static matrix(matrix, {
-    read,
-    delim = ', ',
-    quote = '\'',
-    level = 0
-  } = {}) {
-    var _joinLines;
-
-    const lines = decoMatrix.cosmetics.call({
-      read,
-      delim,
-      quote,
-      bracket: enumBrackets.BRACKET,
-      discrete: true
-    }, matrix);
-    return _joinLines = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines);
-  }
-
-  static crostab(table, {
-    read,
-    delim = ', ',
-    quote = '\'',
-    level = 0
-  } = {}) {
-    var _table, _joinLines2;
-
+    if (!((_p = p) === null || _p === void 0 ? void 0 : _p.objectify)) return decoEntries.cosmetics.call(presetVerse.presetEntries(p), entries);
+    p = presetVerse.presetEntriesAsObject(p);
     const {
-      side,
-      head,
-      rows
-    } = (_table = table, crostabInit.matchSlice(_table));
-    const sideText = Verse.vector(side, {
-      read,
       delim,
-      quote,
-      level: level + 1
-    });
-    const headText = Verse.vector(head, {
-      read,
-      delim,
-      quote,
-      level: level + 1
-    });
-    const rowsText = Verse.matrix(rows, {
-      read,
-      delim,
-      quote,
-      level: level + 1
-    });
-    const lines = [SIDE + ': ' + sideText, HEAD + ': ' + headText, ROWS + ': ' + rowsText];
-    return _joinLines2 = decoUtil.joinLines(lines, delim, level), bracket.brace(_joinLines2);
-  }
-
-  static table(table, {
-    read,
-    delim = ', ',
-    quote = '\'',
-    level = 0
-  } = {}) {
-    var _table2, _joinLines3;
-
-    const {
-      head,
-      rows
-    } = (_table2 = table, tableInit.matchSlice(_table2));
-    const headText = Verse.vector(head, {
-      read,
-      delim,
-      quote,
-      level: level + 1
-    });
-    const rowsText = Verse.matrix(rows, {
-      read,
-      delim,
-      quote,
-      level: level + 1
-    });
-    const lines = [HEAD + ': ' + headText, ROWS + ': ' + rowsText];
-    return _joinLines3 = decoUtil.joinLines(lines, delim, level), bracket.brace(_joinLines3);
-  }
-
-  static samples(samples, {
-    read,
-    delim = ', ',
-    quote = '\'',
-    level = 0
-  } = {}) {
-    var _joinLines4;
-
-    const lines = decoSamples.cosmetics.call({
-      indexes: false,
-      read,
-      delim,
-      quote,
-      bracket: false,
-      discrete: true
-    }, samples);
-    return _joinLines4 = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines4);
-  }
-
-  static entriesAsObject(entries, {
-    keyRead = keyer,
-    read,
-    dash = ': ',
-    delim = ',\n',
-    keyQuote = null,
-    quote = '\'',
-    level = 0
-  } = {}) {
-    const lines = decoEntries.cosmetics.call({
-      keyRead,
-      read,
-      dash,
-      delim,
-      keyQuote,
-      quote,
-      bracket: false,
-      discrete: true
-    }, entries);
+      level
+    } = p;
+    const lines = decoEntries.cosmetics.call(presetVerse.presetEntriesAsObject(p), entries);
     return decoUtil.liner(lines, {
       bracket: enumBrackets.BRACE,
       delim,
       level
     });
+  }
+  /**
+   * @param {Object} o
+   * @param {Object} p
+   * @param {Function} [p.keyRead=keyRead]
+   * @param {Function} [p.read]
+   * @param {string} [p.dash=': ']
+   * @param {string} [p.delim=',\n']
+   * @param {string} [p.quote='\'']
+   * @param {number} [p.level]
+   * @returns {string}
+   */
+
+
+  static object(o, p = {}) {
+    return decoObject.cosmetics.call(presetVerse.presetObject(p), o);
+  }
+  /**
+   * @param {*[][]} matrix
+   * @param {Object} p
+   * @param {Function} [p.read]
+   * @param {string} [p.delim=', ']
+   * @param {string} [p.quote='\'']
+   * @param {number} [p.level]
+   * @returns {string}
+   */
+
+
+  static matrix(matrix, p = {}) {
+    var _joinLines;
+
+    p = presetVerse.presetMatrix(p);
+    const {
+      delim,
+      level
+    } = p;
+    const lines = decoMatrix.cosmetics.call(p, matrix);
+    return _joinLines = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines);
+  }
+  /**
+   * @param {Object[]} samples
+   * @param {Object} p
+   * @param {Function} [p.read]
+   * @param {string} [p.delim=', ']
+   * @param {string} [p.quote='\'']
+   * @param {number} [p.level]
+   * @returns {string}
+   */
+
+
+  static samples(samples, p = {}) {
+    var _joinLines2;
+
+    p = presetVerse.presetSamples(p);
+    const {
+      delim,
+      level
+    } = p;
+    const lines = decoSamples.cosmetics.call(p, samples);
+    return _joinLines2 = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines2);
+  }
+  /***
+   * @param {[*,*][]} entries
+   * @param {Object} p
+   * @param {Function} [p.keyRead]
+   * @param {Function} [p.read]
+   * @param {string} [p.keyQuote]
+   * @param {string} [p.dash=', ']
+   * @param {string} [p.delim=',\n']
+   * @param {string} [p.quote='\'']
+   * @param {number} [p.level]
+   * @returns {string}
+   */
+
+
+  static entriesAsObject(entries, p = {}) {
+    p = presetVerse.presetEntriesAsObject(p);
+    const {
+      delim,
+      level
+    } = p;
+    const lines = decoEntries.cosmetics.call(p, entries);
+    return decoUtil.liner(lines, {
+      bracket: enumBrackets.BRACE,
+      delim,
+      level
+    });
+  }
+  /**
+   * @param {Object} crostab
+   * @param {Object} p
+   * @param {Function} [p.read]
+   * @param {string} [p.delim=', ']
+   * @param {string} [p.quote='\'']
+   * @param {number} [p.level]
+   * @returns {string}
+   */
+
+
+  static crostab(crostab, p = {}) {
+    var _crostab, _joinLines3;
+
+    p = presetVerse.presetCrostab(p);
+    const {
+      side,
+      head,
+      rows
+    } = (_crostab = crostab, crostabInit.matchSlice(_crostab));
+    const {
+      delim,
+      level
+    } = p;
+    const lines = [SIDE + ': ' + Verse.vector(side, p), HEAD + ': ' + Verse.vector(head, p), ROWS + ': ' + Verse.matrix(rows, p)];
+    return _joinLines3 = decoUtil.joinLines(lines, delim, level - 1), bracket.brace(_joinLines3);
+  }
+  /**
+   * @param {Object} table
+   * @param {Object} p
+   * @param {Function} [p.read]
+   * @param {string} [p.delim=', ']
+   * @param {string} [p.quote='\'']
+   * @param {number} [p.level]
+   * @returns {string}
+   */
+
+
+  static table(table, p = {}) {
+    var _table, _joinLines4;
+
+    p = presetVerse.presetTable(p);
+    const {
+      head,
+      rows
+    } = (_table = table, tableInit.matchSlice(_table));
+    const {
+      delim,
+      level
+    } = p;
+    const lines = [HEAD + ': ' + Verse.vector(head, p), ROWS + ': ' + Verse.matrix(rows, p)];
+    return _joinLines4 = decoUtil.joinLines(lines, delim, level - 1), bracket.brace(_joinLines4);
   }
 
 }

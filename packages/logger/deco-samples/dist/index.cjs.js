@@ -16,6 +16,7 @@ var entriesUnwind = require('@vect/entries-unwind');
 var objectSelect = require('@vect/object-select');
 var math = require('@aryth/math');
 var decoUtil = require('@spare/deco-util');
+var presetDeco = require('@spare/preset-deco');
 
 const cosmetics = function (samples) {
   var _lookupKeys$call;
@@ -120,48 +121,50 @@ const cosmetics = function (samples) {
  * @param {Object} [options]
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
- * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.keyPreset]
- * @param {Preset} [options.stringPreset]
- * @param {number} [options.top=0]
- * @param {number} [options.left=0]
- * @param {number} [options.bottom=0]
- * @param {number} [options.right=0]
- * @param {string} [options.delim=',']
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset]
+ * @param {Object} [options.keyPreset]
+ * @param {Object} [options.stringPreset]
+ * @param {number} [options.direct=COLUMNWISE]
+ * @param {number} [options.top]
+ * @param {number} [options.left]
+ * @param {number} [options.bottom]
+ * @param {number} [options.right]
+ * @param {boolean} [options.discrete]
+ * @param {number} [options.bracket=BRK]
+ * @param {string} [options.delim=', ']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(decoUtil.presetSamplesOptions(options));
+const Deco = (options = {}) => cosmetics.bind(presetDeco.presetSamples(options));
 /**
  *
  * @param {*[][]} samples
  * @param {Object} [options]
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
- * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.keyPreset]
- * @param {Preset} [options.stringPreset]
- * @param {number} [options.top=0]
- * @param {number} [options.left=0]
- * @param {number} [options.bottom=0]
- * @param {number} [options.right=0]
- * @param {string} [options.delim=',']
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset]
+ * @param {Object} [options.keyPreset]
+ * @param {Object} [options.stringPreset]
+ * @param {number} [options.direct=COLUMNWISE]
+ * @param {number} [options.top]
+ * @param {number} [options.left]
+ * @param {number} [options.bottom]
+ * @param {number} [options.right]
+ * @param {boolean} [options.discrete]
+ * @param {number} [options.bracket=BRK]
+ * @param {string} [options.delim=', ']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const deco = (samples, options = {}) => cosmetics.call(decoUtil.presetSamplesOptions(options), samples);
+const deco = (samples, options = {}) => cosmetics.call(presetDeco.presetSamples(options), samples);
 
 exports.Deco = Deco;
 exports.cosmetics = cosmetics;

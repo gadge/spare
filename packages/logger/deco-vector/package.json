@@ -19,6 +19,7 @@
     "@palett/presets": "^0.1.0",
     "@spare/deco-entries": "^0.3.0",
     "@spare/deco-util": "^0.3.0",
+    "@spare/preset-deco": "^0.3.0",
     "@spare/enum-chars": "^0.3.0",
     "@spare/vettro": "^0.3.0"
   },

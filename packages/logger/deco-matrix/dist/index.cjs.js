@@ -7,8 +7,8 @@ var mattro = require('@spare/mattro');
 var padMatrix = require('@spare/pad-matrix');
 var fluoMatrix = require('@palett/fluo-matrix');
 var matrix = require('@vect/matrix');
-
-const bracket = x => '[' + x + ']';
+var bracket = require('@spare/bracket');
+var presetDeco = require('@spare/preset-deco');
 
 const cosmetics = function (matrix$1) {
   if (!matrix$1) return String(matrix$1);
@@ -44,7 +44,7 @@ const cosmetics = function (matrix$1) {
   const lines = bracket$1 ? rows.map(line => {
     var _line$join;
 
-    return _line$join = line.join(delim), bracket(_line$join);
+    return _line$join = line.join(delim), bracket.bracket(_line$join);
   }) : rows.map(line => line.join(delim));
   return decoUtil.liner(lines, {
     discrete,
@@ -58,45 +58,45 @@ const cosmetics = function (matrix$1) {
  *
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset=FRESH]
- * @param {Preset} [options.stringPreset=JUNGLE]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.top]
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delim=',\n']
- * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
- * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {string} [options.delim=', ']
+ * @param {string} [options.quote]
+ * @param {number} [options.quote]
+ * @param {boolean} [options.ansi]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(decoUtil.presetMatrixOptions(options));
+const Deco = (options = {}) => cosmetics.bind(presetDeco.presetMatrix(options));
 /***
  *
  * @param {*[][]} matrix
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset=FRESH]
- * @param {Preset} [options.stringPreset=JUNGLE]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.top]
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delim=',\n']
- * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
- * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {string} [options.delim=', ']
+ * @param {string} [options.quote]
+ * @param {number} [options.quote]
+ * @param {boolean} [options.ansi]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const deco = (matrix, options = {}) => cosmetics.call(decoUtil.presetMatrixOptions(options), matrix);
+const deco = (matrix, options = {}) => cosmetics.call(presetDeco.presetMatrix(options), matrix);
 
 exports.Deco = Deco;
 exports.cosmetics = cosmetics;

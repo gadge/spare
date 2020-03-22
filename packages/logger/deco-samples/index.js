@@ -1,5 +1,5 @@
 import { cosmetics } from './src/cosmetics'
-import { presetSamplesOptions } from '@spare/deco-util'
+import { presetSamples } from '@spare/preset-deco'
 
 export { cosmetics }
 
@@ -8,23 +8,24 @@ export { cosmetics }
  * @param {Object} [options]
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
- * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.keyPreset]
- * @param {Preset} [options.stringPreset]
- * @param {number} [options.top=0]
- * @param {number} [options.left=0]
- * @param {number} [options.bottom=0]
- * @param {number} [options.right=0]
- * @param {string} [options.delim=',']
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset]
+ * @param {Object} [options.keyPreset]
+ * @param {Object} [options.stringPreset]
+ * @param {number} [options.direct=COLUMNWISE]
+ * @param {number} [options.top]
+ * @param {number} [options.left]
+ * @param {number} [options.bottom]
+ * @param {number} [options.right]
+ * @param {boolean} [options.discrete]
+ * @param {number} [options.bracket=BRK]
+ * @param {string} [options.delim=', ']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
-export const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(options))
+export const Deco = (options = {}) => cosmetics.bind(presetSamples(options))
 
 /**
  *
@@ -32,20 +33,21 @@ export const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(option
  * @param {Object} [options]
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
- * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.keyPreset]
- * @param {Preset} [options.stringPreset]
- * @param {number} [options.top=0]
- * @param {number} [options.left=0]
- * @param {number} [options.bottom=0]
- * @param {number} [options.right=0]
- * @param {string} [options.delim=',']
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset]
+ * @param {Object} [options.keyPreset]
+ * @param {Object} [options.stringPreset]
+ * @param {number} [options.direct=COLUMNWISE]
+ * @param {number} [options.top]
+ * @param {number} [options.left]
+ * @param {number} [options.bottom]
+ * @param {number} [options.right]
+ * @param {boolean} [options.discrete]
+ * @param {number} [options.bracket=BRK]
+ * @param {string} [options.delim=', ']
  * @param {string} [options.quote]
  * @param {boolean} [options.ansi=false]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
-export const deco = (samples, options = {}) => cosmetics.call(presetSamplesOptions(options), samples)
+export const deco = (samples, options = {}) => cosmetics.call(presetSamples(options), samples)

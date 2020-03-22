@@ -3,7 +3,7 @@ import { br } from '@spare/bracket'
 import { NONE } from '@spare/enum-brackets'
 
 export const joinLines = (lines, de = '', lv, hover = true) => {
-  const IND = TB.repeat(lv), LFI = LF + IND
+  const IND = lv ? TB.repeat(lv) : '', LFI = LF + IND
   return hover
     ? `${LFI + TB}${lines.join(de + LFI + TB)}${de + LFI}`
     : `${IND + TB}${lines.join(de + LFI + TB)}${de}`

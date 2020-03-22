@@ -3,12 +3,12 @@ import { vettro } from '@spare/vettro'
 import { mattro } from '@spare/mattro'
 import { padTable } from '@spare/pad-table'
 import { fluoVector } from '@palett/fluo-vector'
-import { fluo } from '@palett/fluo-matrix'
+import { fluoMatrix } from '@palett/fluo-matrix'
 import { zipper } from '@vect/vector-zipper'
-import { POINTWISE, size } from '@vect/matrix'
+import { size } from '@vect/matrix'
 import { padSide } from '../utils/padSide'
-import { HCONN, VLINE } from '../resources/conns'
 import { liner } from '@spare/deco-util'
+import { HCONN, VLINE } from '../resources/conns'
 
 export const cosmetics = function (crostab) {
   let matrix = crostab.rows || crostab.matrix, banner = crostab.head || crostab.banner,
@@ -16,7 +16,7 @@ export const cosmetics = function (crostab) {
   const [height, width] = size(matrix), labelWidth = banner && banner.length, labelHeight = stand && stand.length
   if (!height || !width || !labelWidth || !labelHeight) return AEU
   const {
-    direct = POINTWISE, read, headRead, sideRead,
+    direct, read, headRead, sideRead,
     preset, stringPreset, labelPreset,
     top, left, bottom, right, ansi, fullAngle, discrete, delim, level
   } = this
@@ -26,7 +26,7 @@ export const cosmetics = function (crostab) {
     vettro(stand, { head: top, tail: bottom, read: sideRead }),
   ]
   const [dyeX, dyeB, dyeS] = [
-    preset && fluo(x.raw, { direct, preset, stringPreset, colorant: true }),
+    preset && fluoMatrix(x.raw, { direct, preset, stringPreset, colorant: true }),
     labelPreset && fluoVector(b.raw, { preset: labelPreset, stringPreset: labelPreset, colorant: true }),
     labelPreset && fluoVector(s.raw, { preset: labelPreset, stringPreset: labelPreset, colorant: true }),
   ]

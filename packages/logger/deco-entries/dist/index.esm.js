@@ -1,4 +1,5 @@
-import { liner, pipeQuote, presetEntriesOptions } from '@spare/deco-util';
+import { presetEntries } from '@spare/preset-deco';
+import { liner, pipeQuote } from '@spare/deco-util';
 import { enttro } from '@spare/enttro';
 import { padEntries } from '@spare/pad-entries';
 import { fluoEntries } from '@palett/fluo-entries';
@@ -62,46 +63,45 @@ const cosmetics = function (entries) {
 /**
  *
  * @param {Object} options
- * @param {function(*):string} [options.keyRead]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.utils]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.head]
  * @param {number} [options.tail]
- * @param {string} [options.dash=' > ']
- * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
+ * @param {boolean} [options.discrete]
+ * @param {string} [options.dash=' > ']
+ * @param {string} [options.delim='\n']
  * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
- * @param {number} [options.level]
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetEntriesOptions(options));
+const Deco = (options = {}) => cosmetics.bind(presetEntries(options));
 /***
  *
  * @param {[*,*][]} entries
  * @param {Object} options
- * @param {function(*):string} [options.keyRead]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.utils]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.head]
  * @param {number} [options.tail]
- * @param {string} [options.dash=' > ']
- * @param {string} [options.delim='\n']
  * @param {string} [options.keyQuote]
  * @param {string} [options.quote]
+ * @param {boolean} [options.discrete]
+ * @param {string} [options.dash=' > ']
+ * @param {string} [options.delim='\n']
  * @param {number} [options.bracket=BRK] - BRK = 1
  * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
  * @param {number} [options.level=0]
  * @returns {string}
  */
 
-const deco = (entries, options = {}) => cosmetics.call(presetEntriesOptions(options), entries);
+const deco = (entries, options = {}) => cosmetics.call(presetEntries(options), entries);
 
 export { Deco, cosmetics, deco };

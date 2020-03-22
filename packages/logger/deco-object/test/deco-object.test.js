@@ -20,5 +20,5 @@ for (const [key, entries] of Object.entries(SimpleObjects)) {
     level: rand(3)
   })
   words |> says[key].p(inferType(words))
-  // entries |> Deco({ dash: ',', delim: ',\n', bracket: true, quote: '\'' }) |> logger
+  // entries |> Deco({ dash: ',', delim: ',\n', quote: true, quote: '\'' }) |> logger
 }

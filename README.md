@@ -44,7 +44,7 @@ $ npm install @spare/<tool-name>
 | [**deco**-crostab](packages/logger/deco-crostab) | Stringify crostab with color highlight          |
 | [**verse**](packages/logger/verse)               | ES6 style JSON.stringify alternative            |
 | [**lange**](packages/string/lange)               | Get string length concerning ansi-code          |
-| [**bracket**](packages/string/bracket)           | Add parenthesis/bracket/brace/angle-bracket     |
+| [**quote**](packages/string/bracket)           | Add parenthesis/quote/brace/angle-quote     |
 | [**phrasing**](packages/string/phrasing)         | Convert among snake/kebab/camel/pascal phrasings|
 | [**string**](packages/string/string)             | String helpers                                  |
 |                                                  |                                                 |

@@ -23,7 +23,7 @@ $ npm install @spare/enum-encodings
 
 ## Usage
 ```js
-import { lange } from '@spare/enum-encodings'
+import { lange } from '@spare/constants-encodings'
 const list = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',

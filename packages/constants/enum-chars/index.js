@@ -5,6 +5,8 @@ export {
   CR,
   LF,
   RN,
+  QT,
+  DT,
   DASH,
   ELLIP,
   AEU,

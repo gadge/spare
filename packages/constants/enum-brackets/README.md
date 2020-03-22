@@ -23,7 +23,7 @@ $ npm install @spare/enum-brackets
 
 ## Usage
 ```js
-import { lange } from '@spare/enum-brackets'
+import { lange } from '@spare/constants-brackets'
 const list = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',

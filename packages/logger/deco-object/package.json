@@ -15,8 +15,9 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@spare/deco-entries": "^0.3.0",
-    "@spare/deco-util": "^0.3.0"
+    "@spare/deco-util": "^0.3.0",
+    "@spare/preset-deco": "^0.3.0",
+    "@spare/deco-entries": "^0.3.0"
   },
   "repository": {
     "type": "git",

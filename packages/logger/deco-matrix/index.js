@@ -1,5 +1,5 @@
 import { cosmetics } from './src/cosmetics'
-import { presetMatrixOptions } from '@spare/deco-util'
+import { presetMatrix } from '@spare/preset-deco'
 
 export { cosmetics }
 
@@ -7,42 +7,42 @@ export { cosmetics }
  *
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset=FRESH]
- * @param {Preset} [options.stringPreset=JUNGLE]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.top]
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delim=',\n']
- * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
- * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {string} [options.delim=', ']
+ * @param {string} [options.quote]
+ * @param {number} [options.quote]
+ * @param {boolean} [options.ansi]
  * @param {number} [options.level=0]
  * @returns {string}
  */
-export const Deco = (options = {}) => cosmetics.bind(presetMatrixOptions(options))
+export const Deco = (options = {}) => cosmetics.bind(presetMatrix(options))
 
 /***
  *
  * @param {*[][]} matrix
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset=FRESH]
- * @param {Preset} [options.stringPreset=JUNGLE]
+ * @param {Function} [options.read]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=OCEAN]
  * @param {number} [options.top]
  * @param {number} [options.bottom]
  * @param {number} [options.left]
  * @param {number} [options.right]
- * @param {string} [options.delim=',\n']
- * @param {string} [options.quote]
- * @param {boolean} [options.bracket]
- * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
+ * @param {string} [options.delim=', ']
+ * @param {string} [options.quote]
+ * @param {number} [options.quote]
+ * @param {boolean} [options.ansi]
  * @param {number} [options.level=0]
  * @returns {string}
  */
-export const deco = (matrix, options = {}) => cosmetics.call(presetMatrixOptions(options), matrix)
+export const deco = (matrix, options = {}) => cosmetics.call(presetMatrix(options), matrix)
 

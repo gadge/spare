@@ -1,5 +1,6 @@
-import { liner, presetObjectOptions } from '@spare/deco-util';
+import { presetObject } from '@spare/preset-deco';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
+import { liner } from '@spare/deco-util';
 
 const cosmetics = function (o) {
   if (!o) return String(o);
@@ -18,45 +19,45 @@ const cosmetics = function (o) {
 /**
  *
  * @param {Object} options
- * @param {function(*):string} [options.keyRead]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.utils]
+ * @param {Function} [options.read]
+ * @param {string} [options.keyQuote]
+ * @param {string} [options.quote]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=PLANET]
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=': ']
- * @param {string} [options.delim='\n']
- * @param {string} [options.keyQuote]
- * @param {string} [options.quote]
- * @param {number} [options.bracket=BRC] - BRC = 2
+ * @param {string} [options.delim=',\n']
+ * @param {number} [options.bracket=BRC]
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
- * @param {number} [options.level=0]
+ * @param {number} [options.level]
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetObjectOptions(options));
+const Deco = (options = {}) => cosmetics.bind(presetObject(options));
 /***
  *
  * @param {Object} o
  * @param {Object} options
- * @param {function(*):string} [options.keyRead]
- * @param {function(*):string} [options.read]
- * @param {Preset} [options.preset]
- * @param {Preset} [options.stringPreset]
+ * @param {Function} [options.utils]
+ * @param {Function} [options.read]
+ * @param {string} [options.keyQuote]
+ * @param {string} [options.quote]
+ * @param {Object} [options.preset=FRESH]
+ * @param {Object} [options.stringPreset=PLANET]
  * @param {number} [options.head]
  * @param {number} [options.tail]
  * @param {string} [options.dash=': ']
- * @param {string} [options.delim='\n']
- * @param {string} [options.keyQuote]
- * @param {string} [options.quote]
- * @param {number} [options.bracket=BRC] - BRC = 2
+ * @param {string} [options.delim=',\n']
+ * @param {number} [options.bracket=BRC]
  * @param {boolean} [options.ansi]
  * @param {boolean} [options.discrete]
- * @param {number} [options.level=0]
+ * @param {number} [options.level]
  * @returns {string}
  */
 
-const deco = (o, options = {}) => cosmetics.call(presetObjectOptions(options), o);
+const deco = (o, options = {}) => cosmetics.call(presetObject(options), o);
 
 export { Deco, cosmetics, deco };
