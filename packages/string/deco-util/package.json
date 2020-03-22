@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-util",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@palett/presets": "^0.1.0",
-    "@spare/bracket": "^0.3.0",
-    "@spare/enum-brackets": "^0.3.0",
-    "@spare/enum-chars": "^0.3.0",
+    "@spare/bracket": "^0.3.1",
+    "@spare/enum-brackets": "^0.3.1",
+    "@spare/enum-chars": "^0.3.1",
     "@typen/enum-data-types": "^0.0.3",
     "@vect/matrix": "^0.1.18"
   },
