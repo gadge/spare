@@ -7,10 +7,10 @@ import { liner, pipeQuote } from '@spare/deco-util'
 export function cosmetics (vec) {
   if (this?.indexed) return cosmeticsEntries.call(this, Object.entries(vec))
   if (!vec) return String(vec)
-  const { head, tail, preset, stringPreset, abstract, quote } = this
+  const { head, tail, preset, stringPreset, read, quote } = this
   let { raw, text } = vettro(vec, {
     head, tail,
-    abstract: pipeQuote(abstract, quote),
+    read: pipeQuote(read, quote),
     hr: ELLIP
   })
   if (preset) fluoVector(text, { values: raw, preset, stringPreset, mutate: true })

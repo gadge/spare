@@ -18,7 +18,7 @@ export const cosmetics = function (samples) {
   if (!(height = samples.length)) return AEU
   if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return AEU
   const {
-    fields, indexed, abstract, direct,
+    fields, indexed, read, direct,
     preset, keyPreset, stringPreset, ansi
   } = this
   let { delim, quote, top, bottom, left, right, bracket, discrete, level } = this
@@ -37,7 +37,7 @@ export const cosmetics = function (samples) {
   let [h, w] = size(rows)
   const { raw, text } = mattro(rows, {
     top: t, bottom: b, left: l, right: r, height: h, width: w, dashX, dashY,
-    abstract: pipeQuote(abstract, quote), hr: null, validate: false
+    read: pipeQuote(read, quote), hr: null, validate: false
   })
   if (preset) dye = fluoMatrix(raw, { direct, preset, stringPreset, colorant: true })
   if (keyPreset) head = fluoVector(head, { preset: keyPreset, stringPreset: keyPreset, colorant: false })

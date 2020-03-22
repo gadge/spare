@@ -18,13 +18,13 @@ const keyer = x => /\W/.test(x) || numLoose.isNumeric(x) ? '\'' + x + '\'' : x;
 
 class Verse {
   static vector(vector, {
-    abstract,
+    read,
     delim = ', ',
     quote = '\'',
     level
   } = {}) {
     return decoVector.cosmetics.call({
-      abstract,
+      read,
       delim,
       quote,
       bracket: enumBrackets.BRACKET,
@@ -33,16 +33,16 @@ class Verse {
   }
 
   static entries(entries, {
-    keyAbstract = keyer,
-    abstract,
+    keyRead = keyer,
+    read,
     dash = ', ',
     delim = ',\n',
     quote = '\'',
     level
   } = {}) {
     return decoEntries.cosmetics.call({
-      keyAbstract,
-      abstract,
+      keyRead,
+      read,
       dash,
       delim,
       quote,
@@ -52,16 +52,16 @@ class Verse {
   }
 
   static object(o, {
-    keyAbstract = keyer,
-    abstract,
+    keyRead = keyer,
+    read,
     dash = ': ',
     delim = ',\n',
     quote = '\'',
     level
   } = {}) {
     return decoObject.cosmetics.call({
-      keyAbstract,
-      abstract,
+      keyRead,
+      read,
       dash,
       delim,
       quote,
@@ -71,7 +71,7 @@ class Verse {
   }
 
   static matrix(matrix, {
-    abstract,
+    read,
     delim = ', ',
     quote = '\'',
     level = 0
@@ -79,7 +79,7 @@ class Verse {
     var _joinLines;
 
     const lines = decoMatrix.cosmetics.call({
-      abstract,
+      read,
       delim,
       quote,
       bracket: enumBrackets.BRACKET,
@@ -89,7 +89,7 @@ class Verse {
   }
 
   static crostab(table, {
-    abstract,
+    read,
     delim = ', ',
     quote = '\'',
     level = 0
@@ -104,7 +104,7 @@ class Verse {
     const sideText = Verse.vector(side);
     const headText = Verse.vector(head);
     const rowsText = Verse.matrix(rows, {
-      abstract,
+      read,
       delim,
       quote,
       level: level + 1
@@ -114,7 +114,7 @@ class Verse {
   }
 
   static table(table, {
-    abstract,
+    read,
     delim = ', ',
     quote = '\'',
     level = 0
@@ -127,7 +127,7 @@ class Verse {
     } = (_table2 = table, tableInit.matchSlice(_table2));
     const headText = Verse.vector(head);
     const rowsText = Verse.matrix(rows, {
-      abstract,
+      read,
       delim,
       quote,
       level: level + 1
@@ -137,7 +137,7 @@ class Verse {
   }
 
   static samples(samples, {
-    abstract,
+    read,
     delim = ', ',
     quote = '\'',
     level = 0
@@ -146,7 +146,7 @@ class Verse {
 
     const lines = decoSamples.cosmetics.call({
       indexes: false,
-      abstract,
+      read,
       delim,
       quote,
       bracket: false,
@@ -156,8 +156,8 @@ class Verse {
   }
 
   static entriesAsObject(entries, {
-    keyAbstract = keyer,
-    abstract,
+    keyRead = keyer,
+    read,
     dash = ': ',
     delim = ',\n',
     keyQuote = null,
@@ -165,8 +165,8 @@ class Verse {
     level = 0
   } = {}) {
     const lines = decoEntries.cosmetics.call({
-      keyAbstract,
-      abstract,
+      keyRead,
+      read,
       dash,
       delim,
       keyQuote,

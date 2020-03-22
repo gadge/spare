@@ -16,7 +16,7 @@ function cosmetics(vec) {
     tail,
     preset,
     stringPreset,
-    abstract,
+    read,
     quote
   } = this;
   let {
@@ -25,7 +25,7 @@ function cosmetics(vec) {
   } = vettro.vettro(vec, {
     head,
     tail,
-    abstract: decoUtil.pipeQuote(abstract, quote),
+    read: decoUtil.pipeQuote(read, quote),
     hr: enumChars.ELLIP
   });
   if (preset) fluoVector.fluoVector(text, {
@@ -45,7 +45,7 @@ function cosmetics(vec) {
  *
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]
@@ -66,7 +66,7 @@ const Deco = (options = {}) => cosmetics.bind(decoUtil.presetVectorOptions(optio
  * @param {*[]} vector
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]

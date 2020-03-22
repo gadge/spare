@@ -12,12 +12,12 @@ export const cosmetics = function (table) {
   const [height, width] = size(matrix), labelWidth = banner && banner.length
   if (!height || !width || !labelWidth) return AEU
   const {
-    direct, abstract, headAbstract, preset, stringPreset, labelPreset,
+    direct, read, headRead, preset, stringPreset, labelPreset,
     top, left, bottom, right, ansi, fullAngle, discrete, delim, level
   } = this
   const [x, b] = [
-    mattro(matrix, { top, bottom, left, right, height, width, abstract }),
-    vettro(banner, { head: left, tail: right, abstract: headAbstract }),
+    mattro(matrix, { top, bottom, left, right, height, width, read }),
+    vettro(banner, { head: left, tail: right, read: headRead }),
   ]
   const [dyeX, dyeB] = [
     preset && fluoMatrix(x.raw, { direct, preset, stringPreset, colorant: true }),

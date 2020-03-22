@@ -5,8 +5,8 @@ import { Greys, Palett } from 'palett'
  *
  * @param {Map<*,*>} dict
  * @param {string} [delimiter=',']
- * @param {function(*):string} [keyAbstract]
- * @param {function(*):string} [abstract]
+ * @param {function(*):string} [keyRead]
+ * @param {function(*):string} [read]
  * @param {number} [head]
  * @param {number} [tail]
  * @param {{
@@ -23,8 +23,8 @@ import { Greys, Palett } from 'palett'
 export const hDeco = (dict,
   {
     delimiter = ':',
-    keyAbstract,
-    abstract,
+    keyRead,
+    read,
     head,
     tail,
     visual = {
@@ -39,8 +39,8 @@ export const hDeco = (dict,
 ) => {
   return entsHDeco([...dict.entries()], {
     delimiter,
-    keyAbstract,
-    abstract,
+    keyRead,
+    read,
     head,
     tail,
     visual
@@ -51,8 +51,8 @@ export const hDeco = (dict,
  *
  * @param {Map<*,*>} dict
  * @param {string} [delimiter=' -> ']
- * @param {function(*):string} [keyAbstract]
- * @param {function(*):string} [abstract]
+ * @param {function(*):string} [keyRead]
+ * @param {function(*):string} [read]
  * @param {number} [head]
  * @param {number} [tail]
  * @param {{
@@ -69,8 +69,8 @@ export const hDeco = (dict,
  */
 export const vDeco = (dict, {
   delimiter = ' -> ',
-  keyAbstract,
-  abstract,
+  keyRead,
+  read,
   head = 0,
   tail = 0,
   visual = {
@@ -84,8 +84,8 @@ export const vDeco = (dict, {
   ansi = false
 } = {}) => entsVDeco([...dict.entries()], {
   delimiter,
-  keyAbstract,
-  abstract,
+  keyRead,
+  read,
   head,
   tail,
   visual,

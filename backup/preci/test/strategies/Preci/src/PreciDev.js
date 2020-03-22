@@ -99,12 +99,12 @@ export class PreciDev {
 
   /**
    *
-   * @param {function} abstract
+   * @param {function} read
    * @param {boolean} [mutate]
    * @return {PreciDev}
    */
-  stringify (abstract, mutate = true) {
-    const br = abstract ? (_ => String(abstract(_))) : totx
+  stringify (read, mutate = true) {
+    const br = read ? (_ => String(read(_))) : totx
     return this.map(br)
   }
 }

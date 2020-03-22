@@ -21,7 +21,7 @@ const cosmetics = function (matrix) {
     bracket: bracket$1,
     level
   } = this;
-  this.abstract = pipeQuote(this.abstract, quote);
+  this.read = pipeQuote(this.read, quote);
   const {
     raw,
     text
@@ -54,7 +54,7 @@ const cosmetics = function (matrix) {
  *
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {number} [options.top]
@@ -76,7 +76,7 @@ const Deco = (options = {}) => cosmetics.bind(presetMatrixOptions(options));
  * @param {*[][]} matrix
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {number} [options.top]

@@ -108,8 +108,8 @@ class Matrigin {
     return mx;
   }
 
-  stringify(abstract, mutate = true) {
-    const brief = abstract ? _ => String(abstract(_)) : util.totx;
+  stringify(read, mutate = true) {
+    const brief = read ? _ => String(read(_)) : util.totx;
     return this.map(brief, mutate);
   }
   /**
@@ -157,7 +157,7 @@ class Matrigin {
  * @param {number} [width]
  * @param {boolean} [dashX]
  * @param {boolean} [dashY]
- * @param {function(*):*} [abstract]
+ * @param {function(*):*} [read]
  * @param {string} [hr='..']
  * @param {boolean} [validate=true]
  * @returns {{raw:*[][],text:*[][]}}
@@ -172,13 +172,13 @@ const mattro = (mx, {
   width,
   dashX,
   dashY,
-  abstract,
+  read,
   hr = '..',
   validate = true
 } = {}) => {
   const mn = validate ? Matrigin.build(mx, top, bottom, left, right, height, width) : new Matrigin(mx, top, bottom, left, right, height, width, dashX, dashY),
         raw = mn.map(x => x).toMatrix(hr),
-        text = mn.stringify(abstract).toMatrix(hr);
+        text = mn.stringify(read).toMatrix(hr);
   return {
     raw,
     text

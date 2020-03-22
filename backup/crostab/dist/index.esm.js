@@ -8,9 +8,9 @@ class CrosTabX {
   /**
    *
    * @param {{side:*[],banner:*[],matrix:*[][],[title]:string}} crosTab
-   * @param {?function(*):string} [abstract]
-   * @param {{[abstract]:?function(*):string,[head]:?number,[tail]:?number}} [_s]
-   * @param {{[abstract]:?function(*):string,[head]:?number,[tail]:?number}} [_b]
+   * @param {?function(*):string} [read]
+   * @param {{[read]:?function(*):string,[head]:?number,[tail]:?number}} [_s]
+   * @param {{[read]:?function(*):string,[head]:?number,[tail]:?number}} [_b]
    * @param {{
    *          [on]:boolean,
    *          [mark]:{
@@ -25,14 +25,14 @@ class CrosTabX {
    * @return {string}
    */
   static brief(crosTab, {
-    abstract,
+    read,
     side: _s = {
-      abstract,
+      read,
       head: 0,
       tail: 0
     },
     banner: _b = {
-      abstract,
+      read,
       head: 0,
       tail: 0
     },
@@ -61,14 +61,14 @@ class CrosTabX {
     if (!ht || !wd) return AEU;
     const visualOn = (_visual = visual, isVisual(_visual));
     ansi = visualOn ? true : ansi;
-    side = Preci.fromArr(side, _s.head, _s.tail).stringify(_s.abstract).toList('..');
-    banner = Preci.fromArr(banner, _b.head, _b.tail).stringify(_b.abstract).toList('..');
+    side = Preci.fromArr(side, _s.head, _s.tail).stringify(_s.read).toList('..');
+    banner = Preci.fromArr(banner, _b.head, _b.tail).stringify(_b.read).toList('..');
     const {
       rawx,
       palx,
       wordx
     } = destructPreX(matrix, (_s2 = _s, readCrop(_s2)), (_b2 = _b, readCrop(_b2)), {
-      abstract,
+      read,
       visual,
       ansi
     }, [ht, wd]);

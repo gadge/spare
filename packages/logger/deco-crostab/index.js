@@ -11,9 +11,9 @@ export { cosmetics }
  *
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
- * @param {function(*):string} [options.sideAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
+ * @param {function(*):string} [options.sideRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset]
@@ -35,9 +35,9 @@ export const Deco = (options = {}) => cosmetics.bind(presetCrostabOptions(option
  * @param {Object} crostab
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
- * @param {function(*):string} [options.sideAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
+ * @param {function(*):string} [options.sideRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset=SUBTLE]

@@ -10,13 +10,13 @@ export const cosmetics = function (entries) {
   if (!entries) return String(entries)
   if (!entries?.length) return liner([], this)
   const {
-    keyAbstract, abstract, preset, stringPreset, head, tail, ansi,
+    keyRead, read, preset, stringPreset, head, tail, ansi,
     dash, delim, keyQuote, quote, bracket
   } = this
   const { raw, text } = enttro(entries, {
     head, tail,
-    keyAbstract: pipeQuote(keyAbstract, keyQuote),
-    abstract: pipeQuote(abstract, quote),
+    keyRead: pipeQuote(keyRead, keyQuote),
+    read: pipeQuote(read, quote),
     hr: HR_ENTRY
   })
   const dye = preset && fluoEntries(raw, { preset, stringPreset, colorant: true })

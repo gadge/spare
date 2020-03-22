@@ -14,8 +14,8 @@ var veho = require('veho');
  *          {head:*[],rows:*[][],[title]:string,[types]:*[]} |
  *          {header:*[],rowSet:*[][],[title]:string,[types]:*[]}
  *        } table
- * @param {?function(*):string} [abstract]
- * @param {{[abstract]:?function(*):string,[head]:?number,[tail]:?number}} [_head]
+ * @param {?function(*):string} [read]
+ * @param {{[read]:?function(*):string,[head]:?number,[tail]:?number}} [_head]
  * @param {{[head]:?number,[tail]:?number}} [_rows]
  * @param {{
  *          [on]:boolean,
@@ -32,9 +32,9 @@ var veho = require('veho');
  */
 
 const brief = (table, {
-  abstract,
+  read,
   head: _head = {
-    abstract: null,
+    read: null,
     head: 0,
     tail: 0
   },
@@ -63,13 +63,13 @@ const brief = (table, {
   if (!ht || !wd) return util.AEU;
   const visualOn = (_visual = visual, util.isVisual(_visual));
   ansi = visualOn ? true : ansi;
-  const hs = preci.Preci.fromArr(head, _head.head, _head.tail).stringify(abstract).toList('..'),
+  const hs = preci.Preci.fromArr(head, _head.head, _head.tail).stringify(read).toList('..'),
         {
     rawx,
     palx,
     wordx
   } = preci.destructPreX(rows, (_rows2 = _rows, util.readCrop(_rows2)), (_head2 = _head, util.readCrop(_head2)), {
-    abstract,
+    read,
     visual,
     ansi
   }, [ht, wd]);

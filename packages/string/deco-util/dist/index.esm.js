@@ -85,15 +85,15 @@ const quoteString = function (x) {
   } = this;
   return typeof x === STR ? qt + x + qt : x;
 };
-const pipeQuote = (abstract, quote) => {
-  if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return abstract;
-  if (!abstract) return quoteString.bind({
+const pipeQuote = (read, quote) => {
+  if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return read;
+  if (!read) return quoteString.bind({
     qt: quote
   });
   return x => {
     var _ref, _x;
 
-    return _ref = (_x = x, abstract(_x)), quoteString.bind({
+    return _ref = (_x = x, read(_x)), quoteString.bind({
       qt: quote
     })(_ref);
   };

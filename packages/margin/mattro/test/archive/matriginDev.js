@@ -114,8 +114,8 @@ export class MatriginDev {
     return x
   }
 
-  stringify (abstract, mutate = true) {
-    const brief = abstract ? (_ => String(abstract(_))) : totx
+  stringify (read, mutate = true) {
+    const brief = read ? (_ => String(read(_))) : totx
     return this.map(brief, mutate)
   }
 }

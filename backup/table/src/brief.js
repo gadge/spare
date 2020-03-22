@@ -13,8 +13,8 @@ import { Mx } from 'veho'
  *          {head:*[],rows:*[][],[title]:string,[types]:*[]} |
  *          {header:*[],rowSet:*[][],[title]:string,[types]:*[]}
  *        } table
- * @param {?function(*):string} [abstract]
- * @param {{[abstract]:?function(*):string,[head]:?number,[tail]:?number}} [_head]
+ * @param {?function(*):string} [read]
+ * @param {{[read]:?function(*):string,[head]:?number,[tail]:?number}} [_head]
  * @param {{[head]:?number,[tail]:?number}} [_rows]
  * @param {{
  *          [on]:boolean,
@@ -31,9 +31,9 @@ import { Mx } from 'veho'
  */
 export const brief = (table,
   {
-    abstract,
+    read,
     head: _head = {
-      abstract: null,
+      read: null,
       head: 0,
       tail: 0
     },
@@ -62,10 +62,10 @@ export const brief = (table,
   const visualOn = visual |> isVisual
   ansi = visualOn ? true : ansi
   const
-    hs = Preci.fromArr(head, _head.head, _head.tail).stringify(abstract).toList('..'),
+    hs = Preci.fromArr(head, _head.head, _head.tail).stringify(read).toList('..'),
     { rawx, palx, wordx } = destructPreX(
       rows, _rows |> readCrop, _head |> readCrop,
-      { abstract, visual, ansi }, [ht, wd]);
+      { read, visual, ansi }, [ht, wd]);
   ({ head, blanc, rows } = padTable(hs, wordx, rawx, palx, ansi, chinese))
   return [head.join(' | '), blanc.join('-+-')].concat(
     rows.map(row => row.join(' | '))

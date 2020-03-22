@@ -11,7 +11,7 @@ export { cosmetics }
  *
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]
@@ -32,7 +32,7 @@ export const Deco = (options = {}) => cosmetics.bind(presetVectorOptions(options
  * @param {*[]} vector
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]

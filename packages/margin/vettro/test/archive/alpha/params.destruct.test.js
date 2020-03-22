@@ -18,19 +18,19 @@ export const paramsDestructTest = (arr, {
   hMargin: [top, bottom] = noopEntry,
   vMargin: [left, right] = noopEntry,
   area: [height, width] = noopEntry,
-  abstract,
+  read,
   visual
 } = {}) => {
   ({
     arr,
     top, bottom, left, right,
     height, width,
-    abstract, visual: visual |> visualConfig
+    read, visual: visual |> visualConfig
   }) |> deca({ vu: 1 }) |> logger
 }
 
 paramsDestructTest([1, 2, 3], {
-  abstract: totx,
+  read: totx,
   visual: false
 })
 

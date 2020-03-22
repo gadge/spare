@@ -84,9 +84,9 @@ const cosmetics = function (crostab) {
   if (!height || !width || !labelWidth || !labelHeight) return AEU;
   const {
     direct = POINTWISE,
-    abstract,
-    bannerAbstract,
-    sideAbstract,
+    read,
+    headRead,
+    sideRead,
     preset,
     stringPreset,
     labelPreset,
@@ -107,15 +107,15 @@ const cosmetics = function (crostab) {
     right,
     height,
     width,
-    abstract
+    read
   }), vettro(banner, {
     head: left,
     tail: right,
-    abstract: bannerAbstract
+    read: headRead
   }), vettro(stand, {
     head: top,
     tail: bottom,
-    abstract: sideAbstract
+    read: sideRead
   })];
   const [dyeX, dyeB, dyeS] = [preset && fluo(x.raw, {
     direct,
@@ -166,9 +166,9 @@ const cosmetics = function (crostab) {
  *
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
- * @param {function(*):string} [options.sideAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
+ * @param {function(*):string} [options.sideRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset]
@@ -190,9 +190,9 @@ const Deco = (options = {}) => cosmetics.bind(presetCrostabOptions(options));
  * @param {Object} crostab
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
- * @param {function(*):string} [options.sideAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
+ * @param {function(*):string} [options.sideRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset=SUBTLE]

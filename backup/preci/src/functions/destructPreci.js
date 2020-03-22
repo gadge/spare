@@ -5,7 +5,7 @@ import { Preci } from '../Preci'
 /**
  *
  * @param {*[]} arr
- * @param {function(*):string} [abstract]
+ * @param {function(*):string} [read]
  * @param {number} [h]
  * @param {number} [t]
  * @param {{
@@ -14,14 +14,14 @@ import { Preci } from '../Preci'
  * }} [visual]
  * @return {*}
  */
-export const destructPreci = (arr, [h, t], { abstract, visual = {} } = {}) => {
+export const destructPreci = (arr, [h, t], { read, visual = {} } = {}) => {
   let
     preci = Preci.fromArr(arr, h, t),
     raws = preci.toList('...'),
     pals = (visual |> isVisual)
       ? Visual.vector(raws, { ...visual, retFn: true, mutate: false })
       : null,
-    words = preci.stringify(abstract)
+    words = preci.stringify(read)
   return { raws, pals, words }
 }
 

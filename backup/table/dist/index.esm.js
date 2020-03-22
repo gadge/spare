@@ -10,8 +10,8 @@ import { Mx } from 'veho';
  *          {head:*[],rows:*[][],[title]:string,[types]:*[]} |
  *          {header:*[],rowSet:*[][],[title]:string,[types]:*[]}
  *        } table
- * @param {?function(*):string} [abstract]
- * @param {{[abstract]:?function(*):string,[head]:?number,[tail]:?number}} [_head]
+ * @param {?function(*):string} [read]
+ * @param {{[read]:?function(*):string,[head]:?number,[tail]:?number}} [_head]
  * @param {{[head]:?number,[tail]:?number}} [_rows]
  * @param {{
  *          [on]:boolean,
@@ -28,9 +28,9 @@ import { Mx } from 'veho';
  */
 
 const brief = (table, {
-  abstract,
+  read,
   head: _head = {
-    abstract: null,
+    read: null,
     head: 0,
     tail: 0
   },
@@ -59,13 +59,13 @@ const brief = (table, {
   if (!ht || !wd) return AEU;
   const visualOn = (_visual = visual, isVisual(_visual));
   ansi = visualOn ? true : ansi;
-  const hs = Preci.fromArr(head, _head.head, _head.tail).stringify(abstract).toList('..'),
+  const hs = Preci.fromArr(head, _head.head, _head.tail).stringify(read).toList('..'),
         {
     rawx,
     palx,
     wordx
   } = destructPreX(rows, (_rows2 = _rows, readCrop(_rows2)), (_head2 = _head, readCrop(_head2)), {
-    abstract,
+    read,
     visual,
     ansi
   }, [ht, wd]);

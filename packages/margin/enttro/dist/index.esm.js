@@ -43,8 +43,8 @@ class Entrigin extends Vectogin {
  * @param {*[]} entries
  * @param {number} [head]
  * @param {number} [tail]
- * @param {function(*):string} [keyAbstract]
- * @param {function(*):string} [abstract]
+ * @param {function(*):string} [keyRead]
+ * @param {function(*):string} [read]
  * @param {*} hr
  * @param {boolean} [pad]
  * @return {{text:*[], raw:*[]}}
@@ -53,14 +53,14 @@ class Entrigin extends Vectogin {
 const enttro = (entries, {
   head,
   tail,
-  keyAbstract,
-  abstract,
+  keyRead,
+  read,
   hr = '...'
 } = {}) => {
   let vn = Entrigin.build(entries, head, tail);
   return {
     raw: vn.toVector(hr),
-    text: vn.stringify(keyAbstract, abstract).toVector(hr)
+    text: vn.stringify(keyRead, read).toVector(hr)
   };
 };
 

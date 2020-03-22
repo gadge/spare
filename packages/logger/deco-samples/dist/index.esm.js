@@ -22,7 +22,7 @@ const cosmetics = function (samples) {
   const {
     fields,
     indexed,
-    abstract,
+    read,
     direct,
     preset,
     keyPreset,
@@ -68,7 +68,7 @@ const cosmetics = function (samples) {
     width: w,
     dashX,
     dashY,
-    abstract: pipeQuote(abstract, quote),
+    read: pipeQuote(read, quote),
     hr: null,
     validate: false
   });
@@ -117,7 +117,7 @@ const cosmetics = function (samples) {
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
  * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.keyPreset]
  * @param {Preset} [options.stringPreset]
@@ -141,7 +141,7 @@ const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(options));
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
  * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.keyPreset]
  * @param {Preset} [options.stringPreset]

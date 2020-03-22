@@ -14,8 +14,8 @@ const cosmetics = function (entries) {
   if (!entries) return String(entries);
   if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner([], this);
   const {
-    keyAbstract,
-    abstract,
+    keyRead,
+    read,
     preset,
     stringPreset,
     head,
@@ -33,8 +33,8 @@ const cosmetics = function (entries) {
   } = enttro(entries, {
     head,
     tail,
-    keyAbstract: pipeQuote(keyAbstract, keyQuote),
-    abstract: pipeQuote(abstract, quote),
+    keyRead: pipeQuote(keyRead, keyQuote),
+    read: pipeQuote(read, quote),
     hr: HR_ENTRY
   });
   const dye = preset && fluoEntries(raw, {
@@ -62,8 +62,8 @@ const cosmetics = function (entries) {
 /**
  *
  * @param {Object} options
- * @param {function(*):string} [options.keyAbstract]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.keyRead]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]
@@ -85,8 +85,8 @@ const Deco = (options = {}) => cosmetics.bind(presetEntriesOptions(options));
  *
  * @param {[*,*][]} entries
  * @param {Object} options
- * @param {function(*):string} [options.keyAbstract]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.keyRead]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]

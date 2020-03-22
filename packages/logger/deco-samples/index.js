@@ -9,7 +9,7 @@ export { cosmetics }
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
  * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.keyPreset]
  * @param {Preset} [options.stringPreset]
@@ -33,7 +33,7 @@ export const Deco = (options = {}) => cosmetics.bind(presetSamplesOptions(option
  * @param {*[]} [options.fields]
  * @param {boolean} [options.indexed=true]
  * @param {number} [options.direct] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.keyPreset]
  * @param {Preset} [options.stringPreset]

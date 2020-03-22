@@ -10,8 +10,8 @@ export { cosmetics }
 /**
  *
  * @param {Object} options
- * @param {function(*):string} [options.keyAbstract]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.keyRead]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]
@@ -32,8 +32,8 @@ export const Deco = (options = {}) => cosmetics.bind(presetObjectOptions(options
  *
  * @param {Object} o
  * @param {Object} options
- * @param {function(*):string} [options.keyAbstract]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.keyRead]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]

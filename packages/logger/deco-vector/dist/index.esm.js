@@ -12,7 +12,7 @@ function cosmetics(vec) {
     tail,
     preset,
     stringPreset,
-    abstract,
+    read,
     quote
   } = this;
   let {
@@ -21,7 +21,7 @@ function cosmetics(vec) {
   } = vettro(vec, {
     head,
     tail,
-    abstract: pipeQuote(abstract, quote),
+    read: pipeQuote(read, quote),
     hr: ELLIP
   });
   if (preset) fluoVector(text, {
@@ -41,7 +41,7 @@ function cosmetics(vec) {
  *
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]
@@ -62,7 +62,7 @@ const Deco = (options = {}) => cosmetics.bind(presetVectorOptions(options));
  * @param {*[]} vector
  * @param {Object} options
  * @param {boolean} [options.indexed=true]
- * @param {function(*):string} [options.abstract]
+ * @param {function(*):string} [options.read]
  * @param {Preset} [options.preset]
  * @param {Preset} [options.stringPreset]
  * @param {number} [options.head]

@@ -16,14 +16,14 @@ export const cosmetics = function (crostab) {
   const [height, width] = size(matrix), labelWidth = banner && banner.length, labelHeight = stand && stand.length
   if (!height || !width || !labelWidth || !labelHeight) return AEU
   const {
-    direct = POINTWISE, abstract, bannerAbstract, sideAbstract,
+    direct = POINTWISE, read, headRead, sideRead,
     preset, stringPreset, labelPreset,
     top, left, bottom, right, ansi, fullAngle, discrete, delim, level
   } = this
   const [x, b, s] = [
-    mattro(matrix, { top, bottom, left, right, height, width, abstract }),
-    vettro(banner, { head: left, tail: right, abstract: bannerAbstract }),
-    vettro(stand, { head: top, tail: bottom, abstract: sideAbstract }),
+    mattro(matrix, { top, bottom, left, right, height, width, read }),
+    vettro(banner, { head: left, tail: right, read: headRead }),
+    vettro(stand, { head: top, tail: bottom, read: sideRead }),
   ]
   const [dyeX, dyeB, dyeS] = [
     preset && fluo(x.raw, { direct, preset, stringPreset, colorant: true }),

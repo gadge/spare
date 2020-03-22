@@ -19,8 +19,8 @@ const cosmetics = function (table) {
   if (!height || !width || !labelWidth) return enumChars.AEU;
   const {
     direct,
-    abstract,
-    headAbstract,
+    read,
+    headRead,
     preset,
     stringPreset,
     labelPreset,
@@ -41,11 +41,11 @@ const cosmetics = function (table) {
     right,
     height,
     width,
-    abstract
+    read
   }), vettro.vettro(banner, {
     head: left,
     tail: right,
-    abstract: headAbstract
+    read: headRead
   })];
   const [dyeX, dyeB] = [preset && fluoMatrix.fluoMatrix(x.raw, {
     direct,
@@ -84,8 +84,8 @@ const cosmetics = function (table) {
  *
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset=SUBTLE]
@@ -109,8 +109,8 @@ const Deco = (options = {}) => cosmetics.bind(decoUtil.presetTableOptions(option
  * @param {Object} table
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset=SUBTLE]

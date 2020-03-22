@@ -10,7 +10,7 @@ export const cosmetics = function (matrix) {
   const [height, width] = size(matrix)
   if (!height || !width) return liner([], this)
   const { direct, preset, stringPreset, quote, ansi, discrete, delim, bracket, level } = this
-  this.abstract = pipeQuote(this.abstract, quote)
+  this.read = pipeQuote(this.read, quote)
   const { raw, text } = mattro(matrix, this)
   const dye = preset && fluoMatrix(raw, { direct, preset, stringPreset, colorant: true })
   const rows = padMatrix(text, { raw, dye, ansi })

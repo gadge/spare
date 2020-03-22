@@ -55,14 +55,14 @@ class Preci {
   }
   /**
    *
-   * @param {function} [abstract]
+   * @param {function} [read]
    * @param {boolean} [mutate]
    * @return { Preci }
    */
 
 
-  stringify(abstract, mutate = true) {
-    const brief = abstract ? _ => String(abstract(_)) : totx;
+  stringify(read, mutate = true) {
+    const brief = read ? _ => String(read(_)) : totx;
     return this.map(brief, mutate);
   }
 
@@ -237,8 +237,8 @@ class PreX {
     return _mx;
   }
 
-  stringify(abstract, mutate = true) {
-    const brief = abstract ? _ => String(abstract(_)) : totx;
+  stringify(read, mutate = true) {
+    const brief = read ? _ => String(read(_)) : totx;
     return this.map(brief, mutate);
   }
 
@@ -247,7 +247,7 @@ class PreX {
 /**
  *
  * @param {*[]} arr
- * @param {function(*):string} [abstract]
+ * @param {function(*):string} [read]
  * @param {number} [h]
  * @param {number} [t]
  * @param {{
@@ -258,7 +258,7 @@ class PreX {
  */
 
 const destructPreci = (arr, [h, t], {
-  abstract,
+  read,
   visual = {}
 } = {}) => {
   var _visual;
@@ -269,7 +269,7 @@ const destructPreci = (arr, [h, t], {
     retFn: true,
     mutate: false
   }) : null,
-      words = preci.stringify(abstract);
+      words = preci.stringify(read);
   return {
     raws,
     pals,
@@ -278,7 +278,7 @@ const destructPreci = (arr, [h, t], {
 };
 
 const destructPreX = (mx, [top, bottom], [left, right], {
-  abstract,
+  read,
   visual = {},
   ansi = false
 }, [height, width]) => {
@@ -290,7 +290,7 @@ const destructPreX = (mx, [top, bottom], [left, right], {
     retFn: true,
     mutate: false
   }) : null,
-        wordx = prex.stringify(abstract).toMx('..');
+        wordx = prex.stringify(read).toMx('..');
   return {
     rawx,
     palx,

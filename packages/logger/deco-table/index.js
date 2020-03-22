@@ -11,8 +11,8 @@ export { cosmetics }
  *
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset=SUBTLE]
@@ -36,8 +36,8 @@ export const Deco = (options = {}) => cosmetics.bind(presetTableOptions(options)
  * @param {Object} table
  * @param {Object} options
  * @param {number} [options.direct=ROWWISE] - pointwise = 0, rowwise = 1, columnwise = 2
- * @param {function(*):string} [options.abstract]
- * @param {function(*):string} [options.headAbstract]
+ * @param {function(*):string} [options.read]
+ * @param {function(*):string} [options.headRead]
  * @param {Preset} [options.preset=FRESH]
  * @param {Preset} [options.stringPreset=JUNGLE]
  * @param {Preset} [options.labelPreset=SUBTLE]
