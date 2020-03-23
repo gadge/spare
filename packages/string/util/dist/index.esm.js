@@ -1,4 +1,4 @@
-import { STR } from '@typen/enum-data-types';
+export { pipeQuote, quoteString } from '@spare/deco-util/src/quoteString';
 export { AEU, CR, ELLIP, LF, RN, SP, TB } from '@spare/enum-chars';
 export { DASH, SP as SPACE } from '@spare/enum-full-angle-chars';
 
@@ -43,24 +43,4 @@ const bc = tx => '{' + tx + '}';
 
 const endsBracs = tx => tx.endsWith(')') || tx.endsWith(']');
 
-const quoteString = function (x) {
-  const {
-    qt
-  } = this;
-  return typeof x === STR ? qt + x + qt : x;
-};
-const pipeQuote = (read, quote) => {
-  if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return read;
-  if (!read) return quoteString.bind({
-    qt: quote
-  });
-  return x => {
-    var _ref, _x;
-
-    return _ref = (_x = x, read(_x)), quoteString.bind({
-      qt: quote
-    })(_ref);
-  };
-};
-
-export { afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, noop, pipeQuote, pr, quoteString, tabify, totx };
+export { afterNaTab, bc, beforeNaTab, br, deNaTab, endsBracs, isTab, noop, pr, tabify, totx };

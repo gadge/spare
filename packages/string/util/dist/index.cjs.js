@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumDataTypes = require('@typen/enum-data-types');
+var quoteString = require('@spare/deco-util/src/quoteString');
 var enumChars = require('@spare/enum-chars');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 
@@ -47,26 +47,18 @@ const bc = tx => '{' + tx + '}';
 
 const endsBracs = tx => tx.endsWith(')') || tx.endsWith(']');
 
-const quoteString = function (x) {
-  const {
-    qt
-  } = this;
-  return typeof x === enumDataTypes.STR ? qt + x + qt : x;
-};
-const pipeQuote = (read, quote) => {
-  if (!(quote === null || quote === void 0 ? void 0 : quote.length)) return read;
-  if (!read) return quoteString.bind({
-    qt: quote
-  });
-  return x => {
-    var _ref, _x;
-
-    return _ref = (_x = x, read(_x)), quoteString.bind({
-      qt: quote
-    })(_ref);
-  };
-};
-
+Object.defineProperty(exports, 'pipeQuote', {
+  enumerable: true,
+  get: function () {
+    return quoteString.pipeQuote;
+  }
+});
+Object.defineProperty(exports, 'quoteString', {
+  enumerable: true,
+  get: function () {
+    return quoteString.quoteString;
+  }
+});
 Object.defineProperty(exports, 'AEU', {
   enumerable: true,
   get: function () {
@@ -129,8 +121,6 @@ exports.deNaTab = deNaTab;
 exports.endsBracs = endsBracs;
 exports.isTab = isTab;
 exports.noop = noop;
-exports.pipeQuote = pipeQuote;
 exports.pr = pr;
-exports.quoteString = quoteString;
 exports.tabify = tabify;
 exports.totx = totx;

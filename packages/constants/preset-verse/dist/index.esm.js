@@ -1,11 +1,8 @@
 import { BRACKET, NONE } from '@spare/enum-brackets';
 import { COSP, COLF, SP } from '@spare/enum-chars';
 import { isNumeric } from '@typen/num-strict';
-
-const APOS = 1;
- // ditto mark
-
-const quote = x => '\'' + x + '\'';
+import { quote } from '@spare/quote';
+import { APOS } from '@spare/enum-quotes';
 
 const smartKeyRead = x => /\W/.test(x) || isNumeric(x) ? quote(x) : x;
 

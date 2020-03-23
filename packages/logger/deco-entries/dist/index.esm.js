@@ -1,12 +1,11 @@
 import { presetEntries } from '@spare/preset-deco';
 import { liner } from '@spare/deco-util';
+import { bracket } from '@spare/bracket';
 import { enttro } from '@spare/enttro';
 import { padEntries } from '@spare/pad-entries';
 import { fluoEntries } from '@palett/fluo-entries';
 import { Duozipper } from '@vect/entries-zipper';
 import { Qt } from '@spare/quote';
-
-const bracket = x => '[' + x + ']';
 
 const HR_ENTRY = ['..', '..'];
 

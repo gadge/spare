@@ -4,13 +4,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
 var decoUtil = require('@spare/deco-util');
+var bracket = require('@spare/bracket');
 var enttro = require('@spare/enttro');
 var padEntries = require('@spare/pad-entries');
 var fluoEntries = require('@palett/fluo-entries');
 var entriesZipper = require('@vect/entries-zipper');
 var quote = require('@spare/quote');
-
-const bracket = x => '[' + x + ']';
 
 const HR_ENTRY = ['..', '..'];
 
@@ -57,7 +56,7 @@ const cosmetics = function (entries) {
 
     return _t = t, d(_t);
   })(text, dye) : text;
-  const lines = bracket$1 ? entries.map(([k, v]) => bracket(k + dash + v)) : entries.map(([k, v]) => k + dash + v.trimRight());
+  const lines = bracket$1 ? entries.map(([k, v]) => bracket.bracket(k + dash + v)) : entries.map(([k, v]) => k + dash + v.trimRight());
   return decoUtil.liner(lines, this);
 };
 

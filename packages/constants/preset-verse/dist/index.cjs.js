@@ -5,13 +5,10 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
 var numStrict = require('@typen/num-strict');
+var quote = require('@spare/quote');
+var enumQuotes = require('@spare/enum-quotes');
 
-const APOS = 1;
- // ditto mark
-
-const quote = x => '\'' + x + '\'';
-
-const smartKeyRead = x => /\W/.test(x) || numStrict.isNumeric(x) ? quote(x) : x;
+const smartKeyRead = x => /\W/.test(x) || numStrict.isNumeric(x) ? quote.quote(x) : x;
 
 // from x => typeof x
 const BOO = 'boolean';
@@ -21,7 +18,7 @@ const STR = 'string';
 const smartValueRead = x => {
   const t = typeof x;
   if (x === void 0 || x === null || t === NUM || t === BOO) return x;
-  if (t === STR) return !numStrict.isNumeric(x) ? quote(x) : x;
+  if (t === STR) return !numStrict.isNumeric(x) ? quote.quote(x) : x;
   return x.toString();
 };
 
@@ -98,7 +95,7 @@ const presetObject = p => {
   p.keyRead = p.keyRead || smartKeyRead;
   p.dash = p.dash || ':' + enumChars.SP;
   p.delim = p.delim || enumChars.COLF;
-  p.quote = (_p$quote = p.quote) !== null && _p$quote !== void 0 ? _p$quote : APOS;
+  p.quote = (_p$quote = p.quote) !== null && _p$quote !== void 0 ? _p$quote : enumQuotes.APOS;
   p.bracket = enumBrackets.BRACKET;
   return p;
 };
