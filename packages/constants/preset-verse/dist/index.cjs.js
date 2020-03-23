@@ -79,7 +79,7 @@ const presetObject = p => {
   p.delim = p.delim || enumChars.COLF;
   p.keyRead = p.keyRead || decoUtil.decoKey;
   p.read = p.read || decoUtil.decoValue;
-  p.bracket = enumBrackets.BRACKET;
+  p.bracket = enumBrackets.BRACE;
   return p;
 };
 

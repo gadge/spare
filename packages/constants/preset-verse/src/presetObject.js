@@ -1,4 +1,4 @@
-import { BRACKET } from '@spare/enum-brackets'
+import { BRACE, BRACKET } from '@spare/enum-brackets'
 import { COLF, SP } from '@spare/enum-chars'
 import { decoKey, decoValue } from '@spare/deco-util'
 
@@ -21,6 +21,6 @@ export const presetObject = p => {
   p.delim = p.delim || COLF
   p.keyRead = p.keyRead || decoKey
   p.read = p.read || decoValue
-  p.bracket = BRACKET
+  p.bracket = BRACE
   return p
 }
