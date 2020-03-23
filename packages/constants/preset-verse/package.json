@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-verse",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Preset for verse",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/preset-verse.test.js"
   },
   "dependencies": {
-    "@spare/enum-brackets": "^0.3.4",
-    "@spare/enum-chars":"^0.3.4",
-    "@spare/deco-util": "^0.3.1"
+    "@spare/deco-util": "^0.3.5",
+    "@spare/enum-brackets": "^0.3.5",
+    "@spare/enum-chars": "^0.3.5"
   },
   "repository": {
     "type": "git",
