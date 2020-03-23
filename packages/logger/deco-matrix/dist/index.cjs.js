@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
 var padMatrix = require('@spare/pad-matrix');
 var fluoMatrix = require('@palett/fluo-matrix');
@@ -15,7 +15,7 @@ var presetDeco = require('@spare/preset-deco');
 const cosmetics = function (matrix$1) {
   if (!matrix$1) return String(matrix$1);
   const [height, width] = matrix.size(matrix$1);
-  if (!height || !width) return decoUtil.liner([], this);
+  if (!height || !width) return liner.liner([], this);
   const {
     direct,
     preset,
@@ -66,7 +66,7 @@ const cosmetics = function (matrix$1) {
 
     return _line$join = line.join(delim), bracket.bracket(_line$join);
   }) : rows.map(line => line.join(delim));
-  return decoUtil.liner(lines, {
+  return liner.liner(lines, {
     discrete,
     delim: enumChars.COLF,
     bracket: bracket$1,

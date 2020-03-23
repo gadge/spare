@@ -5,7 +5,7 @@ import { mattro } from '@spare/mattro'
 import { fluoVector } from '@palett/fluo-vector'
 import { fluoMatrix } from '@palett/fluo-matrix'
 import { padTable } from '@spare/pad-table'
-import { liner } from '@spare/deco-util'
+import { liner } from '@spare/liner'
 
 export const cosmetics = function (table) {
   let matrix = table.rows || table.matrix, banner = table.head || table.banner

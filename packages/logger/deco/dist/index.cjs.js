@@ -17,7 +17,7 @@ var cards = require('@palett/cards');
 var lange = require('@spare/lange');
 var comparer = require('@aryth/comparer');
 var padString = require('@spare/pad-string');
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 var columnMapper = require('@vect/column-mapper');
 var enumChars = require('@spare/enum-chars');
 var bracket = require('@spare/bracket');
@@ -149,7 +149,7 @@ const stringifyEntries = function (entries, lv) {
   } = wrapInfo.call(this, entries);
   if (wrap || lv < vo) columnMapper.mutate(entries, 0, k => lpad(k, pad));
   vectorMapper.mutate(entries, ([k, v]) => `${k}: ${v}`);
-  return (wrap || lv < vo) && entries.length > 1 ? decoUtil.joinLines(entries, enumChars.CO, lv) : entries.join(', ');
+  return (wrap || lv < vo) && entries.length > 1 ? liner.joinLines(entries, enumChars.CO, lv) : entries.join(', ');
 };
 const wrapInfo = function (entries) {
   const {
@@ -173,7 +173,7 @@ const stringifyVector = function (vector, lv) {
     va,
     wa
   } = this;
-  if (lv < va) return decoUtil.joinLines(vector, lv);
+  if (lv < va) return liner.joinLines(vector, lv);
   let rows = [],
       w = 0,
       row = [];
@@ -181,7 +181,7 @@ const stringifyVector = function (vector, lv) {
     row.push(item), w += lange.lange(item);
     if (w > wa) rows.push(row.join(', ')), row = [], w = 0;
   });
-  return rows.length > 1 ? decoUtil.joinLines(rows, enumChars.CO, lv) : vector.join(', ');
+  return rows.length > 1 ? liner.joinLines(rows, enumChars.CO, lv) : vector.join(', ');
 };
 
 var _Blue$lighten_, _LightBlue$accent_, _LightBlue$lighten_, _Lime$lighten_, _ref$3, _function, _Grey$base, _return, _Brown$lighten_;

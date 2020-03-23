@@ -6,7 +6,7 @@ import { cosmetics as cosmeticsSamples } from '@spare/deco-samples'
 import { matchSlice as matchSliceTable } from '@analys/table-init'
 import { matchSlice as matchSliceCrostab } from '@analys/crostab-init'
 import { brace, bracket as doBracket } from '@spare/bracket'
-import { joinLines, liner } from '@spare/deco-util'
+import { joinLines, liner } from '@spare/liner'
 import { BRACE } from '@spare/enum-brackets'
 import {
   presetCrostab,

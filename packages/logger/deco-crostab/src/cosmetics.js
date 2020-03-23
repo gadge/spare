@@ -6,8 +6,8 @@ import { fluoVector } from '@palett/fluo-vector'
 import { fluoMatrix } from '@palett/fluo-matrix'
 import { zipper } from '@vect/vector-zipper'
 import { size } from '@vect/matrix'
+import { liner } from '@spare/liner'
 import { padSide } from '../utils/padSide'
-import { liner } from '@spare/deco-util'
 import { HCONN, VLINE } from '../resources/conns'
 
 export const cosmetics = function (crostab) {

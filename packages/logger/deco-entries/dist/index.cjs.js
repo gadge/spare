@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 var bracket = require('@spare/bracket');
 var enttro = require('@spare/enttro');
 var padEntries = require('@spare/pad-entries');
@@ -17,7 +17,7 @@ const cosmetics = function (entries) {
   var _entries;
 
   if (!entries) return String(entries);
-  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return decoUtil.liner([], this);
+  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner.liner([], this);
   const {
     keyRead,
     read,
@@ -57,7 +57,7 @@ const cosmetics = function (entries) {
     return _t = t, d(_t);
   })(text, dye) : text;
   const lines = bracket$1 ? entries.map(([k, v]) => bracket.bracket(k + dash + v)) : entries.map(([k, v]) => k + dash + v.trimRight());
-  return decoUtil.liner(lines, this);
+  return liner.liner(lines, this);
 };
 
 /**

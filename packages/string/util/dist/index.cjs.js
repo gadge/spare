@@ -2,7 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var quoteString = require('@spare/deco-util/src/quoteString');
 var enumChars = require('@spare/enum-chars');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 
@@ -47,18 +46,6 @@ const bc = tx => '{' + tx + '}';
 
 const endsBracs = tx => tx.endsWith(')') || tx.endsWith(']');
 
-Object.defineProperty(exports, 'pipeQuote', {
-  enumerable: true,
-  get: function () {
-    return quoteString.pipeQuote;
-  }
-});
-Object.defineProperty(exports, 'quoteString', {
-  enumerable: true,
-  get: function () {
-    return quoteString.quoteString;
-  }
-});
 Object.defineProperty(exports, 'AEU', {
   enumerable: true,
   get: function () {

@@ -1,6 +1,6 @@
 import { presetObject } from '@spare/preset-deco';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
-import { liner } from '@spare/deco-util';
+import { liner } from '@spare/liner';
 
 const cosmetics = function (o) {
   if (!o) return String(o);

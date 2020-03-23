@@ -10,7 +10,7 @@ var decoSamples = require('@spare/deco-samples');
 var tableInit = require('@analys/table-init');
 var crostabInit = require('@analys/crostab-init');
 var bracket = require('@spare/bracket');
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 var enumBrackets = require('@spare/enum-brackets');
 var presetVerse = require('@spare/preset-verse');
 var quote = require('@spare/quote');
@@ -65,7 +65,7 @@ class Verse {
       level
     } = p;
     const lines = decoEntries.cosmetics.call(presetVerse.presetEntriesAsObject(p), entries);
-    return decoUtil.liner(lines, {
+    return liner.liner(lines, {
       bracket: enumBrackets.BRACE,
       delim,
       level
@@ -115,7 +115,7 @@ class Verse {
       level
     } = p;
     const lines = decoMatrix.cosmetics.call(p, matrix);
-    return _joinLines = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines);
+    return _joinLines = liner.joinLines(lines, delim, level), bracket.bracket(_joinLines);
   }
   /**
    * @param {Object[]} samples
@@ -141,7 +141,7 @@ class Verse {
       level
     } = p;
     const lines = decoSamples.cosmetics.call(p, samples);
-    return _joinLines2 = decoUtil.joinLines(lines, delim, level), bracket.bracket(_joinLines2);
+    return _joinLines2 = liner.joinLines(lines, delim, level), bracket.bracket(_joinLines2);
   }
   /***
    * @param {[*,*][]} entries
@@ -168,7 +168,7 @@ class Verse {
       level
     } = p;
     const lines = decoEntries.cosmetics.call(p, entries);
-    return decoUtil.liner(lines, {
+    return liner.liner(lines, {
       bracket: enumBrackets.BRACE,
       delim,
       level
@@ -205,7 +205,7 @@ class Verse {
       keyQuote
     } = p;
     const lines = [quote.qt(SIDE, keyQuote) + ': ' + Verse.vector(side, p), quote.qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p), quote.qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)];
-    return _joinLines3 = decoUtil.joinLines(lines, delim, level - 1), bracket.brace(_joinLines3);
+    return _joinLines3 = liner.joinLines(lines, delim, level - 1), bracket.brace(_joinLines3);
   }
   /**
    * @param {Object} table
@@ -237,7 +237,7 @@ class Verse {
       keyQuote
     } = p;
     const lines = [quote.qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p), quote.qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)];
-    return _joinLines4 = decoUtil.joinLines(lines, delim, level - 1), bracket.brace(_joinLines4);
+    return _joinLines4 = liner.joinLines(lines, delim, level - 1), bracket.brace(_joinLines4);
   }
 
 }

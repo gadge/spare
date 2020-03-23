@@ -5,10 +5,6 @@ export {
 } from './src/stringHelpers'
 
 export {
-  quoteString, pipeQuote
-} from '@spare/deco-util/src/quoteString'
-
-export {
   RN, TB, SP, AEU, ELLIP, CR, LF
 } from '@spare/enum-chars'
 

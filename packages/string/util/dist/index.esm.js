@@ -1,4 +1,3 @@
-export { pipeQuote, quoteString } from '@spare/deco-util/src/quoteString';
 export { AEU, CR, ELLIP, LF, RN, SP, TB } from '@spare/enum-chars';
 export { DASH, SP as SPACE } from '@spare/enum-full-angle-chars';
 

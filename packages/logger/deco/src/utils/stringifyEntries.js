@@ -1,7 +1,7 @@
 import { lange } from '@spare/lange'
 import { max } from '@aryth/comparer'
 import { LPad } from '@spare/pad-string'
-import { joinLines } from '@spare/deco-util'
+import { joinLines } from '@spare/liner'
 import { mutate as mutateVector } from '@vect/vector-mapper'
 import { iterate as iterateVector } from '@vect/vector-mapper'
 import { mutate as mutateColumn } from '@vect/column-mapper'

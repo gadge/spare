@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
 var decoEntries = require('@spare/deco-entries');
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 
 const cosmetics = function (o) {
   if (!o) return String(o);
@@ -13,7 +13,7 @@ const cosmetics = function (o) {
     bracket: false
   });
   const lines = decoEntries.cosmetics.call(entriesOptions, Object.entries(o));
-  return decoUtil.liner(lines, this);
+  return liner.liner(lines, this);
 };
 
 /**

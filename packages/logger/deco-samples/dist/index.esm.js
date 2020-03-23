@@ -11,7 +11,7 @@ import { marginMapper } from '@vect/matrix-margin';
 import { unwind } from '@vect/entries-unwind';
 import { lookupKeys, selectValues } from '@vect/object-select';
 import { intExpon } from '@aryth/math';
-import { liner } from '@spare/deco-util';
+import { liner } from '@spare/liner';
 import { Qt } from '@spare/quote';
 import { presetSamples } from '@spare/preset-deco';
 

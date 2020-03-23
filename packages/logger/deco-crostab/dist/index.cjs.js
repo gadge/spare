@@ -10,6 +10,7 @@ var fluoVector = require('@palett/fluo-vector');
 var fluoMatrix = require('@palett/fluo-matrix');
 var vectorZipper = require('@vect/vector-zipper');
 var matrix = require('@vect/matrix');
+var liner = require('@spare/liner');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 var string = require('@spare/string');
 var lange = require('@spare/lange');
@@ -17,7 +18,6 @@ var padString = require('@spare/pad-string');
 var comparer = require('@aryth/comparer');
 var vectorIndicator = require('@vect/vector-indicator');
 var vectorMapper = require('@vect/vector-mapper');
-var decoUtil = require('@spare/deco-util');
 var presetDeco = require('@spare/preset-deco');
 
 const padSide = (side, title, {
@@ -156,7 +156,7 @@ const cosmetics = function (crostab) {
     fullAngle
   });
   const lines = [title + VLINE + head.join(VLINE), br + HCONN + hr.join(HCONN)].concat(vectorZipper.zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE)));
-  return decoUtil.liner(lines, {
+  return liner.liner(lines, {
     discrete,
     delim,
     level

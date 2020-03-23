@@ -1,7 +1,7 @@
 {
-  "name": "@spare/deco-matrix",
+  "name": "@spare/liner",
   "version": "0.3.2",
-  "description": "A debugging tool",
+  "description": "Join lines together",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,19 +12,12 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/deco-matrix.test.js"
+    "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.1.0",
-    "@palett/presets": "^0.1.0",
-    "@spare/bracket": "^0.3.2",
-    "@spare/liner": "^0.3.1",
     "@spare/enum-chars": "^0.3.2",
-    "@spare/mattro": "^0.3.2",
-    "@spare/pad-matrix": "^0.3.2",
-    "@spare/preset-deco": "^0.3.2",
-    "@spare/quote": "^0.3.2",
-    "@vect/matrix": "^0.1.18"
+    "@spare/bracket": "^0.3.2",
+    "@spare/enum-brackets": "^0.3.2"
   },
   "repository": {
     "type": "git",
@@ -42,5 +35,5 @@
     "url": "https://github.com/hoyeungw/spare"
   },
   "homepage": "https://github.com/hoyeungw/spare#readme",
-  "gitHead": "ebee2e056eda94e65378c6a1178ae62fd924fe4d"
+  "gitHead": "bc2f5a3647ec3f6d7cf62539f64ce8cbfd3630a8"
 }

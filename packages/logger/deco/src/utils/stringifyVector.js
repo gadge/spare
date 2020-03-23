@@ -1,5 +1,5 @@
 import { lange } from '@spare/lange'
-import { joinLines } from '@spare/deco-util'
+import { joinLines } from '@spare/liner'
 import { iterate as iterateVector } from '@vect/vector-mapper'
 import { CO } from '@spare/enum-chars'
 

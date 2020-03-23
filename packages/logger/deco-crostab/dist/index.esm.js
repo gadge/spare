@@ -6,6 +6,7 @@ import { fluoVector } from '@palett/fluo-vector';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { zipper } from '@vect/vector-zipper';
 import { size } from '@vect/matrix';
+import { liner } from '@spare/liner';
 import { DASH as DASH$1, SP } from '@spare/enum-full-angle-chars';
 import { hasChn, toFullAngle } from '@spare/string';
 import { Lange } from '@spare/lange';
@@ -13,7 +14,6 @@ import { LPad, RPad } from '@spare/pad-string';
 import { max } from '@aryth/comparer';
 import { maxBy } from '@vect/vector-indicator';
 import { mapper } from '@vect/vector-mapper';
-import { liner } from '@spare/deco-util';
 import { presetCrostab } from '@spare/preset-deco';
 
 const padSide = (side, title, {

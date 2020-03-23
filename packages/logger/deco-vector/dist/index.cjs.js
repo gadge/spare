@@ -6,7 +6,7 @@ var enumChars = require('@spare/enum-chars');
 var vettro = require('@spare/vettro');
 var decoEntries = require('@spare/deco-entries');
 var fluoVector = require('@palett/fluo-vector');
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 var quote = require('@spare/quote');
 var presetDeco = require('@spare/preset-deco');
 
@@ -36,7 +36,7 @@ function cosmetics(vec) {
     stringPreset,
     mutate: true
   });
-  return decoUtil.liner(text, this);
+  return liner.liner(text, this);
 }
 
 /**

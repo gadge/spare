@@ -23,7 +23,7 @@
     "@palett/fluo-entries": "^0.1.0",
     "@palett/fluo-vector": "^0.1.0",
     "@spare/bracket": "^0.3.2",
-    "@spare/deco-util": "^0.3.1",
+    "@spare/liner": "^0.3.1",
     "@spare/enum-chars": "^0.3.2",
     "@spare/lange": "^0.3.2",
     "@spare/pad-string": "^0.3.2",

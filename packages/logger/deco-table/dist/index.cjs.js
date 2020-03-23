@@ -9,7 +9,7 @@ var mattro = require('@spare/mattro');
 var fluoVector = require('@palett/fluo-vector');
 var fluoMatrix = require('@palett/fluo-matrix');
 var padTable = require('@spare/pad-table');
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 var presetDeco = require('@spare/preset-deco');
 
 const cosmetics = function (table) {
@@ -70,7 +70,7 @@ const cosmetics = function (table) {
     fullAngle
   });
   const lines = [head.join(' | '), hr.join('-+-')].concat(rows.map(row => row.join(' | ')));
-  return decoUtil.liner(lines, {
+  return liner.liner(lines, {
     discrete,
     delim,
     level

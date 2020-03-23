@@ -13,7 +13,7 @@ import { Cards, Blue, LightBlue, Lime, Grey, Brown, BlueGrey, Purple, DeepPurple
 import { lange } from '@spare/lange';
 import { max } from '@aryth/comparer';
 import { LPad } from '@spare/pad-string';
-import { joinLines } from '@spare/deco-util';
+import { joinLines } from '@spare/liner';
 import { mutate } from '@vect/column-mapper';
 import { CO, SP } from '@spare/enum-chars';
 import { parenth } from '@spare/bracket';

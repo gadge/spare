@@ -18,7 +18,7 @@
     "@palett/fluo-matrix": "^0.1.0",
     "@palett/fluo-vector": "^0.1.0",
     "@palett/presets": "^0.1.0",
-    "@spare/deco-util": "^0.3.1",
+    "@spare/liner": "^0.3.1",
     "@spare/enum-chars": "^0.3.2",
     "@spare/mattro": "^0.3.2",
     "@spare/pad-table": "^0.3.2",

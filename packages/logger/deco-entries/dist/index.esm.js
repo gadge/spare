@@ -1,5 +1,5 @@
 import { presetEntries } from '@spare/preset-deco';
-import { liner } from '@spare/deco-util';
+import { liner } from '@spare/liner';
 import { bracket } from '@spare/bracket';
 import { enttro } from '@spare/enttro';
 import { padEntries } from '@spare/pad-entries';

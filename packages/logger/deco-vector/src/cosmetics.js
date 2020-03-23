@@ -2,7 +2,7 @@ import { ELLIP } from '@spare/enum-chars'
 import { vettro } from '@spare/vettro'
 import { cosmetics as cosmeticsEntries } from '@spare/deco-entries'
 import { fluoVector } from '@palett/fluo-vector'
-import { liner } from '@spare/deco-util'
+import { liner } from '@spare/liner'
 import { Qt } from '@spare/quote'
 
 export function cosmetics (vec) {

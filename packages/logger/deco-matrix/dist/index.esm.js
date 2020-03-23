@@ -1,4 +1,4 @@
-import { liner } from '@spare/deco-util';
+import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
 import { padMatrix } from '@spare/pad-matrix';
 import { fluoMatrix } from '@palett/fluo-matrix';

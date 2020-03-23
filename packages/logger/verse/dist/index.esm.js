@@ -6,7 +6,7 @@ import { cosmetics as cosmetics$4 } from '@spare/deco-samples';
 import { matchSlice as matchSlice$1 } from '@analys/table-init';
 import { matchSlice } from '@analys/crostab-init';
 import { bracket, brace } from '@spare/bracket';
-import { liner, joinLines } from '@spare/deco-util';
+import { liner, joinLines } from '@spare/liner';
 import { BRACE } from '@spare/enum-brackets';
 import { presetVector, presetEntries, presetEntriesAsObject, presetObject, presetMatrix, presetSamples, presetCrostab, presetTable } from '@spare/preset-verse';
 import { qt } from '@spare/quote';

@@ -15,7 +15,7 @@ var matrixMargin = require('@vect/matrix-margin');
 var entriesUnwind = require('@vect/entries-unwind');
 var objectSelect = require('@vect/object-select');
 var math = require('@aryth/math');
-var decoUtil = require('@spare/deco-util');
+var liner = require('@spare/liner');
 var quote = require('@spare/quote');
 var presetDeco = require('@spare/preset-deco');
 
@@ -111,7 +111,7 @@ const cosmetics = function (samples) {
   }
 
   if (dashX) rows.splice(t, 0, '...');
-  return decoUtil.liner(rows, {
+  return liner.liner(rows, {
     discrete,
     delim: enumChars.COLF,
     bracket,
