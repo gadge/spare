@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -27,7 +27,7 @@
     "@spare/deco-vector": "^0.3.7",
     "@spare/enum-brackets": "^0.3.7",
     "@spare/liner": "^0.3.7",
-    "@spare/preset-verse": "^0.3.7",
+    "@spare/preset-verse": "^0.3.8",
     "@spare/quote": "^0.3.7",
     "@typen/num-loose": "^0.0.3"
   },
