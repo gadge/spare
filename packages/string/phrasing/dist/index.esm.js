@@ -78,4 +78,30 @@ const wordsToCamel = words => {
 };
 const wordsToPascal = words => mutate(words, wordToCap);
 
-export { CAMEL, CAPREST, CAPWORD, DASH_CAPREST, INILOW, INIWORD, WORD, camelToSnake, snakeToCamel, snakeToPascal, wordToCap, wordsToCamel, wordsToPascal };
+/**
+ * Camel/pascal case phrase -> split vector
+ * Snake: fox_jumps_over_dog
+ * Kebab: fox-jumps-over-dog
+ * @param {string} phrase camel/pascal-case phrase
+ * @returns {string[]}
+ */
+
+function camelToVector(phrase) {
+  let ms,
+      wd,
+      ph = [];
+  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ph.push(wd);
+
+  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ph.push(wd);
+
+  return ph;
+}
+/**
+ * snake or kebab phrase -> split vector
+ * @param {string} phrase - dashed phrase
+ * @returns {string[]}
+ */
+
+const snakeToVector = phrase => phrase.split(/\W/g);
+
+export { CAMEL, CAPREST, CAPWORD, DASH_CAPREST, INILOW, INIWORD, WORD, camelToSnake, camelToVector, snakeToCamel, snakeToPascal, snakeToVector, wordToCap, wordsToCamel, wordsToPascal };

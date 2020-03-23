@@ -10,3 +10,5 @@ export {
 export { camelToSnake, snakeToCamel, snakeToPascal } from './src/phrasing'
 export { wordToCap } from './src/wordToCap'
 export { wordsToCamel, wordsToPascal } from './src/words'
+
+export { camelToVector, snakeToVector } from './src/vectorize'

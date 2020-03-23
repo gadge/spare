@@ -82,6 +82,32 @@ const wordsToCamel = words => {
 };
 const wordsToPascal = words => vectorMapper.mutate(words, wordToCap);
 
+/**
+ * Camel/pascal case phrase -> split vector
+ * Snake: fox_jumps_over_dog
+ * Kebab: fox-jumps-over-dog
+ * @param {string} phrase camel/pascal-case phrase
+ * @returns {string[]}
+ */
+
+function camelToVector(phrase) {
+  let ms,
+      wd,
+      ph = [];
+  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ph.push(wd);
+
+  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ph.push(wd);
+
+  return ph;
+}
+/**
+ * snake or kebab phrase -> split vector
+ * @param {string} phrase - dashed phrase
+ * @returns {string[]}
+ */
+
+const snakeToVector = phrase => phrase.split(/\W/g);
+
 exports.CAMEL = CAMEL;
 exports.CAPREST = CAPREST;
 exports.CAPWORD = CAPWORD;
@@ -90,8 +116,10 @@ exports.INILOW = INILOW;
 exports.INIWORD = INIWORD;
 exports.WORD = WORD;
 exports.camelToSnake = camelToSnake;
+exports.camelToVector = camelToVector;
 exports.snakeToCamel = snakeToCamel;
 exports.snakeToPascal = snakeToPascal;
+exports.snakeToVector = snakeToVector;
 exports.wordToCap = wordToCap;
 exports.wordsToCamel = wordsToCamel;
 exports.wordsToPascal = wordsToPascal;
