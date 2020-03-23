@@ -44,7 +44,7 @@ class Verse {
    * @param {number} [p.keyQuote=NONE]
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.keyRead=decoKey]
+   * @param {Function} [p.keyRead] - if objectify, default to decoKey, otherwise default to decoValue
    * @param {Function} [p.read=decoValue]
    *
    * @param {boolean} [p.objectify=false]

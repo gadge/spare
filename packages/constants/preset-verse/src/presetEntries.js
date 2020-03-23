@@ -10,7 +10,7 @@ import { decoKey, decoValue } from '@spare/deco-util'
  * @param {number} [p.keyQuote=NONE]
  * @param {number} [p.quote=NONE]
  *
- * @param {Function} [p.keyRead=decoKey]
+ * @param {Function} [p.keyRead=decoValue]
  * @param {Function} [p.read=decoValue]
  *
  * @param {boolean} [p.objectify=false]
@@ -21,7 +21,7 @@ import { decoKey, decoValue } from '@spare/deco-util'
 export const presetEntries = p => {
   p.dash = p.dash || COSP
   p.delim = p.delim || COLF
-  p.keyRead = p.keyRead || decoKey
+  p.keyRead = p.keyRead || decoValue
   p.read = p.read || decoValue
   p.bracket = BRACKET
   p.discrete = true;
