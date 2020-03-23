@@ -18,6 +18,7 @@ import {
   presetTable,
   presetVector
 } from '@spare/preset-verse'
+import { qt } from '@spare/quote'
 
 const SIDE = 'side', HEAD = 'head', ROWS = 'rows'
 
@@ -25,10 +26,14 @@ export class Verse {
   /**
    * @param {Array} vector
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @return {string}
    */
   static vector (vector, p = {}) {
@@ -39,14 +44,18 @@ export class Verse {
    *
    * @param {[*,*][]} entries
    * @param {Object} p
-   * @param {Function} [p.keyRead]
-   * @param {Function} [p.read]
-   * @param {string} [p.keyQuote]
-   * @param {string} [p.quote='\'']
+   *
    * @param {string} [p.dash=', ']
    * @param {string} [p.delim=',\n']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.keyRead=smartKeyRead]
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {boolean} [p.objectify=false]
    * @param {number} [p.level]
+   *
    * @return {string}
    */
   static entries (entries, p = {}) {
@@ -60,12 +69,16 @@ export class Verse {
   /**
    * @param {Object} o
    * @param {Object} p
-   * @param {Function} [p.keyRead=keyRead]
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.dash=': ']
    * @param {string} [p.delim=',\n']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.keyRead=keyRead]
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
   static object (o, p = {}) {
@@ -75,10 +88,14 @@ export class Verse {
   /**
    * @param {*[][]} matrix
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
   static matrix (matrix, p = {}) {
@@ -91,10 +108,14 @@ export class Verse {
   /**
    * @param {Object[]} samples
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
   static samples (samples, p = {}) {
@@ -107,13 +128,18 @@ export class Verse {
   /***
    * @param {[*,*][]} entries
    * @param {Object} p
-   * @param {Function} [p.keyRead]
-   * @param {Function} [p.read]
-   * @param {string} [p.keyQuote]
+   *
    * @param {string} [p.dash=', ']
    * @param {string} [p.delim=',\n']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.keyRead=smartKeyRead]
+   * @param {Function} [p.read=smartValueRead]
+
+   * @param {boolean} [p.objectify=true]
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
   static entriesAsObject (entries, p = {}) {
@@ -126,20 +152,25 @@ export class Verse {
   /**
    * @param {Object} crostab
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
   static crostab (crostab, p = {}) {
     p = presetCrostab(p)
     const { side, head, rows } = crostab |> matchSliceCrostab
-    const { delim, level } = p
+    const { delim, level, keyQuote } = p
     const lines = [
-      SIDE + ': ' + Verse.vector(side, p),
-      HEAD + ': ' + Verse.vector(head, p),
-      ROWS + ': ' + Verse.matrix(rows, p)
+      qt(SIDE, keyQuote) + ': ' + Verse.vector(side, p),
+      qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p),
+      qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)
     ]
     return joinLines(lines, delim, level - 1) |> brace
   }
@@ -147,19 +178,24 @@ export class Verse {
   /**
    * @param {Object} table
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
   static table (table, p = {}) {
     p = presetTable(p)
     const { head, rows } = table |> matchSliceTable
-    const { delim, level } = p
+    const { delim, level, keyQuote } = p
     const lines = [
-      HEAD + ': ' + Verse.vector(head, p),
-      ROWS + ': ' + Verse.matrix(rows, p)
+      qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p),
+      qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)
     ]
     return joinLines(lines, delim, level - 1) |> brace
   }

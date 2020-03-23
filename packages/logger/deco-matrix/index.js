@@ -5,44 +5,56 @@ export { cosmetics }
 
 /***
  *
- * @param {Object} options
- * @param {number} [options.direct=ROWWISE]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=OCEAN]
- * @param {number} [options.top]
- * @param {number} [options.bottom]
- * @param {number} [options.left]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {number} [options.quote]
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=OCEAN]
+ * @param {number} [p.direct=ROWWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
-export const Deco = (options = {}) => cosmetics.bind(presetMatrix(options))
+export const Deco = (p = {}) => cosmetics.bind(presetMatrix(p))
 
 /***
  *
  * @param {*[][]} matrix
- * @param {Object} options
- * @param {number} [options.direct=ROWWISE]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=OCEAN]
- * @param {number} [options.top]
- * @param {number} [options.bottom]
- * @param {number} [options.left]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {number} [options.quote]
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=OCEAN]
+ * @param {number} [p.direct=ROWWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
-export const deco = (matrix, options = {}) => cosmetics.call(presetMatrix(options), matrix)
+export const deco = (matrix, p = {}) => cosmetics.call(presetMatrix(p), matrix)
 

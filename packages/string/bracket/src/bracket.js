@@ -5,10 +5,12 @@ export const bracket = x => '[' + x + ']'
 export const brace = x => '{' + x + '}'
 export const anglebr = x => '<' + x + '>'
 
-export const br = (x, mode = BRK) => {
+export const br = (x, mode) => {
   if (mode === PAR) return parenth(x)
   if (mode === BRK) return bracket(x)
   if (mode === BRC) return brace(x)
   if (mode === ANBR) return anglebr(x)
   return x
 }
+
+

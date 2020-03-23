@@ -1,4 +1,4 @@
-import { AEU } from '@spare/enum-chars';
+import { COLF } from '@spare/enum-chars';
 import { marginSizing, Vectogin } from '@spare/vettro';
 import { padMatrix } from '@spare/pad-matrix';
 import { mattro } from '@spare/mattro';
@@ -11,18 +11,20 @@ import { marginMapper } from '@vect/matrix-margin';
 import { unwind } from '@vect/entries-unwind';
 import { lookupKeys, selectValues } from '@vect/object-select';
 import { intExpon } from '@aryth/math';
-import { pipeQuote, liner } from '@spare/deco-util';
+import { liner } from '@spare/deco-util';
+import { Qt } from '@spare/quote';
 import { presetSamples } from '@spare/preset-deco';
 
 const cosmetics = function (samples) {
   var _lookupKeys$call;
 
   let height, sample, keys, dye, rows;
-  if (!(height = samples.length)) return AEU;
-  if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return AEU;
+  if (!(height = samples.length)) return '[]';
+  if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return '[]';
   const {
     fields,
     indexed,
+    headRead,
     read,
     direct,
     preset,
@@ -55,6 +57,7 @@ const cosmetics = function (samples) {
   const headVG = new Vectogin(null, l, r, dashY);
   const rowsVG = new Vectogin(samples, t, b, dashX);
   [pick, head] = [headVG.reboot(pick).toVector(), headVG.reboot(head).toVector()];
+  if (headRead) head = head.map(headRead);
   rows = rowsVG.map(sample => selectValues(sample, pick)).toVector();
   let [h, w] = size(rows);
   const {
@@ -69,7 +72,7 @@ const cosmetics = function (samples) {
     width: w,
     dashX,
     dashY,
-    read: pipeQuote(read, quote),
+    read: Qt(read, quote),
     hr: null,
     validate: false
   });
@@ -106,7 +109,7 @@ const cosmetics = function (samples) {
   if (dashX) rows.splice(t, 0, '...');
   return liner(rows, {
     discrete,
-    delim: ',\n',
+    delim: COLF,
     bracket,
     level
   });
@@ -114,52 +117,66 @@ const cosmetics = function (samples) {
 
 /**
  *
- * @param {Object} [options]
- * @param {*[]} [options.fields]
- * @param {boolean} [options.indexed=true]
- * @param {Function} [options.read]
- * @param {Object} [options.preset]
- * @param {Object} [options.keyPreset]
- * @param {Object} [options.stringPreset]
- * @param {number} [options.direct=COLUMNWISE]
- * @param {number} [options.top]
- * @param {number} [options.left]
- * @param {number} [options.bottom]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {number} [options.bracket=BRK]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {boolean} [options.ansi=false]
- * @param {number} [options.level=0]
+ * @param {Object} [p]
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {*[]} [p.fields]
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset]
+ * @param {Object} [p.keyPreset]
+ * @param {Object} [p.stringPreset]
+ * @param {number} [p.direct=COLUMNWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.left]
+ * @param {number} [p.bottom]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=false]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetSamples(options));
+const Deco = (p = {}) => cosmetics.bind(presetSamples(p));
 /**
  *
  * @param {*[][]} samples
- * @param {Object} [options]
- * @param {*[]} [options.fields]
- * @param {boolean} [options.indexed=true]
- * @param {Function} [options.read]
- * @param {Object} [options.preset]
- * @param {Object} [options.keyPreset]
- * @param {Object} [options.stringPreset]
- * @param {number} [options.direct=COLUMNWISE]
- * @param {number} [options.top]
- * @param {number} [options.left]
- * @param {number} [options.bottom]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {number} [options.bracket=BRK]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {boolean} [options.ansi=false]
- * @param {number} [options.level=0]
+ * @param {Object} [p]
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {*[]} [p.fields]
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset]
+ * @param {Object} [p.keyPreset]
+ * @param {Object} [p.stringPreset]
+ * @param {number} [p.direct=COLUMNWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.left]
+ * @param {number} [p.bottom]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=false]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const deco = (samples, options = {}) => cosmetics.call(presetSamples(options), samples);
+const deco = (samples, p = {}) => cosmetics.call(presetSamples(p), samples);
 
 export { Deco, cosmetics, deco };

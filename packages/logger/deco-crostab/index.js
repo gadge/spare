@@ -9,47 +9,63 @@ export { cosmetics }
 
 /**
  *
- * @param {Object} options
- * @param {Function} [options.read]
- * @param {Function} [options.headRead]
- * @param {Function} [options.sideRead]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=JUNGLE]
- * @param {Object} [options.labelPreset=SUBTLE]
- * @param {number} [options.direct=POINTWISE]
- * @param {number} [options.top]
- * @param {number} [options.bottom]
- * @param {number} [options.left]
- * @param {number} [options.right]
- * @param {string} [options.delim='\n']
- * @param {string} [options.quote] - currently not functional, keeps for future fix
- * @param {boolean} [options.quote] - currently not functional, keeps for future fix
- * @param {boolean} [options.ansi=true]
- * @param {boolean} [options.fullAngle]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim='\n']
+ * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
+ *
+ * @param {Function} [p.read]
+ * @param {Function} [p.headRead]
+ * @param {Function} [p.sideRead]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object} [p.labelPreset=SUBTLE]
+ * @param {number} [p.direct=POINTWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=true]
+ * @param {boolean} [p.fullAngle]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
-export const Deco = (options = {}) => cosmetics.bind(presetCrostab(options))
+export const Deco = (p = {}) => cosmetics.bind(presetCrostab(p))
 
 /**
  *
  * @param {Object} crostab
- * @param {Object} options
- * @param {Function} [options.read]
- * @param {Function} [options.headRead]
- * @param {Function} [options.sideRead]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=JUNGLE]
- * @param {Object} [options.labelPreset=SUBTLE]
- * @param {number} [options.direct=POINTWISE]
- * @param {number} [options.top]
- * @param {number} [options.bottom]
- * @param {number} [options.left]
- * @param {number} [options.right]
- * @param {string} [options.delim='\n']
- * @param {string} [options.quote] - currently not functional, keeps for future fix
- * @param {boolean} [options.quote] - currently not functional, keeps for future fix
- * @param {boolean} [options.ansi=true]
- * @param {boolean} [options.fullAngle]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim='\n']
+ * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
+ *
+ * @param {Function} [p.read]
+ * @param {Function} [p.headRead]
+ * @param {Function} [p.sideRead]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object} [p.labelPreset=SUBTLE]
+ * @param {number} [p.direct=POINTWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=true]
+ * @param {boolean} [p.fullAngle]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
-export const deco = (crostab, options = {}) => cosmetics.call(presetCrostab(options), crostab)
+export const deco = (crostab, p = {}) => cosmetics.call(presetCrostab(p), crostab)

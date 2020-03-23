@@ -13,7 +13,7 @@ for (const [key, entries] of Object.entries(SimpleEntries)) {
     stringPreset: OCEAN,
     bracket: true,
     discrete: false,
-    level: 2,
+    level: 0,
     // delim: ', ',
   })
   // words = key + ': ' + words

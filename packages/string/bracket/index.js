@@ -5,3 +5,5 @@ export {
   anglebr,
   br,
 } from './src/bracket'
+
+export { Br } from './src/Br'

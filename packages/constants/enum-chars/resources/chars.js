@@ -10,3 +10,6 @@ export const DASH = '-'
 export const ELLIP = '...'
 export const AEU = '(Ø)'
 
+export const COSP = CO + SP
+export const COLF = CO + LF
+

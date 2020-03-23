@@ -18,46 +18,58 @@ const cosmetics = function (o) {
 
 /**
  *
- * @param {Object} options
- * @param {Function} [options.utils]
- * @param {Function} [options.read]
- * @param {string} [options.keyQuote]
- * @param {string} [options.quote]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=PLANET]
- * @param {number} [options.head]
- * @param {number} [options.tail]
- * @param {string} [options.dash=': ']
- * @param {string} [options.delim=',\n']
- * @param {number} [options.bracket=BRC]
- * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
- * @param {number} [options.level]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=': ']
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRC]
+ *
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=PLANET]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level]
+ *
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetObject(options));
+const Deco = (p = {}) => cosmetics.bind(presetObject(p));
 /***
  *
  * @param {Object} o
- * @param {Object} options
- * @param {Function} [options.utils]
- * @param {Function} [options.read]
- * @param {string} [options.keyQuote]
- * @param {string} [options.quote]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=PLANET]
- * @param {number} [options.head]
- * @param {number} [options.tail]
- * @param {string} [options.dash=': ']
- * @param {string} [options.delim=',\n']
- * @param {number} [options.bracket=BRC]
- * @param {boolean} [options.ansi]
- * @param {boolean} [options.discrete]
- * @param {number} [options.level]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=': ']
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRC]
+ *
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=PLANET]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level]
+ *
  * @returns {string}
  */
 
-const deco = (o, options = {}) => cosmetics.call(presetObject(options), o);
+const deco = (o, p = {}) => cosmetics.call(presetObject(p), o);
 
 export { Deco, cosmetics, deco };

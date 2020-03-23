@@ -13,9 +13,13 @@ const DT = '\"';
 const DASH = '-';
 const ELLIP = '...';
 const AEU = '(Ø)';
+const COSP = CO + SP;
+const COLF = CO + LF;
 
 exports.AEU = AEU;
 exports.CO = CO;
+exports.COLF = COLF;
+exports.COSP = COSP;
 exports.CR = CR;
 exports.DASH = DASH;
 exports.DT = DT;

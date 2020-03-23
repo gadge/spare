@@ -5,6 +5,7 @@ import { NumberVectorCollection } from '@foba/vector'
 import { rand } from '@aryth/rand'
 import { BRK } from '@spare/enum-brackets'
 import { Deco } from '../index'
+import { APOS } from '@spare/enum-quotes'
 
 const Strangers = {
   empty: [],
@@ -28,7 +29,7 @@ export class VectorDecoTest {
         indexed: false,
         bracket: BRK,
         // delim: ', ',
-        quote: '\'',
+        quote: APOS,
         discrete: false,
         label: 1,
       }) |> says[key]

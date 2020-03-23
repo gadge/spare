@@ -8,6 +8,7 @@ var enttro = require('@spare/enttro');
 var padEntries = require('@spare/pad-entries');
 var fluoEntries = require('@palett/fluo-entries');
 var entriesZipper = require('@vect/entries-zipper');
+var quote = require('@spare/quote');
 
 const bracket = x => '[' + x + ']';
 
@@ -29,7 +30,7 @@ const cosmetics = function (entries) {
     dash,
     delim,
     keyQuote,
-    quote,
+    quote: quote$1,
     bracket: bracket$1
   } = this;
   const {
@@ -38,8 +39,8 @@ const cosmetics = function (entries) {
   } = enttro.enttro(entries, {
     head,
     tail,
-    keyRead: decoUtil.pipeQuote(keyRead, keyQuote),
-    read: decoUtil.pipeQuote(read, quote),
+    keyRead: quote.Qt(keyRead, keyQuote),
+    read: quote.Qt(read, quote$1),
     hr: HR_ENTRY
   });
   const dye = preset && fluoEntries.fluoEntries(raw, {
@@ -66,47 +67,59 @@ const cosmetics = function (entries) {
 
 /**
  *
- * @param {Object} options
- * @param {Function} [options.utils]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=OCEAN]
- * @param {number} [options.head]
- * @param {number} [options.tail]
- * @param {string} [options.keyQuote]
- * @param {string} [options.quote]
- * @param {boolean} [options.discrete]
- * @param {string} [options.dash=' > ']
- * @param {string} [options.delim='\n']
- * @param {number} [options.bracket=BRK] - BRK = 1
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=' > ']
+ * @param {string} [p.delim='\n']
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=OCEAN]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetDeco.presetEntries(options));
+const Deco = (p = {}) => cosmetics.bind(presetDeco.presetEntries(p));
 /***
  *
  * @param {[*,*][]} entries
- * @param {Object} options
- * @param {Function} [options.utils]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=OCEAN]
- * @param {number} [options.head]
- * @param {number} [options.tail]
- * @param {string} [options.keyQuote]
- * @param {string} [options.quote]
- * @param {boolean} [options.discrete]
- * @param {string} [options.dash=' > ']
- * @param {string} [options.delim='\n']
- * @param {number} [options.bracket=BRK] - BRK = 1
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=' > ']
+ * @param {string} [p.delim='\n']
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=OCEAN]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const deco = (entries, options = {}) => cosmetics.call(presetDeco.presetEntries(options), entries);
+const deco = (entries, p = {}) => cosmetics.call(presetDeco.presetEntries(p), entries);
 
 exports.Deco = Deco;
 exports.cosmetics = cosmetics;

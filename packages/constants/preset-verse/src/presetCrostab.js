@@ -1,16 +1,22 @@
-import { CO, QT, SP } from '@spare/enum-chars'
+import { COSP } from '@spare/enum-chars'
+import { smartValueRead } from '../utils/smartValueRead'
 
 /**
  * @param {Object} p
- * @param {Function} [p.read]
+ *
  * @param {string} [p.delim=', ']
- * @param {string} [p.quote='\'']
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
+ *
+ * @param {Function} [p.read=smartKeyRead]
+ *
  * @param {number} [p.level]
+ *
  * @returns {Object}
  */
 export const presetCrostab = p => {
-  p.delim = p.delim || (CO + SP)
-  p.quote = p.quote || QT
+  p.delim = p.delim || COSP
+  p.read = p.read || smartValueRead
   p.level = (p.level ?? 0) + 1
   return p
 }

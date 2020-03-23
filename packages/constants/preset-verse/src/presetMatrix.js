@@ -1,17 +1,22 @@
-import { CO, QT, SP } from '@spare/enum-chars'
 import { BRACKET } from '@spare/enum-brackets'
+import { COSP } from '@spare/enum-chars'
+import { smartValueRead } from '../utils/smartValueRead'
 
 /**
  * @param {Object} p
- * @param {Function} [p.read]
+ *
  * @param {string} [p.delim=', ']
- * @param {string} [p.quote='\'']
+ * @param {number} [p.quote=NONE]
+ *
+ * @param {Function} [p.read=smartValueRead]
+ *
  * @param {number} [p.level]
+ *
  * @returns {Object}
  */
 export const presetMatrix = p => {
-  p.delim = p.delim || (CO + SP)
-  p.quote = p.quote || QT
+  p.delim = p.delim || COSP
+  p.read = p.read || smartValueRead
   p.bracket = BRACKET
   p.discrete = true
   return p

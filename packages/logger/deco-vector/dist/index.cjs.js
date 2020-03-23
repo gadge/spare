@@ -7,6 +7,7 @@ var vettro = require('@spare/vettro');
 var decoEntries = require('@spare/deco-entries');
 var fluoVector = require('@palett/fluo-vector');
 var decoUtil = require('@spare/deco-util');
+var quote = require('@spare/quote');
 var presetDeco = require('@spare/preset-deco');
 
 function cosmetics(vec) {
@@ -18,7 +19,7 @@ function cosmetics(vec) {
     preset,
     stringPreset,
     read,
-    quote
+    quote: quote$1
   } = this;
   let {
     raw,
@@ -26,7 +27,7 @@ function cosmetics(vec) {
   } = vettro.vettro(vec, {
     head,
     tail,
-    read: decoUtil.pipeQuote(read, quote),
+    read: quote.Qt(read, quote$1),
     hr: enumChars.ELLIP
   });
   if (preset) fluoVector.fluoVector(text, {
@@ -44,45 +45,57 @@ function cosmetics(vec) {
 
 /***
  *
- * @param {Object} options
- * @param {boolean} [options.indexed=true]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=JUNGLE]
- * @param {number} [options.head]
- * @param {number} [options.tail]
- * @param {boolean} [options.discrete]
- * @param {string} [options.dash=') ']
- * @param {string} [options.delim=',\n']
- * @param {string} [options.quote]
- * @param {number} [options.bracket=BRK] - BRK = 1
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=') ']
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK] - BRK = 1
+ *
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=JUNGLE]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetDeco.presetVector(options));
+const Deco = (p = {}) => cosmetics.bind(presetDeco.presetVector(p));
 /***
  *
  * @param {*[]} vector
- * @param {Object} options
- * @param {boolean} [options.indexed=true]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=JUNGLE]
- * @param {number} [options.head]
- * @param {number} [options.tail]
- * @param {boolean} [options.discrete]
- * @param {string} [options.dash=') ']
- * @param {string} [options.delim=',\n']
- * @param {string} [options.quote]
- * @param {number} [options.bracket=BRK] - BRK = 1
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=') ']
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK] - BRK = 1
+ *
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=JUNGLE]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const deco = (vector, options = {}) => cosmetics.call(presetDeco.presetVector(options), vector);
+const deco = (vector, p = {}) => cosmetics.call(presetDeco.presetVector(p), vector);
 
 exports.Deco = Deco;
 exports.cosmetics = cosmetics;

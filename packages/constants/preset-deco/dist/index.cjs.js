@@ -2,27 +2,33 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var presets = require('@palett/presets');
 var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
+var presets = require('@palett/presets');
 var enumMatrixDirections = require('@vect/enum-matrix-directions');
 
 /***
  * @param {Object} p
- * @param {Function} [p.utils]
- * @param {Function} [p.read]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
- * @param {number} [p.head]
- * @param {number} [p.tail]
- * @param {string} [p.keyQuote]
- * @param {string} [p.quote]
+ *
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
  * @param {number} [p.bracket=BRK]
+ *
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=OCEAN]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
  * @param {boolean} [p.ansi]
  * @param {number} [p.level=0]
+ *
  * @returns {Object}
  */
 
@@ -38,20 +44,26 @@ const presetEntries = p => {
 /**
  *
  * @param {Object} p
- * @param {Function} [p.utils]
- * @param {Function} [p.read]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=PLANET]
- * @param {number} [p.head]
- * @param {number} [p.tail]
+ *
  * @param {boolean} [p.discrete]
- * @param {number} [p.bracket=BRC]
  * @param {string} [p.dash=': ']
  * @param {string} [p.delim=',\n']
- * @param {string} [p.keyQuote]
- * @param {string} [p.quote]
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRC]
+ *
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=PLANET]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
  * @param {boolean} [p.ansi]
  * @param {number} [p.level]
+ *
  * @returns {Object}
  */
 
@@ -67,19 +79,25 @@ const presetObject = p => {
 /***
  *
  * @param {Object} p
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.read]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- * @param {number} [p.head]
- * @param {number} [p.tail]
+ *
  * @param {boolean} [p.discrete]
- * @param {number} [p.bracket=BRK] - BRK = 1
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {string} [p.quote]
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK] - BRK = 1
+ *
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=JUNGLE]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
  * @param {boolean} [p.ansi]
  * @param {number} [p.level=0]
+ *
  * @returns {Object}
  */
 
@@ -98,20 +116,26 @@ const presetVector = p => {
 /***
  *
  * @param {Object} p
- * @param {number} [p.direct=ROWWISE]
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
  * @param {Function} [p.read]
+ *
  * @param {Object} [p.preset=FRESH]
  * @param {Object} [p.stringPreset=OCEAN]
+ * @param {number} [p.direct=ROWWISE]
+ *
  * @param {number} [p.top]
  * @param {number} [p.bottom]
  * @param {number} [p.left]
  * @param {number} [p.right]
- * @param {boolean} [p.discrete]
- * @param {number} [p.bracket=BRK]
- * @param {string} [p.delim=', ']
- * @param {string} [p.quote]
+ *
  * @param {boolean} [p.ansi]
  * @param {number} [p.level=0]
+ *
  * @returns {Object}
  */
 
@@ -126,22 +150,30 @@ const presetMatrix = p => {
 
 /**
  * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim='\n']
+ * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
+ *
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
+ *
  * @param {Object} [p.preset=FRESH]
  * @param {Object} [p.stringPreset=JUNGLE]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=POINTWISE]
+ *
  * @param {number} [p.top]
  * @param {number} [p.bottom]
  * @param {number} [p.left]
  * @param {number} [p.right]
- * @param {string} [p.delim='\n']
- * @param {string} [p.quote] - currently not functional, keeps for future fix
- * @param {number} [p.bracket] - currently not functional, keeps for future fix
+ *
  * @param {boolean} [p.ansi=true]
  * @param {boolean} [p.fullAngle]
+ * @param {number} [p.level=0]
+ *
  * @returns {Object}
  */
 
@@ -160,23 +192,29 @@ const presetCrostab = p => {
 /***
  *
  * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ * @param {boolean} [p.bracket=NONE] - currently not functional, keeps for future fix
+ *
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
+ *
  * @param {Object} [p.preset=FRESH]
  * @param {Object} [p.stringPreset=JUNGLE]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
+ *
  * @param {number} [p.top]
  * @param {number} [p.bottom]
  * @param {number} [p.left]
  * @param {number} [p.right]
- * @param {boolean} [p.discrete]
- * @param {boolean} [p.bracket] - currently not functional, keeps for future fix
- * @param {string} [p.delim=',\n']
- * @param {string} [p.quote] - currently not functional, keeps for future fix
+
  * @param {boolean} [p.ansi=true]
  * @param {boolean} [p.fullAngle]
  * @param {number} [p.level=0]
+ *
  * @returns {Object}
  */
 
@@ -195,23 +233,30 @@ const presetTable = p => {
 /**
  *
  * @param {Object} [p]
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
  * @param {*[]} [p.fields]
  * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
+ *
  * @param {Object} [p.preset]
  * @param {Object} [p.keyPreset]
  * @param {Object} [p.stringPreset]
  * @param {number} [p.direct=COLUMNWISE]
+ *
  * @param {number} [p.top]
  * @param {number} [p.left]
  * @param {number} [p.bottom]
  * @param {number} [p.right]
- * @param {boolean} [p.discrete]
- * @param {number} [p.bracket=BRK]
- * @param {string} [p.delim=', ']
- * @param {string} [p.quote]
+ *
  * @param {boolean} [p.ansi=false]
  * @param {number} [p.level=0]
+ *
  * @returns {Object}
  */
 

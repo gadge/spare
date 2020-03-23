@@ -1,9 +1,11 @@
-import { liner, pipeQuote } from '@spare/deco-util';
+import { liner } from '@spare/deco-util';
 import { mattro } from '@spare/mattro';
 import { padMatrix } from '@spare/pad-matrix';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { size } from '@vect/matrix';
 import { bracket } from '@spare/bracket';
+import { Qt } from '@spare/quote';
+import { COLF } from '@spare/enum-chars';
 import { presetMatrix } from '@spare/preset-deco';
 
 const cosmetics = function (matrix) {
@@ -21,11 +23,29 @@ const cosmetics = function (matrix) {
     bracket: bracket$1,
     level
   } = this;
-  this.read = pipeQuote(this.read, quote);
+  const {
+    top,
+    bottom,
+    left,
+    right,
+    dashX,
+    dashY,
+    read
+  } = this;
   const {
     raw,
     text
-  } = mattro(matrix, this);
+  } = mattro(matrix, {
+    top,
+    bottom,
+    left,
+    right,
+    height,
+    width,
+    dashX,
+    dashY,
+    read: Qt(read, quote)
+  });
   const dye = preset && fluoMatrix(raw, {
     direct,
     preset,
@@ -44,7 +64,7 @@ const cosmetics = function (matrix) {
   }) : rows.map(line => line.join(delim));
   return liner(lines, {
     discrete,
-    delim: ',\n',
+    delim: COLF,
     bracket: bracket$1,
     level
   });
@@ -52,46 +72,58 @@ const cosmetics = function (matrix) {
 
 /***
  *
- * @param {Object} options
- * @param {number} [options.direct=ROWWISE]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=OCEAN]
- * @param {number} [options.top]
- * @param {number} [options.bottom]
- * @param {number} [options.left]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {number} [options.quote]
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=OCEAN]
+ * @param {number} [p.direct=ROWWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const Deco = (options = {}) => cosmetics.bind(presetMatrix(options));
+const Deco = (p = {}) => cosmetics.bind(presetMatrix(p));
 /***
  *
  * @param {*[][]} matrix
- * @param {Object} options
- * @param {number} [options.direct=ROWWISE]
- * @param {Function} [options.read]
- * @param {Object} [options.preset=FRESH]
- * @param {Object} [options.stringPreset=OCEAN]
- * @param {number} [options.top]
- * @param {number} [options.bottom]
- * @param {number} [options.left]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {number} [options.quote]
- * @param {boolean} [options.ansi]
- * @param {number} [options.level=0]
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=OCEAN]
+ * @param {number} [p.direct=ROWWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
 
-const deco = (matrix, options = {}) => cosmetics.call(presetMatrix(options), matrix);
+const deco = (matrix, p = {}) => cosmetics.call(presetMatrix(p), matrix);
 
 export { Deco, cosmetics, deco };

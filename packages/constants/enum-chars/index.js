@@ -10,4 +10,6 @@ export {
   DASH,
   ELLIP,
   AEU,
+  COSP,
+  COLF
 } from './resources/chars'

@@ -5,4 +5,4 @@ import { flopValue } from '@aryth/rand'
 
 const crostab = CrostabCollection |> flopValue
 
-crostab |> Verse.crostab |> logger
+Verse.crostab(crostab, {}) |> logger

@@ -13,6 +13,7 @@ var bracket = require('@spare/bracket');
 var decoUtil = require('@spare/deco-util');
 var enumBrackets = require('@spare/enum-brackets');
 var presetVerse = require('@spare/preset-verse');
+var quote = require('@spare/quote');
 
 const SIDE = 'side',
       HEAD = 'head',
@@ -21,10 +22,14 @@ class Verse {
   /**
    * @param {Array} vector
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @return {string}
    */
   static vector(vector, p = {}) {
@@ -34,14 +39,18 @@ class Verse {
    *
    * @param {[*,*][]} entries
    * @param {Object} p
-   * @param {Function} [p.keyRead]
-   * @param {Function} [p.read]
-   * @param {string} [p.keyQuote]
-   * @param {string} [p.quote='\'']
+   *
    * @param {string} [p.dash=', ']
    * @param {string} [p.delim=',\n']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.keyRead=smartKeyRead]
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {boolean} [p.objectify=false]
    * @param {number} [p.level]
+   *
    * @return {string}
    */
 
@@ -65,12 +74,16 @@ class Verse {
   /**
    * @param {Object} o
    * @param {Object} p
-   * @param {Function} [p.keyRead=keyRead]
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.dash=': ']
    * @param {string} [p.delim=',\n']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.keyRead=keyRead]
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
 
@@ -81,10 +94,14 @@ class Verse {
   /**
    * @param {*[][]} matrix
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
 
@@ -103,10 +120,14 @@ class Verse {
   /**
    * @param {Object[]} samples
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
 
@@ -125,13 +146,17 @@ class Verse {
   /***
    * @param {[*,*][]} entries
    * @param {Object} p
-   * @param {Function} [p.keyRead]
-   * @param {Function} [p.read]
-   * @param {string} [p.keyQuote]
+   *
    * @param {string} [p.dash=', ']
    * @param {string} [p.delim=',\n']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.keyRead=smartKeyRead]
+   * @param {Function} [p.read=smartValueRead]
+    * @param {boolean} [p.objectify=true]
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
 
@@ -152,10 +177,15 @@ class Verse {
   /**
    * @param {Object} crostab
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
 
@@ -171,18 +201,24 @@ class Verse {
     } = (_crostab = crostab, crostabInit.matchSlice(_crostab));
     const {
       delim,
-      level
+      level,
+      keyQuote
     } = p;
-    const lines = [SIDE + ': ' + Verse.vector(side, p), HEAD + ': ' + Verse.vector(head, p), ROWS + ': ' + Verse.matrix(rows, p)];
+    const lines = [quote.qt(SIDE, keyQuote) + ': ' + Verse.vector(side, p), quote.qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p), quote.qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)];
     return _joinLines3 = decoUtil.joinLines(lines, delim, level - 1), bracket.brace(_joinLines3);
   }
   /**
    * @param {Object} table
    * @param {Object} p
-   * @param {Function} [p.read]
+   *
    * @param {string} [p.delim=', ']
-   * @param {string} [p.quote='\'']
+   * @param {number} [p.keyQuote=NONE]
+   * @param {number} [p.quote=NONE]
+   *
+   * @param {Function} [p.read=smartValueRead]
+   *
    * @param {number} [p.level]
+   *
    * @returns {string}
    */
 
@@ -197,9 +233,10 @@ class Verse {
     } = (_table = table, tableInit.matchSlice(_table));
     const {
       delim,
-      level
+      level,
+      keyQuote
     } = p;
-    const lines = [HEAD + ': ' + Verse.vector(head, p), ROWS + ': ' + Verse.matrix(rows, p)];
+    const lines = [quote.qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p), quote.qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)];
     return _joinLines4 = decoUtil.joinLines(lines, delim, level - 1), bracket.brace(_joinLines4);
   }
 

@@ -1,44 +1,54 @@
 import { BRACKET, NONE } from '@spare/enum-brackets'
-import { CO, LF, QT, SP } from '@spare/enum-chars'
-import { keyRead } from '../utils/keyRead'
+import { COLF, COSP, SP } from '@spare/enum-chars'
+import { smartKeyRead } from '../utils/smartKeyRead'
+import { smartValueRead } from '../utils/smartValueRead'
 
 /***
  * @param {Object} p
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- * @param {string} [p.keyQuote]
- * @param {string} [p.quote='\'']
+ *
  * @param {string} [p.dash=', ']
  * @param {string} [p.delim=',\n']
+ * @param {number} [p.keyQuote=NONE]
+ * @param {number} [p.quote=NONE]
+ *
+ * @param {Function} [p.keyRead=smartValueRead]
+ * @param {Function} [p.read=smartValueRead]
+ *
  * @param {boolean} [p.objectify=false]
  * @param {number} [p.level]
+ *
  * @returns {Object}
  */
 export const presetEntries = p => {
-  p.quote = p.quote || QT
-  p.dash = p.dash || (CO + SP)
-  p.delim = p.delim || (CO + LF)
+  p.dash = p.dash || COSP
+  p.delim = p.delim || COLF
+  p.keyRead = p.keyRead || smartValueRead
+  p.read = p.read || smartValueRead
   p.bracket = BRACKET
   return p
 }
 
 /***
  * @param {Object} p
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- * @param {string} [p.keyQuote]
+ *
+ * @param {number} [p.keyQuote]
  * @param {string} [p.dash=', ']
  * @param {string} [p.delim=',\n']
- * @param {string} [p.quote='\'']
+ * @param {number} [p.quote=NONE]
+ *
+ * @param {Function} [p.keyRead=smartKeyRead]
+ * @param {Function} [p.read=smartValueRead]
+
  * @param {boolean} [p.objectify=true]
  * @param {number} [p.level]
+ *
  * @returns {Object}
  */
 export const presetEntriesAsObject = p => {
-  p.keyRead = keyRead
   p.dash = p.dash || (':' + SP)
-  p.delim = p.delim || (CO + LF)
-  p.quote = p.quote || QT
+  p.delim = p.delim || COLF
+  p.keyRead = p.keyRead || smartKeyRead
+  p.read = p.read || smartValueRead
   p.bracket = NONE
   p.discrete = true
   return p

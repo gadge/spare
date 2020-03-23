@@ -5,49 +5,63 @@ export { cosmetics }
 
 /**
  *
- * @param {Object} [options]
- * @param {*[]} [options.fields]
- * @param {boolean} [options.indexed=true]
- * @param {Function} [options.read]
- * @param {Object} [options.preset]
- * @param {Object} [options.keyPreset]
- * @param {Object} [options.stringPreset]
- * @param {number} [options.direct=COLUMNWISE]
- * @param {number} [options.top]
- * @param {number} [options.left]
- * @param {number} [options.bottom]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {number} [options.bracket=BRK]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {boolean} [options.ansi=false]
- * @param {number} [options.level=0]
+ * @param {Object} [p]
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {*[]} [p.fields]
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset]
+ * @param {Object} [p.keyPreset]
+ * @param {Object} [p.stringPreset]
+ * @param {number} [p.direct=COLUMNWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.left]
+ * @param {number} [p.bottom]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=false]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
-export const Deco = (options = {}) => cosmetics.bind(presetSamples(options))
+export const Deco = (p = {}) => cosmetics.bind(presetSamples(p))
 
 /**
  *
  * @param {*[][]} samples
- * @param {Object} [options]
- * @param {*[]} [options.fields]
- * @param {boolean} [options.indexed=true]
- * @param {Function} [options.read]
- * @param {Object} [options.preset]
- * @param {Object} [options.keyPreset]
- * @param {Object} [options.stringPreset]
- * @param {number} [options.direct=COLUMNWISE]
- * @param {number} [options.top]
- * @param {number} [options.left]
- * @param {number} [options.bottom]
- * @param {number} [options.right]
- * @param {boolean} [options.discrete]
- * @param {number} [options.bracket=BRK]
- * @param {string} [options.delim=', ']
- * @param {string} [options.quote]
- * @param {boolean} [options.ansi=false]
- * @param {number} [options.level=0]
+ * @param {Object} [p]
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ * @param {number} [p.quote=NONE]
+ * @param {number} [p.bracket=BRK]
+ *
+ * @param {*[]} [p.fields]
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read]
+ *
+ * @param {Object} [p.preset]
+ * @param {Object} [p.keyPreset]
+ * @param {Object} [p.stringPreset]
+ * @param {number} [p.direct=COLUMNWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.left]
+ * @param {number} [p.bottom]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=false]
+ * @param {number} [p.level=0]
+ *
  * @returns {string}
  */
-export const deco = (samples, options = {}) => cosmetics.call(presetSamples(options), samples)
+export const deco = (samples, p = {}) => cosmetics.call(presetSamples(p), samples)

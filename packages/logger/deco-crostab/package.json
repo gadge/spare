@@ -20,6 +20,7 @@
     "@palett/fluo-vector": "^0.1.0",
     "@palett/presets": "^0.1.0",
     "@spare/deco-util": "^0.3.1",
+    "@spare/quote": "^0.3.1",
     "@spare/enum-chars": "^0.3.1",
     "@spare/enum-full-angle-chars": "^0.3.1",
     "@spare/lange": "^0.3.1",
