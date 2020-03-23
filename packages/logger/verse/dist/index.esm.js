@@ -7,8 +7,8 @@ import { matchSlice as matchSlice$1 } from '@analys/table-init';
 import { matchSlice } from '@analys/crostab-init';
 import { bracket, brace } from '@spare/bracket';
 import { liner, joinLines } from '@spare/liner';
-import { BRACE } from '@spare/enum-brackets';
-import { presetVector, presetEntries, presetEntriesAsObject, presetObject, presetMatrix, presetSamples, presetCrostab, presetTable } from '@spare/preset-verse';
+import { BRACE, BRACKET } from '@spare/enum-brackets';
+import { presetVector, presetEntriesAsObject, presetEntries, presetObject, presetMatrix, presetSamples, presetCrostab, presetTable } from '@spare/preset-verse';
 import { qt } from '@spare/quote';
 
 const SIDE = 'side',
@@ -52,17 +52,14 @@ class Verse {
 
 
   static entries(entries, p = {}) {
-    var _p;
-
-    if (!((_p = p) === null || _p === void 0 ? void 0 : _p.objectify)) return cosmetics$1.call(presetEntries(p), entries);
-    p = presetEntriesAsObject(p);
+    const [preset, bracket] = (p === null || p === void 0 ? void 0 : p.objectify) ? [presetEntriesAsObject(p), BRACE] : [presetEntries(p), BRACKET];
     const {
       delim,
       level
-    } = p;
-    const lines = cosmetics$1.call(presetEntriesAsObject(p), entries);
+    } = preset;
+    const lines = cosmetics$1.call(preset, entries);
     return liner(lines, {
-      bracket: BRACE,
+      bracket,
       delim,
       level
     });
@@ -138,37 +135,6 @@ class Verse {
     } = p;
     const lines = cosmetics$4.call(p, samples);
     return _joinLines2 = joinLines(lines, delim, level), bracket(_joinLines2);
-  }
-  /***
-   * @param {[*,*][]} entries
-   * @param {Object} p
-   *
-   * @param {string} [p.dash=', ']
-   * @param {string} [p.delim=',\n']
-   * @param {number} [p.keyQuote=NONE]
-   * @param {number} [p.quote=NONE]
-   *
-   * @param {Function} [p.keyRead=smartKeyRead]
-   * @param {Function} [p.read=smartValueRead]
-    * @param {boolean} [p.objectify=true]
-   * @param {number} [p.level]
-   *
-   * @returns {string}
-   */
-
-
-  static entriesAsObject(entries, p = {}) {
-    p = presetEntriesAsObject(p);
-    const {
-      delim,
-      level
-    } = p;
-    const lines = cosmetics$1.call(p, entries);
-    return liner(lines, {
-      bracket: BRACE,
-      delim,
-      level
-    });
   }
   /**
    * @param {Object} crostab

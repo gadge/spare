@@ -56,17 +56,14 @@ class Verse {
 
 
   static entries(entries, p = {}) {
-    var _p;
-
-    if (!((_p = p) === null || _p === void 0 ? void 0 : _p.objectify)) return decoEntries.cosmetics.call(presetVerse.presetEntries(p), entries);
-    p = presetVerse.presetEntriesAsObject(p);
+    const [preset, bracket] = (p === null || p === void 0 ? void 0 : p.objectify) ? [presetVerse.presetEntriesAsObject(p), enumBrackets.BRACE] : [presetVerse.presetEntries(p), enumBrackets.BRACKET];
     const {
       delim,
       level
-    } = p;
-    const lines = decoEntries.cosmetics.call(presetVerse.presetEntriesAsObject(p), entries);
+    } = preset;
+    const lines = decoEntries.cosmetics.call(preset, entries);
     return liner.liner(lines, {
-      bracket: enumBrackets.BRACE,
+      bracket,
       delim,
       level
     });
@@ -142,37 +139,6 @@ class Verse {
     } = p;
     const lines = decoSamples.cosmetics.call(p, samples);
     return _joinLines2 = liner.joinLines(lines, delim, level), bracket.bracket(_joinLines2);
-  }
-  /***
-   * @param {[*,*][]} entries
-   * @param {Object} p
-   *
-   * @param {string} [p.dash=', ']
-   * @param {string} [p.delim=',\n']
-   * @param {number} [p.keyQuote=NONE]
-   * @param {number} [p.quote=NONE]
-   *
-   * @param {Function} [p.keyRead=smartKeyRead]
-   * @param {Function} [p.read=smartValueRead]
-    * @param {boolean} [p.objectify=true]
-   * @param {number} [p.level]
-   *
-   * @returns {string}
-   */
-
-
-  static entriesAsObject(entries, p = {}) {
-    p = presetVerse.presetEntriesAsObject(p);
-    const {
-      delim,
-      level
-    } = p;
-    const lines = decoEntries.cosmetics.call(p, entries);
-    return liner.liner(lines, {
-      bracket: enumBrackets.BRACE,
-      delim,
-      level
-    });
   }
   /**
    * @param {Object} crostab

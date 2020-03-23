@@ -11,7 +11,7 @@ for (const [key, entries] of Object.entries(SimpleEntries)) {
     head: 5,
     tail: 2,
     stringPreset: OCEAN,
-    bracket: true,
+    bracket: false,
     discrete: false,
     level: 0,
     // delim: ', ',

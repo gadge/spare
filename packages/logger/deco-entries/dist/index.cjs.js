@@ -4,7 +4,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
 var liner = require('@spare/liner');
-var bracket = require('@spare/bracket');
 var enttro = require('@spare/enttro');
 var padEntries = require('@spare/pad-entries');
 var fluoEntries = require('@palett/fluo-entries');
@@ -12,6 +11,24 @@ var entriesZipper = require('@vect/entries-zipper');
 var quote = require('@spare/quote');
 
 const HR_ENTRY = ['..', '..'];
+
+const PAR = 1,
+      BRK = 2,
+      BRC = 3,
+      ANBR = 4;
+
+const parenth = x => '(' + x + ')';
+const bracket = x => '[' + x + ']';
+const brace = x => '{' + x + '}';
+const anglebr = x => '<' + x + '>';
+
+const SelectBr = mode => {
+  if (mode === PAR) return parenth;
+  if (mode === BRK) return bracket;
+  if (mode === BRC) return brace;
+  if (mode === ANBR) return anglebr;
+  return null;
+};
 
 const cosmetics = function (entries) {
   var _entries;
@@ -30,7 +47,7 @@ const cosmetics = function (entries) {
     delim,
     keyQuote,
     quote: quote$1,
-    bracket: bracket$1
+    bracket
   } = this;
   const {
     raw,
@@ -56,7 +73,10 @@ const cosmetics = function (entries) {
 
     return _t = t, d(_t);
   })(text, dye) : text;
-  const lines = bracket$1 ? entries.map(([k, v]) => bracket.bracket(k + dash + v)) : entries.map(([k, v]) => k + dash + v.trimRight());
+
+  const brk = SelectBr(bracket) || (x => x);
+
+  const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()));
   return liner.liner(lines, this);
 };
 

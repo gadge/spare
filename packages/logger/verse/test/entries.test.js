@@ -9,3 +9,7 @@ SimpleEntries |> delogger
 for (const [key, entries] of Object.entries(SimpleEntries)) {
   Verse.entries(entries, { objectify: true }) |> says[key]
 }
+
+for (const [key, entries] of Object.entries(SimpleEntries)) {
+  Verse.entries(entries, { objectify: false }) |> says[key]
+}

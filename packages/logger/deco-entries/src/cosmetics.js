@@ -1,11 +1,11 @@
 import { liner } from '@spare/liner'
-import { bracket as brk } from '@spare/bracket'
 import { enttro } from '@spare/enttro'
 import { padEntries } from '@spare/pad-entries'
 import { fluoEntries } from '@palett/fluo-entries'
 import { Duozipper } from '@vect/entries-zipper'
 import { Qt } from '@spare/quote'
 import { HR_ENTRY } from '../utils/HR_ENTRY'
+import { SelectBr } from '@spare/bracket/src/Br'
 
 export const cosmetics = function (entries) {
   if (!entries) return String(entries)
@@ -26,9 +26,7 @@ export const cosmetics = function (entries) {
     : preset
       ? Duozipper((t, d) => t |> d)(text, dye)
       : text
-  const lines = bracket
-    ? entries.map(([k, v]) => brk(k + dash + v))
-    : entries.map(([k, v]) => k + dash + v.trimRight())
+  const brk = SelectBr(bracket) || (x => x)
+  const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()))
   return liner(lines, this)
-
 }

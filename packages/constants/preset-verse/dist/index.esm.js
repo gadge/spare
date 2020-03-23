@@ -41,6 +41,7 @@ const presetEntries = p => {
   p.keyRead = p.keyRead || smartValueRead;
   p.read = p.read || smartValueRead;
   p.bracket = BRACKET;
+  p.discrete = true;
   return p;
 };
 /***

@@ -16,7 +16,12 @@ const liner = (lines, {
   delim = enumChars.LF,
   bracket: bracket$1 = enumBrackets.NONE,
   level = 0
-} = {}) => discrete ? lines : lines.length && /\n/.test(delim) ? bracket.br(joinLines(lines, /,/.test(delim) ? enumChars.CO : '', level, bracket$1), bracket$1) : bracket.br(lines.join(delim), bracket$1);
+} = {}) => {
+  if (discrete) return lines;
+  const hover = !!bracket$1;
+  const joined = lines.length && /\n/.test(delim) ? joinLines(lines, /,/.test(delim) ? enumChars.CO : '', level, hover) : lines.join(delim);
+  return bracket.br(joined, bracket$1);
+};
 
 exports.joinLines = joinLines;
 exports.liner = liner;

@@ -7,7 +7,7 @@ import { matchSlice as matchSliceTable } from '@analys/table-init'
 import { matchSlice as matchSliceCrostab } from '@analys/crostab-init'
 import { brace, bracket as doBracket } from '@spare/bracket'
 import { joinLines, liner } from '@spare/liner'
-import { BRACE } from '@spare/enum-brackets'
+import { BRACE, BRACKET } from '@spare/enum-brackets'
 import {
   presetCrostab,
   presetEntries,
@@ -59,11 +59,12 @@ export class Verse {
    * @return {string}
    */
   static entries (entries, p = {}) {
-    if (!p?.objectify) return cosmeticsEntries.call(presetEntries(p), entries)
-    p = presetEntriesAsObject(p)
-    const { delim, level } = p
-    const lines = cosmeticsEntries.call(presetEntriesAsObject(p), entries)
-    return liner(lines, { bracket: BRACE, delim, level })
+    const [preset, bracket] = (p?.objectify)
+      ? [presetEntriesAsObject(p), BRACE]
+      : [presetEntries(p), BRACKET]
+    const { delim, level } = preset
+    const lines = cosmeticsEntries.call(preset, entries)
+    return liner(lines, { bracket, delim, level })
   }
 
   /**
@@ -123,30 +124,6 @@ export class Verse {
     const { delim, level } = p
     const lines = cosmeticsSamples.call(p, samples)
     return joinLines(lines, delim, level) |> doBracket
-  }
-
-  /***
-   * @param {[*,*][]} entries
-   * @param {Object} p
-   *
-   * @param {string} [p.dash=', ']
-   * @param {string} [p.delim=',\n']
-   * @param {number} [p.keyQuote=NONE]
-   * @param {number} [p.quote=NONE]
-   *
-   * @param {Function} [p.keyRead=smartKeyRead]
-   * @param {Function} [p.read=smartValueRead]
-
-   * @param {boolean} [p.objectify=true]
-   * @param {number} [p.level]
-   *
-   * @returns {string}
-   */
-  static entriesAsObject (entries, p = {}) {
-    p = presetEntriesAsObject(p)
-    const { delim, level } = p
-    const lines = cosmeticsEntries.call(p, entries)
-    return liner(lines, { bracket: BRACE, delim, level })
   }
 
   /**

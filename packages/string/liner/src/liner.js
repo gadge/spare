@@ -9,9 +9,11 @@ export const joinLines = (lines, de = '', lv, hover = true) => {
     : `${IND + TB}${lines.join(de + LFI + TB)}${de}`
 }
 
-export const liner = (lines, { discrete = false, delim = LF, bracket = NONE, level = 0 } = {}) =>
-  discrete
-    ? lines
-    : lines.length && /\n/.test(delim)
-    ? br(joinLines(lines, /,/.test(delim) ? CO : '', level, bracket), bracket)
-    : br(lines.join(delim), bracket)
+export const liner = (lines, { discrete = false, delim = LF, bracket = NONE, level = 0 } = {}) => {
+  if (discrete) return lines
+  const hover = !!bracket
+  const joined = lines.length && /\n/.test(delim)
+    ? joinLines(lines, /,/.test(delim) ? CO : '', level, hover)
+    : lines.join(delim)
+  return br(joined, bracket)
+}
