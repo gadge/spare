@@ -1,7 +1,7 @@
 {
   "name": "@spare/phrasing",
   "version": "0.3.7",
-  "description": "A debugging tool",
+  "description": "Convert among snake/kebab/camel/pascal phrasings",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -22,10 +22,12 @@
     "url": "git+https://github.com/hoyeungw/spare.git"
   },
   "keywords": [
-    "test",
-    "console",
-    "debug",
-    "print"
+    "phrasing",
+    "split",
+    "camel",
+    "kebab",
+    "pascal",
+    "snake"
   ],
   "author": "Hoyeung Wong",
   "license": "MIT",
