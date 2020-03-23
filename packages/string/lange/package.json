@@ -1,6 +1,6 @@
 {
   "name": "@spare/lange",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Get string length s.t. correcting astral codes and skipping ansi codes",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
