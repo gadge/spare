@@ -16,10 +16,8 @@
   },
   "dependencies": {
     "@spare/enum-brackets": "^0.3.4",
-    "@spare/enum-chars": "^0.3.4",
-    "@spare/enum-quotes": "^0.3.4",
-    "@spare/quote": "^0.3.4",
-    "@typen/num-strict": "^0.0.3"
+    "@spare/enum-chars":"^0.3.4",
+    "@spare/deco-util": "^0.3.1"
   },
   "repository": {
     "type": "git",

@@ -18,7 +18,6 @@ import {
   presetTable,
   presetVector
 } from '@spare/preset-verse'
-import { qt } from '@spare/quote'
 
 const SIDE = 'side', HEAD = 'head', ROWS = 'rows'
 
@@ -30,7 +29,7 @@ export class Verse {
    * @param {string} [p.delim=', ']
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -50,8 +49,8 @@ export class Verse {
    * @param {number} [p.keyQuote=NONE]
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.keyRead=smartKeyRead]
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.keyRead=decoKey]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {boolean} [p.objectify=false]
    * @param {number} [p.level]
@@ -76,7 +75,7 @@ export class Verse {
    * @param {number} [p.quote=NONE]
    *
    * @param {Function} [p.keyRead=keyRead]
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -93,7 +92,7 @@ export class Verse {
    * @param {string} [p.delim=', ']
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -113,7 +112,7 @@ export class Verse {
    * @param {string} [p.delim=', ']
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -134,7 +133,8 @@ export class Verse {
    * @param {number} [p.keyQuote=NONE]
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.keyRead=decoKey]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -143,11 +143,12 @@ export class Verse {
   static crostab (crostab, p = {}) {
     p = presetCrostab(p)
     const { side, head, rows } = crostab |> matchSliceCrostab
-    const { delim, level, keyQuote } = p
+    const { delim, level, keyRead } = p
+    const [s, h, r] = keyRead ? [SIDE, HEAD, ROWS].map(keyRead) : [SIDE, HEAD, ROWS]
     const lines = [
-      qt(SIDE, keyQuote) + ': ' + Verse.vector(side, p),
-      qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p),
-      qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)
+      s + ': ' + Verse.vector(side, p),
+      h + ': ' + Verse.vector(head, p),
+      r + ': ' + Verse.matrix(rows, p)
     ]
     return joinLines(lines, delim, level - 1) |> brace
   }
@@ -160,7 +161,8 @@ export class Verse {
    * @param {number} [p.keyQuote=NONE]
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.keyRead=decoKey]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -169,14 +171,14 @@ export class Verse {
   static table (table, p = {}) {
     p = presetTable(p)
     const { head, rows } = table |> matchSliceTable
-    const { delim, level, keyQuote } = p
+    const { delim, level, keyRead } = p
+    const [h, r] = keyRead ? [HEAD, ROWS].map(keyRead) : [HEAD, ROWS]
     const lines = [
-      qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p),
-      qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)
+      h + ': ' + Verse.vector(head, p),
+      r + ': ' + Verse.matrix(rows, p)
     ]
     return joinLines(lines, delim, level - 1) |> brace
   }
-
 }
 
 

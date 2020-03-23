@@ -13,7 +13,6 @@ var bracket = require('@spare/bracket');
 var liner = require('@spare/liner');
 var enumBrackets = require('@spare/enum-brackets');
 var presetVerse = require('@spare/preset-verse');
-var quote = require('@spare/quote');
 
 const SIDE = 'side',
       HEAD = 'head',
@@ -26,7 +25,7 @@ class Verse {
    * @param {string} [p.delim=', ']
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -45,8 +44,8 @@ class Verse {
    * @param {number} [p.keyQuote=NONE]
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.keyRead=smartKeyRead]
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.keyRead=decoKey]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {boolean} [p.objectify=false]
    * @param {number} [p.level]
@@ -77,7 +76,7 @@ class Verse {
    * @param {number} [p.quote=NONE]
    *
    * @param {Function} [p.keyRead=keyRead]
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -95,7 +94,7 @@ class Verse {
    * @param {string} [p.delim=', ']
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -121,7 +120,7 @@ class Verse {
    * @param {string} [p.delim=', ']
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -148,7 +147,8 @@ class Verse {
    * @param {number} [p.keyQuote=NONE]
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.keyRead=decoKey]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -168,9 +168,10 @@ class Verse {
     const {
       delim,
       level,
-      keyQuote
+      keyRead
     } = p;
-    const lines = [quote.qt(SIDE, keyQuote) + ': ' + Verse.vector(side, p), quote.qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p), quote.qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)];
+    const [s, h, r] = keyRead ? [SIDE, HEAD, ROWS].map(keyRead) : [SIDE, HEAD, ROWS];
+    const lines = [s + ': ' + Verse.vector(side, p), h + ': ' + Verse.vector(head, p), r + ': ' + Verse.matrix(rows, p)];
     return _joinLines3 = liner.joinLines(lines, delim, level - 1), bracket.brace(_joinLines3);
   }
   /**
@@ -181,7 +182,8 @@ class Verse {
    * @param {number} [p.keyQuote=NONE]
    * @param {number} [p.quote=NONE]
    *
-   * @param {Function} [p.read=smartValueRead]
+   * @param {Function} [p.keyRead=decoKey]
+   * @param {Function} [p.read=decoValue]
    *
    * @param {number} [p.level]
    *
@@ -200,9 +202,10 @@ class Verse {
     const {
       delim,
       level,
-      keyQuote
+      keyRead
     } = p;
-    const lines = [quote.qt(HEAD, keyQuote) + ': ' + Verse.vector(head, p), quote.qt(ROWS, keyQuote) + ': ' + Verse.matrix(rows, p)];
+    const [h, r] = keyRead ? [HEAD, ROWS].map(keyRead) : [HEAD, ROWS];
+    const lines = [h + ': ' + Verse.vector(head, p), r + ': ' + Verse.matrix(rows, p)];
     return _joinLines4 = liner.joinLines(lines, delim, level - 1), bracket.brace(_joinLines4);
   }
 

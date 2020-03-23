@@ -1,7 +1,6 @@
 import { BRACKET, NONE } from '@spare/enum-brackets'
 import { COLF, COSP, SP } from '@spare/enum-chars'
-import { smartKeyRead } from '../utils/smartKeyRead'
-import { smartValueRead } from '../utils/smartValueRead'
+import { decoKey, decoValue } from '@spare/deco-util'
 
 /***
  * @param {Object} p
@@ -11,8 +10,8 @@ import { smartValueRead } from '../utils/smartValueRead'
  * @param {number} [p.keyQuote=NONE]
  * @param {number} [p.quote=NONE]
  *
- * @param {Function} [p.keyRead=smartValueRead]
- * @param {Function} [p.read=smartValueRead]
+ * @param {Function} [p.keyRead=decoKey]
+ * @param {Function} [p.read=decoValue]
  *
  * @param {boolean} [p.objectify=false]
  * @param {number} [p.level]
@@ -22,8 +21,8 @@ import { smartValueRead } from '../utils/smartValueRead'
 export const presetEntries = p => {
   p.dash = p.dash || COSP
   p.delim = p.delim || COLF
-  p.keyRead = p.keyRead || smartValueRead
-  p.read = p.read || smartValueRead
+  p.keyRead = p.keyRead || decoKey
+  p.read = p.read || decoValue
   p.bracket = BRACKET
   p.discrete = true;
   return p
@@ -37,8 +36,8 @@ export const presetEntries = p => {
  * @param {string} [p.delim=',\n']
  * @param {number} [p.quote=NONE]
  *
- * @param {Function} [p.keyRead=smartKeyRead]
- * @param {Function} [p.read=smartValueRead]
+ * @param {Function} [p.keyRead=decoKey]
+ * @param {Function} [p.read=decoValue]
 
  * @param {boolean} [p.objectify=true]
  * @param {number} [p.level]
@@ -48,8 +47,8 @@ export const presetEntries = p => {
 export const presetEntriesAsObject = p => {
   p.dash = p.dash || (':' + SP)
   p.delim = p.delim || COLF
-  p.keyRead = p.keyRead || smartKeyRead
-  p.read = p.read || smartValueRead
+  p.keyRead = p.keyRead || decoKey
+  p.read = p.read || decoValue
   p.bracket = NONE
   p.discrete = true
   return p

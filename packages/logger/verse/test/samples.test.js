@@ -1,8 +1,8 @@
 import { logNeL } from '@spare/logger'
-import { Foba } from '@foba/table'
+import { TableCollection } from '@foba/table'
 import { tableToSamples } from '@analys/convert'
 import { Verse } from '../src/Verse'
 
-const samples = Foba['BistroDutyRoster'] |> tableToSamples
+const samples = TableCollection.flopShuffle() |> tableToSamples
 
 samples |> Verse.samples |> logNeL

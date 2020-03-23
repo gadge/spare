@@ -1,7 +1,6 @@
 import { NONE } from '@spare/enum-brackets'
 import { COSP } from '@spare/enum-chars'
-import { smartKeyRead } from '../utils/smartKeyRead'
-import { smartValueRead } from '../utils/smartValueRead'
+import { decoKey, decoValue } from '@spare/deco-util'
 
 /**
  *
@@ -10,8 +9,8 @@ import { smartValueRead } from '../utils/smartValueRead'
  * @param {string} [p.delim=', ']
  * @param {number} [p.quote=NONE]
  *
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
+ * @param {Function} [p.keyRead=decoKey]
+ * @param {Function} [p.read=decoValue]
  *
  * @param {number} [p.level]
  *
@@ -20,8 +19,8 @@ import { smartValueRead } from '../utils/smartValueRead'
 export const presetSamples = p => {
   p.indexed = false
   p.delim = p.delim || COSP
-  p.keyRead = p.keyRead || smartKeyRead
-  p.read = p.read || smartValueRead
+  p.keyRead = p.keyRead || decoKey
+  p.read = p.read || decoValue
   p.bracket = NONE
   p.discrete = true
   return p
