@@ -1,6 +1,6 @@
 {
   "name": "@spare/string",
-  "version": "0.3.5",
+  "version": "0.3.7",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.3.5",
-    "@spare/phrasing": "^0.3.5",
-    "@spare/util": "^0.3.5"
+    "@spare/lange": "^0.3.7",
+    "@spare/phrasing": "^0.3.7",
+    "@spare/util": "^0.3.7"
   },
   "repository": {
     "type": "git",
