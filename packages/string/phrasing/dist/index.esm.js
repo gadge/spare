@@ -89,12 +89,12 @@ const wordsToPascal = words => mutate(words, wordToCap);
 function camelToVector(phrase) {
   let ms,
       wd,
-      ph = [];
-  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ph.push(wd);
+      ve = [];
+  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ve.push(wd);
 
-  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ph.push(wd);
+  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ve.push(wd);
 
-  return ph;
+  return ve;
 }
 /**
  * snake or kebab phrase -> split vector
