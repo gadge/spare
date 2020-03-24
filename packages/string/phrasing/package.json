@@ -1,6 +1,6 @@
 {
   "name": "@spare/phrasing",
-  "version": "0.3.9",
+  "version": "0.3.11",
   "description": "Convert among snake/kebab/camel/pascal phrasings",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
