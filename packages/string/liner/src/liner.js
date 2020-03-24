@@ -9,11 +9,14 @@ export const joinLines = (lines, de = '', lv, hover = true) => {
     : `${IND + TB}${lines.join(de + LFI + TB)}${de}`
 }
 
+const LFREG = /\n/
+const COREG = /,/
+
 export const liner = (lines, { discrete = false, delim = LF, bracket = NONE, level = 0 } = {}) => {
   if (discrete) return lines
   const hover = !!bracket
-  const joined = lines.length && /\n/.test(delim)
-    ? joinLines(lines, /,/.test(delim) ? CO : '', level, hover)
+  const joined = lines.length && LFREG.test(delim)
+    ? joinLines(lines, COREG.test(delim) ? CO : '', level, hover)
     : lines.join(delim)
   return br(joined, bracket)
 }
