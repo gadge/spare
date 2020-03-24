@@ -1,6 +1,6 @@
-import { typ } from '@typen/typ'
+import { inferType } from '@typen/num-strict'
 import { COSP } from '@spare/enum-chars'
-import { BOO, NUM, OBJ, STR } from '@typen/enum-data-types'
+import { BOO, NUM, STR } from '@typen/enum-data-types'
 import { ARRAY, OBJECT } from '@typen/enum-object-types'
 import { BRACE, BRACKET } from '@spare/enum-brackets'
 import { tenseQuote } from '@spare/quote'
@@ -10,7 +10,7 @@ import { decoKey } from './decoKey'
 
 const PRESET_VE = {
   delim: COSP,
-  read: decoValue,
+  read: decoLoose,
   bracket: BRACKET
 }
 
@@ -18,26 +18,16 @@ const PRESET_OB = {
   dash: ':',
   delim: COSP,
   keyRead: decoKey,
-  read: decoValue,
+  read: decoLoose,
   bracket: BRACE
 }
 
-export function decoValue (x) {
+export function decoLoose (x) {
   if (x === void 0 || x === null) return x
-  let t = typeof x
+  const t = inferType(x)
   if (t === NUM || t === BOO) return x
   if (t === STR) return tenseQuote(x)
-  if (t === OBJ && (t = typ(x))) {
-    if (t === ARRAY) return cosmeticsVector.call(PRESET_VE, x)
-    if (t === OBJECT) return cosmeticsObject.call(PRESET_OB, x)
-  }
+  if (t === ARRAY) return cosmeticsVector.call(PRESET_VE, x)
+  if (t === OBJECT) return cosmeticsObject.call(PRESET_OB, x)
   return tenseQuote(x.toString())
 }
-
-
-
-
-
-
-
-

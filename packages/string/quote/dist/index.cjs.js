@@ -28,7 +28,13 @@ const Qt = (read, mode) => {
   };
 };
 
+const DUALQT = /^'(.*)'$/;
+const ANYQT = /'/g;
+const CTQT = '\\\'';
+const tenseQuote = x => DUALQT.test(x) ? x.replace(DUALQT, (_, x) => quote(x.replace(ANYQT, CTQT))) : quote(x.replace(ANYQT, CTQT));
+
 exports.Qt = Qt;
 exports.ditto = ditto;
 exports.qt = qt;
 exports.quote = quote;
+exports.tenseQuote = tenseQuote;
