@@ -1,6 +1,3 @@
-export { AEU, CR, ELLIP, LF, RN, SP, TB } from '@spare/enum-chars';
-export { DASH, SP as SPACE } from '@spare/enum-full-angle-chars';
-
 const noop = () => {};
 /**
  *
