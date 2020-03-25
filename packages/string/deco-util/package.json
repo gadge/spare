@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-util",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@spare/deco-object": "^0.3.11",
-    "@spare/deco-vector": "^0.3.11",
-    "@spare/enum-brackets": "^0.3.11",
-    "@spare/enum-chars": "^0.3.11",
-    "@spare/quote": "^0.3.11",
+    "@spare/deco-object": "^0.3.12",
+    "@spare/deco-vector": "^0.3.12",
+    "@spare/enum-brackets": "^0.3.12",
+    "@spare/enum-chars": "^0.3.12",
+    "@spare/quote": "^0.3.12",
     "@typen/enum-data-types": "^0.0.3",
     "@typen/enum-object-types": "^0.0.3",
     "@typen/num-strict": "^0.0.3"

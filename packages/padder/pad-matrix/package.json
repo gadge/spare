@@ -1,6 +1,6 @@
 {
   "name": "@spare/pad-matrix",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/pad-matrix.test.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.3.11",
-    "@spare/pad-string": "^0.3.11",
+    "@spare/lange": "^0.3.12",
+    "@spare/pad-string": "^0.3.12",
     "@vect/columns-indicator": "^0.1.17",
     "@vect/matrix-zipper": "^0.1.15"
   },

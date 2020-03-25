@@ -1,6 +1,6 @@
 {
   "name": "@spare/mattro",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/archive/test.index.js"
   },
   "dependencies": {
-    "@spare/util": "^0.3.11",
+    "@spare/util": "^0.3.12",
     "@vect/matrix-margin": "^0.1.15",
     "@vect/matrix-size": "^0.1.15",
     "@vect/vector-margin": "^0.1.15"
