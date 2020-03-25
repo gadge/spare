@@ -12,3 +12,5 @@ export { wordToCap } from './src/wordToCap'
 export { wordsToCamel, wordsToPascal } from './src/words'
 
 export { camelToVector, snakeToVector } from './src/vectorize'
+
+export { adjoin, Adjoin } from './src/adjoin'

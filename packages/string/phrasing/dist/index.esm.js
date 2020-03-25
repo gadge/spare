@@ -1,4 +1,6 @@
 import { mutate } from '@vect/vector-mapper';
+import { SP } from '@spare/enum-chars';
+import { cosmetics } from '@spare/deco-vector';
 
 const INIWORD = /[A-Za-z\d]+/;
 const INILOW = /^[a-z]+/;
@@ -104,4 +106,35 @@ function camelToVector(phrase) {
 
 const snakeToVector = phrase => phrase.split(/\W/g);
 
-export { CAMEL, CAPREST, CAPWORD, DASH_CAPREST, INILOW, INIWORD, WORD, camelToSnake, camelToVector, snakeToCamel, snakeToPascal, snakeToVector, wordToCap, wordsToCamel, wordsToPascal };
+const presetAdjoin = p => {
+  var _p, _p$delim;
+
+  p = (_p = p) !== null && _p !== void 0 ? _p : {};
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : SP;
+  return p;
+};
+
+const adjoin = function (...words) {
+  const ve = [],
+        config = presetAdjoin(this);
+
+  for (let word of words) if (word === null || word === void 0 ? void 0 : word.length) ve.push(word);
+
+  return cosmetics.call(config, ve);
+};
+/**
+ *
+ * @param {Object} p
+ *
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.bracket=BRK] - BRK = 1
+ * @param {Function} [p.read]
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=JUNGLE]
+ *
+ * @returns {Function}
+ */
+
+const Adjoin = (p = {}) => adjoin.bind(p);
+
+export { Adjoin, CAMEL, CAPREST, CAPWORD, DASH_CAPREST, INILOW, INIWORD, WORD, adjoin, camelToSnake, camelToVector, snakeToCamel, snakeToPascal, snakeToVector, wordToCap, wordsToCamel, wordsToPascal };

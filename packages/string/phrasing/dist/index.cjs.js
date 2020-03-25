@@ -3,6 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var vectorMapper = require('@vect/vector-mapper');
+var enumChars = require('@spare/enum-chars');
+var decoVector = require('@spare/deco-vector');
 
 const INIWORD = /[A-Za-z\d]+/;
 const INILOW = /^[a-z]+/;
@@ -108,6 +110,38 @@ function camelToVector(phrase) {
 
 const snakeToVector = phrase => phrase.split(/\W/g);
 
+const presetAdjoin = p => {
+  var _p, _p$delim;
+
+  p = (_p = p) !== null && _p !== void 0 ? _p : {};
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.SP;
+  return p;
+};
+
+const adjoin = function (...words) {
+  const ve = [],
+        config = presetAdjoin(this);
+
+  for (let word of words) if (word === null || word === void 0 ? void 0 : word.length) ve.push(word);
+
+  return decoVector.cosmetics.call(config, ve);
+};
+/**
+ *
+ * @param {Object} p
+ *
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.bracket=BRK] - BRK = 1
+ * @param {Function} [p.read]
+ * @param {Object} [p.preset=FRESH]
+ * @param {Object} [p.stringPreset=JUNGLE]
+ *
+ * @returns {Function}
+ */
+
+const Adjoin = (p = {}) => adjoin.bind(p);
+
+exports.Adjoin = Adjoin;
 exports.CAMEL = CAMEL;
 exports.CAPREST = CAPREST;
 exports.CAPWORD = CAPWORD;
@@ -115,6 +149,7 @@ exports.DASH_CAPREST = DASH_CAPREST;
 exports.INILOW = INILOW;
 exports.INIWORD = INIWORD;
 exports.WORD = WORD;
+exports.adjoin = adjoin;
 exports.camelToSnake = camelToSnake;
 exports.camelToVector = camelToVector;
 exports.snakeToCamel = snakeToCamel;
