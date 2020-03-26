@@ -1,6 +1,6 @@
 {
   "name": "@spare/pad-table",
-  "version": "0.3.12",
+  "version": "0.4.0",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/pad-table.test.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.3.12",
-    "@spare/pad-string": "^0.3.12",
-    "@spare/string": "^0.3.12",
-    "@spare/util": "^0.3.12",
+    "@spare/lange": "^0.4.0",
+    "@spare/pad-string": "^0.4.0",
+    "@spare/string": "^0.4.0",
+    "@spare/util": "^0.4.0",
     "@vect/columns-indicator": "^0.2.0",
     "@vect/matrix-transpose": "^0.2.0",
     "@vect/matrix-zipper": "^0.2.0",

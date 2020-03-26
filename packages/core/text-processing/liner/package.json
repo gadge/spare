@@ -1,6 +1,6 @@
 {
   "name": "@spare/liner",
-  "version": "0.3.12",
+  "version": "0.4.0",
   "description": "Join lines together",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/bracket": "^0.3.12",
-    "@spare/enum-brackets": "^0.3.12",
-    "@spare/enum-chars": "^0.3.12"
+    "@spare/bracket": "^0.4.0",
+    "@spare/enum-brackets": "^0.4.0",
+    "@spare/enum-chars": "^0.4.0"
   },
   "repository": {
     "type": "git",
