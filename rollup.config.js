@@ -15,12 +15,13 @@ const babelPluginOptions = {
   sourceMap: true,
   exclude: 'node_modules/**',
   plugins: [
-    ['@babel/plugin-transform-runtime', { helpers: false, }],
-    ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-proposal-private-methods', { loose: true }],
     ['@babel/plugin-proposal-nullish-coalescing-operator'],
-    ['@babel/plugin-proposal-class-properties'],
-    ['@babel/plugin-proposal-private-methods'],
-    ['@babel/plugin-proposal-optional-chaining']
+    ['@babel/plugin-proposal-optional-chaining'],
+    ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
+    ['@babel/transform-runtime', { helpers: false }]
   ]
 }
 

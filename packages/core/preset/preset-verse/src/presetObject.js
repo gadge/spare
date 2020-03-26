@@ -1,0 +1,26 @@
+import { BRACE } from '@spare/enum-brackets'
+import { COLF, RT, SP } from '@spare/enum-chars'
+import { decoKey, decoPale } from '@spare/deco-pale'
+
+/**
+ * @param {Object} p
+ *
+ * @param {string} [p.dash=': ']
+ * @param {string} [p.delim=',\n']
+ * @param {number} [p.quote=NONE]
+ *
+ * @param {Function} [p.keyRead=decoKey]
+ * @param {Function} [p.read=decoPale]
+ *
+ * @param {number} [p.level]
+ *
+ * @returns {Object}
+ */
+export const presetObject = p => {
+  p.dash = p.dash || (RT + SP)
+  p.delim = p.delim || COLF
+  p.keyRead = p.keyRead || decoKey
+  p.read = p.read || decoPale
+  p.bracket = BRACE
+  return p
+}

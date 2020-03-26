@@ -31,18 +31,18 @@ $ npm install @spare/<tool-name>
 
 |                                                  |                                                 |
 | ------------------------------------------------ | ----------------------------------------------- |
-| [**logger**](packages/logger/logger)             | console.log with prettier format                |
-| [**xr**](packages/logger/xr)                     | Sentenced log content builder                   |
-| [**deco**](packages/logger/deco)                 | Stringify + colorant things                     |
-| [**verse**](packages/logger/verse)               | Stringify, ready to write to js or json file    |
-| [**deco**-vector](packages/logger/deco-vector)   | Stringify array(vector) with color highlight    |
-| [**deco**-matrix](packages/logger/deco-matrix)   | Stringify 2d-array(matrix) with color highlight |
-| [**deco**-object](packages/logger/deco-object)   | Stringify object with color highlight           |
-| [**deco**-entries](packages/logger/deco-entries) | Stringify entries with color highlight          |
-| [**deco**-samples](packages/logger/deco-samples) | Stringify samples with color highlight          |
-| [**deco**-table](packages/logger/deco-table)     | Stringify table with color highlight            |
-| [**deco**-crostab](packages/logger/deco-crostab) | Stringify crostab with color highlight          |
-| [**verse**](packages/logger/verse)               | ES6 style JSON.stringify alternative            |
+| [**logger**](packages/core/logger)             | console.log with prettier format                |
+| [**xr**](packages/core/xr)                     | Sentenced log content builder                   |
+| [**deco**](packages/core/deco)                 | Stringify + colorant things                     |
+| [**verse**](packages/core/verse)               | Stringify, ready to write to js or json file    |
+| [**deco**-vector](tools/deco/object/deco-vector)   | Stringify array(vector) with color highlight    |
+| [**deco**-matrix](tools/deco/object/deco-matrix)   | Stringify 2d-array(matrix) with color highlight |
+| [**deco**-object](tools/deco/object/deco-object)   | Stringify object with color highlight           |
+| [**deco**-entries](tools/deco/object/deco-entries) | Stringify entries with color highlight          |
+| [**deco**-samples](tools/deco/tabular/deco-samples) | Stringify samples with color highlight          |
+| [**deco**-table](tools/deco/tabular/deco-table)     | Stringify table with color highlight            |
+| [**deco**-crostab](tools/deco/tabular/deco-crostab) | Stringify crostab with color highlight          |
+| [**verse**](packages/core/verse)               | ES6 style JSON.stringify alternative            |
 | [**lange**](packages/string/lange)               | Get string length concerning ansi-code          |
 | [**quote**](packages/string/bracket)             | Add parenthesis/quote/brace/angle-quote         |
 | [**phrasing**](packages/string/phrasing)         | Convert among snake/kebab/camel/pascal phrasings|
