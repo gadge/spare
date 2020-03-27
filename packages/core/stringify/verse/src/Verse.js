@@ -81,9 +81,7 @@ export class Verse {
    *
    * @returns {string}
    */
-  static object (o, p = {}) {
-    return cosmeticsObject.call(presetObject(p), o)
-  }
+  static object (o, p = {}) { return cosmeticsObject.call(presetObject(p), o) }
 
   /**
    * @param {*[][]} matrix

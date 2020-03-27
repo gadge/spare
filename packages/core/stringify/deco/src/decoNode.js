@@ -31,6 +31,7 @@ export function prettyNode (node, lv = 0) {
   const t = typeof node
   if (t === STR) return isNumeric(node) ? node : PAL.STR(node)
   if (t === NUM || t === BIG) return node
+  if (t === FUN) return lv >= this.hi ? funcName(node) : decoFunc(node, this)
   if (t === OBJ) {
     const { hi } = this, pt = typ(node)
     if (pt === ARRAY) return lv >= hi ? '[array]' : deVe.call(this, node.slice(), lv) |> BRK[lv & 7]
@@ -38,7 +39,6 @@ export function prettyNode (node, lv = 0) {
     if (pt === DATE) return lv >= hi ? decoDate(node) : decoDateTime(node)
     if (pt === MAP) return lv >= hi ? '(map)' : deEn.call(this, [...node.entries()], lv) |> BRK[lv & 7]
     if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
-    if (t === FUN) return lv >= hi ? funcName(node) : decoFunc.call(this, node)
     return `${node}`
   }
   if (t === BOO) return PAL.BOO(node)
@@ -49,6 +49,7 @@ export function prettyNode (node, lv = 0) {
 export function plainNode (node, lv = 0) {
   const t = typeof node, { qm } = this
   if (t === STR) return qm ? qm + node + qm : node
+  if (t === FUN) return lv >= this.hi ? funcName(node) : decoFunc(node, this)
   if (t === OBJ) {
     const { hi } = this, pt = typ(node)
     if (pt === ARRAY) return lv >= hi ? '[array]' : deVe.call(this, node.slice(), lv) |> bracket
@@ -56,7 +57,6 @@ export function plainNode (node, lv = 0) {
     if (pt === DATE) return lv >= hi ? formatDate(node) : formatDateTime(node)
     if (pt === MAP) return lv >= hi ? '(map)' : deEn.call(this, [...node.entries()], lv) |> bracket
     if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
-    if (t === FUN) return lv >= hi ? funcName(node) : decoFunc.call(this, node)
     return `${node}`
   }
   return node
