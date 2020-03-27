@@ -15,7 +15,6 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/deco-date": "^0.4.1",
     "@spare/deco-object": "^0.4.1",
     "@spare/deco-vector": "^0.4.1",
     "@spare/enum-brackets": "^0.4.1",
