@@ -16,7 +16,7 @@ crostab |> delogger
 crostab |> Deco({
   direct: POINTWISE,
   labelPreset: OCEAN,
-  read: x => isNumeric(x) ? mag.format(x) : NaN,
+  read: x => isNumeric(x) ? mag.format(+x) : NaN,
   top: 4, bottom: 3, left: 3, right: 2
 }) |> logger
 

@@ -7,6 +7,7 @@ import { max } from '@aryth/comparer'
 import { maxBy } from '@vect/vector-indicator'
 import { mapper } from '@vect/vector-mapper'
 import { zipper } from '@vect/vector-zipper'
+import { toFullAngleWoAnsi } from '@spare/string/src/toFullAngleWoAnsi'
 
 export const padSide = (side, title, { dye, ansi, fullAngle } = {}) => {
   if (fullAngle) return padSideFullAngle(side, title, ansi)
@@ -22,15 +23,16 @@ export const padSide = (side, title, { dye, ansi, fullAngle } = {}) => {
 }
 
 export const padSideFullAngle = (side, title, { dye, ansi, dash = DASH, fill = SP } = {}) => {
+  const toFA = ansi ? toFullAngleWoAnsi : toFullAngle
   const cn = hasChn(title) || side.some(hasChn)
   if (!cn) return padSide(side, title, { ansi })
   const lpad = LPad({ ansi, fill }), rpad = RPad({ ansi, fill }), lange = Lange(ansi)
   const pad = max(lange(title), maxBy(side, lange))
   return {
-    title: rpad(toFullAngle(title), pad),
+    title: rpad(toFA(title), pad),
     hr: dash.repeat(pad),
     side: dye
-      ? zipper(side, dye, (x, d) => lpad(toFullAngle(x), pad) |> d)
-      : mapper(side, x => lpad(toFullAngle(x), pad))
+      ? zipper(side, dye, (x, d) => lpad(toFA(x), pad) |> d)
+      : mapper(side, x => lpad(toFA(x), pad))
   }
 }

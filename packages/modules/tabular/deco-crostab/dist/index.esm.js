@@ -8,13 +8,58 @@ import { zipper } from '@vect/vector-zipper';
 import { size } from '@vect/matrix';
 import { liner } from '@spare/liner';
 import { DASH as DASH$1, SP } from '@spare/enum-full-angle-chars';
-import { hasChn, toFullAngle } from '@spare/string';
-import { Lange } from '@spare/lange';
+import { hasChn, toFullAngle as toFullAngle$1 } from '@spare/string';
+import { hasAnsi, Lange } from '@spare/lange';
 import { LPad, RPad } from '@spare/pad-string';
 import { max } from '@aryth/comparer';
 import { maxBy } from '@vect/vector-indicator';
 import { mapper } from '@vect/vector-mapper';
 import { presetCrostab } from '@spare/preset-deco';
+
+var ansiRegex = ({
+  onlyFirst = false
+} = {}) => {
+  const pattern = ['[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)', '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'].join('|');
+  return new RegExp(pattern, onlyFirst ? undefined : 'g');
+};
+
+var stripAnsi = string => typeof string === 'string' ? string.replace(ansiRegex(), '') : string;
+
+/**
+ * Return if a string contains Chinese character.
+ * halfAng = str.match(/[\u0000-\u00ff]/g) || [] //半角
+ * chinese = str.match(/[\u4e00-\u9fa5]/g) || [] //中文
+ * fullAng = str.match(/[\uff00-\uffff]/g) || [] //全角
+ * @param {string} str
+ * @returns {boolean}
+ */
+/**
+ * Half-angle string -> Full-angle string
+ * 半角转化为全角
+ * a.全角空格为12288，半角空格为32
+ * b.其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
+ * @param {string} tx
+ * @returns {string}
+ * @constructor
+ */
+
+
+const toFullAngle = tx => {
+  let t = '',
+      co;
+
+  for (let c of tx) {
+    co = c.charCodeAt(0);
+    t = co === 32 ? t + String.fromCharCode(12288) : co < 127 ? t + String.fromCharCode(co + 65248) : t + c;
+  }
+
+  return t;
+};
+
+const toFullAngleWoAnsi = tx => {
+  if (hasAnsi(tx)) tx = stripAnsi(tx);
+  return toFullAngle(tx);
+};
 
 const padSide = (side, title, {
   dye,
@@ -46,6 +91,7 @@ const padSideFullAngle = (side, title, {
   dash = DASH$1,
   fill = SP
 } = {}) => {
+  const toFA = ansi ? toFullAngleWoAnsi : toFullAngle$1;
   const cn = hasChn(title) || side.some(hasChn);
   if (!cn) return padSide(side, title, {
     ansi
@@ -61,13 +107,13 @@ const padSideFullAngle = (side, title, {
         lange = Lange(ansi);
   const pad = max(lange(title), maxBy(side, lange));
   return {
-    title: rpad(toFullAngle(title), pad),
+    title: rpad(toFA(title), pad),
     hr: dash.repeat(pad),
     side: dye ? zipper(side, dye, (x, d) => {
       var _lpad2;
 
-      return _lpad2 = lpad(toFullAngle(x), pad), d(_lpad2);
-    }) : mapper(side, x => lpad(toFullAngle(x), pad))
+      return _lpad2 = lpad(toFA(x), pad), d(_lpad2);
+    }) : mapper(side, x => lpad(toFA(x), pad))
   };
 };
 

@@ -1,4 +1,4 @@
-export { camelToSnake as camelToLowerDashed, snakeToCamel as dashedToCamel } from '@spare/phrasing'
+export { toFullAngleWoAnsi } from './src/toFullAngleWoAnsi'
 export { hasChn, toFullAngle, toHalfAngle } from './src/fullAngle'
 export { padStartAnsi, padEndAnsi } from './src/pad'
 export { indexNonTab, afterNonTab } from './src/tab'

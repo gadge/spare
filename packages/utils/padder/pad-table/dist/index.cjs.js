@@ -20,6 +20,7 @@ const LocalPad = ({
   fill,
   localFill
 }) => {
+  const toFA = ansi ? string.toFullAngleWoAnsi : string.toFullAngle;
   const padCn = padString.Pad({
     dock,
     ansi,
@@ -30,7 +31,7 @@ const LocalPad = ({
     ansi,
     fill
   });
-  return (x, pd, cn, v) => cn ? padCn(string.toFullAngle(x), pd, v) : padEn(x, pd, v);
+  return (x, pd, cn, v) => cn ? padCn(toFA(x), pd, v) : padEn(x, pd, v);
 };
 
 /**

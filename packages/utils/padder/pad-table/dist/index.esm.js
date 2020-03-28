@@ -5,7 +5,7 @@ import { mapper } from '@vect/vector-mapper';
 import { Trizipper as Trizipper$1, Duozipper as Duozipper$1 } from '@vect/matrix-zipper';
 import { Trizipper as Trizipper$2, Duozipper as Duozipper$2 } from '@vect/vector-zipper';
 import { DASH, SP } from '@spare/enum-full-angle-chars';
-import { toFullAngle, hasChn } from '@spare/string';
+import { toFullAngleWoAnsi, toFullAngle, hasChn } from '@spare/string';
 import { Max } from '@vect/vector-indicator';
 import { transpose } from '@vect/matrix-transpose';
 import { Trizipper, Duozipper } from '@vect/vector';
@@ -16,6 +16,7 @@ const LocalPad = ({
   fill,
   localFill
 }) => {
+  const toFA = ansi ? toFullAngleWoAnsi : toFullAngle;
   const padCn = Pad({
     dock,
     ansi,
@@ -26,7 +27,7 @@ const LocalPad = ({
     ansi,
     fill
   });
-  return (x, pd, cn, v) => cn ? padCn(toFullAngle(x), pd, v) : padEn(x, pd, v);
+  return (x, pd, cn, v) => cn ? padCn(toFA(x), pd, v) : padEn(x, pd, v);
 };
 
 /**

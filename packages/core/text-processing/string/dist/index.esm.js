@@ -1,6 +1,16 @@
-export { camelToSnake as camelToLowerDashed, snakeToCamel as dashedToCamel } from '@spare/phrasing';
 import { hasAnsi, lange } from '@spare/lange';
 import { isTab, deNaTab, endsBracs, afterNaTab, RN, TB } from '@spare/util';
+
+var ansiRegex = ({onlyFirst = false} = {}) => {
+	const pattern = [
+		'[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
+		'(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'
+	].join('|');
+
+	return new RegExp(pattern, onlyFirst ? undefined : 'g');
+};
+
+var stripAnsi = string => typeof string === 'string' ? string.replace(ansiRegex(), '') : string;
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -57,6 +67,11 @@ const toHalfAngle = tx => {
   return t;
 };
 
+const toFullAngleWoAnsi = tx => {
+  if (hasAnsi(tx)) tx = stripAnsi(tx);
+  return toFullAngle(tx);
+};
+
 const padStartAnsi = (tx, len, fill) => hasAnsi(tx) ? tx.padStart(tx.length + len - lange(tx), fill) : tx.padStart(len, fill);
 
 const padEndAnsi = (tx, len, fill) => hasAnsi(tx) ? tx.padEnd(tx.length + len - lange(tx), fill) : tx.padEnd(len, fill);
@@ -99,4 +114,4 @@ const tag = (label, item) => {
   return `${key} (${text})`;
 };
 
-export { afterNonTab, hasChn, indexNonTab, narrow, narrowExclude, padEndAnsi, padStartAnsi, tag, toFullAngle, toHalfAngle, wL };
+export { afterNonTab, hasChn, indexNonTab, narrow, narrowExclude, padEndAnsi, padStartAnsi, tag, toFullAngle, toFullAngleWoAnsi, toHalfAngle, wL };

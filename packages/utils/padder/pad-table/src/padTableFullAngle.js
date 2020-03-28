@@ -1,4 +1,4 @@
-import { DASH, SP } from '@spare/enum-full-angle-chars'
+import { DASH as FADA, SP as FASP } from '@spare/enum-full-angle-chars'
 import { Lange } from '@spare/lange'
 import { hasChn } from '@spare/string'
 import { CENTRE, RIGHT } from '@spare/pad-string'
@@ -24,8 +24,8 @@ import { LocalPad } from './utils/localPad'
  */
 export const padTableFullAngle = (text, head, {
   raw, dye, ansi = false,
-  dash = '-', localDash = DASH,
-  fill = ' ', localFill = SP
+  dash = '-', localDash = FADA,
+  fill = ' ', localFill = FASP
 } = {}) => {
   const columns = transpose([head].concat(text))
   const [pads, chns] = [mapper(columns, Max(Lange(ansi))), mapper(columns, col => col.some(hasChn))]

@@ -2,9 +2,19 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var phrasing = require('@spare/phrasing');
 var lange = require('@spare/lange');
 var util = require('@spare/util');
+
+var ansiRegex = ({onlyFirst = false} = {}) => {
+	const pattern = [
+		'[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
+		'(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'
+	].join('|');
+
+	return new RegExp(pattern, onlyFirst ? undefined : 'g');
+};
+
+var stripAnsi = string => typeof string === 'string' ? string.replace(ansiRegex(), '') : string;
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -61,6 +71,11 @@ const toHalfAngle = tx => {
   return t;
 };
 
+const toFullAngleWoAnsi = tx => {
+  if (lange.hasAnsi(tx)) tx = stripAnsi(tx);
+  return toFullAngle(tx);
+};
+
 const padStartAnsi = (tx, len, fill) => lange.hasAnsi(tx) ? tx.padStart(tx.length + len - lange.lange(tx), fill) : tx.padStart(len, fill);
 
 const padEndAnsi = (tx, len, fill) => lange.hasAnsi(tx) ? tx.padEnd(tx.length + len - lange.lange(tx), fill) : tx.padEnd(len, fill);
@@ -103,18 +118,6 @@ const tag = (label, item) => {
   return `${key} (${text})`;
 };
 
-Object.defineProperty(exports, 'camelToLowerDashed', {
-  enumerable: true,
-  get: function () {
-    return phrasing.camelToSnake;
-  }
-});
-Object.defineProperty(exports, 'dashedToCamel', {
-  enumerable: true,
-  get: function () {
-    return phrasing.snakeToCamel;
-  }
-});
 exports.afterNonTab = afterNonTab;
 exports.hasChn = hasChn;
 exports.indexNonTab = indexNonTab;
@@ -124,5 +127,6 @@ exports.padEndAnsi = padEndAnsi;
 exports.padStartAnsi = padStartAnsi;
 exports.tag = tag;
 exports.toFullAngle = toFullAngle;
+exports.toFullAngleWoAnsi = toFullAngleWoAnsi;
 exports.toHalfAngle = toHalfAngle;
 exports.wL = wL;
