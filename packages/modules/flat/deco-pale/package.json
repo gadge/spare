@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-pale",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Colored stringify",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,20 +15,20 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/deco-object": "^0.4.2",
-    "@spare/deco-vector": "^0.4.2",
-    "@spare/enum-brackets": "^0.4.2",
-    "@spare/enum-chars": "^0.4.2",
-    "@spare/quote": "^0.4.2",
-    "@spare/bracket": "^0.4.2",
+    "@spare/bracket": "^0.4.3",
+    "@spare/deco-object": "^0.4.3",
+    "@spare/deco-vector": "^0.4.3",
+    "@spare/enum-brackets": "^0.4.3",
+    "@spare/enum-chars": "^0.4.3",
+    "@spare/quote": "^0.4.3",
     "@typen/enum-data-types": "^0.0.4",
     "@typen/enum-object-types": "^0.0.4",
+    "@typen/num-loose": "^0.0.4",
     "@typen/num-strict": "^0.0.4",
     "@typen/typ": "^0.0.4",
-    "@typen/num-loose": "^0.0.4",
-    "@vect/entries-mapper": "^0.0.5",
     "@valjoux/format-date": "^0.0.5",
-    "@valjoux/format-time": "^0.0.5"
+    "@valjoux/format-time": "^0.0.5",
+    "@vect/entries-mapper": "^0.0.5"
   },
   "repository": {
     "type": "git",

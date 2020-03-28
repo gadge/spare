@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-entries",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@palett/fluo-entries": "^0.1.1",
-    "@spare/bracket": "^0.4.2",
-    "@spare/enttro": "^0.4.2",
-    "@spare/liner": "^0.4.2",
-    "@spare/pad-entries": "^0.4.2",
-    "@spare/preset-deco": "^0.4.2",
-    "@spare/quote": "^0.4.2",
+    "@spare/bracket": "^0.4.3",
+    "@spare/enttro": "^0.4.3",
+    "@spare/liner": "^0.4.3",
+    "@spare/pad-entries": "^0.4.3",
+    "@spare/preset-deco": "^0.4.3",
+    "@spare/quote": "^0.4.3",
     "@vect/entries-zipper": "^0.2.0"
   },
   "repository": {
