@@ -32,7 +32,7 @@ import { POINTWISE } from '@vect/enum-matrix-directions'
  * @returns {Object}
  */
 export const presetCrostab = p => {
-  p.delim = p.delim || LF
+  p.delim = p.delim ?? LF
   p.read = p.read || decoFlat
   p.preset = p.preset || FRESH
   p.stringPreset = p.stringPreset || JUNGLE

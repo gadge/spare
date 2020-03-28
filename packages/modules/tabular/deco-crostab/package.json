@@ -32,7 +32,7 @@
     "@spare/vettro": "^0.4.2",
     "@vect/enum-matrix-directions": "^0.2.0",
     "@vect/matrix": "^0.2.0",
-    "@vect/vector-indicator": "^0.2.0",
+    "@vect/vector-indicator": "^0.2.1",
     "@vect/vector-mapper": "^0.2.0",
     "@vect/vector-zipper": "^0.2.0"
   },

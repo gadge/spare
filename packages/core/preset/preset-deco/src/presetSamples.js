@@ -34,7 +34,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @returns {Object}
  */
 export const presetSamples = p => {
-  p.delim = p.delim || COSP
+  p.delim = p.delim ?? COSP
   p.bracket = !p.bracket ? NONE : BRK
   p.indexed = p.indexed || true
   p.read = p.read || decoFlat

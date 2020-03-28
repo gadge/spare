@@ -34,10 +34,10 @@ var enumMatrixDirections = require('@vect/enum-matrix-directions');
  */
 
 const presetEntries = p => {
-  var _p$ansi;
+  var _p$dash, _p$delim, _p$ansi;
 
-  p.dash = p.dash || ' > ';
-  p.delim = p.delim || enumChars.LF;
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ' > ';
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.LF;
   p.bracket = !p.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   p.read = p.read || decoFlat.decoFlat;
   p.preset = p.preset || presets.FRESH;
@@ -73,10 +73,10 @@ const presetEntries = p => {
  */
 
 const presetObject = p => {
-  var _p$ansi;
+  var _p$dash, _p$delim, _p$ansi;
 
-  p.dash = p.dash || ': ';
-  p.delim = p.delim || enumChars.COLF;
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : enumChars.RTSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COLF;
   p.bracket = !p.bracket ? enumBrackets.NONE : enumBrackets.BRC;
   p.read = p.read || decoFlat.decoFlat;
   p.preset = p.preset || presets.FRESH;
@@ -111,10 +111,10 @@ const presetObject = p => {
  */
 
 const presetVector = p => {
-  var _p$indexed, _p$ansi;
+  var _p$dash, _p$delim, _p$indexed, _p$ansi;
 
-  p.dash = p.dash || ') ';
-  p.delim = p.delim || enumChars.COLF;
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ') ';
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COLF;
   p.bracket = !p.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : true;
   p.read = p.read || decoFlat.decoFlat;
@@ -151,9 +151,9 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  var _p$ansi;
+  var _p$delim, _p$ansi;
 
-  p.delim = p.delim || enumChars.COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COSP;
   p.bracket = !p.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   p.read = p.read || decoFlat.decoFlat;
   p.direct = p.direct || enumMatrixDirections.ROWWISE;
@@ -193,9 +193,9 @@ const presetMatrix = p => {
  */
 
 const presetCrostab = p => {
-  var _p$direct, _p$ansi;
+  var _p$delim, _p$direct, _p$ansi;
 
-  p.delim = p.delim || enumChars.LF;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.LF;
   p.read = p.read || decoFlat.decoFlat;
   p.preset = p.preset || presets.FRESH;
   p.stringPreset = p.stringPreset || presets.JUNGLE;
@@ -235,9 +235,9 @@ const presetCrostab = p => {
  */
 
 const presetTable = p => {
-  var _p$direct, _p$ansi;
+  var _p$delim, _p$direct, _p$ansi;
 
-  p.delim = p.delim || enumChars.LF;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.LF;
   p.read = p.read || decoFlat.decoFlat;
   p.preset = p.preset || presets.FRESH;
   p.stringPreset = p.stringPreset || presets.JUNGLE;
@@ -278,9 +278,9 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
-  var _p$ansi;
+  var _p$delim, _p$ansi;
 
-  p.delim = p.delim || enumChars.COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COSP;
   p.bracket = !p.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   p.indexed = p.indexed || true;
   p.read = p.read || decoFlat.decoFlat;

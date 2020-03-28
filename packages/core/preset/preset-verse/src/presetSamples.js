@@ -18,7 +18,7 @@ import { decoKey, decoPale } from '@spare/deco-pale'
  */
 export const presetSamples = p => {
   p.indexed = false
-  p.delim = p.delim || COSP
+  p.delim = p.delim ?? COSP
   p.keyRead = p.keyRead || decoKey
   p.read = p.read || decoPale
   p.bracket = NONE

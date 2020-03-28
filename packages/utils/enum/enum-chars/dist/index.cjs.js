@@ -16,6 +16,7 @@ const UL = '_';
 const DASH = '-';
 const ELLIP = '...';
 const AEU = '(Ø)';
+const RTSP = RT + SP;
 const COSP = CO + SP;
 const COLF = CO + LF;
 
@@ -32,6 +33,7 @@ exports.LF = LF;
 exports.QT = QT;
 exports.RN = RN;
 exports.RT = RT;
+exports.RTSP = RTSP;
 exports.SP = SP;
 exports.TB = TB;
 exports.UL = UL;

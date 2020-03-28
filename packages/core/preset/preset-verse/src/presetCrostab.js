@@ -16,7 +16,7 @@ import { decoKey, decoPale } from '@spare/deco-pale'
  * @returns {Object}
  */
 export const presetCrostab = p => {
-  p.delim = p.delim || COSP
+  p.delim = p.delim ?? COSP
   p.keyRead = p.keyRead || decoKey
   p.read = p.read || decoPale
   p.level = (p.level ?? 0) + 1

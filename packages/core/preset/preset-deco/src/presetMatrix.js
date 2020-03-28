@@ -30,7 +30,7 @@ import { ROWWISE } from '@vect/enum-matrix-directions'
  * @returns {Object}
  */
 export const presetMatrix = p => {
-  p.delim = p.delim || COSP
+  p.delim = p.delim ?? COSP
   p.bracket = !p.bracket ? NONE : BRK
   p.read = p.read || decoFlat
   p.direct = p.direct || ROWWISE

@@ -1,5 +1,5 @@
 import { BRACKET, NONE, BRACE } from '@spare/enum-brackets';
-import { COSP, COLF, RT, SP } from '@spare/enum-chars';
+import { COSP, COLF, RTSP } from '@spare/enum-chars';
 import { decoPale, decoKey } from '@spare/deco-pale';
 
 /***
@@ -20,8 +20,10 @@ import { decoPale, decoKey } from '@spare/deco-pale';
  */
 
 const presetEntries = p => {
-  p.dash = p.dash || COSP;
-  p.delim = p.delim || COLF;
+  var _p$dash, _p$delim;
+
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
   p.keyRead = p.keyRead || decoPale;
   p.read = p.read || decoPale;
   p.bracket = BRACKET;
@@ -46,8 +48,10 @@ const presetEntries = p => {
  */
 
 const presetEntriesAsObject = p => {
-  p.dash = p.dash || RT + SP;
-  p.delim = p.delim || COLF;
+  var _p$dash2, _p$delim2;
+
+  p.dash = (_p$dash2 = p.dash) !== null && _p$dash2 !== void 0 ? _p$dash2 : RTSP;
+  p.delim = (_p$delim2 = p.delim) !== null && _p$delim2 !== void 0 ? _p$delim2 : COLF;
   p.keyRead = p.keyRead || decoKey;
   p.read = p.read || decoPale;
   p.bracket = NONE;
@@ -71,8 +75,10 @@ const presetEntriesAsObject = p => {
  */
 
 const presetObject = p => {
-  p.dash = p.dash || RT + SP;
-  p.delim = p.delim || COLF;
+  var _p$dash, _p$delim;
+
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : RTSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
   p.keyRead = p.keyRead || decoKey;
   p.read = p.read || decoPale;
   p.bracket = BRACE;
@@ -93,7 +99,9 @@ const presetObject = p => {
  */
 
 const presetVector = p => {
-  p.delim = p.delim || COSP;
+  var _p$delim;
+
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.read = p.read || decoPale;
   p.bracket = BRACKET;
   return p;
@@ -113,7 +121,9 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  p.delim = p.delim || COSP;
+  var _p$delim;
+
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.read = p.read || decoPale;
   p.bracket = BRACKET;
   p.discrete = true;
@@ -136,9 +146,9 @@ const presetMatrix = p => {
  */
 
 const presetCrostab = p => {
-  var _p$level;
+  var _p$delim, _p$level;
 
-  p.delim = p.delim || COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.keyRead = p.keyRead || decoKey;
   p.read = p.read || decoPale;
   p.level = ((_p$level = p.level) !== null && _p$level !== void 0 ? _p$level : 0) + 1;
@@ -161,9 +171,9 @@ const presetCrostab = p => {
  */
 
 const presetTable = p => {
-  var _p$level;
+  var _p$delim, _p$level;
 
-  p.delim = p.delim || COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.keyRead = p.keyRead || decoKey;
   p.read = p.read || decoPale;
   p.level = ((_p$level = p.level) !== null && _p$level !== void 0 ? _p$level : 0) + 1;
@@ -186,8 +196,10 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
+  var _p$delim;
+
   p.indexed = false;
-  p.delim = p.delim || COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.keyRead = p.keyRead || decoKey;
   p.read = p.read || decoPale;
   p.bracket = NONE;

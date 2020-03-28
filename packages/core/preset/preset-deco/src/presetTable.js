@@ -32,7 +32,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @returns {Object}
  */
 export const presetTable = p => {
-  p.delim = p.delim || LF
+  p.delim = p.delim ?? LF
   p.read = p.read || decoFlat
   p.preset = p.preset || FRESH
   p.stringPreset = p.stringPreset || JUNGLE

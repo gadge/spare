@@ -28,8 +28,8 @@ import { decoFlat } from '@spare/deco-flat'
  * @returns {Object}
  */
 export const presetEntries = p => {
-  p.dash = p.dash || ' > '
-  p.delim = p.delim || LF
+  p.dash = p.dash ?? ' > '
+  p.delim = p.delim ?? LF
   p.bracket = !p.bracket ? NONE : BRK
   p.read = p.read || decoFlat
   p.preset = p.preset || FRESH

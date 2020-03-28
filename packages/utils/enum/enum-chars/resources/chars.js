@@ -13,6 +13,7 @@ export const DASH = '-'
 export const ELLIP = '...'
 export const AEU = '(Ø)'
 
+export const RTSP = RT + SP
 export const COSP = CO + SP
 export const COLF = CO + LF
 

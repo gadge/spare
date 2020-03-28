@@ -1,5 +1,5 @@
 import { BRACKET, NONE } from '@spare/enum-brackets'
-import { COLF, COSP, RT, SP } from '@spare/enum-chars'
+import { COLF, COSP, RT, RTSP, SP } from '@spare/enum-chars'
 import { decoKey, decoPale } from '@spare/deco-pale'
 
 /***
@@ -19,8 +19,8 @@ import { decoKey, decoPale } from '@spare/deco-pale'
  * @returns {Object}
  */
 export const presetEntries = p => {
-  p.dash = p.dash || COSP
-  p.delim = p.delim || COLF
+  p.dash = p.dash ?? COSP
+  p.delim = p.delim ?? COLF
   p.keyRead = p.keyRead || decoPale
   p.read = p.read || decoPale
   p.bracket = BRACKET
@@ -45,8 +45,8 @@ export const presetEntries = p => {
  * @returns {Object}
  */
 export const presetEntriesAsObject = p => {
-  p.dash = p.dash || (RT + SP)
-  p.delim = p.delim || COLF
+  p.dash = p.dash ?? RTSP
+  p.delim = p.delim ?? COLF
   p.keyRead = p.keyRead || decoKey
   p.read = p.read || decoPale
   p.bracket = NONE

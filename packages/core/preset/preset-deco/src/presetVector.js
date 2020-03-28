@@ -28,8 +28,8 @@ import { FRESH, JUNGLE } from '@palett/presets'
  * @returns {Object}
  */
 export const presetVector = p => {
-  p.dash = p.dash || ') '
-  p.delim = p.delim || COLF
+  p.dash = p.dash ?? ') '
+  p.delim = p.delim ?? COLF
   p.bracket = !p.bracket ? NONE : BRK
   p.indexed = p.indexed ?? true
   p.read = p.read || decoFlat

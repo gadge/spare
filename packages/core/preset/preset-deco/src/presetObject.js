@@ -1,4 +1,4 @@
-import { COLF } from '@spare/enum-chars'
+import { COLF, RTSP } from '@spare/enum-chars'
 import { BRC, NONE } from '@spare/enum-brackets'
 import { decoFlat } from '@spare/deco-flat'
 import { FRESH, PLANET } from '@palett/presets'
@@ -29,8 +29,8 @@ import { FRESH, PLANET } from '@palett/presets'
  * @returns {Object}
  */
 export const presetObject = p => {
-  p.dash = p.dash || ': '
-  p.delim = p.delim || COLF
+  p.dash = p.dash ?? RTSP
+  p.delim = p.delim ?? COLF
   p.bracket = !p.bracket ? NONE : BRC
   p.read = p.read || decoFlat
   p.preset = p.preset || FRESH

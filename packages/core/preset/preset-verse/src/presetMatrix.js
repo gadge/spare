@@ -15,7 +15,7 @@ import { decoPale } from '@spare/deco-pale'
  * @returns {Object}
  */
 export const presetMatrix = p => {
-  p.delim = p.delim || COSP
+  p.delim = p.delim ?? COSP
   p.read = p.read || decoPale
   p.bracket = BRACKET
   p.discrete = true

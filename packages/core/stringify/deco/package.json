@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.1.0",
-    "@glossa/translator": "^0.0.10",
+    "@glossa/translator": "^0.0.12",
     "@palett/cards": "^0.1.1",
     "@palett/convert": "^0.1.1",
     "@palett/dye": "^0.1.1",

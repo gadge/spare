@@ -1,4 +1,4 @@
-import { LF, COLF, COSP } from '@spare/enum-chars';
+import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
 import { NONE, BRK, BRC } from '@spare/enum-brackets';
 import { FRESH, OCEAN, PLANET, JUNGLE, SUBTLE } from '@palett/presets';
 import { decoFlat } from '@spare/deco-flat';
@@ -30,10 +30,10 @@ import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
  */
 
 const presetEntries = p => {
-  var _p$ansi;
+  var _p$dash, _p$delim, _p$ansi;
 
-  p.dash = p.dash || ' > ';
-  p.delim = p.delim || LF;
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ' > ';
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.bracket = !p.bracket ? NONE : BRK;
   p.read = p.read || decoFlat;
   p.preset = p.preset || FRESH;
@@ -69,10 +69,10 @@ const presetEntries = p => {
  */
 
 const presetObject = p => {
-  var _p$ansi;
+  var _p$dash, _p$delim, _p$ansi;
 
-  p.dash = p.dash || ': ';
-  p.delim = p.delim || COLF;
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : RTSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
   p.bracket = !p.bracket ? NONE : BRC;
   p.read = p.read || decoFlat;
   p.preset = p.preset || FRESH;
@@ -107,10 +107,10 @@ const presetObject = p => {
  */
 
 const presetVector = p => {
-  var _p$indexed, _p$ansi;
+  var _p$dash, _p$delim, _p$indexed, _p$ansi;
 
-  p.dash = p.dash || ') ';
-  p.delim = p.delim || COLF;
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ') ';
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
   p.bracket = !p.bracket ? NONE : BRK;
   p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : true;
   p.read = p.read || decoFlat;
@@ -147,9 +147,9 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  var _p$ansi;
+  var _p$delim, _p$ansi;
 
-  p.delim = p.delim || COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.bracket = !p.bracket ? NONE : BRK;
   p.read = p.read || decoFlat;
   p.direct = p.direct || ROWWISE;
@@ -189,9 +189,9 @@ const presetMatrix = p => {
  */
 
 const presetCrostab = p => {
-  var _p$direct, _p$ansi;
+  var _p$delim, _p$direct, _p$ansi;
 
-  p.delim = p.delim || LF;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.read = p.read || decoFlat;
   p.preset = p.preset || FRESH;
   p.stringPreset = p.stringPreset || JUNGLE;
@@ -231,9 +231,9 @@ const presetCrostab = p => {
  */
 
 const presetTable = p => {
-  var _p$direct, _p$ansi;
+  var _p$delim, _p$direct, _p$ansi;
 
-  p.delim = p.delim || LF;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.read = p.read || decoFlat;
   p.preset = p.preset || FRESH;
   p.stringPreset = p.stringPreset || JUNGLE;
@@ -274,9 +274,9 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
-  var _p$ansi;
+  var _p$delim, _p$ansi;
 
-  p.delim = p.delim || COSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.bracket = !p.bracket ? NONE : BRK;
   p.indexed = p.indexed || true;
   p.read = p.read || decoFlat;

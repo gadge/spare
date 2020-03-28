@@ -13,6 +13,7 @@ export {
   DASH,
   ELLIP,
   AEU,
+  RTSP,
   COSP,
   COLF
 } from './resources/chars'
