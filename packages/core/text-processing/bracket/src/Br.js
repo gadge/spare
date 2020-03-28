@@ -10,8 +10,7 @@ export const SelectBr = (mode) => {
 }
 
 export const Br = (read, mode) => {
-  const br = SelectBr(mode)
   if (!mode) return read
-  if (!read) return br
-  return x => x |> read |> br
+  if (!read) return SelectBr(mode)
+  return x => x |> read |> SelectBr(mode)
 }

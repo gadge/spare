@@ -1,7 +1,8 @@
 import { APOS, DITTO } from '@spare/enum-quotes';
+import { QT, DT } from '@spare/enum-chars';
 
-const quote = x => '\'' + x + '\'';
-const ditto = x => '\"' + x + '\"';
+const quote = x => QT + x + QT;
+const ditto = x => DT + x + DT;
 const qt = (x, mode) => {
   if (mode === APOS) return quote(x);
   if (mode === DITTO) return ditto(x);

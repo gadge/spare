@@ -12,9 +12,10 @@ var DecoMatrixEnv = require('@spare/deco-matrix');
 var DecoSamplesEnv = require('@spare/deco-samples');
 var DecoTableEnv = require('@spare/deco-table');
 var DecoCrostabEnv = require('@spare/deco-crostab');
+var enumChars = require('@spare/enum-chars');
 
 const logger = (x, ...p) => void console.log(x + '', ...p);
-const logNeL = (x, ...p) => void console.log(x + '', ...p, '\n');
+const logNeL = (x, ...p) => void console.log(x + '', ...p, enumChars.LF);
 
 /** @type {Function} */
 

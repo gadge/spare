@@ -3,9 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var enumQuotes = require('@spare/enum-quotes');
+var enumChars = require('@spare/enum-chars');
 
-const quote = x => '\'' + x + '\'';
-const ditto = x => '\"' + x + '\"';
+const quote = x => enumChars.QT + x + enumChars.QT;
+const ditto = x => enumChars.DT + x + enumChars.DT;
 const qt = (x, mode) => {
   if (mode === enumQuotes.APOS) return quote(x);
   if (mode === enumQuotes.DITTO) return ditto(x);

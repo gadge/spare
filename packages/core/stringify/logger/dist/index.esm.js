@@ -8,9 +8,10 @@ import { deco as deco$5, Deco as Deco$3 } from '@spare/deco-matrix';
 import { deco as deco$6, Deco as Deco$4 } from '@spare/deco-samples';
 import { deco as deco$7, Deco as Deco$5 } from '@spare/deco-table';
 import { deco as deco$8, Deco as Deco$6 } from '@spare/deco-crostab';
+import { LF } from '@spare/enum-chars';
 
 const logger = (x, ...p) => void console.log(x + '', ...p);
-const logNeL = (x, ...p) => void console.log(x + '', ...p, '\n');
+const logNeL = (x, ...p) => void console.log(x + '', ...p, LF);
 
 /** @type {Function} */
 

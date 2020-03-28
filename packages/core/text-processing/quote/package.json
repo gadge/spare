@@ -15,7 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-quotes": "^0.4.3"
+    "@spare/enum-quotes": "^0.4.3",
+    "@spare/enum-chars": "^0.4.3"
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,5 @@
     "url": "https://github.com/hoyeungw/spare"
   },
   "homepage": "https://github.com/hoyeungw/spare#readme",
-  "gitHead": "bc2f5a3647ec3f6d7cf62539f64ce8cbfd3630a8"
+  "gitHead": "0508b64fa6a17ead21e7107b50aedd5af3febdd6"
 }

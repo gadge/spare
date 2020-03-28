@@ -1,4 +1,5 @@
 import { decoNode } from './src/decoNode'
+import { LF } from '@spare/enum-chars'
 
 export { decoNode }
 
@@ -39,4 +40,4 @@ export const deca = ({
 
 export const delogger = (x) => void console.log(x |> deco)
 
-export const delogNeL = (x) => void console.log(x |> deco, '\n')
+export const delogNeL = (x) => void console.log(x |> deco, LF)

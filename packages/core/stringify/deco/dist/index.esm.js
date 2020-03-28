@@ -17,7 +17,7 @@ import { max } from '@aryth/comparer';
 import { LPad } from '@spare/pad-string';
 import { joinLines } from '@spare/liner';
 import { mutate } from '@vect/column-mapper';
-import { CO } from '@spare/enum-chars';
+import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
 
 const lpad = LPad({
   ansi: true
@@ -31,8 +31,8 @@ const stringifyEntries = function (entries, lv) {
     wrap
   } = wrapInfo.call(this, entries);
   if (wrap || lv < vo) mutate(entries, 0, k => lpad(k, pad));
-  mutate$1(entries, ([k, v]) => `${k}: ${v}`);
-  return (wrap || lv < vo) && entries.length > 1 ? joinLines(entries, CO, lv) : entries.join(', ');
+  mutate$1(entries, ([k, v]) => k + RTSP + v);
+  return (wrap || lv < vo) && entries.length > 1 ? joinLines(entries, CO, lv) : entries.join(COSP);
 };
 const wrapInfo = function (entries) {
   const {
@@ -62,9 +62,9 @@ const stringifyVector = function (vector, lv) {
       row = [];
   iterate(vector, item => {
     row.push(item), w += lange(item);
-    if (w > wa) rows.push(row.join(', ')), row = [], w = 0;
+    if (w > wa) rows.push(row.join(COSP)), row = [], w = 0;
   });
-  return rows.length > 1 ? joinLines(rows, CO, lv) : vector.join(', ');
+  return rows.length > 1 ? joinLines(rows, CO, lv) : vector.join(COSP);
 };
 
 function decoNode(node, lv = 0) {
@@ -203,7 +203,7 @@ const delogger = x => {
 const delogNeL = x => {
   var _x2;
 
-  return void console.log((_x2 = x, deco(_x2)), '\n');
+  return void console.log((_x2 = x, deco(_x2)), LF);
 };
 
 export { deca, deco, decoNode, delogNeL, delogger };

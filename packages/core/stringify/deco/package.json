@@ -15,36 +15,26 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.1.0",
-    "@glossa/translator": "^0.0.12",
-    "@palett/cards": "^0.1.1",
-    "@palett/convert": "^0.1.1",
-    "@palett/dye": "^0.1.1",
-    "@palett/fluo": "^0.1.1",
-    "@palett/fluo-entries": "^0.1.1",
-    "@palett/fluo-vector": "^0.1.1",
-    "@spare/bracket": "^0.4.3",
     "@spare/deco-colors": "^0.4.3",
-    "@spare/deco-date": "^0.4.3",
+    "@spare/bracket": "^0.4.3",
     "@spare/deco-func": "^0.4.3",
-    "@spare/enum-chars": "^0.4.3",
+    "@spare/deco-date": "^0.4.3",
     "@spare/lange": "^0.4.3",
-    "@spare/liner": "^0.4.3",
     "@spare/pad-string": "^0.4.3",
-    "@spare/preset-deco": "^0.4.3",
-    "@spare/quote": "^0.4.3",
+    "@spare/liner": "^0.4.3",
+    "@spare/enum-chars": "^0.4.3",
     "@typen/enum-data-types": "^0.0.4",
     "@typen/enum-object-types": "^0.0.4",
-    "@typen/enums": "^0.0.4",
     "@typen/num-loose": "^0.0.4",
     "@typen/typ": "^0.0.4",
+    "@palett/fluo-vector": "^0.1.1",
+    "@palett/fluo-entries": "^0.1.1",
+    "@vect/entries-mapper": "^0.2.0",
+    "@vect/column-mapper": "^0.2.0",
+    "@vect/vector-mapper": "^0.2.0",
     "@valjoux/format-date": "^0.0.5",
     "@valjoux/format-date-time": "^0.0.5",
-    "@vect/column-indicator": "^0.2.0",
-    "@vect/column-mapper": "^0.2.0",
-    "@vect/entries-mapper": "^0.2.0",
-    "@vect/object-mapper": "^0.2.0",
-    "@vect/vector-mapper": "^0.2.0"
+    "@aryth/comparer": "^0.1.0"
   },
   "repository": {
     "type": "git",
@@ -62,5 +52,5 @@
     "url": "https://github.com/hoyeungw/spare"
   },
   "homepage": "https://github.com/hoyeungw/spare#readme",
-  "gitHead": "ebee2e056eda94e65378c6a1178ae62fd924fe4d"
+  "gitHead": "0508b64fa6a17ead21e7107b50aedd5af3febdd6"
 }

@@ -35,8 +35,8 @@ const stringifyEntries = function (entries, lv) {
     wrap
   } = wrapInfo.call(this, entries);
   if (wrap || lv < vo) columnMapper.mutate(entries, 0, k => lpad(k, pad));
-  vectorMapper.mutate(entries, ([k, v]) => `${k}: ${v}`);
-  return (wrap || lv < vo) && entries.length > 1 ? liner.joinLines(entries, enumChars.CO, lv) : entries.join(', ');
+  vectorMapper.mutate(entries, ([k, v]) => k + enumChars.RTSP + v);
+  return (wrap || lv < vo) && entries.length > 1 ? liner.joinLines(entries, enumChars.CO, lv) : entries.join(enumChars.COSP);
 };
 const wrapInfo = function (entries) {
   const {
@@ -66,9 +66,9 @@ const stringifyVector = function (vector, lv) {
       row = [];
   vectorMapper.iterate(vector, item => {
     row.push(item), w += lange.lange(item);
-    if (w > wa) rows.push(row.join(', ')), row = [], w = 0;
+    if (w > wa) rows.push(row.join(enumChars.COSP)), row = [], w = 0;
   });
-  return rows.length > 1 ? liner.joinLines(rows, enumChars.CO, lv) : vector.join(', ');
+  return rows.length > 1 ? liner.joinLines(rows, enumChars.CO, lv) : vector.join(enumChars.COSP);
 };
 
 function decoNode(node, lv = 0) {
@@ -207,7 +207,7 @@ const delogger = x => {
 const delogNeL = x => {
   var _x2;
 
-  return void console.log((_x2 = x, deco(_x2)), '\n');
+  return void console.log((_x2 = x, deco(_x2)), enumChars.LF);
 };
 
 exports.deca = deca;

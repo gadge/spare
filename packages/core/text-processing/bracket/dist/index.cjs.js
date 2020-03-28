@@ -24,13 +24,12 @@ const SelectBr = mode => {
   return null;
 };
 const Br = (read, mode) => {
-  const br = SelectBr(mode);
   if (!mode) return read;
-  if (!read) return br;
+  if (!read) return SelectBr(mode);
   return x => {
     var _ref, _x;
 
-    return _ref = (_x = x, read(_x)), br(_ref);
+    return _ref = (_x = x, read(_x)), SelectBr(mode)(_ref);
   };
 };
 

@@ -2,18 +2,17 @@ import { lange } from '@spare/lange'
 import { max } from '@aryth/comparer'
 import { LPad } from '@spare/pad-string'
 import { joinLines } from '@spare/liner'
-import { mutate as mutateVector } from '@vect/vector-mapper'
-import { iterate as iterateVector } from '@vect/vector-mapper'
+import { iterate as iterateVector, mutate as mutateVector } from '@vect/vector-mapper'
 import { mutate as mutateColumn } from '@vect/column-mapper'
-import { CO } from '@spare/enum-chars'
+import { CO, COSP, RTSP } from '@spare/enum-chars'
 
 const lpad = LPad({ ansi: true })
 
 export const stringifyEntries = function (entries, lv) {
   const { vo } = this, { pad, wrap } = wrapInfo.call(this, entries)
   if (wrap || lv < vo) mutateColumn(entries, 0, k => lpad(k, pad))
-  mutateVector(entries, ([k, v]) => `${k}: ${v}`)
-  return (wrap || lv < vo) && entries.length > 1 ? joinLines(entries,CO, lv) : entries.join(', ')
+  mutateVector(entries, ([k, v]) => k + RTSP + v)
+  return (wrap || lv < vo) && entries.length > 1 ? joinLines(entries, CO, lv) : entries.join(COSP)
 }
 
 export const wrapInfo = function (entries) {
