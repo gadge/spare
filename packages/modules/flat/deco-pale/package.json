@@ -20,9 +20,15 @@
     "@spare/enum-brackets": "^0.4.2",
     "@spare/enum-chars": "^0.4.2",
     "@spare/quote": "^0.4.2",
+    "@spare/bracket": "^0.4.2",
     "@typen/enum-data-types": "^0.0.4",
     "@typen/enum-object-types": "^0.0.4",
-    "@typen/num-strict": "^0.0.4"
+    "@typen/num-strict": "^0.0.4",
+    "@typen/typ": "^0.0.4",
+    "@typen/num-loose": "^0.0.4",
+    "@vect/entries-mapper": "^0.0.5",
+    "@valjoux/format-date": "^0.0.5",
+    "@valjoux/format-time": "^0.0.5"
   },
   "repository": {
     "type": "git",

@@ -1,15 +1,15 @@
-import { typ } from '@typen/typ'
-import { COSP } from '@spare/enum-chars'
 import { BOO, FUN, NUM, OBJ, STR } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT } from '@typen/enum-object-types'
+import { typ } from '@typen/typ'
+import { COSP } from '@spare/enum-chars'
 import { tenseQuote as quote } from '@spare/quote'
-import { decoKey } from './decoKey'
 import { isNumeric } from '@typen/num-loose'
 import { mutate } from '@vect/entries-mapper'
 import { brace, bracket } from '@spare/bracket'
 import { formatDate } from '@valjoux/format-date'
 import { formatTime } from '@valjoux/format-time'
 import { pairEnt } from '@spare/deco-util'
+import { decoKey } from './decoKey'
 import { DEFN } from '../resources/DEFN'
 
 const TextParsers = {

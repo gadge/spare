@@ -1,15 +1,17 @@
-import { COSP } from '@spare/enum-chars'
 import { BOO, FUN, NUM, OBJ, STR } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT } from '@typen/enum-object-types'
-import { tenseQuote as quote } from '@spare/quote'
-import { decoKey } from './decoKey'
-import { DEFN } from '../resources/DEFN'
 import { typ } from '@typen/typ'
+import { COSP } from '@spare/enum-chars'
+import { pairEnt } from '@spare/deco-util'
+import { tenseQuote as quote } from '@spare/quote'
 import { brace, bracket } from '@spare/bracket'
 import { mutate } from '@vect/entries-mapper'
-import { pairEnt } from '@spare/deco-util'
 import { formatDate } from '@valjoux/format-date'
 import { formatTime } from '@valjoux/format-time'
+import { decoKey } from './decoKey'
+import { DEFN } from '../resources/DEFN'
+
+
 
 // for esm js, number/strings are treated by their type
 export function decoValue (node) {

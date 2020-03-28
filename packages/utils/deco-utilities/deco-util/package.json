@@ -15,15 +15,7 @@
     "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@spare/deco-date": "^0.4.2",
-    "@spare/deco-object": "^0.4.2",
-    "@spare/deco-vector": "^0.4.2",
-    "@spare/enum-brackets": "^0.4.2",
-    "@spare/enum-chars": "^0.4.2",
-    "@spare/quote": "^0.4.2",
-    "@typen/enum-data-types": "^0.0.4",
-    "@typen/enum-object-types": "^0.0.4",
-    "@typen/num-strict": "^0.0.4"
+    "@spare/enum-chars": "^0.4.2"
   },
   "repository": {
     "type": "git",
