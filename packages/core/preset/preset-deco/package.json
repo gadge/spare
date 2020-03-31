@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-deco",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Preset for deco",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@palett/presets": "^0.1.1",
-    "@spare/deco-flat": "^0.4.5",
-    "@spare/enum-brackets": "^0.4.5",
-    "@spare/enum-chars": "^0.4.5",
+    "@spare/deco-flat": "^0.4.6",
+    "@spare/enum-brackets": "^0.4.6",
+    "@spare/enum-chars": "^0.4.6",
     "@vect/enum-matrix-directions": "^0.2.0"
   },
   "repository": {
