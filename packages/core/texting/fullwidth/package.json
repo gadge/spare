@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
+    "strip-ansi": "^6.0.0",
     "@spare/lange": "^0.4.6",
-    "@spare/phrasing": "^0.4.6",
-    "@spare/util": "^0.4.6",
-    "strip-ansi": "^6.0.0"
+    "@spare/enum-chars": "^0.4.6",
+    "@spare/enum-full-angle-chars": "^0.4.6"
   },
   "repository": {
     "type": "git",

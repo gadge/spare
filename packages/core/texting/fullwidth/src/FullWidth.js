@@ -1,4 +1,4 @@
-import stripAnsi from 'strip-ansi'
+import stripAnsi   from 'strip-ansi'
 import { hasAnsi } from '@spare/lange'
 import { halfToFull } from './halfToFull'
 

@@ -1,5 +1,5 @@
-import { FWLEAP } from './enums/constants'
 import { SP } from '@spare/enum-full-angle-chars'
+import { FWLEAP } from './enums/constants'
 
 /**
  * Half-angle string -> Full-angle string
