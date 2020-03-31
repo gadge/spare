@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@spare/lange": "^0.4.6",
+    "@spare/fullwidth": "^0.4.6",
     "@typen/num-strict": "^0.0.4"
   },
   "repository": {

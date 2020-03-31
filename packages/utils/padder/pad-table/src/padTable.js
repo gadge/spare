@@ -5,7 +5,7 @@ import { mapper } from '@vect/vector-mapper'
 import { Duozipper as MatDuoZip, Trizipper as MatTriZip } from '@vect/matrix-zipper'
 import { Duozipper as VecDuoZip, Trizipper as VecTriZip } from '@vect/vector-zipper'
 import { padTableFullAngle } from './padTableFullAngle'
-
+import { DA } from '@spare/enum-chars'
 // /**
 //  *
 //  *
@@ -30,7 +30,7 @@ export const padTable = (
     head: headDye
       ? VecTriZip((x, d, p) => padder(x, p) |> d)(head, headDye, pads)
       : VecDuoZip((x, p) => padder(x, p))(head, pads),
-    hr: mapper(pads, p => '-'.repeat(p)),
+    hr: mapper(pads, p => DA.repeat(p)),
     rows: dye
       ? MatTriZip((x, v, d, i, j) => padder(x, pads[j], v) |> d)(text, raw, dye)
       : MatDuoZip((x, v, i, j) => padder(x, pads[j], v))(text, raw)

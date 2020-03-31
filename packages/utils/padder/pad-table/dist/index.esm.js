@@ -1,34 +1,15 @@
 import { Lange } from '@spare/lange';
-import { Pad, RIGHT, CENTRE } from '@spare/pad-string';
+import { PadFW, RIGHT, CENTRE, Pad } from '@spare/pad-string';
 import { maxBy } from '@vect/columns-indicator';
 import { mapper } from '@vect/vector-mapper';
 import { Trizipper as Trizipper$1, Duozipper as Duozipper$1 } from '@vect/matrix-zipper';
 import { Trizipper as Trizipper$2, Duozipper as Duozipper$2 } from '@vect/vector-zipper';
-import { DASH, SP } from '@spare/enum-full-angle-chars';
-import { toFullAngleWoAnsi, toFullAngle, hasChn } from '@spare/string';
+import { DASH, SP as SP$1 } from '@spare/enum-full-angle-chars';
+import { hasChn } from '@spare/string';
 import { Max } from '@vect/vector-indicator';
 import { transpose } from '@vect/matrix-transpose';
 import { Trizipper, Duozipper } from '@vect/vector';
-
-const LocalPad = ({
-  dock,
-  ansi,
-  fill,
-  localFill
-}) => {
-  const toFA = ansi ? toFullAngleWoAnsi : toFullAngle;
-  const padCn = Pad({
-    dock,
-    ansi,
-    fill: localFill
-  }),
-        padEn = Pad({
-    dock,
-    ansi,
-    fill
-  });
-  return (x, pd, cn, v) => cn ? padCn(toFA(x), pd, v) : padEn(x, pd, v);
-};
+import { DA, SP } from '@spare/enum-chars';
 
 /**
  *
@@ -37,10 +18,10 @@ const LocalPad = ({
  * @param {*[][]} [raw]
  * @param {function[][]} [dye]
  * @param {boolean=false} [ansi]
- * @param dash
- * @param localDash
+ * @param {string} [dash]
+ * @param {string} [fwdash]
  * @param {string} [fill]
- * @param {string} [localFill]
+ * @param {string} [fwfill]
  * @return {{head: string[], rows: string[][], hr: string[]}}
  */
 
@@ -48,27 +29,27 @@ const padTableFullAngle = (text, head, {
   raw,
   dye,
   ansi = false,
-  dash = '-',
-  localDash = DASH,
-  fill = ' ',
-  localFill = SP
+  dash = DA,
+  fwdash = DASH,
+  fill = SP,
+  fwfill = SP$1
 } = {}) => {
   const columns = transpose([head].concat(text));
   const [pads, chns] = [mapper(columns, Max(Lange(ansi))), mapper(columns, col => col.some(hasChn))];
-  const [padR, padN] = [LocalPad({
+  const [padR, padN] = [PadFW({
     dock: RIGHT,
     ansi,
     fill,
-    localFill
-  }), LocalPad({
+    fwfill
+  }), PadFW({
     dock: CENTRE,
     ansi,
     fill,
-    localFill
+    fwfill
   })];
   return {
     head: Trizipper(padR)(head, pads, chns),
-    hr: Duozipper((pad, cn) => (cn ? localDash : dash).repeat(pad))(pads, chns),
+    hr: Duozipper((pad, cn) => (cn ? fwdash : dash).repeat(pad))(pads, chns),
     rows: dye ? Trizipper$1((x, v, d, i, j) => {
       var _padN;
 
@@ -111,7 +92,7 @@ const padTable = (text, head, {
 
       return _padder = padder(x, p), d(_padder);
     })(head, headDye, pads) : Duozipper$2((x, p) => padder(x, p))(head, pads),
-    hr: mapper(pads, p => '-'.repeat(p)),
+    hr: mapper(pads, p => DA.repeat(p)),
     rows: dye ? Trizipper$1((x, v, d, i, j) => {
       var _padder2;
 

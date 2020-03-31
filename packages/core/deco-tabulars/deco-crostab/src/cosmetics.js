@@ -7,7 +7,7 @@ import { fluoMatrix } from '@palett/fluo-matrix'
 import { zipper } from '@vect/vector-zipper'
 import { size } from '@vect/matrix'
 import { liner } from '@spare/liner'
-import { padSide } from '../utils/padSide'
+import { padKeyedColumn } from '@spare/pad-keyed-column'
 import { HCONN, VLINE } from '../resources/conns'
 
 export const cosmetics = function (crostab) {
@@ -30,7 +30,7 @@ export const cosmetics = function (crostab) {
     labelPreset && fluoVector(b.raw, { preset: labelPreset, stringPreset: labelPreset, colorant: true }),
     labelPreset && fluoVector(s.raw, { preset: labelPreset, stringPreset: labelPreset, colorant: true }),
   ]
-  let { title, hr: br, side } = padSide(s.text, name, { dye: dyeS, fullAngle })
+  let { title, hr: br, side } = padKeyedColumn(s.text, name, { dye: dyeS, fullAngle })
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
   const lines = [
     title + VLINE + head.join(VLINE),

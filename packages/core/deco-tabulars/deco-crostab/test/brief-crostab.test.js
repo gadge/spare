@@ -12,12 +12,13 @@ const mag = new Mag(0)
 
 const crostab = CrostabCollection |> flopValue
 crostab |> delogger
-
+crostab.side[0] = '二零一八'
 crostab |> Deco({
   direct: POINTWISE,
   labelPreset: OCEAN,
   read: x => isNumeric(x) ? mag.format(+x) : NaN,
-  top: 4, bottom: 3, left: 3, right: 2
+  top: 4, bottom: 3, left: 3, right: 2,
+  fullAngle: false
 }) |> logger
 
 

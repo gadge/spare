@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var lange = require('@spare/lange');
 var numStrict = require('@typen/num-strict');
+var fullwidth = require('@spare/fullwidth');
 
 const fixpad = (tx, pd) => lange.hasAnsi(tx) ? tx.length + pd - lange.lange(tx) : pd;
 const lpad = String.prototype.padStart;
@@ -32,6 +33,28 @@ const Pad = ({
   return ansi ? (tx, pd) => padder.call(tx, fixpad(tx, pd), fill) : (tx, pd) => padder.call(tx, pd, fill);
 };
 
+const PadFW = ({
+  dock,
+  ansi,
+  fill,
+  fwfill
+}) => {
+  const padHW = Pad({
+    dock,
+    ansi,
+    fill
+  }),
+        padFW = Pad({
+    dock,
+    ansi,
+    fill: fwfill
+  }),
+        toFW = fullwidth.FullWidth({
+    ansi
+  });
+  return (x, pd, fw, v) => fw ? padFW(toFW(x), pd, v) : padHW(x, pd, v);
+};
+
 const LEFT = -1;
 const RIGHT = 1;
 const CENTRE = 0;
@@ -40,5 +63,6 @@ exports.CENTRE = CENTRE;
 exports.LEFT = LEFT;
 exports.LPad = LPad;
 exports.Pad = Pad;
+exports.PadFW = PadFW;
 exports.RIGHT = RIGHT;
 exports.RPad = RPad;

@@ -1,5 +1,6 @@
 import { hasAnsi, lange } from '@spare/lange';
 import { isNumeric } from '@typen/num-strict';
+import { FullWidth } from '@spare/fullwidth';
 
 const fixpad = (tx, pd) => hasAnsi(tx) ? tx.length + pd - lange(tx) : pd;
 const lpad = String.prototype.padStart;
@@ -28,8 +29,30 @@ const Pad = ({
   return ansi ? (tx, pd) => padder.call(tx, fixpad(tx, pd), fill) : (tx, pd) => padder.call(tx, pd, fill);
 };
 
+const PadFW = ({
+  dock,
+  ansi,
+  fill,
+  fwfill
+}) => {
+  const padHW = Pad({
+    dock,
+    ansi,
+    fill
+  }),
+        padFW = Pad({
+    dock,
+    ansi,
+    fill: fwfill
+  }),
+        toFW = FullWidth({
+    ansi
+  });
+  return (x, pd, fw, v) => fw ? padFW(toFW(x), pd, v) : padHW(x, pd, v);
+};
+
 const LEFT = -1;
 const RIGHT = 1;
 const CENTRE = 0;
 
-export { CENTRE, LEFT, LPad, Pad, RIGHT, RPad };
+export { CENTRE, LEFT, LPad, Pad, PadFW, RIGHT, RPad };

@@ -13,26 +13,7 @@ var string = require('@spare/string');
 var vectorIndicator = require('@vect/vector-indicator');
 var matrixTranspose = require('@vect/matrix-transpose');
 var vector = require('@vect/vector');
-
-const LocalPad = ({
-  dock,
-  ansi,
-  fill,
-  localFill
-}) => {
-  const toFA = ansi ? string.toFullAngleWoAnsi : string.toFullAngle;
-  const padCn = padString.Pad({
-    dock,
-    ansi,
-    fill: localFill
-  }),
-        padEn = padString.Pad({
-    dock,
-    ansi,
-    fill
-  });
-  return (x, pd, cn, v) => cn ? padCn(toFA(x), pd, v) : padEn(x, pd, v);
-};
+var enumChars = require('@spare/enum-chars');
 
 /**
  *
@@ -41,10 +22,10 @@ const LocalPad = ({
  * @param {*[][]} [raw]
  * @param {function[][]} [dye]
  * @param {boolean=false} [ansi]
- * @param dash
- * @param localDash
+ * @param {string} [dash]
+ * @param {string} [fwdash]
  * @param {string} [fill]
- * @param {string} [localFill]
+ * @param {string} [fwfill]
  * @return {{head: string[], rows: string[][], hr: string[]}}
  */
 
@@ -52,27 +33,27 @@ const padTableFullAngle = (text, head, {
   raw,
   dye,
   ansi = false,
-  dash = '-',
-  localDash = enumFullAngleChars.DASH,
-  fill = ' ',
-  localFill = enumFullAngleChars.SP
+  dash = enumChars.DA,
+  fwdash = enumFullAngleChars.DASH,
+  fill = enumChars.SP,
+  fwfill = enumFullAngleChars.SP
 } = {}) => {
   const columns = matrixTranspose.transpose([head].concat(text));
   const [pads, chns] = [vectorMapper.mapper(columns, vectorIndicator.Max(lange.Lange(ansi))), vectorMapper.mapper(columns, col => col.some(string.hasChn))];
-  const [padR, padN] = [LocalPad({
+  const [padR, padN] = [padString.PadFW({
     dock: padString.RIGHT,
     ansi,
     fill,
-    localFill
-  }), LocalPad({
+    fwfill
+  }), padString.PadFW({
     dock: padString.CENTRE,
     ansi,
     fill,
-    localFill
+    fwfill
   })];
   return {
     head: vector.Trizipper(padR)(head, pads, chns),
-    hr: vector.Duozipper((pad, cn) => (cn ? localDash : dash).repeat(pad))(pads, chns),
+    hr: vector.Duozipper((pad, cn) => (cn ? fwdash : dash).repeat(pad))(pads, chns),
     rows: dye ? matrixZipper.Trizipper((x, v, d, i, j) => {
       var _padN;
 
@@ -115,7 +96,7 @@ const padTable = (text, head, {
 
       return _padder = padder(x, p), d(_padder);
     })(head, headDye, pads) : vectorZipper.Duozipper((x, p) => padder(x, p))(head, pads),
-    hr: vectorMapper.mapper(pads, p => '-'.repeat(p)),
+    hr: vectorMapper.mapper(pads, p => enumChars.DA.repeat(p)),
     rows: dye ? matrixZipper.Trizipper((x, v, d, i, j) => {
       var _padder2;
 
