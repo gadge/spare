@@ -1,7 +1,7 @@
 {
-  "name": "@spare/deco-func",
+  "name": "@spare/fullwidth",
   "version": "0.4.5",
-  "description": "Colored stringify date",
+  "description": "Convert between half-width and full-width",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -15,29 +15,25 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@glossa/translator": "^0.1.2",
-    "@palett/cards": "^0.1.1",
-    "@palett/convert": "^0.1.1",
-    "@palett/dye": "^0.1.1",
-    "@spare/bracket": "^0.4.5",
-    "@spare/enum-chars": "^0.4.5",
-    "@spare/lange": "^0.4.5"
+    "@spare/lange": "^0.4.5",
+    "@spare/phrasing": "^0.4.5",
+    "@spare/util": "^0.4.5",
+    "strip-ansi": "^6.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hoyeungw/spare.git"
   },
   "keywords": [
-    "date",
-    "time",
-    "stringify",
-    "ansi"
+    "test",
+    "console",
+    "debug",
+    "print"
   ],
   "author": "Hoyeung Wong",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hoyeungw/spare"
   },
-  "homepage": "https://github.com/hoyeungw/spare#readme",
-  "gitHead": "0508b64fa6a17ead21e7107b50aedd5af3febdd6"
+  "homepage": "https://github.com/hoyeungw/spare#readme"
 }

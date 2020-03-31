@@ -10,24 +10,24 @@ import { FullAngleReg } from './enums/FullAngle'
 
 const hasChn = str => str.search(FullAngleReg) !== -1
 
+const SP_CODE = 12288
+const CH_GAP = 65248
 /**
  * Half-angle string -> Full-angle string
  * 半角转化为全角
  * a.全角空格为12288，半角空格为32
  * b.其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
- * @param {string} tx
+ * @param {string} text
  * @returns {string}
  * @constructor
  */
-const toFullAngle = (tx) => {
-  let t = '', co
-  for (let c of tx) {
-    co = c.charCodeAt(0)
-    t = co === 32
-      ? t + String.fromCharCode(12288)
-      : co < 127
-        ? t + String.fromCharCode(co + 65248)
-        : t + c
+const toFullAngle = (text) => {
+  let i = 0, t = '', n
+  const l = text.length
+  while (i < l && (n = text.charCodeAt(i++))) {
+    if (n === 32) { t += String.fromCharCode(SP_CODE) }
+    else if (n < 127) { t += String.fromCharCode(n + CH_GAP) }
+    else { t += String.fromCharCode(n) }
   }
   return t
 }
