@@ -4,8 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const sortKeysByLength = dict => dict.sort(([a], [b]) => String(b).length - String(a).length);
 
-const makeReplaceable = dict => {
-  if (undefined === null || undefined === void 0 ? void 0 : undefined.sort) sortKeysByLength(dict);
+const makeReplaceable = function (dict) {
+  if (this === null || this === void 0 ? void 0 : this.sort) sortKeysByLength(dict);
   Object.defineProperty(dict, Symbol.replace, {
     value(word, after) {
       for (let [curr, proj] of this) word = word.replace(curr, proj);
