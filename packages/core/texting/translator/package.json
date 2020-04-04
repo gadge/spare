@@ -1,0 +1,31 @@
+{
+  "name": "@spare/translator",
+  "version": "0.4.7",
+  "description": "Translator, bulk replace string at a time",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeungw/glossa.git"
+  },
+  "keywords": [
+    "replace",
+    "Symbol.replace",
+    "translate",
+    "translator",
+    "translation"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoyeungw/glossa"
+  },
+  "homepage": "https://github.com/hoyeungw/glossa#readme",
+  "gitHead": "32d6ac944e6d229e152c73fbd1209f907c435379"
+}
