@@ -1,6 +1,6 @@
 import { sortKeysByLength } from '../utils/sortKeysByLength'
 
-export const makeReplaceable = dict => {
+export const makeReplaceable = function (dict) {
   if (this?.sort) sortKeysByLength(dict)
   Object.defineProperty(
     dict,
