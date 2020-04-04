@@ -22,7 +22,7 @@
     "@spare/lange": "^0.4.7",
     "@spare/pad-string": "^0.4.7",
     "@spare/string": "^0.4.7",
-    "@vect/vector-indicator": "^0.2.0",
+    "@vect/vector-indicator": "^0.2.1",
     "@vect/vector-mapper": "^0.2.0",
     "@vect/vector-zipper": "^0.2.0"
   },

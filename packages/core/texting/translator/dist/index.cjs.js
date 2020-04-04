@@ -2,15 +2,26 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const makeReplaceable = dict => Object.defineProperty(dict, Symbol.replace, {
-  value(word, after) {
-    for (let [curr, proj] of this) word = word.replace(curr, proj);
+const sortKeysByLength = dict => dict.sort(([a], [b]) => String(b).length - String(a).length);
 
-    return after ? after(word) : word;
-  },
+const makeReplaceable = dict => {
+  if (undefined === null || undefined === void 0 ? void 0 : undefined.sort) sortKeysByLength(dict);
+  Object.defineProperty(dict, Symbol.replace, {
+    value(word, after) {
+      for (let [curr, proj] of this) word = word.replace(curr, proj);
 
-  configurable: true,
-  enumerable: false
+      return after ? after(word) : word;
+    },
+
+    configurable: true,
+    enumerable: false
+  });
+  return dict;
+};
+const MakeReplaceable = ({
+  sort = true
+} = {}) => makeReplaceable.bind({
+  sort
 });
 
 const translate = (word, dict) => {
@@ -18,8 +29,6 @@ const translate = (word, dict) => {
 
   return word.trim();
 };
-
-const sortKeysByLength = dict => dict.sort(([a], [b]) => String(b).length - String(a).length);
 
 class Translator {
   constructor(dictionary) {
@@ -49,6 +58,7 @@ class Translator {
 
 }
 
+exports.MakeReplaceable = MakeReplaceable;
 exports.Translator = Translator;
 exports.makeReplaceable = makeReplaceable;
 exports.translate = translate;

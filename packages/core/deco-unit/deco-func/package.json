@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@glossa/translator": "^0.1.2",
+    "@glossa/translator": "^0.1.3",
     "@palett/cards": "^0.1.1",
     "@palett/convert": "^0.1.1",
     "@palett/dye": "^0.1.1",
