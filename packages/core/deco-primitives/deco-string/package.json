@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "description": "Color a string",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,8 +17,8 @@
   "dependencies": {
     "@palett/fluo-vector": "^0.1.1",
     "@palett/presets": "^0.1.1",
-    "@spare/enum-chars": "^0.4.10",
-    "@spare/phrasing": "^0.4.10",
+    "@spare/enum-chars": "^0.4.11",
+    "@spare/phrasing": "^0.4.11",
     "@vect/vector-zipper": "^0.2.0"
   },
   "repository": {
