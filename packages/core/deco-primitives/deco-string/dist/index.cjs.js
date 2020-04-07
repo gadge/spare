@@ -2,101 +2,68 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
-var vettro = require('@spare/vettro');
-var decoEntries = require('@spare/deco-entries');
 var fluoVector = require('@palett/fluo-vector');
-var liner = require('@spare/liner');
-var quote = require('@spare/quote');
-var presetDeco = require('@spare/preset-deco');
+var vectorZipper = require('@vect/vector-zipper');
+var presets = require('@palett/presets');
+var phrasing = require('@spare/phrasing');
+var enumChars = require('@spare/enum-chars');
 
-function cosmetics(vec) {
-  if (this === null || this === void 0 ? void 0 : this.indexed) return decoEntries.cosmetics.call(this, Object.entries(vec));
-  if (!vec) return String(vec);
-  const {
-    head,
-    tail,
+const decoCamel = (phrase, {
+  delim = '',
+  preset = presets.JUNGLE,
+  stringPreset = presets.SUBTLE
+}) => {
+  var _phrase;
+
+  const words = (_phrase = phrase, phrasing.camelToVector(_phrase));
+  const dyes = fluoVector.fluoVector(words, {
     preset,
     stringPreset,
-    read,
-    quote: quote$1
-  } = this;
-  let {
-    raw,
-    text
-  } = vettro.vettro(vec, {
-    head,
-    tail,
-    read: quote.Qt(read, quote$1),
-    hr: enumChars.ELLIP
+    colorant: true
   });
-  if (preset) fluoVector.fluoVector(text, {
-    values: raw,
+  return vectorZipper.zipper(words, dyes, (word, dye) => {
+    var _word;
+
+    return _word = word, dye(_word);
+  }).join(delim);
+};
+const decoSnake = (phrase, {
+  delim = enumChars.DA,
+  preset = presets.JUNGLE,
+  stringPreset = presets.SUBTLE
+}) => {
+  var _phrase2;
+
+  const words = (_phrase2 = phrase, phrasing.snakeToVector(_phrase2));
+  const dyes = fluoVector.fluoVector(words, {
     preset,
     stringPreset,
-    mutate: true
+    colorant: true
   });
-  return liner.liner(text, this);
-}
+  return vectorZipper.zipper(words, dyes, (word, dye) => {
+    var _word2;
 
-/**
- * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
- */
+    return _word2 = word, dye(_word2);
+  }).join(delim);
+};
+const decoPhrase = (phrase, {
+  delim = enumChars.SP,
+  preset = presets.JUNGLE,
+  stringPreset = presets.SUBTLE
+}) => {
+  const words = phrase.split(delim);
+  const dyes = fluoVector.fluoVector(words, {
+    preset,
+    stringPreset,
+    colorant: true
+  });
+  return vectorZipper.zipper(words, dyes, (word, dye) => {
+    var _word3;
 
-/***
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=') ']
- * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK] - BRK = 1
- *
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.read]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level=0]
- *
- * @returns {Function}
- */
+    return _word3 = word, dye(_word3);
+  }).join(delim);
+}; // export const deco
 
-const Deco = (p = {}) => cosmetics.bind(presetDeco.presetVector(p));
-/***
- *
- * @param {*[]} vector
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=') ']
- * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK] - BRK = 1
- *
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.read]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level=0]
- *
- * @returns {string}
- */
-
-const deco = (vector, p = {}) => cosmetics.call(presetDeco.presetVector(p), vector);
-
-exports.Deco = Deco;
-exports.cosmetics = cosmetics;
-exports.deco = deco;
+exports.decoCamel = decoCamel;
+exports.decoPhrase = decoPhrase;
+exports.decoSnake = decoSnake;

@@ -10,7 +10,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
  * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
- * @param {boolean} [p.bracket=NONE] - currently not functional, keeps for future fix
+ * @param {boolean} [p.bracket] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read=decoFlat]
  * @param {Function} [p.headRead]

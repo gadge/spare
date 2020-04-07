@@ -81,7 +81,7 @@ const cosmetics = function (matrix$1) {
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.read]
  *
@@ -109,7 +109,7 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetMatrix(p));
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.read]
  *

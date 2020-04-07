@@ -12,7 +12,7 @@ import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
  * @param {string} [p.delim='\n']
  * @param {number} [p.keyQuote=NONE]
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
@@ -51,7 +51,7 @@ const presetEntries = p => {
  * @param {string} [p.delim=',\n']
  * @param {number} [p.keyQuote=NONE]
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRC]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
@@ -89,7 +89,7 @@ const presetObject = p => {
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK] - BRK = 1
+ * @param {boolean} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read=decoFlat]
@@ -127,7 +127,7 @@ const presetVector = p => {
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.read=decoFlat]
  *
@@ -208,7 +208,7 @@ const presetCrostab = p => {
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
  * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
- * @param {boolean} [p.bracket=NONE] - currently not functional, keeps for future fix
+ * @param {boolean} [p.bracket] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read=decoFlat]
  * @param {Function} [p.headRead]
@@ -250,7 +250,7 @@ const presetTable = p => {
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
  * @param {boolean} [p.indexed=true]

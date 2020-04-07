@@ -76,7 +76,7 @@ const cosmetics = function (entries) {
  * @param {string} [p.delim='\n']
  * @param {number} [p.keyQuote=NONE]
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
@@ -104,7 +104,7 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetEntries(p));
  * @param {string} [p.delim='\n']
  * @param {number} [p.keyQuote=NONE]
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]

@@ -84,7 +84,7 @@ const cosmetics = function (table) {
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
  * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
- * @param {boolean} [p.bracket=NONE] - currently not functional, keeps for future fix
+ * @param {boolean} [p.bracket] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
@@ -115,7 +115,7 @@ const Deco = (p = {}) => cosmetics.bind(presetTable(p));
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
  * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
- * @param {boolean} [p.bracket=NONE] - currently not functional, keeps for future fix
+ * @param {boolean} [p.bracket] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]

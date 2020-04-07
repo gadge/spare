@@ -11,7 +11,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  * @param {number} [p.quote=NONE]
- * @param {number} [p.bracket=BRK]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
  * @param {boolean} [p.indexed=true]
