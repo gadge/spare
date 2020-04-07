@@ -7,6 +7,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var stripAnsi = _interopDefault(require('strip-ansi'));
 var lange = require('@spare/lange');
 var util = require('@spare/util');
+var enumChars = require('@spare/enum-chars');
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -112,9 +113,6 @@ function narrowExclude(tx, lb, rb) {
   return li && ri ? tx.slice(li + lb.length, ri) : tx;
 }
 
-const TB = '  ';
-const RN = '\r\n';
-
 const wL = (tx = '') => {
   console.log(tx);
 };
@@ -125,7 +123,7 @@ const tag = (label, item) => {
 
   if (text.includes('\n')) {
     const t = ' '.repeat(i);
-    text = (text.endsWith('}') || text.endsWith(']')) && !text.endsWith(']]') ? util.afterNaTab(text.split(RN).map(x => t + x).join(RN)) : ['', ...text.split(RN).map(x => t + TB + x), t].join(RN);
+    text = (text.endsWith('}') || text.endsWith(']')) && !text.endsWith(']]') ? util.afterNaTab(text.split(enumChars.RN).map(x => t + x).join(enumChars.RN)) : ['', ...text.split(enumChars.RN).map(x => t + enumChars.TB + x), t].join(enumChars.RN);
   }
 
   return `${key} (${text})`;

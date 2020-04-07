@@ -18,6 +18,7 @@
     "@spare/lange": "^0.4.10",
     "@spare/phrasing": "^0.4.10",
     "@spare/util": "^0.4.10",
+    "@spare/enum-chars": "^0.4.10",
     "strip-ansi": "^6.0.0"
   },
   "repository": {

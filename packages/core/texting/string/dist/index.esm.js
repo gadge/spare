@@ -1,6 +1,7 @@
 import stripAnsi from 'strip-ansi';
 import { hasAnsi } from '@spare/lange';
 import { isTab, deNaTab, endsBracs, afterNaTab } from '@spare/util';
+import { RN, TB } from '@spare/enum-chars';
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -105,9 +106,6 @@ function narrowExclude(tx, lb, rb) {
   const [li, ri] = [tx.indexOf(lb), tx.lastIndexOf(rb)];
   return li && ri ? tx.slice(li + lb.length, ri) : tx;
 }
-
-const TB = '  ';
-const RN = '\r\n';
 
 const wL = (tx = '') => {
   console.log(tx);
