@@ -1,6 +1,6 @@
 {
   "name": "@spare/pad-string",
-  "version": "0.4.8",
+  "version": "0.4.10",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/pad-string.test.js"
   },
   "dependencies": {
-    "@spare/fullwidth": "^0.4.8",
-    "@spare/lange": "^0.4.8",
+    "@spare/fullwidth": "^0.4.10",
+    "@spare/lange": "^0.4.10",
     "@typen/num-strict": "^0.0.7"
   },
   "repository": {
