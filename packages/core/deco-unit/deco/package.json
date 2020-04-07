@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.1.0",
-    "@palett/fluo-entries": "^0.1.1",
-    "@palett/fluo-vector": "^0.1.1",
+    "@palett/fluo-entries": "^0.1.2",
+    "@palett/fluo-vector": "^0.1.2",
     "@spare/bracket": "^0.4.11",
     "@spare/deco-colors": "^0.4.11",
     "@spare/deco-date": "^0.4.11",
