@@ -1,5 +1,4 @@
 import { deNaTab, isTab } from '@spare/util'
-import { hasAnsi, lange } from '@spare/lange'
 
 const indexNonTab = tx => {
   let i = 0

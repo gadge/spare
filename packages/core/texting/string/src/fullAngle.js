@@ -8,6 +8,12 @@
  */
 import { FullAngleReg } from './enums/FullAngle'
 
+/**
+ *
+ * @param str
+ * @return {boolean}
+ * @deprecated
+ */
 const hasChn = str => str.search(FullAngleReg) !== -1
 
 const SP_CODE = 12288
@@ -19,7 +25,7 @@ const CH_GAP = 65248
  * b.其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
  * @param {string} text
  * @returns {string}
- * @constructor
+ * @deprecated
  */
 const toFullAngle = (text) => {
   let i = 0, t = '', n
@@ -37,7 +43,7 @@ const toFullAngle = (text) => {
  * 全角转换为半角
  * @param {string} tx
  * @returns {string}
- * @constructor
+ * @deprecated
  */
 const toHalfAngle = (tx) => {
   let t = '', co

@@ -30,7 +30,7 @@ export { cosmetics }
  * @param {boolean} [p.ansi]
  * @param {number} [p.level]
  *
- * @returns {string}
+ * @returns {Function}
  */
 export const Deco = (p = {}) => cosmetics.bind(presetObject(p))
 
