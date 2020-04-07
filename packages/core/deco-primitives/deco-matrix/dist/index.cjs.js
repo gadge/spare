@@ -97,7 +97,7 @@ const cosmetics = function (matrix$1) {
  * @param {boolean} [p.ansi]
  * @param {number} [p.level=0]
  *
- * @returns {string}
+ * @returns {Function}
  */
 
 const Deco = (p = {}) => cosmetics.bind(presetDeco.presetMatrix(p));

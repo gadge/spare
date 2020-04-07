@@ -1,5 +1,5 @@
 import { BRACKET, NONE } from '@spare/enum-brackets'
-import { COLF, COSP, RT, RTSP, SP } from '@spare/enum-chars'
+import { COLF, COSP, RTSP } from '@spare/enum-chars'
 import { decoKey, decoPale } from '@spare/deco-pale'
 
 /***

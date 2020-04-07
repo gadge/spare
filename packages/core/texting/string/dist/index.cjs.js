@@ -18,6 +18,12 @@ const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
  * @param {string} str
  * @returns {boolean}
  */
+/**
+ *
+ * @param str
+ * @return {boolean}
+ * @deprecated
+ */
 
 const hasChn = str => str.search(FullAngleReg) !== -1;
 
@@ -30,7 +36,7 @@ const CH_GAP = 65248;
  * b.其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
  * @param {string} text
  * @returns {string}
- * @constructor
+ * @deprecated
  */
 
 const toFullAngle = text => {
@@ -56,7 +62,7 @@ const toFullAngle = text => {
  * 全角转换为半角
  * @param {string} tx
  * @returns {string}
- * @constructor
+ * @deprecated
  */
 
 
@@ -72,14 +78,17 @@ const toHalfAngle = tx => {
   return t;
 };
 
+/**
+ *
+ * @param tx
+ * @return {string}
+ * @deprecated
+ */
+
 const toFullAngleWoAnsi = function (tx) {
   if (lange.hasAnsi(tx)) tx = stripAnsi(tx);
   return toFullAngle(tx);
 };
-
-const padStartAnsi = (tx, len, fill) => lange.hasAnsi(tx) ? tx.padStart(tx.length + len - lange.lange(tx), fill) : tx.padStart(len, fill);
-
-const padEndAnsi = (tx, len, fill) => lange.hasAnsi(tx) ? tx.padEnd(tx.length + len - lange.lange(tx), fill) : tx.padEnd(len, fill);
 
 const indexNonTab = tx => {
   let i = 0;
@@ -103,6 +112,9 @@ function narrowExclude(tx, lb, rb) {
   return li && ri ? tx.slice(li + lb.length, ri) : tx;
 }
 
+const TB = '  ';
+const RN = '\r\n';
+
 const wL = (tx = '') => {
   console.log(tx);
 };
@@ -113,7 +125,7 @@ const tag = (label, item) => {
 
   if (text.includes('\n')) {
     const t = ' '.repeat(i);
-    text = (text.endsWith('}') || text.endsWith(']')) && !text.endsWith(']]') ? util.afterNaTab(text.split(util.RN).map(x => t + x).join(util.RN)) : ['', ...text.split(util.RN).map(x => t + util.TB + x), t].join(util.RN);
+    text = (text.endsWith('}') || text.endsWith(']')) && !text.endsWith(']]') ? util.afterNaTab(text.split(RN).map(x => t + x).join(RN)) : ['', ...text.split(RN).map(x => t + TB + x), t].join(RN);
   }
 
   return `${key} (${text})`;
@@ -124,8 +136,6 @@ exports.hasChn = hasChn;
 exports.indexNonTab = indexNonTab;
 exports.narrow = narrow;
 exports.narrowExclude = narrowExclude;
-exports.padEndAnsi = padEndAnsi;
-exports.padStartAnsi = padStartAnsi;
 exports.tag = tag;
 exports.toFullAngle = toFullAngle;
 exports.toFullAngleWoAnsi = toFullAngleWoAnsi;

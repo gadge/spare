@@ -43,7 +43,7 @@ const cosmetics = function (o) {
  * @param {boolean} [p.ansi]
  * @param {number} [p.level]
  *
- * @returns {string}
+ * @returns {Function}
  */
 
 const Deco = (p = {}) => cosmetics.bind(presetDeco.presetObject(p));
