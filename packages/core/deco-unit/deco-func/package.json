@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@glossa/translator": "^0.1.6",
-    "@palett/cards": "^0.1.2",
-    "@palett/convert": "^0.1.2",
-    "@palett/dye": "^0.1.2",
+    "@palett/cards": "^0.1.3",
+    "@palett/convert": "^0.1.3",
+    "@palett/dye": "^0.1.3",
     "@spare/bracket": "^0.4.12",
     "@spare/enum-chars": "^0.4.12",
     "@spare/lange": "^0.4.12"

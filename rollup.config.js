@@ -1,10 +1,10 @@
-import nodeResolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import babel from 'rollup-plugin-babel'
-import fileInfo from 'rollup-plugin-fileinfo'
-import json from '@rollup/plugin-json'
-import { decoObject } from '@spare/logger'
+import commonjs       from '@rollup/plugin-commonjs'
+import json           from '@rollup/plugin-json'
+import nodeResolve    from '@rollup/plugin-node-resolve'
 import { decoPhrase } from '@spare/deco-string'
+import { decoObject } from '@spare/logger'
+import babel          from 'rollup-plugin-babel'
+import fileInfo       from 'rollup-plugin-fileinfo'
 
 const { name, dependencies, main, module } = require(process.cwd() + '/package.json')
 
