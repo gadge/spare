@@ -12,7 +12,7 @@ const decoCamel = (phrase, {
   delim = '',
   preset = presets.JUNGLE,
   stringPreset = presets.SUBTLE
-}) => {
+} = {}) => {
   var _phrase;
 
   const words = (_phrase = phrase, phrasing.camelToVector(_phrase));
@@ -31,7 +31,7 @@ const decoSnake = (phrase, {
   delim = enumChars.DA,
   preset = presets.JUNGLE,
   stringPreset = presets.SUBTLE
-}) => {
+} = {}) => {
   var _phrase2;
 
   const words = (_phrase2 = phrase, phrasing.snakeToVector(_phrase2));
@@ -50,7 +50,7 @@ const decoPhrase = (phrase, {
   delim = enumChars.SP,
   preset = presets.JUNGLE,
   stringPreset = presets.SUBTLE
-}) => {
+} = {}) => {
   const words = phrase.split(delim);
   const dyes = fluoVector.fluoVector(words, {
     preset,

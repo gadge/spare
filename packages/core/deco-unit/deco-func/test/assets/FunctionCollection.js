@@ -1,5 +1,5 @@
+import { rand }      from '@aryth/rand'
 import { isNumeric } from '@typen/num-loose'
-import { rand } from '@aryth/rand'
 
 const coordinate = function () {
   const { x, y } = this
@@ -8,15 +8,19 @@ const coordinate = function () {
 
 export const FunctionCollection = {
   additiveLambdaDev: x => ++x,
-  additiveLambdaFut: x => { return ++x },
+  additiveLambdaFut: (x, y) => { return x + y },
   additiveFunction: function additive (x) { return ++x },
-  additiveAnonymous: function (x) { return ++x },
-  additiveWithThis: function (x) { return ++this.x},
+  additiveAnonymous (x = function () {}) { return ++x },
+  additiveWithThis: function (x) { return x + this.x},
+  destructObject ({ x, y }) {return x + y},
+  destructArray ([x, y]) {return x + y},
+  destructCombo ({ x = 1, y = 1 } = {}) {return x + y},
   coordinate,
   conditional: function (x) {
     if (x % 2) {
       return 'odd'
-    } else {
+    }
+    else {
       return 'even'
     }
   },

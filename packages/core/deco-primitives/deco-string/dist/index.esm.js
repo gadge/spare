@@ -8,7 +8,7 @@ const decoCamel = (phrase, {
   delim = '',
   preset = JUNGLE,
   stringPreset = SUBTLE
-}) => {
+} = {}) => {
   var _phrase;
 
   const words = (_phrase = phrase, camelToVector(_phrase));
@@ -27,7 +27,7 @@ const decoSnake = (phrase, {
   delim = DA,
   preset = JUNGLE,
   stringPreset = SUBTLE
-}) => {
+} = {}) => {
   var _phrase2;
 
   const words = (_phrase2 = phrase, snakeToVector(_phrase2));
@@ -46,7 +46,7 @@ const decoPhrase = (phrase, {
   delim = SP,
   preset = JUNGLE,
   stringPreset = SUBTLE
-}) => {
+} = {}) => {
   const words = phrase.split(delim);
   const dyes = fluoVector(words, {
     preset,
