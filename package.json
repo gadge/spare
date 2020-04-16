@@ -9,6 +9,7 @@
     "prewatch": "npm run bootstrap",
     "ckv": "yarn outdated --latest",
     "upint": "yarn upgrade-interactive --latest",
+    "pub": "lerna publish --force-publish",
     "build": "lerna exec --parallel -- rollup -c ../../../../rollup.config.js",
     "build-specific": "lerna exec --scope=@spare/deco-pale -- rollup -c ../../../../rollup.config.js",
     "watch": "lerna exec --parallel -- rollup -c ../../../../rollup.config.js -w",
