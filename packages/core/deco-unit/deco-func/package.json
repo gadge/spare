@@ -28,10 +28,12 @@
     "url": "git+https://github.com/hoyeungw/spare.git"
   },
   "keywords": [
-    "date",
-    "time",
+    "deco",
+    "pretty",
     "stringify",
-    "ansi"
+    "function",
+    "parameters",
+    "args"
   ],
   "author": "Hoyeung Wong",
   "license": "MIT",

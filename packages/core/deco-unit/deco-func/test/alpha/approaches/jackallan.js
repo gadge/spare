@@ -1,5 +1,5 @@
-import { delogger }   from '@spare/deco'
-import { comboParam } from '../../assets/comboParam'
+import { delogger }        from '@spare/deco'
+import { comboCollection } from '../../assets/comboParam'
 
 const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg
 const ARGUMENT_NAMES = /([^\s,]+)/g
@@ -11,4 +11,4 @@ function getParamNames (func) {
   return result
 }
 
-getParamNames(comboParam) |> delogger
+getParamNames(comboCollection) |> delogger

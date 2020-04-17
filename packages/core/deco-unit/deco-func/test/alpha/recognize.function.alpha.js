@@ -5,6 +5,7 @@ import { UNDERLINE }           from '@palett/enum-font-effects'
 import { SP }                  from '@spare/enum-chars'
 import { decoSamples, logger } from '@spare/logger'
 import { quote }               from '@spare/quote'
+import { ComplexCollection }   from '../assets/ComboCollection'
 import { FunctionCollection }  from '../assets/FunctionCollection'
 import { argnames }            from './argnames'
 
@@ -16,7 +17,8 @@ import { argnames }            from './argnames'
 export const FUNC_REG = /\((.*?)\)\s+\{/
 export const LAMB_REG = /\(?(.*?)\)?\s+=>/
 const dye = Dye(Cards.indigo.accent_3 |> hexToRgb, UNDERLINE)
-const samples = Object.entries(FunctionCollection).map(([name, func]) => {
+
+const samples = Object.entries(ComplexCollection).map(([name, func]) => {
   let ms
   const fnText = func.toString().replace(/\s+/gs, SP)
   return {

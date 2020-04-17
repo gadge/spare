@@ -1,5 +1,5 @@
-import { delogger }   from '@spare/deco'
-import { comboParam } from '../../assets/comboParam'
+import { says }              from '@palett/says'
+import { ComplexCollection } from '../../assets/ComboCollection'
 
 export const paramNames = (fn) => {
   return fn.toString()
@@ -11,4 +11,7 @@ export const paramNames = (fn) => {
     .split(',').filter(Boolean) // split & filter [""]
 }
 
-paramNames(comboParam) |> delogger
+for (const [name, func] of Object.entries(ComplexCollection)) {
+  paramNames(func) |> says[name]
+}
+

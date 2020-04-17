@@ -6,6 +6,17 @@ import { Blue, LightBlue, Lime, Grey, Brown, BlueGrey, Purple, DeepPurple } from
 import { hexToRgb } from '@palett/convert';
 import { makeReplaceable } from '@glossa/translator';
 
+const DECOFUN_CONFIG = {
+  pr: true,
+  fw: 160,
+  aw: 192
+};
+const DECOFUNC_CONFIG = {
+  pretty: true,
+  flatMark: 160,
+  abbrMark: 192
+};
+
 var _Blue$lighten_, _LightBlue$accent_, _LightBlue$lighten_, _Lime$lighten_, _ref, _function, _Grey$base, _return, _Brown$lighten_;
 const nameDye = Dye((_Blue$lighten_ = Blue.lighten_2, hexToRgb(_Blue$lighten_)));
 const argsDye = Dye((_LightBlue$accent_ = LightBlue.accent_2, hexToRgb(_LightBlue$accent_)));
@@ -75,15 +86,26 @@ const decofun = function (func) {
   return prettify(text, pr);
 };
 
-const DECOFUN_CONFIG = {
-  pr: true,
-  fw: 160,
-  aw: 192
+const FUNC_REG = /\((.*?)\)\s+\{/s;
+const LAMB_REG$1 = /\(?(.*?)\)?\s+=>/s;
+const WORD_REG = /\w+/g;
+
+const words = phrase => {
+  let ms,
+      wd,
+      ve = [];
+
+  while ((ms = WORD_REG.exec(phrase)) && ([wd] = ms)) ve.push(wd);
+
+  return ve;
 };
-const DECOFUNC_CONFIG = {
-  pretty: true,
-  flatMark: 160,
-  abbrMark: 192
+
+const argnames = fn => {
+  const text = fn.toString();
+  let ms, ph;
+  if ((ms = FUNC_REG.exec(text)) && ([, ph] = ms)) return words(ph);
+  if ((ms = LAMB_REG$1.exec(text)) && ([, ph] = ms)) return words(ph);
+  return [];
 };
 
 const parseConfig = p => {
@@ -115,4 +137,4 @@ const decoFunc = (func, p = DECOFUNC_CONFIG) => decofun.call(parseConfig(p), fun
 
 const DecoFunc = (p = DECOFUNC_CONFIG) => decofun.bind(parseConfig(p));
 
-export { DECOFUN_CONFIG, DecoFunc, decoFunc, decofun, funcName };
+export { DECOFUN_CONFIG, DecoFunc, argnames, decoFunc, decofun, funcName };
