@@ -1,9 +1,8 @@
-import { randMatrix } from '@foba/foo'
-import { logger } from '@spare/logger'
+import { randMatrix }                                     from '@foba/foo'
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { Deco } from '../index'
-import { METRO } from '@palett/presets'
-import { APOS } from '@spare/enum-quotes'
+import { METRO }                                          from '@palett/presets'
+import { logger }                                         from '@spare/logger'
+import { Deco }                                           from '../index'
 
 const unVec = null
 const emptyVec = []

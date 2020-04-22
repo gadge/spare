@@ -19,7 +19,7 @@
     "@spare/deco-flat": "^0.4.15",
     "@spare/enum-brackets": "^0.4.15",
     "@spare/enum-chars": "^0.4.15",
-    "@vect/enum-matrix-directions": "^0.2.0"
+    "@vect/enum-matrix-directions": "^0.2.3"
   },
   "repository": {
     "type": "git",

@@ -10,7 +10,7 @@ import { formatDate } from '@valjoux/format-date'
 import { formatTime } from '@valjoux/format-time'
 import { pairEnt } from '@spare/deco-util'
 import { decoKey } from './decoKey'
-import { DEFN } from '../resources/DEFN'
+import { DEFN }    from '../../resources/DEFN'
 
 const TextParsers = {
   loose: (x, t) => {

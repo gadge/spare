@@ -8,8 +8,8 @@ import { brace, bracket } from '@spare/bracket'
 import { mutate } from '@vect/entries-mapper'
 import { formatDate } from '@valjoux/format-date'
 import { formatTime } from '@valjoux/format-time'
-import { decoKey } from './decoKey'
-import { DEFN } from '../resources/DEFN'
+import { decoKey }    from './decoKey'
+import { DEFN }       from '../../resources/DEFN'
 
 
 

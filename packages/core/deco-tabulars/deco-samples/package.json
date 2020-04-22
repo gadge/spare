@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@aryth/math": "^0.1.2",
+    "@aryth/math": "^0.1.3",
     "@palett/fluo-matrix": "^0.1.3",
     "@palett/fluo-vector": "^0.1.3",
     "@palett/presets": "^0.1.3",
@@ -26,13 +26,13 @@
     "@spare/preset-deco": "^0.4.15",
     "@spare/quote": "^0.4.15",
     "@spare/vettro": "^0.4.15",
-    "@vect/entries-unwind": "^0.2.0",
-    "@vect/matrix": "^0.2.0",
-    "@vect/matrix-margin": "^0.2.0",
-    "@vect/matrix-size": "^0.2.0",
-    "@vect/object-select": "^0.2.0",
-    "@vect/vector-mapper": "^0.2.0",
-    "@vect/vector-zipper": "^0.2.0"
+    "@vect/entries-unwind": "^0.2.3",
+    "@vect/matrix": "^0.2.3",
+    "@vect/matrix-margin": "^0.2.3",
+    "@vect/matrix-size": "^0.2.3",
+    "@vect/object-select": "^0.2.3",
+    "@vect/vector-mapper": "^0.2.3",
+    "@vect/vector-zipper": "^0.2.3"
   },
   "repository": {
     "type": "git",

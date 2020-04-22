@@ -17,7 +17,7 @@
   "dependencies": {
     "@spare/deco-vector": "^0.4.15",
     "@spare/enum-chars": "^0.4.15",
-    "@vect/vector-mapper": "^0.2.0"
+    "@vect/vector-mapper": "^0.2.3"
   },
   "repository": {
     "type": "git",

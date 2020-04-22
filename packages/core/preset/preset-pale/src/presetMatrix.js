@@ -1,8 +1,6 @@
-import { COSP } from '@spare/enum-chars'
+import { decoPale }  from '@spare/deco-pale'
 import { BRK, NONE } from '@spare/enum-brackets'
-import { decoFlat } from '@spare/deco-flat'
-import { FRESH, OCEAN } from '@palett/presets'
-import { ROWWISE } from '@vect/enum-matrix-directions'
+import { COSP }      from '@spare/enum-chars'
 
 /***
  *
@@ -11,13 +9,9 @@ import { ROWWISE } from '@vect/enum-matrix-directions'
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  * @param {number} [p.quote=NONE]
- * @param {*} [p.bracket=true]
+ * @param {boolean} [p.bracket=true]
  *
- * @param {Function} [p.read=decoFlat]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
- * @param {number} [p.direct=ROWWISE]
+ * @param {Function} [p.read=decoPale]
  *
  * @param {number} [p.top]
  * @param {number} [p.bottom]
@@ -32,10 +26,7 @@ import { ROWWISE } from '@vect/enum-matrix-directions'
 export const presetMatrix = p => {
   p.delim = p.delim ?? COSP
   p.bracket = !p.bracket ? NONE : BRK
-  p.read = p.read || decoFlat
-  p.direct = p.direct || ROWWISE
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? OCEAN
+  p.read = p.read || decoPale
   p.ansi = p.ansi ?? true
   return p
 }

@@ -1,5 +1,5 @@
-export { decoKey } from './src/decoKey'
-import { decoval } from './src/decoval'
+export { decoKey } from './src/unit/decoKey'
+import { decoval } from './src/unit/decoval'
 
 export { decoval }
 

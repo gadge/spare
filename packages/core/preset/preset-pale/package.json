@@ -1,7 +1,7 @@
 {
-  "name": "@spare/verse",
+  "name": "@spare/preset-pale",
   "version": "0.4.15",
-  "description": "A debugging tool",
+  "description": "Preset for pale",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,20 +12,14 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/verse.test.js"
+    "test": "node -r @babel/register test/preset-pale.test.js"
   },
   "dependencies": {
-    "@analys/crostab-init": "^0.3.0",
-    "@analys/table-init": "^0.3.0",
-    "@spare/bracket": "^0.4.15",
-    "@spare/deco-entries": "^0.4.15",
-    "@spare/deco-matrix": "^0.4.15",
-    "@spare/deco-object": "^0.4.15",
-    "@spare/deco-samples": "^0.4.15",
-    "@spare/deco-vector": "^0.4.15",
+    "@palett/presets": "^0.1.3",
+    "@spare/deco-pale": "^0.4.15",
     "@spare/enum-brackets": "^0.4.15",
-    "@spare/liner": "^0.4.15",
-    "@spare/preset-verse": "^0.4.15"
+    "@spare/enum-chars": "^0.4.15",
+    "@vect/enum-matrix-directions": "^0.2.3"
   },
   "repository": {
     "type": "git",

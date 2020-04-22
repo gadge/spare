@@ -1,5 +1,5 @@
 import { LF } from '@spare/enum-chars'
-import { decoFlat } from '@spare/deco-flat'
+import { decoPale } from '@spare/deco-pale'
 import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
 import { COLUMNWISE } from '@vect/enum-matrix-directions'
 
@@ -10,9 +10,9 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
  * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
- * @param {*} [p.bracket] - currently not functional, keeps for future fix
+ * @param {boolean} [p.bracket] - currently not functional, keeps for future fix
  *
- * @param {Function} [p.read=decoFlat]
+ * @param {Function} [p.read=decoPale]
  * @param {Function} [p.headRead]
  *
  * @param {Object} [p.preset=FRESH]
@@ -33,11 +33,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  */
 export const presetTable = p => {
   p.delim = p.delim ?? LF
-  p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? JUNGLE
-  p.labelPreset = p.labelPreset ?? SUBTLE
-  p.direct = p.direct ?? COLUMNWISE
+  p.read = p.read || decoPale
   p.ansi = p.ansi ?? true
   return p
 }

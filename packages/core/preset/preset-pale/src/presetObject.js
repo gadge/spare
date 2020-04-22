@@ -1,6 +1,6 @@
 import { COLF, RTSP } from '@spare/enum-chars'
 import { BRC, NONE } from '@spare/enum-brackets'
-import { decoFlat } from '@spare/deco-flat'
+import { decoPale } from '@spare/deco-pale'
 import { FRESH, PLANET } from '@palett/presets'
 
 /**
@@ -12,13 +12,10 @@ import { FRESH, PLANET } from '@palett/presets'
  * @param {string} [p.delim=',\n']
  * @param {number} [p.keyQuote=NONE]
  * @param {number} [p.quote=NONE]
- * @param {*} [p.bracket=true]
+ * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
- * @param {Function} [p.read=decoFlat]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=PLANET]
+ * @param {Function} [p.read=decoPale]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -32,9 +29,7 @@ export const presetObject = p => {
   p.dash = p.dash ?? RTSP
   p.delim = p.delim ?? COLF
   p.bracket = !p.bracket ? NONE : BRC
-  p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? PLANET
+  p.read = p.read || decoPale
   p.ansi = p.ansi ?? true
   return p
 }

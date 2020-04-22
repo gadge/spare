@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.1.2",
+    "@aryth/comparer": "^0.1.3",
     "@palett/fluo-matrix": "^0.1.3",
     "@palett/fluo-vector": "^0.1.3",
     "@palett/presets": "^0.1.3",
@@ -31,11 +31,11 @@
     "@spare/quote": "^0.4.15",
     "@spare/string": "^0.4.15",
     "@spare/vettro": "^0.4.15",
-    "@vect/enum-matrix-directions": "^0.2.0",
-    "@vect/matrix": "^0.2.0",
-    "@vect/vector-indicator": "^0.2.1",
-    "@vect/vector-mapper": "^0.2.0",
-    "@vect/vector-zipper": "^0.2.0"
+    "@vect/enum-matrix-directions": "^0.2.3",
+    "@vect/matrix": "^0.2.3",
+    "@vect/vector-indicator": "^0.2.3",
+    "@vect/vector-mapper": "^0.2.3",
+    "@vect/vector-zipper": "^0.2.3"
   },
   "repository": {
     "type": "git",
