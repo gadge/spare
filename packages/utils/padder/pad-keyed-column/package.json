@@ -1,6 +1,6 @@
 {
   "name": "@spare/pad-keyed-column",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "description": "Pad keyed column",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -21,7 +21,7 @@
     "@spare/fullwidth": "^0.4.16",
     "@spare/lange": "^0.4.16",
     "@spare/pad-string": "^0.4.16",
-    "@spare/string": "^0.4.16",
+    "@spare/string": "^0.4.17",
     "@vect/vector-indicator": "^0.2.3",
     "@vect/vector-mapper": "^0.2.3",
     "@vect/vector-zipper": "^0.2.3"

@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-entries",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -20,7 +20,7 @@
     "@spare/enttro": "^0.4.16",
     "@spare/liner": "^0.4.16",
     "@spare/pad-entries": "^0.4.16",
-    "@spare/preset-deco": "^0.4.16",
+    "@spare/preset-deco": "^0.4.17",
     "@spare/quote": "^0.4.16",
     "@vect/entries-zipper": "^0.2.3"
   },

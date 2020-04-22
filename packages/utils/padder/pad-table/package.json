@@ -1,6 +1,6 @@
 {
   "name": "@spare/pad-table",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,7 +19,7 @@
     "@spare/enum-full-angle-chars": "^0.4.16",
     "@spare/lange": "^0.4.16",
     "@spare/pad-string": "^0.4.16",
-    "@spare/string": "^0.4.16",
+    "@spare/string": "^0.4.17",
     "@vect/columns-indicator": "^0.2.3",
     "@vect/matrix-transpose": "^0.2.3",
     "@vect/matrix-zipper": "^0.2.3",
