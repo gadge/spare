@@ -151,12 +151,12 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  var _p$delim, _p$preset, _p$stringPreset, _p$ansi;
+  var _p$delim, _p$direct, _p$preset, _p$stringPreset, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COSP;
   p.bracket = !p.bracket ? enumBrackets.NONE : enumBrackets.BRK;
   p.read = p.read || decoFlat.decoFlat;
-  p.direct = p.direct || enumMatrixDirections.ROWWISE;
+  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : enumMatrixDirections.ROWWISE;
   p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : presets.FRESH;
   p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : presets.OCEAN;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
@@ -278,7 +278,7 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
-  var _p$delim, _p$preset, _p$keyPreset, _p$stringPreset, _p$ansi;
+  var _p$delim, _p$preset, _p$keyPreset, _p$stringPreset, _p$direct, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COSP;
   p.bracket = !p.bracket ? enumBrackets.NONE : enumBrackets.BRK;
@@ -287,7 +287,7 @@ const presetSamples = p => {
   p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : presets.FRESH;
   p.keyPreset = (_p$keyPreset = p.keyPreset) !== null && _p$keyPreset !== void 0 ? _p$keyPreset : presets.SUBTLE;
   p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : presets.JUNGLE;
-  p.direct = p.direct || enumMatrixDirections.COLUMNWISE;
+  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : enumMatrixDirections.COLUMNWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };

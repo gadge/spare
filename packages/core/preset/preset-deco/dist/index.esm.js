@@ -147,12 +147,12 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  var _p$delim, _p$preset, _p$stringPreset, _p$ansi;
+  var _p$delim, _p$direct, _p$preset, _p$stringPreset, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.bracket = !p.bracket ? NONE : BRK;
   p.read = p.read || decoFlat;
-  p.direct = p.direct || ROWWISE;
+  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : ROWWISE;
   p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
   p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : OCEAN;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
@@ -274,7 +274,7 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
-  var _p$delim, _p$preset, _p$keyPreset, _p$stringPreset, _p$ansi;
+  var _p$delim, _p$preset, _p$keyPreset, _p$stringPreset, _p$direct, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.bracket = !p.bracket ? NONE : BRK;
@@ -283,7 +283,7 @@ const presetSamples = p => {
   p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
   p.keyPreset = (_p$keyPreset = p.keyPreset) !== null && _p$keyPreset !== void 0 ? _p$keyPreset : SUBTLE;
   p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : JUNGLE;
-  p.direct = p.direct || COLUMNWISE;
+  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : COLUMNWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
