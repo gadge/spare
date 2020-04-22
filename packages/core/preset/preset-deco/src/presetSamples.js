@@ -41,7 +41,7 @@ export const presetSamples = p => {
   p.preset = p.preset ?? FRESH
   p.keyPreset = p.keyPreset ?? SUBTLE
   p.stringPreset = p.stringPreset ?? JUNGLE
-  p.direct = p.direct || COLUMNWISE
+  p.direct = p.direct ?? COLUMNWISE
   p.ansi = p.ansi ?? true
   return p
 }
