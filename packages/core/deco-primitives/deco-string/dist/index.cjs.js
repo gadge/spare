@@ -2,68 +2,123 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var presets = require('@palett/presets');
+var enumChars = require('@spare/enum-chars');
+var phrasing = require('@spare/phrasing');
 var fluoVector = require('@palett/fluo-vector');
 var vectorZipper = require('@vect/vector-zipper');
-var presets = require('@palett/presets');
-var phrasing = require('@spare/phrasing');
-var enumChars = require('@spare/enum-chars');
 
-const decoCamel = (phrase, {
+const Splitter = delim => x => String.prototype.split.call(x, delim);
+
+const Joiner = delim => v => Array.prototype.join.call(v, delim);
+
+const cosmetics = function (text) {
+  const {
+    delim
+  } = this;
+  const {
+    vectify,
+    joiner
+  } = this;
+  const {
+    preset,
+    stringPreset,
+    filter
+  } = this;
+  const words = (vectify || Splitter(delim))(text);
+  const dyes = fluoVector.fluoVector(words, {
+    preset,
+    stringPreset,
+    colorant: true,
+    filter
+  });
+  const dyed = vectorZipper.zipper(words, dyes, (word, dye) => {
+    var _word;
+
+    return _word = word, dye(_word);
+  });
+  return (joiner || Joiner(delim))(dyed);
+}; // filter: x => typeof x === STR ? x.trim().length > 0 : true
+
+const presetString = p => {
+  var _p$delim, _p$preset, _p$stringPreset;
+
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.SP;
+  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : presets.INSTA;
+  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : presets.METRO;
+  return p;
+};
+
+const WORDS = 'words',
+      CAMEL = 'camel',
+      SNAKE = 'snake';
+/**
+ * @param {string} text
+ * @param {Object} p
+ * @param {string} [p.delim]
+ * @param {Object} [p.preset]
+ * @param {Object} [p.stringPreset]
+ * @param {Function} [p.filter]
+ * @param {Function} [p.vectify]
+ * @param {Function} [p.joiner]
+ * @return {string}
+ */
+
+const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
+/**
+ *
+ * @param {Object} p
+ * @param {string} [p.delim]
+ * @param {Object} [p.preset]
+ * @param {Object} [p.stringPreset]
+ * @param {Function} [p.filter]
+ * @param {Function} [p.vectify]
+ * @param {Function} [p.joiner]
+ * @return {string}
+ */
+
+const Deco = (p = {}) => cosmetics.bind(presetString(p));
+const decoCamel = (text, {
   delim = '',
   preset = presets.JUNGLE,
   stringPreset = presets.SUBTLE
 } = {}) => {
-  var _phrase;
-
-  const words = (_phrase = phrase, phrasing.camelToVector(_phrase));
-  const dyes = fluoVector.fluoVector(words, {
+  return cosmetics.call({
+    delim,
     preset,
     stringPreset,
-    colorant: true
-  });
-  return vectorZipper.zipper(words, dyes, (word, dye) => {
-    var _word;
-
-    return _word = word, dye(_word);
-  }).join(delim);
+    vectify: phrasing.camelToVector
+  }, text);
 };
-const decoSnake = (phrase, {
+const decoSnake = (text, {
   delim = enumChars.DA,
   preset = presets.JUNGLE,
   stringPreset = presets.SUBTLE
 } = {}) => {
-  var _phrase2;
-
-  const words = (_phrase2 = phrase, phrasing.snakeToVector(_phrase2));
-  const dyes = fluoVector.fluoVector(words, {
+  return cosmetics.call({
+    delim,
     preset,
     stringPreset,
-    colorant: true
-  });
-  return vectorZipper.zipper(words, dyes, (word, dye) => {
-    var _word2;
-
-    return _word2 = word, dye(_word2);
-  }).join(delim);
+    vectify: phrasing.snakeToVector
+  }, text);
 };
-const decoPhrase = (phrase, {
+const decoPhrase = (text, {
   delim = enumChars.SP,
   preset = presets.JUNGLE,
   stringPreset = presets.SUBTLE
 } = {}) => {
-  const words = phrase.split(delim);
-  const dyes = fluoVector.fluoVector(words, {
+  return cosmetics.call({
+    delim,
     preset,
-    stringPreset,
-    colorant: true
-  });
-  return vectorZipper.zipper(words, dyes, (word, dye) => {
-    var _word3;
+    stringPreset
+  }, text);
+};
 
-    return _word3 = word, dye(_word3);
-  }).join(delim);
-}; // export const deco
-
+exports.CAMEL = CAMEL;
+exports.Deco = Deco;
+exports.SNAKE = SNAKE;
+exports.WORDS = WORDS;
+exports.deco = deco;
 exports.decoCamel = decoCamel;
 exports.decoPhrase = decoPhrase;
 exports.decoSnake = decoSnake;

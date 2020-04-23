@@ -1,40 +1,17 @@
-import { logger, says } from '@spare/logger'
-import { xr } from '@spare/xr'
-import { simpleVectors } from '@foba/foo'
-import { NumberVectorCollection } from '@foba/vector'
-import { rand } from '@aryth/rand'
-import { BRK } from '@spare/enum-brackets'
-import { Deco } from '../index'
-import { APOS } from '@spare/enum-quotes'
+import { flopEntry }        from '@aryth/rand'
+import { ObjectCollection } from '@foba/object-string'
+import { INSTA }            from '@palett/presets'
+import { says }             from '@palett/says'
+import { init }             from '@vect/object-init'
+import { Deco }             from '../index'
 
-const Strangers = {
-  empty: [],
-  arithmetic: NumberVectorCollection.flopShuffle({}),
-  soleElement: [rand(256)],
-  textNum: NumberVectorCollection.flopShuffle({}).map(String),
-  misc: [null, undefined, NaN, 'Infinity', '+', 1.2E+1, 1.2E+2, 1.2E+3, 1.2E+4]
+const Texts = init([
+  ['empty', ''],
+  ObjectCollection.MovieQuotes |> flopEntry,
+  ObjectCollection.ShakesQuote |> flopEntry
+])
+
+for (const [key, text] of Object.entries(Texts)) {
+  text |> says[key]
+  text |> Deco({ stringPreset: INSTA }) |> says[key]
 }
-
-const SimpleVectors = simpleVectors({ h: 16 })
-
-const candidates = { ...Strangers, ...SimpleVectors }
-
-export class VectorDecoTest {
-  static test () {
-    for (const [key, vector] of Object.entries(candidates)) {
-      xr(key) |> logger
-      vector |> Deco({
-        head: 4,
-        tail: 4,
-        indexed: false,
-        bracket: BRK,
-        // delim: ', ',
-        quote: APOS,
-        discrete: false,
-        label: 1,
-      }) |> says[key]
-    }
-  }
-}
-
-VectorDecoTest.test()

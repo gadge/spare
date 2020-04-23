@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/preset-pale.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.1.3",
+    "@palett/presets": "^0.1.4",
     "@spare/deco-pale": "^0.4.17",
     "@spare/enum-brackets": "^0.4.16",
     "@spare/enum-chars": "^0.4.16",

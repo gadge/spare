@@ -20,3 +20,16 @@ export function camelToVector (phrase) {
  * @returns {string[]}
  */
 export const snakeToVector = (phrase) => phrase.split(/\W/g)
+
+export const stringToVector = (tx, reg) => {
+  let ms, l = 0, r = 0, sp, ph
+  const vec = []
+  while ((ms = reg.exec(tx)) && ([ph] = ms)) {
+    r = ms.index
+    if ((sp = tx.slice(l, r))) vec.push(sp)
+    vec.push(ph)
+    l = reg.lastIndex
+  }
+  if (l < tx.length) vec.push(tx.slice(l))
+  return vec
+}
