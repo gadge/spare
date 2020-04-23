@@ -6,10 +6,9 @@ import { says }              from '@palett/says'
 import { parenth }           from '@spare/bracket'
 import { delogger }          from '@spare/deco'
 import { DecoFlat }          from '@spare/deco-flat'
-import { LF }                from '@spare/enum-chars'
 import { decoCrostab }       from '@spare/logger'
 import { strategies }        from '@valjoux/strategies'
-import { stringToVector }    from '../src/vectorize'
+import { splitter }          from '../src/splitter'
 
 const [, movieQuote] = EntriesCollection.MovieQuotes |> flop
 const [, shakesQuote] = EntriesCollection.ShakesQuote |> flop
@@ -17,20 +16,20 @@ const [, shakesQuote] = EntriesCollection.ShakesQuote |> flop
 const candidates = {
   naive: ' a b\' c, ..',
   movieQuote,
-  shakesQuote: 'Now is the winter of our discontent' + LF + 'Made glorious summer by this sun of York.'
+  shakesQuote, //: 'Now is the winter of our discontent' + LF + 'Made glorious summer by this sun of York.'
 }
 
 const DEV = 'dev', EDGE = 'edge', FUT = 'fut', BENCH = 'bench',
   NAIVE = 'naive', MOVIE_QUOTE = 'movieQuote', SHAKES_QUOTE = 'shakesQuote'
 
 const { lapse, result } = strategies({
-  repeat: 1,//2E+5,
+  repeat: 2E+5,
   candidates: candidates |> makeEmbedded,
   methods: {
     bench: x => parenth(x),
     dev: tx => tx.split(' '), //.map(x => parenth(x)),
-    edge: tx => stringToVector(tx, /\w+('\w+)?/g), //.map(x => parenth(x)),
-    fut: tx => stringToVector(tx, /(\W+)?\s+/g), //.map(x => parenth(x)),
+    edge: tx => splitter(tx, /\w+('\w+)?/g), //.map(x => parenth(x)),
+    fut: tx => splitter(tx, /(\W+)?\s+/g), //.map(x => parenth(x)),
   }
 })
 const decoFlat = DecoFlat({ stringPreset: INSTA })

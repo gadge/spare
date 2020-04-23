@@ -1,13 +1,14 @@
-import * as Deco from '@spare/deco'
-import * as XrEnv from '@spare/xr'
-import * as Sayer from '@palett/says'
-import * as DecoVectorEnv from '@spare/deco-vector'
-import * as DecoEntriesEnv from '@spare/deco-entries'
-import * as DecoObjectEnv from '@spare/deco-object'
-import * as DecoMatrixEnv from '@spare/deco-matrix'
-import * as DecoSamplesEnv from '@spare/deco-samples'
-import * as DecoTableEnv from '@spare/deco-table'
+import * as Sayer          from '@palett/says'
+import * as Deco           from '@spare/deco'
 import * as DecoCrostabEnv from '@spare/deco-crostab'
+import * as DecoEntriesEnv from '@spare/deco-entries'
+import * as DecoMatrixEnv  from '@spare/deco-matrix'
+import * as DecoObjectEnv  from '@spare/deco-object'
+import * as DecoSamplesEnv from '@spare/deco-samples'
+import * as DecoStringEnv  from '@spare/deco-string'
+import * as DecoTableEnv   from '@spare/deco-table'
+import * as DecoVectorEnv  from '@spare/deco-vector'
+import * as XrEnv          from '@spare/xr'
 
 export { logger, logNeL } from './src/logger'
 
@@ -20,6 +21,7 @@ export { logger, logNeL } from './src/logger'
 /** @type {Function} */ export const delogger = Deco.delogger
 /** @type {Function} */ export const delogNeL = Deco.delogNeL
 
+/** @type {Function} */ export const decoString = DecoStringEnv.deco
 /** @type {Function} */ export const decoVector = DecoVectorEnv.deco
 /** @type {Function} */ export const decoEntries = DecoEntriesEnv.deco
 /** @type {Function} */ export const decoObject = DecoObjectEnv.deco
@@ -28,6 +30,7 @@ export { logger, logNeL } from './src/logger'
 /** @type {Function} */ export const decoTable = DecoTableEnv.deco
 /** @type {Function} */ export const decoCrostab = DecoCrostabEnv.deco
 
+/** @type {Function} */ export const DecoString = DecoStringEnv.Deco
 /** @type {Function} */ export const DecoVector = DecoVectorEnv.Deco
 /** @type {Function} */ export const DecoEntries = DecoEntriesEnv.Deco
 /** @type {Function} */ export const DecoObject = DecoObjectEnv.Deco

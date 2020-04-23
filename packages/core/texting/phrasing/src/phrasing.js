@@ -1,4 +1,4 @@
-import { CAPWORD, INILOW, WORD } from '../resources/regexes'
+import { CAPWORD, INILOW, WORD } from '@spare/regex-phrasing'
 import { wordToCap } from './wordToCap'
 
 /**

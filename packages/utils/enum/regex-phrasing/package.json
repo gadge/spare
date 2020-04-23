@@ -1,7 +1,7 @@
 {
-  "name": "@spare/deco-string",
+  "name": "@spare/regex-phrasing",
   "version": "0.4.18",
-  "description": "Color a string",
+  "description": "Regex sets",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,14 +12,7 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/deco-vector.test.js"
-  },
-  "dependencies": {
-    "@palett/fluo-vector": "^0.1.4",
-    "@vect/vector-zipper": "^0.2.3",
-    "@palett/presets": "^0.1.4",
-    "@spare/enum-chars": "^0.4.18",
-    "@spare/splitter": "^0.4.18"
+    "test": "node -r @babel/register test/test.index.js"
   },
   "repository": {
     "type": "git",

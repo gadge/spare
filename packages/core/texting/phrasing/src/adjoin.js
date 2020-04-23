@@ -1,5 +1,5 @@
-import { SP } from '@spare/enum-chars'
 import { cosmetics } from '@spare/deco-vector'
+import { SP }        from '@spare/enum-chars'
 
 const presetAdjoin = p => {
   p = p ?? {}

@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var presets = require('@palett/presets');
 var enumChars = require('@spare/enum-chars');
-var phrasing = require('@spare/phrasing');
+var splitter = require('@spare/splitter');
 var fluoVector = require('@palett/fluo-vector');
 var vectorZipper = require('@vect/vector-zipper');
 
@@ -87,7 +87,7 @@ const decoCamel = (text, {
     delim,
     preset,
     stringPreset,
-    vectify: phrasing.camelToVector
+    vectify: splitter.splitCamel
   }, text);
 };
 const decoSnake = (text, {
@@ -99,7 +99,7 @@ const decoSnake = (text, {
     delim,
     preset,
     stringPreset,
-    vectify: phrasing.snakeToVector
+    vectify: splitter.splitSnake
   }, text);
 };
 const decoPhrase = (text, {

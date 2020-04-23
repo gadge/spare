@@ -1,11 +1,11 @@
-import { logger, says } from '@spare/logger'
-import { xr } from '@spare/xr'
-import { simpleVectors } from '@foba/foo'
+import { rand }                   from '@aryth/rand'
+import { simpleVectors }          from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
-import { rand } from '@aryth/rand'
-import { BRK } from '@spare/enum-brackets'
-import { Deco } from '../index'
-import { APOS } from '@spare/enum-quotes'
+import { BRK }                    from '@spare/enum-brackets'
+import { APOS }                   from '@spare/enum-quotes'
+import { logger, says }           from '@spare/logger'
+import { xr }                     from '@spare/xr'
+import { Deco }                   from '../index'
 
 const Strangers = {
   empty: [],

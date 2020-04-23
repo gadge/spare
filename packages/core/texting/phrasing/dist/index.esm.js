@@ -1,14 +1,8 @@
+import { INILOW, CAPWORD, WORD } from '@spare/regex-phrasing';
+export { CAMEL, CAPREST, CAPWORD, DASH_CAPREST, INILOW, INIWORD, WORD } from '@spare/regex-phrasing';
 import { mutate } from '@vect/vector-mapper';
-import { SP } from '@spare/enum-chars';
 import { cosmetics } from '@spare/deco-vector';
-
-const INIWORD = /[A-Za-z\d]+/;
-const INILOW = /^[a-z]+/;
-const CAMEL = /[A-Z]+|[0-9]+/g;
-const WORD = /[A-Za-z\d]+/g;
-const CAPWORD = /([A-Z][a-z]+|[A-Z]+|[\d]+[a-z]*)/g;
-const DASH_CAPREST = /[\W_]+([A-Za-z\d])([A-Za-z\d]*)/g;
-const CAPREST = /([A-Za-z\d])([A-Za-z\d]*)/g;
+import { SP } from '@spare/enum-chars';
 
 const wordToCap = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
@@ -86,6 +80,7 @@ const wordsToPascal = words => mutate(words, wordToCap);
  * Kebab: fox-jumps-over-dog
  * @param {string} phrase camel/pascal-case phrase
  * @returns {string[]}
+ * @deprecated use splitCamel in @spare/splitter
  */
 
 function camelToVector(phrase) {
@@ -102,6 +97,7 @@ function camelToVector(phrase) {
  * snake or kebab phrase -> split vector
  * @param {string} phrase - dashed phrase
  * @returns {string[]}
+ * @deprecated use splitSnake in @spare/splitter
  */
 
 const snakeToVector = phrase => phrase.split(/\W/g);
@@ -137,4 +133,4 @@ const adjoin = function (...words) {
 
 const Adjoin = (p = {}) => adjoin.bind(p);
 
-export { Adjoin, CAMEL, CAPREST, CAPWORD, DASH_CAPREST, INILOW, INIWORD, WORD, adjoin, camelToSnake, camelToVector, snakeToCamel, snakeToPascal, snakeToVector, wordToCap, wordsToCamel, wordsToPascal };
+export { Adjoin, adjoin, camelToSnake, camelToVector, snakeToCamel, snakeToPascal, snakeToVector, wordToCap, wordsToCamel, wordsToPascal };

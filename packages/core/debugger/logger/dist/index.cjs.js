@@ -2,16 +2,17 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var Deco = require('@spare/deco');
-var XrEnv = require('@spare/xr');
 var Sayer = require('@palett/says');
-var DecoVectorEnv = require('@spare/deco-vector');
-var DecoEntriesEnv = require('@spare/deco-entries');
-var DecoObjectEnv = require('@spare/deco-object');
-var DecoMatrixEnv = require('@spare/deco-matrix');
-var DecoSamplesEnv = require('@spare/deco-samples');
-var DecoTableEnv = require('@spare/deco-table');
+var Deco = require('@spare/deco');
 var DecoCrostabEnv = require('@spare/deco-crostab');
+var DecoEntriesEnv = require('@spare/deco-entries');
+var DecoMatrixEnv = require('@spare/deco-matrix');
+var DecoObjectEnv = require('@spare/deco-object');
+var DecoSamplesEnv = require('@spare/deco-samples');
+var DecoStringEnv = require('@spare/deco-string');
+var DecoTableEnv = require('@spare/deco-table');
+var DecoVectorEnv = require('@spare/deco-vector');
+var XrEnv = require('@spare/xr');
 var enumChars = require('@spare/enum-chars');
 
 const logger = (x, ...p) => void console.log(x + '', ...p);
@@ -43,6 +44,9 @@ const delogger = Deco.delogger;
 const delogNeL = Deco.delogNeL;
 /** @type {Function} */
 
+const decoString = DecoStringEnv.deco;
+/** @type {Function} */
+
 const decoVector = DecoVectorEnv.deco;
 /** @type {Function} */
 
@@ -62,6 +66,9 @@ const decoTable = DecoTableEnv.deco;
 /** @type {Function} */
 
 const decoCrostab = DecoCrostabEnv.deco;
+/** @type {Function} */
+
+const DecoString = DecoStringEnv.Deco;
 /** @type {Function} */
 
 const DecoVector = DecoVectorEnv.Deco;
@@ -89,6 +96,7 @@ exports.DecoEntries = DecoEntries;
 exports.DecoMatrix = DecoMatrix;
 exports.DecoObject = DecoObject;
 exports.DecoSamples = DecoSamples;
+exports.DecoString = DecoString;
 exports.DecoTable = DecoTable;
 exports.DecoVector = DecoVector;
 exports.Says = Says;
@@ -100,6 +108,7 @@ exports.decoEntries = decoEntries;
 exports.decoMatrix = decoMatrix;
 exports.decoObject = decoObject;
 exports.decoSamples = decoSamples;
+exports.decoString = decoString;
 exports.decoTable = decoTable;
 exports.decoVector = decoVector;
 exports.delogNeL = delogNeL;

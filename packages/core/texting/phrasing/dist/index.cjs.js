@@ -2,17 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var regexPhrasing = require('@spare/regex-phrasing');
 var vectorMapper = require('@vect/vector-mapper');
-var enumChars = require('@spare/enum-chars');
 var decoVector = require('@spare/deco-vector');
-
-const INIWORD = /[A-Za-z\d]+/;
-const INILOW = /^[a-z]+/;
-const CAMEL = /[A-Z]+|[0-9]+/g;
-const WORD = /[A-Za-z\d]+/g;
-const CAPWORD = /([A-Z][a-z]+|[A-Z]+|[\d]+[a-z]*)/g;
-const DASH_CAPREST = /[\W_]+([A-Za-z\d])([A-Za-z\d]*)/g;
-const CAPREST = /([A-Za-z\d])([A-Za-z\d]*)/g;
+var enumChars = require('@spare/enum-chars');
 
 const wordToCap = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
@@ -30,9 +23,9 @@ function camelToSnake(phrase, de = '-') {
   let ms,
       wd,
       ph = '';
-  if (((ms = INILOW.exec(phrase)) || (ms = CAPWORD.exec(phrase))) && ([wd] = ms)) ph = wd.toLowerCase();
+  if (((ms = regexPhrasing.INILOW.exec(phrase)) || (ms = regexPhrasing.CAPWORD.exec(phrase))) && ([wd] = ms)) ph = wd.toLowerCase();
 
-  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ph += de + wd.toLowerCase();
+  while ((ms = regexPhrasing.CAPWORD.exec(phrase)) && ([wd] = ms)) ph += de + wd.toLowerCase();
 
   return ph;
 }
@@ -48,9 +41,9 @@ const snakeToCamel = (dashed, de = '') => {
   let ms,
       wd,
       ph = '';
-  if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = wd.toLowerCase();
+  if ((ms = regexPhrasing.WORD.exec(dashed)) && ([wd] = ms)) ph = wd.toLowerCase();
 
-  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd);
+  while ((ms = regexPhrasing.WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd);
 
   return ph;
 };
@@ -66,9 +59,9 @@ const snakeToPascal = (dashed, de = '') => {
   let ms,
       wd,
       ph = '';
-  if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = wordToCap(wd);
+  if ((ms = regexPhrasing.WORD.exec(dashed)) && ([wd] = ms)) ph = wordToCap(wd);
 
-  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd);
+  while ((ms = regexPhrasing.WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd);
 
   return ph;
 };
@@ -90,15 +83,16 @@ const wordsToPascal = words => vectorMapper.mutate(words, wordToCap);
  * Kebab: fox-jumps-over-dog
  * @param {string} phrase camel/pascal-case phrase
  * @returns {string[]}
+ * @deprecated use splitCamel in @spare/splitter
  */
 
 function camelToVector(phrase) {
   let ms,
       wd,
       ve = [];
-  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ve.push(wd);
+  if ((ms = regexPhrasing.INILOW.exec(phrase)) && ([wd] = ms)) ve.push(wd);
 
-  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ve.push(wd);
+  while ((ms = regexPhrasing.CAPWORD.exec(phrase)) && ([wd] = ms)) ve.push(wd);
 
   return ve;
 }
@@ -106,6 +100,7 @@ function camelToVector(phrase) {
  * snake or kebab phrase -> split vector
  * @param {string} phrase - dashed phrase
  * @returns {string[]}
+ * @deprecated use splitSnake in @spare/splitter
  */
 
 const snakeToVector = phrase => phrase.split(/\W/g);
@@ -141,14 +136,49 @@ const adjoin = function (...words) {
 
 const Adjoin = (p = {}) => adjoin.bind(p);
 
+Object.defineProperty(exports, 'CAMEL', {
+  enumerable: true,
+  get: function () {
+    return regexPhrasing.CAMEL;
+  }
+});
+Object.defineProperty(exports, 'CAPREST', {
+  enumerable: true,
+  get: function () {
+    return regexPhrasing.CAPREST;
+  }
+});
+Object.defineProperty(exports, 'CAPWORD', {
+  enumerable: true,
+  get: function () {
+    return regexPhrasing.CAPWORD;
+  }
+});
+Object.defineProperty(exports, 'DASH_CAPREST', {
+  enumerable: true,
+  get: function () {
+    return regexPhrasing.DASH_CAPREST;
+  }
+});
+Object.defineProperty(exports, 'INILOW', {
+  enumerable: true,
+  get: function () {
+    return regexPhrasing.INILOW;
+  }
+});
+Object.defineProperty(exports, 'INIWORD', {
+  enumerable: true,
+  get: function () {
+    return regexPhrasing.INIWORD;
+  }
+});
+Object.defineProperty(exports, 'WORD', {
+  enumerable: true,
+  get: function () {
+    return regexPhrasing.WORD;
+  }
+});
 exports.Adjoin = Adjoin;
-exports.CAMEL = CAMEL;
-exports.CAPREST = CAPREST;
-exports.CAPWORD = CAPWORD;
-exports.DASH_CAPREST = DASH_CAPREST;
-exports.INILOW = INILOW;
-exports.INIWORD = INIWORD;
-exports.WORD = WORD;
 exports.adjoin = adjoin;
 exports.camelToSnake = camelToSnake;
 exports.camelToVector = camelToVector;

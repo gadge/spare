@@ -1,13 +1,14 @@
-import { deco as deco$1, deca as deca$1, delogger as delogger$1, delogNeL as delogNeL$1 } from '@spare/deco';
-import { Xr as Xr$1, xr as xr$1 } from '@spare/xr';
 import { Says as Says$1, says as says$1 } from '@palett/says';
-import { deco as deco$2, Deco } from '@spare/deco-vector';
-import { deco as deco$3, Deco as Deco$1 } from '@spare/deco-entries';
-import { deco as deco$4, Deco as Deco$2 } from '@spare/deco-object';
-import { deco as deco$5, Deco as Deco$3 } from '@spare/deco-matrix';
-import { deco as deco$6, Deco as Deco$4 } from '@spare/deco-samples';
-import { deco as deco$7, Deco as Deco$5 } from '@spare/deco-table';
-import { deco as deco$8, Deco as Deco$6 } from '@spare/deco-crostab';
+import { deco as deco$1, deca as deca$1, delogger as delogger$1, delogNeL as delogNeL$1 } from '@spare/deco';
+import { deco as deco$9, Deco as Deco$7 } from '@spare/deco-crostab';
+import { deco as deco$4, Deco as Deco$2 } from '@spare/deco-entries';
+import { deco as deco$6, Deco as Deco$4 } from '@spare/deco-matrix';
+import { deco as deco$5, Deco as Deco$3 } from '@spare/deco-object';
+import { deco as deco$7, Deco as Deco$5 } from '@spare/deco-samples';
+import { deco as deco$2, Deco } from '@spare/deco-string';
+import { deco as deco$8, Deco as Deco$6 } from '@spare/deco-table';
+import { deco as deco$3, Deco as Deco$1 } from '@spare/deco-vector';
+import { Xr as Xr$1, xr as xr$1 } from '@spare/xr';
 import { LF } from '@spare/enum-chars';
 
 const logger = (x, ...p) => void console.log(x + '', ...p);
@@ -39,45 +40,51 @@ const delogger = delogger$1;
 const delogNeL = delogNeL$1;
 /** @type {Function} */
 
-const decoVector = deco$2;
+const decoString = deco$2;
 /** @type {Function} */
 
-const decoEntries = deco$3;
+const decoVector = deco$3;
 /** @type {Function} */
 
-const decoObject = deco$4;
+const decoEntries = deco$4;
 /** @type {Function} */
 
-const decoMatrix = deco$5;
+const decoObject = deco$5;
 /** @type {Function} */
 
-const decoSamples = deco$6;
+const decoMatrix = deco$6;
 /** @type {Function} */
 
-const decoTable = deco$7;
+const decoSamples = deco$7;
 /** @type {Function} */
 
-const decoCrostab = deco$8;
+const decoTable = deco$8;
 /** @type {Function} */
 
-const DecoVector = Deco;
+const decoCrostab = deco$9;
 /** @type {Function} */
 
-const DecoEntries = Deco$1;
+const DecoString = Deco;
 /** @type {Function} */
 
-const DecoObject = Deco$2;
+const DecoVector = Deco$1;
 /** @type {Function} */
 
-const DecoMatrix = Deco$3;
+const DecoEntries = Deco$2;
 /** @type {Function} */
 
-const DecoSamples = Deco$4;
+const DecoObject = Deco$3;
 /** @type {Function} */
 
-const DecoTable = Deco$5;
+const DecoMatrix = Deco$4;
 /** @type {Function} */
 
-const DecoCrostab = Deco$6;
+const DecoSamples = Deco$5;
+/** @type {Function} */
 
-export { DecoCrostab, DecoEntries, DecoMatrix, DecoObject, DecoSamples, DecoTable, DecoVector, Says, Xr, deca, deco, decoCrostab, decoEntries, decoMatrix, decoObject, decoSamples, decoTable, decoVector, delogNeL, delogger, logNeL, logger, says, xr };
+const DecoTable = Deco$6;
+/** @type {Function} */
+
+const DecoCrostab = Deco$7;
+
+export { DecoCrostab, DecoEntries, DecoMatrix, DecoObject, DecoSamples, DecoString, DecoTable, DecoVector, Says, Xr, deca, deco, decoCrostab, decoEntries, decoMatrix, decoObject, decoSamples, decoString, decoTable, decoVector, delogNeL, delogger, logNeL, logger, says, xr };

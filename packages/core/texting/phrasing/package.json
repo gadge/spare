@@ -17,6 +17,7 @@
   "dependencies": {
     "@spare/deco-vector": "^0.4.18",
     "@spare/enum-chars": "^0.4.18",
+    "@spare/regex-phrasing": "^0.4.18",
     "@vect/vector-mapper": "^0.2.3"
   },
   "repository": {

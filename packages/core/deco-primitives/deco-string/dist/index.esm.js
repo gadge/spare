@@ -1,6 +1,6 @@
 import { JUNGLE, SUBTLE, INSTA, METRO } from '@palett/presets';
 import { DA, SP } from '@spare/enum-chars';
-import { camelToVector, snakeToVector } from '@spare/phrasing';
+import { splitCamel, splitSnake } from '@spare/splitter';
 import { fluoVector } from '@palett/fluo-vector';
 import { zipper } from '@vect/vector-zipper';
 
@@ -83,7 +83,7 @@ const decoCamel = (text, {
     delim,
     preset,
     stringPreset,
-    vectify: camelToVector
+    vectify: splitCamel
   }, text);
 };
 const decoSnake = (text, {
@@ -95,7 +95,7 @@ const decoSnake = (text, {
     delim,
     preset,
     stringPreset,
-    vectify: snakeToVector
+    vectify: splitSnake
   }, text);
 };
 const decoPhrase = (text, {

@@ -1,6 +1,6 @@
 import { INSTA, JUNGLE, METRO, SUBTLE } from '@palett/presets'
 import { DA, SP }                       from '@spare/enum-chars'
-import { camelToVector, snakeToVector } from '@spare/phrasing'
+import { splitCamel, splitSnake }       from '@spare/splitter'
 import { cosmetics }                    from './src/cosmetics'
 
 const presetString = p => {
@@ -44,11 +44,11 @@ export const deco = (text, p = {}) => cosmetics.call(presetString(p), text)
 export const Deco = (p = {}) => cosmetics.bind(presetString(p))
 
 export const decoCamel = (text, { delim = '', preset = JUNGLE, stringPreset = SUBTLE } = {}) => {
-  return cosmetics.call({ delim, preset, stringPreset, vectify: camelToVector }, text)
+  return cosmetics.call({ delim, preset, stringPreset, vectify: splitCamel }, text)
 }
 
 export const decoSnake = (text, { delim = DA, preset = JUNGLE, stringPreset = SUBTLE } = {}) => {
-  return cosmetics.call({ delim, preset, stringPreset, vectify: snakeToVector }, text)
+  return cosmetics.call({ delim, preset, stringPreset, vectify: splitSnake }, text)
 }
 
 export const decoPhrase = (text, { delim = SP, preset = JUNGLE, stringPreset = SUBTLE } = {}) => {
