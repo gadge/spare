@@ -7,6 +7,12 @@ var vectorMapper = require('@vect/vector-mapper');
 var decoVector = require('@spare/deco-vector');
 var enumChars = require('@spare/enum-chars');
 
+/**
+ *
+ * @param word
+ * @return {string}
+ * @deprecated use capitalize instead
+ */
 const wordToCap = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
 /**
@@ -65,6 +71,8 @@ const snakeToPascal = (dashed, de = '') => {
 
   return ph;
 };
+
+const capitalize = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
 const wordsToCamel = words => {
   let i = 0,
@@ -182,6 +190,7 @@ exports.Adjoin = Adjoin;
 exports.adjoin = adjoin;
 exports.camelToSnake = camelToSnake;
 exports.camelToVector = camelToVector;
+exports.capitalize = capitalize;
 exports.snakeToCamel = snakeToCamel;
 exports.snakeToPascal = snakeToPascal;
 exports.snakeToVector = snakeToVector;

@@ -8,6 +8,7 @@ export {
   CAPREST
 }                                                    from '@spare/regex-phrasing'
 export { camelToSnake, snakeToCamel, snakeToPascal } from './src/phrasing'
+export { capitalize }                                from './src/capitalize'
 export { wordToCap }                                 from './src/wordToCap'
 export { wordsToCamel, wordsToPascal }               from './src/words'
 export { camelToVector, snakeToVector }              from './src/vectorize'

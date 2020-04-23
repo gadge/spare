@@ -4,6 +4,12 @@ import { mutate } from '@vect/vector-mapper';
 import { cosmetics } from '@spare/deco-vector';
 import { SP } from '@spare/enum-chars';
 
+/**
+ *
+ * @param word
+ * @return {string}
+ * @deprecated use capitalize instead
+ */
 const wordToCap = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
 /**
@@ -62,6 +68,8 @@ const snakeToPascal = (dashed, de = '') => {
 
   return ph;
 };
+
+const capitalize = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
 const wordsToCamel = words => {
   let i = 0,
@@ -133,4 +141,4 @@ const adjoin = function (...words) {
 
 const Adjoin = (p = {}) => adjoin.bind(p);
 
-export { Adjoin, adjoin, camelToSnake, camelToVector, snakeToCamel, snakeToPascal, snakeToVector, wordToCap, wordsToCamel, wordsToPascal };
+export { Adjoin, adjoin, camelToSnake, camelToVector, capitalize, snakeToCamel, snakeToPascal, snakeToVector, wordToCap, wordsToCamel, wordsToPascal };
