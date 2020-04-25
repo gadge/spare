@@ -1,10 +1,10 @@
 import { SP } from '@spare/enum-chars';
 import { parenth } from '@spare/bracket';
 import { lange } from '@spare/lange';
-import { Dye } from '@palett/dye';
 import { Blue, LightBlue, Lime, Grey, Brown, BlueGrey, Purple, DeepPurple } from '@palett/cards';
 import { hexToRgb } from '@palett/convert';
-import { makeReplaceable } from '@glossa/translator';
+import { Dye } from '@palett/dye';
+import { makeReplaceable } from '@spare/translator';
 
 const DECOFUN_CONFIG = {
   pr: true,

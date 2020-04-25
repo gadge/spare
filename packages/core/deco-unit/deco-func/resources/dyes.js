@@ -1,7 +1,7 @@
-import { Dye } from '@palett/dye'
 import { Blue, BlueGrey, Brown, DeepPurple, Grey, LightBlue, Lime, Purple } from '@palett/cards'
-import { hexToRgb } from '@palett/convert'
-import { makeReplaceable } from '@glossa/translator'
+import { hexToRgb }                                                         from '@palett/convert'
+import { Dye }                                                              from '@palett/dye'
+import { makeReplaceable }                                                  from '@spare/translator'
 
 export const nameDye = Dye(Blue.lighten_2 |> hexToRgb)
 export const argsDye = Dye(LightBlue.accent_2 |> hexToRgb)

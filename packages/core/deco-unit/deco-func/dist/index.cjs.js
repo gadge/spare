@@ -5,10 +5,10 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var enumChars = require('@spare/enum-chars');
 var bracket = require('@spare/bracket');
 var lange = require('@spare/lange');
-var dye = require('@palett/dye');
 var cards = require('@palett/cards');
 var convert = require('@palett/convert');
-var translator = require('@glossa/translator');
+var dye = require('@palett/dye');
+var translator = require('@spare/translator');
 
 const DECOFUN_CONFIG = {
   pr: true,
