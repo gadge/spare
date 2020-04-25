@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-samples",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -23,7 +23,7 @@
     "@spare/liner": "^0.5.1",
     "@spare/mattro": "^0.5.1",
     "@spare/pad-matrix": "^0.5.1",
-    "@spare/preset-deco": "^0.5.1",
+    "@spare/preset-deco": "^0.5.2",
     "@spare/quote": "^0.5.1",
     "@spare/vettro": "^0.5.1",
     "@vect/entries-unwind": "^0.2.3",
