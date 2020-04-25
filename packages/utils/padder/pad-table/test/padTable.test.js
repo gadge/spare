@@ -1,8 +1,8 @@
-import { rand } from '@aryth/rand'
-import { delogger } from '@spare/deco'
+import { rand }              from '@aryth/rand'
+import { delogger }          from '@spare/deco'
+import { mapper }            from '@vect/matrix'
+import { padTable }          from '../src/padTable'
 import { padTableFullAngle } from '../src/padTableFullAngle'
-import { mapper } from '@vect/matrix'
-import { padTable } from '../src/padTable'
 
 const table = {
   head: ['foo', 'bar', '金额', 'Revenue'],
@@ -17,5 +17,5 @@ const { rows, head } = table
 const text = mapper(rows, String)
 table |> delogger
 
-padTable(text,head,{raw:rows}) |> console.log
+padTable(text, head, { raw: rows }) |> console.log
 padTableFullAngle(text, head, { raw: rows, }) |> console.log

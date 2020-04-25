@@ -1,4 +1,4 @@
-import { isNumeric } from '@typen/num-strict'
+import { isNumeric }          from '@typen/num-strict'
 import { fixpad, lpad, rpad } from './helpers'
 
 export const Pad = ({ dock, ansi = true, fill } = {}) => {
