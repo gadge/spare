@@ -1,6 +1,6 @@
 {
   "name": "@spare/logger",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,17 +16,17 @@
   },
   "dependencies": {
     "@palett/says": "^0.1.4",
-    "@spare/deco": "^0.5.0",
-    "@spare/deco-crostab": "^0.5.0",
-    "@spare/deco-entries": "^0.5.0",
-    "@spare/deco-matrix": "^0.5.0",
-    "@spare/deco-object": "^0.5.0",
-    "@spare/deco-samples": "^0.5.0",
-    "@spare/deco-string": "^0.5.0",
-    "@spare/deco-table": "^0.5.0",
-    "@spare/deco-vector": "^0.5.0",
-    "@spare/enum-chars": "^0.5.0",
-    "@spare/xr": "^0.5.0"
+    "@spare/deco": "^0.5.1",
+    "@spare/deco-crostab": "^0.5.1",
+    "@spare/deco-entries": "^0.5.1",
+    "@spare/deco-matrix": "^0.5.1",
+    "@spare/deco-object": "^0.5.1",
+    "@spare/deco-samples": "^0.5.1",
+    "@spare/deco-string": "^0.5.1",
+    "@spare/deco-table": "^0.5.1",
+    "@spare/deco-vector": "^0.5.1",
+    "@spare/enum-chars": "^0.5.1",
+    "@spare/xr": "^0.5.1"
   },
   "repository": {
     "type": "git",
