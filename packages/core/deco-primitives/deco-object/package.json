@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-object",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@spare/deco-entries": "^0.5.3",
-    "@spare/liner": "^0.5.3",
-    "@spare/preset-deco": "^0.5.3",
-    "@spare/quote": "^0.5.3"
+    "@spare/deco-entries": "^0.6.0",
+    "@spare/liner": "^0.6.0",
+    "@spare/preset-deco": "^0.6.0",
+    "@spare/quote": "^0.6.0"
   },
   "repository": {
     "type": "git",
