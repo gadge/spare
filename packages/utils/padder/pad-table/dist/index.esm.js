@@ -6,22 +6,10 @@ import { Trizipper as Trizipper$1, Duozipper as Duozipper$1 } from '@vect/matrix
 import { Trizipper as Trizipper$2, Duozipper as Duozipper$2 } from '@vect/vector-zipper';
 import { DA, SP } from '@spare/enum-chars';
 import { DASH, SP as SP$1 } from '@spare/enum-full-angle-chars';
+import { hasFullWidth } from '@spare/fullwidth';
 import { transpose } from '@vect/matrix-transpose';
 import { Trizipper, Duozipper } from '@vect/vector';
 import { Max } from '@vect/vector-indicator';
-
-const FWREG = /[\uff01-\uff5e|\u3000]+/g;
-/**
- * Return if a string contains Chinese character.
- * halfAng = str.match(/[\u0000-\u00ff]/g) || [] //半角
- * chinese = str.match(/[\u4e00-\u9fa5]/g) || [] //中文
- * fullAng = str.match(/[\uff00-\uffff]/g) || [] //全角
- * @param {string} str
- * @returns {boolean}
- */
-
-
-const hasFullWidth = str => FWREG.test(str);
 
 /**
  *
