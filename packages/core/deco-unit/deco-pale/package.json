@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-pale",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Colored stringify",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,12 +15,12 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/bracket": "^0.5.1",
-    "@spare/deco-object": "^0.5.2",
-    "@spare/deco-vector": "^0.5.2",
-    "@spare/enum-brackets": "^0.5.1",
-    "@spare/enum-chars": "^0.5.1",
-    "@spare/quote": "^0.5.1",
+    "@spare/bracket": "^0.5.3",
+    "@spare/deco-object": "^0.5.3",
+    "@spare/deco-vector": "^0.5.3",
+    "@spare/enum-brackets": "^0.5.3",
+    "@spare/enum-chars": "^0.5.3",
+    "@spare/quote": "^0.5.3",
     "@typen/enum-data-types": "^0.1.0",
     "@typen/enum-object-types": "^0.1.0",
     "@typen/num-loose": "^0.1.0",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/string",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.5.1",
-    "@spare/lange": "^0.5.1",
-    "@spare/phrasing": "^0.5.2",
-    "@spare/util": "^0.5.1",
+    "@spare/enum-chars": "^0.5.3",
+    "@spare/lange": "^0.5.3",
+    "@spare/phrasing": "^0.5.3",
+    "@spare/util": "^0.5.3",
     "strip-ansi": "^6.0.0"
   },
   "repository": {
