@@ -76,11 +76,11 @@ const wordsToCamel = words => {
       l = words === null || words === void 0 ? void 0 : words.length;
   if (l) words[i] = words[i].toLowerCase();
 
-  while (++i < l) words[i] = wordToCap(words[i]);
+  while (++i < l) words[i] = capitalize(words[i]);
 
   return words;
 };
-const wordsToPascal = words => mutate(words, wordToCap);
+const wordsToPascal = words => mutate(words, capitalize);
 
 /**
  * Camel/pascal case phrase -> split vector
@@ -117,6 +117,13 @@ const presetAdjoin = p => {
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : SP;
   return p;
 };
+/**
+ *
+ * @param words
+ * @return {string}
+ * @deprecated use adjoin in @spare/tap
+ */
+
 
 const adjoin = function (...words) {
   const ve = [],
@@ -137,6 +144,7 @@ const adjoin = function (...words) {
  * @param {Object} [p.stringPreset=JUNGLE]
  *
  * @returns {Function}
+ * @deprecated use Adjoin in @spare/tap
  */
 
 const Adjoin = (p = {}) => adjoin.bind(p);

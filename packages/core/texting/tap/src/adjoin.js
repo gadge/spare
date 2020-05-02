@@ -1,5 +1,6 @@
 import { cosmetics } from '@spare/deco-vector'
 import { SP }        from '@spare/enum-chars'
+import { tap }       from './tap'
 
 const presetAdjoin = p => {
   p = p ?? {}
@@ -7,17 +8,10 @@ const presetAdjoin = p => {
   return p
 }
 
-/**
- *
- * @param words
- * @return {string}
- * @deprecated use adjoin in @spare/tap
- */
 export const adjoin = function (...words) {
-  const ve = [], config = presetAdjoin(this)
-  for (let word of words)
-    if (word?.length)
-      ve.push(word)
+  const
+    ve = tap.apply(null, words),
+    config = presetAdjoin(this)
   return cosmetics.call(config, ve)
 }
 
@@ -32,6 +26,5 @@ export const adjoin = function (...words) {
  * @param {Object} [p.stringPreset=JUNGLE]
  *
  * @returns {Function}
- * @deprecated use Adjoin in @spare/tap
  */
 export const Adjoin = (p = {}) => adjoin.bind(p)

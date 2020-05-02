@@ -1,0 +1,40 @@
+{
+  "name": "@spare/tap",
+  "version": "0.5.2",
+  "description": "Join strings together",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/test.index.js"
+  },
+  "dependencies": {
+    "@spare/deco-vector": "^0.5.1",
+    "@spare/enum-chars": "^0.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoyeungw/spare.git"
+  },
+  "keywords": [
+    "phrasing",
+    "split",
+    "camel",
+    "kebab",
+    "pascal",
+    "snake"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoyeungw/spare"
+  },
+  "homepage": "https://github.com/hoyeungw/spare#readme",
+  "gitHead": "0508b64fa6a17ead21e7107b50aedd5af3febdd6"
+}
