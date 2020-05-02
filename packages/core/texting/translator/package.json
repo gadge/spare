@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoyeungw/glossa.git"
+    "url": "git+https://github.com/hoyeungw/spare.git"
   },
   "keywords": [
     "replace",
@@ -24,8 +24,8 @@
   "author": "Hoyeung Wong",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoyeungw/glossa"
+    "url": "https://github.com/hoyeungw/spare"
   },
-  "homepage": "https://github.com/hoyeungw/glossa#readme",
+  "homepage": "https://github.com/hoyeungw/spare#readme",
   "gitHead": "32d6ac944e6d229e152c73fbd1209f907c435379"
 }

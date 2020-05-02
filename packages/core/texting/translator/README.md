@@ -16,13 +16,13 @@
 [badge-npm-dependents]: https://flat.badgen.net/npm/dependents/@spare/translator
 [badge-npm-license]: https://flat.badgen.net/npm/license/@spare/translator
 [badge-pp-install-size]: https://flat.badgen.net/packagephobia/install/@spare/translator
-[badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/glossa
-[badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/glossa
+[badge-github-last-commit]: https://flat.badgen.net/github/last-commit/hoyeungw/spare
+[badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/spare
 
 [//]: <> (Link)
 [url-npm]: https://npmjs.org/package/@spare/translator
 [url-pp]: https://packagephobia.now.sh/result?p=@spare/translator
-[url-github]: https://github.com/hoyeungw/glossa
+[url-github]: https://github.com/hoyeungw/spare
 
 ##### Glossaries
 
