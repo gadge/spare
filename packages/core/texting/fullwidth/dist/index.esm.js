@@ -4,6 +4,7 @@ import stripAnsi from 'strip-ansi';
 import { hasAnsi } from '@spare/lange';
 
 const FWREG = /[\uff01-\uff5e|\u3000]+/g;
+const FWCHREG = /[\u4e00-\u9fa5|\uff01-\uff5e|\u3000]+/g;
 const FWLEAP = 0xfee0;
 
 /**
@@ -85,7 +86,7 @@ const halfToFull = text => {
  * @returns {boolean}
  */
 
-const hasFullWidth = str => FWREG.test(str);
+const hasFullWidth = str => FWCHREG.test(str);
 
 const fullWidth = (text, {
   ansi = true,
