@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-pale",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Preset for pale",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@palett/presets": "^0.1.4",
-    "@spare/deco-pale": "^0.6.0",
-    "@spare/enum-brackets": "^0.6.0",
-    "@spare/enum-chars": "^0.6.0",
+    "@spare/deco-pale": "^0.6.1",
+    "@spare/enum-brackets": "^0.6.1",
+    "@spare/enum-chars": "^0.6.1",
     "@vect/enum-matrix-directions": "^0.2.3"
   },
   "repository": {
