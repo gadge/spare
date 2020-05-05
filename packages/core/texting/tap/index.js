@@ -1,2 +1,2 @@
-export { adjoin, Adjoin } from './src/adjoin'
-export { tap }            from './src/tap'
+export { adjoin, Adjoin }                     from './src/adjoin'
+export { tap, tapSnake, tapCamel, tapPascal } from './src/tap'

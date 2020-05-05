@@ -1,7 +1,5 @@
-import { LF } from '@spare/enum-chars'
 import { decoPale } from '@spare/deco-pale'
-import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
-import { COLUMNWISE } from '@vect/enum-matrix-directions'
+import { LF }       from '@spare/enum-chars'
 
 /***
  *

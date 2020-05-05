@@ -5,8 +5,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var decoPale = require('@spare/deco-pale');
 var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
-require('@palett/presets');
-require('@vect/enum-matrix-directions');
 
 /***
  * @param {Object} p

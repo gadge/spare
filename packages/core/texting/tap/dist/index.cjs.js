@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var decoVector = require('@spare/deco-vector');
 var enumChars = require('@spare/enum-chars');
+var phrasing = require('@spare/phrasing');
 
 const tap = (...words) => {
   const ve = [];
@@ -11,6 +12,21 @@ const tap = (...words) => {
   for (let word of words) if (word === null || word === void 0 ? void 0 : word.length) ve.push(word);
 
   return ve;
+};
+const tapSnake = function (...words) {
+  var _this$delim;
+
+  const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : '_';
+  const ve = tap.apply(null, words);
+  return ve.join(delim);
+};
+const tapCamel = function (...words) {
+  const ve = tap.apply(null, words);
+  return phrasing.wordsToCamel(ve).join('');
+};
+const tapPascal = function (...words) {
+  const ve = tap.apply(null, words);
+  return phrasing.wordsToPascal(ve).join('');
 };
 
 const presetAdjoin = p => {
@@ -44,3 +60,6 @@ const Adjoin = (p = {}) => adjoin.bind(p);
 exports.Adjoin = Adjoin;
 exports.adjoin = adjoin;
 exports.tap = tap;
+exports.tapCamel = tapCamel;
+exports.tapPascal = tapPascal;
+exports.tapSnake = tapSnake;

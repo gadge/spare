@@ -1,5 +1,6 @@
 import { cosmetics } from '@spare/deco-vector';
 import { SP } from '@spare/enum-chars';
+import { wordsToCamel, wordsToPascal } from '@spare/phrasing';
 
 const tap = (...words) => {
   const ve = [];
@@ -7,6 +8,21 @@ const tap = (...words) => {
   for (let word of words) if (word === null || word === void 0 ? void 0 : word.length) ve.push(word);
 
   return ve;
+};
+const tapSnake = function (...words) {
+  var _this$delim;
+
+  const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : '_';
+  const ve = tap.apply(null, words);
+  return ve.join(delim);
+};
+const tapCamel = function (...words) {
+  const ve = tap.apply(null, words);
+  return wordsToCamel(ve).join('');
+};
+const tapPascal = function (...words) {
+  const ve = tap.apply(null, words);
+  return wordsToPascal(ve).join('');
 };
 
 const presetAdjoin = p => {
@@ -37,4 +53,4 @@ const adjoin = function (...words) {
 
 const Adjoin = (p = {}) => adjoin.bind(p);
 
-export { Adjoin, adjoin, tap };
+export { Adjoin, adjoin, tap, tapCamel, tapPascal, tapSnake };

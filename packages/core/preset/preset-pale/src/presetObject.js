@@ -1,7 +1,6 @@
+import { decoPale }   from '@spare/deco-pale'
+import { BRC, NONE }  from '@spare/enum-brackets'
 import { COLF, RTSP } from '@spare/enum-chars'
-import { BRC, NONE } from '@spare/enum-brackets'
-import { decoPale } from '@spare/deco-pale'
-import { FRESH, PLANET } from '@palett/presets'
 
 /**
  *

@@ -1,8 +1,6 @@
 import { decoPale } from '@spare/deco-pale';
 import { NONE, BRK, BRC } from '@spare/enum-brackets';
 import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
-import '@palett/presets';
-import '@vect/enum-matrix-directions';
 
 /***
  * @param {Object} p

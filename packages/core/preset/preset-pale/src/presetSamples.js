@@ -1,8 +1,6 @@
-import { COSP } from '@spare/enum-chars'
+import { decoPale }  from '@spare/deco-pale'
 import { BRK, NONE } from '@spare/enum-brackets'
-import { decoPale } from '@spare/deco-pale'
-import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
-import { COLUMNWISE } from '@vect/enum-matrix-directions'
+import { COSP }      from '@spare/enum-chars'
 
 /**
  *
