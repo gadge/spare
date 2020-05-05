@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@aryth/math": "^0.1.4",
-    "@palett/fluo-matrix": "^0.1.4",
-    "@palett/fluo-vector": "^0.1.4",
-    "@palett/presets": "^0.1.4",
+    "@palett/fluo-matrix": "^0.1.5",
+    "@palett/fluo-vector": "^0.1.5",
+    "@palett/presets": "^0.1.5",
     "@spare/enum-chars": "^0.6.1",
     "@spare/liner": "^0.6.1",
     "@spare/mattro": "^0.6.1",
