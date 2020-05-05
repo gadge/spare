@@ -1,6 +1,6 @@
 {
   "name": "@spare/regex-phrasing",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Regex sets",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
