@@ -9,10 +9,21 @@ const tap = (...words) => {
 
   return ve;
 };
-const tapSnake = function (...words) {
+const tapBy = function (delim = SP, ...words) {
+  const ve = tap.apply(null, words);
+  return ve.join(delim);
+};
+const tapDot = function (...words) {
   var _this$delim;
 
-  const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : '_';
+  const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : '.';
+  const ve = tap.apply(null, words);
+  return ve.join(delim);
+};
+const tapSnake = function (...words) {
+  var _this$delim2;
+
+  const delim = (_this$delim2 = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim2 !== void 0 ? _this$delim2 : '_';
   const ve = tap.apply(null, words);
   return ve.join(delim);
 };
@@ -53,4 +64,4 @@ const adjoin = function (...words) {
 
 const Adjoin = (p = {}) => adjoin.bind(p);
 
-export { Adjoin, adjoin, tap, tapCamel, tapPascal, tapSnake };
+export { Adjoin, adjoin, tap, tapBy, tapCamel, tapDot, tapPascal, tapSnake };

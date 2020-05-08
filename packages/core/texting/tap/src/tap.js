@@ -1,3 +1,4 @@
+import { SP }                          from '@spare/enum-chars'
 import { wordsToCamel, wordsToPascal } from '@spare/phrasing'
 
 export const tap = (...words) => {
@@ -6,6 +7,17 @@ export const tap = (...words) => {
     if (word?.length)
       ve.push(word)
   return ve
+}
+
+export const tapBy = function (delim = SP, ...words) {
+  const ve = tap.apply(null, words)
+  return ve.join(delim)
+}
+
+export const tapDot = function (...words) {
+  const delim = this?.delim ?? '.'
+  const ve = tap.apply(null, words)
+  return ve.join(delim)
 }
 
 export const tapSnake = function (...words) {
