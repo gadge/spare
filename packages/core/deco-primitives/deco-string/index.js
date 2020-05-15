@@ -11,6 +11,7 @@ const presetString = p => {
 }
 
 export const WORDS = 'words', CAMEL = 'camel', SNAKE = 'snake'
+
 const DecoModes = {
   words: WORDS,
   camel: CAMEL,

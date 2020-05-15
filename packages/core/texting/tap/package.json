@@ -17,7 +17,8 @@
   "dependencies": {
     "@spare/deco-vector": "^0.6.3",
     "@spare/enum-chars": "^0.6.3",
-    "@spare/phrasing": "^0.6.3"
+    "@spare/phrasing": "^0.6.3",
+    "@typen/nullish": "^0.1.0"
   },
   "repository": {
     "type": "git",

@@ -169,19 +169,9 @@ var _brk = _classPrivateFieldLooseKey("brk");
 
 var _prn = _classPrivateFieldLooseKey("prn");
 
-/**
- *
- * @param {string} [word]
- * @param {boolean} [color]
- * @returns {(Inka|object<string,Inka>)}
- * @constructor
- */
-
-const Xr = (word, color = true) => new Inka(word, color);
-
 const ink = new Inka();
 
 const xr = word => ink.cr(word);
 
-exports.Xr = Xr;
+exports.Xr = Inka;
 exports.xr = xr;

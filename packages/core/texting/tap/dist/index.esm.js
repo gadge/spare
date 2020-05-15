@@ -12,7 +12,15 @@ const tap = (...words) => {
 const tapBy = function (delim = SP, ...words) {
   const ve = tap.apply(null, words);
   return ve.join(delim);
-};
+}; // export const tappo = (things) => {
+//   const delim = this?.delim ?? SP
+//   let value, elements = []
+//   for (let key in things) if (things.hasOwnProperty(key)) {
+//     if (!nullish(value = things[key])) elements.push(`[${says.roster(key)}] (${value |> decoFlat})`)
+//   }
+//   return elements.join(delim)
+// }
+
 const tapDot = function (...words) {
   var _this$delim;
 
