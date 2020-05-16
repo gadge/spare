@@ -5,6 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var regexPhrasing = require('@spare/regex-phrasing');
 var ripper = require('@spare/ripper');
 
+/**
+ * @deprecated use @spare/ripper instead
+ */
 const splitter = (text, reg) => {
   let ms,
       l = 0,
@@ -26,7 +29,7 @@ const splitter = (text, reg) => {
 
 /** @type {Function|function(string):string[]} */
 
-const splitLiteral = ripper.Ripper(regexPhrasing.LITERAL);
+const splitLiteral = ripper.ripper.bind(regexPhrasing.LITERAL);
 
 /**
  * Camel/pascal case phrase -> split vector

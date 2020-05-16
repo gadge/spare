@@ -1,6 +1,9 @@
 import { LITERAL, INILOW, CAPWORD } from '@spare/regex-phrasing';
-import { Ripper } from '@spare/ripper';
+import { ripper } from '@spare/ripper';
 
+/**
+ * @deprecated use @spare/ripper instead
+ */
 const splitter = (text, reg) => {
   let ms,
       l = 0,
@@ -22,7 +25,7 @@ const splitter = (text, reg) => {
 
 /** @type {Function|function(string):string[]} */
 
-const splitLiteral = Ripper(LITERAL);
+const splitLiteral = ripper.bind(LITERAL);
 
 /**
  * Camel/pascal case phrase -> split vector
