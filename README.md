@@ -10,7 +10,7 @@
 [badge-github-commit-count]: https://flat.badgen.net/github/commits/hoyeungw/spare
 
 [//]: <> (Link)
-[url-github]: https://github.com/hoyeungw/spare
+[url-github]: https://github.com/gadge/spare
 
 ## Features
 

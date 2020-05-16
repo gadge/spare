@@ -22,7 +22,7 @@
 [//]: <> (Link)
 [url-npm]: https://npmjs.org/package/@spare/translator
 [url-pp]: https://packagephobia.now.sh/result?p=@spare/translator
-[url-github]: https://github.com/hoyeungw/spare
+[url-github]: https://github.com/gadge/spare
 
 ##### Glossaries
 
