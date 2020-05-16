@@ -15,7 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/regex-phrasing": "^0.6.5"
+    "@spare/regex-phrasing": "^0.6.5",
+    "@spare/ripper": "^0.6.5"
   },
   "repository": {
     "type": "git",

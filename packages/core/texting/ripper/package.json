@@ -1,7 +1,7 @@
 {
-  "name": "@spare/deco-string",
+  "name": "@spare/ripper",
   "version": "0.6.5",
-  "description": "Color a string",
+  "description": "Split string by regex",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,24 +12,25 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/deco-vector.test.js"
+    "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/fluo-vector": "^0.1.6",
-    "@palett/presets": "^0.1.6",
+    "@spare/deco-vector": "^0.6.5",
     "@spare/enum-chars": "^0.6.5",
-    "@spare/splitter": "^0.6.5",
-    "@vect/vector-zipper": "^0.2.3"
+    "@spare/phrasing": "^0.6.5",
+    "@typen/nullish": "^0.1.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hoyeungw/spare.git"
   },
   "keywords": [
-    "test",
-    "console",
-    "debug",
-    "print"
+    "phrasing",
+    "split",
+    "camel",
+    "kebab",
+    "pascal",
+    "snake"
   ],
   "author": "Hoyeung Wong",
   "license": "MIT",

@@ -1,7 +1,5 @@
-/**
- * @deprecated use @spare/ripper instead
- */
-export const splitter = (text, reg) => {
+export const ripper = function (text) {
+  const reg = this
   let ms, l = 0, r = 0, sp, ph
   const vec = []
   while ((ms = reg.exec(text)) && ([ph] = ms)) {
@@ -13,3 +11,10 @@ export const splitter = (text, reg) => {
   if (l < text.length) vec.push(text.slice(l))
   return vec
 }
+
+/**
+ *
+ * @param {RegExp} reg
+ * @return {Function}
+ */
+export const Ripper = (reg) => ripper.bind(reg)

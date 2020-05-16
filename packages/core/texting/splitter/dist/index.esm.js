@@ -1,4 +1,5 @@
-import { INILOW, CAPWORD } from '@spare/regex-phrasing';
+import { LITERAL, INILOW, CAPWORD } from '@spare/regex-phrasing';
+import { Ripper } from '@spare/ripper';
 
 const splitter = (text, reg) => {
   let ms,
@@ -18,6 +19,10 @@ const splitter = (text, reg) => {
   if (l < text.length) vec.push(text.slice(l));
   return vec;
 };
+
+/** @type {Function|function(string):string[]} */
+
+const splitLiteral = Ripper(LITERAL);
 
 /**
  * Camel/pascal case phrase -> split vector
@@ -45,4 +50,4 @@ function splitCamel(phrase) {
  */
 const splitSnake = phrase => phrase.split(/\W/g);
 
-export { splitCamel, splitSnake, splitter };
+export { splitCamel, splitLiteral, splitSnake, splitter };

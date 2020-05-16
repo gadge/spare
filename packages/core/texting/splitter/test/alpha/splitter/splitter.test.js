@@ -1,11 +1,10 @@
-import { deco }       from '@spare/deco'
-import { says }       from '@spare/logger'
-import { splitter }   from '../../..'
-import { candidates } from '../candidates'
-import { WORDREG }    from './regexps'
+import { deco }         from '@spare/deco'
+import { says }         from '@spare/logger'
+import { splitLiteral } from '../../../src/splitLiteral'
+import { candidates }   from '../candidates'
 
 for (let [key, word] of Object.entries(candidates)) {
-  splitter(word, WORDREG) |> deco |> says[key]
+  splitLiteral(word) |> deco |> says[key]
 }
 
 

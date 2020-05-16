@@ -2,6 +2,7 @@ export {
   INIWORD,
   INILOW,
   CAMEL,
+  LITERAL,
   WORD,
   CAPWORD,
   DASH_CAPREST,
