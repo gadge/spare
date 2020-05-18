@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@aryth/math": "^0.1.7",
-    "@palett/fluo-matrix": "^0.1.6",
-    "@palett/fluo-vector": "^0.1.6",
-    "@palett/presets": "^0.1.6",
+    "@aryth/math": "^0.1.9",
+    "@palett/fluo-matrix": "^0.1.7",
+    "@palett/fluo-vector": "^0.1.7",
+    "@palett/presets": "^0.1.7",
     "@spare/enum-chars": "^0.6.7",
     "@spare/liner": "^0.6.7",
     "@spare/mattro": "^0.6.7",
