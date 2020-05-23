@@ -1,6 +1,6 @@
 {
   "name": "@spare/enttro",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/entrigin.test.js"
   },
   "dependencies": {
-    "@spare/util": "^0.6.8",
-    "@spare/vettro": "^0.6.8",
+    "@spare/util": "^0.6.9",
+    "@spare/vettro": "^0.6.9",
     "@vect/entries-margin": "^0.2.4"
   },
   "repository": {
