@@ -1,6 +1,6 @@
 import { randMatrix }                                     from '@foba/foo'
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { METRO }                                          from '@palett/presets'
+import { FRESH, METRO }                                   from '@palett/presets'
 import { logger }                                         from '@spare/logger'
 import { Deco }                                           from '../index'
 
@@ -25,6 +25,7 @@ randRows |> Deco({ top: 3, bottom: 2, left: 3, right: 2 }) |> logger
 miscRows |> Deco({
   left: 4,
   right: 2,
+  preset: FRESH,
   stringPreset: METRO,
   // quote: APOS,
   discrete: false,

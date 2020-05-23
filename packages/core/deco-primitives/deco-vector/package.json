@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/fluo-vector": "^0.1.7",
-    "@palett/presets": "^0.1.7",
+    "@palett/fluo-vector": "^0.2.0",
+    "@palett/presets": "^0.2.0",
     "@spare/deco-entries": "^0.6.8",
     "@spare/enum-chars": "^0.6.8",
     "@spare/liner": "^0.6.8",

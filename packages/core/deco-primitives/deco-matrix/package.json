@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.1.7",
-    "@palett/presets": "^0.1.7",
+    "@palett/fluo-matrix": "^0.2.0",
+    "@palett/presets": "^0.2.0",
     "@spare/bracket": "^0.6.8",
     "@spare/enum-chars": "^0.6.8",
     "@spare/liner": "^0.6.8",
@@ -24,7 +24,7 @@
     "@spare/pad-matrix": "^0.6.8",
     "@spare/preset-deco": "^0.6.8",
     "@spare/quote": "^0.6.8",
-    "@vect/matrix": "^0.2.3"
+    "@vect/matrix": "^0.2.4"
   },
   "repository": {
     "type": "git",

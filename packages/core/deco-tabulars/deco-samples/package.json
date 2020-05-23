@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@aryth/math": "^0.1.9",
-    "@palett/fluo-matrix": "^0.1.7",
-    "@palett/fluo-vector": "^0.1.7",
-    "@palett/presets": "^0.1.7",
+    "@aryth/math": "^0.2.0",
+    "@palett/fluo-matrix": "^0.2.0",
+    "@palett/fluo-vector": "^0.2.0",
+    "@palett/presets": "^0.2.0",
     "@spare/enum-chars": "^0.6.8",
     "@spare/liner": "^0.6.8",
     "@spare/mattro": "^0.6.8",
@@ -26,13 +26,13 @@
     "@spare/preset-deco": "^0.6.8",
     "@spare/quote": "^0.6.8",
     "@spare/vettro": "^0.6.8",
-    "@vect/entries-unwind": "^0.2.3",
-    "@vect/matrix": "^0.2.3",
-    "@vect/matrix-margin": "^0.2.3",
-    "@vect/matrix-size": "^0.2.3",
-    "@vect/object-select": "^0.2.3",
-    "@vect/vector-mapper": "^0.2.3",
-    "@vect/vector-zipper": "^0.2.3"
+    "@vect/entries-unwind": "^0.2.4",
+    "@vect/matrix": "^0.2.4",
+    "@vect/matrix-margin": "^0.2.4",
+    "@vect/matrix-size": "^0.2.4",
+    "@vect/object-select": "^0.2.4",
+    "@vect/vector-mapper": "^0.2.4",
+    "@vect/vector-zipper": "^0.2.4"
   },
   "repository": {
     "type": "git",

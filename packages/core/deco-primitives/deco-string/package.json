@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/fluo-vector": "^0.1.7",
-    "@palett/presets": "^0.1.7",
+    "@palett/fluo-vector": "^0.2.0",
+    "@palett/presets": "^0.2.0",
     "@spare/enum-chars": "^0.6.8",
     "@spare/splitter": "^0.6.8",
-    "@vect/vector-zipper": "^0.2.3"
+    "@vect/vector-zipper": "^0.2.4"
   },
   "repository": {
     "type": "git",

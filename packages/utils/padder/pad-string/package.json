@@ -17,7 +17,7 @@
   "dependencies": {
     "@spare/fullwidth": "^0.6.8",
     "@spare/lange": "^0.6.8",
-    "@typen/num-strict": "^0.1.0"
+    "@typen/num-strict": "^0.1.4"
   },
   "repository": {
     "type": "git",

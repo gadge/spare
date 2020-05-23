@@ -1,8 +1,8 @@
+import { Table }           from '@analys/table'
 import { TableCollection } from '@foba/table'
-import { says } from '@spare/logger'
-import { Deco } from '../index'
-import { Table } from '@analys/table'
-import { iso } from '@vect/vector-init'
+import { says }            from '@spare/logger'
+import { iso }             from '@vect/vector-init'
+import { Deco }            from '../index'
 
 const table = TableCollection.flopShuffle() |>Table.from
 

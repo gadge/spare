@@ -1,11 +1,11 @@
+import { fluoMatrix } from '@palett/fluo-matrix';
+import { bracket } from '@spare/bracket';
+import { COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
 import { padMatrix } from '@spare/pad-matrix';
-import { fluoMatrix } from '@palett/fluo-matrix';
-import { size } from '@vect/matrix';
-import { bracket } from '@spare/bracket';
 import { Qt } from '@spare/quote';
-import { COLF } from '@spare/enum-chars';
+import { size } from '@vect/matrix';
 import { presetMatrix } from '@spare/preset-deco';
 
 const cosmetics = function (matrix) {

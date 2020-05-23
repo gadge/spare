@@ -1,11 +1,11 @@
-import { liner } from '@spare/liner'
-import { mattro } from '@spare/mattro'
-import { padMatrix } from '@spare/pad-matrix'
-import { fluoMatrix } from '@palett/fluo-matrix'
-import { size } from '@vect/matrix'
+import { fluoMatrix }           from '@palett/fluo-matrix'
 import { bracket as doBracket } from '@spare/bracket'
-import { Qt } from '@spare/quote'
-import { COLF } from '@spare/enum-chars'
+import { COLF }                 from '@spare/enum-chars'
+import { liner }                from '@spare/liner'
+import { mattro }               from '@spare/mattro'
+import { padMatrix }            from '@spare/pad-matrix'
+import { Qt }                   from '@spare/quote'
+import { size }                 from '@vect/matrix'
 
 export const cosmetics = function (matrix) {
   if (!matrix) return String(matrix)
