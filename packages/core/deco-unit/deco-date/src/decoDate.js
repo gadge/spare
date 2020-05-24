@@ -1,6 +1,6 @@
-import { FluoNumber } from '@palett/fluo'
+import { FluoNumber }    from '@palett/fluo'
 import { OCEAN, PLANET } from '@palett/presets'
-import { DASH, RT } from '@spare/enum-chars'
+import { DASH, RT }      from '@spare/enum-chars'
 
 const dyeY = FluoNumber({ min: 1990, max: 2030 }, OCEAN)
 const dyeM = FluoNumber({ min: 1, max: 12 }, OCEAN)
