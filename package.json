@@ -11,7 +11,7 @@
     "upint": "yarn upgrade-interactive --latest",
     "pub": "lerna publish --force-publish",
     "build": "lerna exec --concurrency 4 --stream  -- rollup -c ../../../../rollup.config.js",
-    "build-specific": "lerna exec --scope=@spare/ripper -- rollup -c ../../../../rollup.config.js",
+    "build-specific": "lerna exec --scope=@spare/pad-entries -- rollup -c ../../../../rollup.config.js",
     "watch": "lerna exec --parallel -- rollup -c ../../../../rollup.config.js -w",
     "watch-specific": "lerna exec --scope=@spare/deco-util -- rollup -c ../../../../rollup.config.js -w"
   },

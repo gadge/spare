@@ -2,20 +2,20 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var decoColors = require('@spare/deco-colors');
+var fluoEntries = require('@palett/fluo-entries');
+var fluoVector = require('@palett/fluo-vector');
 var bracket = require('@spare/bracket');
-var decoFunc = require('@spare/deco-func');
+var decoColors = require('@spare/deco-colors');
 var decoDate = require('@spare/deco-date');
+var decoFunc = require('@spare/deco-func');
 var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
 var numLoose = require('@typen/num-loose');
 var typ = require('@typen/typ');
-var fluoVector = require('@palett/fluo-vector');
-var fluoEntries = require('@palett/fluo-entries');
-var entriesMapper = require('@vect/entries-mapper');
-var vectorMapper = require('@vect/vector-mapper');
 var formatDate = require('@valjoux/format-date');
 var formatDateTime = require('@valjoux/format-date-time');
+var entriesMapper = require('@vect/entries-mapper');
+var vectorMapper = require('@vect/vector-mapper');
 var lange = require('@spare/lange');
 var comparer = require('@aryth/comparer');
 var padString = require('@spare/pad-string');
@@ -133,16 +133,17 @@ function plainNode(node, lv = 0) {
 }
 let deVe = function (vector, lv) {
   vectorMapper.mutate(vector, v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoVector.fluoVector(vector, {
+  if (this.pr) fluoVector.fluoVec.call({
     mutate: true
-  });
+  }, vector);
   return stringifyVector.call(this, vector, lv);
 };
 let deEn = function (entries, lv) {
   entriesMapper.mutate(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoEntries.fluoEntries(entries, {
-    stringPreset: decoColors.IDX[lv & 7],
+  if (this.pr) fluoEntries.fluoEnt.call({
     mutate: true
+  }, entries, undefined, {
+    preset: decoColors.IDX[lv & 7]
   });
   return stringifyEntries.call(this, entries, lv);
 };

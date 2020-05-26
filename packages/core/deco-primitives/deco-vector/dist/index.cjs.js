@@ -2,12 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
-var vettro = require('@spare/vettro');
-var decoEntries = require('@spare/deco-entries');
 var fluoVector = require('@palett/fluo-vector');
+var decoEntries = require('@spare/deco-entries');
+var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var quote = require('@spare/quote');
+var vettro = require('@spare/vettro');
 var presetDeco = require('@spare/preset-deco');
 
 function cosmetics(vec) {
@@ -29,8 +29,11 @@ function cosmetics(vec) {
     tail,
     read: quote.Qt(read, quote$1),
     hr: enumChars.ELLIP
-  });
-  if (preset) fluoVector.fluoVector(text, {
+  }); // below is unfinished May 22 2020
+
+  if (preset) fluoVector.fluoVec.call({
+    mutate: true
+  }, text, {
     values: raw,
     preset,
     stringPreset,

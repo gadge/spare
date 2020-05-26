@@ -1,17 +1,17 @@
-import { PAL, BRK, BRC, IDX } from '@spare/deco-colors';
+import { fluoEnt } from '@palett/fluo-entries';
+import { fluoVec } from '@palett/fluo-vector';
 import { bracket, brace } from '@spare/bracket';
-import { funcName, decoFunc } from '@spare/deco-func';
+import { PAL, BRK, BRC, IDX } from '@spare/deco-colors';
 import { decoDate, decoDateTime } from '@spare/deco-date';
+import { funcName, decoFunc } from '@spare/deco-func';
 import { STR, NUM, BIG, FUN, OBJ, BOO, UND, SYM } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE, MAP, SET } from '@typen/enum-object-types';
 import { isNumeric } from '@typen/num-loose';
 import { typ } from '@typen/typ';
-import { fluoVector } from '@palett/fluo-vector';
-import { fluoEntries } from '@palett/fluo-entries';
-import { mutate as mutate$2 } from '@vect/entries-mapper';
-import { mutate as mutate$1, iterate } from '@vect/vector-mapper';
 import { formatDate } from '@valjoux/format-date';
 import { formatDateTime } from '@valjoux/format-date-time';
+import { mutate as mutate$2 } from '@vect/entries-mapper';
+import { mutate as mutate$1, iterate } from '@vect/vector-mapper';
 import { lange } from '@spare/lange';
 import { max } from '@aryth/comparer';
 import { LPad } from '@spare/pad-string';
@@ -129,16 +129,17 @@ function plainNode(node, lv = 0) {
 }
 let deVe = function (vector, lv) {
   mutate$1(vector, v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoVector(vector, {
+  if (this.pr) fluoVec.call({
     mutate: true
-  });
+  }, vector);
   return stringifyVector.call(this, vector, lv);
 };
 let deEn = function (entries, lv) {
   mutate$2(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoEntries(entries, {
-    stringPreset: IDX[lv & 7],
+  if (this.pr) fluoEnt.call({
     mutate: true
+  }, entries, undefined, {
+    preset: IDX[lv & 7]
   });
   return stringifyEntries.call(this, entries, lv);
 };

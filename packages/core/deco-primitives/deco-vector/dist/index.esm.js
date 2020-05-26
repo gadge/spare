@@ -1,9 +1,9 @@
-import { ELLIP } from '@spare/enum-chars';
-import { vettro } from '@spare/vettro';
+import { fluoVec } from '@palett/fluo-vector';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
-import { fluoVector } from '@palett/fluo-vector';
+import { ELLIP } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { Qt } from '@spare/quote';
+import { vettro } from '@spare/vettro';
 import { presetVector } from '@spare/preset-deco';
 
 function cosmetics(vec) {
@@ -25,8 +25,11 @@ function cosmetics(vec) {
     tail,
     read: Qt(read, quote),
     hr: ELLIP
-  });
-  if (preset) fluoVector(text, {
+  }); // below is unfinished May 22 2020
+
+  if (preset) fluoVec.call({
+    mutate: true
+  }, text, {
     values: raw,
     preset,
     stringPreset,

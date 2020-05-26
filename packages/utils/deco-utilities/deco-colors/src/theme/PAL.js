@@ -1,6 +1,6 @@
-import { Cards } from '@palett/cards'
+import { Cards }    from '@palett/cards'
 import { hexToRgb } from '@palett/convert'
-import { Dye } from '@palett/dye'
+import { Dye }      from '@palett/dye'
 
 /**
  *

@@ -2,15 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var typ = require('@typen/typ');
-var enumChars = require('@spare/enum-chars');
+var fluoEntries = require('@palett/fluo-entries');
+var fluoVector = require('@palett/fluo-vector');
 var decoColors = require('@spare/deco-colors');
 var decoDate = require('@spare/deco-date');
 var decoFunc = require('@spare/deco-func');
+var enumChars = require('@spare/enum-chars');
 var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
-var fluoEntries = require('@palett/fluo-entries');
-var fluoVector = require('@palett/fluo-vector');
+var typ = require('@typen/typ');
 var columnMapper = require('@vect/column-mapper');
 var presets = require('@palett/presets');
 
@@ -39,13 +39,17 @@ function decoflat(lv, node) {
 
 function deVec(lv, ve) {
   const list = ve.map(decoflat.bind(this, lv + 1));
-  fluoVector.fluoVector(list, this);
+  fluoVector.fluoVec.call({
+    mutate: true
+  }, list);
   return list.join(enumChars.COSP);
 }
 
 function deOb(lv, ob) {
   const ents = columnMapper.mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1));
-  fluoEntries.fluoEntries(ents, this);
+  fluoEntries.fluoEnt.call({
+    mutate: true
+  }, ents);
   return ents.map(([k, v]) => k + enumChars.RT + v).join(enumChars.COSP);
 }
 
