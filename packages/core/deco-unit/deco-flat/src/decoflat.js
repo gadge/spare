@@ -1,13 +1,13 @@
-import { typ } from '@typen/typ'
-import { COSP, RT } from '@spare/enum-chars'
-import { BRC, BRK, PAL } from '@spare/deco-colors'
-import { decoDateTime } from '@spare/deco-date'
-import { decofun, DECOFUN_CONFIG } from '@spare/deco-func'
+import { fluoEnt }                           from '@palett/fluo-entries'
+import { fluoVec }                           from '@palett/fluo-vector'
+import { BRC, BRK, PAL }                     from '@spare/deco-colors'
+import { decoDateTime }                      from '@spare/deco-date'
+import { decofun, DECOFUN_CONFIG }           from '@spare/deco-func'
+import { COSP, RT }                          from '@spare/enum-chars'
 import { BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
-import { ARRAY, DATE, OBJECT } from '@typen/enum-object-types'
-import { fluoEntries } from '@palett/fluo-entries'
-import { fluoVector } from '@palett/fluo-vector'
-import { mutate } from '@vect/column-mapper'
+import { ARRAY, DATE, OBJECT }               from '@typen/enum-object-types'
+import { typ }                               from '@typen/typ'
+import { mutate }                            from '@vect/column-mapper'
 
 export function decoflat (lv, node) {
   const t = typeof node
@@ -29,13 +29,13 @@ export function decoflat (lv, node) {
 
 function deVec (lv, ve) {
   const list = ve.map(decoflat.bind(this, lv + 1))
-  fluoVector(list, this)
+  fluoVec.call({ mutate: true }, list)
   return list.join(COSP)
 }
 
 function deOb (lv, ob) {
   const ents = mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1))
-  fluoEntries(ents, this)
+  fluoEnt.call({ mutate: true }, ents)
   return ents.map(([k, v]) => k + RT + v).join(COSP)
 }
 

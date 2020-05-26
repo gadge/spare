@@ -1,19 +1,19 @@
-import { BRC, BRK, IDX, PAL } from '@spare/deco-colors'
-import { brace, bracket } from '@spare/bracket'
-import { decoFunc, funcName } from '@spare/deco-func'
-import { decoDate, decoDateTime } from '@spare/deco-date'
+import { fluoEnt }                                from '@palett/fluo-entries'
+import { fluoVec }                                from '@palett/fluo-vector'
+import { brace, bracket }                         from '@spare/bracket'
+import { BRC, BRK, IDX, PAL }                     from '@spare/deco-colors'
+import { decoDate, decoDateTime }                 from '@spare/deco-date'
+import { decoFunc, funcName }                     from '@spare/deco-func'
 import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
-import { ARRAY, DATE, MAP, OBJECT, SET } from '@typen/enum-object-types'
-import { isNumeric } from '@typen/num-loose'
-import { typ } from '@typen/typ'
-import { fluoVector } from '@palett/fluo-vector'
-import { fluoEntries } from '@palett/fluo-entries'
-import { mutate as mutateEntries } from '@vect/entries-mapper'
-import { mutate as mutateVector } from '@vect/vector-mapper'
-import { formatDate } from '@valjoux/format-date'
-import { formatDateTime } from '@valjoux/format-date-time'
-import { stringifyEntries } from './utils/stringifyEntries'
-import { stringifyVector } from './utils/stringifyVector'
+import { ARRAY, DATE, MAP, OBJECT, SET }          from '@typen/enum-object-types'
+import { isNumeric }                              from '@typen/num-loose'
+import { typ }                                    from '@typen/typ'
+import { formatDate }                             from '@valjoux/format-date'
+import { formatDateTime }                         from '@valjoux/format-date-time'
+import { mutate as mutateEntries }                from '@vect/entries-mapper'
+import { mutate as mutateVector }                 from '@vect/vector-mapper'
+import { stringifyEntries }                       from './utils/stringifyEntries'
+import { stringifyVector }                        from './utils/stringifyVector'
 
 export function decoNode (node, lv = 0) {
   return this.pr
@@ -64,13 +64,13 @@ export function plainNode (node, lv = 0) {
 
 export let deVe = function (vector, lv) {
   mutateVector(vector, v => String(decoNode.call(this, v, lv + 1)))
-  if (this.pr) fluoVector(vector, { mutate: true })
+  if (this.pr) fluoVec.call({ mutate: true }, vector)
   return stringifyVector.call(this, vector, lv)
 }
 
 export let deEn = function (entries, lv) {
   mutateEntries(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)))
-  if (this.pr) fluoEntries(entries, { stringPreset: IDX[lv & 7], mutate: true })
+  if (this.pr) fluoEnt.call({ mutate: true }, entries, undefined, { preset: IDX[lv & 7] })
   return stringifyEntries.call(this, entries, lv)
 }
 
