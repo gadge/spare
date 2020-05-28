@@ -2,16 +2,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
-var vettro = require('@spare/vettro');
-var mattro = require('@spare/mattro');
-var padTable = require('@spare/pad-table');
-var fluoVector = require('@palett/fluo-vector');
 var fluoMatrix = require('@palett/fluo-matrix');
-var vectorZipper = require('@vect/vector-zipper');
-var matrix = require('@vect/matrix');
+var fluoVector = require('@palett/fluo-vector');
+var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
+var mattro = require('@spare/mattro');
 var padKeyedColumn = require('@spare/pad-keyed-column');
+var padTable = require('@spare/pad-table');
+var vettro = require('@spare/vettro');
+var matrix = require('@vect/matrix');
+var vectorZipper = require('@vect/vector-zipper');
 var presetDeco = require('@spare/preset-deco');
 
 const VLINE = ' | ',
@@ -42,7 +42,8 @@ const cosmetics = function (crostab) {
     fullAngle,
     discrete,
     delim,
-    level
+    level,
+    colors
   } = this;
   const [x, b, s] = [mattro.mattro(matrix$1, {
     top,
@@ -61,20 +62,13 @@ const cosmetics = function (crostab) {
     tail: bottom,
     read: sideRead
   })];
-  const [dyeX, dyeB, dyeS] = [preset && fluoMatrix.fluoMatrix(x.raw, {
-    direct,
-    preset,
-    stringPreset,
+  const [dyeX, dyeB, dyeS] = [colors && fluoMatrix.fluo.call({
     colorant: true
-  }), labelPreset && fluoVector.fluoVector(b.raw, {
-    preset: labelPreset,
-    stringPreset: labelPreset,
+  }, x.raw, direct, colors), labelPreset && fluoVector.fluoVec.call({
     colorant: true
-  }), labelPreset && fluoVector.fluoVector(s.raw, {
-    preset: labelPreset,
-    stringPreset: labelPreset,
+  }, b.raw, colors), labelPreset && fluoVector.fluoVec.call({
     colorant: true
-  })];
+  }, s.raw, colors)];
   let {
     title,
     hr: br,

@@ -3,13 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
-var liner = require('@spare/liner');
-var enttro = require('@spare/enttro');
-var padEntries = require('@spare/pad-entries');
 var fluoEntries = require('@palett/fluo-entries');
-var entriesZipper = require('@vect/entries-zipper');
-var quote = require('@spare/quote');
 var bracket = require('@spare/bracket');
+var enttro = require('@spare/enttro');
+var liner = require('@spare/liner');
+var padEntries = require('@spare/pad-entries');
+var entriesZipper = require('@vect/entries-zipper');
 
 const HR_ENTRY = ['..', '..'];
 
@@ -28,9 +27,8 @@ const cosmetics = function (entries) {
     ansi,
     dash,
     delim,
-    keyQuote,
-    quote: quote$1,
-    bracket: bracket$1
+    bracket: bracket$1,
+    colors
   } = this;
   const {
     raw,
@@ -38,20 +36,23 @@ const cosmetics = function (entries) {
   } = enttro.enttro(entries, {
     head,
     tail,
-    keyRead: quote.Qt(keyRead, keyQuote),
-    read: quote.Qt(read, quote$1),
+    keyRead,
+    read,
     hr: HR_ENTRY
   });
-  const dye = preset && fluoEntries.fluoEntries(raw, {
-    preset,
-    stringPreset,
-    colorant: true
-  });
+  let dye = undefined;
+
+  if (colors) {
+    dye = fluoEntries.fluoEnt.call({
+      colorant: true
+    }, raw, colors);
+  }
+
   entries = /\n/.test(delim) ? padEntries.padEntries(text, {
     raw,
     dye,
-    ansi: preset || ansi
-  }) : preset ? entriesZipper.Duozipper((t, d) => {
+    ansi: colors || ansi
+  }) : colors ? entriesZipper.Duozipper((t, d) => {
     var _t;
 
     return _t = t, d(_t);

@@ -2,40 +2,50 @@ import { fluoVec } from '@palett/fluo-vector';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
 import { ELLIP } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
-import { Qt } from '@spare/quote';
 import { vettro } from '@spare/vettro';
 import { presetVector } from '@spare/preset-deco';
 
+const mutazip = (va, vb, fn, l) => {
+  l = l || va && va.length;
+
+  for (--l; l >= 0; l--) va[l] = fn(va[l], vb[l], l);
+
+  return va;
+};
+
 function cosmetics(vec) {
-  if (this === null || this === void 0 ? void 0 : this.indexed) return cosmetics$1.call(this, Object.entries(vec));
-  if (!vec) return String(vec);
+  const config = this;
+  if (config === null || config === void 0 ? void 0 : config.indexed) return cosmetics$1.call(config, Object.entries(vec));
+  if (!(vec === null || vec === void 0 ? void 0 : vec.length)) return String(vec);
   const {
     head,
     tail,
-    preset,
-    stringPreset,
-    read,
-    quote
-  } = this;
+    colors,
+    read
+  } = config;
   let {
     raw,
     text
   } = vettro(vec, {
     head,
     tail,
-    read: Qt(read, quote),
+    read,
     hr: ELLIP
-  }); // below is unfinished May 22 2020
-
-  if (preset) fluoVec.call({
-    mutate: true
-  }, text, {
-    values: raw,
-    preset,
-    stringPreset,
-    mutate: true
   });
-  return liner(text, this);
+
+  if (colors) {
+    const dyes = fluoVec.call({
+      colorant: true,
+      mutate: true
+    }, raw, colors);
+    text = mutazip(text, dyes, (x, dye) => {
+      var _x;
+
+      return _x = x, dye(_x);
+    });
+  }
+
+  return liner(text, config);
 }
 
 /**

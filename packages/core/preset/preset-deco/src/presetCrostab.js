@@ -15,6 +15,7 @@ import { POINTWISE }             from '@vect/enum-matrix-directions'
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
  *
+ * @param {Object[]} [p.colors]
  * @param {Object} [p.preset=FRESH]
  * @param {Object} [p.stringPreset=JUNGLE]
  * @param {Object} [p.labelPreset=SUBTLE]
@@ -37,6 +38,7 @@ export const presetCrostab = p => {
   p.preset = p.preset ?? FRESH
   p.stringPreset = p.stringPreset ?? JUNGLE
   p.labelPreset = p.labelPreset ?? SUBTLE
+  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
   p.direct = p.direct ?? POINTWISE
   p.ansi = p.ansi ?? true
   return p

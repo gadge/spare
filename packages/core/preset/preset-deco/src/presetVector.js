@@ -1,6 +1,6 @@
-import { COLF } from '@spare/enum-chars'
-import { BRK, NONE } from '@spare/enum-brackets'
-import { decoFlat } from '@spare/deco-flat'
+import { COLF }          from '@spare/enum-chars'
+import { BRK, NONE }     from '@spare/enum-brackets'
+import { decoFlat }      from '@spare/deco-flat'
 import { FRESH, JUNGLE } from '@palett/presets'
 
 /***
@@ -16,6 +16,7 @@ import { FRESH, JUNGLE } from '@palett/presets'
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read=decoFlat]
  *
+ * @param {Object[]} [p.colors]
  * @param {Object} [p.preset=FRESH]
  * @param {Object} [p.stringPreset=JUNGLE]
  *
@@ -35,6 +36,7 @@ export const presetVector = p => {
   p.read = p.read || decoFlat
   p.preset = p.preset ?? FRESH
   p.stringPreset = p.stringPreset ?? JUNGLE
+  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
   p.ansi = p.ansi ?? true
   return p
 }

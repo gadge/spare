@@ -1,11 +1,10 @@
 import { presetEntries } from '@spare/preset-deco';
-import { liner } from '@spare/liner';
-import { enttro } from '@spare/enttro';
-import { padEntries } from '@spare/pad-entries';
-import { fluoEntries } from '@palett/fluo-entries';
-import { Duozipper } from '@vect/entries-zipper';
-import { Qt } from '@spare/quote';
+import { fluoEnt } from '@palett/fluo-entries';
 import { SelectBr } from '@spare/bracket';
+import { enttro } from '@spare/enttro';
+import { liner } from '@spare/liner';
+import { padEntries } from '@spare/pad-entries';
+import { Duozipper } from '@vect/entries-zipper';
 
 const HR_ENTRY = ['..', '..'];
 
@@ -24,9 +23,8 @@ const cosmetics = function (entries) {
     ansi,
     dash,
     delim,
-    keyQuote,
-    quote,
-    bracket
+    bracket,
+    colors
   } = this;
   const {
     raw,
@@ -34,20 +32,23 @@ const cosmetics = function (entries) {
   } = enttro(entries, {
     head,
     tail,
-    keyRead: Qt(keyRead, keyQuote),
-    read: Qt(read, quote),
+    keyRead,
+    read,
     hr: HR_ENTRY
   });
-  const dye = preset && fluoEntries(raw, {
-    preset,
-    stringPreset,
-    colorant: true
-  });
+  let dye = undefined;
+
+  if (colors) {
+    dye = fluoEnt.call({
+      colorant: true
+    }, raw, colors);
+  }
+
   entries = /\n/.test(delim) ? padEntries(text, {
     raw,
     dye,
-    ansi: preset || ansi
-  }) : preset ? Duozipper((t, d) => {
+    ansi: colors || ansi
+  }) : colors ? Duozipper((t, d) => {
     var _t;
 
     return _t = t, d(_t);

@@ -14,6 +14,7 @@ import { FRESH, PLANET } from '@palett/presets'
  * @param {number} [p.quote=NONE]
  * @param {*} [p.bracket=true]
  *
+ * @param {Object[]} [p.colors]
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
  *
@@ -35,6 +36,7 @@ export const presetObject = p => {
   p.read = p.read || decoFlat
   p.preset = p.preset ?? FRESH
   p.stringPreset = p.stringPreset ?? PLANET
+  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
   p.ansi = p.ansi ?? true
   return p
 }

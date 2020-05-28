@@ -1,18 +1,18 @@
-import { COLF } from '@spare/enum-chars'
-import { marginSizing, Vectogin } from '@spare/vettro'
-import { padMatrix } from '@spare/pad-matrix'
-import { mattro } from '@spare/mattro'
-import { fluoVector } from '@palett/fluo-vector'
-import { fluoMatrix } from '@palett/fluo-matrix'
-import { mutate } from '@vect/vector-mapper'
-import { mutazip } from '@vect/vector-zipper'
-import { size } from '@vect/matrix-size'
+import { intExpon }                           from '@aryth/math'
+import { fluo }                               from '@palett/fluo-matrix'
+import { fluoVec }                            from '@palett/fluo-vector'
+import { COLF }                               from '@spare/enum-chars'
+import { liner }                              from '@spare/liner'
+import { mattro }                             from '@spare/mattro'
+import { padMatrix }                          from '@spare/pad-matrix'
+import { Qt }                                 from '@spare/quote'
+import { marginSizing, Vectogin }             from '@spare/vettro'
+import { unwind }                             from '@vect/entries-unwind'
 import { marginMapper as marginMapperMatrix } from '@vect/matrix-margin'
-import { unwind } from '@vect/entries-unwind'
-import { lookupKeys, selectValues } from '@vect/object-select'
-import { intExpon } from '@aryth/math'
-import { liner } from '@spare/liner'
-import { Qt } from '@spare/quote'
+import { size }                               from '@vect/matrix-size'
+import { lookupKeys, selectValues }           from '@vect/object-select'
+import { mutate }                             from '@vect/vector-mapper'
+import { mutazip }                            from '@vect/vector-zipper'
 
 export const cosmetics = function (samples) {
   let height, sample, keys, dye, rows
@@ -22,7 +22,7 @@ export const cosmetics = function (samples) {
     fields, indexed, headRead, read, direct,
     preset, keyPreset, stringPreset, ansi
   } = this
-  let { delim, quote, top, bottom, left, right, bracket, discrete, level } = this
+  let { delim, quote, top, bottom, left, right, bracket, discrete, level, colors } = this
   let [pick, head] = fields
     ? (lookupKeys.call(sample, fields) |> unwind)
     : [keys, keys.slice()]
@@ -41,8 +41,8 @@ export const cosmetics = function (samples) {
     top: t, bottom: b, left: l, right: r, height: h, width: w, dashX, dashY,
     read: Qt(read, quote), hr: null, validate: false
   })
-  if (preset) dye = fluoMatrix(raw, { direct, preset, stringPreset, colorant: true })
-  if (keyPreset) head = fluoVector(head, { preset: keyPreset, stringPreset: keyPreset, colorant: false })
+  if (colors) dye = fluo.call({ colorant: true }, raw, direct, colors)
+  if (keyPreset) head = fluoVec.call({ colorant: false }, head, colors)
   rows = padMatrix(text, { raw, dye, ansi })
   rows = marginMapperMatrix(rows, (x, i, j) => head[j] + ':' + x, t, b, l, r)
   dashY
@@ -51,7 +51,7 @@ export const cosmetics = function (samples) {
   if (indexed) {
     const digits = intExpon(height) + 1
     let indices = rowsVG.map((_, i) => String(i).padStart(digits)).toVector()
-    if (preset) indices = fluoVector(indices, { preset, stringPreset, colorant: false })
+    if (preset) indices = fluoVec.call({ colorant: false }, indices, colors)
     mutazip(rows, indices, (line, index) => '(' + index + ') ' + line)
   }
   if (dashX) rows.splice(t, 0, '...')

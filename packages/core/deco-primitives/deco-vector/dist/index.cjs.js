@@ -6,40 +6,50 @@ var fluoVector = require('@palett/fluo-vector');
 var decoEntries = require('@spare/deco-entries');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
-var quote = require('@spare/quote');
 var vettro = require('@spare/vettro');
 var presetDeco = require('@spare/preset-deco');
 
+const mutazip = (va, vb, fn, l) => {
+  l = l || va && va.length;
+
+  for (--l; l >= 0; l--) va[l] = fn(va[l], vb[l], l);
+
+  return va;
+};
+
 function cosmetics(vec) {
-  if (this === null || this === void 0 ? void 0 : this.indexed) return decoEntries.cosmetics.call(this, Object.entries(vec));
-  if (!vec) return String(vec);
+  const config = this;
+  if (config === null || config === void 0 ? void 0 : config.indexed) return decoEntries.cosmetics.call(config, Object.entries(vec));
+  if (!(vec === null || vec === void 0 ? void 0 : vec.length)) return String(vec);
   const {
     head,
     tail,
-    preset,
-    stringPreset,
-    read,
-    quote: quote$1
-  } = this;
+    colors,
+    read
+  } = config;
   let {
     raw,
     text
   } = vettro.vettro(vec, {
     head,
     tail,
-    read: quote.Qt(read, quote$1),
+    read,
     hr: enumChars.ELLIP
-  }); // below is unfinished May 22 2020
-
-  if (preset) fluoVector.fluoVec.call({
-    mutate: true
-  }, text, {
-    values: raw,
-    preset,
-    stringPreset,
-    mutate: true
   });
-  return liner.liner(text, this);
+
+  if (colors) {
+    const dyes = fluoVector.fluoVec.call({
+      colorant: true,
+      mutate: true
+    }, raw, colors);
+    text = mutazip(text, dyes, (x, dye) => {
+      var _x;
+
+      return _x = x, dye(_x);
+    });
+  }
+
+  return liner.liner(text, config);
 }
 
 /**

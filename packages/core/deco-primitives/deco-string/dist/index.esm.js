@@ -1,7 +1,7 @@
 import { JUNGLE, SUBTLE, INSTA, METRO } from '@palett/presets';
 import { DA, SP } from '@spare/enum-chars';
 import { splitCamel, splitSnake } from '@spare/splitter';
-import { fluoVector } from '@palett/fluo-vector';
+import { fluoVec } from '@palett/fluo-vector';
 import { zipper } from '@vect/vector-zipper';
 
 const Splitter = delim => x => String.prototype.split.call(x, delim);
@@ -17,17 +17,12 @@ const cosmetics = function (text) {
     joiner
   } = this;
   const {
-    preset,
-    stringPreset,
-    filter
+    colors
   } = this;
   const words = (vectify || Splitter(delim))(text);
-  const dyes = fluoVector(words, {
-    preset,
-    stringPreset,
-    colorant: true,
-    filter
-  });
+  const dyes = fluoVec.call({
+    colorant: true
+  }, words, colors);
   const dyed = zipper(words, dyes, (word, dye) => {
     var _word;
 

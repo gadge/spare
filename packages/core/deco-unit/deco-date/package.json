@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/fluo": "^0.2.2",
-    "@palett/presets": "^0.2.2",
+    "@palett/fluo": "^0.2.6",
+    "@palett/presets": "^0.2.6",
     "@spare/enum-chars": "^0.6.11"
   },
   "repository": {

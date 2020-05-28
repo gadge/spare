@@ -2,21 +2,21 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
-var vettro = require('@spare/vettro');
-var padMatrix = require('@spare/pad-matrix');
-var mattro = require('@spare/mattro');
-var fluoVector = require('@palett/fluo-vector');
+var math = require('@aryth/math');
 var fluoMatrix = require('@palett/fluo-matrix');
+var fluoVector = require('@palett/fluo-vector');
+var enumChars = require('@spare/enum-chars');
+var liner = require('@spare/liner');
+var mattro = require('@spare/mattro');
+var padMatrix = require('@spare/pad-matrix');
+var quote = require('@spare/quote');
+var vettro = require('@spare/vettro');
+var entriesUnwind = require('@vect/entries-unwind');
+var matrixMargin = require('@vect/matrix-margin');
+var matrixSize = require('@vect/matrix-size');
+var objectSelect = require('@vect/object-select');
 var vectorMapper = require('@vect/vector-mapper');
 var vectorZipper = require('@vect/vector-zipper');
-var matrixSize = require('@vect/matrix-size');
-var matrixMargin = require('@vect/matrix-margin');
-var entriesUnwind = require('@vect/entries-unwind');
-var objectSelect = require('@vect/object-select');
-var math = require('@aryth/math');
-var liner = require('@spare/liner');
-var quote = require('@spare/quote');
 var presetDeco = require('@spare/preset-deco');
 
 const cosmetics = function (samples) {
@@ -45,7 +45,8 @@ const cosmetics = function (samples) {
     right,
     bracket,
     discrete,
-    level
+    level,
+    colors
   } = this;
   let [pick, head] = fields ? (_lookupKeys$call = objectSelect.lookupKeys.call(sample, fields), entriesUnwind.unwind(_lookupKeys$call)) : [keys, keys.slice()];
   const {
@@ -80,17 +81,12 @@ const cosmetics = function (samples) {
     hr: null,
     validate: false
   });
-  if (preset) dye = fluoMatrix.fluoMatrix(raw, {
-    direct,
-    preset,
-    stringPreset,
+  if (colors) dye = fluoMatrix.fluo.call({
     colorant: true
-  });
-  if (keyPreset) head = fluoVector.fluoVector(head, {
-    preset: keyPreset,
-    stringPreset: keyPreset,
+  }, raw, direct, colors);
+  if (keyPreset) head = fluoVector.fluoVec.call({
     colorant: false
-  });
+  }, head, colors);
   rows = padMatrix.padMatrix(text, {
     raw,
     dye,
@@ -102,11 +98,9 @@ const cosmetics = function (samples) {
   if (indexed) {
     const digits = math.intExpon(height) + 1;
     let indices = rowsVG.map((_, i) => String(i).padStart(digits)).toVector();
-    if (preset) indices = fluoVector.fluoVector(indices, {
-      preset,
-      stringPreset,
+    if (preset) indices = fluoVector.fluoVec.call({
       colorant: false
-    });
+    }, indices, colors);
     vectorZipper.mutazip(rows, indices, (line, index) => '(' + index + ') ' + line);
   }
 

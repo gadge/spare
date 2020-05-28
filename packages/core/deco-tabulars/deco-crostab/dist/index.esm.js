@@ -1,13 +1,13 @@
+import { fluo } from '@palett/fluo-matrix';
+import { fluoVec } from '@palett/fluo-vector';
 import { AEU } from '@spare/enum-chars';
-import { vettro } from '@spare/vettro';
-import { mattro } from '@spare/mattro';
-import { padTable } from '@spare/pad-table';
-import { fluoVector } from '@palett/fluo-vector';
-import { fluoMatrix } from '@palett/fluo-matrix';
-import { zipper } from '@vect/vector-zipper';
-import { size } from '@vect/matrix';
 import { liner } from '@spare/liner';
+import { mattro } from '@spare/mattro';
 import { padKeyedColumn } from '@spare/pad-keyed-column';
+import { padTable } from '@spare/pad-table';
+import { vettro } from '@spare/vettro';
+import { size } from '@vect/matrix';
+import { zipper } from '@vect/vector-zipper';
 import { presetCrostab } from '@spare/preset-deco';
 
 const VLINE = ' | ',
@@ -38,7 +38,8 @@ const cosmetics = function (crostab) {
     fullAngle,
     discrete,
     delim,
-    level
+    level,
+    colors
   } = this;
   const [x, b, s] = [mattro(matrix, {
     top,
@@ -57,20 +58,13 @@ const cosmetics = function (crostab) {
     tail: bottom,
     read: sideRead
   })];
-  const [dyeX, dyeB, dyeS] = [preset && fluoMatrix(x.raw, {
-    direct,
-    preset,
-    stringPreset,
+  const [dyeX, dyeB, dyeS] = [colors && fluo.call({
     colorant: true
-  }), labelPreset && fluoVector(b.raw, {
-    preset: labelPreset,
-    stringPreset: labelPreset,
+  }, x.raw, direct, colors), labelPreset && fluoVec.call({
     colorant: true
-  }), labelPreset && fluoVector(s.raw, {
-    preset: labelPreset,
-    stringPreset: labelPreset,
+  }, b.raw, colors), labelPreset && fluoVec.call({
     colorant: true
-  })];
+  }, s.raw, colors)];
   let {
     title,
     hr: br,

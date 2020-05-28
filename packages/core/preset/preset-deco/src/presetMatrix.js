@@ -1,8 +1,8 @@
-import { COSP } from '@spare/enum-chars'
-import { BRK, NONE } from '@spare/enum-brackets'
-import { decoFlat } from '@spare/deco-flat'
-import { FRESH, OCEAN } from '@palett/presets'
-import { ROWWISE } from '@vect/enum-matrix-directions'
+import { FRESH, METRO, OCEAN, PLANET } from '@palett/presets'
+import { decoFlat }                    from '@spare/deco-flat'
+import { BRK, NONE }    from '@spare/enum-brackets'
+import { COSP }         from '@spare/enum-chars'
+import { ROWWISE }      from '@vect/enum-matrix-directions'
 
 /***
  *
@@ -15,8 +15,9 @@ import { ROWWISE } from '@vect/enum-matrix-directions'
  *
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object[]} [p.colors]
+ * @param {Object} [p.preset=FRESH] - will be deprecated
+ * @param {Object} [p.stringPreset=OCEAN] - will be deprecated
  * @param {number} [p.direct=ROWWISE]
  *
  * @param {number} [p.top]
@@ -34,8 +35,9 @@ export const presetMatrix = p => {
   p.bracket = !p.bracket ? NONE : BRK
   p.read = p.read || decoFlat
   p.direct = p.direct ?? ROWWISE
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? OCEAN
+  p.preset = p.preset ?? PLANET
+  p.stringPreset = p.stringPreset ?? METRO
+  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
   p.ansi = p.ansi ?? true
   return p
 }

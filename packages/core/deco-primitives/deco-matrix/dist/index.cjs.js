@@ -8,7 +8,6 @@ var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
 var padMatrix = require('@spare/pad-matrix');
-var quote = require('@spare/quote');
 var matrix = require('@vect/matrix');
 var presetDeco = require('@spare/preset-deco');
 
@@ -16,46 +15,32 @@ const cosmetics = function (matrix$1) {
   if (!matrix$1) return String(matrix$1);
   const [height, width] = matrix.size(matrix$1);
   if (!height || !width) return liner.liner([], this);
+  const config = this;
   const {
     direct,
-    preset,
-    stringPreset,
-    quote: quote$1,
+    colors,
     ansi,
     discrete,
     delim,
     bracket: bracket$1,
     level
-  } = this;
-  const {
-    top,
-    bottom,
-    left,
-    right,
-    dashX,
-    dashY,
-    read
-  } = this;
+  } = config;
   const {
     raw,
     text
-  } = mattro.mattro(matrix$1, {
-    top,
-    bottom,
-    left,
-    right,
+  } = mattro.mattro(matrix$1, Object.assign(config, {
     height,
-    width,
-    dashX,
-    dashY,
-    read: quote.Qt(read, quote$1)
-  });
-  const dye = preset && fluoMatrix.fluoMatrix(raw, {
-    direct,
-    preset,
-    stringPreset,
-    colorant: true
-  });
+    width
+  }) // { top, bottom, left, right, dashX, dashY, read } = config
+  );
+  let dye = undefined;
+
+  if (colors) {
+    dye = fluoMatrix.fluo.call({
+      colorant: true
+    }, raw, direct, colors);
+  }
+
   const rows = padMatrix.padMatrix(text, {
     raw,
     dye,

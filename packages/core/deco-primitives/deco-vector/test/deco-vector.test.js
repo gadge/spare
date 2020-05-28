@@ -22,17 +22,17 @@ const candidates = { ...Strangers, ...SimpleVectors }
 export class VectorDecoTest {
   static test () {
     for (const [key, vector] of Object.entries(candidates)) {
-      xr(key) |> logger
-      vector |> Deco({
+      vector
+        |> Deco({
         head: 4,
         tail: 4,
         indexed: false,
         bracket: BRK,
         // delim: ', ',
-        quote: APOS,
         discrete: false,
         label: 1,
-      }) |> says[key]
+      })
+        |> says[key]
     }
   }
 }

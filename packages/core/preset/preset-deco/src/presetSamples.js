@@ -18,6 +18,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
  *
+ * @param {Object[]} [p.colors]
  * @param {Object} [p.preset]
  * @param {Object} [p.keyPreset]
  * @param {Object} [p.stringPreset]
@@ -41,6 +42,7 @@ export const presetSamples = p => {
   p.preset = p.preset ?? FRESH
   p.keyPreset = p.keyPreset ?? SUBTLE
   p.stringPreset = p.stringPreset ?? JUNGLE
+  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
   p.direct = p.direct ?? COLUMNWISE
   p.ansi = p.ansi ?? true
   return p

@@ -21,17 +21,12 @@ const cosmetics = function (text) {
     joiner
   } = this;
   const {
-    preset,
-    stringPreset,
-    filter
+    colors
   } = this;
   const words = (vectify || Splitter(delim))(text);
-  const dyes = fluoVector.fluoVector(words, {
-    preset,
-    stringPreset,
-    colorant: true,
-    filter
-  });
+  const dyes = fluoVector.fluoVec.call({
+    colorant: true
+  }, words, colors);
   const dyed = vectorZipper.zipper(words, dyes, (word, dye) => {
     var _word;
 

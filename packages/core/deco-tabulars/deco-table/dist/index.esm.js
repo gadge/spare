@@ -1,11 +1,11 @@
-import { size } from '@vect/matrix';
+import { fluo } from '@palett/fluo-matrix';
+import { fluoVec } from '@palett/fluo-vector';
 import { AEU } from '@spare/enum-chars';
-import { vettro } from '@spare/vettro';
-import { mattro } from '@spare/mattro';
-import { fluoVector } from '@palett/fluo-vector';
-import { fluoMatrix } from '@palett/fluo-matrix';
-import { padTable } from '@spare/pad-table';
 import { liner } from '@spare/liner';
+import { mattro } from '@spare/mattro';
+import { padTable } from '@spare/pad-table';
+import { vettro } from '@spare/vettro';
+import { size } from '@vect/matrix';
 import { presetTable } from '@spare/preset-deco';
 
 const cosmetics = function (table) {
@@ -18,8 +18,6 @@ const cosmetics = function (table) {
     direct,
     read,
     headRead,
-    preset,
-    stringPreset,
     labelPreset,
     top,
     left,
@@ -29,7 +27,8 @@ const cosmetics = function (table) {
     fullAngle,
     discrete,
     delim,
-    level
+    level,
+    colors
   } = this;
   const [x, b] = [mattro(matrix, {
     top,
@@ -44,16 +43,11 @@ const cosmetics = function (table) {
     tail: right,
     read: headRead
   })];
-  const [dyeX, dyeB] = [preset && fluoMatrix(x.raw, {
-    direct,
-    preset,
-    stringPreset,
+  const [dyeX, dyeB] = [colors && fluo.call({
     colorant: true
-  }), labelPreset && fluoVector(b.raw, {
-    preset: labelPreset,
-    stringPreset: labelPreset,
+  }, x.raw, direct, colors), labelPreset && fluoVec.call({
     colorant: true
-  })];
+  }, b.raw, colors)];
   let {
     head,
     hr,
