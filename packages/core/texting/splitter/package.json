@@ -1,6 +1,6 @@
 {
   "name": "@spare/splitter",
-  "version": "0.6.11",
+  "version": "0.7.0",
   "description": "Join lines together",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/regex-phrasing": "^0.6.11",
-    "@spare/ripper": "^0.6.11"
+    "@spare/regex-phrasing": "^0.7.0",
+    "@spare/ripper": "^0.7.0"
   },
   "repository": {
     "type": "git",
