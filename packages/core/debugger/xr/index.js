@@ -1,2 +1,2 @@
-export { Inka as Xr } from './src/Inka/Inka'
-export { xr }         from './src/xr'
+export { Xr } from './src/Xr'
+export { xr } from './src/xr'
