@@ -1,8 +1,8 @@
 import { makeEmbedded }                 from '@foba/util'
 import { decoCrostab, says }            from '@spare/logger'
+import { DASH_CAPREST, INIWORD, WORD }  from '@spare/regex-phrasing'
 import { strategies }                   from '@valjoux/strategies'
-import { DASH_CAPREST, INIWORD, WORD }  from '../../resources/regexes'
-import { wordToCap }                    from '../../src/wordToCap'
+import { capitalize }                   from '../../src/capitalize'
 import { candidates }                   from '../candidates'
 import { byReplace, classic, mutative } from './functions/dashedToCamel'
 
@@ -16,7 +16,7 @@ const { lapse, result } = strategies({
     iter: dashed => {
       let ms, wd, ph = ''
       if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = wd.toLowerCase()
-      while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += wordToCap(wd)
+      while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += capitalize(wd)
       return ph
     },
     iterCapRest: dashed => {

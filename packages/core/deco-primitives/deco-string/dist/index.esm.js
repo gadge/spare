@@ -1,55 +1,79 @@
-import { JUNGLE, SUBTLE, INSTA, METRO } from '@palett/presets';
-import { DA, SP } from '@spare/enum-chars';
-import { splitCamel, splitSnake } from '@spare/splitter';
 import { fluoVec } from '@palett/fluo-vector';
-import { zipper } from '@vect/vector-zipper';
+import { FRESH, SUBTLE } from '@palett/presets';
+import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
+import { DA, SP } from '@spare/enum-chars';
+
+/** @type {{mutate: boolean}} */
+const MUTABLE = {
+  mutate: true
+};
 
 const Splitter = delim => x => String.prototype.split.call(x, delim);
-
 const Joiner = delim => v => Array.prototype.join.call(v, delim);
-
 const cosmetics = function (text) {
   const {
-    delim
-  } = this;
-  const {
+    delim,
     vectify,
-    joiner
-  } = this;
-  const {
+    joiner,
     presets
   } = this;
-  const words = (vectify || Splitter(delim))(text);
-  const dyes = fluoVec.call({
-    colorant: true
-  }, words, presets);
-  const dyed = zipper(words, dyes, (word, dye) => {
-    var _word;
-
-    return _word = word, dye(_word);
-  });
-  return (joiner || Joiner(delim))(dyed);
+  const words = vectify(text);
+  fluoVec.call(MUTABLE, words, presets);
+  return (joiner !== null && joiner !== void 0 ? joiner : Joiner(delim))(words);
 }; // filter: x => typeof x === STR ? x.trim().length > 0 : true
 
+const NUMERIC_PRESET = {
+  preset: FRESH
+};
+const LITERAL_PRESET = {
+  preset: SUBTLE
+};
+const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
 const presetString = p => {
-  var _p$delim, _p$preset, _p$stringPreset;
+  var _p$delim, _p$presets, _p$vectify;
 
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : SP;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : INSTA;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : METRO;
+  p.delim = (_p$delim = p === null || p === void 0 ? void 0 : p.delim) !== null && _p$delim !== void 0 ? _p$delim : '';
+  p.presets = (_p$presets = p === null || p === void 0 ? void 0 : p.presets) !== null && _p$presets !== void 0 ? _p$presets : PRESETS;
+  p.vectify = (_p$vectify = p === null || p === void 0 ? void 0 : p.vectify) !== null && _p$vectify !== void 0 ? _p$vectify : splitLiteral;
   return p;
 };
 
-const WORDS = 'words',
-      CAMEL = 'camel',
-      SNAKE = 'snake';
+const decoCamel = (text, {
+  delim = '',
+  presets = PRESETS
+} = {}) => {
+  return cosmetics.call({
+    delim,
+    presets,
+    vectify: splitCamel
+  }, text);
+};
+const decoSnake = (text, {
+  delim = DA,
+  presets = PRESETS
+} = {}) => {
+  return cosmetics.call({
+    delim,
+    presets,
+    vectify: splitSnake
+  }, text);
+};
+const decoPhrase = (text, {
+  delim = SP,
+  presets = PRESETS
+} = {}) => {
+  return cosmetics.call({
+    delim,
+    presets,
+    vectify: Splitter(delim)
+  }, text);
+};
+
 /**
  * @param {string} text
- * @param {Object} p
+ * @param {Object} [p]
  * @param {string} [p.delim]
- * @param {Object} [p.preset]
- * @param {Object} [p.stringPreset]
- * @param {Function} [p.filter]
+ * @param {Object[]} [p.presets]
  * @param {Function} [p.vectify]
  * @param {Function} [p.joiner]
  * @return {string}
@@ -60,49 +84,12 @@ const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
  *
  * @param {Object} p
  * @param {string} [p.delim]
- * @param {Object} [p.preset]
- * @param {Object} [p.stringPreset]
- * @param {Function} [p.filter]
+ * @param {Object[]} [p.presets]
  * @param {Function} [p.vectify]
  * @param {Function} [p.joiner]
  * @return {string}
  */
 
 const Deco = (p = {}) => cosmetics.bind(presetString(p));
-const decoCamel = (text, {
-  delim = '',
-  preset = JUNGLE,
-  stringPreset = SUBTLE
-} = {}) => {
-  return cosmetics.call({
-    delim,
-    preset,
-    stringPreset,
-    vectify: splitCamel
-  }, text);
-};
-const decoSnake = (text, {
-  delim = DA,
-  preset = JUNGLE,
-  stringPreset = SUBTLE
-} = {}) => {
-  return cosmetics.call({
-    delim,
-    preset,
-    stringPreset,
-    vectify: splitSnake
-  }, text);
-};
-const decoPhrase = (text, {
-  delim = SP,
-  preset = JUNGLE,
-  stringPreset = SUBTLE
-} = {}) => {
-  return cosmetics.call({
-    delim,
-    preset,
-    stringPreset
-  }, text);
-};
 
-export { CAMEL, Deco, SNAKE, WORDS, deco, decoCamel, decoPhrase, decoSnake };
+export { Deco, deco, decoCamel, decoPhrase, decoSnake };

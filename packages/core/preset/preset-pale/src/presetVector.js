@@ -15,9 +15,6 @@ import { COLF }      from '@spare/enum-chars'
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read=decoPale]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- *
  * @param {number} [p.head]
  * @param {number} [p.tail]
  *

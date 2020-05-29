@@ -15,9 +15,6 @@ import { LF }        from '@spare/enum-chars'
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoPale]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
- *
  * @param {number} [p.head]
  * @param {number} [p.tail]
  *

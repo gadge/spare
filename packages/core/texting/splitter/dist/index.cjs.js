@@ -27,7 +27,10 @@ const splitter = (text, reg) => {
   return vec;
 };
 
-/** @type {Function|function(string):string[]} */
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
 
 const splitLiteral = ripper.ripper.bind(regexPhrasing.LITERAL);
 

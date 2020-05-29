@@ -19,9 +19,6 @@ var enumChars = require('@spare/enum-chars');
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoPale]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
- *
  * @param {number} [p.head]
  * @param {number} [p.tail]
  *
@@ -88,9 +85,6 @@ const presetObject = p => {
  *
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read=decoPale]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -189,10 +183,7 @@ const presetCrostab = p => {
  *
  * @param {Function} [p.read=decoPale]
  * @param {Function} [p.headRead]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- * @param {Object} [p.labelPreset=SUBTLE]
+
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]

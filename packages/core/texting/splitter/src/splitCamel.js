@@ -1,5 +1,6 @@
 import { CAPWORD, INILOW } from '@spare/regex-phrasing'
 
+
 /**
  * Camel/pascal case phrase -> split vector
  * Snake: fox_jumps_over_dog

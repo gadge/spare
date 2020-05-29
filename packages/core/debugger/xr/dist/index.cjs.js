@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var enumChars = require('@spare/enum-chars');
 var cards = require('@palett/cards');
 var convert = require('@palett/convert');
 var dye = require('@palett/dye');
@@ -116,7 +117,7 @@ class Inka extends Callable {
         return (...items) => {
           var _items$map$join;
 
-          return queue.push((_items$map$join = items.map(String).join(', '), _classPrivateFieldLooseBase(target, _prn)[_prn](_items$map$join))), receiver;
+          return queue.push((_items$map$join = items.map(String).join(enumChars.COSP), _classPrivateFieldLooseBase(target, _prn)[_prn](_items$map$join))), receiver;
         };
       }
 
@@ -142,7 +143,7 @@ class Inka extends Callable {
   }
 
   br(...items) {
-    return this.queue.push(items.map(parenthesis$1).join(',')), this;
+    return this.queue.push(items.map(parenthesis$1).join(enumChars.CO)), this;
   }
 
   toString() {

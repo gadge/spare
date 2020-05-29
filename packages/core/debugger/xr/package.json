@@ -19,6 +19,7 @@
     "@palett/convert": "^0.2.10",
     "@palett/dye": "^0.2.10",
     "@spare/util": "^0.7.2",
+    "@spare/enum-chars": "^0.7.2",
     "@vect/callable": "^0.2.4"
   },
   "repository": {

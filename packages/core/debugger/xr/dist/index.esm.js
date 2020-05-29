@@ -1,3 +1,4 @@
+import { COSP, CO } from '@spare/enum-chars';
 import { Cards } from '@palett/cards';
 import { hexToRgb } from '@palett/convert';
 import { Dye } from '@palett/dye';
@@ -112,7 +113,7 @@ class Inka extends Callable {
         return (...items) => {
           var _items$map$join;
 
-          return queue.push((_items$map$join = items.map(String).join(', '), _classPrivateFieldLooseBase(target, _prn)[_prn](_items$map$join))), receiver;
+          return queue.push((_items$map$join = items.map(String).join(COSP), _classPrivateFieldLooseBase(target, _prn)[_prn](_items$map$join))), receiver;
         };
       }
 
@@ -138,7 +139,7 @@ class Inka extends Callable {
   }
 
   br(...items) {
-    return this.queue.push(items.map(parenthesis$1).join(',')), this;
+    return this.queue.push(items.map(parenthesis$1).join(CO)), this;
   }
 
   toString() {

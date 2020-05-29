@@ -12,10 +12,7 @@ import { LF }       from '@spare/enum-chars'
  *
  * @param {Function} [p.read=decoPale]
  * @param {Function} [p.headRead]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- * @param {Object} [p.labelPreset=SUBTLE]
+
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]
