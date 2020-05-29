@@ -1,10 +1,10 @@
 // import { max } from '../src/vectorStringProperties'
-import { Chrono } from 'elprimero'
-import { CrosTabX } from 'xbrief'
 import { simpleVectors } from '@foba/foo'
-import { makeEmbedded } from '@foba/util'
-import { lange } from '@spare/lange'
-import { mapper } from '@vect/object-mapper'
+import { makeEmbedded }  from '@foba/util'
+import { lange }         from '@spare/lange'
+import { mapper }        from '@vect/object-mapper'
+import { Chrono }        from 'elprimero'
+import { CrosTabX }      from 'xbrief'
 
 const { max } = Math
 const ShortVectors = simpleVectors({ h: 12 })

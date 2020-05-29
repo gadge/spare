@@ -1,10 +1,10 @@
-import { lange } from '@spare/lange'
-import { max } from '@aryth/comparer'
-import { LPad } from '@spare/pad-string'
-import { joinLines } from '@spare/liner'
+import { max }                                              from '@aryth/comparer'
+import { CO, COSP, RTSP }                                   from '@spare/enum-chars'
+import { lange }                                            from '@spare/lange'
+import { joinLines }                                        from '@spare/liner'
+import { LPad }                                             from '@spare/pad-string'
+import { mutate as mutateColumn }                           from '@vect/column-mapper'
 import { iterate as iterateVector, mutate as mutateVector } from '@vect/vector-mapper'
-import { mutate as mutateColumn } from '@vect/column-mapper'
-import { CO, COSP, RTSP } from '@spare/enum-chars'
 
 const lpad = LPad({ ansi: true })
 

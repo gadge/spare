@@ -1,6 +1,6 @@
+import { decoLog }               from '@spare/deco'
+import { logger, logNeL }        from '@spare/logger'
 import { copyMargin, mapMargin } from '../../../index'
-import { logger, logNeL } from '@spare/logger'
-import { decoLog } from '@spare/deco'
 
 let ar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 

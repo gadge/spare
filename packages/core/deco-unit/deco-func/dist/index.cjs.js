@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
 var bracket = require('@spare/bracket');
+var enumChars = require('@spare/enum-chars');
 var lange = require('@spare/lange');
 var cards = require('@palett/cards');
 var convert = require('@palett/convert');

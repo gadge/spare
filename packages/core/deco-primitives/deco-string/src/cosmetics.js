@@ -7,9 +7,9 @@ const Joiner = (delim) => v => Array.prototype.join.call(v, delim)
 export const cosmetics = function (text) {
   const { delim } = this
   const { vectify, joiner } = this
-  const { colors } = this
+  const { presets } = this
   const words = (vectify || Splitter(delim))(text)
-  const dyes = fluoVec.call({ colorant: true }, words, colors)
+  const dyes = fluoVec.call({ colorant: true }, words, presets)
   const dyed = zipper(words, dyes, (word, dye) => word |> dye)
   return (joiner || Joiner(delim))(dyed)
 }

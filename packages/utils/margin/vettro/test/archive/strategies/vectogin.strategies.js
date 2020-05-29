@@ -1,6 +1,6 @@
-import { Chrono } from 'elprimero'
-import { CrosTabX } from 'xbrief'
-import { Vectogin  } from '../../../src/Vectogin'
+import { Chrono }          from 'elprimero'
+import { CrosTabX }        from 'xbrief'
+import { Vectogin }        from '../../../src/Vectogin'
 import { VectoginClassic } from '../VectoginClassic'
 
 export class VectoginStrategies {

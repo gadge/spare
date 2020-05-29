@@ -2,17 +2,17 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var numStrict = require('@typen/num-strict');
 var quote = require('@spare/quote');
+var numStrict = require('@typen/num-strict');
+var bracket = require('@spare/bracket');
+var enumChars = require('@spare/enum-chars');
 var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
-var typ = require('@typen/typ');
-var enumChars = require('@spare/enum-chars');
 var numLoose = require('@typen/num-loose');
-var entriesMapper = require('@vect/entries-mapper');
-var bracket = require('@spare/bracket');
+var typ = require('@typen/typ');
 var formatDate = require('@valjoux/format-date');
 var formatTime = require('@valjoux/format-time');
+var entriesMapper = require('@vect/entries-mapper');
 
 const decoKey = x => /\W/.test(x) || numStrict.isNumeric(x) ? quote.tenseQuote(x) : x;
 

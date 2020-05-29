@@ -1,9 +1,9 @@
+import { presetVector } from '@spare/preset-deco';
 import { fluoVec } from '@palett/fluo-vector';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
 import { ELLIP } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { vettro } from '@spare/vettro';
-import { presetVector } from '@spare/preset-deco';
 
 const mutazip = (va, vb, fn, l) => {
   l = l || va && va.length;
@@ -20,7 +20,7 @@ function cosmetics(vec) {
   const {
     head,
     tail,
-    colors,
+    presets,
     read
   } = config;
   let {
@@ -33,11 +33,11 @@ function cosmetics(vec) {
     hr: ELLIP
   });
 
-  if (colors) {
+  if (presets) {
     const dyes = fluoVec.call({
       colorant: true,
       mutate: true
-    }, raw, colors);
+    }, raw, presets);
     text = mutazip(text, dyes, (x, dye) => {
       var _x;
 

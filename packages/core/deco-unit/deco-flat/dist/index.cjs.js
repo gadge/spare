@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var presets = require('@palett/presets');
 var fluoEntries = require('@palett/fluo-entries');
 var fluoVector = require('@palett/fluo-vector');
 var decoColors = require('@spare/deco-colors');
@@ -12,7 +13,6 @@ var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
 var typ = require('@typen/typ');
 var columnMapper = require('@vect/column-mapper');
-var presets = require('@palett/presets');
 
 function decoflat(lv, node) {
   const t = typeof node;

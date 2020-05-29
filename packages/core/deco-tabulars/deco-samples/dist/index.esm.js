@@ -1,4 +1,6 @@
+import { presetSamples } from '@spare/preset-deco';
 import { intExpon } from '@aryth/math';
+import { COLORANT } from '@palett/enum-colorant-modes';
 import { fluo } from '@palett/fluo-matrix';
 import { fluoVec } from '@palett/fluo-vector';
 import { COLF } from '@spare/enum-chars';
@@ -13,7 +15,6 @@ import { size } from '@vect/matrix-size';
 import { lookupKeys, selectValues } from '@vect/object-select';
 import { mutate } from '@vect/vector-mapper';
 import { mutazip } from '@vect/vector-zipper';
-import { presetSamples } from '@spare/preset-deco';
 
 const cosmetics = function (samples) {
   var _lookupKeys$call;
@@ -42,7 +43,7 @@ const cosmetics = function (samples) {
     bracket,
     discrete,
     level,
-    colors
+    presets
   } = this;
   let [pick, head] = fields ? (_lookupKeys$call = lookupKeys.call(sample, fields), unwind(_lookupKeys$call)) : [keys, keys.slice()];
   const {
@@ -77,12 +78,13 @@ const cosmetics = function (samples) {
     hr: null,
     validate: false
   });
-  if (colors) dye = fluo.call({
-    colorant: true
-  }, raw, direct, colors);
-  if (keyPreset) head = fluoVec.call({
-    colorant: false
-  }, head, colors);
+
+  if (presets) {
+    const [numericPreset,, headingPreset] = presets;
+    dye = fluo.call(COLORANT, raw, direct, presets);
+    head = fluoVec(head, [numericPreset, headingPreset]);
+  }
+
   rows = padMatrix(text, {
     raw,
     dye,
@@ -96,7 +98,7 @@ const cosmetics = function (samples) {
     let indices = rowsVG.map((_, i) => String(i).padStart(digits)).toVector();
     if (preset) indices = fluoVec.call({
       colorant: false
-    }, indices, colors);
+    }, indices, presets);
     mutazip(rows, indices, (line, index) => '(' + index + ') ' + line);
   }
 

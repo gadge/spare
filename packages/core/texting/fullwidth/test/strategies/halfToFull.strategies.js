@@ -1,12 +1,12 @@
-import { strategies } from '@valjoux/strategies'
+import { CrosTab }                  from '@analys/crostab'
+import { says }                     from '@palett/says'
+import { delogger }                 from '@spare/deco'
+import { SP }                       from '@spare/enum-full-angle-chars'
 import { decoCrostab, decoSamples } from '@spare/logger'
-import { says } from '@palett/says'
-import { FWLEAP, FWSP, HWREG } from '../../src/enums/constants'
-import { CrosTab } from '@analys/crostab'
-import { halfToFull } from '../../src/halfToFull'
-import { SP } from '@spare/enum-full-angle-chars'
-import { delogger } from '@spare/deco'
-import { fracture } from '../utils/matches'
+import { strategies }               from '@valjoux/strategies'
+import { FWLEAP, FWSP, HWREG }      from '../../src/enums/constants'
+import { halfToFull }               from '../../src/halfToFull'
+import { fracture }                 from '../utils/matches'
 
 const toFullComplexReg = function (text) {
   let n
@@ -20,9 +20,7 @@ const toFullSimpleReg = function (text) {
 export const toFullClassic = (text) => {
   let l = text?.length, i = 0, t = '', n
   while (i < l && (n = text.charCodeAt(i++))) {
-    if (n === 0x20) { t += SP }
-    else if (n < 0x7f) { t += String.fromCharCode(n + FWLEAP) }
-    else { t += String.fromCharCode(n) }
+    if (n === 0x20) { t += SP } else if (n < 0x7f) { t += String.fromCharCode(n + FWLEAP) } else { t += String.fromCharCode(n) }
   }
   return t
 }
@@ -32,11 +30,9 @@ const toFullTisko = text => {
   for (let i = 0, l = text?.length; i < l; i++) {
     if (text[i] >= '!' && text[i] <= '~') { // Check whether character is latin
       rs += String.fromCharCode(text.charCodeAt(i) - 0x20 + 0xff00) // Convert to fullwidth
-    }
-    else if (text[i] === ' ') {
+    } else if (text[i] === ' ') {
       rs += '　'
-    }
-    else {
+    } else {
       rs += text[i]
     }
   }

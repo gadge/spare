@@ -1,5 +1,5 @@
 import { cosmetics as cosmeticsEntries } from '@spare/deco-entries'
-import { liner } from '@spare/liner'
+import { liner }                         from '@spare/liner'
 
 export const cosmetics = function (o) {
   if (!o) return String(o)

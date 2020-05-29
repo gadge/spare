@@ -1,8 +1,8 @@
+import { makeEmbedded }      from '@foba/util'
 import { decoCrostab, says } from '@spare/logger'
-import { strategies } from '@valjoux/strategies'
-import { makeEmbedded } from '@foba/util'
-import { camelToSnake } from '../../src/phrasing'
-import { CAMEL } from '../../resources/regexes'
+import { strategies }        from '@valjoux/strategies'
+import { CAMEL }             from '../../resources/regexes'
+import { camelToSnake }      from '../../src/phrasing'
 
 export const CAMEL_INI = /^[A-Z]+|[\d]+/g
 export const GAP_CAMEL = /\G[A-Z]+|[\d]+/g

@@ -1,5 +1,5 @@
+import { METRO }                       from '@palett/presets'
 import { DecoEntries, delogger, says } from '../index'
-import { METRO } from '@palett/presets'
 
 const candidates = {
   ob: ({ foo: 'bar', kha: 'mia' }),

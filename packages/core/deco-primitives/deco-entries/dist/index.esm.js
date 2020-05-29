@@ -1,4 +1,5 @@
 import { presetEntries } from '@spare/preset-deco';
+import { COLORANT } from '@palett/enum-colorant-modes';
 import { fluoEnt } from '@palett/fluo-entries';
 import { SelectBr } from '@spare/bracket';
 import { enttro } from '@spare/enttro';
@@ -16,15 +17,13 @@ const cosmetics = function (entries) {
   const {
     keyRead,
     read,
-    preset,
-    stringPreset,
     head,
     tail,
     ansi,
     dash,
     delim,
     bracket,
-    colors
+    presets
   } = this;
   const {
     raw,
@@ -38,17 +37,15 @@ const cosmetics = function (entries) {
   });
   let dye = undefined;
 
-  if (colors) {
-    dye = fluoEnt.call({
-      colorant: true
-    }, raw, colors);
+  if (presets) {
+    dye = fluoEnt.call(COLORANT, raw, presets);
   }
 
   entries = /\n/.test(delim) ? padEntries(text, {
     raw,
     dye,
-    ansi: colors || ansi
-  }) : colors ? Duozipper((t, d) => {
+    ansi: presets || ansi
+  }) : presets ? Duozipper((t, d) => {
     var _t;
 
     return _t = t, d(_t);

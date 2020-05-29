@@ -1,6 +1,6 @@
-import { BRACKET, NONE } from '@spare/enum-brackets'
-import { COLF, COSP, RTSP } from '@spare/enum-chars'
 import { decoKey, decoPale } from '@spare/deco-pale'
+import { BRACKET, NONE }     from '@spare/enum-brackets'
+import { COLF, COSP, RTSP }  from '@spare/enum-chars'
 
 /***
  * @param {Object} p

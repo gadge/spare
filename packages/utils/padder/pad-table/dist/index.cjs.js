@@ -2,13 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var enumChars = require('@spare/enum-chars');
 var lange = require('@spare/lange');
 var padString = require('@spare/pad-string');
 var columnsIndicator = require('@vect/columns-indicator');
-var vectorMapper = require('@vect/vector-mapper');
 var matrixZipper = require('@vect/matrix-zipper');
+var vectorMapper = require('@vect/vector-mapper');
 var vectorZipper = require('@vect/vector-zipper');
-var enumChars = require('@spare/enum-chars');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 var fullwidth = require('@spare/fullwidth');
 var matrixTranspose = require('@vect/matrix-transpose');

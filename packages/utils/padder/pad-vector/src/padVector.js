@@ -1,7 +1,7 @@
-import { Pad } from '@spare/pad-string'
-import { Trizipper, Duozipper } from '@vect/vector-zipper'
-import { Lange } from '@spare/lange'
-import { maxBy } from '@vect/vector-indicator'
+import { Lange }                from '@spare/lange'
+import { Pad }                  from '@spare/pad-string'
+import { maxBy }                from '@vect/vector-indicator'
+import { Duozipper, Trizipper } from '@vect/vector-zipper'
 
 export const padVector = (text, { raw, dye, ansi, fill }) => {
   raw = raw || text

@@ -1,5 +1,5 @@
+import { Cards }    from '@palett/cards'
 import { hslToHex } from '@palett/convert'
-import { Cards } from '@palett/cards'
 
 export const IDX = {
   0: { max: hslToHex([75, 90, 85]), min: hslToHex([89, 99, 72]), na: Cards.grey.lighten_4 },

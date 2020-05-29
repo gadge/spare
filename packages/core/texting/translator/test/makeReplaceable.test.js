@@ -1,6 +1,6 @@
-import { says } from '@spare/logger'
+import { says }            from '@spare/logger'
+import { quote }           from '@spare/quote'
 import { MakeReplaceable } from '../src/makeReplaceable'
-import { quote } from '@spare/quote'
 
 const dict = [
   [/e/g, 'a'],

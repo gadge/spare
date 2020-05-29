@@ -1,7 +1,7 @@
-import { COLF, RTSP } from '@spare/enum-chars'
-import { BRC, NONE } from '@spare/enum-brackets'
-import { decoFlat } from '@spare/deco-flat'
-import { FRESH, PLANET } from '@palett/presets'
+import { decoFlat }                       from '@spare/deco-flat'
+import { BRC, NONE }                      from '@spare/enum-brackets'
+import { COLF, RTSP }                     from '@spare/enum-chars'
+import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
 /**
  *
@@ -14,12 +14,9 @@ import { FRESH, PLANET } from '@palett/presets'
  * @param {number} [p.quote=NONE]
  * @param {*} [p.bracket=true]
  *
- * @param {Object[]} [p.colors]
+ * @param {Object[]} [p.presets]
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=PLANET]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -34,9 +31,7 @@ export const presetObject = p => {
   p.delim = p.delim ?? COLF
   p.bracket = !p.bracket ? NONE : BRC
   p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? PLANET
-  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
+  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   p.ansi = p.ansi ?? true
   return p
 }

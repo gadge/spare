@@ -1,5 +1,5 @@
-import stripAnsi from 'strip-ansi'
-import { hasAnsi } from '@spare/lange'
+import { hasAnsi }     from '@spare/lange'
+import stripAnsi       from 'strip-ansi'
 import { toFullAngle } from '../src/fullAngle'
 
 /**

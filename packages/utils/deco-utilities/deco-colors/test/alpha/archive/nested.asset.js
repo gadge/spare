@@ -1,6 +1,6 @@
-import { deco } from '../../../src/deco'
+import { logger }   from '@spare/logger'
 import { delogger } from '../../../index'
-import { decoVector, logger } from '@spare/logger'
+import { deco }     from '../../../src/deco'
 
 {
   function nested () {
@@ -27,7 +27,6 @@ import { decoVector, logger } from '@spare/logger'
     ms |> deco |> logger
   }
 }
-
 
 const sample =
   `outer

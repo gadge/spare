@@ -1,5 +1,5 @@
-import { decoFlat } from '@spare/deco-flat'
-import { LF, SP }   from '@spare/enum-chars'
+import { decoFlat }       from '@spare/deco-flat'
+import { LF }             from '@spare/enum-chars'
 import { logger }         from '@spare/logger'
 import { stringToVector } from '@spare/phrasing/src/vectorize'
 

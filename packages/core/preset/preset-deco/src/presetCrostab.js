@@ -1,7 +1,7 @@
-import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
-import { decoFlat }              from '@spare/deco-flat'
-import { LF }                    from '@spare/enum-chars'
-import { POINTWISE }             from '@vect/enum-matrix-directions'
+import { decoFlat }                                       from '@spare/deco-flat'
+import { LF }                                             from '@spare/enum-chars'
+import { POINTWISE }                                      from '@vect/enum-matrix-directions'
+import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
 /**
  * @param {Object} p
@@ -15,10 +15,7 @@ import { POINTWISE }             from '@vect/enum-matrix-directions'
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- * @param {Object} [p.labelPreset=SUBTLE]
+ * @param {Object[]} [p.presets]
  * @param {number} [p.direct=POINTWISE]
  *
  * @param {number} [p.top]
@@ -35,10 +32,7 @@ import { POINTWISE }             from '@vect/enum-matrix-directions'
 export const presetCrostab = p => {
   p.delim = p.delim ?? LF
   p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? JUNGLE
-  p.labelPreset = p.labelPreset ?? SUBTLE
-  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
+  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
   p.direct = p.direct ?? POINTWISE
   p.ansi = p.ansi ?? true
   return p

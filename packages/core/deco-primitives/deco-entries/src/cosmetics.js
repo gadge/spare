@@ -1,3 +1,4 @@
+import { COLORANT }   from '@palett/enum-colorant-modes'
 import { fluoEnt }    from '@palett/fluo-entries'
 import { SelectBr }   from '@spare/bracket'
 import { enttro }     from '@spare/enttro'
@@ -10,15 +11,15 @@ export const cosmetics = function (entries) {
   if (!entries) return String(entries)
   if (!entries?.length) return liner([], this)
   const {
-    keyRead, read, preset, stringPreset, head, tail, ansi,
-    dash, delim, bracket, colors
+    keyRead, read, head, tail, ansi,
+    dash, delim, bracket, presets
   } = this
   const { raw, text } = enttro(entries, { head, tail, keyRead, read, hr: HR_ENTRY })
   let dye = undefined
-  if (colors) { dye = fluoEnt.call({ colorant: true }, raw, colors) }
+  if (presets) { dye = fluoEnt.call(COLORANT, raw, presets) }
   entries = /\n/.test(delim)
-    ? padEntries(text, { raw, dye, ansi: colors || ansi })
-    : colors
+    ? padEntries(text, { raw, dye, ansi: presets || ansi })
+    : presets
       ? Duozipper((t, d) => t |> d)(text, dye)
       : text
   const brk = SelectBr(bracket) || (x => x)

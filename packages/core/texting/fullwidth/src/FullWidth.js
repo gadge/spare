@@ -1,5 +1,5 @@
-import stripAnsi   from 'strip-ansi'
-import { hasAnsi } from '@spare/lange'
+import { hasAnsi }    from '@spare/lange'
+import stripAnsi      from 'strip-ansi'
 import { halfToFull } from './halfToFull'
 
 export const fullWidth = (text, { ansi = true, lean = true } = {}) => fw.call({ ansi, lean }, text)

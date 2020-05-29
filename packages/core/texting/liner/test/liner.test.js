@@ -1,9 +1,9 @@
 import { StringVectorCollection } from '@foba/vector'
-import { delogger } from '@spare/deco'
-import { BRACKET } from '@spare/enum-brackets'
-import { logger } from '@spare/logger'
-import { liner } from '../src/liner'
-import { COSP } from '@spare/enum-chars'
+import { delogger }               from '@spare/deco'
+import { BRACKET }                from '@spare/enum-brackets'
+import { COSP }                   from '@spare/enum-chars'
+import { logger }                 from '@spare/logger'
+import { liner }                  from '../src/liner'
 
 const lines = StringVectorCollection.flopShuffle()
 

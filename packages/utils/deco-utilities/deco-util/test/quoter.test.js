@@ -1,5 +1,5 @@
-import { xr } from '@spare/xr'
 import { logger } from '@spare/logger'
+import { xr }     from '@spare/xr'
 import { quoter } from '../src/quoter'
 
 const candidates = [

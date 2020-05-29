@@ -1,6 +1,6 @@
-import { deco } from '@spare/deco'
+import { says }      from '@palett/says'
+import { deco }      from '@spare/deco'
 import { joinLines } from '../index'
-import { says } from '@palett/says'
 
 const matrix = [
   [1, 2, 3],

@@ -1,8 +1,8 @@
-import { SP } from '@spare/enum-chars'
-import { parenth } from '@spare/bracket'
-import { lange } from '@spare/lange'
+import { parenth }                                        from '@spare/bracket'
+import { SP }                                             from '@spare/enum-chars'
+import { lange }                                          from '@spare/lange'
 import { argsDye, arrowDye, bodyDye, nameDye, PresetDye } from '../resources/dyes'
-import { funcName } from './funcName'
+import { funcName }                                       from './funcName'
 
 export const LAMB_REG = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs
 export const THIS_REG = /\bthis\b/

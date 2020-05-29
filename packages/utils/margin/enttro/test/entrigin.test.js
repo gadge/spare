@@ -1,8 +1,8 @@
 import { simpleEntries } from '@foba/foo'
-import { Entrigin } from '../src/Entrigin'
-import { xr } from '@spare/xr'
-import { logNeL } from '@spare/logger'
-import { deca } from '@spare/deco'
+import { deca }          from '@spare/deco'
+import { logNeL }        from '@spare/logger'
+import { xr }            from '@spare/xr'
+import { Entrigin }      from '../src/Entrigin'
 
 const Entries = simpleEntries({ h: 8 })
 const Params = {

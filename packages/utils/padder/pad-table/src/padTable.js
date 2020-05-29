@@ -1,11 +1,11 @@
-import { Lange } from '@spare/lange'
-import { Pad } from '@spare/pad-string'
-import { maxBy as columnsMaxBy } from '@vect/columns-indicator'
-import { mapper } from '@vect/vector-mapper'
+import { DA }                                             from '@spare/enum-chars'
+import { Lange }                                          from '@spare/lange'
+import { Pad }                                            from '@spare/pad-string'
+import { maxBy as columnsMaxBy }                          from '@vect/columns-indicator'
 import { Duozipper as MatDuoZip, Trizipper as MatTriZip } from '@vect/matrix-zipper'
+import { mapper }                                         from '@vect/vector-mapper'
 import { Duozipper as VecDuoZip, Trizipper as VecTriZip } from '@vect/vector-zipper'
-import { padTableFullAngle } from './padTableFullAngle'
-import { DA } from '@spare/enum-chars'
+import { padTableFullAngle }                              from './padTableFullAngle'
 // /**
 //  *
 //  *

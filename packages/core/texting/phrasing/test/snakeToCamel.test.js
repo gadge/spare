@@ -1,6 +1,6 @@
-import { candidates } from './candidates'
+import { decoSamples, logNeL, says }                 from '@spare/logger'
 import { camelToSnake, snakeToCamel, snakeToPascal } from '../src/phrasing'
-import { decoSamples, logNeL, says } from '@spare/logger'
+import { candidates }                                from './candidates'
 
 'below are tests' |> says['snake -> pascal -> snake']
 Object.entries(candidates).map(([key, phrase]) => {

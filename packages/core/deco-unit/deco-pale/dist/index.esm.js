@@ -1,14 +1,14 @@
-import { isNumeric } from '@typen/num-strict';
 import { tenseQuote } from '@spare/quote';
+import { isNumeric } from '@typen/num-strict';
+import { bracket, brace } from '@spare/bracket';
+import { RT, COSP } from '@spare/enum-chars';
 import { NUM, BOO, STR, FUN, OBJ } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
-import { typ } from '@typen/typ';
-import { RT, COSP } from '@spare/enum-chars';
 import { isNumeric as isNumeric$1 } from '@typen/num-loose';
-import { mutate } from '@vect/entries-mapper';
-import { bracket, brace } from '@spare/bracket';
+import { typ } from '@typen/typ';
 import { formatDate } from '@valjoux/format-date';
 import { formatTime } from '@valjoux/format-time';
+import { mutate } from '@vect/entries-mapper';
 
 const decoKey = x => /\W/.test(x) || isNumeric(x) ? tenseQuote(x) : x;
 

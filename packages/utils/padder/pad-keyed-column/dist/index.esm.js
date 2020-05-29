@@ -1,13 +1,13 @@
-import { LPad, RPad } from '@spare/pad-string';
-import { Lange } from '@spare/lange';
 import { max } from '@aryth/comparer';
-import { maxBy } from '@vect/vector-indicator';
 import { DA } from '@spare/enum-chars';
-import { zipper } from '@vect/vector-zipper';
-import { mapper } from '@vect/vector-mapper';
 import { DASH, SP } from '@spare/enum-full-angle-chars';
-import { hasChn } from '@spare/string';
 import { FullWidth } from '@spare/fullwidth';
+import { Lange } from '@spare/lange';
+import { LPad, RPad } from '@spare/pad-string';
+import { hasChn } from '@spare/string';
+import { maxBy } from '@vect/vector-indicator';
+import { mapper } from '@vect/vector-mapper';
+import { zipper } from '@vect/vector-zipper';
 
 const padKeyedColumn = (side, title, {
   dye,

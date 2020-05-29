@@ -1,6 +1,6 @@
 import { totx } from '@spare/util';
-import { marginCopy, marginMutate, marginMapper } from '@vect/entries-margin';
 import { Vectogin } from '@spare/vettro';
+import { marginCopy, marginMutate, marginMapper } from '@vect/entries-margin';
 
 class Entrigin extends Vectogin {
   constructor(entries, head, tail, dash) {

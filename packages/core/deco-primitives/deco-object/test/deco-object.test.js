@@ -1,10 +1,10 @@
+import { rand }          from '@aryth/rand'
 import { simpleObjects } from '@foba/foo'
-import { OCEAN } from '@palett/presets'
-import { delogger } from '@spare/deco'
-import { says } from '@palett/says'
-import { Deco } from '../index'
-import { inferType } from '@typen/num-strict'
-import { rand } from '@aryth/rand'
+import { OCEAN }         from '@palett/presets'
+import { says }          from '@palett/says'
+import { delogger }      from '@spare/deco'
+import { inferType }     from '@typen/num-strict'
+import { Deco }          from '../index'
 
 let SimpleObjects = simpleObjects({ h: 12 })
 

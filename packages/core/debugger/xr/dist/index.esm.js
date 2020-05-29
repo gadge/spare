@@ -17,16 +17,6 @@ function _classPrivateFieldLooseBase(receiver, privateKey) {
   return receiver;
 }
 
-var _Cards$blueGrey$base, _Cards$orange$lighten, _Cards$indigo$lighten;
-const bm = Dye((_Cards$blueGrey$base = Cards.blueGrey.base, hexToRgb(_Cards$blueGrey$base)));
-const br = Dye((_Cards$orange$lighten = Cards.orange.lighten_3, hexToRgb(_Cards$orange$lighten)));
-const pr = Dye((_Cards$indigo$lighten = Cards.indigo.lighten_1, hexToRgb(_Cards$indigo$lighten)));
-const bracket = tx => br('[') + tx + br(']');
-const parenthesis = tx => pr('(') + tx + pr(')');
-
-const bracket$1 = tx => '[' + tx + ']';
-const parenthesis$1 = tx => '(' + tx + ')';
-
 /**
  *
  * @param {*} [text]
@@ -41,6 +31,16 @@ const render = (text, {
   if (text === null || text === void 0 ? void 0 : text.length) queue.push(text);
   return ' '.repeat(indent << 1) + queue.join(' ');
 };
+
+var _Cards$blueGrey$base, _Cards$orange$lighten, _Cards$indigo$lighten;
+const bm = Dye((_Cards$blueGrey$base = Cards.blueGrey.base, hexToRgb(_Cards$blueGrey$base)));
+const br = Dye((_Cards$orange$lighten = Cards.orange.lighten_3, hexToRgb(_Cards$orange$lighten)));
+const pr = Dye((_Cards$indigo$lighten = Cards.indigo.lighten_1, hexToRgb(_Cards$indigo$lighten)));
+const bracket = tx => br('[') + tx + br(']');
+const parenthesis = tx => pr('(') + tx + pr(')');
+
+const bracket$1 = tx => '[' + tx + ']';
+const parenthesis$1 = tx => '(' + tx + ')';
 
 const toQueue = t => {
   let queue = [],

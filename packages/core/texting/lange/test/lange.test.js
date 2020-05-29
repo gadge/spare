@@ -1,5 +1,5 @@
 import { hasAnsi, lange } from '../index'
-import { astralReg } from '../src/regs'
+import { astralReg }      from '../src/regs'
 
 const list = [
   'tolstoy',

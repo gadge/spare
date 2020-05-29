@@ -1,8 +1,8 @@
-import { says } from '@spare/logger'
-import { simpleVectors } from '@foba/foo'
+import { rand }                   from '@aryth/rand'
+import { simpleVectors }          from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
-import { rand } from '@aryth/rand'
-import { Verse } from '../src/Verse'
+import { says }                   from '@spare/logger'
+import { Verse }                  from '../src/Verse'
 
 const candidates = {
   empty: [],

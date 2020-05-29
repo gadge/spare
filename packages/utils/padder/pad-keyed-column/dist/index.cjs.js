@@ -2,16 +2,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var padString = require('@spare/pad-string');
-var lange = require('@spare/lange');
 var comparer = require('@aryth/comparer');
-var vectorIndicator = require('@vect/vector-indicator');
 var enumChars = require('@spare/enum-chars');
-var vectorZipper = require('@vect/vector-zipper');
-var vectorMapper = require('@vect/vector-mapper');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
-var string = require('@spare/string');
 var fullwidth = require('@spare/fullwidth');
+var lange = require('@spare/lange');
+var padString = require('@spare/pad-string');
+var string = require('@spare/string');
+var vectorIndicator = require('@vect/vector-indicator');
+var vectorMapper = require('@vect/vector-mapper');
+var vectorZipper = require('@vect/vector-zipper');
 
 const padKeyedColumn = (side, title, {
   dye,

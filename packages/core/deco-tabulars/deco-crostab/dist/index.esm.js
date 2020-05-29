@@ -1,3 +1,5 @@
+import { presetCrostab } from '@spare/preset-deco';
+import { COLORANT } from '@palett/enum-colorant-modes';
 import { fluo } from '@palett/fluo-matrix';
 import { fluoVec } from '@palett/fluo-vector';
 import { AEU } from '@spare/enum-chars';
@@ -8,7 +10,6 @@ import { padTable } from '@spare/pad-table';
 import { vettro } from '@spare/vettro';
 import { size } from '@vect/matrix';
 import { zipper } from '@vect/vector-zipper';
-import { presetCrostab } from '@spare/preset-deco';
 
 const VLINE = ' | ',
       HCONN = '-+-';
@@ -27,9 +28,7 @@ const cosmetics = function (crostab) {
     read,
     headRead,
     sideRead,
-    preset,
-    stringPreset,
-    labelPreset,
+    presets,
     top,
     left,
     bottom,
@@ -38,8 +37,7 @@ const cosmetics = function (crostab) {
     fullAngle,
     discrete,
     delim,
-    level,
-    colors
+    level
   } = this;
   const [x, b, s] = [mattro(matrix, {
     top,
@@ -58,13 +56,16 @@ const cosmetics = function (crostab) {
     tail: bottom,
     read: sideRead
   })];
-  const [dyeX, dyeB, dyeS] = [colors && fluo.call({
-    colorant: true
-  }, x.raw, direct, colors), labelPreset && fluoVec.call({
-    colorant: true
-  }, b.raw, colors), labelPreset && fluoVec.call({
-    colorant: true
-  }, s.raw, colors)];
+  let dyeX, dyeB, dyeS;
+
+  if (presets) {
+    const [numericPreset,, headingPreset] = presets,
+          labelPresets = [numericPreset, headingPreset];
+    dyeX = fluo.call(COLORANT, x.raw, direct, presets);
+    dyeB = fluoVec.call(COLORANT, b.raw, labelPresets);
+    dyeS = fluoVec.call(COLORANT, s.raw, labelPresets);
+  }
+
   let {
     title,
     hr: br,

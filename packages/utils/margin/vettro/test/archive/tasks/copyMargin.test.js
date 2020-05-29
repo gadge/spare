@@ -1,8 +1,6 @@
-import { copyMargin } from '../../utils/copyMargin'
-import { decoLog } from '@spare/deco'
-import { mapMargin } from '../../utils/mapMargin'
-import { copyMxMargin } from '../../utils/copyMargin'
-import { mapMxMargin } from '../../utils/mapMargin'
+import { decoLog }                  from '@spare/deco'
+import { copyMargin, copyMxMargin } from '../../utils/copyMargin'
+import { mapMargin, mapMxMargin }   from '../../utils/mapMargin'
 
 const ar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 

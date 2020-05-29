@@ -6,7 +6,6 @@ import { SP }                  from '@spare/enum-chars'
 import { decoSamples, logger } from '@spare/logger'
 import { quote }               from '@spare/quote'
 import { ComplexCollection }   from '../assets/ComboCollection'
-import { FunctionCollection }  from '../assets/FunctionCollection'
 import { argnames }            from './argnames'
 
 // no comments

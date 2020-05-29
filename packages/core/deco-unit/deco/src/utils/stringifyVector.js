@@ -1,7 +1,7 @@
-import { lange } from '@spare/lange'
-import { joinLines } from '@spare/liner'
+import { CO, COSP }                 from '@spare/enum-chars'
+import { lange }                    from '@spare/lange'
+import { joinLines }                from '@spare/liner'
 import { iterate as iterateVector } from '@vect/vector-mapper'
-import { CO, COSP } from '@spare/enum-chars'
 
 export const stringifyVector = function (vector, lv) {
   const { va, wa } = this

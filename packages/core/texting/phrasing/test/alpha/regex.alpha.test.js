@@ -1,5 +1,5 @@
 import { delogger } from '@spare/deco'
-import { logger } from '@spare/logger'
+import { logger }   from '@spare/logger'
 
 export const WORD = /[A-Za-z\d]+/gi
 export const CAMEL = /[A-Z]+|[0-9]+/g

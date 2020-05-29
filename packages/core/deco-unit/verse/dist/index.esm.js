@@ -1,13 +1,13 @@
-import { cosmetics } from '@spare/deco-vector';
-import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
-import { cosmetics as cosmetics$2 } from '@spare/deco-object';
-import { cosmetics as cosmetics$3 } from '@spare/deco-matrix';
-import { cosmetics as cosmetics$4 } from '@spare/deco-samples';
-import { matchSlice as matchSlice$1 } from '@analys/table-init';
 import { matchSlice } from '@analys/crostab-init';
+import { matchSlice as matchSlice$1 } from '@analys/table-init';
 import { bracket, brace } from '@spare/bracket';
-import { liner, joinLines } from '@spare/liner';
+import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
+import { cosmetics as cosmetics$3 } from '@spare/deco-matrix';
+import { cosmetics as cosmetics$2 } from '@spare/deco-object';
+import { cosmetics as cosmetics$4 } from '@spare/deco-samples';
+import { cosmetics } from '@spare/deco-vector';
 import { BRACE, BRACKET } from '@spare/enum-brackets';
+import { liner, joinLines } from '@spare/liner';
 import { presetVector, presetEntriesAsObject, presetEntries, presetObject, presetMatrix, presetSamples, presetCrostab, presetTable } from '@spare/preset-verse';
 
 const SIDE = 'side',

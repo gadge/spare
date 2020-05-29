@@ -26,8 +26,9 @@ randRows |> Deco({ top: 3, bottom: 2, left: 3, right: 2, direct: COLUMNWISE }) |
 miscRows |> Deco({
   left: 4,
   right: 2,
-  preset: FRESH,
-  stringPreset: METRO,
+  // preset: FRESH,
+  // stringPreset: METRO,
+  presets: [{ preset: FRESH }, { preset: METRO }],
   discrete: false,
   bracket: true,
 })  |> says['miscRows']

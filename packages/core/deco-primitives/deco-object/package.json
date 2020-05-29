@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@spare/deco-entries": "^0.7.0",
+    "@palett/enum-colorant-modes": "^0.2.10",
     "@spare/liner": "^0.7.0",
     "@spare/preset-deco": "^0.7.0",
     "@spare/quote": "^0.7.0"

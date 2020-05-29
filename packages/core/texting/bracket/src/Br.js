@@ -1,4 +1,4 @@
-import { ANBR, BRC, BRK, PAR } from '@spare/enum-brackets'
+import { ANBR, BRC, BRK, PAR }              from '@spare/enum-brackets'
 import { anglebr, brace, bracket, parenth } from './bracket'
 
 export const SelectBr = (mode) => {

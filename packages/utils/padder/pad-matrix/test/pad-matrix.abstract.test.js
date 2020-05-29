@@ -1,8 +1,7 @@
-import { Pad } from '@spare/pad-string'
-import { delogger } from '@spare/deco'
+import { logger }    from '@spare/logger'
+import { brief }     from '@spare/logger-matrix'
+import { Pad }       from '@spare/pad-string'
 import { Trizipper } from '@vect/matrix-zipper'
-import { logger } from '@spare/logger'
-import { brief } from '@spare/logger-matrix'
 
 const ax = [
   ['', '', ''],

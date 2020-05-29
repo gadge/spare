@@ -1,5 +1,5 @@
+import { DT, QT }      from '@spare/enum-chars'
 import { APOS, DITTO } from '@spare/enum-quotes'
-import { DT, QT } from '@spare/enum-chars'
 
 export const quote = x => QT + x + QT
 export const ditto = x => DT + x + DT

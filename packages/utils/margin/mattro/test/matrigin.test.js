@@ -1,8 +1,8 @@
 import { simpleMatrices } from '@foba/foo'
-import { Matrigin } from '../src/Matrigin'
-import { xr } from '@spare/xr'
-import { logNeL } from '@spare/logger'
-import { deco } from '@spare/deco'
+import { deco }           from '@spare/deco'
+import { logNeL }         from '@spare/logger'
+import { xr }             from '@spare/xr'
+import { Matrigin }       from '../src/Matrigin'
 
 const Matrices = simpleMatrices({ h: 8, w: 6 })
 const Params = {

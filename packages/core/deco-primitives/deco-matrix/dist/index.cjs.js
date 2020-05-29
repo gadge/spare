@@ -2,6 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var presetDeco = require('@spare/preset-deco');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoMatrix = require('@palett/fluo-matrix');
 var bracket = require('@spare/bracket');
 var enumChars = require('@spare/enum-chars');
@@ -9,7 +11,6 @@ var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
 var padMatrix = require('@spare/pad-matrix');
 var matrix = require('@vect/matrix');
-var presetDeco = require('@spare/preset-deco');
 
 const cosmetics = function (matrix$1) {
   if (!matrix$1) return String(matrix$1);
@@ -18,7 +19,7 @@ const cosmetics = function (matrix$1) {
   const config = this;
   const {
     direct,
-    colors,
+    presets,
     ansi,
     discrete,
     delim,
@@ -35,10 +36,8 @@ const cosmetics = function (matrix$1) {
   );
   let dye = undefined;
 
-  if (colors) {
-    dye = fluoMatrix.fluo.call({
-      colorant: true
-    }, raw, direct, colors);
+  if (presets) {
+    dye = fluoMatrix.fluo.call(enumColorantModes.COLORANT, raw, direct, presets);
   }
 
   const rows = padMatrix.padMatrix(text, {

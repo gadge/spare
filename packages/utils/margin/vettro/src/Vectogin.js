@@ -1,6 +1,6 @@
-import { totx } from '@spare/util'
+import { totx }                                   from '@spare/util'
 import { marginCopy, marginMapper, marginMutate } from '@vect/vector-margin'
-import { marginSizing } from './marginSizing'
+import { marginSizing }                           from './marginSizing'
 
 export class Vectogin {
   constructor (vec, head, tail, dash) {

@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var util = require('@spare/util');
-var entriesMargin = require('@vect/entries-margin');
 var vettro = require('@spare/vettro');
+var entriesMargin = require('@vect/entries-margin');
 
 class Entrigin extends vettro.Vectogin {
   constructor(entries, head, tail, dash) {

@@ -1,5 +1,5 @@
+import { LF }       from '@spare/enum-chars'
 import { decoNode } from './src/decoNode'
-import { LF } from '@spare/enum-chars'
 
 export { decoNode }
 

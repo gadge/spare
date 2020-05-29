@@ -6,8 +6,8 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var enumChars = require('@spare/enum-chars');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
-var stripAnsi = _interopDefault(require('strip-ansi'));
 var lange = require('@spare/lange');
+var stripAnsi = _interopDefault(require('strip-ansi'));
 
 const FWREG = /[\uff01-\uff5e|\u3000]+/g;
 const FWCHREG = /[\u4e00-\u9fa5|\uff01-\uff5e|\u3000]+/g;

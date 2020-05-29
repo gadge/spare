@@ -1,6 +1,6 @@
 import { TableCollection } from '@foba/table'
-import { says } from '@spare/logger'
-import { DecoTable } from '../index'
+import { says }            from '@spare/logger'
+import { DecoTable }       from '../index'
 
 const table = TableCollection.flopShuffle()
 

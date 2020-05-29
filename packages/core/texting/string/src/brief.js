@@ -1,5 +1,5 @@
+import { RN, TB }                         from '@spare/enum-chars'
 import { afterNaTab, deNaTab, endsBracs } from '@spare/util'
-import { RN, TB } from '@spare/enum-chars'
 
 const wL = (tx = '') => {
   console.log(tx)

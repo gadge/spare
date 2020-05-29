@@ -1,6 +1,6 @@
+import { br }         from '@spare/bracket'
+import { NONE }       from '@spare/enum-brackets'
 import { CO, LF, TB } from '@spare/enum-chars'
-import { br } from '@spare/bracket'
-import { NONE } from '@spare/enum-brackets'
 
 export const joinLines = (lines, de = '', lv, hover = true) => {
   const IND = lv > 0 ? TB.repeat(lv) : '', LFI = LF + IND

@@ -1,7 +1,7 @@
-import { LF } from '@spare/enum-chars'
-import { decoFlat } from '@spare/deco-flat'
-import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
-import { COLUMNWISE } from '@vect/enum-matrix-directions'
+import { decoFlat }                                       from '@spare/deco-flat'
+import { LF }                                             from '@spare/enum-chars'
+import { COLUMNWISE }                                     from '@vect/enum-matrix-directions'
+import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
 /***
  *
@@ -15,10 +15,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @param {Function} [p.read=decoFlat]
  * @param {Function} [p.headRead]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- * @param {Object} [p.labelPreset=SUBTLE]
+ * @param {Object[]} [p.presets]
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]
@@ -35,10 +32,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
 export const presetTable = p => {
   p.delim = p.delim ?? LF
   p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? JUNGLE
-  p.labelPreset = p.labelPreset ?? SUBTLE
-  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
+  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
   p.direct = p.direct ?? COLUMNWISE
   p.ansi = p.ansi ?? true
   return p

@@ -21,12 +21,12 @@ const cosmetics = function (text) {
     joiner
   } = this;
   const {
-    colors
+    presets
   } = this;
   const words = (vectify || Splitter(delim))(text);
   const dyes = fluoVector.fluoVec.call({
     colorant: true
-  }, words, colors);
+  }, words, presets);
   const dyed = vectorZipper.zipper(words, dyes, (word, dye) => {
     var _word;
 

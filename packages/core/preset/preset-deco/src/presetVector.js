@@ -1,7 +1,7 @@
-import { COLF }          from '@spare/enum-chars'
-import { BRK, NONE }     from '@spare/enum-brackets'
-import { decoFlat }      from '@spare/deco-flat'
-import { FRESH, JUNGLE } from '@palett/presets'
+import { decoFlat }                       from '@spare/deco-flat'
+import { BRK, NONE }                      from '@spare/enum-brackets'
+import { COLF }                           from '@spare/enum-chars'
+import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
 /***
  *
@@ -16,9 +16,7 @@ import { FRESH, JUNGLE } from '@palett/presets'
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object[]} [p.presets]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -34,9 +32,7 @@ export const presetVector = p => {
   p.bracket = !p.bracket ? NONE : BRK
   p.indexed = p.indexed ?? true
   p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? JUNGLE
-  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
+  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   p.ansi = p.ansi ?? true
   return p
 }

@@ -1,8 +1,8 @@
+import { deca }        from '@spare/deco'
+import { logger }      from '@spare/logger'
+import { Mx }          from 'veho'
+import { Matrigin }    from '../../../src/Matrigin'
 import { MatriginDev } from '../matriginDev'
-import { Matrigin } from '../../../src/Matrigin'
-import { Mx } from 'veho'
-import { deca } from '@spare/deco'
-import { logger } from '@spare/logger'
 
 const matrix = [
   [1, 2, 3, 4, 5],

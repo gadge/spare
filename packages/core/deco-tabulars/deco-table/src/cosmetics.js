@@ -12,18 +12,19 @@ export const cosmetics = function (table) {
   const [height, width] = size(matrix), labelWidth = banner && banner.length
   if (!height || !width || !labelWidth) return AEU
   const {
-    direct, read, headRead, labelPreset,
-    top, left, bottom, right, ansi, fullAngle, discrete, delim, level,
-    colors
+    direct, read, headRead, presets,
+    top, left, bottom, right, ansi, fullAngle, discrete, delim, level
   } = this
   const [x, b] = [
     mattro(matrix, { top, bottom, left, right, height, width, read }),
     vettro(banner, { head: left, tail: right, read: headRead }),
   ]
-  const [dyeX, dyeB] = [
-    colors && fluo.call({ colorant: true }, x.raw, direct, colors),
-    labelPreset && fluoVec.call({ colorant: true }, b.raw, colors),
-  ]
+  let dyeX, dyeB
+  if (presets) {
+    const [numericPreset, , headingPreset] = presets
+    dyeX = fluo.call({ colorant: true }, x.raw, direct, presets)
+    dyeB = fluoVec.call({ colorant: true }, b.raw, [numericPreset, headingPreset])
+  }
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
   const lines = [
     head.join(' | '),

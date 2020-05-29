@@ -15,7 +15,6 @@ export const matricesAsParameter = (xa, xb, xc, xd) => {
 // repzip
 // seriesZipper
 
-
 export const seriesZipper = function (...matrices) {
   let l = matrices.length
   let { zipper } = this

@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
 var bracket = require('@spare/bracket');
 var enumBrackets = require('@spare/enum-brackets');
+var enumChars = require('@spare/enum-chars');
 
 const joinLines = (lines, de = '', lv, hover = true) => {
   const IND = lv > 0 ? enumChars.TB.repeat(lv) : '',

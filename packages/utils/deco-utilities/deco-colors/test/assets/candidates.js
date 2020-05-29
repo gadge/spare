@@ -1,7 +1,7 @@
+import { flop, rand }                                     from '@aryth/rand'
+import { randMatrix, simpleObjects }                      from '@foba/foo'
 import { NumberObjectCollection, StringObjectCollection } from '@foba/object'
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { randMatrix, simpleObjects } from '@foba/foo'
-import { flop, rand } from '@aryth/rand'
 
 const randNumMatrix = randMatrix({ h: 3, w: 8 })
 

@@ -1,3 +1,4 @@
+import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
 import { fluoEnt } from '@palett/fluo-entries';
 import { fluoVec } from '@palett/fluo-vector';
 import { bracket, brace } from '@spare/bracket';
@@ -12,12 +13,11 @@ import { formatDate } from '@valjoux/format-date';
 import { formatDateTime } from '@valjoux/format-date-time';
 import { mutate as mutate$2 } from '@vect/entries-mapper';
 import { mutate as mutate$1, iterate } from '@vect/vector-mapper';
-import { lange } from '@spare/lange';
 import { max } from '@aryth/comparer';
-import { LPad } from '@spare/pad-string';
+import { lange } from '@spare/lange';
 import { joinLines } from '@spare/liner';
+import { LPad } from '@spare/pad-string';
 import { mutate } from '@vect/column-mapper';
-import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
 
 const lpad = LPad({
   ansi: true

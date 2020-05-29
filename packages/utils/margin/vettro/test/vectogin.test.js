@@ -1,8 +1,8 @@
 import { simpleVectors } from '@foba/foo'
-import { Vectogin } from '../src/Vectogin'
-import { xr } from '@spare/xr'
-import { logNeL } from '@spare/logger'
-import { deca } from '@spare/deco'
+import { deca }          from '@spare/deco'
+import { logNeL }        from '@spare/logger'
+import { xr }            from '@spare/xr'
+import { Vectogin }      from '../src/Vectogin'
 
 const Vectors = simpleVectors({ h: 8 })
 const Params = {

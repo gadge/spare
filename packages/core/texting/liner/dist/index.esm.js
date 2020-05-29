@@ -1,6 +1,6 @@
-import { TB, LF, CO } from '@spare/enum-chars';
 import { br } from '@spare/bracket';
 import { NONE } from '@spare/enum-brackets';
+import { TB, LF, CO } from '@spare/enum-chars';
 
 const joinLines = (lines, de = '', lv, hover = true) => {
   const IND = lv > 0 ? TB.repeat(lv) : '',

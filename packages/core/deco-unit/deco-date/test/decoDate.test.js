@@ -1,7 +1,7 @@
-import { logger } from '@spare/logger'
+import { logger }       from '@spare/logger'
+import { transpose }    from '@vect/matrix'
+import { seq }          from '@vect/vector-init'
 import { decoDateTime } from '../src/decoDate'
-import { seq } from '@vect/vector-init'
-import { transpose } from '@vect/matrix'
 
 const years = seq(10, x => 1980 + x * 5)
 const months = seq(10, x => (x * 10) % 12)

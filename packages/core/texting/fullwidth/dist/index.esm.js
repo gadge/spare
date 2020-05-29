@@ -1,7 +1,7 @@
 import { SP } from '@spare/enum-chars';
 import { SP as SP$1 } from '@spare/enum-full-angle-chars';
-import stripAnsi from 'strip-ansi';
 import { hasAnsi } from '@spare/lange';
+import stripAnsi from 'strip-ansi';
 
 const FWREG = /[\uff01-\uff5e|\u3000]+/g;
 const FWCHREG = /[\u4e00-\u9fa5|\uff01-\uff5e|\u3000]+/g;

@@ -1,6 +1,6 @@
 import { Basics, Vectors } from '@spare/deco/test/assets/candidates'
-import { says } from '@spare/logger'
-import { decoPale } from '../index'
+import { says }            from '@spare/logger'
+import { decoPale }        from '../index'
 
 for (const [key, value] of Object.entries({
   ...Basics,

@@ -1,5 +1,5 @@
-import { decoflat } from './src/decoflat'
 import { FRESH, JUNGLE } from '@palett/presets'
+import { decoflat }      from './src/decoflat'
 
 /**
  * @Function

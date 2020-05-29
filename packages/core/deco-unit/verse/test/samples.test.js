@@ -1,7 +1,7 @@
-import { logNeL } from '@spare/logger'
+import { tableToSamples }  from '@analys/convert'
 import { TableCollection } from '@foba/table'
-import { tableToSamples } from '@analys/convert'
-import { Verse } from '../src/Verse'
+import { logNeL }          from '@spare/logger'
+import { Verse }           from '../src/Verse'
 
 const samples = TableCollection.flopShuffle() |> tableToSamples
 

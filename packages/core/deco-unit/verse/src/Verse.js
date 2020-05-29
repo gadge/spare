@@ -1,13 +1,13 @@
-import { cosmetics as cosmeticsVector } from '@spare/deco-vector'
-import { cosmetics as cosmeticsEntries } from '@spare/deco-entries'
-import { cosmetics as cosmeticsObject } from '@spare/deco-object'
-import { cosmetics as cosmeticsMatrix } from '@spare/deco-matrix'
-import { cosmetics as cosmeticsSamples } from '@spare/deco-samples'
-import { matchSlice as matchSliceTable } from '@analys/table-init'
 import { matchSlice as matchSliceCrostab } from '@analys/crostab-init'
-import { brace, bracket as doBracket } from '@spare/bracket'
-import { joinLines, liner } from '@spare/liner'
-import { BRACE, BRACKET } from '@spare/enum-brackets'
+import { matchSlice as matchSliceTable }   from '@analys/table-init'
+import { brace, bracket as doBracket }     from '@spare/bracket'
+import { cosmetics as cosmeticsEntries }   from '@spare/deco-entries'
+import { cosmetics as cosmeticsMatrix }    from '@spare/deco-matrix'
+import { cosmetics as cosmeticsObject }    from '@spare/deco-object'
+import { cosmetics as cosmeticsSamples }   from '@spare/deco-samples'
+import { cosmetics as cosmeticsVector }    from '@spare/deco-vector'
+import { BRACE, BRACKET }                  from '@spare/enum-brackets'
+import { joinLines, liner }                from '@spare/liner'
 import {
   presetCrostab,
   presetEntries,
@@ -17,7 +17,7 @@ import {
   presetSamples,
   presetTable,
   presetVector
-} from '@spare/preset-verse'
+}                                          from '@spare/preset-verse'
 
 const SIDE = 'side', HEAD = 'head', ROWS = 'rows'
 

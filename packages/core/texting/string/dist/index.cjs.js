@@ -4,8 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var stripAnsi = _interopDefault(require('strip-ansi'));
 var lange = require('@spare/lange');
+var stripAnsi = _interopDefault(require('strip-ansi'));
 var util = require('@spare/util');
 var enumChars = require('@spare/enum-chars');
 

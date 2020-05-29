@@ -1,5 +1,5 @@
-import stripAnsi from 'strip-ansi';
 import { hasAnsi } from '@spare/lange';
+import stripAnsi from 'strip-ansi';
 import { isTab, deNaTab, endsBracs, afterNaTab } from '@spare/util';
 import { RN, TB } from '@spare/enum-chars';
 

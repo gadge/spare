@@ -1,6 +1,6 @@
-import { strategies } from '@valjoux/strategies'
+import { makeEmbedded }      from '@foba/util'
 import { decoCrostab, says } from '@spare/logger'
-import { makeEmbedded } from '@foba/util'
+import { strategies }        from '@valjoux/strategies'
 
 const CAPREST = /([a-zA-Z\d])([a-zA-Z\d]*)/g
 

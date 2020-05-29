@@ -18,7 +18,7 @@ crostab |> Deco({
   labelPreset: OCEAN,
   read: x => isNumeric(x) ? mag.format(+x) : NaN,
   top: 4, bottom: 3, left: 3, right: 2,
-  fullAngle: true
+  fullAngle: false
 }) |> logger
 
 

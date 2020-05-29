@@ -1,5 +1,5 @@
+import { rand }      from '@aryth/rand'
 import { isNumeric } from '@typen/num-loose'
-import { rand } from '@aryth/rand'
 
 const coordinate = function () {
   const { x, y } = this

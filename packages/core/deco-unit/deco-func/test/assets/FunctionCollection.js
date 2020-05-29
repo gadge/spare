@@ -19,8 +19,7 @@ export const FunctionCollection = {
   conditional: function (x) {
     if (x % 2) {
       return 'odd'
-    }
-    else {
+    } else {
       return 'even'
     }
   },

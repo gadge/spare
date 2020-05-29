@@ -1,4 +1,4 @@
-import { Chrono } from 'elprimero'
+import { Chrono }   from 'elprimero'
 import { CrosTabX } from 'xbrief'
 
 function marginStable (ar, h = 0, t = 0) {

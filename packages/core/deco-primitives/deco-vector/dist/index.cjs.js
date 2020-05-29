@@ -2,12 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var presetDeco = require('@spare/preset-deco');
 var fluoVector = require('@palett/fluo-vector');
 var decoEntries = require('@spare/deco-entries');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var vettro = require('@spare/vettro');
-var presetDeco = require('@spare/preset-deco');
 
 const mutazip = (va, vb, fn, l) => {
   l = l || va && va.length;
@@ -24,7 +24,7 @@ function cosmetics(vec) {
   const {
     head,
     tail,
-    colors,
+    presets,
     read
   } = config;
   let {
@@ -37,11 +37,11 @@ function cosmetics(vec) {
     hr: enumChars.ELLIP
   });
 
-  if (colors) {
+  if (presets) {
     const dyes = fluoVector.fluoVec.call({
       colorant: true,
       mutate: true
-    }, raw, colors);
+    }, raw, presets);
     text = mutazip(text, dyes, (x, dye) => {
       var _x;
 

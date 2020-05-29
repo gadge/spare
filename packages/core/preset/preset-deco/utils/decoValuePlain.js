@@ -1,11 +1,11 @@
-import { typ } from '@typen/typ'
-import { COSP, RT } from '@spare/enum-chars'
-import { OBJ } from '@typen/enum-data-types'
+import { brace, bracket }      from '@spare/bracket'
+import { COSP, RT }            from '@spare/enum-chars'
+import { logger }              from '@spare/logger'
+import { OBJ }                 from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT } from '@typen/enum-object-types'
-import { formatDate } from '@valjoux/format-date'
-import { formatTime } from '@valjoux/format-time'
-import { logger } from '@spare/logger'
-import { brace, bracket } from '@spare/bracket'
+import { typ }                 from '@typen/typ'
+import { formatDate }          from '@valjoux/format-date'
+import { formatTime }          from '@valjoux/format-time'
 
 export function decoValue (o) {
   let t

@@ -1,5 +1,5 @@
-import { cosmetics } from './src/cosmetics'
 import { presetVector } from '@spare/preset-deco'
+import { cosmetics }    from './src/cosmetics'
 
 export { cosmetics }
 
@@ -59,7 +59,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetVector(p))
  * @returns {string}
  */
 export const deco = (vector, p = {}) =>
-     cosmetics.call(presetVector(p), vector)
+  cosmetics.call(presetVector(p), vector)
 
 /***
  *

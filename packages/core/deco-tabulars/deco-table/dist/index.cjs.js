@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var presetDeco = require('@spare/preset-deco');
 var fluoMatrix = require('@palett/fluo-matrix');
 var fluoVector = require('@palett/fluo-vector');
 var enumChars = require('@spare/enum-chars');
@@ -10,7 +11,6 @@ var mattro = require('@spare/mattro');
 var padTable = require('@spare/pad-table');
 var vettro = require('@spare/vettro');
 var matrix = require('@vect/matrix');
-var presetDeco = require('@spare/preset-deco');
 
 const cosmetics = function (table) {
   let matrix$1 = table.rows || table.matrix,
@@ -22,7 +22,7 @@ const cosmetics = function (table) {
     direct,
     read,
     headRead,
-    labelPreset,
+    presets,
     top,
     left,
     bottom,
@@ -31,8 +31,7 @@ const cosmetics = function (table) {
     fullAngle,
     discrete,
     delim,
-    level,
-    colors
+    level
   } = this;
   const [x, b] = [mattro.mattro(matrix$1, {
     top,
@@ -47,11 +46,18 @@ const cosmetics = function (table) {
     tail: right,
     read: headRead
   })];
-  const [dyeX, dyeB] = [colors && fluoMatrix.fluo.call({
-    colorant: true
-  }, x.raw, direct, colors), labelPreset && fluoVector.fluoVec.call({
-    colorant: true
-  }, b.raw, colors)];
+  let dyeX, dyeB;
+
+  if (presets) {
+    const [numericPreset,, headingPreset] = presets;
+    dyeX = fluoMatrix.fluo.call({
+      colorant: true
+    }, x.raw, direct, presets);
+    dyeB = fluoVector.fluoVec.call({
+      colorant: true
+    }, b.raw, [numericPreset, headingPreset]);
+  }
+
   let {
     head,
     hr,

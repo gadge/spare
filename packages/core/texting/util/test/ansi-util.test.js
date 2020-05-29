@@ -1,5 +1,5 @@
-import { len } from '../utils/strlen'
 import { astralReg } from '../utils/regs'
+import { len }       from '../utils/strlen'
 
 const arr = [
   'tora',

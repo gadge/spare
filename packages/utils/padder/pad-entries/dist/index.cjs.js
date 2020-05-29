@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var padString = require('@spare/pad-string');
-var entriesZipper = require('@vect/entries-zipper');
 var lange = require('@spare/lange');
+var padString = require('@spare/pad-string');
 var entriesIndicator = require('@vect/entries-indicator');
+var entriesZipper = require('@vect/entries-zipper');
 
 const padEntries = (text, {
   raw,

@@ -1,10 +1,10 @@
+import { DA, SP } from '@spare/enum-chars';
 import { Lange } from '@spare/lange';
 import { PadFW, RIGHT, CENTRE, Pad } from '@spare/pad-string';
 import { maxBy } from '@vect/columns-indicator';
-import { mapper } from '@vect/vector-mapper';
 import { Trizipper as Trizipper$1, Duozipper as Duozipper$1 } from '@vect/matrix-zipper';
+import { mapper } from '@vect/vector-mapper';
 import { Trizipper as Trizipper$2, Duozipper as Duozipper$2 } from '@vect/vector-zipper';
-import { DA, SP } from '@spare/enum-chars';
 import { DASH, SP as SP$1 } from '@spare/enum-full-angle-chars';
 import { hasFullWidth } from '@spare/fullwidth';
 import { transpose } from '@vect/matrix-transpose';

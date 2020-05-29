@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoEntries = require('@palett/fluo-entries');
 var bracket = require('@spare/bracket');
 var enttro = require('@spare/enttro');
@@ -20,15 +21,13 @@ const cosmetics = function (entries) {
   const {
     keyRead,
     read,
-    preset,
-    stringPreset,
     head,
     tail,
     ansi,
     dash,
     delim,
     bracket: bracket$1,
-    colors
+    presets
   } = this;
   const {
     raw,
@@ -42,17 +41,15 @@ const cosmetics = function (entries) {
   });
   let dye = undefined;
 
-  if (colors) {
-    dye = fluoEntries.fluoEnt.call({
-      colorant: true
-    }, raw, colors);
+  if (presets) {
+    dye = fluoEntries.fluoEnt.call(enumColorantModes.COLORANT, raw, presets);
   }
 
   entries = /\n/.test(delim) ? padEntries.padEntries(text, {
     raw,
     dye,
-    ansi: colors || ansi
-  }) : colors ? entriesZipper.Duozipper((t, d) => {
+    ansi: presets || ansi
+  }) : presets ? entriesZipper.Duozipper((t, d) => {
     var _t;
 
     return _t = t, d(_t);

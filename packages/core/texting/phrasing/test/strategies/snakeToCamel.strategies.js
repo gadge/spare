@@ -1,10 +1,10 @@
-import { decoCrostab, says } from '@spare/logger'
-import { strategies } from '@valjoux/strategies'
-import { makeEmbedded } from '@foba/util'
+import { makeEmbedded }                 from '@foba/util'
+import { decoCrostab, says }            from '@spare/logger'
+import { strategies }                   from '@valjoux/strategies'
+import { DASH_CAPREST, INIWORD, WORD }  from '../../resources/regexes'
+import { wordToCap }                    from '../../src/wordToCap'
+import { candidates }                   from '../candidates'
 import { byReplace, classic, mutative } from './functions/dashedToCamel'
-import { wordToCap } from '../../src/wordToCap'
-import { DASH_CAPREST, WORD, INIWORD } from '../../resources/regexes'
-import { candidates } from '../candidates'
 
 const { lapse, result } = strategies({
   repeat: 2E+5,

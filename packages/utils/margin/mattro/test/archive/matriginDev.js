@@ -1,8 +1,8 @@
-import { totx } from '@spare/util'
-import { Mx } from 'veho'
-import { copyMargin, mapMargin } from '@vect/matrix'
+import { decoLog }                     from '@spare/deco'
+import { totx }                        from '@spare/util'
+import { copyMargin, mapMargin }       from '@vect/matrix'
 import { mapMargin as mapArrayMargin } from '@vect/vector'
-import { decoLog } from '@spare/deco'
+import { Mx }                          from 'veho'
 
 const noopEntry = [undefined, undefined]
 

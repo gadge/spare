@@ -1,5 +1,5 @@
-import { cosmetics } from './src/cosmetics'
 import { presetSamples } from '@spare/preset-deco'
+import { cosmetics }     from './src/cosmetics'
 
 export { cosmetics }
 

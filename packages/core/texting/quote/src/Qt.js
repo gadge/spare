@@ -1,4 +1,4 @@
-import { APOS, DITTO } from '@spare/enum-quotes'
+import { APOS, DITTO }  from '@spare/enum-quotes'
 import { ditto, quote } from './quote'
 
 export const SelectQt = (mode) => {

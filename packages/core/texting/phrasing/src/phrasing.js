@@ -1,5 +1,5 @@
 import { CAPWORD, INILOW, WORD } from '@spare/regex-phrasing'
-import { wordToCap } from './wordToCap'
+import { wordToCap }             from './wordToCap'
 
 /**
  * Camel/pascal case phrase -> Lowercase dashed phrase, snake or kebab.

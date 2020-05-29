@@ -1,9 +1,9 @@
-import { delogger } from '@spare/deco'
+import { SimpleVectors }          from '@foba/foo'
+import { fluoVector }             from '@palett/fluo-vector'
+import { delogger }               from '@spare/deco'
+import { logger }                 from '@spare/logger'
 import { mapper as vectorMapper } from '@vect/vector'
-import { logger } from '@spare/logger'
-import { fluoVector } from '@palett/fluo-vector'
-import { padVector } from '../src/padVector'
-import { SimpleVectors } from '@foba/foo'
+import { padVector }              from '../src/padVector'
 
 delete SimpleVectors.empty
 

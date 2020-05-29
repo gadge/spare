@@ -1,3 +1,4 @@
+import { COLORANT }       from '@palett/enum-colorant-modes'
 import { fluo }           from '@palett/fluo-matrix'
 import { fluoVec }        from '@palett/fluo-vector'
 import { AEU }            from '@spare/enum-chars'
@@ -16,20 +17,23 @@ export const cosmetics = function (crostab) {
   const [height, width] = size(matrix), labelWidth = banner && banner.length, labelHeight = stand && stand.length
   if (!height || !width || !labelWidth || !labelHeight) return AEU
   const {
-    direct, read, headRead, sideRead,
-    preset, stringPreset, labelPreset,
-    top, left, bottom, right, ansi, fullAngle, discrete, delim, level, colors
+    direct, read, headRead, sideRead, presets,
+    top, left, bottom, right, ansi, fullAngle, discrete, delim, level
   } = this
   const [x, b, s] = [
     mattro(matrix, { top, bottom, left, right, height, width, read }),
     vettro(banner, { head: left, tail: right, read: headRead }),
     vettro(stand, { head: top, tail: bottom, read: sideRead }),
   ]
-  const [dyeX, dyeB, dyeS] = [
-    colors && fluo.call({ colorant: true }, x.raw, direct, colors),
-    labelPreset && fluoVec.call({ colorant: true }, b.raw, colors),
-    labelPreset && fluoVec.call({ colorant: true }, s.raw, colors),
-  ]
+  let dyeX, dyeB, dyeS
+  if (presets) {
+    const
+      [numericPreset, , headingPreset] = presets,
+      labelPresets = [numericPreset, headingPreset]
+    dyeX = fluo.call(COLORANT, x.raw, direct, presets)
+    dyeB = fluoVec.call(COLORANT, b.raw, labelPresets)
+    dyeS = fluoVec.call(COLORANT, s.raw, labelPresets)
+  }
   let { title, hr: br, side } = padKeyedColumn(s.text, name, { dye: dyeS, fullAngle })
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
   const lines = [

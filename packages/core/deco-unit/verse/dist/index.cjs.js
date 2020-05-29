@@ -2,16 +2,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var decoVector = require('@spare/deco-vector');
-var decoEntries = require('@spare/deco-entries');
-var decoObject = require('@spare/deco-object');
-var decoMatrix = require('@spare/deco-matrix');
-var decoSamples = require('@spare/deco-samples');
-var tableInit = require('@analys/table-init');
 var crostabInit = require('@analys/crostab-init');
+var tableInit = require('@analys/table-init');
 var bracket = require('@spare/bracket');
-var liner = require('@spare/liner');
+var decoEntries = require('@spare/deco-entries');
+var decoMatrix = require('@spare/deco-matrix');
+var decoObject = require('@spare/deco-object');
+var decoSamples = require('@spare/deco-samples');
+var decoVector = require('@spare/deco-vector');
 var enumBrackets = require('@spare/enum-brackets');
+var liner = require('@spare/liner');
 var presetVerse = require('@spare/preset-verse');
 
 const SIDE = 'side',

@@ -1,3 +1,4 @@
+import { FRESH, JUNGLE } from '@palett/presets';
 import { fluoEnt } from '@palett/fluo-entries';
 import { fluoVec } from '@palett/fluo-vector';
 import { BRK, BRC, PAL } from '@spare/deco-colors';
@@ -8,7 +9,6 @@ import { STR, NUM, FUN, OBJ, BOO, UND, SYM } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
 import { typ } from '@typen/typ';
 import { mutate } from '@vect/column-mapper';
-import { FRESH, JUNGLE } from '@palett/presets';
 
 function decoflat(lv, node) {
   const t = typeof node;

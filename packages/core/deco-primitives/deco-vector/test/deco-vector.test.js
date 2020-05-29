@@ -2,9 +2,7 @@ import { rand }                   from '@aryth/rand'
 import { simpleVectors }          from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
 import { BRK }                    from '@spare/enum-brackets'
-import { APOS }                   from '@spare/enum-quotes'
-import { logger, says }           from '@spare/logger'
-import { xr }                     from '@spare/xr'
+import { says }                   from '@spare/logger'
 import { Deco }                   from '../index'
 
 const Strangers = {

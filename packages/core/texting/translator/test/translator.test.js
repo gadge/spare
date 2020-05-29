@@ -1,5 +1,5 @@
+import { says }       from '@spare/logger'
 import { Translator } from '../src/Translator'
-import { says } from '@spare/logger'
 
 const dict = [
   [/e/g, 'a'],

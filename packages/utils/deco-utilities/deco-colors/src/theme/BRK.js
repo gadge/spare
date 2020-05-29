@@ -1,6 +1,6 @@
 import { hslToRgb } from '@palett/convert'
-import { Dye } from '@palett/dye'
-import { mapper } from '@vect/object-mapper'
+import { Dye }      from '@palett/dye'
+import { mapper }   from '@vect/object-mapper'
 
 const Dyes = {
   0: Dye([199, 100, 63] |> hslToRgb),

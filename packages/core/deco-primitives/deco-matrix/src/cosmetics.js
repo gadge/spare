@@ -1,3 +1,4 @@
+import { COLORANT }             from '@palett/enum-colorant-modes'
 import { fluo }                 from '@palett/fluo-matrix'
 import { bracket as doBracket } from '@spare/bracket'
 import { COLF }                 from '@spare/enum-chars'
@@ -11,13 +12,13 @@ export const cosmetics = function (matrix) {
   const [height, width] = size(matrix)
   if (!height || !width) return liner([], this)
   const config = this
-  const { direct, colors, ansi, discrete, delim, bracket, level } = config
+  const { direct, presets, ansi, discrete, delim, bracket, level } = config
   const { raw, text } = mattro(
     matrix,
     Object.assign(config, { height, width }) // { top, bottom, left, right, dashX, dashY, read } = config
   )
   let dye = undefined
-  if (colors) { dye = fluo.call({ colorant: true }, raw, direct, colors) }
+  if (presets) { dye = fluo.call(COLORANT, raw, direct, presets) }
   const rows = padMatrix(text, { raw, dye, ansi })
   const lines = bracket
     ? rows.map(line => line.join(delim) |> doBracket)

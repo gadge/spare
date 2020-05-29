@@ -1,7 +1,7 @@
-import { LF }           from '@spare/enum-chars'
-import { BRK, NONE }    from '@spare/enum-brackets'
-import { FRESH, OCEAN } from '@palett/presets'
-import { decoFlat }     from '@spare/deco-flat'
+import { decoFlat }                       from '@spare/deco-flat'
+import { BRK, NONE }                      from '@spare/enum-brackets'
+import { LF }                             from '@spare/enum-chars'
+import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
 /***
  * @param {Object} p
@@ -13,12 +13,11 @@ import { decoFlat }     from '@spare/deco-flat'
  * @param {number} [p.quote=NONE]
  * @param {*} [p.bracket=true]
  *
- * @param {Object[]} [p.colors]
+ * @param {Object[]} [p.presets]
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object[]} [p.presets]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -33,9 +32,7 @@ export const presetEntries = p => {
   p.delim = p.delim ?? LF
   p.bracket = !p.bracket ? NONE : BRK
   p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.stringPreset = p.stringPreset ?? OCEAN
-  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
+  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   p.ansi = p.ansi ?? true
   return p
 }

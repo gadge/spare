@@ -2,8 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumQuotes = require('@spare/enum-quotes');
 var enumChars = require('@spare/enum-chars');
+var enumQuotes = require('@spare/enum-quotes');
 
 const quote = x => enumChars.QT + x + enumChars.QT;
 const ditto = x => enumChars.DT + x + enumChars.DT;

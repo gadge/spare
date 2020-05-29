@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var enumChars = require('@spare/enum-chars');
 var fluoEntries = require('@palett/fluo-entries');
 var fluoVector = require('@palett/fluo-vector');
 var bracket = require('@spare/bracket');
@@ -16,12 +17,11 @@ var formatDate = require('@valjoux/format-date');
 var formatDateTime = require('@valjoux/format-date-time');
 var entriesMapper = require('@vect/entries-mapper');
 var vectorMapper = require('@vect/vector-mapper');
-var lange = require('@spare/lange');
 var comparer = require('@aryth/comparer');
-var padString = require('@spare/pad-string');
+var lange = require('@spare/lange');
 var liner = require('@spare/liner');
+var padString = require('@spare/pad-string');
 var columnMapper = require('@vect/column-mapper');
-var enumChars = require('@spare/enum-chars');
 
 const lpad = padString.LPad({
   ansi: true

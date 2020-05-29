@@ -1,7 +1,7 @@
-import { bracket as ansibr, parenthesis as ansipr } from './themeAnsi'
+import { render }                                     from '../render'
+import { bracket as ansibr, parenthesis as ansipr }   from './themeAnsi'
 import { bracket as plainbr, parenthesis as plainpr } from './themePlain'
-import { render } from '../render'
-import { toQueue } from './toQueue'
+import { toQueue }                                    from './toQueue'
 
 class Callable extends Function {
   constructor (f) {

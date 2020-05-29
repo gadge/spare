@@ -1,6 +1,6 @@
-import { strategies } from '@valjoux/strategies'
+import { says }        from '@palett/says'
 import { decoCrostab } from '@spare/logger'
-import { says } from '@palett/says'
+import { strategies }  from '@valjoux/strategies'
 
 const encoder = new TextEncoder()
 

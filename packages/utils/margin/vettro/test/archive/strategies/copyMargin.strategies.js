@@ -1,5 +1,5 @@
-import { Chrono } from 'elprimero'
-import { CrosTabX } from 'xbrief'
+import { Chrono }     from 'elprimero'
+import { CrosTabX }   from 'xbrief'
 import { copyMargin } from '../../utils/copyMargin'
 
 export class CopyMarginStrategies {

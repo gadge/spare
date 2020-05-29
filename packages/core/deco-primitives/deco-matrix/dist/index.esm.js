@@ -1,3 +1,5 @@
+import { presetMatrix } from '@spare/preset-deco';
+import { COLORANT } from '@palett/enum-colorant-modes';
 import { fluo } from '@palett/fluo-matrix';
 import { bracket } from '@spare/bracket';
 import { COLF } from '@spare/enum-chars';
@@ -5,7 +7,6 @@ import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
 import { padMatrix } from '@spare/pad-matrix';
 import { size } from '@vect/matrix';
-import { presetMatrix } from '@spare/preset-deco';
 
 const cosmetics = function (matrix) {
   if (!matrix) return String(matrix);
@@ -14,7 +15,7 @@ const cosmetics = function (matrix) {
   const config = this;
   const {
     direct,
-    colors,
+    presets,
     ansi,
     discrete,
     delim,
@@ -31,10 +32,8 @@ const cosmetics = function (matrix) {
   );
   let dye = undefined;
 
-  if (colors) {
-    dye = fluo.call({
-      colorant: true
-    }, raw, direct, colors);
+  if (presets) {
+    dye = fluo.call(COLORANT, raw, direct, presets);
   }
 
   const rows = padMatrix(text, {

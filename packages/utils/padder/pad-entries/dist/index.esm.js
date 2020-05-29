@@ -1,7 +1,7 @@
-import { Pad, LPad } from '@spare/pad-string';
-import { Trizipper, Duozipper } from '@vect/entries-zipper';
 import { lange } from '@spare/lange';
+import { Pad, LPad } from '@spare/pad-string';
 import { maxBy } from '@vect/entries-indicator';
+import { Trizipper, Duozipper } from '@vect/entries-zipper';
 
 const padEntries = (text, {
   raw,

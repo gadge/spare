@@ -1,5 +1,5 @@
-import { SP } from '@spare/enum-chars';
 import { parenth } from '@spare/bracket';
+import { SP } from '@spare/enum-chars';
 import { lange } from '@spare/lange';
 import { Blue, LightBlue, Lime, Grey, Brown, BlueGrey, Purple, DeepPurple } from '@palett/cards';
 import { hexToRgb } from '@palett/convert';

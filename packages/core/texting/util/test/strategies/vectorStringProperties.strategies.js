@@ -1,5 +1,5 @@
-import { CrosTabX } from 'xbrief'
-import { Chrono } from 'elprimero'
+import { Chrono }      from 'elprimero'
+import { CrosTabX }    from 'xbrief'
 import { indexMaxLen } from '../../src/vectorStringProperties'
 
 class VectorStringPropertiesTest {

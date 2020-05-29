@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoPale = require('@spare/deco-pale');
 var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
-var decoPale = require('@spare/deco-pale');
 
 /***
  * @param {Object} p

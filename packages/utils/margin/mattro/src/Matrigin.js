@@ -1,7 +1,7 @@
-import { totx } from '@spare/util'
+import { totx }                                   from '@spare/util'
 import { marginCopy, marginMapper, marginMutate } from '@vect/matrix-margin'
-import { marginMapper as vectorMarginMapper } from '@vect/vector-margin'
-import { marginSizing } from './marginSizing'
+import { marginMapper as vectorMarginMapper }     from '@vect/vector-margin'
+import { marginSizing }                           from './marginSizing'
 
 export class Matrigin {
   constructor (matrix, top, bottom, left, right, height, width, dashX, dashY) {

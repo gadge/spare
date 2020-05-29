@@ -1,5 +1,5 @@
-import { xr } from '../src/xr'
 import { logger, says } from '@spare/logger'
+import { xr }           from '../src/xr'
 
 xr('william shakespeare')
   ['works']('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet')

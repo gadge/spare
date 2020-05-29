@@ -1,6 +1,6 @@
 import { TableCollection } from '@foba/table'
-import { says } from '@spare/logger'
-import { Verse } from '../src/Verse'
+import { says }            from '@spare/logger'
+import { Verse }           from '../src/Verse'
 
 const table = TableCollection.flopShuffle()
 

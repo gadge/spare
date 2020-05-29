@@ -1,5 +1,5 @@
-import { hasAnsi, bracket } from '../index'
-import { astralReg } from '../src/regs'
+import { bracket, hasAnsi } from '../index'
+import { astralReg }        from '../src/regs'
 
 const list = [
   'tolstoy',

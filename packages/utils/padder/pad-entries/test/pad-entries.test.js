@@ -1,9 +1,9 @@
-import { delogger } from '@spare/deco'
+import { SimpleEntries }           from '@foba/foo'
+import { fluo }                    from '@palett/fluo-matrix'
+import { delogger }                from '@spare/deco'
+import { logger }                  from '@spare/logger'
 import { mapper as entriesMapper } from '@vect/entries-mapper'
-import { logger } from '@spare/logger'
-import { fluo } from '@palett/fluo-matrix'
-import { SimpleEntries } from '@foba/foo'
-import { padEntries } from '../src/padEntries'
+import { padEntries }              from '../src/padEntries'
 
 SimpleEntries |> delogger
 

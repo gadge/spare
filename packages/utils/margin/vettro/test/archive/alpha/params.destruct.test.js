@@ -1,6 +1,6 @@
-import { deca, decoLog } from '@spare/deco'
-import { totx } from '@spare/util'
+import { deca }   from '@spare/deco'
 import { logger } from '@spare/logger'
+import { totx }   from '@spare/util'
 
 const noopEntry = []
 

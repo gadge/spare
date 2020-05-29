@@ -1,10 +1,10 @@
-import { strategies } from '@valjoux/strategies'
+import { CrosTab }                  from '@analys/crostab'
+import { says }                     from '@palett/says'
+import { SP }                       from '@spare/enum-chars'
 import { decoCrostab, decoSamples } from '@spare/logger'
-import { says } from '@palett/says'
-import { CrosTab } from '@analys/crostab'
-import { SP } from '@spare/enum-chars'
-import { FWSP } from '../../src/enums/constants'
-import { fullToHalf } from '../../src/fullToHalf'
+import { strategies }               from '@valjoux/strategies'
+import { FWSP }                     from '../../src/enums/constants'
+import { fullToHalf }               from '../../src/fullToHalf'
 
 const toHalfSimpleReg = function (text) {
   return text?.replace(/[Ａ-Ｚａ-ｚ０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
@@ -26,9 +26,7 @@ const toHalfComplexReg = function (text) {
 export const fullToHalfClassic = (text) => {
   let l = text?.length, i = 0, t = '', n
   while (i < l && (n = text.charCodeAt(i++))) {
-    if (n === FWSP) { t += SP }
-    else if (0xff00 < n && n < 0xff5e) { t += String.fromCharCode(0xFF & (n + 0x20)) }
-    else { t += String.fromCharCode(n) }
+    if (n === FWSP) { t += SP } else if (0xff00 < n && n < 0xff5e) { t += String.fromCharCode(0xFF & (n + 0x20)) } else { t += String.fromCharCode(n) }
   }
   return t
 }

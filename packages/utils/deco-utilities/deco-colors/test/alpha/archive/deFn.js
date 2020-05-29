@@ -1,5 +1,5 @@
-import { PAL } from '../../../src/theme'
 import { FUN } from '@typen/enums'
+import { PAL } from '../../../src/theme'
 
 export const deFn = function (fn) {
   let { wf, pr } = this, des = `${fn}`

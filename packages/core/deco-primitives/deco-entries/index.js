@@ -1,5 +1,5 @@
 import { presetEntries } from '@spare/preset-deco'
-import { cosmetics } from './src/cosmetics'
+import { cosmetics }     from './src/cosmetics'
 
 export { cosmetics }
 

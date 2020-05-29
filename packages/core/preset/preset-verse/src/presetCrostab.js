@@ -1,5 +1,5 @@
-import { COSP } from '@spare/enum-chars'
 import { decoKey, decoPale } from '@spare/deco-pale'
+import { COSP }              from '@spare/enum-chars'
 
 /**
  * @param {Object} p

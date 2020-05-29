@@ -1,4 +1,4 @@
-import { logger } from '@spare/logger'
+import { logger }   from '@spare/logger'
 import { decoFlat } from '../index'
 
 decoFlat('shake') |> logger

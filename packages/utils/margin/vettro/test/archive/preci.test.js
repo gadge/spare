@@ -1,5 +1,5 @@
+import { decoLog }  from '@spare/deco'
 import { Vectogin } from '../../src/Vectogin'
-import { decoLog } from '@spare/deco'
 
 export const superlativeTrees = {
   coastRedwood: 'Sequoia sempervirens',

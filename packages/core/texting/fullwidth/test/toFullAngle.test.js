@@ -1,5 +1,5 @@
-import { says } from '@palett/says'
-import { xr } from '@spare/logger'
+import { says }      from '@palett/says'
+import { xr }        from '@spare/logger'
 import { fullWidth } from '../index'
 
 const candidates = [

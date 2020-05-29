@@ -1,5 +1,5 @@
-import { makeReplaceable } from './makeReplaceable'
 import { sortKeysByLength } from '../utils/sortKeysByLength'
+import { makeReplaceable }  from './makeReplaceable'
 
 export class Translator {
   constructor (dictionary) {

@@ -31,9 +31,7 @@ const toFullAngle = (text) => {
   let i = 0, t = '', n
   const l = text.length
   while (i < l && (n = text.charCodeAt(i++))) {
-    if (n === 32) { t += String.fromCharCode(SP_CODE) }
-    else if (n < 127) { t += String.fromCharCode(n + CH_GAP) }
-    else { t += String.fromCharCode(n) }
+    if (n === 32) { t += String.fromCharCode(SP_CODE) } else if (n < 127) { t += String.fromCharCode(n + CH_GAP) } else { t += String.fromCharCode(n) }
   }
   return t
 }

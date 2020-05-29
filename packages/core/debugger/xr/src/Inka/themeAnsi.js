@@ -1,6 +1,6 @@
-import { Cards } from '@palett/cards'
+import { Cards }    from '@palett/cards'
 import { hexToRgb } from '@palett/convert'
-import { Dye } from '@palett/dye'
+import { Dye }      from '@palett/dye'
 
 export const bm = Dye(Cards.blueGrey.base |> hexToRgb)
 export const br = Dye(Cards.orange.lighten_3 |> hexToRgb)

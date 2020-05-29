@@ -1,8 +1,8 @@
+import { deco, delogger } from '@spare/deco'
+import { says }           from '@spare/logger'
+import { camelToVector }  from '@spare/phrasing/src/vectorize'
 import { candidates }     from '@spare/phrasing/test/candidates'
 import { xr }             from '@spare/xr'
-import { says } from '@spare/logger'
-import { deco, delogger } from '@spare/deco'
-import { camelToVector }  from '@spare/phrasing/src/vectorize'
 
 const snakeToVector = (phrase) => phrase.split(/\W/g)
 

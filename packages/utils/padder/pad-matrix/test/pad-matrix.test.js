@@ -1,9 +1,9 @@
 import { FobaNum as NumVecs, FobaStr as StrVecs } from '@foba/vector'
-import { delogger } from '@spare/deco'
-import { COLUMNWISE, mapper as matrixMapper } from '@vect/matrix'
-import { logger } from '@spare/logger'
-import { fluoMatrix } from '@palett/fluo-matrix'
-import { padMatrix } from '../src/padMatrix'
+import { fluoMatrix }                             from '@palett/fluo-matrix'
+import { delogger }                               from '@spare/deco'
+import { logger }                                 from '@spare/logger'
+import { COLUMNWISE, mapper as matrixMapper }     from '@vect/matrix'
+import { padMatrix }                              from '../src/padMatrix'
 
 const matrix = [
   StrVecs.flop({ size: 6 }),

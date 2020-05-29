@@ -1,8 +1,18 @@
-import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
-import { NONE, BRK, BRC } from '@spare/enum-brackets';
-import { FRESH, OCEAN, PLANET, JUNGLE, METRO, SUBTLE } from '@palett/presets';
 import { decoFlat } from '@spare/deco-flat';
+import { NONE, BRK, BRC } from '@spare/enum-brackets';
+import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
+import { FRESH, PLANET, SUBTLE } from '@palett/presets';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
+
+const NUMERIC_PRESET = {
+  preset: FRESH
+};
+const LITERAL_PRESET = {
+  preset: PLANET
+};
+const HEADING_PRESET = {
+  preset: SUBTLE
+};
 
 /***
  * @param {Object} p
@@ -14,12 +24,11 @@ import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
  * @param {number} [p.quote=NONE]
  * @param {*} [p.bracket=true]
  *
- * @param {Object[]} [p.colors]
+ * @param {Object[]} [p.presets]
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object[]} [p.presets]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -31,19 +40,13 @@ import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
  */
 
 const presetEntries = p => {
-  var _p$dash, _p$delim, _p$preset, _p$stringPreset, _p$colors, _p$ansi;
+  var _p$dash, _p$delim, _p$presets, _p$ansi;
 
   p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ' > ';
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.bracket = !p.bracket ? NONE : BRK;
   p.read = p.read || decoFlat;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : OCEAN;
-  p.colors = (_p$colors = p.colors) !== null && _p$colors !== void 0 ? _p$colors : [{
-    preset: p.preset
-  }, {
-    preset: p.stringPreset
-  }];
+  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -59,12 +62,9 @@ const presetEntries = p => {
  * @param {number} [p.quote=NONE]
  * @param {*} [p.bracket=true]
  *
- * @param {Object[]} [p.colors]
+ * @param {Object[]} [p.presets]
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
- *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=PLANET]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -76,19 +76,13 @@ const presetEntries = p => {
  */
 
 const presetObject = p => {
-  var _p$dash, _p$delim, _p$preset, _p$stringPreset, _p$colors, _p$ansi;
+  var _p$dash, _p$delim, _p$presets, _p$ansi;
 
   p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : RTSP;
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
   p.bracket = !p.bracket ? NONE : BRC;
   p.read = p.read || decoFlat;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : PLANET;
-  p.colors = (_p$colors = p.colors) !== null && _p$colors !== void 0 ? _p$colors : [{
-    preset: p.preset
-  }, {
-    preset: p.stringPreset
-  }];
+  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -106,9 +100,7 @@ const presetObject = p => {
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object[]} [p.presets]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -120,20 +112,14 @@ const presetObject = p => {
  */
 
 const presetVector = p => {
-  var _p$dash, _p$delim, _p$indexed, _p$preset, _p$stringPreset, _p$colors, _p$ansi;
+  var _p$dash, _p$delim, _p$indexed, _p$presets, _p$ansi;
 
   p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ') ';
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
   p.bracket = !p.bracket ? NONE : BRK;
   p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : true;
   p.read = p.read || decoFlat;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : JUNGLE;
-  p.colors = (_p$colors = p.colors) !== null && _p$colors !== void 0 ? _p$colors : [{
-    preset: p.preset
-  }, {
-    preset: p.stringPreset
-  }];
+  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -149,9 +135,7 @@ const presetVector = p => {
  *
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset=FRESH] - will be deprecated
- * @param {Object} [p.stringPreset=OCEAN] - will be deprecated
+ * @param {Object[]} [p.presets]
  * @param {number} [p.direct=ROWWISE]
  *
  * @param {number} [p.top]
@@ -166,19 +150,13 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  var _p$delim, _p$direct, _p$preset, _p$stringPreset, _p$colors, _p$ansi;
+  var _p$delim, _p$direct, _p$presets, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.bracket = !p.bracket ? NONE : BRK;
   p.read = p.read || decoFlat;
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : ROWWISE;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : PLANET;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : METRO;
-  p.colors = (_p$colors = p.colors) !== null && _p$colors !== void 0 ? _p$colors : [{
-    preset: p.preset
-  }, {
-    preset: p.stringPreset
-  }];
+  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -195,10 +173,7 @@ const presetMatrix = p => {
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- * @param {Object} [p.labelPreset=SUBTLE]
+ * @param {Object[]} [p.presets]
  * @param {number} [p.direct=POINTWISE]
  *
  * @param {number} [p.top]
@@ -214,18 +189,11 @@ const presetMatrix = p => {
  */
 
 const presetCrostab = p => {
-  var _p$delim, _p$preset, _p$stringPreset, _p$labelPreset, _p$colors, _p$direct, _p$ansi;
+  var _p$delim, _p$presets, _p$direct, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.read = p.read || decoFlat;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : JUNGLE;
-  p.labelPreset = (_p$labelPreset = p.labelPreset) !== null && _p$labelPreset !== void 0 ? _p$labelPreset : SUBTLE;
-  p.colors = (_p$colors = p.colors) !== null && _p$colors !== void 0 ? _p$colors : [{
-    preset: p.preset
-  }, {
-    preset: p.stringPreset
-  }];
+  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET];
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : POINTWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
@@ -243,10 +211,7 @@ const presetCrostab = p => {
  * @param {Function} [p.read=decoFlat]
  * @param {Function} [p.headRead]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
- * @param {Object} [p.labelPreset=SUBTLE]
+ * @param {Object[]} [p.presets]
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]
@@ -262,18 +227,11 @@ const presetCrostab = p => {
  */
 
 const presetTable = p => {
-  var _p$delim, _p$preset, _p$stringPreset, _p$labelPreset, _p$colors, _p$direct, _p$ansi;
+  var _p$delim, _p$presets, _p$direct, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.read = p.read || decoFlat;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : JUNGLE;
-  p.labelPreset = (_p$labelPreset = p.labelPreset) !== null && _p$labelPreset !== void 0 ? _p$labelPreset : SUBTLE;
-  p.colors = (_p$colors = p.colors) !== null && _p$colors !== void 0 ? _p$colors : [{
-    preset: p.preset
-  }, {
-    preset: p.stringPreset
-  }];
+  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET];
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : COLUMNWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
@@ -293,10 +251,7 @@ const presetTable = p => {
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset]
- * @param {Object} [p.keyPreset]
- * @param {Object} [p.stringPreset]
+ * @param {Object[]} [p.presets]
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]
@@ -311,23 +266,16 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
-  var _p$delim, _p$preset, _p$keyPreset, _p$stringPreset, _p$colors, _p$direct, _p$ansi;
+  var _p$delim, _p$presets, _p$direct, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
   p.bracket = !p.bracket ? NONE : BRK;
   p.indexed = p.indexed || true;
   p.read = p.read || decoFlat;
-  p.preset = (_p$preset = p.preset) !== null && _p$preset !== void 0 ? _p$preset : FRESH;
-  p.keyPreset = (_p$keyPreset = p.keyPreset) !== null && _p$keyPreset !== void 0 ? _p$keyPreset : SUBTLE;
-  p.stringPreset = (_p$stringPreset = p.stringPreset) !== null && _p$stringPreset !== void 0 ? _p$stringPreset : JUNGLE;
-  p.colors = (_p$colors = p.colors) !== null && _p$colors !== void 0 ? _p$colors : [{
-    preset: p.preset
-  }, {
-    preset: p.stringPreset
-  }];
+  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET];
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : COLUMNWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
 
-export { presetCrostab, presetEntries, presetMatrix, presetObject, presetSamples, presetTable, presetVector };
+export { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET, presetCrostab, presetEntries, presetMatrix, presetObject, presetSamples, presetTable, presetVector };

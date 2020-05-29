@@ -1,8 +1,8 @@
-import { COSP } from '@spare/enum-chars'
-import { BRK, NONE } from '@spare/enum-brackets'
-import { decoFlat } from '@spare/deco-flat'
-import { FRESH, JUNGLE, SUBTLE } from '@palett/presets'
-import { COLUMNWISE } from '@vect/enum-matrix-directions'
+import { decoFlat }                                       from '@spare/deco-flat'
+import { BRK, NONE }                                      from '@spare/enum-brackets'
+import { COSP }                                           from '@spare/enum-chars'
+import { COLUMNWISE }                                     from '@vect/enum-matrix-directions'
+import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
 /**
  *
@@ -18,10 +18,7 @@ import { COLUMNWISE } from '@vect/enum-matrix-directions'
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoFlat]
  *
- * @param {Object[]} [p.colors]
- * @param {Object} [p.preset]
- * @param {Object} [p.keyPreset]
- * @param {Object} [p.stringPreset]
+ * @param {Object[]} [p.presets]
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]
@@ -39,10 +36,7 @@ export const presetSamples = p => {
   p.bracket = !p.bracket ? NONE : BRK
   p.indexed = p.indexed || true
   p.read = p.read || decoFlat
-  p.preset = p.preset ?? FRESH
-  p.keyPreset = p.keyPreset ?? SUBTLE
-  p.stringPreset = p.stringPreset ?? JUNGLE
-  p.colors = p.colors ?? [{ preset: p.preset }, { preset: p.stringPreset }]
+  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
   p.direct = p.direct ?? COLUMNWISE
   p.ansi = p.ansi ?? true
   return p
