@@ -2,27 +2,27 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var fluo = require('@palett/fluo');
 var presets = require('@palett/presets');
+var projector = require('@palett/projector');
 var enumChars = require('@spare/enum-chars');
 
-const dyeY = fluo.FluoNumber({
+const dyeY = projector.Colorant({
   min: 1990,
   max: 2030
 }, presets.OCEAN);
-const dyeM = fluo.FluoNumber({
+const dyeM = projector.Colorant({
   min: 1,
   max: 12
 }, presets.OCEAN);
-const dyeD = fluo.FluoNumber({
+const dyeD = projector.Colorant({
   min: 1,
   max: 31
 }, presets.PLANET);
-const dyeh = fluo.FluoNumber({
+const dyeh = projector.Colorant({
   min: 1,
   max: 24
 }, presets.PLANET);
-const dyes = fluo.FluoNumber({
+const dyes = projector.Colorant({
   min: 1,
   max: 60
 }, presets.PLANET);

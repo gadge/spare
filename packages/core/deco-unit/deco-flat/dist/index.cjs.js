@@ -14,6 +14,16 @@ var enumObjectTypes = require('@typen/enum-object-types');
 var typ = require('@typen/typ');
 var columnMapper = require('@vect/column-mapper');
 
+const NUMERIC_PRESET = {
+  preset: presets.FRESH
+};
+const LITERAL_PRESET = {
+  preset: presets.PLANET
+};
+
+const MUTABLE = {
+  mutate: true
+};
 function decoflat(lv, node) {
   const t = typeof node;
   if (t === enumDataTypes.STR) return node; // isNumeric(node) ? node : PAL.STR(node)
@@ -38,18 +48,16 @@ function decoflat(lv, node) {
 }
 
 function deVec(lv, ve) {
+  const presets = this === null || this === void 0 ? void 0 : this.presets;
   const list = ve.map(decoflat.bind(this, lv + 1));
-  fluoVector.fluoVec.call({
-    mutate: true
-  }, list);
+  fluoVector.fluoVec.call(MUTABLE, list, presets);
   return list.join(enumChars.COSP);
 }
 
 function deOb(lv, ob) {
+  const presets = this === null || this === void 0 ? void 0 : this.presets;
   const ents = columnMapper.mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1));
-  fluoEntries.fluoEnt.call({
-    mutate: true
-  }, ents);
+  fluoEntries.fluoEnt.call(MUTABLE, ents, presets);
   return ents.map(([k, v]) => k + enumChars.RT + v).join(enumChars.COSP);
 }
 
@@ -59,27 +67,22 @@ function deOb(lv, ob) {
  *  */
 
 const decoFlat = (o, {
-  preset = presets.FRESH,
-  stringPreset = presets.JUNGLE
+  presets = [NUMERIC_PRESET, LITERAL_PRESET]
 } = {}) => decoflat.call({
-  preset,
-  stringPreset,
+  presets,
   mutate: true
 }, 0, o);
 /**
  *
- * @param preset
- * @param stringPreset
+ * @param {Object[]} presets
  * @return {Function|function(*):string}
  * @constructor
  */
 
 const DecoFlat = ({
-  preset = presets.FRESH,
-  stringPreset = presets.JUNGLE
+  presets = [NUMERIC_PRESET, LITERAL_PRESET]
 } = {}) => decoflat.bind({
-  preset,
-  stringPreset,
+  presets,
   mutate: true
 }, 0);
 

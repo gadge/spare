@@ -1,24 +1,24 @@
-import { FluoNumber } from '@palett/fluo';
 import { OCEAN, PLANET } from '@palett/presets';
+import { Colorant } from '@palett/projector';
 import { DASH, RT } from '@spare/enum-chars';
 
-const dyeY = FluoNumber({
+const dyeY = Colorant({
   min: 1990,
   max: 2030
 }, OCEAN);
-const dyeM = FluoNumber({
+const dyeM = Colorant({
   min: 1,
   max: 12
 }, OCEAN);
-const dyeD = FluoNumber({
+const dyeD = Colorant({
   min: 1,
   max: 31
 }, PLANET);
-const dyeh = FluoNumber({
+const dyeh = Colorant({
   min: 1,
   max: 24
 }, PLANET);
-const dyes = FluoNumber({
+const dyes = Colorant({
   min: 1,
   max: 60
 }, PLANET);

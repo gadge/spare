@@ -9,6 +9,7 @@ import { ARRAY, DATE, OBJECT }               from '@typen/enum-object-types'
 import { typ }                               from '@typen/typ'
 import { mutate }                            from '@vect/column-mapper'
 
+const MUTABLE = { mutate: true }
 export function decoflat (lv, node) {
   const t = typeof node
   if (t === STR) return node // isNumeric(node) ? node : PAL.STR(node)
@@ -28,14 +29,16 @@ export function decoflat (lv, node) {
 }
 
 function deVec (lv, ve) {
+  const presets = this?.presets
   const list = ve.map(decoflat.bind(this, lv + 1))
-  fluoVec.call({ mutate: true }, list)
+  fluoVec.call(MUTABLE, list, presets)
   return list.join(COSP)
 }
 
 function deOb (lv, ob) {
+  const presets = this?.presets
   const ents = mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1))
-  fluoEnt.call({ mutate: true }, ents)
+  fluoEnt.call(MUTABLE, ents, presets)
   return ents.map(([k, v]) => k + RT + v).join(COSP)
 }
 

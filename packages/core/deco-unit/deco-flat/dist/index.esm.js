@@ -1,4 +1,4 @@
-import { FRESH, JUNGLE } from '@palett/presets';
+import { FRESH, PLANET } from '@palett/presets';
 import { fluoEnt } from '@palett/fluo-entries';
 import { fluoVec } from '@palett/fluo-vector';
 import { BRK, BRC, PAL } from '@spare/deco-colors';
@@ -10,6 +10,16 @@ import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
 import { typ } from '@typen/typ';
 import { mutate } from '@vect/column-mapper';
 
+const NUMERIC_PRESET = {
+  preset: FRESH
+};
+const LITERAL_PRESET = {
+  preset: PLANET
+};
+
+const MUTABLE = {
+  mutate: true
+};
 function decoflat(lv, node) {
   const t = typeof node;
   if (t === STR) return node; // isNumeric(node) ? node : PAL.STR(node)
@@ -34,18 +44,16 @@ function decoflat(lv, node) {
 }
 
 function deVec(lv, ve) {
+  const presets = this === null || this === void 0 ? void 0 : this.presets;
   const list = ve.map(decoflat.bind(this, lv + 1));
-  fluoVec.call({
-    mutate: true
-  }, list);
+  fluoVec.call(MUTABLE, list, presets);
   return list.join(COSP);
 }
 
 function deOb(lv, ob) {
+  const presets = this === null || this === void 0 ? void 0 : this.presets;
   const ents = mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1));
-  fluoEnt.call({
-    mutate: true
-  }, ents);
+  fluoEnt.call(MUTABLE, ents, presets);
   return ents.map(([k, v]) => k + RT + v).join(COSP);
 }
 
@@ -55,27 +63,22 @@ function deOb(lv, ob) {
  *  */
 
 const decoFlat = (o, {
-  preset = FRESH,
-  stringPreset = JUNGLE
+  presets = [NUMERIC_PRESET, LITERAL_PRESET]
 } = {}) => decoflat.call({
-  preset,
-  stringPreset,
+  presets,
   mutate: true
 }, 0, o);
 /**
  *
- * @param preset
- * @param stringPreset
+ * @param {Object[]} presets
  * @return {Function|function(*):string}
  * @constructor
  */
 
 const DecoFlat = ({
-  preset = FRESH,
-  stringPreset = JUNGLE
+  presets = [NUMERIC_PRESET, LITERAL_PRESET]
 } = {}) => decoflat.bind({
-  preset,
-  stringPreset,
+  presets,
   mutate: true
 }, 0);
 
