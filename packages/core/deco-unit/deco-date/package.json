@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-date",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Colored stringify date",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/projector": "^0.2.10",
     "@palett/presets": "^0.2.10",
-    "@spare/enum-chars": "^0.7.0"
+    "@palett/projector": "^0.2.10",
+    "@spare/enum-chars": "^0.7.1"
   },
   "repository": {
     "type": "git",
