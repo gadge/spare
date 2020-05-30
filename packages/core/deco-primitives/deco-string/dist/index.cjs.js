@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var fluoVector = require('@palett/fluo-vector');
+var lange = require('@spare/lange');
 var presets = require('@palett/presets');
 var splitter = require('@spare/splitter');
 var enumChars = require('@spare/enum-chars');
@@ -15,6 +16,8 @@ const MUTABLE = {
 const Splitter = delim => x => String.prototype.split.call(x, delim);
 const Joiner = delim => v => Array.prototype.join.call(v, delim);
 const cosmetics = function (text) {
+  if (!(text === null || text === void 0 ? void 0 : text.length)) return '';
+  if (lange.hasAnsi(text)) return text;
   const {
     delim,
     vectify,

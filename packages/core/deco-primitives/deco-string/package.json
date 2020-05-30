@@ -20,6 +20,7 @@
     "@palett/presets": "^0.2.12",
     "@spare/enum-chars": "^0.7.5",
     "@spare/splitter": "^0.7.5",
+    "@spare/lange": "^0.7.5",
     "@vect/vector-zipper": "^0.2.4"
   },
   "repository": {

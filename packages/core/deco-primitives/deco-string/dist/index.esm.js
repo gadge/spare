@@ -1,4 +1,5 @@
 import { fluoVec } from '@palett/fluo-vector';
+import { hasAnsi } from '@spare/lange';
 import { FRESH, SUBTLE } from '@palett/presets';
 import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
 import { DA, SP } from '@spare/enum-chars';
@@ -11,6 +12,8 @@ const MUTABLE = {
 const Splitter = delim => x => String.prototype.split.call(x, delim);
 const Joiner = delim => v => Array.prototype.join.call(v, delim);
 const cosmetics = function (text) {
+  if (!(text === null || text === void 0 ? void 0 : text.length)) return '';
+  if (hasAnsi(text)) return text;
   const {
     delim,
     vectify,

@@ -489,13 +489,13 @@ const cosmetics = function (text) {
     delim,
     vectify,
     joiner,
-    presets
+    presets,
+    effects
   } = this;
   const words = vectify(text);
-  fluoVec.call(MUTABLE$1, words, presets);
+  fluoVec.call(MUTABLE$1, words, presets, effects);
   return (joiner !== null && joiner !== void 0 ? joiner : Joiner(delim))(words);
-}; // filter: x => typeof x === STR ? x.trim().length > 0 : true
-
+};
 
 const NUMERIC_PRESET = {
   preset: FRESH
@@ -518,9 +518,10 @@ const presetString = p => {
  * @param {Object} p
  * @param {string} [p.delim]
  * @param {Object[]} [p.presets]
+ * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]
  * @param {Function} [p.joiner]
- * @return {string}
+ * @return {Function}
  */
 
 
