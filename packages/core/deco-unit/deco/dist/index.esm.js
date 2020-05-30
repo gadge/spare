@@ -14,7 +14,7 @@ import { formatDateTime } from '@valjoux/format-date-time';
 import { mutate as mutate$2 } from '@vect/entries-mapper';
 import { mutate as mutate$1, iterate } from '@vect/vector-mapper';
 import { max } from '@aryth/comparer';
-import { lange } from '@spare/lange';
+import { hasAnsi, lange } from '@spare/lange';
 import { joinLines } from '@spare/liner';
 import { LPad } from '@spare/pad-string';
 import { mutate } from '@vect/column-mapper';
@@ -485,6 +485,8 @@ const MUTABLE$1 = {
 const Joiner = delim => v => Array.prototype.join.call(v, delim);
 
 const cosmetics = function (text) {
+  if (!(text === null || text === void 0 ? void 0 : text.length)) return '';
+  if (hasAnsi(text)) return text;
   const {
     delim,
     vectify,

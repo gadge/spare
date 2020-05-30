@@ -13,7 +13,10 @@ const items = Object.assign({},
 for (const [title, o] of Object.entries(items)) {
   title |> delogger
   for (const [key, text] of Object.entries(o)) {
-    decoString(text, { effects: [BOLD] }) |> says[key].asc
+    const colored = decoString(text, { effects: [BOLD] })
+    // const embeddedColored = decoString(colored, { effects: [BOLD] })
+    colored |> says[key].asc
+    // embeddedColored |> says[key]
   }
   '' |> delogger
 }
