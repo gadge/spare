@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-date",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "Colored stringify date",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@palett/presets": "^0.2.15",
     "@palett/projector": "^0.2.15",
-    "@spare/enum-chars": "^0.7.8"
+    "@spare/enum-chars": "^0.7.9"
   },
   "repository": {
     "type": "git",
