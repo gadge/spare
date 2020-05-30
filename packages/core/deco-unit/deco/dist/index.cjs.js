@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var comparer = require('@aryth/comparer');
 var enumChars = require('@spare/enum-chars');
 var fluoEntries = require('@palett/fluo-entries');
 var fluoVector = require('@palett/fluo-vector');
@@ -9,6 +10,7 @@ var bracket = require('@spare/bracket');
 var decoColors = require('@spare/deco-colors');
 var decoDate = require('@spare/deco-date');
 var decoFunc = require('@spare/deco-func');
+var lange = require('@spare/lange');
 var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
 var numLoose = require('@typen/num-loose');
@@ -17,16 +19,9 @@ var formatDate = require('@valjoux/format-date');
 var formatDateTime = require('@valjoux/format-date-time');
 var entriesMapper = require('@vect/entries-mapper');
 var vectorMapper = require('@vect/vector-mapper');
-var comparer = require('@aryth/comparer');
-var lange = require('@spare/lange');
 var liner = require('@spare/liner');
 var padString = require('@spare/pad-string');
 var columnMapper = require('@vect/column-mapper');
-
-/** @type {{mutate: boolean}} */
-const MUTABLE = {
-  mutate: true
-};
 
 const Amber = {
   base: '#FFC107',
@@ -410,9 +405,9 @@ const INSTA = {
   na: Cards.grey.lighten_2
 };
 const JUNGLE = {
-  max: Cards.lime.accent_4,
-  min: Cards.green.darken_1,
-  na: Cards.lightBlue.accent_1
+  max: Cards.lime.accent_3,
+  min: Cards.lightGreen.accent_3,
+  na: Cards.blueGrey.accent_1
 };
 const LAVA = {
   max: Cards.amber.accent_3,
@@ -448,6 +443,11 @@ const VIOLA = {
   max: Cards.pink.lighten_4,
   min: Cards.deepPurple.accent_2,
   na: Cards.amber.darken_2
+};
+
+/** @type {{mutate: boolean}} */
+const MUTABLE = {
+  mutate: true
 };
 
 const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
@@ -504,7 +504,7 @@ const cosmetics = function (text) {
 };
 
 const NUMERIC_PRESET = {
-  preset: FRESH
+  preset: ATLAS
 };
 const LITERAL_PRESET = {
   preset: SUBTLE
@@ -520,24 +520,18 @@ const presetString = p => {
   return p;
 };
 /**
- *
- * @param {Object} p
+ * @param {string} text
+ * @param {Object} [p]
  * @param {string} [p.delim]
  * @param {Object[]} [p.presets]
  * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]
  * @param {Function} [p.joiner]
- * @return {Function}
+ * @return {string}
  */
 
 
-const Deco = (p = {}) => cosmetics.bind(presetString(p));
-
-const decoString = Deco({
-  presets: [, {
-    preset: JUNGLE
-  }]
-});
+const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
 
 const lpad = padString.LPad({
   ansi: true
@@ -599,7 +593,7 @@ function decoNode(node, lv = 0) {
 
 function prettyNode(node, lv = 0) {
   const t = typeof node;
-  if (t === enumDataTypes.STR) return numLoose.isNumeric(node) ? node : decoString(node);
+  if (t === enumDataTypes.STR) return numLoose.isNumeric(node) ? node : deco(node, this);
   if (t === enumDataTypes.NUM || t === enumDataTypes.BIG) return node;
   if (t === enumDataTypes.FUN) return lv >= this.hi ? decoFunc.funcName(node) : decoFunc.decoFunc(node, this);
 
@@ -649,82 +643,79 @@ function plainNode(node, lv = 0) {
 }
 let deVe = function (vector, lv) {
   vectorMapper.mutate(vector, v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoVector.fluoVec.call(MUTABLE, vector);
+  if (this.pr) fluoVector.fluoVec.call(MUTABLE, vector, this.pr);
   return stringifyVector.call(this, vector, lv);
 };
 let deEn = function (entries, lv) {
   entriesMapper.mutate(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoEntries.fluoEnt.call(MUTABLE, entries, [, {
-    preset: decoColors.IDX[lv & 7]
-  }]);
+  if (this.pr) fluoEntries.fluoEnt.call(MUTABLE, entries, this.pr); // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
+
   return stringifyEntries.call(this, entries, lv);
 };
 
+const presetDeco = p => {
+  var _p$pr, _p$hi, _p$va, _p$vo, _p$wa, _p$wo, _p$wf;
+
+  p.pr = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [{
+    preset: AURORA
+  }, {
+    preset: JUNGLE
+  }];
+  p.presets = p.pr;
+  p.hi = (_p$hi = p.hi) !== null && _p$hi !== void 0 ? _p$hi : 8;
+  p.va = (_p$va = p.va) !== null && _p$va !== void 0 ? _p$va : 0;
+  p.vo = (_p$vo = p.vo) !== null && _p$vo !== void 0 ? _p$vo : 0;
+  p.wa = (_p$wa = p.wa) !== null && _p$wa !== void 0 ? _p$wa : 32;
+  p.wo = (_p$wo = p.wo) !== null && _p$wo !== void 0 ? _p$wo : 64;
+  p.wf = (_p$wf = p.wf) !== null && _p$wf !== void 0 ? _p$wf : 160;
+  return p;
+};
 /**
  *
  * @param {*} ob
- * @param {boolean} [pr=true]
- * @param {number} [hi] - maximum level of object to show detail
- * @param {number} [va] - maximum level to force vertical for array, root level = 0
- * @param {number} [vo] - maximum level to force vertical for object, root level = 0
- * @param {number} [wa] - maximum string length to hold array contents without wrap
- * @param {number} [wo] - maximum string length to hold object contents without wrap
- * @param {number} [wf] - maximum string length to hold function contents
- * @param {?string} [qm=null] - quotation mark
+ * @param {Object} [p]
+ * @param {Object[]} [p.pr=[]]
+ * @param {number} [p.hi=8] - maximum level of object to show detail
+ * @param {number} [p.va=0] - maximum level to force vertical for array, root level = 0
+ * @param {number} [p.vo=0] - maximum level to force vertical for object, root level = 0
+ * @param {number} [p.wa=32] - maximum string length to hold array contents without wrap
+ * @param {number} [p.wo=64] - maximum string length to hold object contents without wrap
+ * @param {number} [p.wf=160] - maximum string length to hold function contents
+ * @param {?string} [p.qm=null] - quotation mark
  * @returns {string|number}
  */
 
-const deco = (ob, {
-  pr = true,
-  hi = 8,
-  va = 0,
-  vo = 0,
-  wa = 32,
-  wo = 64,
-  wf = 160,
-  qm = null
-} = {}) => decoNode.call({
-  pr,
-  hi,
-  va,
-  vo,
-  wa,
-  wo,
-  wf,
-  qm
-}, ob);
-const deca = ({
-  pr = true,
-  hi = 8,
-  va = 0,
-  vo = 0,
-  wa = 32,
-  wo = 64,
-  wf = 160,
-  qm = null
-} = {}) => decoNode.bind({
-  pr,
-  hi,
-  va,
-  vo,
-  wa,
-  wo,
-  wf,
-  qm
-});
+
+const deco$1 = (ob, p = {}) => decoNode.call(presetDeco(p), ob);
+/**
+ *
+ * @param {*} ob
+ * @param {Object} [p]
+ * @param {Object[]} [p.pr=[]]
+ * @param {number} [p.hi=8] - maximum level of object to show detail
+ * @param {number} [p.va=0] - maximum level to force vertical for array, root level = 0
+ * @param {number} [p.vo=0] - maximum level to force vertical for object, root level = 0
+ * @param {number} [p.wa=32] - maximum string length to hold array contents without wrap
+ * @param {number} [p.wo=64] - maximum string length to hold object contents without wrap
+ * @param {number} [p.wf=160] - maximum string length to hold function contents
+ * @param {?string} [p.qm=null] - quotation mark
+ * @returns {string|number}
+ */
+
+const deca = (p = {}) => decoNode.bind(presetDeco(p));
 const delogger = x => {
   var _x;
 
-  return void console.log((_x = x, deco(_x)));
+  return void console.log((_x = x, deco$1(_x)));
 };
 const delogNeL = x => {
   var _x2;
 
-  return void console.log((_x2 = x, deco(_x2)), enumChars.LF);
+  return void console.log((_x2 = x, deco$1(_x2)), enumChars.LF);
 };
 
 exports.deca = deca;
-exports.deco = deco;
+exports.deco = deco$1;
 exports.decoNode = decoNode;
 exports.delogNeL = delogNeL;
 exports.delogger = delogger;

@@ -1,6 +1,6 @@
 import { fluoVec } from '@palett/fluo-vector';
 import { hasAnsi } from '@spare/lange';
-import { FRESH, SUBTLE } from '@palett/presets';
+import { ATLAS, SUBTLE } from '@palett/presets';
 import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
 import { DA, SP } from '@spare/enum-chars';
 
@@ -27,7 +27,7 @@ const cosmetics = function (text) {
 };
 
 const NUMERIC_PRESET = {
-  preset: FRESH
+  preset: ATLAS
 };
 const LITERAL_PRESET = {
   preset: SUBTLE

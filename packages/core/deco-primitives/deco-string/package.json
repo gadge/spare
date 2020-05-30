@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.2.14",
-    "@palett/fluo-vector": "^0.2.14",
-    "@palett/presets": "^0.2.14",
+    "@palett/enum-colorant-modes": "^0.2.15",
+    "@palett/fluo-vector": "^0.2.15",
+    "@palett/presets": "^0.2.15",
     "@spare/enum-chars": "^0.7.8",
     "@spare/lange": "^0.7.8",
     "@spare/splitter": "^0.7.8",

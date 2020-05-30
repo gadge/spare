@@ -1,4 +1,4 @@
-import { JUNGLE }             from '@palett/presets'
+import { INSTA, MOSS }        from '@palett/presets'
 import { Deco as DecoString } from '@spare/deco-string'
 
-export const decoString = DecoString({ presets: [, { preset: JUNGLE }] })
+export const decoString = DecoString({ presets: [{ preset: INSTA }, { preset: MOSS }] })

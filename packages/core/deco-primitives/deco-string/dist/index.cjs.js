@@ -31,7 +31,7 @@ const cosmetics = function (text) {
 };
 
 const NUMERIC_PRESET = {
-  preset: presets.FRESH
+  preset: presets.ATLAS
 };
 const LITERAL_PRESET = {
   preset: presets.SUBTLE
