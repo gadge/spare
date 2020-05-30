@@ -1,3 +1,3 @@
-import { chineseReg } from './regs'
+import { HAN } from '../resources/regsForTest'
 
-export const hasChn = tx => chineseReg.test(tx)
+export const hasChn = tx => HAN.test(tx)

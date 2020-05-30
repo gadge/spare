@@ -1,4 +1,4 @@
-import { ansiReg, astralReg } from './regs'
+import { ansiReg, astralReg } from '../resources/regsGlobal'
 
 /**
  *

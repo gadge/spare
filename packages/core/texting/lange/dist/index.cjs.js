@@ -8,7 +8,6 @@ const chinese = ['[\u4e00-\u9fa5]', '[\uff00-\uffff]'];
 
 const ansiReg = new RegExp(ansi.join('|'), 'g');
 const astralReg = new RegExp(astral.join('|'), 'g');
-const chineseReg = new RegExp(chinese.join('|'), 'g');
 
 /**
  *
@@ -19,9 +18,12 @@ const chineseReg = new RegExp(chinese.join('|'), 'g');
 const lange = tx => tx.replace(ansiReg, '').replace(astralReg, '_').length;
 const Lange = ansi => ansi ? lange : x => x.length;
 
-const hasAnsi = tx => ansiReg.test(tx);
+const ANSI = new RegExp(ansi.join('|'));
+const HAN = new RegExp(chinese.join('|'));
 
-const hasChn = tx => chineseReg.test(tx);
+const hasAnsi = tx => ANSI.test(tx);
+
+const hasChn = tx => HAN.test(tx);
 
 exports.Lange = Lange;
 exports.hasAnsi = hasAnsi;
