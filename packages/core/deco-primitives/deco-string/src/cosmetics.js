@@ -5,10 +5,8 @@ export const Splitter = (delim) => x => String.prototype.split.call(x, delim)
 export const Joiner = (delim) => v => Array.prototype.join.call(v, delim)
 
 export const cosmetics = function (text) {
-  const { delim, vectify, joiner, presets } = this
+  const { delim, vectify, joiner, presets, effects } = this
   const words = vectify(text)
-  fluoVec.call(MUTABLE, words, presets)
+  fluoVec.call(MUTABLE, words, presets, effects)
   return (joiner ?? Joiner(delim))(words)
 }
-
-// filter: x => typeof x === STR ? x.trim().length > 0 : true

@@ -19,12 +19,13 @@ const cosmetics = function (text) {
     delim,
     vectify,
     joiner,
-    presets
+    presets,
+    effects
   } = this;
   const words = vectify(text);
-  fluoVector.fluoVec.call(MUTABLE, words, presets);
+  fluoVector.fluoVec.call(MUTABLE, words, presets, effects);
   return (joiner !== null && joiner !== void 0 ? joiner : Joiner(delim))(words);
-}; // filter: x => typeof x === STR ? x.trim().length > 0 : true
+};
 
 const NUMERIC_PRESET = {
   preset: presets.FRESH
@@ -44,31 +45,37 @@ const presetString = p => {
 
 const decoCamel = (text, {
   delim = '',
-  presets = PRESETS
+  presets = PRESETS,
+  effects
 } = {}) => {
   return cosmetics.call({
     delim,
     presets,
+    effects,
     vectify: splitter.splitCamel
   }, text);
 };
 const decoSnake = (text, {
   delim = enumChars.DA,
-  presets = PRESETS
+  presets = PRESETS,
+  effects
 } = {}) => {
   return cosmetics.call({
     delim,
     presets,
+    effects,
     vectify: splitter.splitSnake
   }, text);
 };
 const decoPhrase = (text, {
   delim = enumChars.SP,
-  presets = PRESETS
+  presets = PRESETS,
+  effects
 } = {}) => {
   return cosmetics.call({
     delim,
     presets,
+    effects,
     vectify: Splitter(delim)
   }, text);
 };
@@ -78,6 +85,7 @@ const decoPhrase = (text, {
  * @param {Object} [p]
  * @param {string} [p.delim]
  * @param {Object[]} [p.presets]
+ * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]
  * @param {Function} [p.joiner]
  * @return {string}
@@ -89,9 +97,10 @@ const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
  * @param {Object} p
  * @param {string} [p.delim]
  * @param {Object[]} [p.presets]
+ * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]
  * @param {Function} [p.joiner]
- * @return {string}
+ * @return {Function}
  */
 
 const Deco = (p = {}) => cosmetics.bind(presetString(p));

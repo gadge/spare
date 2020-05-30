@@ -21,6 +21,7 @@ function cosmetics(vec) {
     head,
     tail,
     presets,
+    effects,
     read
   } = config;
   let {
@@ -37,7 +38,7 @@ function cosmetics(vec) {
     const dyes = fluoVec.call({
       colorant: true,
       mutate: true
-    }, raw, presets);
+    }, raw, presets, effects);
     text = mutazip(text, dyes, (x, dye) => {
       var _x;
 
