@@ -31,7 +31,7 @@ export const presetVector = p => {
   p.delim = p.delim ?? COLF
   p.bracket = !p.bracket ? NONE : BRK
   p.indexed = p.indexed ?? true
-  p.read = p.read || decoFlat
+  p.read = p.read ?? decoFlat
   p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   p.ansi = p.ansi ?? true
   return p

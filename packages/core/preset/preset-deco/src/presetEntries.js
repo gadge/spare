@@ -31,7 +31,7 @@ export const presetEntries = p => {
   p.dash = p.dash ?? ' > '
   p.delim = p.delim ?? LF
   p.bracket = !p.bracket ? NONE : BRK
-  p.read = p.read || decoFlat
+  p.read = p.read ?? decoFlat
   p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   p.ansi = p.ansi ?? true
   return p

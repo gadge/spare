@@ -31,7 +31,7 @@ import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dye
  */
 export const presetTable = p => {
   p.delim = p.delim ?? LF
-  p.read = p.read || decoFlat
+  p.read = p.read ?? decoFlat
   p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
   p.direct = p.direct ?? COLUMNWISE
   p.ansi = p.ansi ?? true

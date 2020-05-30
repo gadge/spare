@@ -35,7 +35,7 @@ export const presetSamples = p => {
   p.delim = p.delim ?? COSP
   p.bracket = !p.bracket ? NONE : BRK
   p.indexed = p.indexed || true
-  p.read = p.read || decoFlat
+  p.read = p.read ?? decoFlat
   p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
   p.direct = p.direct ?? COLUMNWISE
   p.ansi = p.ansi ?? true

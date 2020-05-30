@@ -9,23 +9,23 @@ var enumChars = require('@spare/enum-chars');
 const dyeY = projector.Colorant({
   min: 1990,
   max: 2030
-}, presets.OCEAN);
+}, presets.METRO);
 const dyeM = projector.Colorant({
   min: 1,
   max: 12
-}, presets.OCEAN);
+}, presets.METRO);
 const dyeD = projector.Colorant({
   min: 1,
   max: 31
-}, presets.PLANET);
+}, presets.METRO);
 const dyeh = projector.Colorant({
   min: 1,
   max: 24
-}, presets.PLANET);
+}, presets.SUBTLE);
 const dyes = projector.Colorant({
   min: 1,
   max: 60
-}, presets.PLANET);
+}, presets.SUBTLE);
 
 const p4 = x => x >= 1000 ? '' + x : x.padStart(4, '0');
 

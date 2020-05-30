@@ -1,12 +1,12 @@
-import { OCEAN, PLANET } from '@palett/presets'
+import { METRO, SUBTLE } from '@palett/presets'
 import { Colorant }      from '@palett/projector'
 import { DASH, RT }      from '@spare/enum-chars'
 
-const dyeY = Colorant({ min: 1990, max: 2030 }, OCEAN)
-const dyeM = Colorant({ min: 1, max: 12 }, OCEAN)
-const dyeD = Colorant({ min: 1, max: 31 }, PLANET)
-const dyeh = Colorant({ min: 1, max: 24 }, PLANET)
-const dyes = Colorant({ min: 1, max: 60 }, PLANET)
+const dyeY = Colorant({ min: 1990, max: 2030 }, METRO)
+const dyeM = Colorant({ min: 1, max: 12 }, METRO)
+const dyeD = Colorant({ min: 1, max: 31 }, METRO)
+const dyeh = Colorant({ min: 1, max: 24 }, SUBTLE)
+const dyes = Colorant({ min: 1, max: 60 }, SUBTLE)
 
 const p4 = x => x >= 1000 ? '' + x : x.padStart(4, '0')
 const p2 = x => x >= 10 ? '' + x : '0' + x
