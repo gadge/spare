@@ -15,12 +15,12 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.2.15",
-    "@palett/convert": "^0.2.15",
-    "@palett/dye": "^0.2.15",
+    "@palett/cards": "^0.2.16",
+    "@palett/convert": "^0.2.16",
+    "@palett/dye": "^0.2.16",
     "@spare/enum-chars": "^0.7.9",
     "@spare/util": "^0.7.9",
-    "@vect/callable": "^0.2.4"
+    "@vect/callable": "^0.2.5"
   },
   "repository": {
     "type": "git",

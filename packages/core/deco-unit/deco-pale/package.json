@@ -26,9 +26,9 @@
     "@typen/num-loose": "^0.1.5",
     "@typen/num-strict": "^0.1.5",
     "@typen/typ": "^0.1.5",
-    "@valjoux/format-date": "^0.1.3",
-    "@valjoux/format-time": "^0.1.3",
-    "@vect/entries-mapper": "^0.2.4"
+    "@valjoux/format-date": "^0.1.5",
+    "@valjoux/format-time": "^0.1.5",
+    "@vect/entries-mapper": "^0.2.5"
   },
   "repository": {
     "type": "git",

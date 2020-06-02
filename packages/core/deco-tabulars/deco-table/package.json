@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.2.15",
-    "@palett/fluo-matrix": "^0.2.15",
-    "@palett/fluo-vector": "^0.2.15",
-    "@palett/presets": "^0.2.15",
+    "@palett/enum-colorant-modes": "^0.2.16",
+    "@palett/fluo-matrix": "^0.2.16",
+    "@palett/fluo-vector": "^0.2.16",
+    "@palett/presets": "^0.2.16",
     "@spare/enum-chars": "^0.7.9",
     "@spare/liner": "^0.7.9",
     "@spare/mattro": "^0.7.9",
@@ -26,7 +26,7 @@
     "@spare/preset-deco": "^0.7.9",
     "@spare/quote": "^0.7.9",
     "@spare/vettro": "^0.7.9",
-    "@vect/matrix": "^0.2.4",
+    "@vect/matrix": "^0.2.5",
     "strip-ansi": "^6.0.0"
   },
   "repository": {

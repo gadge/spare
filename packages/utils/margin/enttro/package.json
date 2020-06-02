@@ -17,7 +17,7 @@
   "dependencies": {
     "@spare/util": "^0.7.9",
     "@spare/vettro": "^0.7.9",
-    "@vect/entries-margin": "^0.2.4"
+    "@vect/entries-margin": "^0.2.5"
   },
   "repository": {
     "type": "git",

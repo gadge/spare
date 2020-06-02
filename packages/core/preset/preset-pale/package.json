@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/preset-pale.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.2.15",
+    "@palett/presets": "^0.2.16",
     "@spare/deco-pale": "^0.7.9",
     "@spare/enum-brackets": "^0.7.9",
     "@spare/enum-chars": "^0.7.9",
-    "@vect/enum-matrix-directions": "^0.2.4"
+    "@vect/enum-matrix-directions": "^0.2.5"
   },
   "repository": {
     "type": "git",

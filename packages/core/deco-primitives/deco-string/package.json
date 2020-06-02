@@ -15,13 +15,13 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.2.15",
-    "@palett/fluo-vector": "^0.2.15",
-    "@palett/presets": "^0.2.15",
+    "@palett/enum-colorant-modes": "^0.2.16",
+    "@palett/fluo-vector": "^0.2.16",
+    "@palett/presets": "^0.2.16",
     "@spare/enum-chars": "^0.7.9",
     "@spare/lange": "^0.7.9",
     "@spare/splitter": "^0.7.9",
-    "@vect/vector-zipper": "^0.2.4"
+    "@vect/vector-zipper": "^0.2.5"
   },
   "repository": {
     "type": "git",
