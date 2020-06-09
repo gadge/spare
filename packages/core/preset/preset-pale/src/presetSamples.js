@@ -1,6 +1,6 @@
-import { decoPale }  from '@spare/deco-pale'
-import { BRK, NONE } from '@spare/enum-brackets'
-import { COSP }      from '@spare/enum-chars'
+import { decoPale } from '@spare/deco-pale'
+import { BRK }      from '@spare/enum-brackets'
+import { COSP }     from '@spare/enum-chars'
 
 /**
  *
@@ -8,8 +8,7 @@ import { COSP }      from '@spare/enum-chars'
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
- * @param {boolean} [p.bracket=true]
+ * @param {boolean|number} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
  * @param {boolean} [p.indexed=true]
@@ -28,9 +27,9 @@ import { COSP }      from '@spare/enum-chars'
  */
 export const presetSamples = p => {
   p.delim = p.delim ?? COSP
-  p.bracket = !p.bracket ? NONE : BRK
-  p.indexed = p.indexed || true
-  p.read = p.read || decoPale
+  p.bracket = p.bracket ?? BRK
+  p.indexed = p.indexed ?? true
+  p.read = p.read ?? decoPale
   p.ansi = p.ansi ?? true
   return p
 }

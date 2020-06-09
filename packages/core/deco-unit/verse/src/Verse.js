@@ -27,7 +27,7 @@ export class Verse {
    * @param {Object} p
    *
    * @param {string} [p.delim=', ']
-   * @param {number} [p.quote=NONE]
+   *
    *
    * @param {Function} [p.read=decoValue]
    *
@@ -46,8 +46,6 @@ export class Verse {
    *
    * @param {string} [p.dash=', ']
    * @param {string} [p.delim=',\n']
-   * @param {number} [p.keyQuote=NONE]
-   * @param {number} [p.quote=NONE]
    *
    * @param {Function} [p.keyRead] - if objectify, default to decoKey, otherwise default to decoValue
    * @param {Function} [p.read=decoValue]
@@ -72,7 +70,7 @@ export class Verse {
    *
    * @param {string} [p.dash=': ']
    * @param {string} [p.delim=',\n']
-   * @param {number} [p.quote=NONE]
+   *
    *
    * @param {Function} [p.keyRead=keyRead]
    * @param {Function} [p.read=decoValue]
@@ -88,7 +86,7 @@ export class Verse {
    * @param {Object} p
    *
    * @param {string} [p.delim=', ']
-   * @param {number} [p.quote=NONE]
+   *
    *
    * @param {Function} [p.read=decoValue]
    *
@@ -108,7 +106,7 @@ export class Verse {
    * @param {Object} p
    *
    * @param {string} [p.delim=', ']
-   * @param {number} [p.quote=NONE]
+   *
    *
    * @param {Function} [p.read=decoValue]
    *
@@ -128,8 +126,8 @@ export class Verse {
    * @param {Object} p
    *
    * @param {string} [p.delim=', ']
-   * @param {number} [p.keyQuote=NONE]
-   * @param {number} [p.quote=NONE]
+   *
+   *
    *
    * @param {Function} [p.keyRead=decoKey]
    * @param {Function} [p.read=decoValue]
@@ -156,8 +154,8 @@ export class Verse {
    * @param {Object} p
    *
    * @param {string} [p.delim=', ']
-   * @param {number} [p.keyQuote=NONE]
-   * @param {number} [p.quote=NONE]
+   *
+   *
    *
    * @param {Function} [p.keyRead=decoKey]
    * @param {Function} [p.read=decoValue]

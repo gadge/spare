@@ -1,6 +1,6 @@
-import { decoPale }  from '@spare/deco-pale'
-import { BRK, NONE } from '@spare/enum-brackets'
-import { COSP }      from '@spare/enum-chars'
+import { decoPale } from '@spare/deco-pale'
+import { BRK }      from '@spare/enum-brackets'
+import { COSP }     from '@spare/enum-chars'
 
 /***
  *
@@ -8,8 +8,7 @@ import { COSP }      from '@spare/enum-chars'
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
- * @param {boolean} [p.bracket=true]
+ * @param {boolean|number} [p.bracket=true]
  *
  * @param {Function} [p.read=decoPale]
  *
@@ -25,8 +24,8 @@ import { COSP }      from '@spare/enum-chars'
  */
 export const presetMatrix = p => {
   p.delim = p.delim ?? COSP
-  p.bracket = !p.bracket ? NONE : BRK
-  p.read = p.read || decoPale
+  p.bracket = p.bracket ?? BRK
+  p.read = p.read ?? decoPale
   p.ansi = p.ansi ?? true
   return p
 }

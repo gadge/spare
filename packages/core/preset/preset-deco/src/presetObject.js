@@ -10,8 +10,8 @@ import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=': ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
+ *
  * @param {*} [p.bracket=true]
  *
  * @param {Object[]} [p.presets]

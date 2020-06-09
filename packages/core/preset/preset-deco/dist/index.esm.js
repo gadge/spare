@@ -1,5 +1,5 @@
 import { decoFlat } from '@spare/deco-flat';
-import { NONE, BRK, BRC } from '@spare/enum-brackets';
+import { BRK, BRC } from '@spare/enum-brackets';
 import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
 import { FRESH, PLANET, SUBTLE } from '@palett/presets';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
@@ -20,8 +20,8 @@ const HEADING_PRESET = {
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
+ *
  * @param {*} [p.bracket=true]
  *
  * @param {Object[]} [p.presets]
@@ -40,11 +40,11 @@ const HEADING_PRESET = {
  */
 
 const presetEntries = p => {
-  var _p$dash, _p$delim, _p$read, _p$presets, _p$ansi;
+  var _p$dash, _p$delim, _p$bracket, _p$read, _p$presets, _p$ansi;
 
   p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ' > ';
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
-  p.bracket = !p.bracket ? NONE : BRK;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
   p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
@@ -58,8 +58,8 @@ const presetEntries = p => {
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=': ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
+ *
  * @param {*} [p.bracket=true]
  *
  * @param {Object[]} [p.presets]
@@ -94,7 +94,7 @@ const presetObject = p => {
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {*} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
@@ -112,12 +112,12 @@ const presetObject = p => {
  */
 
 const presetVector = p => {
-  var _p$dash, _p$delim, _p$indexed, _p$read, _p$presets, _p$ansi;
+  var _p$dash, _p$delim, _p$bracket, _p$indexed, _p$read, _p$presets, _p$ansi;
 
   p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ') ';
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
-  p.bracket = !p.bracket ? NONE : BRK;
-  p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : true;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
+  p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : false;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
   p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
@@ -130,7 +130,7 @@ const presetVector = p => {
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
+ *
  * @param {*} [p.bracket=true]
  *
  * @param {Function} [p.read=decoFlat]
@@ -150,10 +150,10 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  var _p$delim, _p$read, _p$direct, _p$presets, _p$ansi;
+  var _p$delim, _p$bracket, _p$read, _p$direct, _p$presets, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
-  p.bracket = !p.bracket ? NONE : BRK;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : ROWWISE;
   p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
@@ -166,7 +166,7 @@ const presetMatrix = p => {
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim='\n']
- * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ *  - currently not functional, keeps for future fix
  * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read=decoFlat]
@@ -205,7 +205,7 @@ const presetCrostab = p => {
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ *  - currently not functional, keeps for future fix
  * @param {*} [p.bracket] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read=decoFlat]
@@ -243,7 +243,7 @@ const presetTable = p => {
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
+ *
  * @param {*} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
@@ -266,11 +266,11 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
-  var _p$delim, _p$read, _p$presets, _p$direct, _p$ansi;
+  var _p$delim, _p$bracket, _p$indexed, _p$read, _p$presets, _p$direct, _p$ansi;
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
-  p.bracket = !p.bracket ? NONE : BRK;
-  p.indexed = p.indexed || true;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
+  p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : true;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
   p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET];
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : COLUMNWISE;

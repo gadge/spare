@@ -10,7 +10,7 @@ const cosmetics = function (o) {
   if (!o) return String(o);
   const entriesOptions = Object.assign({}, this, {
     discrete: true,
-    bracket: false
+    bracket: undefined
   });
   const lines = decoEntries.cosmetics.call(entriesOptions, Object.entries(o));
   return liner.liner(lines, this);
@@ -27,8 +27,8 @@ const cosmetics = function (o) {
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=': ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ * 
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
@@ -55,8 +55,8 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetObject(p));
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=': ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ * 
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]

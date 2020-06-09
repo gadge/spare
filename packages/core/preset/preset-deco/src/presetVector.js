@@ -1,5 +1,5 @@
 import { decoFlat }                       from '@spare/deco-flat'
-import { BRK, NONE }                      from '@spare/enum-brackets'
+import { BRK }                            from '@spare/enum-brackets'
 import { COLF }                           from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
@@ -10,7 +10,7 @@ import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {*} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
@@ -29,8 +29,8 @@ import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 export const presetVector = p => {
   p.dash = p.dash ?? ') '
   p.delim = p.delim ?? COLF
-  p.bracket = !p.bracket ? NONE : BRK
-  p.indexed = p.indexed ?? true
+  p.bracket = p.bracket ?? BRK
+  p.indexed = p.indexed ?? false
   p.read = p.read ?? decoFlat
   p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   p.ansi = p.ansi ?? true

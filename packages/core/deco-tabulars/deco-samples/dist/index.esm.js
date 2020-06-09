@@ -7,7 +7,6 @@ import { COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
 import { padMatrix } from '@spare/pad-matrix';
-import { Qt } from '@spare/quote';
 import { marginSizing, Vectogin } from '@spare/vettro';
 import { unwind } from '@vect/entries-unwind';
 import { marginMapper } from '@vect/matrix-margin';
@@ -22,20 +21,15 @@ const cosmetics = function (samples) {
   let height, sample, keys, dye, rows;
   if (!(height = samples.length)) return '[]';
   if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return '[]';
-  const {
+  let {
     fields,
     indexed,
     headRead,
     read,
     direct,
     preset,
-    keyPreset,
-    stringPreset,
-    ansi
-  } = this;
-  let {
+    ansi,
     delim,
-    quote,
     top,
     bottom,
     left,
@@ -74,7 +68,7 @@ const cosmetics = function (samples) {
     width: w,
     dashX,
     dashY,
-    read: Qt(read, quote),
+    read: read,
     hr: null,
     validate: false
   });
@@ -117,7 +111,7 @@ const cosmetics = function (samples) {
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
@@ -149,7 +143,7 @@ const Deco = (p = {}) => cosmetics.bind(presetSamples(p));
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {*[]} [p.fields]

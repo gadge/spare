@@ -1,5 +1,5 @@
 import { decoFlat }                                       from '@spare/deco-flat'
-import { BRK, NONE }                                      from '@spare/enum-brackets'
+import { BRK }                                            from '@spare/enum-brackets'
 import { COSP }                                           from '@spare/enum-chars'
 import { COLUMNWISE }                                     from '@vect/enum-matrix-directions'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
@@ -10,7 +10,7 @@ import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dye
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
+ *
  * @param {*} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
@@ -33,8 +33,8 @@ import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dye
  */
 export const presetSamples = p => {
   p.delim = p.delim ?? COSP
-  p.bracket = !p.bracket ? NONE : BRK
-  p.indexed = p.indexed || true
+  p.bracket = p.bracket ?? BRK
+  p.indexed = p.indexed ?? true
   p.read = p.read ?? decoFlat
   p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
   p.direct = p.direct ?? COLUMNWISE

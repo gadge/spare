@@ -17,7 +17,7 @@ function cosmetics(vec) {
   const config = this;
   if (config === null || config === void 0 ? void 0 : config.indexed) return cosmetics$1.call(config, Object.entries(vec));
   if (!(vec === null || vec === void 0 ? void 0 : vec.length)) return String(vec);
-  const {
+  let {
     head,
     tail,
     presets,
@@ -60,7 +60,7 @@ function cosmetics(vec) {
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
@@ -87,7 +87,7 @@ const Deco = (p = {}) => cosmetics.bind(presetVector(p));
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
@@ -113,7 +113,7 @@ const deco = (vector, p = {}) => cosmetics.call(presetVector(p), vector);
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]

@@ -6,7 +6,6 @@ import { COSP }     from '@spare/enum-chars'
  * @param {Object} p
  *
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
  *
  * @param {Function} [p.read=decoPale]
  *
@@ -16,7 +15,7 @@ import { COSP }     from '@spare/enum-chars'
  */
 export const presetVector = p => {
   p.delim = p.delim ?? COSP
-  p.read = p.read || decoPale
+  p.read = p.read ?? decoPale
   p.bracket = BRACKET
   return p
 }

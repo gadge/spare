@@ -6,7 +6,6 @@ import { LF }       from '@spare/enum-chars'
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim='\n']
- * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
  * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read=decoPale]
@@ -26,7 +25,7 @@ import { LF }       from '@spare/enum-chars'
  */
 export const presetCrostab = p => {
   p.delim = p.delim ?? LF
-  p.read = p.read || decoPale
+  p.read = p.read ?? decoPale
   p.ansi = p.ansi ?? true
   return p
 }

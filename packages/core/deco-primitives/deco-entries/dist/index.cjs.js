@@ -55,7 +55,7 @@ const cosmetics = function (entries) {
     return _t = t, d(_t);
   })(text, dye) : text;
 
-  const brk = bracket.SelectBr(bracket$1) || (x => x);
+  const brk = bracket.Br(bracket$1) || (x => x);
 
   const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()));
   return liner.liner(lines, this);
@@ -72,8 +72,7 @@ const cosmetics = function (entries) {
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
@@ -100,8 +99,8 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetEntries(p));
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]

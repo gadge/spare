@@ -1,28 +1,26 @@
 import { QT, DT } from '@spare/enum-chars';
 import { APOS, DITTO } from '@spare/enum-quotes';
+import { isString } from '@typen/literal';
+import { nullish } from '@typen/nullish';
 
 const quote = x => QT + x + QT;
 const ditto = x => DT + x + DT;
 const qt = (x, mode) => {
-  if (mode === APOS) return quote(x);
-  if (mode === DITTO) return ditto(x);
+  if (mode === APOS || mode === QT) return quote(x);
+  if (mode === DITTO || mode === DT) return ditto(x);
+  if (!nullish(mode) && isString(mode)) return mode + x + mode;
   return x;
 };
 
-const SelectQt = mode => {
-  if (mode === APOS) return quote;
-  if (mode === DITTO) return ditto;
+const Qt = mode => {
+  if (mode === APOS || mode === QT) return quote;
+  if (mode === DITTO || mode === DT) return ditto;
   return null;
-};
-const Qt = (read, mode) => {
-  if (!mode) return read;
-  if (!read) return SelectQt(mode);
-  return x => {
-    var _ref, _x;
-
-    return _ref = (_x = x, read(_x)), SelectQt(mode)(_ref);
-  };
-};
+}; // export const Qt = (read, mode) => {
+//   if (!mode) return read
+//   if (!read) return SelectQt(mode)
+//   return x => x |> read |> SelectQt(mode)
+// }
 
 const DUALQT = /^'(.*)'$/;
 const ANYQT = /'/g;

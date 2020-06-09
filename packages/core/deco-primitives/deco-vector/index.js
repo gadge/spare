@@ -14,7 +14,7 @@ export { cosmetics }
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
@@ -41,7 +41,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetVector(p))
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
@@ -68,7 +68,7 @@ export const deco = (vector, p = {}) =>
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]

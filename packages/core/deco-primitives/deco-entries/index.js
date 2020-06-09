@@ -14,8 +14,7 @@ export { cosmetics }
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
@@ -42,8 +41,8 @@ export const Deco = (p = {}) => cosmetics.bind(presetEntries(p))
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]

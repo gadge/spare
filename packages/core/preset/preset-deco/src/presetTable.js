@@ -9,7 +9,7 @@ import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dye
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ *  - currently not functional, keeps for future fix
  * @param {*} [p.bracket] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read=decoFlat]

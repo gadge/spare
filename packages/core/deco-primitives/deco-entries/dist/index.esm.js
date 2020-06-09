@@ -1,7 +1,7 @@
 import { presetEntries } from '@spare/preset-deco';
 import { COLORANT } from '@palett/enum-colorant-modes';
 import { fluoEnt } from '@palett/fluo-entries';
-import { SelectBr } from '@spare/bracket';
+import { Br } from '@spare/bracket';
 import { enttro } from '@spare/enttro';
 import { liner } from '@spare/liner';
 import { padEntries } from '@spare/pad-entries';
@@ -51,7 +51,7 @@ const cosmetics = function (entries) {
     return _t = t, d(_t);
   })(text, dye) : text;
 
-  const brk = SelectBr(bracket) || (x => x);
+  const brk = Br(bracket) || (x => x);
 
   const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()));
   return liner(lines, this);
@@ -68,8 +68,7 @@ const cosmetics = function (entries) {
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
@@ -96,8 +95,8 @@ const Deco = (p = {}) => cosmetics.bind(presetEntries(p));
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]

@@ -13,7 +13,7 @@ export { cosmetics }
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim='\n']
- * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ *  - currently not functional, keeps for future fix
  * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read]
@@ -45,7 +45,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetCrostab(p))
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim='\n']
- * @param {number} [p.quote=NONE] - currently not functional, keeps for future fix
+ *  - currently not functional, keeps for future fix
  * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read]

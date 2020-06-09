@@ -7,8 +7,6 @@ import { COLF, COSP, RTSP }  from '@spare/enum-chars'
  *
  * @param {string} [p.dash=', ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
  *
  * @param {Function} [p.keyRead=decoPale]
  * @param {Function} [p.read=decoPale]
@@ -22,7 +20,7 @@ export const presetEntries = p => {
   p.dash = p.dash ?? COSP
   p.delim = p.delim ?? COLF
   p.keyRead = p.keyRead || decoPale
-  p.read = p.read || decoPale
+  p.read = p.read ?? decoPale
   p.bracket = BRACKET
   p.discrete = true
   return p
@@ -34,7 +32,7 @@ export const presetEntries = p => {
  * @param {number} [p.keyQuote]
  * @param {string} [p.dash=', ']
  * @param {string} [p.delim=',\n']
- * @param {number} [p.quote=NONE]
+
  *
  * @param {Function} [p.keyRead=decoKey]
  * @param {Function} [p.read=decoPale]
@@ -48,7 +46,7 @@ export const presetEntriesAsObject = p => {
   p.dash = p.dash ?? RTSP
   p.delim = p.delim ?? COLF
   p.keyRead = p.keyRead || decoKey
-  p.read = p.read || decoPale
+  p.read = p.read ?? decoPale
   p.bracket = NONE
   p.discrete = true
   return p

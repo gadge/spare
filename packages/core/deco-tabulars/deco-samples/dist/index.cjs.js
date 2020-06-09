@@ -11,7 +11,6 @@ var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
 var padMatrix = require('@spare/pad-matrix');
-var quote = require('@spare/quote');
 var vettro = require('@spare/vettro');
 var entriesUnwind = require('@vect/entries-unwind');
 var matrixMargin = require('@vect/matrix-margin');
@@ -26,20 +25,15 @@ const cosmetics = function (samples) {
   let height, sample, keys, dye, rows;
   if (!(height = samples.length)) return '[]';
   if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return '[]';
-  const {
+  let {
     fields,
     indexed,
     headRead,
     read,
     direct,
     preset,
-    keyPreset,
-    stringPreset,
-    ansi
-  } = this;
-  let {
+    ansi,
     delim,
-    quote: quote$1,
     top,
     bottom,
     left,
@@ -78,7 +72,7 @@ const cosmetics = function (samples) {
     width: w,
     dashX,
     dashY,
-    read: quote.Qt(read, quote$1),
+    read: read,
     hr: null,
     validate: false
   });
@@ -121,7 +115,7 @@ const cosmetics = function (samples) {
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
@@ -153,7 +147,7 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetSamples(p));
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
- * @param {number} [p.quote=NONE]
+ *
  * @param {boolean} [p.bracket=true]
  *
  * @param {*[]} [p.fields]

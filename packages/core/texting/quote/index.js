@@ -1,8 +1,4 @@
-export {
-  quote,
-  ditto,
-  qt,
-} from './src/quote'
+export { quote, ditto, qt, } from './src/qt'
 
 export { Qt } from './src/Qt'
 

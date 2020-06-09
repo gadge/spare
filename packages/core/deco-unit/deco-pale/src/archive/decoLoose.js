@@ -1,4 +1,5 @@
 import { brace, bracket }          from '@spare/bracket'
+import { decofun }                 from '@spare/deco-func'
 import { pairEnt }                 from '@spare/deco-util'
 import { COSP }                    from '@spare/enum-chars'
 import { tenseQuote as quote }     from '@spare/quote'
@@ -7,9 +8,9 @@ import { ARRAY, DATE, OBJECT }     from '@typen/enum-object-types'
 import { typ }                     from '@typen/typ'
 import { formatDate }              from '@valjoux/format-date'
 import { formatTime }              from '@valjoux/format-time'
-import { mutate }                  from '@vect/entries-mapper'
-import { DEFN }                    from '../../resources/DEFN'
-import { decoKey }                 from './decoKey'
+import { mutate }  from '@vect/entries-mapper'
+import { DEFN }    from '../../resources/DEFN'
+import { decoKey } from '../unit/decoKey'
 
 // for esm js, number/strings are treated by their type
 export function decoValue (node) {

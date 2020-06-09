@@ -1,4 +1,4 @@
-import { quote } from './quote'
+import { quote } from './qt'
 
 const DUALQT = /^'(.*)'$/
 const ANYQT = /'/g

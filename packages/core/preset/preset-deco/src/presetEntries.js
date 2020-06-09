@@ -1,5 +1,5 @@
 import { decoFlat }                       from '@spare/deco-flat'
-import { BRK, NONE }                      from '@spare/enum-brackets'
+import { BRK }                            from '@spare/enum-brackets'
 import { LF }                             from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
@@ -9,8 +9,8 @@ import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
+ *
+ *
  * @param {*} [p.bracket=true]
  *
  * @param {Object[]} [p.presets]
@@ -30,7 +30,7 @@ import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 export const presetEntries = p => {
   p.dash = p.dash ?? ' > '
   p.delim = p.delim ?? LF
-  p.bracket = !p.bracket ? NONE : BRK
+  p.bracket = p.bracket ?? BRK
   p.read = p.read ?? decoFlat
   p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   p.ansi = p.ansi ?? true

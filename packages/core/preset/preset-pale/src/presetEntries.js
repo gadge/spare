@@ -1,6 +1,6 @@
-import { decoPale }  from '@spare/deco-pale'
-import { BRK, NONE } from '@spare/enum-brackets'
-import { LF }        from '@spare/enum-chars'
+import { decoPale } from '@spare/deco-pale'
+import { BRK }      from '@spare/enum-brackets'
+import { LF }       from '@spare/enum-chars'
 
 /***
  * @param {Object} p
@@ -8,9 +8,7 @@ import { LF }        from '@spare/enum-chars'
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=' > ']
  * @param {string} [p.delim='\n']
- * @param {number} [p.keyQuote=NONE]
- * @param {number} [p.quote=NONE]
- * @param {boolean} [p.bracket=true]
+ * @param {boolean|number} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read=decoPale]
@@ -26,8 +24,8 @@ import { LF }        from '@spare/enum-chars'
 export const presetEntries = p => {
   p.dash = p.dash ?? ' > '
   p.delim = p.delim ?? LF
-  p.bracket = !p.bracket ? NONE : BRK
-  p.read = p.read || decoPale
+  p.bracket = p.bracket ?? BRK
+  p.read = p.read ?? decoPale
   p.ansi = p.ansi ?? true
   return p
 }

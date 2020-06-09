@@ -1,19 +1,21 @@
 export { decoKey } from './src/unit/decoKey'
-import { decoval } from './src/unit/decoval'
+import { quote }   from '@spare/quote'
+import { deco }    from './src/unit/deco'
 
-export { decoval }
+export { deco as decoval }
 
 /**
  *
  * @param x
  * @param {boolean} loose
+ * @param {Function} quote
  * @return {string|*}
  */
-export const decoPale = (x, { loose = true } = {}) => decoval.call({ loose }, x)
+export const decoPale = (x, { loose = true, quote = quote } = {}) => deco.call({ loose, quote }, x)
 
 /**
  *
  * @param {boolean} loose
- * @return {Function}
+ * @param {Function} quote
  */
-export const DecoPale = ({ loose = true } = {}) => decoval.bind({ loose })
+export const DecoPale = ({ loose = true, quote = quote } = {}) => deco.bind({ loose, quote })

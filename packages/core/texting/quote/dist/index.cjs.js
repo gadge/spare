@@ -4,29 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var enumChars = require('@spare/enum-chars');
 var enumQuotes = require('@spare/enum-quotes');
+var literal = require('@typen/literal');
+var nullish = require('@typen/nullish');
 
 const quote = x => enumChars.QT + x + enumChars.QT;
 const ditto = x => enumChars.DT + x + enumChars.DT;
 const qt = (x, mode) => {
-  if (mode === enumQuotes.APOS) return quote(x);
-  if (mode === enumQuotes.DITTO) return ditto(x);
+  if (mode === enumQuotes.APOS || mode === enumChars.QT) return quote(x);
+  if (mode === enumQuotes.DITTO || mode === enumChars.DT) return ditto(x);
+  if (!nullish.nullish(mode) && literal.isString(mode)) return mode + x + mode;
   return x;
 };
 
-const SelectQt = mode => {
-  if (mode === enumQuotes.APOS) return quote;
-  if (mode === enumQuotes.DITTO) return ditto;
+const Qt = mode => {
+  if (mode === enumQuotes.APOS || mode === enumChars.QT) return quote;
+  if (mode === enumQuotes.DITTO || mode === enumChars.DT) return ditto;
   return null;
-};
-const Qt = (read, mode) => {
-  if (!mode) return read;
-  if (!read) return SelectQt(mode);
-  return x => {
-    var _ref, _x;
-
-    return _ref = (_x = x, read(_x)), SelectQt(mode)(_ref);
-  };
-};
+}; // export const Qt = (read, mode) => {
+//   if (!mode) return read
+//   if (!read) return SelectQt(mode)
+//   return x => x |> read |> SelectQt(mode)
+// }
 
 const DUALQT = /^'(.*)'$/;
 const ANYQT = /'/g;

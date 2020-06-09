@@ -28,7 +28,9 @@
     "@typen/typ": "^0.1.5",
     "@valjoux/format-date": "^0.1.5",
     "@valjoux/format-time": "^0.1.5",
-    "@vect/entries-mapper": "^0.2.5"
+    "@vect/entries-mapper": "^0.2.5",
+    "@spare/deco-func": "^0.7.10",
+    "@spare/deco-util": "^0.7.10"
   },
   "repository": {
     "type": "git",

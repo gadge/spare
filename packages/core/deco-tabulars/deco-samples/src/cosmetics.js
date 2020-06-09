@@ -6,7 +6,6 @@ import { COLF }                               from '@spare/enum-chars'
 import { liner }                              from '@spare/liner'
 import { mattro }                             from '@spare/mattro'
 import { padMatrix }                          from '@spare/pad-matrix'
-import { Qt }                                 from '@spare/quote'
 import { marginSizing, Vectogin }             from '@spare/vettro'
 import { unwind }                             from '@vect/entries-unwind'
 import { marginMapper as marginMapperMatrix } from '@vect/matrix-margin'
@@ -19,11 +18,10 @@ export const cosmetics = function (samples) {
   let height, sample, keys, dye, rows
   if (!(height = samples.length)) return '[]'
   if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return '[]'
-  const {
-    fields, indexed, headRead, read, direct,
-    preset, keyPreset, stringPreset, ansi
+  let {
+    fields, indexed, headRead, read, direct, preset, ansi,
+    delim, top, bottom, left, right, bracket, discrete, level, presets
   } = this
-  let { delim, quote, top, bottom, left, right, bracket, discrete, level, presets } = this
   let [pick, head] = fields
     ? (lookupKeys.call(sample, fields) |> unwind)
     : [keys, keys.slice()]
@@ -40,7 +38,7 @@ export const cosmetics = function (samples) {
   let [h, w] = size(rows)
   const { raw, text } = mattro(rows, {
     top: t, bottom: b, left: l, right: r, height: h, width: w, dashX, dashY,
-    read: Qt(read, quote), hr: null, validate: false
+    read: read, hr: null, validate: false
   })
   if (presets) {
     const [numericPreset, , headingPreset] = presets

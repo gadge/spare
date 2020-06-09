@@ -16,25 +16,19 @@ const br = (x, mode) => {
   return x;
 };
 
-const SelectBr = mode => {
+const Br = mode => {
   if (mode === enumBrackets.PAR) return parenth;
   if (mode === enumBrackets.BRK) return bracket;
   if (mode === enumBrackets.BRC) return brace;
   if (mode === enumBrackets.ANBR) return anglebr;
-  return null;
-};
-const Br = (read, mode) => {
-  if (!mode) return read;
-  if (!read) return SelectBr(mode);
-  return x => {
-    var _ref, _x;
-
-    return _ref = (_x = x, read(_x)), SelectBr(mode)(_ref);
-  };
-};
+  return mode ? bracket : null;
+}; // export const Br = (read, mode) => {
+//   if (!mode) return read
+//   if (!read) return Br(mode)
+//   return x => x |> read |> Br(mode)
+// }
 
 exports.Br = Br;
-exports.SelectBr = SelectBr;
 exports.anglebr = anglebr;
 exports.br = br;
 exports.brace = brace;

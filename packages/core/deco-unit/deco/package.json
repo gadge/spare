@@ -34,7 +34,10 @@
     "@valjoux/format-date-time": "^0.1.5",
     "@vect/column-mapper": "^0.2.5",
     "@vect/entries-mapper": "^0.2.5",
-    "@vect/vector-mapper": "^0.2.5"
+    "@vect/vector-mapper": "^0.2.5",
+    "@palett/presets": "^0.2.16",
+    "@analys/enum-mutabilities": "^0.3.5",
+    "@spare/deco-string": "^0.7.10"
   },
   "repository": {
     "type": "git",
