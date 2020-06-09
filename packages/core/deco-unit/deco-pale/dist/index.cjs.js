@@ -4,11 +4,11 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var quote = require('@spare/quote');
 var numStrict = require('@typen/num-strict');
+var enumDataTypes = require('@typen/enum-data-types');
 var bracket = require('@spare/bracket');
 var decoFunc = require('@spare/deco-func');
 var decoUtil = require('@spare/deco-util');
 var enumChars = require('@spare/enum-chars');
-var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
 var numLoose = require('@typen/num-loose');
 var typ = require('@typen/typ');
@@ -49,34 +49,38 @@ function deco(node) {
   return _node$toString = node.toString(), quote(_node$toString);
 }
 
+const parseQuote = q => {
+  var _Qt;
+
+  return typeof q === enumDataTypes.FUN ? q : (_Qt = quote.Qt(q)) !== null && _Qt !== void 0 ? _Qt : quote.quote;
+};
+
+const presetConfig = p => {
+  var _p$loose;
+
+  p.loose = (_p$loose = p.loose) !== null && _p$loose !== void 0 ? _p$loose : true;
+  p.quote = parseQuote(p.quote);
+  return p;
+};
 /**
  *
  * @param x
- * @param {boolean} loose
- * @param {Function} quote
+ * @param {Object} p
+ * @param {boolean} [p.loose]
+ * @param {Function|string|number} [p.quote]
  * @return {string|*}
  */
 
-const decoPale = (x, {
-  loose = true,
-  quote = quote
-} = {}) => deco.call({
-  loose,
-  quote
-}, x);
+
+const decoPale = (x, p = {}) => deco.call(presetConfig(p), x);
 /**
  *
- * @param {boolean} loose
- * @param {Function} quote
+ * @param {Object} p
+ * @param {boolean} [p.loose]
+ * @param {Function|string|number} [p.quote]
  */
 
-const DecoPale = ({
-  loose = true,
-  quote = quote
-} = {}) => deco.bind({
-  loose,
-  quote
-});
+const DecoPale = (p = {}) => deco.bind(presetConfig(p));
 
 exports.DecoPale = DecoPale;
 exports.decoKey = decoKey;

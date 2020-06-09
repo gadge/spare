@@ -1,21 +1,31 @@
-export { decoKey } from './src/unit/decoKey'
-import { quote }   from '@spare/quote'
-import { deco }    from './src/unit/deco'
+export { decoKey }   from './src/unit/decoKey'
+import { Qt, quote } from '@spare/quote'
+import { FUN }       from '@typen/enum-data-types'
+import { deco }      from './src/unit/deco'
 
 export { deco as decoval }
 
+const parseQuote = q => typeof q === FUN ? q : Qt(q) ?? quote
+
+const presetConfig = p => {
+  p.loose = p.loose ?? true
+  p.quote = parseQuote(p.quote)
+  return p
+}
 /**
  *
  * @param x
- * @param {boolean} loose
- * @param {Function} quote
+ * @param {Object} p
+ * @param {boolean} [p.loose]
+ * @param {Function|string|number} [p.quote]
  * @return {string|*}
  */
-export const decoPale = (x, { loose = true, quote = quote } = {}) => deco.call({ loose, quote }, x)
+export const decoPale = (x, p = {}) => deco.call(presetConfig(p), x)
 
 /**
  *
- * @param {boolean} loose
- * @param {Function} quote
+ * @param {Object} p
+ * @param {boolean} [p.loose]
+ * @param {Function|string|number} [p.quote]
  */
-export const DecoPale = ({ loose = true, quote = quote } = {}) => deco.bind({ loose, quote })
+export const DecoPale = (p = {}) => deco.bind(presetConfig(p))

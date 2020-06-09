@@ -1,10 +1,10 @@
-import { tenseQuote } from '@spare/quote';
+import { tenseQuote, Qt, quote } from '@spare/quote';
 import { isNumeric } from '@typen/num-strict';
+import { NUM, BOO, STR, FUN, OBJ } from '@typen/enum-data-types';
 import { bracket, brace } from '@spare/bracket';
 import { decofun } from '@spare/deco-func';
 import { pairEnt } from '@spare/deco-util';
 import { COSP } from '@spare/enum-chars';
-import { NUM, BOO, STR, FUN, OBJ } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
 import { isNumeric as isNumeric$1 } from '@typen/num-loose';
 import { typ } from '@typen/typ';
@@ -45,33 +45,37 @@ function deco(node) {
   return _node$toString = node.toString(), quote(_node$toString);
 }
 
+const parseQuote = q => {
+  var _Qt;
+
+  return typeof q === FUN ? q : (_Qt = Qt(q)) !== null && _Qt !== void 0 ? _Qt : quote;
+};
+
+const presetConfig = p => {
+  var _p$loose;
+
+  p.loose = (_p$loose = p.loose) !== null && _p$loose !== void 0 ? _p$loose : true;
+  p.quote = parseQuote(p.quote);
+  return p;
+};
 /**
  *
  * @param x
- * @param {boolean} loose
- * @param {Function} quote
+ * @param {Object} p
+ * @param {boolean} [p.loose]
+ * @param {Function|string|number} [p.quote]
  * @return {string|*}
  */
 
-const decoPale = (x, {
-  loose = true,
-  quote = quote
-} = {}) => deco.call({
-  loose,
-  quote
-}, x);
+
+const decoPale = (x, p = {}) => deco.call(presetConfig(p), x);
 /**
  *
- * @param {boolean} loose
- * @param {Function} quote
+ * @param {Object} p
+ * @param {boolean} [p.loose]
+ * @param {Function|string|number} [p.quote]
  */
 
-const DecoPale = ({
-  loose = true,
-  quote = quote
-} = {}) => deco.bind({
-  loose,
-  quote
-});
+const DecoPale = (p = {}) => deco.bind(presetConfig(p));
 
 export { DecoPale, decoKey, decoPale, deco as decoval };
