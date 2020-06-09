@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.7.11",
+  "version": "0.7.12",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -25,7 +25,7 @@
     "@spare/deco-vector": "^0.7.11",
     "@spare/enum-brackets": "^0.7.11",
     "@spare/liner": "^0.7.11",
-    "@spare/preset-verse": "^0.7.11"
+    "@spare/preset-verse": "^0.7.12"
   },
   "repository": {
     "type": "git",
