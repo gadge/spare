@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.7.10",
+  "version": "0.7.11",
   "description": "A sentence builder",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,8 +18,8 @@
     "@palett/cards": "^0.2.16",
     "@palett/convert": "^0.2.16",
     "@palett/dye": "^0.2.16",
-    "@spare/enum-chars": "^0.7.10",
-    "@spare/util": "^0.7.10",
+    "@spare/enum-chars": "^0.7.11",
+    "@spare/util": "^0.7.11",
     "@vect/callable": "^0.2.5"
   },
   "repository": {
