@@ -17,9 +17,9 @@
   "dependencies": {
     "@analys/enum-mutabilities": "^0.3.5",
     "@aryth/comparer": "^0.2.7",
-    "@palett/fluo-entries": "^0.2.16",
-    "@palett/fluo-vector": "^0.2.16",
-    "@palett/presets": "^0.2.16",
+    "@palett/fluo-entries": "^0.3.1",
+    "@palett/fluo-vector": "^0.3.1",
+    "@palett/presets": "^0.3.1",
     "@spare/bracket": "^0.7.13",
     "@spare/deco-colors": "^0.7.13",
     "@spare/deco-date": "^0.7.13",
@@ -33,8 +33,8 @@
     "@typen/enum-object-types": "^0.1.5",
     "@typen/num-loose": "^0.1.5",
     "@typen/typ": "^0.1.5",
-    "@valjoux/format-date": "^0.1.7",
-    "@valjoux/format-date-time": "^0.1.7",
+    "@valjoux/format-date": "^0.1.8",
+    "@valjoux/format-date-time": "^0.1.8",
     "@vect/column-mapper": "^0.2.5",
     "@vect/entries-mapper": "^0.2.5",
     "@vect/vector-mapper": "^0.2.5"

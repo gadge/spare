@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/preset-deco.test.js"
   },
   "dependencies": {
-    "@ject/pipe": "^0.0.3",
-    "@palett/presets": "^0.2.16",
+    "@ject/pipe": "^0.0.4",
+    "@palett/presets": "^0.3.1",
     "@spare/deco-flat": "^0.7.13",
     "@spare/enum-brackets": "^0.7.13",
     "@spare/enum-chars": "^0.7.13",

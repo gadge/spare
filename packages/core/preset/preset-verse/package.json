@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/preset-verse.test.js"
   },
   "dependencies": {
-    "@ject/pipe": "^0.0.3",
+    "@ject/pipe": "^0.0.4",
     "@spare/deco-pale": "^0.7.13",
     "@spare/enum-brackets": "^0.7.13",
     "@spare/enum-chars": "^0.7.13",

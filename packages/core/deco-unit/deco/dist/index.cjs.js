@@ -150,9 +150,9 @@ const presetDeco = p => {
   var _p$pr, _p$hi, _p$va, _p$vo, _p$wa, _p$wo, _p$wf;
 
   p.pr = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [{
-    preset: presets.AURORA
+    preset: presets.AZURE
   }, {
-    preset: presets.JUNGLE
+    preset: presets.MOSS
   }];
   p.presets = p.pr;
   p.hi = (_p$hi = p.hi) !== null && _p$hi !== void 0 ? _p$hi : 8;
@@ -195,7 +195,24 @@ const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob);
  * @returns {string|number}
  */
 
-const deca = (p = {}) => decoNode.bind(presetDeco(p));
+const Deco = (p = {}) => decoNode.bind(presetDeco(p));
+/**
+ *
+ * @param {*} ob
+ * @param {Object} [p]
+ * @param {Object[]} [p.pr=[]]
+ * @param {number} [p.hi=8] - maximum level of object to show detail
+ * @param {number} [p.va=0] - maximum level to force vertical for array, root level = 0
+ * @param {number} [p.vo=0] - maximum level to force vertical for object, root level = 0
+ * @param {number} [p.wa=32] - maximum string length to hold array contents without wrap
+ * @param {number} [p.wo=64] - maximum string length to hold object contents without wrap
+ * @param {number} [p.wf=160] - maximum string length to hold function contents
+ * @param {?string} [p.qm=null] - quotation mark
+ * @returns {string|number}
+ * @deprecated use Deco instead
+ */
+
+const deca = Deco;
 const delogger = x => {
   var _x;
 
@@ -207,6 +224,7 @@ const delogNeL = x => {
   return void console.log((_x2 = x, deco(_x2)), enumChars.LF);
 };
 
+exports.Deco = Deco;
 exports.deca = deca;
 exports.deco = deco;
 exports.decoNode = decoNode;

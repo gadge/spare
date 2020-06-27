@@ -1,5 +1,5 @@
 import { Basics, Vectors } from '@spare/deco/test/assets/candidates'
-import { DITTO }           from '@spare/enum-quotes'
+import { APOS }           from '@spare/enum-quotes'
 import { says }            from '@spare/logger'
 import { decoPale }        from '../index'
 
@@ -8,5 +8,5 @@ for (const [key, value] of Object.entries({
   ...Vectors,
   o: { 'mc\'q': 1, date: new Date(), vec: [[1], [2, 3]], ob: { a: '1.41', b: '3.14' } }
 })) {
-  decoPale(value, { loose: true, quote: DITTO }) |> says[key]
+  decoPale(value, { loose: true, quote: APOS }) |> says[key]
 }
