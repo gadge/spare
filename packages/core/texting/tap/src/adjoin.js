@@ -20,7 +20,7 @@ export const adjoin = function (...words) {
  * @param {Object} p
  *
  * @param {string} [p.delim=',\n']
- * @param {boolean} [p.bracket=true] - BRK = 1
+ * @param {boolean|number} [p.bracket=true] - BRK = 1
  * @param {Function} [p.read]
  * @param {Object} [p.preset=FRESH]
  * @param {Object} [p.stringPreset=JUNGLE]

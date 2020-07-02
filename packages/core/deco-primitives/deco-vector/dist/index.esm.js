@@ -61,7 +61,7 @@ function cosmetics(vec) {
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
  *
- * @param {boolean} [p.bracket=true] - BRK = 1
+ * @param {boolean|number} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
@@ -88,7 +88,7 @@ const Deco = (p = {}) => cosmetics.bind(presetVector(p));
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
  *
- * @param {boolean} [p.bracket=true] - BRK = 1
+ * @param {boolean|number} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
@@ -114,7 +114,7 @@ const deco = (vector, p = {}) => cosmetics.call(presetVector(p), vector);
  * @param {string} [p.dash=') ']
  * @param {string} [p.delim=',\n']
  *
- * @param {boolean} [p.bracket=true] - BRK = 1
+ * @param {boolean|number} [p.bracket=true] - BRK = 1
  *
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]

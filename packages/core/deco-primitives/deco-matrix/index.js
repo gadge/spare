@@ -10,7 +10,7 @@ export { cosmetics }
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  *
- * @param {boolean} [p.bracket=true]
+ * @param {boolean|number} [p.bracket=true]
  *
  * @param {Function} [p.read]
  *
@@ -38,7 +38,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetMatrix(p))
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  *
- * @param {boolean} [p.bracket=true]
+ * @param {boolean|number} [p.bracket=true]
  *
  * @param {Function} [p.read]
  *

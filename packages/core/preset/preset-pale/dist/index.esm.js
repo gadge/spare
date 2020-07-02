@@ -167,7 +167,7 @@ const presetCrostab = p => {
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=',\n']
- * @param {boolean} [p.bracket] - currently not functional, keeps for future fix
+ * @param {boolean|number} [p.bracket] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read=decoPale]
  * @param {Function} [p.headRead]

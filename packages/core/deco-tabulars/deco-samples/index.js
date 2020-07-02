@@ -10,7 +10,7 @@ export { cosmetics }
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  *
- * @param {boolean} [p.bracket=true]
+ * @param {boolean|number} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
  * @param {boolean} [p.indexed=true]
@@ -42,7 +42,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetSamples(p))
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim=', ']
  *
- * @param {boolean} [p.bracket=true]
+ * @param {boolean|number} [p.bracket=true]
  *
  * @param {*[]} [p.fields]
  * @param {boolean} [p.indexed=true]
