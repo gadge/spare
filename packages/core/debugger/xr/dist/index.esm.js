@@ -73,6 +73,10 @@ class Callable extends Function {
  */
 
 
+var _brk = _classPrivateFieldLooseKey("brk");
+
+var _prn = _classPrivateFieldLooseKey("prn");
+
 _Symbol$toPrimitive = Symbol.toPrimitive;
 class Inka extends Callable {
   /** @type {number} */
@@ -161,10 +165,6 @@ class Inka extends Callable {
   }
 
 }
-
-var _brk = _classPrivateFieldLooseKey("brk");
-
-var _prn = _classPrivateFieldLooseKey("prn");
 
 /**
  *
