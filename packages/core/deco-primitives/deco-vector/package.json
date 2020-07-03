@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@ject/pipe": "^0.0.4",
-    "@palett/enum-colorant-modes": "^0.3.3",
-    "@palett/fluo-vector": "^0.3.3",
-    "@palett/presets": "^0.3.3",
+    "@palett/enum-colorant-modes": "^0.3.4",
+    "@palett/fluo-vector": "^0.3.4",
+    "@palett/presets": "^0.3.4",
     "@spare/deco-entries": "^0.7.15",
     "@spare/enum-chars": "^0.7.15",
     "@spare/liner": "^0.7.15",

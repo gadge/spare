@@ -2,15 +2,15 @@ import * as Sayer          from '@palett/says'
 import * as DecoGeneric    from '@spare/deco'
 import * as DecoCrostabEnv from '@spare/deco-crostab'
 import * as DecoEntriesEnv from '@spare/deco-entries'
+import * as DecoFlatEnv    from '@spare/deco-flat'
+import * as DecoFuncEnv    from '@spare/deco-func'
 import * as DecoMatrixEnv  from '@spare/deco-matrix'
 import * as DecoObjectEnv  from '@spare/deco-object'
+import * as DecoPaleEnv    from '@spare/deco-pale'
 import * as DecoSamplesEnv from '@spare/deco-samples'
 import * as DecoStringEnv  from '@spare/deco-string'
 import * as DecoTableEnv   from '@spare/deco-table'
 import * as DecoVectorEnv  from '@spare/deco-vector'
-import * as DecoPaleEnv from '@spare/deco-pale'
-import * as DecoFlatEnv from '@spare/deco-flat'
-import * as DecoFuncEnv from '@spare/deco-func'
 import * as XrEnv          from '@spare/xr'
 
 export { logger, logNeL } from './src/logger'
@@ -34,9 +34,9 @@ export { logger, logNeL } from './src/logger'
 /** @type {Function} */ export const decoSamples = DecoSamplesEnv.deco
 /** @type {Function} */ export const decoTable = DecoTableEnv.deco
 /** @type {Function} */ export const decoCrostab = DecoCrostabEnv.deco
-/** @type {Function} */ export const decoFunc =DecoFuncEnv.decoFunc
-/** @type {Function} */ export const decoPale =DecoPaleEnv.decoPale
-/** @type {Function} */ export const decoFlat =DecoFlatEnv.decoFlat
+/** @type {Function} */ export const decoFunc = DecoFuncEnv.decoFunc
+/** @type {Function} */ export const decoPale = DecoPaleEnv.decoPale
+/** @type {Function} */ export const decoFlat = DecoFlatEnv.decoFlat
 
 /** @type {Function} */ export const DecoString = DecoStringEnv.Deco
 /** @type {Function} */ export const DecoVector = DecoVectorEnv.Deco
@@ -47,7 +47,7 @@ export { logger, logNeL } from './src/logger'
 /** @type {Function} */ export const DecoTable = DecoTableEnv.Deco
 /** @type {Function} */ export const DecoCrostab = DecoCrostabEnv.Deco
 /** @type {Function} */ export const DecoFunc = DecoFuncEnv.DecoFunc
-/** @type {Function} */ export const DecoPale =DecoPaleEnv.DecoPale
-/** @type {Function} */ export const DecoFlat =DecoFlatEnv.DecoFlat
+/** @type {Function} */ export const DecoPale = DecoPaleEnv.DecoPale
+/** @type {Function} */ export const DecoFlat = DecoFlatEnv.DecoFlat
 
 

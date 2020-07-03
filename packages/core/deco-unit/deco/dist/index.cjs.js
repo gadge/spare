@@ -182,9 +182,8 @@ const presetDeco = p => {
 const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob);
 /**
  *
- * @param {*} ob
  * @param {Object} [p]
- * @param {Object[]} [p.pr=[]]
+ * @param {Object[]|*} [p.pr=[]]
  * @param {number} [p.hi=8] - maximum level of object to show detail
  * @param {number} [p.va=0] - maximum level to force vertical for array, root level = 0
  * @param {number} [p.vo=0] - maximum level to force vertical for object, root level = 0

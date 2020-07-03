@@ -14,15 +14,14 @@ export { cosmetics }
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=': ']
  * @param {string} [p.delim=',\n']
- * 
+ *
  *
  * @param {boolean|number} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=PLANET]
+ * @param {Object[]} [p.presets=[FRESH,PLANET]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -42,15 +41,14 @@ export const Deco = (p = {}) => cosmetics.bind(presetObject(p))
  * @param {boolean} [p.discrete]
  * @param {string} [p.dash=': ']
  * @param {string} [p.delim=',\n']
- * 
+ *
  *
  * @param {boolean|number} [p.bracket=true]
  *
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=PLANET]
+ * @param {Object[]|*} [p.presets=[FRESH,PLANET]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
