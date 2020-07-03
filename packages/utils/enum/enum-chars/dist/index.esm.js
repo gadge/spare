@@ -1,6 +1,7 @@
 const SP = ' ';
 const TB = '  ';
 const CO = ',';
+const DOT = '.';
 const CR = '\r';
 const LF = '\n';
 const RN = '\r\n';
@@ -16,4 +17,4 @@ const RTSP = RT + SP;
 const COSP = CO + SP;
 const COLF = CO + LF;
 
-export { AEU, CO, COLF, COSP, CR, DA, DASH, DT, ELLIP, LF, QT, RN, RT, RTSP, SP, TB, UL };
+export { AEU, CO, COLF, COSP, CR, DA, DASH, DOT, DT, ELLIP, LF, QT, RN, RT, RTSP, SP, TB, UL };

@@ -1,6 +1,7 @@
 export const SP = ' '
 export const TB = '  '
 export const CO = ','
+export const DOT='.'
 export const CR = '\r'
 export const LF = '\n'
 export const RN = '\r\n'

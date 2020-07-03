@@ -2,6 +2,7 @@ export {
   SP,
   TB,
   CO,
+  DOT,
   CR,
   LF,
   RN,
