@@ -4,15 +4,9 @@ import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
 import { FRESH, PLANET, SUBTLE } from '@palett/presets';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
 
-const NUMERIC_PRESET = {
-  preset: FRESH
-};
-const LITERAL_PRESET = {
-  preset: PLANET
-};
-const HEADING_PRESET = {
-  preset: SUBTLE
-};
+const NUMERIC_PRESET = FRESH;
+const LITERAL_PRESET = PLANET;
+const HEADING_PRESET = SUBTLE;
 
 /***
  * @param {Object} p

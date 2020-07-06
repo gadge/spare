@@ -1,8 +1,8 @@
 import { ATLAS, SUBTLE } from '@palett/presets'
 import { splitLiteral }  from '@spare/splitter'
 
-export const NUMERIC_PRESET = { preset: ATLAS }
-export const LITERAL_PRESET = { preset: SUBTLE }
+export const NUMERIC_PRESET = ATLAS
+export const LITERAL_PRESET = SUBTLE
 export const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET]
 
 export const presetString = p => {

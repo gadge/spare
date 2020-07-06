@@ -145,11 +145,7 @@ let deEn = function (entries, lv) {
 const presetDeco = p => {
   var _p$pr, _p$hi, _p$va, _p$vo, _p$wa, _p$wo, _p$wf;
 
-  p.pr = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [{
-    preset: AZURE
-  }, {
-    preset: MOSS
-  }];
+  p.pr = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [AZURE, MOSS];
   p.presets = p.pr;
   p.hi = (_p$hi = p.hi) !== null && _p$hi !== void 0 ? _p$hi : 8;
   p.va = (_p$va = p.va) !== null && _p$va !== void 0 ? _p$va : 0;

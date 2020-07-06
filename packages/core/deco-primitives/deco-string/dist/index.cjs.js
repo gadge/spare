@@ -30,12 +30,8 @@ const cosmetics = function (text) {
   return (joiner !== null && joiner !== void 0 ? joiner : Joiner(delim))(words);
 };
 
-const NUMERIC_PRESET = {
-  preset: presets.ATLAS
-};
-const LITERAL_PRESET = {
-  preset: presets.SUBTLE
-};
+const NUMERIC_PRESET = presets.ATLAS;
+const LITERAL_PRESET = presets.SUBTLE;
 const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
 const presetString = p => {
   var _p$delim, _p$presets, _p$vectify;

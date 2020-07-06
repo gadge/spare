@@ -28,7 +28,7 @@ miscRows |> Deco({
   right: 2,
   // preset: FRESH,
   // stringPreset: METRO,
-  presets: [{ preset: FRESH }, { preset: METRO }],
+  presets: [FRESH, METRO],
   discrete: false,
   bracket: true,
 })  |> says['miscRows']

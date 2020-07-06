@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/pad-matrix.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.2.7",
+    "@aryth/comparer": "^0.2.9",
     "@spare/enum-chars": "^0.7.17",
     "@spare/enum-full-angle-chars": "^0.7.17",
     "@spare/fullwidth": "^0.7.17",

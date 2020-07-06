@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/fluo-entries": "^0.3.4",
-    "@palett/fluo-vector": "^0.3.4",
-    "@palett/presets": "^0.3.4",
+    "@palett/fluo-entries": "^0.3.5",
+    "@palett/fluo-vector": "^0.3.5",
+    "@palett/presets": "^0.3.5",
     "@spare/deco-colors": "^0.7.17",
     "@spare/deco-date": "^0.7.17",
     "@spare/deco-func": "^0.7.17",

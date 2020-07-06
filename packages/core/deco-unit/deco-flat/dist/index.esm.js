@@ -10,12 +10,8 @@ import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
 import { typ } from '@typen/typ';
 import { mutate } from '@vect/column-mapper';
 
-const NUMERIC_PRESET = {
-  preset: FRESH
-};
-const LITERAL_PRESET = {
-  preset: PLANET
-};
+const NUMERIC_PRESET = FRESH;
+const LITERAL_PRESET = PLANET;
 
 const MUTABLE = {
   mutate: true

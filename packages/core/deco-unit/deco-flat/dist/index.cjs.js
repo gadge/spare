@@ -14,12 +14,8 @@ var enumObjectTypes = require('@typen/enum-object-types');
 var typ = require('@typen/typ');
 var columnMapper = require('@vect/column-mapper');
 
-const NUMERIC_PRESET = {
-  preset: presets.FRESH
-};
-const LITERAL_PRESET = {
-  preset: presets.PLANET
-};
+const NUMERIC_PRESET = presets.FRESH;
+const LITERAL_PRESET = presets.PLANET;
 
 const MUTABLE = {
   mutate: true

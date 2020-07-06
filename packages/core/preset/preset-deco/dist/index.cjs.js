@@ -8,15 +8,9 @@ var enumChars = require('@spare/enum-chars');
 var presets = require('@palett/presets');
 var enumMatrixDirections = require('@vect/enum-matrix-directions');
 
-const NUMERIC_PRESET = {
-  preset: presets.FRESH
-};
-const LITERAL_PRESET = {
-  preset: presets.PLANET
-};
-const HEADING_PRESET = {
-  preset: presets.SUBTLE
-};
+const NUMERIC_PRESET = presets.FRESH;
+const LITERAL_PRESET = presets.PLANET;
+const HEADING_PRESET = presets.SUBTLE;
 
 /***
  * @param {Object} p

@@ -13,5 +13,5 @@ const Texts = init([
 
 for (const [key, text] of Object.entries(Texts)) {
   text |> says[key]
-  text |> Deco({ stringPreset: INSTA }) |> says[key]
+  text |> Deco({ presets: [INSTA] }) |> says[key]
 }

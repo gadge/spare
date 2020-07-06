@@ -1,6 +1,6 @@
 import { COLORANT }   from '@palett/enum-colorant-modes'
 import { fluoEnt }    from '@palett/fluo-entries'
-import { Br }   from '@spare/bracket'
+import { Br }         from '@spare/bracket'
 import { enttro }     from '@spare/enttro'
 import { liner }      from '@spare/liner'
 import { padEntries } from '@spare/pad-entries'

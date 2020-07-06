@@ -5,7 +5,7 @@ import { decoNode }    from './src/decoNode'
 export { decoNode }
 
 const presetDeco = (p) => {
-  p.pr = p.pr ?? [{ preset: AZURE }, { preset: MOSS }]
+  p.pr = p.pr ?? [AZURE, MOSS]
   p.presets = p.pr
   p.hi = p.hi ?? 8
   p.va = p.va ?? 0
