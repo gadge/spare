@@ -49,11 +49,11 @@ const cosmetics = function (entries) {
     raw,
     dye,
     ansi: presets || ansi
-  }) : presets ? entriesZipper.Duozipper((t, d) => {
+  }) : presets ? entriesZipper.zipper(text, dye, (t, d) => {
     var _t;
 
     return _t = t, d(_t);
-  })(text, dye) : text;
+  }) : text;
 
   const brk = bracket.Br(bracket$1) || (x => x);
 
@@ -78,8 +78,7 @@ const cosmetics = function (entries) {
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -106,8 +105,7 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetEntries(p));
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

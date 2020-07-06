@@ -92,8 +92,7 @@ const cosmetics = function (table) {
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *
@@ -123,8 +122,7 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetTable(p));
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *

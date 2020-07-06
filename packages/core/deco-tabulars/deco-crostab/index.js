@@ -13,14 +13,13 @@ export { cosmetics }
  *
  * @param {boolean} [p.discrete]
  * @param {string} [p.delim='\n']
- *  - currently not functional, keeps for future fix
  * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
  *
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
  *
- * @param {Object} [p.presets=[FRESH,JUNGLE,SUBTLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE,SUBTLE]]
  * @param {number} [p.direct=POINTWISE]
  *
  * @param {number} [p.top]
@@ -50,8 +49,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetCrostab(p))
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=POINTWISE]
  *

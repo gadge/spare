@@ -19,8 +19,7 @@ export { cosmetics }
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *
@@ -50,8 +49,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetTable(p))
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *

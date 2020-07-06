@@ -17,9 +17,9 @@
   "dependencies": {
     "@analys/enum-mutabilities": "^0.3.5",
     "@aryth/comparer": "^0.2.10",
-    "@palett/fluo-entries": "^0.4.0-alpha.1",
-    "@palett/fluo-vector": "^0.4.0-alpha.1",
-    "@palett/presets": "^0.4.0-alpha.1",
+    "@palett/fluo-entries": "^0.4.0",
+    "@palett/fluo-vector": "^0.4.0",
+    "@palett/presets": "^0.4.0",
     "@spare/bracket": "^0.7.19",
     "@spare/deco-colors": "^0.7.19",
     "@spare/deco-date": "^0.7.19",

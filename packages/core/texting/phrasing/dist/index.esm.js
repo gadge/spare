@@ -140,8 +140,7 @@ const adjoin = function (...words) {
  * @param {string} [p.delim=',\n']
  * @param {boolean|number} [p.bracket=true] - BRK = 1
  * @param {Function} [p.read]
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  *
  * @returns {Function}
  * @deprecated use Adjoin in @spare/tap

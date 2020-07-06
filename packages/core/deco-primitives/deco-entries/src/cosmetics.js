@@ -1,11 +1,11 @@
-import { COLORANT }   from '@palett/enum-colorant-modes'
-import { fluoEntries }    from '@palett/fluo-entries'
-import { Br }         from '@spare/bracket'
-import { enttro }     from '@spare/enttro'
-import { liner }      from '@spare/liner'
-import { padEntries } from '@spare/pad-entries'
-import { Duozipper }  from '@vect/entries-zipper'
-import { HR_ENTRY }   from '../utils/HR_ENTRY'
+import { COLORANT }    from '@palett/enum-colorant-modes'
+import { fluoEntries } from '@palett/fluo-entries'
+import { Br }          from '@spare/bracket'
+import { enttro }      from '@spare/enttro'
+import { liner }       from '@spare/liner'
+import { padEntries }  from '@spare/pad-entries'
+import { zipper }      from '@vect/entries-zipper'
+import { HR_ENTRY }    from '../utils/HR_ENTRY'
 
 export const cosmetics = function (entries) {
   if (!entries) return String(entries)
@@ -17,7 +17,7 @@ export const cosmetics = function (entries) {
   entries = /\n/.test(delim)
     ? padEntries(text, { raw, dye, ansi: presets || ansi })
     : presets
-      ? Duozipper((t, d) => t |> d)(text, dye)
+      ? zipper(text, dye, (t, d) => t |> d)
       : text
   const brk = Br(bracket) || (x => x)
   const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()))

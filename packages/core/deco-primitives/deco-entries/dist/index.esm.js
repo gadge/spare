@@ -5,7 +5,7 @@ import { Br } from '@spare/bracket';
 import { enttro } from '@spare/enttro';
 import { liner } from '@spare/liner';
 import { padEntries } from '@spare/pad-entries';
-import { Duozipper } from '@vect/entries-zipper';
+import { zipper } from '@vect/entries-zipper';
 
 const HR_ENTRY = ['..', '..'];
 
@@ -45,11 +45,11 @@ const cosmetics = function (entries) {
     raw,
     dye,
     ansi: presets || ansi
-  }) : presets ? Duozipper((t, d) => {
+  }) : presets ? zipper(text, dye, (t, d) => {
     var _t;
 
     return _t = t, d(_t);
-  })(text, dye) : text;
+  }) : text;
 
   const brk = Br(bracket) || (x => x);
 
@@ -74,8 +74,7 @@ const cosmetics = function (entries) {
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -102,8 +101,7 @@ const Deco = (p = {}) => cosmetics.bind(presetEntries(p));
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

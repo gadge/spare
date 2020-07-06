@@ -119,9 +119,7 @@ const cosmetics = function (samples) {
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset]
- * @param {Object} [p.keyPreset]
- * @param {Object} [p.stringPreset]
+ * @param {Object|Object[]} [p.presets=[FRESH, PLANET, SUBTLE]]
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]
@@ -151,9 +149,7 @@ const Deco = (p = {}) => cosmetics.bind(presetSamples(p));
  * @param {Function} [p.keyRead]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset]
- * @param {Object} [p.keyPreset]
- * @param {Object} [p.stringPreset]
+ * @param {Object|Object[]} [p.presets=[FRESH, PLANET, SUBTLE]]
  * @param {number} [p.direct=COLUMNWISE]
  *
  * @param {number} [p.top]

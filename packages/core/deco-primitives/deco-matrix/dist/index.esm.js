@@ -65,8 +65,7 @@ const cosmetics = function (matrix) {
  *
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  * @param {number} [p.direct=ROWWISE]
  *
  * @param {number} [p.top]
@@ -93,8 +92,7 @@ const Deco = (p = {}) => cosmetics.bind(presetMatrix(p));
  *
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  * @param {number} [p.direct=ROWWISE]
  *
  * @param {number} [p.top]

@@ -70,7 +70,7 @@ function cosmetics(vec) {
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.presets=[FRESH,JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -96,7 +96,7 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetVector(p));
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.presets=[FRESH,JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -121,8 +121,7 @@ const deco = (vector, p = {}) => cosmetics.call(presetDeco.presetVector(p), vect
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

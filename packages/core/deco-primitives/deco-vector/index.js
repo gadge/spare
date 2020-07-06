@@ -20,7 +20,7 @@ export { cosmetics }
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.presets=[FRESH,JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -46,7 +46,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetVector(p))
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.presets=[FRESH,JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -72,8 +72,7 @@ export const deco = (vector, p = {}) =>
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

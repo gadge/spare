@@ -14,8 +14,7 @@ export { cosmetics }
  *
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  * @param {number} [p.direct=ROWWISE]
  *
  * @param {number} [p.top]
@@ -42,8 +41,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetMatrix(p))
  *
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=OCEAN]
+ * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
  * @param {number} [p.direct=ROWWISE]
  *
  * @param {number} [p.top]
