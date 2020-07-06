@@ -13,5 +13,5 @@ const candidates = {
 
 candidates |> delogger
 
-Object.entries(candidates) |> DecoEntries({ stringPreset: METRO }) |> says.logger
+Object.entries(candidates) |> DecoEntries({ presets: [, METRO] }) |> says.logger
 

@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.4.0-alpha.0",
-    "@palett/fluo-matrix": "^0.4.0-alpha.0",
-    "@palett/presets": "^0.4.0-alpha.0",
+    "@palett/enum-colorant-modes": "^0.4.0-alpha.1",
+    "@palett/fluo-matrix": "^0.4.0-alpha.1",
+    "@palett/presets": "^0.4.0-alpha.1",
     "@spare/bracket": "^0.7.18",
     "@spare/enum-chars": "^0.7.18",
     "@spare/liner": "^0.7.18",

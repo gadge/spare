@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.2.9",
-    "@palett/enum-colorant-modes": "^0.4.0-alpha.0",
-    "@palett/fluo-matrix": "^0.4.0-alpha.0",
-    "@palett/fluo-vector": "^0.4.0-alpha.0",
-    "@palett/presets": "^0.4.0-alpha.0",
+    "@aryth/comparer": "^0.2.10",
+    "@palett/enum-colorant-modes": "^0.4.0-alpha.1",
+    "@palett/fluo-matrix": "^0.4.0-alpha.1",
+    "@palett/fluo-vector": "^0.4.0-alpha.1",
+    "@palett/presets": "^0.4.0-alpha.1",
     "@spare/enum-chars": "^0.7.18",
     "@spare/enum-full-angle-chars": "^0.7.18",
     "@spare/lange": "^0.7.18",

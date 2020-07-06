@@ -49,13 +49,12 @@ const cosmetics = function (table) {
   let dyeX, dyeB;
 
   if (presets) {
-    const [numericPreset,, headingPreset] = presets;
-    dyeX = fluoMatrix.fluo.call({
+    const COLORANT = {
       colorant: true
-    }, x.raw, direct, presets);
-    dyeB = fluoVector.fluoVector.call({
-      colorant: true
-    }, b.raw, [numericPreset, headingPreset]);
+    };
+    const [numeralPreset,, headingPreset] = presets;
+    dyeX = fluoMatrix.fluoMatrix.call(COLORANT, x.raw, direct, presets);
+    dyeB = fluoVector.fluoVector.call(COLORANT, b.raw, [numeralPreset, headingPreset]);
   }
 
   let {
