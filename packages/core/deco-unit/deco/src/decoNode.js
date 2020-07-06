@@ -1,6 +1,6 @@
 import { MUTABLE }                                from '@analys/enum-mutabilities'
-import { fluoEnt }                                from '@palett/fluo-entries'
-import { fluoVec }                                from '@palett/fluo-vector'
+import { fluoEntries }                                from '@palett/fluo-entries'
+import { fluoVector }                                from '@palett/fluo-vector'
 import { brace, bracket }                         from '@spare/bracket'
 import { BRC, BRK, PAL }                          from '@spare/deco-colors'
 import { decoDate, decoDateTime }                 from '@spare/deco-date'
@@ -67,13 +67,13 @@ export function plainNode (node, lv = 0) {
 
 export let deVe = function (vector, lv) {
   mutateVector(vector, v => String(decoNode.call(this, v, lv + 1)))
-  if (this.pr) fluoVec.call(MUTABLE, vector, this.pr)
+  if (this.pr) fluoVector.call(MUTABLE, vector, this.pr)
   return stringifyVector.call(this, vector, lv)
 }
 
 export let deEn = function (entries, lv) {
   mutateEntries(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)))
-  if (this.pr) fluoEnt.call(MUTABLE, entries, this.pr) // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
+  if (this.pr) fluoEntries.call(MUTABLE, entries, this.pr) // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
   return stringifyEntries.call(this, entries, lv)
 }
 

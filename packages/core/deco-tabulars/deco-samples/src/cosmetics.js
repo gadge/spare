@@ -1,7 +1,7 @@
 import { intExpon }                           from '@aryth/math'
 import { COLORANT }                           from '@palett/enum-colorant-modes'
-import { fluo }                               from '@palett/fluo-matrix'
-import { fluoVec }                            from '@palett/fluo-vector'
+import { fluoMatrix }                         from '@palett/fluo-matrix'
+import { fluoVector }                         from '@palett/fluo-vector'
 import { COLF }                               from '@spare/enum-chars'
 import { liner }                              from '@spare/liner'
 import { mattro }                             from '@spare/mattro'
@@ -42,18 +42,18 @@ export const cosmetics = function (samples) {
   })
   if (presets) {
     const [numericPreset, , headingPreset] = presets
-    dye = fluo.call(COLORANT, raw, direct, presets)
-    head = fluoVec(head, [numericPreset, headingPreset])
+    dye = fluoMatrix.call(COLORANT, raw, direct, presets)
+    head = fluoVector(head, [numericPreset, headingPreset])
   }
   rows = padMatrix(text, { raw, dye, ansi })
   rows = marginMapperMatrix(rows, (x, i, j) => head[j] + ':' + x, t, b, l, r)
   dashY
-    ? mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delim)} }`))
-    : mutate(rows, line => `{ ${line.join(delim)} }`)
+    ? mutate(rows, line => (line.splice(l, 0, '..'), `{ ${ line.join(delim) } }`))
+    : mutate(rows, line => `{ ${ line.join(delim) } }`)
   if (indexed) {
     const digits = intExpon(height) + 1
     let indices = rowsVG.map((_, i) => String(i).padStart(digits)).toVector()
-    if (preset) indices = fluoVec.call({ colorant: false }, indices, presets)
+    if (preset) indices = fluoVector.call({ colorant: false }, indices, presets)
     mutazip(rows, indices, (line, index) => '(' + index + ') ' + line)
   }
   if (dashX) rows.splice(t, 0, '...')

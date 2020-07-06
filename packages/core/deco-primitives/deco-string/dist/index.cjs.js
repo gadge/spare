@@ -26,7 +26,7 @@ const cosmetics = function (text) {
     effects
   } = this;
   const words = vectify(text);
-  fluoVector.fluoVec.call(MUTABLE, words, presets, effects);
+  fluoVector.fluoVector.call(MUTABLE, words, presets, effects);
   return (joiner !== null && joiner !== void 0 ? joiner : Joiner(delim))(words);
 };
 

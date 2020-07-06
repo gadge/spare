@@ -1,5 +1,5 @@
-import { fluoEnt }                           from '@palett/fluo-entries'
-import { fluoVec }                           from '@palett/fluo-vector'
+import { fluoEntries }                           from '@palett/fluo-entries'
+import { fluoVector }                           from '@palett/fluo-vector'
 import { BRC, BRK, PAL }                     from '@spare/deco-colors'
 import { decoDateTime }                      from '@spare/deco-date'
 import { decofun, DECOFUN_CONFIG }           from '@spare/deco-func'
@@ -31,14 +31,14 @@ export function decoflat (lv, node) {
 function deVec (lv, ve) {
   const presets = this?.presets
   const list = ve.map(decoflat.bind(this, lv + 1))
-  fluoVec.call(MUTABLE, list, presets)
+  fluoVector.call(MUTABLE, list, presets)
   return list.join(COSP)
 }
 
 function deOb (lv, ob) {
   const presets = this?.presets
   const ents = mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1))
-  fluoEnt.call(MUTABLE, ents, presets)
+  fluoEntries.call(MUTABLE, ents, presets)
   return ents.map(([k, v]) => k + RT + v).join(COSP)
 }
 

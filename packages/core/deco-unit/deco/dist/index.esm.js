@@ -1,8 +1,8 @@
 import { AZURE, MOSS } from '@palett/presets';
 import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
 import { MUTABLE } from '@analys/enum-mutabilities';
-import { fluoEnt } from '@palett/fluo-entries';
-import { fluoVec } from '@palett/fluo-vector';
+import { fluoEntries } from '@palett/fluo-entries';
+import { fluoVector } from '@palett/fluo-vector';
 import { bracket, brace } from '@spare/bracket';
 import { BRK, BRC, PAL } from '@spare/deco-colors';
 import { decoDate, decoDateTime } from '@spare/deco-date';
@@ -132,12 +132,12 @@ function plainNode(node, lv = 0) {
 }
 let deVe = function (vector, lv) {
   mutate$1(vector, v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoVec.call(MUTABLE, vector, this.pr);
+  if (this.pr) fluoVector.call(MUTABLE, vector, this.pr);
   return stringifyVector.call(this, vector, lv);
 };
 let deEn = function (entries, lv) {
   mutate$2(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoEnt.call(MUTABLE, entries, this.pr); // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
+  if (this.pr) fluoEntries.call(MUTABLE, entries, this.pr); // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
 
   return stringifyEntries.call(this, entries, lv);
 };

@@ -1,4 +1,4 @@
-import { fluoVec } from '@palett/fluo-vector';
+import { fluoVector } from '@palett/fluo-vector';
 import { hasAnsi } from '@spare/lange';
 import { ATLAS, SUBTLE } from '@palett/presets';
 import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
@@ -22,7 +22,7 @@ const cosmetics = function (text) {
     effects
   } = this;
   const words = vectify(text);
-  fluoVec.call(MUTABLE, words, presets, effects);
+  fluoVector.call(MUTABLE, words, presets, effects);
   return (joiner !== null && joiner !== void 0 ? joiner : Joiner(delim))(words);
 };
 

@@ -39,7 +39,7 @@ function cosmetics(vec) {
   });
 
   if (presets) {
-    const dyes = fluoVector.fluoVec.call({
+    const dyes = fluoVector.fluoVector.call({
       colorant: true,
       mutate: true
     }, raw, presets, effects);
@@ -70,8 +70,7 @@ function cosmetics(vec) {
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -97,8 +96,7 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetVector(p));
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

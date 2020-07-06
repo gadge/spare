@@ -1,6 +1,6 @@
 import { presetEntries } from '@spare/preset-deco';
 import { COLORANT } from '@palett/enum-colorant-modes';
-import { fluoEnt } from '@palett/fluo-entries';
+import { fluoEntries } from '@palett/fluo-entries';
 import { Br } from '@spare/bracket';
 import { enttro } from '@spare/enttro';
 import { liner } from '@spare/liner';
@@ -38,7 +38,7 @@ const cosmetics = function (entries) {
   let dye = undefined;
 
   if (presets) {
-    dye = fluoEnt.call(COLORANT, raw, presets);
+    dye = fluoEntries.call(COLORANT, raw, presets);
   }
 
   entries = /\n/.test(delim) ? padEntries(text, {

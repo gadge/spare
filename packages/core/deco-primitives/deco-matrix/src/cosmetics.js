@@ -1,5 +1,5 @@
 import { COLORANT }             from '@palett/enum-colorant-modes'
-import { fluo }                 from '@palett/fluo-matrix'
+import { fluoMatrix }           from '@palett/fluo-matrix'
 import { bracket as doBracket } from '@spare/bracket'
 import { COLF }                 from '@spare/enum-chars'
 import { liner }                from '@spare/liner'
@@ -18,7 +18,7 @@ export const cosmetics = function (matrix) {
     Object.assign(config, { height, width }) // { top, bottom, left, right, dashX, dashY, read } = config
   )
   let dye = undefined
-  if (presets) { dye = fluo.call(COLORANT, raw, direct, presets) }
+  if (presets) { dye = fluoMatrix.call(COLORANT, raw, direct, presets) }
   const rows = padMatrix(text, { raw, dye, ansi })
   const lines = bracket
     ? rows.map(line => line.join(delim) |> doBracket)

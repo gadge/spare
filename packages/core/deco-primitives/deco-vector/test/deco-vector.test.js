@@ -1,6 +1,7 @@
 import { rand }                   from '@aryth/rand'
 import { simpleVectors }          from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
+import { METRO, SUBTLE }          from '@palett/presets'
 import { BRK }                    from '@spare/enum-brackets'
 import { says }                   from '@spare/logger'
 import { Deco }                   from '../index'
@@ -18,7 +19,7 @@ const SimpleVectors = simpleVectors({ h: 16 })
 const candidates = { ...Strangers, ...SimpleVectors }
 
 export class VectorDecoTest {
-  static test () {
+  static test() {
     for (const [key, vector] of Object.entries(candidates)) {
       vector
         |> Deco({
@@ -26,6 +27,7 @@ export class VectorDecoTest {
         tail: 4,
         indexed: false,
         bracket: BRK,
+        presets: [SUBTLE, METRO],
         // delim: ', ',
         discrete: false,
         label: 1,

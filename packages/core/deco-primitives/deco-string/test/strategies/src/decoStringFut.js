@@ -1,5 +1,5 @@
 import { MUTABLE }      from '@analys/enum-mutabilities'
-import { fluoVec }      from '@palett/fluo-vector'
+import { fluoVector }      from '@palett/fluo-vector'
 import { splitLiteral } from '@spare/splitter'
 import { Joiner }       from '../../../src/cosmetics'
 
@@ -10,6 +10,6 @@ export const decoStringFut = function (text) {
   const joiner = this?.joiner ?? Joiner(delim)
   const presets = this?.presets
   const words = (vectify ?? splitLiteral)(text)
-  fluoVec.call(MUTABLE, words, presets)
+  fluoVector.call(MUTABLE, words, presets)
   return (joiner ?? Joiner(delim))(words)
 }

@@ -4,6 +4,8 @@ import { says }               from '@palett/says'
 import { delogger }           from '@spare/deco'
 import { deco as decoString } from '../index'
 
+const { logger } = require('@spare/logger')
+
 const items = Object.assign({},
   ObjectCollection.flopShuffle({ keyed: true }),
   ObjectCollection.flopShuffle({ keyed: true }),

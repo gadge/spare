@@ -53,7 +53,7 @@ const cosmetics = function (table) {
     dyeX = fluoMatrix.fluo.call({
       colorant: true
     }, x.raw, direct, presets);
-    dyeB = fluoVector.fluoVec.call({
+    dyeB = fluoVector.fluoVector.call({
       colorant: true
     }, b.raw, [numericPreset, headingPreset]);
   }

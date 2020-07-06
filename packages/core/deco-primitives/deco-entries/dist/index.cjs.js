@@ -42,7 +42,7 @@ const cosmetics = function (entries) {
   let dye = undefined;
 
   if (presets) {
-    dye = fluoEntries.fluoEnt.call(enumColorantModes.COLORANT, raw, presets);
+    dye = fluoEntries.fluoEntries.call(enumColorantModes.COLORANT, raw, presets);
   }
 
   entries = /\n/.test(delim) ? padEntries.padEntries(text, {

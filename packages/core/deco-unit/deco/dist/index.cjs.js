@@ -136,12 +136,12 @@ function plainNode(node, lv = 0) {
 }
 let deVe = function (vector, lv) {
   vectorMapper.mutate(vector, v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoVector.fluoVec.call(enumMutabilities.MUTABLE, vector, this.pr);
+  if (this.pr) fluoVector.fluoVector.call(enumMutabilities.MUTABLE, vector, this.pr);
   return stringifyVector.call(this, vector, lv);
 };
 let deEn = function (entries, lv) {
   entriesMapper.mutate(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)));
-  if (this.pr) fluoEntries.fluoEnt.call(enumMutabilities.MUTABLE, entries, this.pr); // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
+  if (this.pr) fluoEntries.fluoEntries.call(enumMutabilities.MUTABLE, entries, this.pr); // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
 
   return stringifyEntries.call(this, entries, lv);
 };

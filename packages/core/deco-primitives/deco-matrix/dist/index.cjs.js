@@ -37,7 +37,7 @@ const cosmetics = function (matrix$1) {
   let dye = undefined;
 
   if (presets) {
-    dye = fluoMatrix.fluo.call(enumColorantModes.COLORANT, raw, direct, presets);
+    dye = fluoMatrix.fluoMatrix.call(enumColorantModes.COLORANT, raw, direct, presets);
   }
 
   const rows = padMatrix.padMatrix(text, {

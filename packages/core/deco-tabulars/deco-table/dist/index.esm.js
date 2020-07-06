@@ -1,6 +1,6 @@
 import { presetTable } from '@spare/preset-deco';
 import { fluo } from '@palett/fluo-matrix';
-import { fluoVec } from '@palett/fluo-vector';
+import { fluoVector } from '@palett/fluo-vector';
 import { AEU } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
@@ -49,7 +49,7 @@ const cosmetics = function (table) {
     dyeX = fluo.call({
       colorant: true
     }, x.raw, direct, presets);
-    dyeB = fluoVec.call({
+    dyeB = fluoVector.call({
       colorant: true
     }, b.raw, [numericPreset, headingPreset]);
   }

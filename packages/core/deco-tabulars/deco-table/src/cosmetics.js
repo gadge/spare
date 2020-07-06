@@ -1,5 +1,5 @@
 import { fluo }     from '@palett/fluo-matrix'
-import { fluoVec }  from '@palett/fluo-vector'
+import { fluoVector }  from '@palett/fluo-vector'
 import { AEU }      from '@spare/enum-chars'
 import { liner }    from '@spare/liner'
 import { mattro }   from '@spare/mattro'
@@ -23,7 +23,7 @@ export const cosmetics = function (table) {
   if (presets) {
     const [numericPreset, , headingPreset] = presets
     dyeX = fluo.call({ colorant: true }, x.raw, direct, presets)
-    dyeB = fluoVec.call({ colorant: true }, b.raw, [numericPreset, headingPreset])
+    dyeB = fluoVector.call({ colorant: true }, b.raw, [numericPreset, headingPreset])
   }
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
   const lines = [

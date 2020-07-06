@@ -1,6 +1,6 @@
 import { COLORANT }       from '@palett/enum-colorant-modes'
-import { fluo }           from '@palett/fluo-matrix'
-import { fluoVec }        from '@palett/fluo-vector'
+import { fluoMatrix }     from '@palett/fluo-matrix'
+import { fluoVector }     from '@palett/fluo-vector'
 import { AEU }            from '@spare/enum-chars'
 import { liner }          from '@spare/liner'
 import { mattro }         from '@spare/mattro'
@@ -30,9 +30,9 @@ export const cosmetics = function (crostab) {
     const
       [numericPreset, , headingPreset] = presets,
       labelPresets = [numericPreset, headingPreset]
-    dyeX = fluo.call(COLORANT, x.raw, direct, presets)
-    dyeB = fluoVec.call(COLORANT, b.raw, labelPresets)
-    dyeS = fluoVec.call(COLORANT, s.raw, labelPresets)
+    dyeX = fluoMatrix.call(COLORANT, x.raw, direct, presets)
+    dyeB = fluoVector.call(COLORANT, b.raw, labelPresets)
+    dyeS = fluoVector.call(COLORANT, s.raw, labelPresets)
   }
   let { title, hr: br, side } = padKeyedColumn(s.text, name, { dye: dyeS, fullAngle })
   let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })

@@ -1,6 +1,6 @@
 import { presetMatrix } from '@spare/preset-deco';
 import { COLORANT } from '@palett/enum-colorant-modes';
-import { fluo } from '@palett/fluo-matrix';
+import { fluoMatrix } from '@palett/fluo-matrix';
 import { bracket } from '@spare/bracket';
 import { COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
@@ -33,7 +33,7 @@ const cosmetics = function (matrix) {
   let dye = undefined;
 
   if (presets) {
-    dye = fluo.call(COLORANT, raw, direct, presets);
+    dye = fluoMatrix.call(COLORANT, raw, direct, presets);
   }
 
   const rows = padMatrix(text, {

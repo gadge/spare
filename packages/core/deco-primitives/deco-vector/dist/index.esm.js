@@ -1,5 +1,5 @@
 import { presetVector } from '@spare/preset-deco';
-import { fluoVec } from '@palett/fluo-vector';
+import { fluoVector } from '@palett/fluo-vector';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
 import { ELLIP } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
@@ -35,7 +35,7 @@ function cosmetics(vec) {
   });
 
   if (presets) {
-    const dyes = fluoVec.call({
+    const dyes = fluoVector.call({
       colorant: true,
       mutate: true
     }, raw, presets, effects);
@@ -66,8 +66,7 @@ function cosmetics(vec) {
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
@@ -93,8 +92,7 @@ const Deco = (p = {}) => cosmetics.bind(presetVector(p));
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
- * @param {Object} [p.preset=FRESH]
- * @param {Object} [p.stringPreset=JUNGLE]
+ * @param {Object} [p.presets=[FRESH,JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

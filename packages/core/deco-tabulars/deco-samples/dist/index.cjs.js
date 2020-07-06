@@ -79,8 +79,8 @@ const cosmetics = function (samples) {
 
   if (presets) {
     const [numericPreset,, headingPreset] = presets;
-    dye = fluoMatrix.fluo.call(enumColorantModes.COLORANT, raw, direct, presets);
-    head = fluoVector.fluoVec(head, [numericPreset, headingPreset]);
+    dye = fluoMatrix.fluoMatrix.call(enumColorantModes.COLORANT, raw, direct, presets);
+    head = fluoVector.fluoVector(head, [numericPreset, headingPreset]);
   }
 
   rows = padMatrix.padMatrix(text, {
@@ -94,7 +94,7 @@ const cosmetics = function (samples) {
   if (indexed) {
     const digits = math.intExpon(height) + 1;
     let indices = rowsVG.map((_, i) => String(i).padStart(digits)).toVector();
-    if (preset) indices = fluoVector.fluoVec.call({
+    if (preset) indices = fluoVector.fluoVector.call({
       colorant: false
     }, indices, presets);
     vectorZipper.mutazip(rows, indices, (line, index) => '(' + index + ') ' + line);

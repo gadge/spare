@@ -1,5 +1,5 @@
 import { COLORANT }   from '@palett/enum-colorant-modes'
-import { fluoEnt }    from '@palett/fluo-entries'
+import { fluoEntries }    from '@palett/fluo-entries'
 import { Br }         from '@spare/bracket'
 import { enttro }     from '@spare/enttro'
 import { liner }      from '@spare/liner'
@@ -13,7 +13,7 @@ export const cosmetics = function (entries) {
   const { keyRead, read, head, tail, ansi, dash, delim, bracket, presets } = this
   const { raw, text } = enttro(entries, { head, tail, keyRead, read, hr: HR_ENTRY })
   let dye = undefined
-  if (presets) { dye = fluoEnt.call(COLORANT, raw, presets) }
+  if (presets) { dye = fluoEntries.call(COLORANT, raw, presets) }
   entries = /\n/.test(delim)
     ? padEntries(text, { raw, dye, ansi: presets || ansi })
     : presets

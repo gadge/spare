@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/deco-entries.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.3.5",
-    "@palett/fluo-entries": "^0.3.5",
+    "@palett/enum-colorant-modes": "^0.4.0-alpha.0",
+    "@palett/fluo-entries": "^0.4.0-alpha.0",
     "@spare/bracket": "^0.7.17",
     "@spare/enttro": "^0.7.17",
     "@spare/liner": "^0.7.17",

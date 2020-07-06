@@ -1,4 +1,4 @@
-import { fluoVec }                       from '@palett/fluo-vector'
+import { fluoVector }                       from '@palett/fluo-vector'
 import { cosmetics as cosmeticsEntries } from '@spare/deco-entries'
 import { ELLIP }                         from '@spare/enum-chars'
 import { liner }                         from '@spare/liner'
@@ -12,7 +12,7 @@ export function cosmetics (vec) {
   let { head, tail, presets, effects, read } = config
   let { raw, text } = vettro(vec, { head, tail, read, hr: ELLIP })
   if (presets) {
-    const dyes = fluoVec.call({ colorant: true, mutate: true }, raw, presets, effects)
+    const dyes = fluoVector.call({ colorant: true, mutate: true }, raw, presets, effects)
     text = mutazip(text, dyes, (x, dye) => x |> dye)
   }
   return liner(text, config)

@@ -65,9 +65,9 @@ const cosmetics = function (crostab) {
   if (presets) {
     const [numericPreset,, headingPreset] = presets,
           labelPresets = [numericPreset, headingPreset];
-    dyeX = fluoMatrix.fluo.call(enumColorantModes.COLORANT, x.raw, direct, presets);
-    dyeB = fluoVector.fluoVec.call(enumColorantModes.COLORANT, b.raw, labelPresets);
-    dyeS = fluoVector.fluoVec.call(enumColorantModes.COLORANT, s.raw, labelPresets);
+    dyeX = fluoMatrix.fluoMatrix.call(enumColorantModes.COLORANT, x.raw, direct, presets);
+    dyeB = fluoVector.fluoVector.call(enumColorantModes.COLORANT, b.raw, labelPresets);
+    dyeS = fluoVector.fluoVector.call(enumColorantModes.COLORANT, s.raw, labelPresets);
   }
 
   let {
