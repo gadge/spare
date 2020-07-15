@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@spare/util": "^0.8.0",
-    "@vect/matrix-margin": "^0.2.5",
-    "@vect/matrix-size": "^0.2.5",
-    "@vect/vector-margin": "^0.2.5"
+    "@vect/matrix-margin": "^0.2.6",
+    "@vect/matrix-size": "^0.2.6",
+    "@vect/vector-margin": "^0.2.6"
   },
   "repository": {
     "type": "git",

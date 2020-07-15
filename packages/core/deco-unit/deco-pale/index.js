@@ -1,9 +1,7 @@
-export { decoKey }   from './src/unit/decoKey'
-import { Qt, quote } from '@spare/quote'
-import { FUN }       from '@typen/enum-data-types'
-import { deco }      from './src/unit/deco'
-
-export { deco as decoval }
+export { decoKey }          from './src/decoKey'
+import { Qt, quote }        from '@spare/quote'
+import { FUN }              from '@typen/enum-data-types'
+import { decoPale as deco } from './src/decoPale'
 
 const parseQuote = q => typeof q === FUN ? q : Qt(q) ?? quote
 

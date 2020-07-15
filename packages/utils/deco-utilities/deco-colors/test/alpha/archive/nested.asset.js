@@ -1,6 +1,6 @@
 import { logger }   from '@spare/logger'
 import { delogger } from '../../../index'
-import { deco }     from '../../../src/deco'
+import { deco }     from '../../../src/decoPale'
 
 {
   function nested () {

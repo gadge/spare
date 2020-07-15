@@ -25,12 +25,11 @@
     "@spare/quote": "^0.8.0",
     "@typen/enum-data-types": "^0.1.5",
     "@typen/enum-object-types": "^0.1.5",
-    "@typen/num-loose": "^0.1.5",
     "@typen/num-strict": "^0.1.5",
     "@typen/typ": "^0.1.5",
-    "@valjoux/format-date": "^0.1.9",
-    "@valjoux/format-time": "^0.1.9",
-    "@vect/entries-mapper": "^0.2.5"
+    "@valjoux/format-date": "^0.1.10",
+    "@valjoux/format-time": "^0.1.10",
+    "@vect/entries-mapper": "^0.2.6"
   },
   "repository": {
     "type": "git",

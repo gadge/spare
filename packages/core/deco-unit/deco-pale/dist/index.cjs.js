@@ -10,7 +10,6 @@ var decoFunc = require('@spare/deco-func');
 var decoUtil = require('@spare/deco-util');
 var enumChars = require('@spare/enum-chars');
 var enumObjectTypes = require('@typen/enum-object-types');
-var numLoose = require('@typen/num-loose');
 var typ = require('@typen/typ');
 var formatDate = require('@valjoux/format-date');
 var formatTime = require('@valjoux/format-time');
@@ -24,8 +23,8 @@ const DEFN = {
   pr: false
 };
 
-function deco(node) {
-  var _decofun$call, _node$toString;
+function decoPale(node) {
+  var _node, _decofun$call, _String;
 
   const {
     loose,
@@ -34,19 +33,19 @@ function deco(node) {
   if (node === void 0 || node === null) return node;
   const t = typeof node;
   if (t === enumDataTypes.NUM || t === enumDataTypes.BOO) return node;
-  if (t === enumDataTypes.STR) return loose && numLoose.isNumeric(node) ? node : quote(node);
+  if (t === enumDataTypes.STR) return loose && numStrict.isNumeric(node) ? node : (_node = node, quote(_node));
   if (t === enumDataTypes.FUN) return _decofun$call = decoFunc.decofun.call(DEFN, node), quote(_decofun$call);
 
   if (t === enumDataTypes.OBJ) {
     var _node$map$join, _mutate$map$join, _ref;
 
     const pt = typ.typ(node);
-    if (pt === enumObjectTypes.ARRAY) return _node$map$join = node.map(deco.bind(this)).join(enumChars.COSP), bracket.bracket(_node$map$join);
-    if (pt === enumObjectTypes.OBJECT) return _mutate$map$join = entriesMapper.mutate(Object.entries(node), decoKey, deco.bind(this)).map(decoUtil.pairEnt).join(enumChars.COSP), bracket.brace(_mutate$map$join);
+    if (pt === enumObjectTypes.ARRAY) return _node$map$join = node.map(decoPale.bind(this)).join(enumChars.COSP), bracket.bracket(_node$map$join);
+    if (pt === enumObjectTypes.OBJECT) return _mutate$map$join = entriesMapper.mutate(Object.entries(node), decoKey, decoPale.bind(this)).map(decoUtil.pairEnt).join(enumChars.COSP), bracket.brace(_mutate$map$join);
     if (pt === enumObjectTypes.DATE) return _ref = `${formatDate.formatDate(node)}'${formatTime.formatTime(node)}`, quote(_ref);
   }
 
-  return _node$toString = node.toString(), quote(_node$toString);
+  return _String = String(node), quote(_String);
 }
 
 const parseQuote = q => {
@@ -72,7 +71,7 @@ const presetConfig = p => {
  */
 
 
-const decoPale = (x, p = {}) => deco.call(presetConfig(p), x);
+const decoPale$1 = (x, p = {}) => decoPale.call(presetConfig(p), x);
 /**
  *
  * @param {Object} p
@@ -80,9 +79,8 @@ const decoPale = (x, p = {}) => deco.call(presetConfig(p), x);
  * @param {Function|string|number} [p.quote]
  */
 
-const DecoPale = (p = {}) => deco.bind(presetConfig(p));
+const DecoPale = (p = {}) => decoPale.bind(presetConfig(p));
 
 exports.DecoPale = DecoPale;
 exports.decoKey = decoKey;
-exports.decoPale = decoPale;
-exports.decoval = deco;
+exports.decoPale = decoPale$1;

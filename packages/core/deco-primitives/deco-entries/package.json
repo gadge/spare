@@ -15,15 +15,15 @@
     "test": "node -r @babel/register test/deco-entries.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.4.0",
-    "@palett/fluo-entries": "^0.4.0",
+    "@palett/enum-colorant-modes": "^0.4.2",
+    "@palett/fluo-entries": "^0.4.2",
     "@spare/bracket": "^0.8.0",
     "@spare/enttro": "^0.8.0",
     "@spare/liner": "^0.8.0",
     "@spare/pad-entries": "^0.8.0",
     "@spare/preset-deco": "^0.8.0",
     "@spare/quote": "^0.8.0",
-    "@vect/entries-zipper": "^0.2.5"
+    "@vect/entries-zipper": "^0.2.6"
   },
   "repository": {
     "type": "git",

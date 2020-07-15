@@ -1,4 +1,4 @@
-## @spare/deco-rows
+## @spare/decoPale-rows
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,7 +15,7 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/deco-rows
+$ npm install @spare/decoPale-rows
 ```
 
 ## Usage

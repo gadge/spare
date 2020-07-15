@@ -1,4 +1,4 @@
-## @spare/preset-deco
+## @spare/preset-decoPale
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,7 +15,7 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/preset-deco
+$ npm install @spare/preset-decoPale
 ```
 
 ## Usage

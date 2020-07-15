@@ -40,9 +40,9 @@ decoValue(a) |> logger
 decoValue(b) |> logger
 // "@typen/typ": "",
 // "@typen/enum-object-types":"",
-// "@spare/deco-vector":"",
-// "@spare/deco-object": "",
-// "@spare/deco-date":"",
+// "@spare/decoPale-vector":"",
+// "@spare/decoPale-object": "",
+// "@spare/decoPale-date":"",
 
 
 

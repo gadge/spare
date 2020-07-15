@@ -1,5 +1,5 @@
 import { logger }                                   from '@spare/logger'
-import { deca }                                     from '../src/deco'
+import { deca }                                     from '../src/decoPale'
 import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates'
 
 const candidates = { ...Basics, ...Vectors, ...Matrices, ...Objects, ...Misc }

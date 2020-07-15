@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/fluo-entries": "^0.4.0",
-    "@palett/fluo-vector": "^0.4.0",
-    "@palett/presets": "^0.4.0",
+    "@palett/fluo-entries": "^0.4.2",
+    "@palett/fluo-vector": "^0.4.2",
+    "@palett/presets": "^0.4.2",
     "@spare/deco-colors": "^0.8.0",
     "@spare/deco-date": "^0.8.0",
     "@spare/deco-func": "^0.8.0",
@@ -26,7 +26,7 @@
     "@typen/enum-object-types": "^0.1.5",
     "@typen/num-loose": "^0.1.5",
     "@typen/typ": "^0.1.5",
-    "@vect/column-mapper": "^0.2.5"
+    "@vect/column-mapper": "^0.2.6"
   },
   "repository": {
     "type": "git",

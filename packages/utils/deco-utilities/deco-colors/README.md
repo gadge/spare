@@ -1,4 +1,4 @@
-## @spare/deco-presets
+## @spare/decoPale-presets
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -14,12 +14,12 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/deco-presets
+$ npm install @spare/decoPale-presets
 ```
 
 ## Usage
 ```js
-import { Temp } from '@spare/deco-presets'
+import { Temp } from '@spare/decoPale-presets'
 ```
 
 ## Meta

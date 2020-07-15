@@ -1,4 +1,4 @@
-import { Basics, Vectors } from '@spare/deco/test/candidates'
+import { Basics, Vectors } from '@spare/decoPale/test/candidates'
 import { says }            from '@spare/logger'
 import { decoValue }       from '../src/decoValue'
 // import { decoLoose } from '../src/decoLoose'

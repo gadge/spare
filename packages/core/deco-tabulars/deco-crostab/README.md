@@ -1,4 +1,4 @@
-## @spare/deco-crostab
+## @spare/decoPale-crostab
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,7 +15,7 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/deco-crostab
+$ npm install @spare/decoPale-crostab
 ```
 
 ## Usage

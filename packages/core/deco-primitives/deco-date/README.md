@@ -1,4 +1,4 @@
-## @spare/deco-date
+## @spare/decoPale-date
 Colored stringify date
 
 [![npm version][npm-image]][npm-url]
@@ -14,12 +14,12 @@ Colored stringify date
 
 ## Install
 ```console
-$ npm install @spare/deco-date
+$ npm install @spare/decoPale-date
 ```
 
 ## Usage
 ```js
-import { Temp } from '@spare/deco-date'
+import { Temp } from '@spare/decoPale-date'
 ```
 
 ## Meta
