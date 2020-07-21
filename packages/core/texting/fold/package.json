@@ -1,7 +1,7 @@
 {
-  "name": "@spare/pad-keyed-column",
+  "name": "@spare/fold",
   "version": "0.8.1",
-  "description": "Pad keyed column",
+  "description": "Split one line of words into lines",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,19 +12,12 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/pad-matrix.test.js"
+    "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.2.11",
-    "@spare/enum-chars": "^0.8.1",
-    "@spare/enum-full-angle-chars": "^0.8.1",
-    "@spare/fullwidth": "^0.8.1",
-    "@spare/lange": "^0.8.1",
-    "@spare/pad-string": "^0.8.1",
-    "@spare/string": "^0.8.1",
-    "@vect/vector-indicator": "^0.2.6",
-    "@vect/vector-mapper": "^0.2.6",
-    "@vect/vector-zipper": "^0.2.6"
+    "@spare/bracket": "^0.8.1",
+    "@spare/enum-brackets": "^0.8.1",
+    "@spare/enum-chars": "^0.8.1"
   },
   "repository": {
     "type": "git",

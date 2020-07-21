@@ -4,16 +4,16 @@ const decoVector = DecoVector({ indexed: false, delim: ', ', bracket: true })
 /**
  *
  * @param body
- * @param {RegExp} reg
+ * @param {RegExp} regex
  */
-export const matches = (body, reg) => {
+export const matches = (body, regex) => {
   const samples = []
   let ms, wd, group
-  while ((ms = reg.exec(body)) && ([wd, ...group] = ms)) {
+  while ((ms = regex.exec(body)) && ([wd, ...group] = ms)) {
     samples.push({
       start: ms.index,
       diff: wd?.length,
-      end: reg.lastIndex,
+      end: regex.lastIndex,
       match: wd,
       group: group |> decoVector
     })
@@ -21,14 +21,14 @@ export const matches = (body, reg) => {
   return samples
 }
 
-export const fracture = (body, reg) => {
+export const fracture = (body, regex) => {
   let ms, prev = 0, curr = 0, block, match, group
   const samples = []
-  while ((ms = reg.exec(body)) && ([match, ...group] = ms)) {
+  while ((ms = regex.exec(body)) && ([match, ...group] = ms)) {
     curr = ms.index
     block = body.slice(prev, curr)
     samples.push({ prev, curr, block, match, group: group |> decoVector })
-    prev = reg.lastIndex
+    prev = regex.lastIndex
   }
   return samples
 }

@@ -1,3 +1,4 @@
+const VO = '';
 const SP = ' ';
 const TB = '  ';
 const CO = ',';
@@ -13,8 +14,9 @@ const UL = '_';
 const DASH = '-';
 const ELLIP = '...';
 const AEU = '(Ø)';
+const DOSP = DOT + SP;
 const RTSP = RT + SP;
 const COSP = CO + SP;
 const COLF = CO + LF;
 
-export { AEU, CO, COLF, COSP, CR, DA, DASH, DOT, DT, ELLIP, LF, QT, RN, RT, RTSP, SP, TB, UL };
+export { AEU, CO, COLF, COSP, CR, DA, DASH, DOSP, DOT, DT, ELLIP, LF, QT, RN, RT, RTSP, SP, TB, UL, VO };

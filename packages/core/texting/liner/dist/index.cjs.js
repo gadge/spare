@@ -11,8 +11,8 @@ const joinLines = (lines, de = '', lv, hover = true) => {
         LFI = enumChars.LF + IND;
   return hover ? `${LFI + enumChars.TB}${lines.join(de + LFI + enumChars.TB)}${de + LFI}` : `${IND + enumChars.TB}${lines.join(de + LFI + enumChars.TB)}${de}`;
 };
-const LFREG = /\n/;
-const COREG = /,/;
+const LINEFEED = /\n/;
+const COMMA = /,/;
 const liner = (lines, {
   discrete = false,
   delim = enumChars.LF,
@@ -21,7 +21,7 @@ const liner = (lines, {
 } = {}) => {
   if (discrete) return lines;
   const hover = !!bracket$1;
-  const joined = lines.length && LFREG.test(delim) ? joinLines(lines, COREG.test(delim) ? enumChars.CO : '', level, hover) : lines.join(delim);
+  const joined = lines.length && LINEFEED.test(delim) ? joinLines(lines, COMMA.test(delim) ? enumChars.CO : '', level, hover) : lines.join(delim);
   return bracket.br(joined, bracket$1);
 };
 

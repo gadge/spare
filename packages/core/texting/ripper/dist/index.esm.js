@@ -1,5 +1,5 @@
 const ripper = function (text) {
-  const reg = this;
+  const regex = this;
   let ms,
       l = 0,
       r = 0,
@@ -7,11 +7,11 @@ const ripper = function (text) {
       ph;
   const vec = [];
 
-  while ((ms = reg.exec(text)) && ([ph] = ms)) {
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
     r = ms.index;
     if (sp = text.slice(l, r)) vec.push(sp);
     vec.push(ph);
-    l = reg.lastIndex;
+    l = regex.lastIndex;
   }
 
   if (l < text.length) vec.push(text.slice(l));
@@ -19,10 +19,10 @@ const ripper = function (text) {
 };
 /**
  *
- * @param {RegExp} reg
+ * @param {RegExp} regex
  * @return {Function}
  */
 
-const Ripper = reg => ripper.bind(reg);
+const Ripper = regex => ripper.bind(regex);
 
 export { Ripper, ripper };

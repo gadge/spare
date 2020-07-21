@@ -4,7 +4,7 @@ import { ripper } from '@spare/ripper';
 /**
  * @deprecated use @spare/ripper instead
  */
-const splitter = (text, reg) => {
+const splitter = (text, regex) => {
   let ms,
       l = 0,
       r = 0,
@@ -12,11 +12,11 @@ const splitter = (text, reg) => {
       ph;
   const vec = [];
 
-  while ((ms = reg.exec(text)) && ([ph] = ms)) {
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
     r = ms.index;
     if (sp = text.slice(l, r)) vec.push(sp);
     vec.push(ph);
-    l = reg.lastIndex;
+    l = regex.lastIndex;
   }
 
   if (l < text.length) vec.push(text.slice(l));

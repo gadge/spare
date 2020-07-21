@@ -7,8 +7,8 @@ const joinLines = (lines, de = '', lv, hover = true) => {
         LFI = LF + IND;
   return hover ? `${LFI + TB}${lines.join(de + LFI + TB)}${de + LFI}` : `${IND + TB}${lines.join(de + LFI + TB)}${de}`;
 };
-const LFREG = /\n/;
-const COREG = /,/;
+const LINEFEED = /\n/;
+const COMMA = /,/;
 const liner = (lines, {
   discrete = false,
   delim = LF,
@@ -17,7 +17,7 @@ const liner = (lines, {
 } = {}) => {
   if (discrete) return lines;
   const hover = !!bracket;
-  const joined = lines.length && LFREG.test(delim) ? joinLines(lines, COREG.test(delim) ? CO : '', level, hover) : lines.join(delim);
+  const joined = lines.length && LINEFEED.test(delim) ? joinLines(lines, COMMA.test(delim) ? CO : '', level, hover) : lines.join(delim);
   return br(joined, bracket);
 };
 

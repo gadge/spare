@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.2.10",
+    "@aryth/comparer": "^0.2.11",
     "@palett/enum-colorant-modes": "^0.4.2",
     "@palett/fluo-matrix": "^0.4.2",
     "@palett/fluo-vector": "^0.4.2",

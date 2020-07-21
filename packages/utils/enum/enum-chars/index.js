@@ -1,4 +1,5 @@
 export {
+  VO,
   SP,
   TB,
   CO,
@@ -15,6 +16,7 @@ export {
   ELLIP,
   AEU,
   RTSP,
+  DOSP,
   COSP,
   COLF
 } from './resources/chars'

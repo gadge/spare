@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+const VO = '';
 const SP = ' ';
 const TB = '  ';
 const CO = ',';
@@ -17,6 +18,7 @@ const UL = '_';
 const DASH = '-';
 const ELLIP = '...';
 const AEU = '(Ø)';
+const DOSP = DOT + SP;
 const RTSP = RT + SP;
 const COSP = CO + SP;
 const COLF = CO + LF;
@@ -28,6 +30,7 @@ exports.COSP = COSP;
 exports.CR = CR;
 exports.DA = DA;
 exports.DASH = DASH;
+exports.DOSP = DOSP;
 exports.DOT = DOT;
 exports.DT = DT;
 exports.ELLIP = ELLIP;
@@ -39,3 +42,4 @@ exports.RTSP = RTSP;
 exports.SP = SP;
 exports.TB = TB;
 exports.UL = UL;
+exports.VO = VO;
