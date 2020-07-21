@@ -7,7 +7,7 @@ import fileInfo                   from 'rollup-plugin-fileinfo'
 
 const { name, dependencies, main, module } = require(process.cwd() + '/package.json')
 
-console.log('Executing', name, decoString(process.cwd(), { delim: '/' }))
+console.log('Executing', name, decoString(process.cwd()))
 console.log('Dependencies', decoObject(dependencies || {}))
 
 const babelPluginOptions = {
