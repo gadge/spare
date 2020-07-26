@@ -1,12 +1,15 @@
-import { cosmetics }    from './src/cosmetics'
-import { presetString } from './src/presetString'
+import { cosmetics }                        from './src/cosmetics'
+import { decoCamel, decoPhrase, decoSnake } from './src/decoSpecials'
+import { presetString }                     from './src/presetString'
 
-export { decoCamel, decoSnake, decoPhrase } from './src/decoSpecials'
-
+export { decoCamel, decoSnake, decoPhrase }
+export { cosmetics }
 /**
  * @param {string} text
  * @param {Object} [p]
- * @param {string} [p.delim]
+ * @param {number} [p.width=80]
+ * @param {number} [p.indent]
+ * @param {number} [p.firstLineIndent]
  * @param {Object[]} [p.presets]
  * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]
@@ -19,6 +22,9 @@ export const deco = (text, p = {}) => cosmetics.call(presetString(p), text)
  *
  * @param {Object} p
  * @param {string} [p.delim]
+ * @param {number} [p.width=80]
+ * @param {number} [p.indent]
+ * @param {number} [p.firstLineIndent]
  * @param {Object[]} [p.presets]
  * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]

@@ -1,0 +1,1 @@
+export const wordsByMatch = phrase => phrase.match(/\w+/g)

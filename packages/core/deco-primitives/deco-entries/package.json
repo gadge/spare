@@ -23,7 +23,7 @@
     "@spare/pad-entries": "^0.8.2",
     "@spare/preset-deco": "^0.8.2",
     "@spare/quote": "^0.8.2",
-    "@vect/entries-zipper": "^0.2.6"
+    "@vect/entries-zipper": "^0.2.8"
   },
   "repository": {
     "type": "git",

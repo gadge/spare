@@ -11,4 +11,5 @@ export const
 
 export const
   APOS = 1, // apostrophe
-  DITTO = 2 // ditto mark
+  DITTO = 2, // ditto mark
+  GRAVE = 3 // grave accent, or backtick, or backquote

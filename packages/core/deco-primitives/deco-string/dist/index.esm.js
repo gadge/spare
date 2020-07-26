@@ -1,21 +1,47 @@
+import { MUTABLE } from '@analys/enum-mutabilities';
 import { fluoVector } from '@palett/fluo-vector';
+import { LF, TB, DA, SP } from '@spare/enum-chars';
+import { foldToVector } from '@spare/fold';
 import { hasAnsi } from '@spare/lange';
-import { ATLAS, SUBTLE } from '@palett/presets';
+import { mutate } from '@vect/vector-mapper';
 import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
-import { DA, SP } from '@spare/enum-chars';
+import { ATLAS, SUBTLE } from '@palett/presets';
 
-/** @type {{mutate: boolean}} */
-const MUTABLE = {
-  mutate: true
-};
+/**
+ * @prop width - foldToVector
+ * @prop firstLineIndent - foldToVector
+ * @prop indent - applicable only when valid width
+ * @prop vectify - fluoString
+ * @prop joiner - fluoString
+ * @prop presets - fluoString
+ * @prop effects - fluoString
+ * @param text
+ * @return {string|{length}|*}
+ */
 
-const Splitter = delim => x => String.prototype.split.call(x, delim);
-const Joiner = delim => v => Array.prototype.join.call(v, delim);
 const cosmetics = function (text) {
-  if (!(text === null || text === void 0 ? void 0 : text.length)) return '';
+  const context = this,
+        length = text === null || text === void 0 ? void 0 : text.length;
+  if (!length) return '';
   if (hasAnsi(text)) return text;
   const {
-    delim,
+    width
+  } = context;
+
+  if (width && length > width) {
+    const {
+      indent,
+      presets
+    } = context;
+    const lines = foldToVector.call(context, text);
+    if (presets) mutate(lines, fluoString.bind(context));
+    return lines.join(LF + TB.repeat(indent !== null && indent !== void 0 ? indent : 0));
+  } else {
+    return fluoString.call(context, text);
+  }
+};
+const fluoString = function (text) {
+  const {
     vectify,
     joiner,
     presets,
@@ -23,20 +49,20 @@ const cosmetics = function (text) {
   } = this;
   const words = vectify(text);
   fluoVector.call(MUTABLE, words, presets, effects);
-  return (joiner !== null && joiner !== void 0 ? joiner : Joiner(delim))(words);
+  return joiner ? joiner(words) : words.join('');
 };
 
 const NUMERIC_PRESET = ATLAS;
 const LITERAL_PRESET = SUBTLE;
 const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
 const presetString = p => {
-  var _p$delim, _p$presets, _p$vectify;
-
-  p.delim = (_p$delim = p === null || p === void 0 ? void 0 : p.delim) !== null && _p$delim !== void 0 ? _p$delim : '';
-  p.presets = (_p$presets = p === null || p === void 0 ? void 0 : p.presets) !== null && _p$presets !== void 0 ? _p$presets : PRESETS;
-  p.vectify = (_p$vectify = p === null || p === void 0 ? void 0 : p.vectify) !== null && _p$vectify !== void 0 ? _p$vectify : splitLiteral;
+  if (!p.presets) p.presets = PRESETS;
+  if (!p.vectify) p.vectify = splitLiteral;
+  if (!p.width) p.width = 80;
   return p;
 };
+
+const Splitter = delim => v => String.prototype.split.call(v, delim);
 
 const decoCamel = (text, {
   delim = '',
@@ -78,7 +104,9 @@ const decoPhrase = (text, {
 /**
  * @param {string} text
  * @param {Object} [p]
- * @param {string} [p.delim]
+ * @param {number} [p.width=80]
+ * @param {number} [p.indent]
+ * @param {number} [p.firstLineIndent]
  * @param {Object[]} [p.presets]
  * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]
@@ -91,6 +119,9 @@ const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
  *
  * @param {Object} p
  * @param {string} [p.delim]
+ * @param {number} [p.width=80]
+ * @param {number} [p.indent]
+ * @param {number} [p.firstLineIndent]
  * @param {Object[]} [p.presets]
  * @param {string[]} [p.effects]
  * @param {Function} [p.vectify]
@@ -100,4 +131,4 @@ const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
 
 const Deco = (p = {}) => cosmetics.bind(presetString(p));
 
-export { Deco, deco, decoCamel, decoPhrase, decoSnake };
+export { Deco, cosmetics, deco, decoCamel, decoPhrase, decoSnake };

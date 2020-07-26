@@ -4,22 +4,21 @@ import { says }               from '@palett/says'
 import { delogger }           from '@spare/deco'
 import { deco as decoString } from '../index'
 
-const { logger } = require('@spare/logger')
-
 const items = Object.assign({},
   ObjectCollection.flopShuffle({ keyed: true }),
   ObjectCollection.flopShuffle({ keyed: true }),
-  ObjectCollection.flopShuffle({ keyed: true })
+  ObjectCollection.flopShuffle({ keyed: true }),
 )
 
 for (const [title, o] of Object.entries(items)) {
   title |> delogger
   for (const [key, text] of Object.entries(o)) {
     const colored = decoString(text, { effects: [BOLD] })
-    // const embeddedColored = decoString(colored, { effects: [BOLD] })
+    // const embeddedColored = fluoString(colored, { effects: [BOLD] })
     colored |> says[key].asc
     // embeddedColored |> says[key]
   }
   '' |> delogger
 }
+
 

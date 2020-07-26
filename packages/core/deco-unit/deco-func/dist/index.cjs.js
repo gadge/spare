@@ -90,25 +90,13 @@ const decofun = function (func) {
   return prettify(text, pr);
 };
 
-const FUNC_REG = /\((.*?)\)\s+\{/s;
+const FUNC_REG = /\((.*?)\)\s+{/s;
 const LAMB_REG$1 = /\(?(.*?)\)?\s+=>/s;
-const WORD_REG = /\w+/g;
-
-const words = phrase => {
-  let ms,
-      wd,
-      ve = [];
-
-  while ((ms = WORD_REG.exec(phrase)) && ([wd] = ms)) ve.push(wd);
-
-  return ve;
-};
-
 const argnames = fn => {
   const text = fn.toString();
   let ms, ph;
-  if ((ms = FUNC_REG.exec(text)) && ([, ph] = ms)) return words(ph);
-  if ((ms = LAMB_REG$1.exec(text)) && ([, ph] = ms)) return words(ph);
+  if ((ms = FUNC_REG.exec(text)) && ([, ph] = ms)) return ph.match(/\w+/g);
+  if ((ms = LAMB_REG$1.exec(text)) && ([, ph] = ms)) return ph.match(/\w+/g);
   return [];
 };
 

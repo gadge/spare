@@ -1,0 +1,1 @@
+export const wordsBySplit = (phrase) => phrase.split(/\W/g)

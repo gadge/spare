@@ -9,7 +9,8 @@ const QM1 = 1,
       QM2 = 2;
 const APOS = 1,
       // apostrophe
-DITTO = 2; // ditto mark
+DITTO = 2;
+ // grave accent, or backtick, or backquote
 
 exports.APOS = APOS;
 exports.DITTO = DITTO;

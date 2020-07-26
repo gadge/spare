@@ -32,11 +32,11 @@
     "@spare/quote": "^0.8.2",
     "@spare/string": "^0.8.2",
     "@spare/vettro": "^0.8.2",
-    "@vect/enum-matrix-directions": "^0.2.6",
-    "@vect/matrix": "^0.2.6",
-    "@vect/vector-indicator": "^0.2.6",
-    "@vect/vector-mapper": "^0.2.6",
-    "@vect/vector-zipper": "^0.2.6"
+    "@vect/enum-matrix-directions": "^0.2.8",
+    "@vect/matrix": "^0.2.8",
+    "@vect/vector-indicator": "^0.2.8",
+    "@vect/vector-mapper": "^0.2.8",
+    "@vect/vector-zipper": "^0.2.8"
   },
   "repository": {
     "type": "git",

@@ -6,8 +6,8 @@ export const LITERAL_PRESET = SUBTLE
 export const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET]
 
 export const presetString = p => {
-  p.delim = p?.delim ?? ''
-  p.presets = p?.presets ?? PRESETS
-  p.vectify = p?.vectify ?? splitLiteral
+  if (!p.presets) p.presets = PRESETS
+  if (!p.vectify) p.vectify = splitLiteral
+  if (!p.width) p.width = 80
   return p
 }

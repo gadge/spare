@@ -3,7 +3,7 @@ import { decoPale }           from '@spare/deco-pale'
 import { hasAnsi }            from '@spare/lange'
 import { decoString, logger } from '@spare/logger'
 import { iterate, mutate }    from '@vect/object-mapper'
-import { deco }               from '..'
+import { Deco }               from '../index'
 
 const o = {
   chef: 'chef',
@@ -19,4 +19,4 @@ iterate(o, x => {
   hasAnsi(x) |> says[x]
 })
 
-o |> deco |> logger
+o |> Deco({ vert: 1 }) |> logger

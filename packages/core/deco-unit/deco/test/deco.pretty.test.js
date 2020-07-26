@@ -1,4 +1,6 @@
-import { JUNGLE, MOSS }                             from '@palett/presets'
+import { flop, flopValue }                          from '@aryth/rand'
+import { Quotes }                                   from '@foba/quotes-creativity'
+import { AZURE, MOSS }                              from '@palett/presets'
 import { logger }                                   from '@spare/logger'
 import { Deco }                                     from '../index'
 import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates'
@@ -8,11 +10,13 @@ const candidates = {
   ...Vectors,
   ...Matrices,
   ...Objects,
-  ...Misc
+  ...Misc,
+  ...(Quotes |> flopValue |> flop)
 }
 
 candidates |> Deco({
-  pr: [MOSS, JUNGLE],
-  hi: 10,
-  wa: 10
+  presets: [AZURE, MOSS],
+  depth: 10,
+  array: { vert: 1 },
+  object: { vert: 1 }
 }) |> logger

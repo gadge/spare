@@ -7,9 +7,9 @@ var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
 
 const joinLines = (lines, de = '', lv, hover = true) => {
-  const IND = lv > 0 ? enumChars.TB.repeat(lv) : '',
-        LFI = enumChars.LF + IND;
-  return hover ? `${LFI + enumChars.TB}${lines.join(de + LFI + enumChars.TB)}${de + LFI}` : `${IND + enumChars.TB}${lines.join(de + LFI + enumChars.TB)}${de}`;
+  const IND = lv > 0 ? enumChars.TB.repeat(lv) : '';
+  let tab;
+  return hover ? (tab = enumChars.LF + IND + enumChars.TB, `${tab}${lines.join(de + tab)}${de + enumChars.LF + IND}`) : (tab = IND + enumChars.TB, `${tab}${lines.join(de + tab)}${de}`);
 };
 const LINEFEED = /\n/;
 const COMMA = /,/;

@@ -20,7 +20,7 @@
     "@palett/dye": "^0.4.2",
     "@spare/enum-chars": "^0.8.2",
     "@spare/util": "^0.8.2",
-    "@vect/callable": "^0.2.6"
+    "@vect/callable": "^0.2.8"
   },
   "repository": {
     "type": "git",

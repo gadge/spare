@@ -15,13 +15,13 @@
     "test": "node -r @babel/register test/preset-deco.test.js"
   },
   "dependencies": {
-    "@ject/pipe": "^0.0.5",
+    "@ject/pipe": "^0.0.6",
     "@palett/presets": "^0.4.2",
     "@spare/deco-flat": "^0.8.2",
     "@spare/enum-brackets": "^0.8.2",
     "@spare/enum-chars": "^0.8.2",
     "@spare/quote": "^0.8.2",
-    "@vect/enum-matrix-directions": "^0.2.6"
+    "@vect/enum-matrix-directions": "^0.2.8"
   },
   "repository": {
     "type": "git",

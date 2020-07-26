@@ -3,9 +3,9 @@ import { NONE } from '@spare/enum-brackets';
 import { TB, LF, CO } from '@spare/enum-chars';
 
 const joinLines = (lines, de = '', lv, hover = true) => {
-  const IND = lv > 0 ? TB.repeat(lv) : '',
-        LFI = LF + IND;
-  return hover ? `${LFI + TB}${lines.join(de + LFI + TB)}${de + LFI}` : `${IND + TB}${lines.join(de + LFI + TB)}${de}`;
+  const IND = lv > 0 ? TB.repeat(lv) : '';
+  let tab;
+  return hover ? (tab = LF + IND + TB, `${tab}${lines.join(de + tab)}${de + LF + IND}`) : (tab = IND + TB, `${tab}${lines.join(de + tab)}${de}`);
 };
 const LINEFEED = /\n/;
 const COMMA = /,/;

@@ -1,80 +1,82 @@
 import { MUTABLE }                                from '@analys/enum-mutabilities'
-import { fluoEntries }                                from '@palett/fluo-entries'
-import { fluoVector }                                from '@palett/fluo-vector'
+import { fluoEntries }                            from '@palett/fluo-entries'
+import { fluoVector }                             from '@palett/fluo-vector'
 import { brace, bracket }                         from '@spare/bracket'
 import { BRC, BRK, PAL }                          from '@spare/deco-colors'
 import { decoDate, decoDateTime }                 from '@spare/deco-date'
 import { decoFunc, funcName }                     from '@spare/deco-func'
-import { deco as decoString }                     from '@spare/deco-string'
-import { lange }                                  from '@spare/lange'
 import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
 import { ARRAY, DATE, MAP, OBJECT, SET }          from '@typen/enum-object-types'
 import { isNumeric }                              from '@typen/num-loose'
 import { typ }                                    from '@typen/typ'
 import { formatDate }                             from '@valjoux/format-date'
 import { formatDateTime }                         from '@valjoux/format-date-time'
-import { mutate as mutateEntries }                from '@vect/entries-mapper'
-import { mutate as mutateVector }                 from '@vect/vector-mapper'
-import { stringifyEntries }                       from './utils/stringifyEntries'
-import { stringifyVector }                        from './utils/stringifyVector'
+import { mutateValues }                           from '@vect/entries-mapper'
+import { mutate }                                 from '@vect/vector-mapper'
+import { mutateKeyPad }                           from './helpers/mutateKeyPad'
+import { renderEntries }                          from './utils/renderEntries'
+import { renderString }                           from './utils/renderString'
+import { renderVector }                           from './utils/renderVector'
 
-export function decoNode (node, lv = 0) {
-  return this.pr
-    ? prettyNode.call(this, node, lv)
-    : plainNode.call(this, node, lv)
+export function decoNode(node, level, indent) {
+  return this.presets
+    ? prettyNode.call(this, node, level, indent)
+    : plainNode.call(this, node, level, indent)
 }
 
 /**
  *
  * @param {*} node
- * @param {number} [lv]
+ * @param {number} [level]
+ * @param {number} indent
  * @return {string}
  */
-export function prettyNode (node, lv = 0) {
+export function prettyNode(node, level = 0, indent) {
   const t = typeof node
-  if (t === STR) return isNumeric(node) ? node : decoString(node, this)
+  if (t === STR) return isNumeric(node) ? node : renderString.call(this, node, level, indent)
   if (t === NUM || t === BIG) return node
-  if (t === FUN) return lv >= this.hi ? funcName(node) : decoFunc(node, this)
+  if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this)
   if (t === OBJ) {
-    const { hi } = this, pt = typ(node)
-    if (pt === ARRAY) return lv >= hi ? '[array]' : deVe.call(this, node.slice(), lv) |> BRK[lv & 7]
-    if (pt === OBJECT) return lv >= hi ? '{object}' : deEn.call(this, Object.entries(node), lv) |>  BRC[lv & 7]
-    if (pt === DATE) return lv >= hi ? decoDate(node) : decoDateTime(node)
-    if (pt === MAP) return lv >= hi ? '(map)' : deEn.call(this, [...node.entries()], lv) |> BRK[lv & 7]
-    if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
-    return `${node}`
+    const { depth } = this, pt = typ(node)
+    if (pt === ARRAY) return level >= depth ? '[array]' : deVe.call(this, node.slice(), level) |> BRK[level & 7]
+    if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |>  BRC[level & 7]
+    if (pt === DATE) return level >= depth ? decoDate(node) : decoDateTime(node)
+    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [...node.entries()], level) |> BRK[level & 7]
+    if (pt === SET) return level >= depth ? '(set)' : `set:[${ deVe.call(this, [...node], level) }]`
+    return `${ node }`
   }
   if (t === BOO) return PAL.BOO(node)
   if (t === UND || t === SYM) return PAL.UDF(node)
-  return `${node}`
+  return `${ node }`
 }
 
-export function plainNode (node, lv = 0) {
+export function plainNode(node, level = 0, indent) {
   const t = typeof node, { qm } = this
-  if (t === STR) return qm ? qm + node + qm : node
-  if (t === FUN) return lv >= this.hi ? funcName(node) : decoFunc(node, this)
+  if (t === STR) return qm ? (qm + node + qm) : renderString.call(this, node, level, indent)
+  if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this)
   if (t === OBJ) {
-    const { hi } = this, pt = typ(node)
-    if (pt === ARRAY) return lv >= hi ? '[array]' : deVe.call(this, node.slice(), lv) |> bracket
-    if (pt === OBJECT) return lv >= hi ? '{object}' : deEn.call(this, Object.entries(node), lv) |> brace
-    if (pt === DATE) return lv >= hi ? formatDate(node) : formatDateTime(node)
-    if (pt === MAP) return lv >= hi ? '(map)' : deEn.call(this, [...node.entries()], lv) |> bracket
-    if (pt === SET) return lv >= hi ? '(set)' : `set:[${deVe.call(this, [...node], lv)}]`
-    return `${node}`
+    const { depth } = this, pt = typ(node)
+    if (pt === ARRAY) return level >= depth ? '[array]' : deVe.call(this, node.slice(), level) |> bracket
+    if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> brace
+    if (pt === DATE) return level >= depth ? formatDate(node) : formatDateTime(node)
+    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [...node.entries()], level) |> bracket
+    if (pt === SET) return level >= depth ? '(set)' : `set:[${ deVe.call(this, [...node], level) }]`
+    return `${ node }`
   }
   return node
 }
 
-export let deVe = function (vector, lv) {
-  mutateVector(vector, v => String(decoNode.call(this, v, lv + 1)))
-  if (this.pr) fluoVector.call(MUTABLE, vector, this.pr)
-  return stringifyVector.call(this, vector, lv)
+export const deVe = function (vector, lv) {
+  mutate(vector, v => String(decoNode.call(this, v, lv + 1)))
+  if (this.presets) fluoVector.call(MUTABLE, vector, this.presets)
+  return renderVector.call(this, vector, lv)
 }
 
-export let deEn = function (entries, lv) {
-  mutateEntries(entries, k => String(k), v => String(decoNode.call(this, v, lv + 1)))
-  if (this.pr) fluoEntries.call(MUTABLE, entries, this.pr) // [{ preset: INSTA, }, { preset: IDX[lv & 7] }]
-  return stringifyEntries.call(this, entries, lv)
+export const deEn = function (entries, lv) {
+  const pad = mutateKeyPad(entries)
+  mutateValues(entries, v => String(decoNode.call(this, v, lv + 1, pad)))
+  if (this.presets) fluoEntries.call(MUTABLE, entries, this.presets)
+  return renderEntries.call(this, entries, lv)
 }
 
 

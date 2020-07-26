@@ -1,55 +1,66 @@
-import { DA, LF } from '@spare/enum-chars';
+import { VO, SP, DA, LF } from '@spare/enum-chars';
 
 const foldToVector = function (text) {
-  let {
-    width: d = 80,
-    regex = /\s/
-  } = this !== null && this !== void 0 ? this : {};
-  const threshold = text === null || text === void 0 ? void 0 : text.length,
-        lines = [];
-  let l = 0,
-      r = 0,
-      line;
+  var _text;
 
-  while ((r = l + d) < threshold) {
-    while (l <= r) if (regex.test(text[--r])) {
+  let {
+    width: wd = 80,
+    regex = /\s/,
+    firstLineIndent: fli = 0
+  } = this !== null && this !== void 0 ? this : {};
+  const end = (_text = text) === null || _text === void 0 ? void 0 : _text.length,
+        lines = [];
+  if (!end) return lines;
+  if (!wd) return lines.push(text), lines;
+  if (fli) fli >= wd ? lines.push(VO) : text = SP.repeat(fli) + text;
+  let i = 0,
+      th = 0,
+      line; // i: index, th: threshold
+
+  while ((th = i + wd) < end) {
+    while (i <= th) if (regex.test(text[--th])) {
       break;
     }
 
-    line = l < r ? text.slice(l, l = r + 1) : text.slice(l, l += d - 1) + DA;
+    line = i < th ? text.slice(i, i = th + 1) : text.slice(i, i += wd - 1) + DA; // the case when lengths of the current word exceeds the 'width'
+
     lines.push(line);
-  } // line |> parenth |> decoString |> says['line'].br(line.length)
+  }
 
-
-  if (l < text.length) lines.push(text.slice(l));
+  if (i < text.length) lines.push(text.slice(i));
+  if (fli) lines[0] = lines[0].slice(fli);
   return lines;
 };
 const fold = function (text) {
-  var _this$delim, _text;
+  var _this$delim, _text2;
 
   const context = this;
   const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : LF;
-  const vec = (_text = text, foldToVector.bind(context)(_text));
+  const vec = (_text2 = text, foldToVector.bind(context)(_text2));
   return vec.join(delim);
 };
 const FoldToVector = ({
   width,
-  regex
+  regex,
+  firstLineIndent
 }) => {
   return foldToVector.bind({
     width,
-    regex
+    regex,
+    firstLineIndent
   });
 };
 const Fold = ({
   width,
   delim,
-  regex
+  regex,
+  firstLineIndent
 }) => {
   return fold.bind({
     width,
     delim,
-    regex
+    regex,
+    firstLineIndent
   });
 };
 

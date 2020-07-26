@@ -18,7 +18,7 @@
     "@palett/cards": "^0.4.2",
     "@palett/convert": "^0.4.2",
     "@palett/dye": "^0.4.2",
-    "@vect/object-mapper": "^0.2.6"
+    "@vect/object-mapper": "^0.2.8"
   },
   "repository": {
     "type": "git",

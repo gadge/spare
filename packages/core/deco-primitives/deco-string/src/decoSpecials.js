@@ -1,8 +1,9 @@
 import { DA, SP }                 from '@spare/enum-chars'
 import { splitCamel, splitSnake } from '@spare/splitter'
-import { cosmetics, Splitter }    from './cosmetics'
+import { cosmetics }              from './cosmetics'
 import { PRESETS }                from './presetString'
 
+const Splitter = delim => v => String.prototype.split.call(v, delim)
 export const decoCamel = (text, { delim = '', presets = PRESETS, effects } = {}) => {
   return cosmetics.call({ delim, presets, effects, vectify: splitCamel }, text)
 }
