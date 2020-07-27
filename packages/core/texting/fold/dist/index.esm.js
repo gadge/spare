@@ -1,43 +1,43 @@
-import { VO, SP, DA, LF } from '@spare/enum-chars';
+import { SP, LF } from '@spare/enum-chars';
 
+const SPACE = /\s+/g;
+const LINEFEED = /\r?\n/;
 const foldToVector = function (text) {
-  var _text;
-
-  let {
+  const {
     width: wd = 80,
-    regex = /\s/,
-    firstLineIndent: fli = 0
+    regex = SPACE,
+    firstLineIndent
   } = this !== null && this !== void 0 ? this : {};
-  const end = (_text = text) === null || _text === void 0 ? void 0 : _text.length,
-        lines = [];
-  if (!end) return lines;
-  if (!wd) return lines.push(text), lines;
-  if (fli) fli >= wd ? lines.push(VO) : text = SP.repeat(fli) + text;
-  let i = 0,
-      th = 0,
-      line; // i: index, th: threshold
+  const lines = [];
+  let ms,
+      ph,
+      pr = 0,
+      cu = 0,
+      la = 0,
+      nx = 0,
+      th = pr + wd;
+  if (firstLineIndent) text = SP.repeat(firstLineIndent) + text;
 
-  while ((th = i + wd) < end) {
-    while (i <= th) if (regex.test(text[--th])) {
-      break;
-    }
-
-    line = i < th ? text.slice(i, i = th + 1) : text.slice(i, i += wd - 1) + DA; // the case when lengths of the current word exceeds the 'width'
-
-    lines.push(line);
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    // VO |> says['progress'].p(pr).p(DA).br(cu + ':' + la).p(DA).br(nx).p(codes(ph)).br(/\r?\n/.test(ph)).p(DA).p(th)
+    nx = ms.index;
+    if (nx > th) lines.push(text.slice(pr, cu)), pr = la, th = pr + wd;
+    if (LINEFEED.test(ph)) lines.push(text.slice(pr, nx)), pr = regex.lastIndex, th = pr + wd;
+    cu = nx, la = regex.lastIndex;
   }
 
-  if (i < text.length) lines.push(text.slice(i));
-  if (fli) lines[0] = lines[0].slice(fli);
+  if (text.length > th) lines.push(text.slice(pr, cu)), pr = la;
+  if (pr < text.length) lines.push(text.slice(pr));
+  if (firstLineIndent) lines[0] = lines[0].slice(firstLineIndent);
   return lines;
 };
 const fold = function (text) {
-  var _this$delim, _text2;
+  var _this$delim, _text;
 
   const context = this;
   const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : LF;
-  const vec = (_text2 = text, foldToVector.bind(context)(_text2));
-  return vec.join(delim);
+  const lines = (_text = text, foldToVector.bind(context)(_text));
+  return lines.join(delim);
 };
 const FoldToVector = ({
   width,

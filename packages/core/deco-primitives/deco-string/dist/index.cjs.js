@@ -7,9 +7,9 @@ var fluoVector = require('@palett/fluo-vector');
 var enumChars = require('@spare/enum-chars');
 var fold = require('@spare/fold');
 var lange = require('@spare/lange');
-var vectorMapper = require('@vect/vector-mapper');
 var splitter = require('@spare/splitter');
 var presets = require('@palett/presets');
+var nullish = require('@typen/nullish');
 
 /**
  * @prop width - foldToVector
@@ -20,29 +20,27 @@ var presets = require('@palett/presets');
  * @prop presets - fluoString
  * @prop effects - fluoString
  * @param text
- * @return {string|{length}|*}
+ * @return {string}
  */
 
 const cosmetics = function (text) {
+  var _text, _context$indent;
+
   const context = this,
-        length = text === null || text === void 0 ? void 0 : text.length;
+        length = (_text = text) === null || _text === void 0 ? void 0 : _text.length;
   if (!length) return '';
   if (lange.hasAnsi(text)) return text;
   const {
-    width
+    width,
+    presets
   } = context;
-
-  if (width && length > width) {
-    const {
-      indent,
-      presets
-    } = context;
-    const lines = fold.foldToVector.call(context, text);
-    if (presets) vectorMapper.mutate(lines, fluoString.bind(context));
-    return lines.join(enumChars.LF + enumChars.TB.repeat(indent !== null && indent !== void 0 ? indent : 0));
-  } else {
-    return fluoString.call(context, text);
-  }
+  if (width && length > width) text = fold.fold.call({
+    width: width,
+    firstLineIndent: context.firstLineIndent,
+    delim: enumChars.LF + enumChars.TB.repeat((_context$indent = context.indent) !== null && _context$indent !== void 0 ? _context$indent : 0)
+  }, text);
+  if (presets === null || presets === void 0 ? void 0 : presets.length) text = fluoString.call(context, text);
+  return text;
 };
 const fluoString = function (text) {
   const {
@@ -60,9 +58,9 @@ const NUMERIC_PRESET = presets.ATLAS;
 const LITERAL_PRESET = presets.SUBTLE;
 const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
 const presetString = p => {
-  if (!p.presets) p.presets = PRESETS;
-  if (!p.vectify) p.vectify = splitter.splitLiteral;
-  if (!p.width) p.width = 80;
+  if (nullish.nullish(p.presets)) p.presets = PRESETS;
+  if (nullish.nullish(p.vectify)) p.vectify = splitter.splitLiteral;
+  if (nullish.nullish(p.width)) p.width = 0;
   return p;
 };
 

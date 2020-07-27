@@ -34,6 +34,7 @@
     "@typen/enum-object-types": "^0.1.5",
     "@typen/num-loose": "^0.1.5",
     "@typen/typ": "^0.1.5",
+    "@typen/nullish": "^0.1.5",
     "@valjoux/format-date": "^0.1.10",
     "@valjoux/format-date-time": "^0.1.10",
     "@vect/column-mapper": "^0.2.8",

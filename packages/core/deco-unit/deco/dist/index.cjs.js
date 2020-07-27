@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var presets = require('@palett/presets');
 var enumChars = require('@spare/enum-chars');
+var nullish = require('@typen/nullish');
 var enumMutabilities = require('@analys/enum-mutabilities');
 var fluoEntries = require('@palett/fluo-entries');
 var fluoVector = require('@palett/fluo-vector');
@@ -36,6 +37,10 @@ const mutateKeyPad = entries => {
   return pad;
 };
 
+const {
+  CO
+} = require('@spare/enum-chars');
+
 const lpad = padString.LPad({
   ansi: true
 });
@@ -47,9 +52,11 @@ const renderEntries = function (entries, lv) {
         unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   let pad;
   const rows = (lv < vert || entries.some(([, v]) => lange.lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? vectorMapper.mutate(entries, ([k, v]) => lpad(k, pad) + enumChars.RTSP + v) : wrapEntries(entries, width);
-  return rows.length > 1 ? liner.joinLines(rows, enumChars.CO, lv) : rows.join(enumChars.COSP);
+  return rows.length > 1 ? liner.joinLines(rows, CO, lv) : rows.join(enumChars.COSP);
 };
 const wrapEntries = function (entries, width) {
+  var _row;
+
   const lines = [];
   let row = null,
       len = 0,
@@ -63,14 +70,15 @@ const wrapEntries = function (entries, width) {
     if (!row) row = [], len = 0;
     row.push(kvp);
   });
+  if ((_row = row) === null || _row === void 0 ? void 0 : _row.length) lines.push(row.join(enumChars.COSP));
   return lines;
 };
 
 const renderString = function (string, level, indent) {
-  var _ref, _this$string$width, _this$string, _ref2, _this$string$presets, _this$string2;
+  var _ref, _this$string$width, _this$string, _this$string$presets, _this$string2;
 
   const width = (_ref = (_this$string$width = (_this$string = this.string) === null || _this$string === void 0 ? void 0 : _this$string.width) !== null && _this$string$width !== void 0 ? _this$string$width : this.width) !== null && _ref !== void 0 ? _ref : 0,
-        presets = (_ref2 = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : this.presets) !== null && _ref2 !== void 0 ? _ref2 : 0;
+        presets = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : 0;
   return decoString.cosmetics.call({
     vectify: splitter.splitLiteral,
     presets,
@@ -183,18 +191,18 @@ const presetDeco = p => {
 
   if (!p) p = {};
   p.wf = (_p$wf = p.wf) !== null && _p$wf !== void 0 ? _p$wf : 160;
-  if (!p.presets) p.presets = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [presets.AZURE, presets.MOSS];
-  if (!p.depth) p.depth = 8; // 展示级别
+  if (nullish.nullish(p.presets)) p.presets = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [presets.AZURE, presets.MOSS];
+  if (nullish.nullish(p.depth)) p.depth = 8; // 展示级别
 
-  if (!p.vert) p.vert = 1; // 在此级别以下均设为竖排
+  if (nullish.nullish(p.vert)) p.vert = 0; // 在此级别以下均设为竖排
 
-  if (!p.unit) p.unit = 32; // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
+  if (nullish.nullish(p.unit)) p.unit = 32; // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
 
-  if (!p.width) p.width = 80; // 字符超过此, 则换行
+  if (nullish.nullish(p.width)) p.width = 80; // 字符超过此, 则换行
 
-  if (!p.string) p.string = {};
-  const stringConfig = p.string;
-  if (!stringConfig.presets) stringConfig.presets = [presets.ATLAS, presets.SUBTLE];
+  if (nullish.nullish(p.string)) p.string = {};
+  const s = p.string;
+  if (nullish.nullish(s.presets)) s.presets = [presets.ATLAS, presets.SUBTLE];
   return p;
 };
 /**

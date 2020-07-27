@@ -7,6 +7,6 @@ import { deco }            from '../index'
 for (const [key, string] of Object.entries(Quotes |> flopValue |> flop)) {
   deco(string, {
     width: 80,
-    firstLineIndent: 20
+    firstLineIndent: 2
   }) |> says[key]
 }

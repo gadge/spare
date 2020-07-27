@@ -1,11 +1,11 @@
 import { MUTABLE } from '@analys/enum-mutabilities';
 import { fluoVector } from '@palett/fluo-vector';
 import { LF, TB, DA, SP } from '@spare/enum-chars';
-import { foldToVector } from '@spare/fold';
+import { fold } from '@spare/fold';
 import { hasAnsi } from '@spare/lange';
-import { mutate } from '@vect/vector-mapper';
 import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
 import { ATLAS, SUBTLE } from '@palett/presets';
+import { nullish } from '@typen/nullish';
 
 /**
  * @prop width - foldToVector
@@ -16,29 +16,27 @@ import { ATLAS, SUBTLE } from '@palett/presets';
  * @prop presets - fluoString
  * @prop effects - fluoString
  * @param text
- * @return {string|{length}|*}
+ * @return {string}
  */
 
 const cosmetics = function (text) {
+  var _text, _context$indent;
+
   const context = this,
-        length = text === null || text === void 0 ? void 0 : text.length;
+        length = (_text = text) === null || _text === void 0 ? void 0 : _text.length;
   if (!length) return '';
   if (hasAnsi(text)) return text;
   const {
-    width
+    width,
+    presets
   } = context;
-
-  if (width && length > width) {
-    const {
-      indent,
-      presets
-    } = context;
-    const lines = foldToVector.call(context, text);
-    if (presets) mutate(lines, fluoString.bind(context));
-    return lines.join(LF + TB.repeat(indent !== null && indent !== void 0 ? indent : 0));
-  } else {
-    return fluoString.call(context, text);
-  }
+  if (width && length > width) text = fold.call({
+    width: width,
+    firstLineIndent: context.firstLineIndent,
+    delim: LF + TB.repeat((_context$indent = context.indent) !== null && _context$indent !== void 0 ? _context$indent : 0)
+  }, text);
+  if (presets === null || presets === void 0 ? void 0 : presets.length) text = fluoString.call(context, text);
+  return text;
 };
 const fluoString = function (text) {
   const {
@@ -56,9 +54,9 @@ const NUMERIC_PRESET = ATLAS;
 const LITERAL_PRESET = SUBTLE;
 const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
 const presetString = p => {
-  if (!p.presets) p.presets = PRESETS;
-  if (!p.vectify) p.vectify = splitLiteral;
-  if (!p.width) p.width = 80;
+  if (nullish(p.presets)) p.presets = PRESETS;
+  if (nullish(p.vectify)) p.vectify = splitLiteral;
+  if (nullish(p.width)) p.width = 0;
   return p;
 };
 

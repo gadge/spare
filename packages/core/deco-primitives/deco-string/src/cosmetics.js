@@ -1,9 +1,8 @@
-import { MUTABLE }      from '@analys/enum-mutabilities'
-import { fluoVector }   from '@palett/fluo-vector'
-import { LF, TB }       from '@spare/enum-chars'
-import { foldToVector } from '@spare/fold'
-import { hasAnsi }      from '@spare/lange'
-import { mutate }       from '@vect/vector-mapper'
+import { MUTABLE }    from '@analys/enum-mutabilities'
+import { fluoVector } from '@palett/fluo-vector'
+import { LF, TB }     from '@spare/enum-chars'
+import { fold }       from '@spare/fold'
+import { hasAnsi }    from '@spare/lange'
 
 /**
  * @prop width - foldToVector
@@ -14,22 +13,21 @@ import { mutate }       from '@vect/vector-mapper'
  * @prop presets - fluoString
  * @prop effects - fluoString
  * @param text
- * @return {string|{length}|*}
+ * @return {string}
  */
 
 export const cosmetics = function (text) {
   const context = this, length = text?.length
   if (!length) return ''
   if (hasAnsi(text)) return text
-  const { width } = context
-  if (width && length > width) {
-    const { indent, presets } = context
-    const lines = foldToVector.call(context, text)
-    if (presets) mutate(lines, fluoString.bind(context))
-    return lines.join(LF + TB.repeat(indent ?? 0))
-  } else {
-    return fluoString.call(context, text)
-  }
+  const { width, presets } = context
+  if (width && length > width) text = fold.call({
+    width: width,
+    firstLineIndent: context.firstLineIndent,
+    delim: LF + TB.repeat(context.indent ?? 0)
+  }, text)
+  if (presets?.length) text = fluoString.call(context, text)
+  return text
 }
 
 export const fluoString = function (text) {

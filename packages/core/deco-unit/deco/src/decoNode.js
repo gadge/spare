@@ -39,7 +39,7 @@ export function prettyNode(node, level = 0, indent) {
   if (t === OBJ) {
     const { depth } = this, pt = typ(node)
     if (pt === ARRAY) return level >= depth ? '[array]' : deVe.call(this, node.slice(), level) |> BRK[level & 7]
-    if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |>  BRC[level & 7]
+    if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> BRC[level & 7]
     if (pt === DATE) return level >= depth ? decoDate(node) : decoDateTime(node)
     if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [...node.entries()], level) |> BRK[level & 7]
     if (pt === SET) return level >= depth ? '(set)' : `set:[${ deVe.call(this, [...node], level) }]`

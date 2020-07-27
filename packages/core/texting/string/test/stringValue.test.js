@@ -1,14 +1,18 @@
-import { logger }      from '@spare/logger'
+import { says }        from '@spare/logger'
 import { stringValue } from '../src/stringValue'
 
 export const test = () => {
   const candidates = [
     'Warren',
     'WSJ',
-    'GlobalTimes'
+    'GlobalTimes',
+    'ZZZZ',
+    'zzzz',
+    'MetalGear 1',
+    'MetalGear 2'
   ]
   for (let candidate of candidates) {
-    candidate |> stringValue |> logger
+    candidate |> stringValue |> says[candidate]
   }
 }
 

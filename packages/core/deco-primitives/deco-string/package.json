@@ -24,7 +24,8 @@
     "@spare/lange": "^0.8.3",
     "@spare/splitter": "^0.8.3",
     "@vect/vector-mapper": "^0.2.8",
-    "@vect/vector-zipper": "^0.2.8"
+    "@vect/vector-zipper": "^0.2.8",
+    "@typen/nullish": "^0.1.5"
   },
   "repository": {
     "type": "git",

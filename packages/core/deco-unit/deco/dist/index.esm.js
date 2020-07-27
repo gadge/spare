@@ -1,5 +1,6 @@
 import { AZURE, MOSS, ATLAS, SUBTLE } from '@palett/presets';
-import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
+import { RTSP, COSP, CO as CO$1, LF } from '@spare/enum-chars';
+import { nullish } from '@typen/nullish';
 import { MUTABLE } from '@analys/enum-mutabilities';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
@@ -32,6 +33,10 @@ const mutateKeyPad = entries => {
   return pad;
 };
 
+const {
+  CO
+} = require('@spare/enum-chars');
+
 const lpad = LPad({
   ansi: true
 });
@@ -46,6 +51,8 @@ const renderEntries = function (entries, lv) {
   return rows.length > 1 ? joinLines(rows, CO, lv) : rows.join(COSP);
 };
 const wrapEntries = function (entries, width) {
+  var _row;
+
   const lines = [];
   let row = null,
       len = 0,
@@ -59,14 +66,15 @@ const wrapEntries = function (entries, width) {
     if (!row) row = [], len = 0;
     row.push(kvp);
   });
+  if ((_row = row) === null || _row === void 0 ? void 0 : _row.length) lines.push(row.join(COSP));
   return lines;
 };
 
 const renderString = function (string, level, indent) {
-  var _ref, _this$string$width, _this$string, _ref2, _this$string$presets, _this$string2;
+  var _ref, _this$string$width, _this$string, _this$string$presets, _this$string2;
 
   const width = (_ref = (_this$string$width = (_this$string = this.string) === null || _this$string === void 0 ? void 0 : _this$string.width) !== null && _this$string$width !== void 0 ? _this$string$width : this.width) !== null && _ref !== void 0 ? _ref : 0,
-        presets = (_ref2 = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : this.presets) !== null && _ref2 !== void 0 ? _ref2 : 0;
+        presets = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : 0;
   return cosmetics.call({
     vectify: splitLiteral,
     presets,
@@ -83,7 +91,7 @@ const renderVector = function (vector, lv) {
         width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   const rows = lv < vert || vector.some(x => lange(x) > unit) || !width ? vector : wrapVector(vector, width);
-  return rows.length > 1 ? joinLines(rows, CO, lv) : vector.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$1, lv) : vector.join(COSP);
 };
 const wrapVector = function (vector, width) {
   const lines = [];
@@ -179,18 +187,18 @@ const presetDeco = p => {
 
   if (!p) p = {};
   p.wf = (_p$wf = p.wf) !== null && _p$wf !== void 0 ? _p$wf : 160;
-  if (!p.presets) p.presets = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [AZURE, MOSS];
-  if (!p.depth) p.depth = 8; // 展示级别
+  if (nullish(p.presets)) p.presets = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [AZURE, MOSS];
+  if (nullish(p.depth)) p.depth = 8; // 展示级别
 
-  if (!p.vert) p.vert = 1; // 在此级别以下均设为竖排
+  if (nullish(p.vert)) p.vert = 0; // 在此级别以下均设为竖排
 
-  if (!p.unit) p.unit = 32; // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
+  if (nullish(p.unit)) p.unit = 32; // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
 
-  if (!p.width) p.width = 80; // 字符超过此, 则换行
+  if (nullish(p.width)) p.width = 80; // 字符超过此, 则换行
 
-  if (!p.string) p.string = {};
-  const stringConfig = p.string;
-  if (!stringConfig.presets) stringConfig.presets = [ATLAS, SUBTLE];
+  if (nullish(p.string)) p.string = {};
+  const s = p.string;
+  if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE];
   return p;
 };
 /**

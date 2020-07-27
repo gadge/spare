@@ -15,8 +15,9 @@ const candidates = {
 }
 
 candidates |> Deco({
-  presets: [AZURE, MOSS],
+  presets: null,
   depth: 10,
-  array: { vert: 1 },
-  object: { vert: 1 }
+  string: { preset: false }
+  // array: { vert: 1 },
+  // object: { vert: 1 }
 }) |> logger

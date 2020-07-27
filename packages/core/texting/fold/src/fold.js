@@ -1,29 +1,30 @@
-import { DA, LF, SP, VO } from '@spare/enum-chars'
+import { LF, SP } from '@spare/enum-chars'
+
+export const SPACE = /\s+/g
+export const LINEFEED = /\r?\n/
 
 export const foldToVector = function (text) {
-  let { width: wd = 80, regex = /\s/, firstLineIndent: fli = 0 } = this ?? {}
-  const end = text?.length, lines = []
-  if (!end) return lines
-  if (!wd) return lines.push(text), lines
-  if (fli) fli >= wd ? lines.push(VO) : (text = SP.repeat(fli) + text)
-  let i = 0, th = 0, line // i: index, th: threshold
-  while ((th = i + wd) < end) {
-    while (i <= th) if (regex.test(text[--th])) { break }
-    line = i < th
-      ? text.slice(i, i = th + 1)
-      : text.slice(i, i += wd - 1) + DA // the case when lengths of the current word exceeds the 'width'
-    lines.push(line)
+  const { width: wd = 80, regex = SPACE, firstLineIndent } = this ?? {}
+  const lines = []
+  let ms, ph, pr = 0, cu = 0, la = 0, nx = 0, th = pr + wd
+  if (firstLineIndent) text = SP.repeat(firstLineIndent) + text
+  while ((ms = regex.exec(text)) && ([ph] = ms)) { // VO |> says['progress'].p(pr).p(DA).br(cu + ':' + la).p(DA).br(nx).p(codes(ph)).br(/\r?\n/.test(ph)).p(DA).p(th)
+    nx = ms.index
+    if (nx > th) lines.push(text.slice(pr, cu)), pr = la, th = pr + wd
+    if (LINEFEED.test(ph)) lines.push(text.slice(pr, nx)), pr = regex.lastIndex, th = pr + wd
+    cu = nx, la = regex.lastIndex
   }
-  if (i < text.length) lines.push(text.slice(i))
-  if (fli) lines[0] = lines[0].slice(fli)
+  if (text.length > th) lines.push(text.slice(pr, cu)), pr = la
+  if (pr < text.length) lines.push(text.slice(pr))
+  if (firstLineIndent) lines[0] = lines[0].slice(firstLineIndent)
   return lines
 }
 
 export const fold = function (text) {
   const context = this
   const delim = this?.delim ?? LF
-  const vec = text |> foldToVector.bind(context)
-  return vec.join(delim)
+  const lines = text |> foldToVector.bind(context)
+  return lines.join(delim)
 }
 
 export const FoldToVector = ({ width, regex, firstLineIndent }) => {

@@ -15,8 +15,6 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/bracket": "^0.8.3",
-    "@spare/enum-brackets": "^0.8.3",
     "@spare/enum-chars": "^0.8.3"
   },
   "repository": {

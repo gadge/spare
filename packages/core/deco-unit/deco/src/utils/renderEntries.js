@@ -1,9 +1,11 @@
-import { CO, COSP, RTSP }  from '@spare/enum-chars'
+import { COSP, RTSP }      from '@spare/enum-chars'
 import { lange }           from '@spare/lange'
 import { joinLines }       from '@spare/liner'
 import { LPad }            from '@spare/pad-string'
 import { iterate, mutate } from '@vect/vector-mapper'
 import { mutateKeyPad }    from '../helpers/mutateKeyPad'
+
+const { CO } = require('@spare/enum-chars')
 
 const lpad = LPad({ ansi: true })
 
@@ -32,6 +34,7 @@ export const wrapEntries = function (entries, width) {
     if (!row) row = [], len = 0
     row.push(kvp)
   })
+  if (row?.length) lines.push(row.join(COSP))
   return lines
 }
 

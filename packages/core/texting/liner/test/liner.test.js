@@ -5,6 +5,7 @@ import { COSP }                   from '@spare/enum-chars'
 import { logger }                 from '@spare/logger'
 import { liner }                  from '../src/liner'
 
+
 const lines = StringVectorCollection.flopShuffle()
 
 lines |> delogger
