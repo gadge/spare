@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-vector",
-  "version": "0.8.6",
+  "version": "0.8.8",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,12 +19,12 @@
     "@palett/enum-colorant-modes": "^0.4.3",
     "@palett/fluo-vector": "^0.4.3",
     "@palett/presets": "^0.4.3",
-    "@spare/deco-entries": "^0.8.6",
-    "@spare/enum-chars": "^0.8.6",
-    "@spare/liner": "^0.8.6",
-    "@spare/preset-deco": "^0.8.6",
-    "@spare/quote": "^0.8.6",
-    "@spare/vettro": "^0.8.6"
+    "@spare/deco-entries": "^0.8.8",
+    "@spare/enum-chars": "^0.8.8",
+    "@spare/liner": "^0.8.8",
+    "@spare/preset-deco": "^0.8.8",
+    "@spare/quote": "^0.8.8",
+    "@spare/vettro": "^0.8.8"
   },
   "repository": {
     "type": "git",
