@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.4.2",
+    "@palett/enum-colorant-modes": "^0.4.3",
     "@spare/deco-entries": "^0.8.4",
     "@spare/liner": "^0.8.4",
     "@spare/preset-deco": "^0.8.4",

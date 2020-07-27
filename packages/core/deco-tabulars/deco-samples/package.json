@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@aryth/math": "^0.2.11",
-    "@palett/enum-colorant-modes": "^0.4.2",
-    "@palett/fluo-matrix": "^0.4.2",
-    "@palett/fluo-vector": "^0.4.2",
-    "@palett/presets": "^0.4.2",
+    "@aryth/math": "^0.2.12",
+    "@palett/enum-colorant-modes": "^0.4.3",
+    "@palett/fluo-matrix": "^0.4.3",
+    "@palett/fluo-vector": "^0.4.3",
+    "@palett/presets": "^0.4.3",
     "@spare/enum-chars": "^0.8.4",
     "@spare/liner": "^0.8.4",
     "@spare/mattro": "^0.8.4",

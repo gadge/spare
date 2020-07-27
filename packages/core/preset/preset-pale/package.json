@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/pipe": "^0.0.6",
-    "@palett/presets": "^0.4.2",
+    "@palett/presets": "^0.4.3",
     "@spare/deco-pale": "^0.8.4",
     "@spare/enum-brackets": "^0.8.4",
     "@spare/enum-chars": "^0.8.4",
