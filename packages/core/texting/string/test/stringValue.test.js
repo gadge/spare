@@ -3,6 +3,14 @@ import { stringValue } from '../src/stringValue'
 
 export const test = () => {
   const candidates = [
+    'A',
+    'AA',
+    'AAA',
+    'AAAA',
+    'AAAAA',
+    'AAAAAA',
+    'AAAAAAA',
+    'AAAAAAAA',
     'Warren',
     'WSJ',
     'GlobalTimes',

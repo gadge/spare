@@ -132,9 +132,9 @@ const tag = (label, item) => {
 // from x => typeof x
 const STR = 'string';
 
-const v1 = word => (word.toLowerCase() & 0x7f) << 21;
+const v1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
 
-const v2 = word => (((word = word.toLowerCase()) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
+const v2 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
 
 const v3 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
 

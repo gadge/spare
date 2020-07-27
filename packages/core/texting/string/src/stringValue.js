@@ -1,8 +1,8 @@
 import { STR } from '@typen/enum-data-types'
 
-const v1 = word => (word.toLowerCase() & 0x7f) << 21
+const v1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21
 const v2 = word => (
-  (((word = word.toLowerCase()) & 0x7f) << 21) +
+  (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) +
   ((word.charCodeAt(1) & 0x7f) << 14)
 )
 const v3 = word => (
