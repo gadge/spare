@@ -26,7 +26,7 @@ export const cosmetics = function (text) {
     firstLineIndent: context.firstLineIndent,
     delim: LF + TB.repeat(context.indent ?? 0)
   }, text)
-  if (presets?.length) text = fluoString.call(context, text)
+  if (presets) text = fluoString.call(context, text)
   return text
 }
 

@@ -74,7 +74,7 @@ const renderString = function (string, level, indent) {
   var _ref, _this$string$width, _this$string, _this$string$presets, _this$string2;
 
   const width = (_ref = (_this$string$width = (_this$string = this.string) === null || _this$string === void 0 ? void 0 : _this$string.width) !== null && _this$string$width !== void 0 ? _this$string$width : this.width) !== null && _ref !== void 0 ? _ref : 0,
-        presets = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : 0;
+        presets = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : null;
   return cosmetics.call({
     vectify: splitLiteral,
     presets,
@@ -221,7 +221,8 @@ const presetDeco = p => {
  */
 
 
-const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob);
+const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob); // TODO: fix string.presets default configuration
+
 /**
  *
  * @typedef {Object} DecoConfig

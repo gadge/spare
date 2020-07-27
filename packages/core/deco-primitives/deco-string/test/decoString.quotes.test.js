@@ -2,11 +2,13 @@ import { flop, flopValue } from '@aryth/rand'
 import { Quotes }          from '@foba/quotes-creativity'
 import { says }            from '@spare/logger'
 import { deco }            from '../index'
+import { PRESETS }         from '../src/presetString'
 
 
 for (const [key, string] of Object.entries(Quotes |> flopValue |> flop)) {
   deco(string, {
     width: 80,
-    firstLineIndent: 2
+    firstLineIndent: 2,
+    presets: false
   }) |> says[key]
 }

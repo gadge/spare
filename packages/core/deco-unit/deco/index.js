@@ -40,6 +40,8 @@ const presetDeco = (p) => {
  */
 export const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob)
 
+// TODO: fix string.presets default configuration
+
 /**
  *
  * @typedef {Object} DecoConfig

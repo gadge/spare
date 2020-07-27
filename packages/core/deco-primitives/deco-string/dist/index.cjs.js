@@ -39,7 +39,7 @@ const cosmetics = function (text) {
     firstLineIndent: context.firstLineIndent,
     delim: enumChars.LF + enumChars.TB.repeat((_context$indent = context.indent) !== null && _context$indent !== void 0 ? _context$indent : 0)
   }, text);
-  if (presets === null || presets === void 0 ? void 0 : presets.length) text = fluoString.call(context, text);
+  if (presets) text = fluoString.call(context, text);
   return text;
 };
 const fluoString = function (text) {
