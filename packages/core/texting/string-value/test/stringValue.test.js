@@ -1,16 +1,13 @@
 import { says }        from '@spare/logger'
+import { init }        from '@vect/vector-init'
 import { stringValue } from '../src/stringValue'
+
+const { SP } = require('@spare/enum-chars')
 
 export const test = () => {
   const candidates = [
-    'A',
-    'AA',
-    'AAA',
-    'AAAA',
-    'AAAAA',
-    'AAAAAA',
-    'AAAAAAA',
-    'AAAAAAAA',
+    ...init(8, i => 'A'.repeat(i + 1)),
+    ...'comprehend how it\'s driven by animal spirits'.split(SP),
     'Warren',
     'WSJ',
     'GlobalTimes',
@@ -20,7 +17,7 @@ export const test = () => {
     'MetalGear 2'
   ]
   for (let candidate of candidates) {
-    candidate |> stringValue |> says[candidate]
+    String(stringValue(candidate)).padStart(10, ' ') |> says[candidate]
   }
 }
 

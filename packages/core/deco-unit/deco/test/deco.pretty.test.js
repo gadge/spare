@@ -1,6 +1,5 @@
 import { flop, flopValue }                          from '@aryth/rand'
 import { Quotes }                                   from '@foba/quotes-creativity'
-import { AZURE, METRO }                             from '@palett/presets'
 import { logger }                                   from '@spare/logger'
 import { Deco }                                     from '../index'
 import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates'
