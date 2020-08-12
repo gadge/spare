@@ -1,8 +1,7 @@
+import { SP }          from '@spare/enum-chars'
 import { says }        from '@spare/logger'
 import { init }        from '@vect/vector-init'
 import { stringValue } from '../src/stringValue'
-
-const { SP } = require('@spare/enum-chars')
 
 export const test = () => {
   const candidates = [

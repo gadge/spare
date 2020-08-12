@@ -27,9 +27,9 @@
     "@typen/enum-object-types": "^0.1.5",
     "@typen/num-strict": "^0.1.5",
     "@typen/typ": "^0.1.5",
-    "@valjoux/format-date": "^0.1.10",
-    "@valjoux/format-time": "^0.1.10",
-    "@vect/entries-mapper": "^0.2.8"
+    "@valjoux/format-date": "^0.1.11",
+    "@valjoux/format-time": "^0.1.11",
+    "@vect/entries-mapper": "^0.2.9"
   },
   "repository": {
     "type": "git",

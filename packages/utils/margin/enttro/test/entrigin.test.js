@@ -18,7 +18,7 @@ const marginConfig = Params.h3t2 |> (({ head, tail }) => [head, tail])
 for (const [key, entries] of Object.entries(Entries)) {
   xr(key).entrigin(Entrigin
     .build(entries, ...marginConfig)
-    .map(k => `'${k}'`, v => `(${v})`)
+    .map(k => `'${ k }'`, v => `(${ v })`)
     |> deca({ vo: 1 })
   ) |> logNeL
 }
