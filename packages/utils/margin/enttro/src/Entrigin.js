@@ -9,7 +9,7 @@ export class Entrigin extends Vectogin {
 
   static build(entries, h = 0, t = 0) {
     let d = true, l
-    if (!entries || !(l = entries.length)) [entries, h, t, d] = [[], 0, 0, false]
+    if (!(l = entries?.length)) [entries, h, t, d] = [[], 0, 0, false]
     if (!h && !t || h >= l) [h, t, d] = [l, 0, false]
     return new Entrigin(marginCopy(entries, h, t, l), h, t, d)
   }
