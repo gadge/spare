@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-object",
-  "version": "0.8.11",
+  "version": "0.8.12",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@palett/enum-colorant-modes": "^0.4.5",
-    "@spare/deco-entries": "^0.8.11",
-    "@spare/liner": "^0.8.11",
-    "@spare/preset-deco": "^0.8.11",
-    "@spare/quote": "^0.8.11"
+    "@spare/deco-entries": "^0.8.12",
+    "@spare/liner": "^0.8.12",
+    "@spare/preset-deco": "^0.8.12",
+    "@spare/quote": "^0.8.12"
   },
   "repository": {
     "type": "git",
