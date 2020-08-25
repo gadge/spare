@@ -9,18 +9,20 @@ const padVector = (text, {
   ansi,
   fill
 }) => {
-  raw = raw || text;
-  const padder = Pad({
+  var _raw;
+
+  raw = (_raw = raw) !== null && _raw !== void 0 ? _raw : text;
+  const pad = Pad({
     ansi,
     fill
   });
-  const pad = maxBy(text, Lange(ansi));
+  const wd = maxBy(text, Lange(ansi));
   let zipper;
-  return dye ? (zipper = Trizipper((tx, v, d) => {
-    var _padder;
+  return dye ? (zipper = Trizipper((tx, va, dy) => {
+    var _pad;
 
-    return _padder = padder(tx, pad, v), d(_padder);
-  }), zipper(text, raw, dye)) : (zipper = Duozipper((tx, v) => padder(tx, pad, v)), zipper(text, raw));
+    return _pad = pad(tx, wd, va), dy(_pad);
+  }), zipper(text, raw, dye)) : (zipper = Duozipper((tx, va) => pad(tx, wd, va)), zipper(text, raw));
 };
 
 export { padVector };

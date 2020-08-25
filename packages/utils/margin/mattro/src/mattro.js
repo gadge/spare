@@ -1,3 +1,4 @@
+import { oneself }  from '@ject/oneself'
 import { Matrigin } from './Matrigin'
 
 /**
@@ -27,7 +28,7 @@ export const mattro = (mx, {
     mn = validate
       ? Matrigin.build(mx, top, bottom, left, right, height, width)
       : new Matrigin(mx, top, bottom, left, right, height, width, dashX, dashY),
-    raw = mn.map(x => x).toMatrix(hr),
+    raw = mn.map(oneself).toMatrix(hr),
     text = mn.stringify(read).toMatrix(hr)
   return { raw, text }
 }

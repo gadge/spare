@@ -15,25 +15,25 @@ const padEntries = (text, {
 }) => {
   raw = raw || text;
   const len = ansi ? lange.lange : x => x.length;
-  const [kpad, vpad] = entriesIndicator.maxBy(text, len, len);
-  const padder = padString.Pad({
+  const [kwd, vwd] = entriesIndicator.maxBy(text, len, len);
+  const pad = padString.Pad({
     ansi,
     fill
   }),
-        lp = padString.LPad({
+        lpad = padString.LPad({
     ansi,
     fill
   });
   let zipper;
-  return dye ? (zipper = entriesZipper.Trizipper((t, v, d) => {
-    var _lp;
+  return dye ? (zipper = entriesZipper.Trizipper((tx, va, dy) => {
+    var _lpad;
 
-    return _lp = lp(t, kpad), d(_lp);
-  }, (t, v, d) => {
-    var _padder;
+    return _lpad = lpad(tx, kwd), dy(_lpad);
+  }, (tx, va, dy) => {
+    var _pad;
 
-    return _padder = padder(t, vpad, v), d(_padder);
-  }), zipper(text, raw, dye)) : (zipper = entriesZipper.Duozipper(t => lp(t, kpad), (t, v) => padder(t, vpad, v)), zipper(text, raw));
+    return _pad = pad(tx, vwd, va), dy(_pad);
+  }), zipper(text, raw, dye)) : (zipper = entriesZipper.Duozipper(tx => lpad(tx, kwd), (tx, va) => pad(tx, vwd, va)), zipper(text, raw));
 };
 
 exports.padEntries = padEntries;

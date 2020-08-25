@@ -1,13 +1,13 @@
-export { decoKey }          from './src/decoKey'
-import { Qt, quote }        from '@spare/quote'
-import { FUN }              from '@typen/enum-data-types'
-import { decoPale as deco } from './src/decoPale'
+export { decoKey }               from './src/decoKey'
+import { Qt, quote, tenseQuote } from '@spare/quote'
+import { FUN }                   from '@typen/enum-data-types'
+import { decoPale as deco }      from './src/decoPale'
 
 const parseQuote = q => typeof q === FUN ? q : Qt(q) ?? quote
 
 const presetConfig = p => {
   p.loose = p.loose ?? true
-  p.quote = parseQuote(p.quote)
+  p.quote = p.quote ? parseQuote(p.quote) : tenseQuote
   return p
 }
 /**

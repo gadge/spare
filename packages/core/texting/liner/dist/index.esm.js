@@ -7,14 +7,13 @@ import { TB, LF, CO } from '@spare/enum-chars';
  * @param {string[]} lines - input string[]
  * @param {string} delim - trailing punctuation added to each line
  * @param {number} level - level of indent to each line
- * @param {boolean} hover - first and last line void
+ * @param {boolean} hover - first and last line hang up
  * @return {*}
  */
 
 const joinLines = (lines, delim = '', level, hover = true) => {
   const IND = level > 0 ? TB.repeat(level) : '';
-  let tab;
-  return hover ? (tab = LF + IND + TB, `${tab}${lines.join(delim + tab)}${delim + LF + IND}`) : (tab = IND + TB, `${tab}${lines.join(delim + LF + tab)}${delim}`);
+  return hover ? `${LF + IND + TB}${lines.join(delim + LF + IND + TB)}${delim + LF + IND}` : `${IND + TB}${lines.join(delim + LF + IND + TB)}${delim}`;
 };
 const LINEFEED = /\n/;
 const COMMA = /,/;

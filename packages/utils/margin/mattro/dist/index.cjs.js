@@ -6,6 +6,7 @@ var matrixSize = require('@vect/matrix-size');
 var util = require('@spare/util');
 var matrixMargin = require('@vect/matrix-margin');
 var vectorMargin = require('@vect/vector-margin');
+var oneself = require('@ject/oneself');
 
 const marginSizing = (rows, top, bottom, left, right, height, width) => {
   let dashX = true,
@@ -177,7 +178,7 @@ const mattro = (mx, {
   validate = true
 } = {}) => {
   const mn = validate ? Matrigin.build(mx, top, bottom, left, right, height, width) : new Matrigin(mx, top, bottom, left, right, height, width, dashX, dashY),
-        raw = mn.map(x => x).toMatrix(hr),
+        raw = mn.map(oneself.oneself).toMatrix(hr),
         text = mn.stringify(read).toMatrix(hr);
   return {
     raw,

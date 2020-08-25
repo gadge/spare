@@ -37,10 +37,6 @@ const mutateKeyPad = entries => {
   return pad;
 };
 
-const {
-  CO
-} = require('@spare/enum-chars');
-
 const lpad = padString.LPad({
   ansi: true
 });
@@ -52,7 +48,7 @@ const renderEntries = function (entries, lv) {
         unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   let pad;
   const rows = (lv < vert || entries.some(([, v]) => lange.lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? vectorMapper.mutate(entries, ([k, v]) => lpad(k, pad) + enumChars.RTSP + v) : wrapEntries(entries, width);
-  return rows.length > 1 ? liner.joinLines(rows, CO, lv) : rows.join(enumChars.COSP);
+  return rows.length > 1 ? liner.joinLines(rows, enumChars.CO, lv) : rows.join(enumChars.COSP);
 };
 const wrapEntries = function (entries, width) {
   var _row;

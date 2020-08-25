@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
+var oneself = require('@ject/oneself');
 var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoEntries = require('@palett/fluo-entries');
 var bracket = require('@spare/bracket');
@@ -27,7 +28,8 @@ const cosmetics = function (entries) {
     dash,
     delim,
     bracket: bracket$1,
-    presets
+    presets,
+    effects
   } = this;
   const {
     raw,
@@ -39,24 +41,17 @@ const cosmetics = function (entries) {
     read,
     hr: HR_ENTRY
   });
-  let dye = undefined;
-
-  if (presets) {
-    dye = fluoEntries.fluoEntries.call(enumColorantModes.COLORANT, raw, presets);
-  }
-
+  const dye = presets ? fluoEntries.fluoEntries.call(enumColorantModes.COLORANT, raw, presets, effects) : null;
   entries = /\n/.test(delim) ? padEntries.padEntries(text, {
     raw,
     dye,
     ansi: presets || ansi
-  }) : presets ? entriesZipper.zipper(text, dye, (t, d) => {
-    var _t;
+  }) : presets ? entriesZipper.zipper(text, dye, (tx, dy) => {
+    var _tx;
 
-    return _t = t, d(_t);
+    return _tx = tx, dy(_tx);
   }) : text;
-
-  const brk = bracket.Br(bracket$1) || (x => x);
-
+  const brk = bracket.Br(bracket$1) || oneself.oneself;
   const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()));
   return liner.liner(lines, this);
 };

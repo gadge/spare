@@ -6,13 +6,13 @@ import { Duozipper, Trizipper }  from '@vect/matrix-zipper'
 export const padMatrix = (text, { raw, dye, ansi, fill }) => {
   raw = raw || text
   const len = ansi ? lange : x => x.length
-  const padder = Pad({ ansi, fill })
-  const pads = maxByColumns(text, len)
+  const pad = Pad({ ansi, fill })
+  const wds = maxByColumns(text, len)
   let zipper
   return dye
-    ? (zipper = Trizipper((tx, v, d, i, j) => padder(tx, pads[j], v) |> d),
+    ? (zipper = Trizipper((tx, va, dy, i, j) => pad(tx, wds[j], va) |> dy),
       zipper(text, raw, dye))
-    : (zipper = Duozipper((tx, v, i, j) => padder(tx, pads[j], v)),
+    : (zipper = Duozipper((tx, va, i, j) => pad(tx, wds[j], va)),
       zipper(text, raw))
 }
 

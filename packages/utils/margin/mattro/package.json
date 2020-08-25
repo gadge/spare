@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@spare/util": "^0.8.11",
+    "@ject/oneself": "^0.0.6",
     "@vect/matrix-margin": "^0.2.9",
     "@vect/matrix-size": "^0.2.9",
     "@vect/vector-margin": "^0.2.9"

@@ -10,7 +10,7 @@ var liner = require('@spare/liner');
 var vettro = require('@spare/vettro');
 
 const mutazip = (va, vb, fn, l) => {
-  l = l || va && va.length;
+  l = l || (va === null || va === void 0 ? void 0 : va.length);
 
   for (--l; l >= 0; l--) va[l] = fn(va[l], vb[l], l);
 

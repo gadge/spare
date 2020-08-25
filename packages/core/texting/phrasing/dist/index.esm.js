@@ -4,13 +4,7 @@ import { mutate } from '@vect/vector-mapper';
 import { cosmetics } from '@spare/deco-vector';
 import { SP } from '@spare/enum-chars';
 
-/**
- *
- * @param word
- * @return {string}
- * @deprecated use capitalize instead
- */
-const wordToCap = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
+const capitalize = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
 /**
  * Camel/pascal case phrase -> Lowercase dashed phrase, snake or kebab.
@@ -46,7 +40,7 @@ const snakeToCamel = (dashed, de = '') => {
       ph = '';
   if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = wd.toLowerCase();
 
-  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd);
+  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + capitalize(wd);
 
   return ph;
 };
@@ -62,14 +56,20 @@ const snakeToPascal = (dashed, de = '') => {
   let ms,
       wd,
       ph = '';
-  if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = wordToCap(wd);
+  if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = capitalize(wd);
 
-  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd);
+  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + capitalize(wd);
 
   return ph;
 };
 
-const capitalize = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
+/**
+ *
+ * @param word
+ * @return {string}
+ * @deprecated use capitalize instead
+ */
+const wordToCap = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
 
 const wordsToCamel = words => {
   let i = 0,

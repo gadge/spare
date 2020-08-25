@@ -1,5 +1,6 @@
 import { totx } from '@spare/util';
 import { marginCopy, marginMutate, marginMapper } from '@vect/vector-margin';
+import { oneself } from '@ject/oneself';
 
 const marginSizing = (ar, head, tail) => {
   let l,
@@ -89,7 +90,7 @@ const vettro = (arr, {
 } = {}) => {
   let vn = validate ? Vectogin.build(arr, head, tail) : new Vectogin(arr, head, tail, dash);
   return {
-    raw: vn.map(x => x).toVector(hr),
+    raw: vn.map(oneself).toVector(hr),
     text: vn.stringify(read).toVector(hr)
   };
 };

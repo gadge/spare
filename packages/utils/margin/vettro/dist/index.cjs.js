@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var util = require('@spare/util');
 var vectorMargin = require('@vect/vector-margin');
+var oneself = require('@ject/oneself');
 
 const marginSizing = (ar, head, tail) => {
   let l,
@@ -93,7 +94,7 @@ const vettro = (arr, {
 } = {}) => {
   let vn = validate ? Vectogin.build(arr, head, tail) : new Vectogin(arr, head, tail, dash);
   return {
-    raw: vn.map(x => x).toVector(hr),
+    raw: vn.map(oneself.oneself).toVector(hr),
     text: vn.stringify(read).toVector(hr)
   };
 };

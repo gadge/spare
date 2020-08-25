@@ -13,18 +13,20 @@ const padVector = (text, {
   ansi,
   fill
 }) => {
-  raw = raw || text;
-  const padder = padString.Pad({
+  var _raw;
+
+  raw = (_raw = raw) !== null && _raw !== void 0 ? _raw : text;
+  const pad = padString.Pad({
     ansi,
     fill
   });
-  const pad = vectorIndicator.maxBy(text, lange.Lange(ansi));
+  const wd = vectorIndicator.maxBy(text, lange.Lange(ansi));
   let zipper;
-  return dye ? (zipper = vectorZipper.Trizipper((tx, v, d) => {
-    var _padder;
+  return dye ? (zipper = vectorZipper.Trizipper((tx, va, dy) => {
+    var _pad;
 
-    return _padder = padder(tx, pad, v), d(_padder);
-  }), zipper(text, raw, dye)) : (zipper = vectorZipper.Duozipper((tx, v) => padder(tx, pad, v)), zipper(text, raw));
+    return _pad = pad(tx, wd, va), dy(_pad);
+  }), zipper(text, raw, dye)) : (zipper = vectorZipper.Duozipper((tx, va) => pad(tx, wd, va)), zipper(text, raw));
 };
 
 exports.padVector = padVector;

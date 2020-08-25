@@ -1,5 +1,5 @@
 import { CAPWORD, INILOW, WORD } from '@spare/regex-phrasing'
-import { wordToCap }             from './wordToCap'
+import { capitalize }            from './capitalize'
 
 /**
  * Camel/pascal case phrase -> Lowercase dashed phrase, snake or kebab.
@@ -10,7 +10,7 @@ import { wordToCap }             from './wordToCap'
  * @param {string} de
  * @returns {string} lowercase dashed phrase
  */
-export function camelToSnake (phrase, de = '-') {
+export function camelToSnake(phrase, de = '-') {
   let ms, wd, ph = ''
   if (((ms = INILOW.exec(phrase)) || (ms = CAPWORD.exec(phrase))) && ([wd] = ms)) ph = wd.toLowerCase()
   while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ph += de + wd.toLowerCase()
@@ -27,7 +27,7 @@ export function camelToSnake (phrase, de = '-') {
 export const snakeToCamel = (dashed, de = '') => {
   let ms, wd, ph = ''
   if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = wd.toLowerCase()
-  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd)
+  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + capitalize(wd)
   return ph
 }
 
@@ -40,7 +40,7 @@ export const snakeToCamel = (dashed, de = '') => {
  */
 export const snakeToPascal = (dashed, de = '') => {
   let ms, wd, ph = ''
-  if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = wordToCap(wd)
-  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + wordToCap(wd)
+  if ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph = capitalize(wd)
+  while ((ms = WORD.exec(dashed)) && ([wd] = ms)) ph += de + capitalize(wd)
   return ph
 }

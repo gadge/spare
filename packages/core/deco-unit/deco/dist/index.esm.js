@@ -1,5 +1,5 @@
 import { AZURE, MOSS, ATLAS, SUBTLE } from '@palett/presets';
-import { RTSP, COSP, CO as CO$1, LF } from '@spare/enum-chars';
+import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
 import { nullish } from '@typen/nullish';
 import { MUTABLE } from '@analys/enum-mutabilities';
 import { fluoEntries } from '@palett/fluo-entries';
@@ -32,10 +32,6 @@ const mutateKeyPad = entries => {
   });
   return pad;
 };
-
-const {
-  CO
-} = require('@spare/enum-chars');
 
 const lpad = LPad({
   ansi: true
@@ -91,7 +87,7 @@ const renderVector = function (vector, lv) {
         width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   const rows = lv < vert || vector.some(x => lange(x) > unit) || !width ? vector : wrapVector(vector, width);
-  return rows.length > 1 ? joinLines(rows, CO$1, lv) : vector.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO, lv) : vector.join(COSP);
 };
 const wrapVector = function (vector, width) {
   const lines = [];

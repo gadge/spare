@@ -58,7 +58,7 @@ const presetConfig = p => {
   var _p$loose;
 
   p.loose = (_p$loose = p.loose) !== null && _p$loose !== void 0 ? _p$loose : true;
-  p.quote = parseQuote(p.quote);
+  p.quote = p.quote ? parseQuote(p.quote) : quote.tenseQuote;
   return p;
 };
 /**

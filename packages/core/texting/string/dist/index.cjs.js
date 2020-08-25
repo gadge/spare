@@ -2,12 +2,14 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var lange = require('@spare/lange');
-var stripAnsi = _interopDefault(require('strip-ansi'));
+var stripAnsi = require('strip-ansi');
 var util = require('@spare/util');
 var enumChars = require('@spare/enum-chars');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var stripAnsi__default = /*#__PURE__*/_interopDefaultLegacy(stripAnsi);
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -87,7 +89,7 @@ const toHalfAngle = tx => {
  */
 
 const toFullAngleWoAnsi = function (tx) {
-  if (lange.hasAnsi(tx)) tx = stripAnsi(tx);
+  if (lange.hasAnsi(tx)) tx = stripAnsi__default['default'](tx);
   return toFullAngle(tx);
 };
 

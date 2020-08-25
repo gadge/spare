@@ -1,3 +1,4 @@
+import { oneself }     from '@ject/oneself'
 import { COLORANT }    from '@palett/enum-colorant-modes'
 import { fluoEntries } from '@palett/fluo-entries'
 import { Br }          from '@spare/bracket'
@@ -10,16 +11,13 @@ import { HR_ENTRY }    from '../utils/HR_ENTRY'
 export const cosmetics = function (entries) {
   if (!entries) return String(entries)
   if (!entries?.length) return liner([], this)
-  const { keyRead, read, head, tail, ansi, dash, delim, bracket, presets } = this
+  const { keyRead, read, head, tail, ansi, dash, delim, bracket, presets, effects } = this
   const { raw, text } = enttro(entries, { head, tail, keyRead, read, hr: HR_ENTRY })
-  let dye = undefined
-  if (presets) { dye = fluoEntries.call(COLORANT, raw, presets) }
+  const dye = presets ? fluoEntries.call(COLORANT, raw, presets, effects) : null
   entries = /\n/.test(delim)
     ? padEntries(text, { raw, dye, ansi: presets || ansi })
-    : presets
-      ? zipper(text, dye, (t, d) => t |> d)
-      : text
-  const brk = Br(bracket) || (x => x)
+    : presets ? zipper(text, dye, (tx, dy) => tx |> dy) : text
+  const brk = Br(bracket) || oneself
   const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()))
   return liner(lines, this)
 }

@@ -1,3 +1,4 @@
+import { oneself }  from '@ject/oneself'
 import { Vectogin } from './Vectogin'
 
 /**
@@ -19,11 +20,9 @@ export const vettro = (arr, {
   hr = '...',
   validate = true,
 } = {}) => {
-  let vn = validate
-    ? Vectogin.build(arr, head, tail)
-    : new Vectogin(arr, head, tail, dash)
+  let vn = validate ? Vectogin.build(arr, head, tail) : new Vectogin(arr, head, tail, dash)
   return {
-    raw: vn.map(x => x).toVector(hr),
+    raw: vn.map(oneself).toVector(hr),
     text: vn.stringify(read).toVector(hr)
   }
 }

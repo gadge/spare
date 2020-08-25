@@ -1,4 +1,5 @@
 import { presetEntries } from '@spare/preset-deco';
+import { oneself } from '@ject/oneself';
 import { COLORANT } from '@palett/enum-colorant-modes';
 import { fluoEntries } from '@palett/fluo-entries';
 import { Br } from '@spare/bracket';
@@ -23,7 +24,8 @@ const cosmetics = function (entries) {
     dash,
     delim,
     bracket,
-    presets
+    presets,
+    effects
   } = this;
   const {
     raw,
@@ -35,24 +37,17 @@ const cosmetics = function (entries) {
     read,
     hr: HR_ENTRY
   });
-  let dye = undefined;
-
-  if (presets) {
-    dye = fluoEntries.call(COLORANT, raw, presets);
-  }
-
+  const dye = presets ? fluoEntries.call(COLORANT, raw, presets, effects) : null;
   entries = /\n/.test(delim) ? padEntries(text, {
     raw,
     dye,
     ansi: presets || ansi
-  }) : presets ? zipper(text, dye, (t, d) => {
-    var _t;
+  }) : presets ? zipper(text, dye, (tx, dy) => {
+    var _tx;
 
-    return _t = t, d(_t);
+    return _tx = tx, dy(_tx);
   }) : text;
-
-  const brk = Br(bracket) || (x => x);
-
+  const brk = Br(bracket) || oneself;
   const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()));
   return liner(lines, this);
 };

@@ -5,7 +5,7 @@ import { ripper }  from '../src/ripper'
 
 export const candidates = {
   dot: 'foo.bar.zen.NASA.Lite.DB',
-  snake: 'foo_bar_zen_NASA_Lite_DB',
+  snake: '__foo_bar_zen_NASA_Lite_DB',
   mixed: 'FOOBarROCKAndROLL_NASALiteDB',
   slashed: 'foo/bar/zen/NASA/Lite/DB',
   file: 'foo.barZen10th-2022.pdf',

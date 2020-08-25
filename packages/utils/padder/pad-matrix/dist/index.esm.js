@@ -11,17 +11,17 @@ const padMatrix = (text, {
 }) => {
   raw = raw || text;
   const len = ansi ? lange : x => x.length;
-  const padder = Pad({
+  const pad = Pad({
     ansi,
     fill
   });
-  const pads = maxBy(text, len);
+  const wds = maxBy(text, len);
   let zipper;
-  return dye ? (zipper = Trizipper((tx, v, d, i, j) => {
-    var _padder;
+  return dye ? (zipper = Trizipper((tx, va, dy, i, j) => {
+    var _pad;
 
-    return _padder = padder(tx, pads[j], v), d(_padder);
-  }), zipper(text, raw, dye)) : (zipper = Duozipper((tx, v, i, j) => padder(tx, pads[j], v)), zipper(text, raw));
+    return _pad = pad(tx, wds[j], va), dy(_pad);
+  }), zipper(text, raw, dye)) : (zipper = Duozipper((tx, va, i, j) => pad(tx, wds[j], va)), zipper(text, raw));
 };
 
 export { padMatrix };
