@@ -1,5 +1,5 @@
 import { logger } from '@spare/logger'
-import { WORD }   from '../../resources/regexes'
+import { WORD }   from '../../output/regexes'
 
 const dashedToUpperCamel = (dashed, de = '') =>
   dashed

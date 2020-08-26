@@ -1,10 +1,11 @@
-import { tenseQuote, Qt, quote } from '@spare/quote';
+import { tenseQuote } from '@spare/quote';
 import { isNumeric } from '@typen/num-strict';
-import { NUM, BOO, STR, FUN, OBJ } from '@typen/enum-data-types';
+import { cite } from '@spare/cite';
 import { bracket, brace } from '@spare/bracket';
 import { decofun } from '@spare/deco-func';
 import { pairEnt } from '@spare/deco-util';
 import { COSP } from '@spare/enum-chars';
+import { NUM, BOO, STR, FUN, OBJ } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
 import { typ } from '@typen/typ';
 import { formatDate } from '@valjoux/format-date';
@@ -24,13 +25,13 @@ function decoPale(node) {
 
   const {
     loose,
-    quote
+    cite
   } = this;
   if (node === void 0 || node === null) return node;
   const t = typeof node;
   if (t === NUM || t === BOO) return node;
-  if (t === STR) return loose && isNumeric(node) ? node : (_node = node, quote(_node));
-  if (t === FUN) return _decofun$call = decofun.call(DEFN, node), quote(_decofun$call);
+  if (t === STR) return loose && isNumeric(node) ? node : (_node = node, cite(_node));
+  if (t === FUN) return _decofun$call = decofun.call(DEFN, node), cite(_decofun$call);
 
   if (t === OBJ) {
     var _node$map$join, _mutate$map$join, _ref;
@@ -38,31 +39,25 @@ function decoPale(node) {
     const pt = typ(node);
     if (pt === ARRAY) return _node$map$join = node.map(decoPale.bind(this)).join(COSP), bracket(_node$map$join);
     if (pt === OBJECT) return _mutate$map$join = mutate(Object.entries(node), decoKey, decoPale.bind(this)).map(pairEnt).join(COSP), brace(_mutate$map$join);
-    if (pt === DATE) return _ref = `${formatDate(node)}'${formatTime(node)}`, quote(_ref);
+    if (pt === DATE) return _ref = `${formatDate(node)}'${formatTime(node)}`, cite(_ref);
   }
 
-  return _String = String(node), quote(_String);
+  return _String = String(node), cite(_String);
 }
 
-const parseQuote = q => {
-  var _Qt;
-
-  return typeof q === FUN ? q : (_Qt = Qt(q)) !== null && _Qt !== void 0 ? _Qt : quote;
-};
-
 const presetConfig = p => {
-  var _p$loose;
+  var _p$loose, _ref, _p$cite;
 
   p.loose = (_p$loose = p.loose) !== null && _p$loose !== void 0 ? _p$loose : true;
-  p.quote = p.quote ? parseQuote(p.quote) : tenseQuote;
+  p.cite = (_ref = (_p$cite = p.cite) !== null && _p$cite !== void 0 ? _p$cite : p.quote) !== null && _ref !== void 0 ? _ref : cite;
   return p;
 };
 /**
  *
  * @param x
  * @param {Object} p
- * @param {boolean} [p.loose]
- * @param {Function|string|number} [p.quote]
+ * @param {boolean} [p.loose] numeral string to be treated as number, so quote is not applicable
+ * @param {Function} [p.quote] function to deal with string
  * @return {string|*}
  */
 

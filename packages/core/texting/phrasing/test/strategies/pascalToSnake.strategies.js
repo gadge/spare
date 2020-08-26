@@ -1,7 +1,7 @@
 import { makeEmbedded }      from '@foba/util'
 import { decoCrostab, says } from '@spare/logger'
 import { strategies }        from '@valjoux/strategies'
-import { CAMEL }             from '../../resources/regexes'
+import { CAMEL }             from '../../output/regexes'
 import { camelToSnake }      from '../../src/phrasing'
 
 export const CAMEL_INI = /^[A-Z]+|[\d]+/g

@@ -17,6 +17,12 @@ const v4 = word => (
   (word.charCodeAt(3) & 0x7f)
 )
 
+/**
+ *
+ * @param word
+ * @return {number|*}
+ * @deprecated use stringValue in @spare/string-value instead
+ */
 export const stringValue = word => {
   const l = word?.length
   if (!l) return NaN

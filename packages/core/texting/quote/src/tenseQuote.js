@@ -1,9 +1,9 @@
 import { quote } from './qt'
 
-const DUALQT = /^'(.*)'$/
-const ANYQT = /'/g
-const CTQT = '\\\''
+const VERGE_QUOTE = /^'(.*)'$/
+const QUOTE = /'/g
+const BACKSLASH_QUOTE = '\\\''
 
-export const tenseQuote = x => DUALQT.test(x)
-  ? x.replace(DUALQT, (_, x) => quote(x.replace(ANYQT, CTQT)))
-  : quote(x.replace(ANYQT, CTQT))
+export const tenseQuote = x => VERGE_QUOTE.test(x)
+  ? x.replace(VERGE_QUOTE, (_, x) => quote(x.replace(QUOTE, BACKSLASH_QUOTE)))
+  : quote(x.replace(QUOTE, BACKSLASH_QUOTE))

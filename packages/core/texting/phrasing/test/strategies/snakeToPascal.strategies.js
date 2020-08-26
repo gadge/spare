@@ -1,7 +1,7 @@
 import { makeEmbedded }      from '@foba/util'
 import { decoCrostab, says } from '@spare/logger'
 import { strategies }        from '@valjoux/strategies'
-import { CAPREST, WORD }     from '../../resources/regexes'
+import { CAPREST, WORD }     from '../../output/regexes'
 import { wordToCap }         from '../../src/wordToCap'
 import { candidates }        from '../candidates'
 import { mutativePascal }    from './functions/dashedToCamel'

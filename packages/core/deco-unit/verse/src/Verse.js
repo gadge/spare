@@ -35,7 +35,7 @@ export class Verse {
    *
    * @return {string}
    */
-  static vector (vector, p = {}) {
+  static vector(vector, p = {}) {
     return cosmeticsVector.call(presetVector(p), vector)
   }
 
@@ -55,7 +55,7 @@ export class Verse {
    *
    * @return {string}
    */
-  static entries (entries, p = {}) {
+  static entries(entries, p = {}) {
     const [preset, bracket] = (p?.objectify)
       ? [presetEntriesAsObject(p), BRACE]
       : [presetEntries(p), BRACKET]
@@ -79,7 +79,7 @@ export class Verse {
    *
    * @returns {string}
    */
-  static object (o, p = {}) { return cosmeticsObject.call(presetObject(p), o) }
+  static object(o, p = {}) { return cosmeticsObject.call(presetObject(p), o) }
 
   /**
    * @param {*[][]} matrix
@@ -94,7 +94,7 @@ export class Verse {
    *
    * @returns {string}
    */
-  static matrix (matrix, p = {}) {
+  static matrix(matrix, p = {}) {
     p = presetMatrix(p)
     const { delim, level } = p
     const lines = cosmeticsMatrix.call(p, matrix)
@@ -114,7 +114,7 @@ export class Verse {
    *
    * @returns {string}
    */
-  static samples (samples, p = {}) {
+  static samples(samples, p = {}) {
     p = presetSamples(p)
     const { delim, level } = p
     const lines = cosmeticsSamples.call(p, samples)
@@ -136,7 +136,7 @@ export class Verse {
    *
    * @returns {string}
    */
-  static crostab (crostab, p = {}) {
+  static crostab(crostab, p = {}) {
     p = presetCrostab(p)
     const { side, head, rows } = crostab |> matchSliceCrostab
     const { delim, level, keyRead } = p
@@ -164,7 +164,7 @@ export class Verse {
    *
    * @returns {string}
    */
-  static table (table, p = {}) {
+  static table(table, p = {}) {
     p = presetTable(p)
     const { head, rows } = table |> matchSliceTable
     const { delim, level, keyRead } = p

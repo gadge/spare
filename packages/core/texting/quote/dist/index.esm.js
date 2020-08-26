@@ -22,9 +22,9 @@ const Qt = mode => {
 //   return x => x |> read |> SelectQt(mode)
 // }
 
-const DUALQT = /^'(.*)'$/;
-const ANYQT = /'/g;
-const CTQT = '\\\'';
-const tenseQuote = x => DUALQT.test(x) ? x.replace(DUALQT, (_, x) => quote(x.replace(ANYQT, CTQT))) : quote(x.replace(ANYQT, CTQT));
+const VERGE_QUOTE = /^'(.*)'$/;
+const QUOTE = /'/g;
+const BACKSLASH_QUOTE = '\\\'';
+const tenseQuote = x => VERGE_QUOTE.test(x) ? x.replace(VERGE_QUOTE, (_, x) => quote(x.replace(QUOTE, BACKSLASH_QUOTE))) : quote(x.replace(QUOTE, BACKSLASH_QUOTE));
 
 export { Qt, ditto, qt, quote, tenseQuote };

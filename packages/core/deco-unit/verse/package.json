@@ -25,7 +25,8 @@
     "@spare/deco-vector": "^0.8.12",
     "@spare/enum-brackets": "^0.8.12",
     "@spare/liner": "^0.8.12",
-    "@spare/preset-verse": "^0.8.12"
+    "@spare/preset-verse": "^0.8.12",
+    "@spare/quote": "^0.8.12"
   },
   "repository": {
     "type": "git",
