@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-util",
-  "version": "0.8.14",
+  "version": "0.8.15",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.8.14"
+    "@spare/enum-chars": "^0.8.15"
   },
   "repository": {
     "type": "git",
