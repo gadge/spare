@@ -1,1 +1,1 @@
-export { cite } from 'src/cite'
+export { cite } from './src/cite'
