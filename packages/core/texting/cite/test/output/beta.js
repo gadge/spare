@@ -1,1 +1,1 @@
-export const text = '"------\'foo\'------\n++++++\'bar\'++++++"'
+export const text = '"------\'foo\'------\r++++++\'bar\'++++++"'

@@ -7,7 +7,8 @@ import { cite }               from '../src/cite'
 
 const candidates = {
   alpha: '\'------\'foo\'------\n++++++\'bar\'++++++\'',
-  beta: '\"------\'foo\'------\n++++++\'bar\'++++++\"'
+  beta: '\"------\'foo\'------\r++++++\'bar\'++++++\"',
+  gamma: '\"------\'foo\'------\r\n++++++\'bar\'++++++\"'
 }
 const DEST = 'packages/core/texting/cite/test/output'
 const VARNAME = 'text'
