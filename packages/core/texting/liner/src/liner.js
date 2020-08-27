@@ -13,8 +13,8 @@ import { CO, LF, TB } from '@spare/enum-chars'
 export const joinLines = (lines, delim = '', level, hover = true) => {
   const IND = level > 0 ? TB.repeat(level) : ''
   return hover
-    ? (`${ LF + IND + TB }${ lines.join(delim + LF + IND + TB) }${ delim + LF + IND }`)
-    : (`${ IND + TB }${ lines.join(delim + LF + IND + TB) }${ delim }`)
+    ? (`${ LF + IND + TB }${ lines?.join(delim + LF + IND + TB) }${ delim + LF + IND }`)
+    : (`${ IND + TB }${ lines?.join(delim + LF + IND + TB) }${ delim }`)
 }
 
 const LINEFEED = /\n/

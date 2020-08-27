@@ -8,8 +8,7 @@ import { padEntries }  from '@spare/pad-entries'
 import { zipper }      from '@vect/entries-zipper'
 import { HR_ENTRY }    from '../utils/HR_ENTRY'
 
-export const cosmetics = function (entries) {
-  if (!entries) return String(entries)
+export const cosmetics = function (entries = []) {
   if (!entries?.length) return liner([], this)
   const { keyRead, read, head, tail, ansi, dash, delim, bracket, presets, effects } = this
   const { raw, text } = enttro(entries, { head, tail, keyRead, read, hr: HR_ENTRY })

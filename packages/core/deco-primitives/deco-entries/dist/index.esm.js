@@ -10,10 +10,9 @@ import { zipper } from '@vect/entries-zipper';
 
 const HR_ENTRY = ['..', '..'];
 
-const cosmetics = function (entries) {
+const cosmetics = function (entries = []) {
   var _entries;
 
-  if (!entries) return String(entries);
   if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner([], this);
   const {
     keyRead,

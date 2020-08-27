@@ -6,8 +6,7 @@ var presetDeco = require('@spare/preset-deco');
 var decoEntries = require('@spare/deco-entries');
 var liner = require('@spare/liner');
 
-const cosmetics = function (o) {
-  if (!o) return String(o);
+const cosmetics = function (o = {}) {
   const entriesOptions = Object.assign({}, this, {
     discrete: true,
     bracket: undefined

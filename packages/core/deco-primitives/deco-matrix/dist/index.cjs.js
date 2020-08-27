@@ -12,8 +12,7 @@ var mattro = require('@spare/mattro');
 var padMatrix = require('@spare/pad-matrix');
 var matrix = require('@vect/matrix');
 
-const cosmetics = function (matrix$1) {
-  if (!matrix$1) return String(matrix$1);
+const cosmetics = function (matrix$1 = []) {
   const [height, width] = matrix.size(matrix$1);
   if (!height || !width) return liner.liner([], this);
   const config = this;

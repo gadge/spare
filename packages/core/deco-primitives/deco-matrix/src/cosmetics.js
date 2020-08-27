@@ -7,8 +7,7 @@ import { mattro }               from '@spare/mattro'
 import { padMatrix }            from '@spare/pad-matrix'
 import { size }                 from '@vect/matrix'
 
-export const cosmetics = function (matrix) {
-  if (!matrix) return String(matrix)
+export const cosmetics = function (matrix = []) {
   const [height, width] = size(matrix)
   if (!height || !width) return liner([], this)
   const config = this

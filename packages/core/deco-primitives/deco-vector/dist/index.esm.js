@@ -13,10 +13,9 @@ const mutazip = (va, vb, fn, l) => {
   return va;
 };
 
-function cosmetics(vec) {
+function cosmetics(vec = []) {
   const config = this;
   if (config === null || config === void 0 ? void 0 : config.indexed) return cosmetics$1.call(config, Object.entries(vec));
-  if (!(vec === null || vec === void 0 ? void 0 : vec.length)) return String(vec);
   let {
     head,
     tail,

@@ -13,7 +13,7 @@ import { TB, LF, CO } from '@spare/enum-chars';
 
 const joinLines = (lines, delim = '', level, hover = true) => {
   const IND = level > 0 ? TB.repeat(level) : '';
-  return hover ? `${LF + IND + TB}${lines.join(delim + LF + IND + TB)}${delim + LF + IND}` : `${IND + TB}${lines.join(delim + LF + IND + TB)}${delim}`;
+  return hover ? `${LF + IND + TB}${lines === null || lines === void 0 ? void 0 : lines.join(delim + LF + IND + TB)}${delim + LF + IND}` : `${IND + TB}${lines === null || lines === void 0 ? void 0 : lines.join(delim + LF + IND + TB)}${delim}`;
 };
 const LINEFEED = /\n/;
 const COMMA = /,/;

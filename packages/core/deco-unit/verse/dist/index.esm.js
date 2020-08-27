@@ -192,7 +192,8 @@ class Verse {
     const {
       head,
       rows
-    } = (_table = table, matchSlice$1(_table));
+    } = (_table = table, matchSlice$1(_table)); // if (!head?.length) return brace()
+
     const {
       delim,
       level,

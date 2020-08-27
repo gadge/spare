@@ -167,6 +167,7 @@ export class Verse {
   static table(table, p = {}) {
     p = presetTable(p)
     const { head, rows } = table |> matchSliceTable
+    // if (!head?.length) return brace()
     const { delim, level, keyRead } = p
     const [h, r] = keyRead ? [HEAD, ROWS].map(keyRead) : [HEAD, ROWS]
     const lines = [
