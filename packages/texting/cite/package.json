@@ -1,6 +1,6 @@
 {
   "name": "@spare/cite",
-  "version": "0.8.16",
+  "version": "0.9.0-alpha.0",
   "description": "Process string for file write",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/quote": "^0.8.16",
-    "@spare/translator": "^0.8.16"
+    "@spare/quote": "^0.9.0-alpha.0",
+    "@spare/translator": "^0.9.0-alpha.0"
   },
   "repository": {
     "type": "git",
