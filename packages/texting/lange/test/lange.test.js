@@ -1,5 +1,6 @@
-import { hasAnsi, lange } from '../index'
-import { ASTRAL }         from '../resources/globalRegexes'
+import { hasAnsi } from '@spare/charset'
+import { lange }   from '../index'
+import { ASTRAL }  from '../resources/globalRegexes'
 
 const list = [
   'tolstoy',
@@ -20,5 +21,5 @@ const arr = [
 ]
 
 for (let tx of arr) {
-  `[${tx}] [length] (${tx.length}) [lange] (${lange(tx)}) [hasAnsi] (${hasAnsi(tx)}) [match] (${ASTRAL.exec(tx)})` |> console.log
+  `[${ tx }] [length] (${ tx.length }) [lange] (${ lange(tx) }) [hasAnsi] (${ hasAnsi(tx) }) [match] (${ ASTRAL.exec(tx) })` |> console.log
 }

@@ -1,4 +1,4 @@
-import { hasAnsi } from '@spare/lange'
+import { hasAnsi } from '@spare/charset'
 import { lange }   from '@spare/lange'
 
 export const ansiPadLength = (tx, pd) => hasAnsi(tx) ? tx.length + pd - lange(tx) : pd

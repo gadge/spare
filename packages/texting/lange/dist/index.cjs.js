@@ -2,12 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const ansi = ['[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)', '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'];
-const astral = ['[\uD800-\uDBFF][\uDC00-\uDFFF]'];
-const han = ['[\u4e00-\u9fa5]', '[\uff00-\uffff]'];
-
-const ANSI = new RegExp(ansi.join('|'), 'g');
-const ASTRAL = new RegExp(astral.join('|'), 'g');
+var regexCharset = require('@spare/regex-charset');
 
 /**
  *
@@ -15,17 +10,20 @@ const ASTRAL = new RegExp(astral.join('|'), 'g');
  * @returns {number}
  */
 
-const lange = tx => tx.replace(ANSI, '').replace(ASTRAL, '_').length;
+const lange = tx => tx.replace(regexCharset.ANSI_G, '').replace(regexCharset.ASTRAL_G, '_').length;
 const Lange = ansi => ansi ? lange : x => x.length;
 
-const ANSI$1 = new RegExp(ansi.join('|'));
-const HAN = new RegExp(han.join('|'));
+const clearAnsi = tx => tx.replace(regexCharset.ANSI_G, '');
 
-const hasAnsi = tx => ANSI$1.test(tx);
+const clearAstral = tx => tx.replace(regexCharset.ASTRAL_G, '_');
 
-const hasHan = tx => HAN.test(tx);
+const hasAnsi = tx => regexCharset.ANSI.test(tx);
+
+const hasAstral = tx => regexCharset.ASTRAL.test(tx);
 
 exports.Lange = Lange;
+exports.clearAnsi = clearAnsi;
+exports.clearAstral = clearAstral;
 exports.hasAnsi = hasAnsi;
-exports.hasHan = hasHan;
+exports.hasAstral = hasAstral;
 exports.lange = lange;

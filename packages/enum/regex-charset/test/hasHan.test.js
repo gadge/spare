@@ -10,5 +10,5 @@ const candidates = [
 ]
 
 for (let w of candidates) {
-  Xr().hanHan(HAN.test(w)) |> says[w]
+  Xr().hasHan(HAN.test(w)) |> says[w]
 }

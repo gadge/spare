@@ -1,14 +1,15 @@
-import { hasAnsi }    from '@spare/lange'
-import stripAnsi      from 'strip-ansi'
-import { halfToFull } from './halfToFull'
+import { clearAnsi, hasAnsi } from '@spare/charset'
+import { halfToFull }         from './halfToFull'
 
 export const fullWidth = (text, { ansi = true, lean = true } = {}) => fw.call({ ansi, lean }, text)
 
 export const FullWidth = ({ ansi = true, lean = true } = {}) => fw.bind({ ansi, lean })
 
+const LEAN_REG = /(\W)\s+/g
+
 export const fw = function (tx) {
   const { ansi, lean } = this
-  if (ansi && hasAnsi(tx)) tx = stripAnsi(tx)
-  if (lean) tx = tx.replace(/(\W)\s+/g, (_, x) => x)
+  if (ansi && hasAnsi(tx)) tx = clearAnsi(tx)
+  if (lean) tx = tx.replace(LEAN_REG, (_, x) => x)
   return halfToFull(tx)
 }

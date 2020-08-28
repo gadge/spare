@@ -1,6 +1,5 @@
-import { hasAnsi }     from '@spare/lange'
-import stripAnsi       from 'strip-ansi'
-import { toFullAngle } from './fullAngle'
+import { clearAnsi, hasAnsi } from '@spare/charset'
+import { halfToFull }         from '@spare/fullwidth'
 
 /**
  *
@@ -9,6 +8,6 @@ import { toFullAngle } from './fullAngle'
  * @deprecated
  */
 export const toFullAngleWoAnsi = function (tx) {
-  if (hasAnsi(tx)) tx = stripAnsi(tx)
-  return toFullAngle(tx)
+  if (hasAnsi(tx)) tx = clearAnsi(tx)
+  return halfToFull(tx)
 }

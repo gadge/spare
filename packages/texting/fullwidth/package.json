@@ -18,7 +18,7 @@
     "@spare/enum-chars": "^0.9.0-alpha.0",
     "@spare/enum-full-angle-chars": "^0.9.0-alpha.0",
     "@spare/lange": "^0.9.0-alpha.0",
-    "strip-ansi": "^6.0.0"
+    "@spare/charset": "^0.9.0-alpha.0"
   },
   "repository": {
     "type": "git",

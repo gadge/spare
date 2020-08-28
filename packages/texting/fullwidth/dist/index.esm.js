@@ -1,7 +1,6 @@
 import { SP } from '@spare/enum-chars';
 import { SP as SP$1 } from '@spare/enum-full-angle-chars';
-import { hasAnsi } from '@spare/lange';
-import stripAnsi from 'strip-ansi';
+import { hasAnsi, clearAnsi } from '@spare/charset';
 
 const FWREG = /[\uff01-\uff5e|\u3000]+/g;
 const FWCHREG = /[\u4e00-\u9fa5|\uff01-\uff5e|\u3000]+/g;
@@ -102,13 +101,14 @@ const FullWidth = ({
   ansi,
   lean
 });
+const LEAN_REG = /(\W)\s+/g;
 const fw = function (tx) {
   const {
     ansi,
     lean
   } = this;
-  if (ansi && hasAnsi(tx)) tx = stripAnsi(tx);
-  if (lean) tx = tx.replace(/(\W)\s+/g, (_, x) => x);
+  if (ansi && hasAnsi(tx)) tx = clearAnsi(tx);
+  if (lean) tx = tx.replace(LEAN_REG, (_, x) => x);
   return halfToFull(tx);
 };
 

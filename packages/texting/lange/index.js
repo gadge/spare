@@ -1,5 +1,3 @@
 export { Lange, lange } from './src/lange'
 
-export { hasAnsi } from './src/hasAnsi'
-
-export { hasHan } from './src/hasHan'
+export { hasAnsi, hasAstral, clearAnsi, clearAstral } from '@spare/charset'

@@ -1,8 +1,8 @@
 import { MUTABLE }    from '@analys/enum-mutabilities'
 import { fluoVector } from '@palett/fluo-vector'
+import { hasAnsi }    from '@spare/charset'
 import { LF, TB }     from '@spare/enum-chars'
 import { fold }       from '@spare/fold'
-import { hasAnsi }    from '@spare/lange'
 
 /**
  * @prop width - foldToVector

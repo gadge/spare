@@ -9,7 +9,9 @@ export const ansi = RegExp(`[][[\\]()#;?]*(?:${ PART_ALPHA.source }|${ PART_B
 
 export const astral = /[\uD800-\uDBFF][\uDC00-\uDFFF]/
 
-export const han = /[\u4e00-\u9fa5|uff00-\uffff]/
+export const han = /[\u4e00-\u9fa5]|[\uff00-\uffff]/
+
+
 
 
 

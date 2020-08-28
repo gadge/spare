@@ -9,7 +9,7 @@ export const ANSI = RegExp(`[][[\\]()#;?]*(?:${ ANSI_ALPHA.source }|${ ANSI_B
 
 export const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/
 
-export const HAN = /[\u4e00-\u9fff]/
+export const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/
 
 // HAN ideographs
 //

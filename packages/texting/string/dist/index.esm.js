@@ -1,7 +1,19 @@
-import { hasAnsi } from '@spare/lange';
-import stripAnsi from 'strip-ansi';
+import { hasAnsi, clearAnsi } from '@spare/charset';
+import { halfToFull } from '@spare/fullwidth';
 import { isTab, deNaTab, endsBracs, afterNaTab } from '@spare/util';
 import { RN, TB } from '@spare/enum-chars';
+
+/**
+ *
+ * @param tx
+ * @return {string}
+ * @deprecated
+ */
+
+const toFullAngleWoAnsi = function (tx) {
+  if (hasAnsi(tx)) tx = clearAnsi(tx);
+  return halfToFull(tx);
+};
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -71,18 +83,6 @@ const toHalfAngle = tx => {
   }
 
   return t;
-};
-
-/**
- *
- * @param tx
- * @return {string}
- * @deprecated
- */
-
-const toFullAngleWoAnsi = function (tx) {
-  if (hasAnsi(tx)) tx = stripAnsi(tx);
-  return toFullAngle(tx);
 };
 
 const indexNonTab = tx => {

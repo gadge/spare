@@ -2,11 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var charset = require('@spare/charset');
 var lange = require('@spare/lange');
 var numStrict = require('@typen/num-strict');
 var fullwidth = require('@spare/fullwidth');
 
-const ansiPadLength = (tx, pd) => lange.hasAnsi(tx) ? tx.length + pd - lange.lange(tx) : pd;
+const ansiPadLength = (tx, pd) => charset.hasAnsi(tx) ? tx.length + pd - lange.lange(tx) : pd;
 const lpad = String.prototype.padStart;
 const rpad = String.prototype.padEnd;
 

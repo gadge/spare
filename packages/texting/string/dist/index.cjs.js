@@ -2,14 +2,22 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var lange = require('@spare/lange');
-var stripAnsi = require('strip-ansi');
+var charset = require('@spare/charset');
+var fullwidth = require('@spare/fullwidth');
 var util = require('@spare/util');
 var enumChars = require('@spare/enum-chars');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+/**
+ *
+ * @param tx
+ * @return {string}
+ * @deprecated
+ */
 
-var stripAnsi__default = /*#__PURE__*/_interopDefaultLegacy(stripAnsi);
+const toFullAngleWoAnsi = function (tx) {
+  if (charset.hasAnsi(tx)) tx = charset.clearAnsi(tx);
+  return fullwidth.halfToFull(tx);
+};
 
 const FullAngleReg = /[\u4e00-\u9fa5]|[\uff00-\uffff]/;
 
@@ -79,18 +87,6 @@ const toHalfAngle = tx => {
   }
 
   return t;
-};
-
-/**
- *
- * @param tx
- * @return {string}
- * @deprecated
- */
-
-const toFullAngleWoAnsi = function (tx) {
-  if (lange.hasAnsi(tx)) tx = stripAnsi__default['default'](tx);
-  return toFullAngle(tx);
 };
 
 const indexNonTab = tx => {

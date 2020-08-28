@@ -2,10 +2,15 @@ import { MUTABLE } from '@analys/enum-mutabilities';
 import { fluoVector } from '@palett/fluo-vector';
 import { LF, TB, DA, SP } from '@spare/enum-chars';
 import { fold } from '@spare/fold';
-import { hasAnsi } from '@spare/lange';
 import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
 import { ATLAS, SUBTLE } from '@palett/presets';
 import { nullish } from '@typen/nullish';
+
+const ANSI_ALPHA = /(?:(?:[a-zA-Z\d]*(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?)/;
+const ANSI_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/;
+const ANSI = RegExp(`[][[\\]()#;?]*(?:${ANSI_ALPHA.source}|${ANSI_BETA.source})`);
+
+const hasAnsi = tx => ANSI.test(tx);
 
 /**
  * @prop width - foldToVector

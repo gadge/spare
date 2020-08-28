@@ -1,4 +1,5 @@
-import { hasAnsi, lange } from '@spare/lange';
+import { hasAnsi } from '@spare/charset';
+import { lange } from '@spare/lange';
 import { isNumeric } from '@typen/num-strict';
 import { FullWidth } from '@spare/fullwidth';
 

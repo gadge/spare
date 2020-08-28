@@ -4,12 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var enumChars = require('@spare/enum-chars');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
-var lange = require('@spare/lange');
-var stripAnsi = require('strip-ansi');
-
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var stripAnsi__default = /*#__PURE__*/_interopDefaultLegacy(stripAnsi);
+var charset = require('@spare/charset');
 
 const FWREG = /[\uff01-\uff5e|\u3000]+/g;
 const FWCHREG = /[\u4e00-\u9fa5|\uff01-\uff5e|\u3000]+/g;
@@ -110,13 +105,14 @@ const FullWidth = ({
   ansi,
   lean
 });
+const LEAN_REG = /(\W)\s+/g;
 const fw = function (tx) {
   const {
     ansi,
     lean
   } = this;
-  if (ansi && lange.hasAnsi(tx)) tx = stripAnsi__default['default'](tx);
-  if (lean) tx = tx.replace(/(\W)\s+/g, (_, x) => x);
+  if (ansi && charset.hasAnsi(tx)) tx = charset.clearAnsi(tx);
+  if (lean) tx = tx.replace(LEAN_REG, (_, x) => x);
   return halfToFull(tx);
 };
 
