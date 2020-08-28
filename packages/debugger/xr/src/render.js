@@ -1,3 +1,5 @@
+import { SP } from '@spare/enum-chars'
+
 /**
  *
  * @param {*} [text]
@@ -7,5 +9,5 @@
  */
 export const render = (text, { indent, queue }) => {
   if (text?.length) queue.push(text)
-  return ' '.repeat(indent << 1) + queue.join(' ')
+  return SP.repeat(indent << 1) + queue.join(SP)
 }

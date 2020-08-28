@@ -1,4 +1,4 @@
-import { Inka } from './Inka/Inka'
+import { XrStream } from './XrStream/XrStream'
 
 /**
  *
@@ -7,4 +7,6 @@ import { Inka } from './Inka/Inka'
  * @returns {(Inka|object<string,Inka>)}
  * @constructor
  */
-export const Xr = (word, color = true) => new Inka(word, color)
+export const Xr = (word, color = true) => new XrStream(word, color)
+
+

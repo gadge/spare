@@ -1,3 +1,3 @@
-import { ink } from './singleton/ink'
+import { xrSingleton } from './singleton/xrSingleton'
 
-export const xr = word => ink.cr(word)
+export const xr = word => xrSingleton.cr(word)

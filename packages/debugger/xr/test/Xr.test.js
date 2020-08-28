@@ -1,6 +1,6 @@
 import { logger, logNeL } from '@spare/logger'
-import { GP } from 'elprimero'
-import { Xr } from '../src/Xr'
+import { GP }             from 'elprimero'
+import { Xr }             from '../src/Xr'
 
 'ink' |> logger
 const ink = Xr('  ', true).p('what')['title']('some').content('chapter')
