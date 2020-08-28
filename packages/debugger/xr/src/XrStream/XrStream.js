@@ -2,8 +2,8 @@ import { bracket, parenth }   from '@spare/bracket'
 import { CO }                 from '@spare/enum-chars'
 import { render }             from '../render'
 import { enqueue, initQueue } from './initQueue'
-import * as Major             from './majorSet'
-import * as Minor             from './minorSet'
+import * as Major             from '../../resources/majorSet'
+import * as Minor             from '../../resources/minorSet'
 
 class Callable extends Function {
   constructor(f) {

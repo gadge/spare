@@ -6,6 +6,7 @@ var bracket$2 = require('@spare/bracket');
 var enumChars = require('@spare/enum-chars');
 var charset = require('@spare/charset');
 var util = require('@spare/util');
+var nullish = require('@typen/nullish');
 var cards = require('@palett/cards');
 var convert = require('@palett/convert');
 var dye = require('@palett/dye');
@@ -59,19 +60,20 @@ function enqueue(queue, key, items) {
   const {
     br,
     pa
-  } = this;
+  } = this,
+        hi = (_items = items) === null || _items === void 0 ? void 0 : _items.length;
 
-  if ((_items = items) === null || _items === void 0 ? void 0 : _items.length) {
+  if (!hi || hi === 1 && nullish.nullish(items[0])) {
     var _String;
 
-    items = items.map(String).join(enumChars.COSP);
-    queue.push((_String = String(key), br.major(_String)));
-    queue.push(charset.hasAnsi(items) && EDGE_BRACKET.test(charset.clearAnsi(items)) ? items : pa.major(items));
+    queue.push((_String = String(key), br.minor(_String)));
+    queue.push(pa.minor());
   } else {
     var _String2;
 
-    queue.push((_String2 = String(key), br.minor(_String2)));
-    queue.push(pa.minor());
+    items = items.map(String).join(enumChars.COSP);
+    queue.push((_String2 = String(key), br.major(_String2)));
+    queue.push(charset.hasAnsi(items) && EDGE_BRACKET.test(charset.clearAnsi(items)) ? items : pa.major(items));
   }
 
   return queue;

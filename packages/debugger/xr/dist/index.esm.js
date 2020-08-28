@@ -2,6 +2,7 @@ import { bracket as bracket$2, parenth as parenth$2 } from '@spare/bracket';
 import { SP, COSP, CO } from '@spare/enum-chars';
 import { hasAnsi, clearAnsi } from '@spare/charset';
 import { deNaTab } from '@spare/util';
+import { nullish } from '@typen/nullish';
 import { Cards } from '@palett/cards';
 import { hexToRgb } from '@palett/convert';
 import { Dye } from '@palett/dye';
@@ -55,19 +56,20 @@ function enqueue(queue, key, items) {
   const {
     br,
     pa
-  } = this;
+  } = this,
+        hi = (_items = items) === null || _items === void 0 ? void 0 : _items.length;
 
-  if ((_items = items) === null || _items === void 0 ? void 0 : _items.length) {
+  if (!hi || hi === 1 && nullish(items[0])) {
     var _String;
 
-    items = items.map(String).join(COSP);
-    queue.push((_String = String(key), br.major(_String)));
-    queue.push(hasAnsi(items) && EDGE_BRACKET.test(clearAnsi(items)) ? items : pa.major(items));
+    queue.push((_String = String(key), br.minor(_String)));
+    queue.push(pa.minor());
   } else {
     var _String2;
 
-    queue.push((_String2 = String(key), br.minor(_String2)));
-    queue.push(pa.minor());
+    items = items.map(String).join(COSP);
+    queue.push((_String2 = String(key), br.major(_String2)));
+    queue.push(hasAnsi(items) && EDGE_BRACKET.test(clearAnsi(items)) ? items : pa.major(items));
   }
 
   return queue;

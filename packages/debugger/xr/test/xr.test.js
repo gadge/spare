@@ -3,7 +3,7 @@ import { xr }                 from '../src/xr'
 
 xr('william shakespeare')
   .tragedies('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet')
-  .comedies()
+  .comedies(null)
   |> says['historian']
 
 xr().timestamp(new Date()).todo([1, 2, 3] |> deco) |> says['el primero']
