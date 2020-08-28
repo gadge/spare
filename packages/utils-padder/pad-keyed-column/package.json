@@ -1,6 +1,6 @@
 {
   "name": "@spare/pad-keyed-column",
-  "version": "0.9.0-alpha.0",
+  "version": "0.9.0",
   "description": "Pad keyed column",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.2.14",
-    "@spare/enum-chars": "^0.9.0-alpha.0",
-    "@spare/enum-full-angle-chars": "^0.9.0-alpha.0",
-    "@spare/fullwidth": "^0.9.0-alpha.0",
-    "@spare/lange": "^0.9.0-alpha.0",
-    "@spare/pad-string": "^0.9.0-alpha.0",
-    "@spare/string": "^0.9.0-alpha.0",
+    "@spare/enum-chars": "^0.9.0",
+    "@spare/enum-full-angle-chars": "^0.9.0",
+    "@spare/fullwidth": "^0.9.0",
+    "@spare/lange": "^0.9.0",
+    "@spare/pad-string": "^0.9.0",
+    "@spare/string": "^0.9.0",
     "@vect/vector-indicator": "^0.2.9",
     "@vect/vector-mapper": "^0.2.9",
     "@vect/vector-zipper": "^0.2.9"
