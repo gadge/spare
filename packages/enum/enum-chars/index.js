@@ -4,6 +4,7 @@ export {
   TB,
   CO,
   DOT,
+  SC,
   CR,
   LF,
   RN,
