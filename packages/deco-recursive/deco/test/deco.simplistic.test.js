@@ -6,7 +6,9 @@ const candidates = [
     name: 'foo',
     x: 3,
     y: 4,
-    // date: new Date()
+    some: null,
+    date: new Date(),
+    obj: { foo: null }
   },
   [1, 1, 2, 3, 5, 8]
 ]

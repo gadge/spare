@@ -23,7 +23,7 @@
     "@spare/fold": "^0.9.3-alpha.1",
     "@spare/lange": "^0.9.3-alpha.1",
     "@spare/splitter": "^0.9.3-alpha.1",
-    "@typen/nullish": "^0.1.5",
+    "@typen/nullish": "^0.1.7",
     "@vect/vector-mapper": "^0.2.9",
     "@vect/vector-zipper": "^0.2.9"
   },
