@@ -8,6 +8,7 @@ import { vettro }     from '@spare/vettro'
 import { size }       from '@vect/matrix'
 
 export const cosmetics = function (table) {
+  if (!table) return AEU
   let matrix = table.rows || table.matrix, banner = table.head || table.banner
   const [height, width] = size(matrix), labelWidth = banner && banner.length
   if (!height || !width || !labelWidth) return AEU

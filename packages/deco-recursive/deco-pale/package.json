@@ -24,12 +24,12 @@
     "@spare/enum-brackets": "^0.9.3",
     "@spare/enum-chars": "^0.9.3",
     "@spare/quote": "^0.9.3",
-    "@typen/enum-data-types": "^0.1.7",
-    "@typen/enum-object-types": "^0.1.7",
-    "@typen/num-strict": "^0.1.7",
-    "@typen/typ": "^0.1.7",
-    "@valjoux/format-date": "^0.1.11",
-    "@valjoux/format-time": "^0.1.11",
+    "@typen/enum-data-types": "^0.1.8",
+    "@typen/enum-object-types": "^0.1.8",
+    "@typen/num-strict": "^0.1.8",
+    "@typen/typ": "^0.1.8",
+    "@valjoux/format-date": "^0.2.0",
+    "@valjoux/format-time": "^0.2.0",
     "@vect/entries-mapper": "^0.2.9"
   },
   "repository": {

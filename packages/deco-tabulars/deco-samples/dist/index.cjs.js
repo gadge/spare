@@ -23,8 +23,8 @@ const cosmetics = function (samples) {
   var _lookupKeys$call;
 
   let height, sample, keys, dye, rows;
-  if (!(height = samples.length)) return '[]';
-  if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return '[]';
+  if (!(height = samples === null || samples === void 0 ? void 0 : samples.length)) return '[]';
+  if (!([sample] = samples) || !(keys = Object.keys(sample)) || !keys.length) return '[]';
   let {
     fields,
     indexed,

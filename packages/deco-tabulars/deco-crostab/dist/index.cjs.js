@@ -19,6 +19,7 @@ const VLINE = ' | ',
       HCONN = '-+-';
 
 const cosmetics = function (crostab) {
+  if (!crostab) return enumChars.AEU;
   let matrix$1 = crostab.rows || crostab.matrix,
       banner = crostab.head || crostab.banner,
       stand = crostab.side,

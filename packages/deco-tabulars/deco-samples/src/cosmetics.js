@@ -16,8 +16,8 @@ import { mutazip }                            from '@vect/vector-zipper'
 
 export const cosmetics = function (samples) {
   let height, sample, keys, dye, rows
-  if (!(height = samples.length)) return '[]'
-  if (!(sample = samples[0]) || !(keys = Object.keys(sample)) || !keys.length) return '[]'
+  if (!(height = samples?.length)) return '[]'
+  if (!([sample] = samples) || !(keys = Object.keys(sample)) || !keys.length) return '[]'
   let {
     fields, indexed, headRead, read, direct, preset, ansi,
     delim, top, bottom, left, right, bracket, discrete, level, presets

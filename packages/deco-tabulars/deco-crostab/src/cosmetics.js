@@ -8,10 +8,11 @@ import { padKeyedColumn } from '@spare/pad-keyed-column'
 import { padTable }       from '@spare/pad-table'
 import { vettro }         from '@spare/vettro'
 import { size }           from '@vect/matrix'
-import { zipper }       from '@vect/vector-zipper'
-import { HCONN, VLINE } from '../resources/conns'
+import { zipper }         from '@vect/vector-zipper'
+import { HCONN, VLINE }   from '../resources/conns'
 
 export const cosmetics = function (crostab) {
+  if (!crostab) return AEU
   let matrix = crostab.rows || crostab.matrix, banner = crostab.head || crostab.banner,
     stand = crostab.side, name = crostab.title || ''
   const [height, width] = size(matrix), labelWidth = banner && banner.length, labelHeight = stand && stand.length

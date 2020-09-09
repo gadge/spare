@@ -13,6 +13,7 @@ var vettro = require('@spare/vettro');
 var matrix = require('@vect/matrix');
 
 const cosmetics = function (table) {
+  if (!table) return enumChars.AEU;
   let matrix$1 = table.rows || table.matrix,
       banner = table.head || table.banner;
   const [height, width] = matrix.size(matrix$1),

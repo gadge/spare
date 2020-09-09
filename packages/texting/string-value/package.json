@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@typen/enum-data-types": "^0.1.7"
+    "@typen/enum-data-types": "^0.1.8"
   },
   "repository": {
     "type": "git",

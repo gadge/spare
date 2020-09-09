@@ -1,9 +1,11 @@
-import { bracket, parenth }   from '@spare/bracket'
-import { CO }                 from '@spare/enum-chars'
-import { render }             from '../render'
-import { enqueue, initQueue } from './initQueue'
-import * as Major             from '../../resources/majorSet'
-import * as Minor             from '../../resources/minorSet'
+import { bracket, parenth } from '@spare/bracket'
+import { CO }               from '@spare/enum-chars'
+import { DEF, NUM, STR }    from '@typen/enum-data-types'
+import * as Major           from '../../resources/majorSet'
+import * as Minor           from '../../resources/minorSet'
+import { render }           from '../render'
+import { enqueue }          from './enqueue'
+import { initQueue }        from './initQueue'
 
 class Callable extends Function {
   constructor(f) {
@@ -14,47 +16,55 @@ class Callable extends Function {
 }
 
 
+export const clearQueue = function (word) {
+  return Object.assign(this, initQueue(word)), this
+}
+
+/**
+ * @typedef {Array<string>} ArrayWithIndent
+ * @typedef {string} ArrayWithIndent.indent
+ */
 
 /**
  * @type {Object<string,string>}
  */
 export class XrStream extends Callable {
+  /** @type {ArrayWithIndent} */ queue
   /** @type {number} */ indent
-  /** @type {string[]} */ queue
-  /** @type {{br:{major:Function,minor:Function},pa:{major:Function,minor:Function}} */ #set = {}
+  /** @type {{br:{major:Function,minor:Function},pa:{major:Function,minor:Function}} */ #conf = {}
   constructor(word, pretty = true) {
-    super(word => render(word, this))
-    Object.assign(this, word|> initQueue)
-    this.#set.br = pretty ? { major: Major.bracket, minor: Minor.bracket } : { major: bracket, minor: bracket }
-    this.#set.pa = pretty ? { major: Major.parenth, minor: Minor.parenth } : { major: parenth, minor: parenth }
+    super(word => render.call(this.queue, word))
+    Object.assign(this, initQueue(word))
+    this.#conf.bracket = pretty ? { major: Major.bracket, minor: Minor.bracket } : { major: bracket, minor: bracket }
+    this.#conf.parenth = pretty ? { major: Major.parenth, minor: Minor.parenth } : { major: parenth, minor: parenth }
     return new Proxy(this, {
-      get(t, p, receiver) {
-        return p in t
-          ? t[p]
-          : (...items) => (enqueue.call(t.#set, t.queue, p, items), receiver)
+      get(target, name, receiver) {
+        return name in target
+          ? target[name] // `[proxy.get] (${ String(name) }) (${ target?.name })` |> logger,
+          : (...items) => (enqueue.call(target, name, ...items), receiver)
       }
     })
   }
 
-  cr(word) { return Object.assign(this, word|> initQueue), this }
+  get conf() { return this.#conf }
 
-  asc() { return this.indent++, this }
-  desc() { return this.indent--, this }
+  asc() { return this.queue.indent++, this }
+  desc() { return this.queue.indent--, this }
 
   p(...items) { return this.queue.push(...items), this }
   br(...items) { return this.queue.push(items.map(parenth).join(CO)), this }
 
-  toString() { return render(null, this) }
+  toString() { return render.call(this.queue) }
 
   [Symbol.toPrimitive](h) {
     switch (h) {
-      case 'string':
-      case 'default':
-        return render(null, this)
-      case 'number':
-        return this.indent
+      case STR:
+      case DEF:
+        return render.call(this.queue)
+      case NUM:
+        return this.queue.indent
       default:
-        throw new Error('inka Symbol.toPrimitive error')
+        throw new Error('XrStream Symbol.toPrimitive error')
     }
   }
 }

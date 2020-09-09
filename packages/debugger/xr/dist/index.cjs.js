@@ -4,12 +4,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var bracket$2 = require('@spare/bracket');
 var enumChars = require('@spare/enum-chars');
-var charset = require('@spare/charset');
-var util = require('@spare/util');
-var nullish = require('@typen/nullish');
 var cards = require('@palett/cards');
 var convert = require('@palett/convert');
 var dye = require('@palett/dye');
+var charset = require('@spare/charset');
+var nullish = require('@typen/nullish');
+var util = require('@spare/util');
 
 var id = 0;
 
@@ -25,59 +25,10 @@ function _classPrivateFieldLooseBase(receiver, privateKey) {
   return receiver;
 }
 
-/**
- *
- * @param {*} [text]
- * @param {number} indent
- * @param {string[]} queue
- * @return {string}
- */
-
-const render = (text, {
-  indent,
-  queue
-}) => {
-  if (text === null || text === void 0 ? void 0 : text.length) queue.push(text);
-  return enumChars.SP.repeat(indent << 1) + queue.join(enumChars.SP);
-};
-
-const initQueue = t => {
-  var _t;
-
-  let queue = [],
-      hi,
-      i;
-  if (t && (hi = (_t = t = String(t)) === null || _t === void 0 ? void 0 : _t.length) && (i = util.deNaTab(t)) < hi) queue.push(t.slice(i));
-  return {
-    indent: i,
-    queue
-  };
-};
-const EDGE_BRACKET = /^[(\[{].*[)\]}]$/;
-function enqueue(queue, key, items) {
-  var _items;
-
-  const {
-    br,
-    pa
-  } = this,
-        hi = (_items = items) === null || _items === void 0 ? void 0 : _items.length;
-
-  if (!hi || hi === 1 && nullish.nullish(items[0])) {
-    var _String;
-
-    queue.push((_String = String(key), br.minor(_String)));
-    queue.push(pa.minor());
-  } else {
-    var _String2;
-
-    items = items.map(String).join(enumChars.COSP);
-    queue.push((_String2 = String(key), br.major(_String2)));
-    queue.push(charset.hasAnsi(items) && EDGE_BRACKET.test(charset.clearAnsi(items)) ? items : pa.major(items));
-  }
-
-  return queue;
-}
+// from x => typeof x
+const NUM = 'number';
+const STR = 'string';
+const DEF = 'default';
 
 var _Cards$orange$lighten, _Cards$indigo$lighten;
 const orange = dye.Dye((_Cards$orange$lighten = cards.Cards.orange.lighten_3, convert.hexToRgb(_Cards$orange$lighten)));
@@ -91,6 +42,55 @@ const grey = dye.Dye((_Cards$grey$darken_ = cards.Cards.grey.darken_1, convert.h
 const bracket$1 = (tx = '') => blueGrey('[') + grey(tx) + blueGrey(']');
 const parenth$1 = (tx = '') => blueGrey('(') + grey(tx) + blueGrey(')');
 
+/**
+ *
+ * @param {*} [text]
+ * @return {string}
+ */
+
+function render(text) {
+  const queue = this,
+        {
+    indent
+  } = queue;
+  if (text === null || text === void 0 ? void 0 : text.length) queue.push(text);
+  return enumChars.SP.repeat(indent << 1) + queue.join(enumChars.SP);
+}
+
+const EDGE_BRACKET = /^[(\[{].*[)\]}]$/;
+const enqueue = function (key, ...items) {
+  const {
+    queue,
+    conf
+  } = this;
+  const {
+    bracket,
+    parenth
+  } = conf;
+
+  if (items.every(nullish.nullish)) ; else {
+    var _String;
+
+    items = items.map(String).join(enumChars.COSP);
+    queue.push((_String = String(key), bracket.major(_String)));
+    queue.push(charset.hasAnsi(items) && EDGE_BRACKET.test(charset.clearAnsi(items)) ? items : parenth.major(items));
+  }
+
+  return this;
+};
+
+const initQueue = t => {
+  var _t;
+
+  const queue = [];
+  let hi, indent;
+  if (t && (hi = (_t = t = String(t)) === null || _t === void 0 ? void 0 : _t.length) && (indent = util.deNaTab(t)) < hi) queue.push(t.slice(indent));
+  queue.indent = indent;
+  return {
+    queue
+  };
+};
+
 let _Symbol$toPrimitive;
 
 class Callable extends Function {
@@ -101,39 +101,45 @@ class Callable extends Function {
   }
 
 }
+
+const clearQueue = function (word) {
+  return Object.assign(this, initQueue(word)), this;
+};
+/**
+ * @typedef {Array<string>} ArrayWithIndent
+ * @typedef {string} ArrayWithIndent.indent
+ */
+
 /**
  * @type {Object<string,string>}
  */
 
-
-var _set = _classPrivateFieldLooseKey("set");
+var _conf = _classPrivateFieldLooseKey("conf");
 
 _Symbol$toPrimitive = Symbol.toPrimitive;
 class XrStream extends Callable {
-  /** @type {number} */
+  /** @type {ArrayWithIndent} */
 
-  /** @type {string[]} */
+  /** @type {number} */
 
   /** @type {{br:{major:Function,minor:Function},pa:{major:Function,minor:Function}} */
   constructor(word, pretty = true) {
-    var _word;
-
-    super(word => render(word, this));
-    this.indent = void 0;
+    super(word => render.call(this.queue, word));
     this.queue = void 0;
-    Object.defineProperty(this, _set, {
+    this.indent = void 0;
+    Object.defineProperty(this, _conf, {
       writable: true,
       value: {}
     });
-    Object.assign(this, (_word = word, initQueue(_word)));
-    _classPrivateFieldLooseBase(this, _set)[_set].br = pretty ? {
+    Object.assign(this, initQueue(word));
+    _classPrivateFieldLooseBase(this, _conf)[_conf].bracket = pretty ? {
       major: bracket,
       minor: bracket$1
     } : {
       major: bracket$2.bracket,
       minor: bracket$2.bracket
     };
-    _classPrivateFieldLooseBase(this, _set)[_set].pa = pretty ? {
+    _classPrivateFieldLooseBase(this, _conf)[_conf].parenth = pretty ? {
       major: parenth,
       minor: parenth$1
     } : {
@@ -141,25 +147,24 @@ class XrStream extends Callable {
       minor: bracket$2.parenth
     };
     return new Proxy(this, {
-      get(t, p, receiver) {
-        return p in t ? t[p] : (...items) => (enqueue.call(_classPrivateFieldLooseBase(t, _set)[_set], t.queue, p, items), receiver);
+      get(target, name, receiver) {
+        return name in target ? target[name] // `[proxy.get] (${ String(name) }) (${ target?.name })` |> logger,
+        : (...items) => (enqueue.call(target, name, ...items), receiver);
       }
 
     });
   }
 
-  cr(word) {
-    var _word2;
-
-    return Object.assign(this, (_word2 = word, initQueue(_word2))), this;
+  get conf() {
+    return _classPrivateFieldLooseBase(this, _conf)[_conf];
   }
 
   asc() {
-    return this.indent++, this;
+    return this.queue.indent++, this;
   }
 
   desc() {
-    return this.indent--, this;
+    return this.queue.indent--, this;
   }
 
   p(...items) {
@@ -171,20 +176,20 @@ class XrStream extends Callable {
   }
 
   toString() {
-    return render(null, this);
+    return render.call(this.queue);
   }
 
   [_Symbol$toPrimitive](h) {
     switch (h) {
-      case 'string':
-      case 'default':
-        return render(null, this);
+      case STR:
+      case DEF:
+        return render.call(this.queue);
 
-      case 'number':
-        return this.indent;
+      case NUM:
+        return this.queue.indent;
 
       default:
-        throw new Error('inka Symbol.toPrimitive error');
+        throw new Error('XrStream Symbol.toPrimitive error');
     }
   }
 
@@ -194,7 +199,7 @@ class XrStream extends Callable {
  *
  * @param {string} [word]
  * @param {boolean} [color]
- * @returns {(Inka|object<string,Inka>)}
+ * @returns {(XrStream|object<string,XrStream>)}
  * @constructor
  */
 
@@ -202,7 +207,7 @@ const Xr = (word, color = true) => new XrStream(word, color);
 
 const xrSingleton = new XrStream();
 
-const xr = word => xrSingleton.cr(word);
+const xr = word => clearQueue.call(xrSingleton, word);
 
 exports.Xr = Xr;
 exports.xr = xr;

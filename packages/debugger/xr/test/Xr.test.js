@@ -3,7 +3,7 @@ import { GP }             from 'elprimero'
 import { Xr }             from '../src/Xr'
 
 'ink' |> logger
-const ink = Xr('  ', true).p('what')['title']('some').content('chapter')
+const ink = Xr('  ', true).p('what')['title']('some').content('chapter').note(undefined)
 ink |> logNeL
 
 'ink()' |> logger
