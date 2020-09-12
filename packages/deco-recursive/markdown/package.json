@@ -1,5 +1,5 @@
 {
-  "name": "@spare/verse",
+  "name": "@spare/markdown",
   "version": "0.9.4",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
@@ -26,7 +26,8 @@
     "@spare/enum-brackets": "^0.9.4",
     "@spare/liner": "^0.9.4",
     "@spare/preset-verse": "^0.9.4",
-    "@spare/quote": "^0.9.4"
+    "@spare/quote": "^0.9.4",
+    "@vect/vector-merge": "^0.2.9"
   },
   "repository": {
     "type": "git",
