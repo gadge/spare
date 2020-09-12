@@ -10,6 +10,33 @@ import { vettro }        from '@spare/vettro'
 import { size }          from '@vect/matrix'
 
 export class Markdown {
+
+  /***
+   *
+   * @param {Object} ob
+   * @param {Object} option
+   *
+   * @param {string} [option.dash=': ']
+   *
+   * @param {Function} [option.keyRead]
+   * @param {Function} [option.read]
+   *
+   * @param {number} [option.head]
+   * @param {number} [option.tail]
+   *
+   * @param {boolean} [option.ansi]
+   * @param {number} [option.level=0]
+   *
+   * @param {string} [option.pad]
+   * @param {string} [option.prefix]
+   * @param {string} [option.suffix]
+   *
+   * @returns {string}
+   */
+  static object(ob = {}, option = {}) {
+    return Markdown.entries(Object.entries(ob), option)
+  }
+
   /***
    *
    * @param {[*,*][]} entries
