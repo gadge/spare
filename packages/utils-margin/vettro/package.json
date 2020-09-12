@@ -1,6 +1,6 @@
 {
   "name": "@spare/vettro",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@spare/util": "^0.9.4",
+    "@spare/util": "^0.9.5",
     "@vect/vector-margin": "^0.2.9"
   },
   "repository": {
