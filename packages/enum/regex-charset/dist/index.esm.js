@@ -1,6 +1,6 @@
 const ANSI_ALPHA = /(?:(?:[a-zA-Z\d]*(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?)/;
 const ANSI_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/;
-const ANSI = RegExp(`[][[\\]()#;?]*(?:${ANSI_ALPHA.source}|${ANSI_BETA.source})`);
+const ANSI = new RegExp(`[][[\\]()#;?]*(?:${ANSI_ALPHA.source}|${ANSI_BETA.source})`);
 const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
 const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
 //

@@ -5,7 +5,7 @@ const BEL = '\u{7}'
 const ANSI_ALPHA = /(?:(?:[a-zA-Z\d]*(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?)/
 const ANSI_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/
 
-export const ANSI = RegExp(`[][[\\]()#;?]*(?:${ ANSI_ALPHA.source }|${ ANSI_BETA.source })`)
+export const ANSI = new RegExp(`[][[\\]()#;?]*(?:${ ANSI_ALPHA.source }|${ ANSI_BETA.source })`)
 
 export const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/
 

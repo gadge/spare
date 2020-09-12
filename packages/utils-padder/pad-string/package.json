@@ -18,7 +18,7 @@
     "@spare/charset": "^0.9.4",
     "@spare/fullwidth": "^0.9.4",
     "@spare/lange": "^0.9.4",
-    "@typen/num-strict": "^0.1.8"
+    "@typen/num-strict": "^0.1.9"
   },
   "repository": {
     "type": "git",

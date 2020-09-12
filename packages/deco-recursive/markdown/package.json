@@ -1,7 +1,7 @@
 {
   "name": "@spare/markdown",
   "version": "0.9.4",
-  "description": "A debugging tool",
+  "description": "Markdown table formatter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -15,18 +15,12 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@analys/crostab-init": "^0.4.4",
-    "@analys/table-init": "^0.4.4",
-    "@spare/bracket": "^0.9.4",
-    "@spare/deco-entries": "^0.9.4",
-    "@spare/deco-matrix": "^0.9.4",
-    "@spare/deco-object": "^0.9.4",
-    "@spare/deco-samples": "^0.9.4",
-    "@spare/deco-vector": "^0.9.4",
-    "@spare/enum-brackets": "^0.9.4",
+    "@spare/enum-chars": "^0.9.4",
     "@spare/liner": "^0.9.4",
-    "@spare/preset-verse": "^0.9.4",
-    "@spare/quote": "^0.9.4",
+    "@spare/mattro": "^0.9.4",
+    "@spare/pad-table": "^0.9.4",
+    "@spare/vettro": "^0.9.4",
+    "@vect/matrix": "^0.2.9",
     "@vect/vector-merge": "^0.2.9"
   },
   "repository": {
