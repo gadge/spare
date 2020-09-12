@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-matrix",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,13 +18,13 @@
     "@palett/enum-colorant-modes": "^0.4.5",
     "@palett/fluo-matrix": "^0.4.5",
     "@palett/presets": "^0.4.5",
-    "@spare/bracket": "^0.9.5",
-    "@spare/enum-chars": "^0.9.5",
-    "@spare/liner": "^0.9.5",
-    "@spare/mattro": "^0.9.5",
-    "@spare/pad-matrix": "^0.9.5",
-    "@spare/preset-deco": "^0.9.5",
-    "@spare/quote": "^0.9.5",
+    "@spare/bracket": "^0.9.6",
+    "@spare/enum-chars": "^0.9.6",
+    "@spare/liner": "^0.9.6",
+    "@spare/mattro": "^0.9.6",
+    "@spare/pad-matrix": "^0.9.6",
+    "@spare/preset-deco": "^0.9.6",
+    "@spare/quote": "^0.9.6",
     "@vect/matrix": "^0.2.9"
   },
   "repository": {
