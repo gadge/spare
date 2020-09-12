@@ -21,27 +21,32 @@ const joinLines = (lines, delim = '', level, hover = true) => {
 };
 const LINEFEED = /\n/;
 const COMMA = /,/;
-/**
- *
- * @param {string[]} lines - input string[]
- * @param {boolean} discrete - if true, return the input lines as string[]
- * @param {string} delim - trailing punctuation added to each line
- * @param {number|string} bracket - bracket added to the start and end of the entire rendered lines
- * @param {number} level - level of indent to each line
- * @return {string|string[]}
- */
 
-const liner = (lines, {
-  discrete = false,
-  delim = enumChars.LF,
-  bracket: bracket$1 = enumBrackets.NONE,
-  level = 0
-} = {}) => {
+const linesHandler = function (lines) {
+  const {
+    discrete = false,
+    delim = enumChars.LF,
+    bracket: bracket$1 = enumBrackets.NONE,
+    level = 0
+  } = this;
   if (discrete) return lines;
   const hover = !!bracket$1;
   const joined = lines.length && LINEFEED.test(delim) ? joinLines(lines, COMMA.test(delim) ? enumChars.CO : '', level, hover) : lines.join(delim);
   return bracket.br(joined, bracket$1);
 };
+/**
+ *
+ * @param {string[]} lines - input string[]
+ * @param {Object} p
+ * @param {boolean}       [p.discrete=false] - if true, return the input lines as string[]
+ * @param {string}        [p.delim=LF] - trailing punctuation added to each line
+ * @param {number|string} [p.bracket=NONE] - bracket added to the start and end of the entire rendered lines
+ * @param {number}        [p.level=0] - level of indent to each line
+ * @return {string|string[]}
+ */
+
+
+const liner = (lines, p = {}) => linesHandler.call(p, lines);
 
 exports.joinLines = joinLines;
 exports.liner = liner;
