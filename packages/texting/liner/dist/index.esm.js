@@ -43,5 +43,16 @@ const linesHandler = function (lines) {
 
 
 const liner = (lines, p = {}) => linesHandler.call(p, lines);
+/**
+ *
+ * @param {Object} p
+ * @param {boolean}       [p.discrete=false] - if true, return the input lines as string[]
+ * @param {string}        [p.delim=LF] - trailing punctuation added to each line
+ * @param {number|string} [p.bracket=NONE] - bracket added to the start and end of the entire rendered lines
+ * @param {number}        [p.level=0] - level of indent to each line
+ * @return { Function|function(string[]):string|string[] }
+ */
 
-export { joinLines, liner };
+const Liner = (p = {}) => linesHandler.bind(p);
+
+export { Liner, joinLines, liner };

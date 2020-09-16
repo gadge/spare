@@ -1,0 +1,1 @@
+export const trim = Function.prototype.call.bind(String.prototype.trim)

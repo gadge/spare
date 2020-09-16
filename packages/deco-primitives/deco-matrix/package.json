@@ -25,7 +25,7 @@
     "@spare/pad-matrix": "^0.9.6",
     "@spare/preset-deco": "^0.9.6",
     "@spare/quote": "^0.9.6",
-    "@vect/matrix": "^0.2.9"
+    "@vect/matrix": "^0.2.10"
   },
   "repository": {
     "type": "git",

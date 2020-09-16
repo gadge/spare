@@ -1,5 +1,6 @@
-import { hasAnsi, quote } from '../index'
-import { astralReg }      from '../src/regs'
+import { hasAnsi } from '@spare/lange'
+import { ASTRAL }  from '@spare/regex-charset'
+import { quote }   from '../index'
 
 const list = [
   'tolstoy',
@@ -20,5 +21,5 @@ const arr = [
 ]
 
 for (let tx of arr) {
-  `[${tx}] [length] (${tx.length}) [quote] (${quote(tx)}) [hasAnsi] (${hasAnsi(tx)}) [match] (${astralReg.exec(tx)})` |> console.log
+  `[${ tx }] [length] (${ tx.length }) [quote] (${ quote(tx) }) [hasAnsi] (${ hasAnsi(tx) }) [match] (${ ASTRAL.exec(tx) })` |> console.log
 }

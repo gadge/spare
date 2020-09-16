@@ -24,13 +24,13 @@
     "@spare/enum-brackets": "^0.9.6",
     "@spare/enum-chars": "^0.9.6",
     "@spare/quote": "^0.9.6",
-    "@typen/enum-data-types": "^0.1.9",
-    "@typen/enum-object-types": "^0.1.9",
-    "@typen/num-strict": "^0.1.9",
-    "@typen/typ": "^0.1.9",
+    "@typen/enum-data-types": "^0.1.10",
+    "@typen/enum-object-types": "^0.1.10",
+    "@typen/num-strict": "^0.1.10",
+    "@typen/typ": "^0.1.10",
     "@valjoux/format-date": "^0.2.0",
     "@valjoux/format-time": "^0.2.0",
-    "@vect/entries-mapper": "^0.2.9"
+    "@vect/entries-mapper": "^0.2.10"
   },
   "repository": {
     "type": "git",

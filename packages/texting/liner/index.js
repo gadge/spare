@@ -1,1 +1,1 @@
-export { liner, joinLines } from './src/liner'
+export { liner, Liner, joinLines } from './src/liner'

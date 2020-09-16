@@ -17,8 +17,8 @@
   "dependencies": {
     "@spare/enum-chars": "^0.9.6",
     "@spare/enum-quotes": "^0.9.6",
-    "@typen/literal": "^0.1.9",
-    "@typen/nullish": "^0.1.9"
+    "@typen/literal": "^0.1.10",
+    "@typen/nullish": "^0.1.10"
   },
   "repository": {
     "type": "git",

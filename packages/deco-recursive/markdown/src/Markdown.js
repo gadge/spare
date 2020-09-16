@@ -1,13 +1,13 @@
-import { HR_ENTRY }      from '@spare/deco-entries/utils/HR_ENTRY'
 import { enttro }        from '@spare/enttro'
 import { AEU, LF, RTSP } from '@spare/enum-chars'
-import { liner }         from '@spare/liner'
-import { Liner }         from '@spare/liner/src/liner'
+import { liner, Liner }  from '@spare/liner'
 import { mattro }        from '@spare/mattro'
 import { padEntries }    from '@spare/pad-entries'
 import { padTable }      from '@spare/pad-table'
 import { vettro }        from '@spare/vettro'
 import { size }          from '@vect/matrix'
+
+const HR_ENTRY = ['..', '..']
 
 export class Markdown {
 
@@ -33,9 +33,7 @@ export class Markdown {
    *
    * @returns {string}
    */
-  static object(ob = {}, option = {}) {
-    return Markdown.entries(Object.entries(ob), option)
-  }
+  static object(ob = {}, option = {}) { return Markdown.entries(Object.entries(ob), option) }
 
   /***
    *
