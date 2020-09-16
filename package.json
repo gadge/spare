@@ -71,7 +71,7 @@
     "mocha": "^8.1.3",
     "palett-presets": "^0.1.1",
     "rollup": "^2.26.8",
-    "rollup-plugin-fileinfo": "^0.1.9",
+    "rollup-plugin-fileinfo": "^0.2.0",
     "rollup-plugin-terser": "^7.0.1",
     "roulett": "^0.1.1",
     "veho": "^0.2.23",

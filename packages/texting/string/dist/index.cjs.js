@@ -50,4 +50,5 @@ exports.indexNonTab = indexNonTab;
 exports.narrow = narrow;
 exports.narrowExclude = narrowExclude;
 exports.tag = tag;
+exports.trim = trim;
 exports.wL = wL;

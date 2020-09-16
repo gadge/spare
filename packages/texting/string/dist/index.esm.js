@@ -41,4 +41,4 @@ const tag = (label, item) => {
   return `${key} (${text})`;
 };
 
-export { afterNonTab, indexNonTab, narrow, narrowExclude, tag, wL };
+export { afterNonTab, indexNonTab, narrow, narrowExclude, tag, trim, wL };
