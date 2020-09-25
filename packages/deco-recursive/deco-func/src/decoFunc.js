@@ -4,13 +4,13 @@ import { lange }                                          from '@spare/lange'
 import { argsDye, arrowDye, bodyDye, nameDye, PresetDye } from '../resources/dyes'
 import { funcName }                                       from './funcName'
 
-export const LAMB_REG = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs
+export const FUNCTION_BODY = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs
 export const THIS_REG = /\bthis\b/
-export const FUNC_INI = /^function/
-export const MULTI_LF = /\n\s*(\n\s*)/g
+export const FUNCTION_INITIAL = /^function/
+export const LINEFEEDS = /\n\s*(\n\s*)/g
 
 const funcToLined = func => {
-  return func.toString().replace(MULTI_LF, (_, p1) => p1)
+  return func.toString().replace(LINEFEEDS, (_, p1) => p1)
 }
 
 const flatten = (text, flatMark) => {
@@ -19,14 +19,18 @@ const flatten = (text, flatMark) => {
   return text
 }
 
-const lambdafy = (text, pretty) => {
+const lambdafy = (text, pretty, defaultName = 'anonym') => {
   if (!THIS_REG.test(text))
-    text = pretty ? text
-      .replace(LAMB_REG, (_, name, args, body) =>
-        nameDye(name) + SP + parenth(argsDye(args)) + SP + arrowDye('=>') + bodyDye(body)) : text
-      .replace(LAMB_REG, (_, name, args, body) =>
-        name + SP + parenth(args) + SP + '=>' + body)
-  return text.replace(FUNC_INI, '').trim()
+    text = pretty
+      ? text.replace(FUNCTION_BODY, (_, name, args, body) =>
+        nameDye(name === 'anonymous' ? defaultName : name) + SP + parenth(argsDye(args.trim())) + SP +
+        arrowDye('=>') + bodyDye(body)
+      )
+      : text.replace(FUNCTION_BODY, (_, name, args, body) =>
+        name + SP + parenth(args) + SP +
+        '=>' + body
+      )
+  return text.replace(FUNCTION_INITIAL, '').trim()
 }
 
 const abbrev = (text, abbrMark, func) => {
@@ -44,7 +48,7 @@ export const decofun = function (func) {
   const { pr, fw, aw } = this
   text = funcToLined(func)
   text = flatten(text, fw)
-  text = lambdafy(text, pr)
+  text = lambdafy(text, pr, func?.name)
   text = abbrev(text, aw, func)
   return prettify(text, pr)
 }

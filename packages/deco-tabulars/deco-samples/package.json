@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@aryth/math": "^0.2.14",
+    "@aryth/math": "^0.3.0",
     "@palett/enum-colorant-modes": "^0.4.5",
     "@palett/fluo-matrix": "^0.4.5",
     "@palett/fluo-vector": "^0.4.5",

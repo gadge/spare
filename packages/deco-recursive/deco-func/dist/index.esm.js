@@ -42,13 +42,13 @@ const funcName = func => {
   return `[fn:(${(_func$name = func === null || func === void 0 ? void 0 : func.name) !== null && _func$name !== void 0 ? _func$name : '<anonym>'})]`;
 };
 
-const LAMB_REG = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs;
+const FUNCTION_BODY = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs;
 const THIS_REG = /\bthis\b/;
-const FUNC_INI = /^function/;
-const MULTI_LF = /\n\s*(\n\s*)/g;
+const FUNCTION_INITIAL = /^function/;
+const LINEFEEDS = /\n\s*(\n\s*)/g;
 
 const funcToLined = func => {
-  return func.toString().replace(MULTI_LF, (_, p1) => p1);
+  return func.toString().replace(LINEFEEDS, (_, p1) => p1);
 };
 
 const flatten = (text, flatMark) => {
@@ -57,9 +57,9 @@ const flatten = (text, flatMark) => {
   return text;
 };
 
-const lambdafy = (text, pretty) => {
-  if (!THIS_REG.test(text)) text = pretty ? text.replace(LAMB_REG, (_, name, args, body) => nameDye(name) + SP + parenth(argsDye(args)) + SP + arrowDye('=>') + bodyDye(body)) : text.replace(LAMB_REG, (_, name, args, body) => name + SP + parenth(args) + SP + '=>' + body);
-  return text.replace(FUNC_INI, '').trim();
+const lambdafy = (text, pretty, defaultName = 'anonym') => {
+  if (!THIS_REG.test(text)) text = pretty ? text.replace(FUNCTION_BODY, (_, name, args, body) => nameDye(name === 'anonymous' ? defaultName : name) + SP + parenth(argsDye(args.trim())) + SP + arrowDye('=>') + bodyDye(body)) : text.replace(FUNCTION_BODY, (_, name, args, body) => name + SP + parenth(args) + SP + '=>' + body);
+  return text.replace(FUNCTION_INITIAL, '').trim();
 };
 
 const abbrev = (text, abbrMark, func) => {
@@ -81,18 +81,18 @@ const decofun = function (func) {
   } = this;
   text = funcToLined(func);
   text = flatten(text, fw);
-  text = lambdafy(text, pr);
+  text = lambdafy(text, pr, func === null || func === void 0 ? void 0 : func.name);
   text = abbrev(text, aw, func);
   return prettify(text, pr);
 };
 
 const FUNC_REG = /\((.*?)\)\s+{/s;
-const LAMB_REG$1 = /\(?(.*?)\)?\s+=>/s;
+const LAMB_REG = /\(?(.*?)\)?\s+=>/s;
 const argnames = fn => {
   const text = fn.toString();
   let ms, ph;
   if ((ms = FUNC_REG.exec(text)) && ([, ph] = ms)) return ph.match(/\w+/g);
-  if ((ms = LAMB_REG$1.exec(text)) && ([, ph] = ms)) return ph.match(/\w+/g);
+  if ((ms = LAMB_REG.exec(text)) && ([, ph] = ms)) return ph.match(/\w+/g);
   return [];
 };
 

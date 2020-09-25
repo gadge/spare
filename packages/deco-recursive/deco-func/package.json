@@ -23,6 +23,9 @@
     "@spare/lange": "^0.9.8",
     "@spare/translator": "^0.9.8"
   },
+  "devDependencies": {
+    "@ject/rename": "^0.0.6"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gadge/spare.git"

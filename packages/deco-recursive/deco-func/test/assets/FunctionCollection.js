@@ -1,4 +1,5 @@
 import { rand }      from '@aryth/rand'
+import { Rename }    from '@ject/rename'
 import { isNumeric } from '@typen/num-loose'
 
 const coordinate = function () {
@@ -19,6 +20,7 @@ export const FunctionCollection = {
   conditional: function (x) { if (x % 2) { return 'odd' } else { return 'even' } },
   coordinateBind: coordinate.bind({ x: 1, y: 2 }),
   parseNumeric: x => isNumeric(x) ? +x : NaN,
+  newFunction: new Function('x', 'return x + 1') |> Rename('newFunc'),
   nested() {
     const alpha = () => () => this
     const beta = function () { Object.assign({ foo: true }, this) }
