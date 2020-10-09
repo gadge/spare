@@ -26,7 +26,7 @@
     "@typen/enum-object-types": "^0.1.10",
     "@typen/num-loose": "^0.1.10",
     "@typen/typ": "^0.1.10",
-    "@vect/column-mapper": "^0.2.10"
+    "@vect/column-mapper": "^0.3.0"
   },
   "repository": {
     "type": "git",

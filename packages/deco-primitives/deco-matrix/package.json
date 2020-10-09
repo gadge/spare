@@ -22,10 +22,10 @@
     "@spare/enum-chars": "^0.9.9",
     "@spare/liner": "^0.9.9",
     "@spare/mattro": "^0.9.9",
-    "@spare/pad-matrix": "^0.9.9",
+    "@spare/matrix-padder": "^0.9.9",
     "@spare/preset-deco": "^0.9.9",
     "@spare/quote": "^0.9.9",
-    "@vect/matrix": "^0.2.10"
+    "@vect/matrix": "^0.3.0"
   },
   "repository": {
     "type": "git",

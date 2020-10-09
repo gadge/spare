@@ -4,8 +4,8 @@ import { fluoVector }     from '@palett/fluo-vector'
 import { AEU }            from '@spare/enum-chars'
 import { liner }          from '@spare/liner'
 import { mattro }         from '@spare/mattro'
-import { padKeyedColumn } from '@spare/pad-keyed-column'
-import { padTable }       from '@spare/pad-table'
+import { padKeyedColumn } from '@spare/keyed-column-padder'
+import { tablePadder }       from '@spare/table-padder'
 import { vettro }         from '@spare/vettro'
 import { size }           from '@vect/matrix'
 import { zipper }         from '@vect/vector-zipper'
@@ -36,7 +36,7 @@ export const cosmetics = function (crostab) {
     dyeS = fluoVector.call(COLORANT, s.raw, labelPresets)
   }
   let { title, hr: br, side } = padKeyedColumn(s.text, name, { dye: dyeS, fullAngle })
-  let { head, hr, rows } = padTable(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
+  let { head, hr, rows } = tablePadder(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
   const lines = [
     title + VLINE + head.join(VLINE),
     br + HCONN + hr.join(HCONN)

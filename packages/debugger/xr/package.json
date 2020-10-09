@@ -23,7 +23,7 @@
     "@spare/enum-chars": "^0.9.9",
     "@spare/util": "^0.9.9",
     "@typen/nullish": "^0.1.10",
-    "@vect/callable": "^0.2.10"
+    "@vect/callable": "^0.3.0"
   },
   "repository": {
     "type": "git",

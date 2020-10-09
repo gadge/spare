@@ -19,7 +19,7 @@ import { mutate, iterate } from '@vect/vector-mapper';
 import { max } from '@aryth/comparer';
 import { lange } from '@spare/lange';
 import { joinLines } from '@spare/liner';
-import { LPad } from '@spare/pad-string';
+import { LPad } from '@spare/padder';
 import { cosmetics } from '@spare/deco-string';
 import { splitLiteral } from '@spare/splitter';
 

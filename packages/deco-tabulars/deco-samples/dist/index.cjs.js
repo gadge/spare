@@ -10,7 +10,7 @@ var fluoVector = require('@palett/fluo-vector');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
-var padMatrix = require('@spare/pad-matrix');
+var matrixPadder = require('@spare/matrix-padder');
 var vettro = require('@spare/vettro');
 var entriesUnwind = require('@vect/entries-unwind');
 var matrixMargin = require('@vect/matrix-margin');
@@ -83,7 +83,7 @@ const cosmetics = function (samples) {
     head = fluoVector.fluoVector(head, [numericPreset, headingPreset]);
   }
 
-  rows = padMatrix.padMatrix(text, {
+  rows = matrixPadder.padMatrix(text, {
     raw,
     dye,
     ansi

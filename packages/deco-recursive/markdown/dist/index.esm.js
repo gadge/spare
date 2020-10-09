@@ -2,8 +2,8 @@ import { enttro } from '@spare/enttro';
 import { AEU, LF, RTSP } from '@spare/enum-chars';
 import { liner, Liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
-import { padEntries } from '@spare/pad-entries';
-import { padTable } from '@spare/pad-table';
+import { entriesPadder } from '@spare/entries-padder';
+import { tablePadder } from '@spare/table-padder';
 import { vettro } from '@spare/vettro';
 import { size } from '@vect/matrix';
 
@@ -85,7 +85,7 @@ class Markdown {
       read,
       hr: HR_ENTRY
     });
-    entries = pad ? padEntries(text, {
+    entries = pad ? entriesPadder(text, {
       raw,
       ansi
     }) : text;
@@ -155,7 +155,7 @@ class Markdown {
       head,
       hr,
       rows
-    } = padTable(x.text, b.text, {
+    } = tablePadder(x.text, b.text, {
       raw: x.raw,
       ansi,
       fullAngle

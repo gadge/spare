@@ -6,7 +6,7 @@ import { fluoVector } from '@palett/fluo-vector';
 import { COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
-import { padMatrix } from '@spare/pad-matrix';
+import { padMatrix } from '@spare/matrix-padder';
 import { marginSizing, Vectogin } from '@spare/vettro';
 import { unwind } from '@vect/entries-unwind';
 import { marginMapper } from '@vect/matrix-margin';

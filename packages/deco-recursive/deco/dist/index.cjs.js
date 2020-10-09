@@ -23,7 +23,7 @@ var vectorMapper = require('@vect/vector-mapper');
 var comparer = require('@aryth/comparer');
 var lange = require('@spare/lange');
 var liner = require('@spare/liner');
-var padString = require('@spare/pad-string');
+var padder = require('@spare/padder');
 var decoString = require('@spare/deco-string');
 var splitter = require('@spare/splitter');
 
@@ -37,7 +37,7 @@ const mutateKeyPad = entries => {
   return pad;
 };
 
-const lpad = padString.LPad({
+const lpad = padder.LPad({
   ansi: true
 });
 const renderEntries = function (entries, lv) {

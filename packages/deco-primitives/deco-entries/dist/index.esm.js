@@ -5,7 +5,7 @@ import { fluoEntries } from '@palett/fluo-entries';
 import { Br } from '@spare/bracket';
 import { enttro } from '@spare/enttro';
 import { liner } from '@spare/liner';
-import { padEntries } from '@spare/pad-entries';
+import { entriesPadder } from '@spare/entries-padder';
 import { zipper } from '@vect/entries-zipper';
 
 const HR_ENTRY = ['..', '..'];
@@ -37,7 +37,7 @@ const cosmetics = function (entries = []) {
     hr: HR_ENTRY
   });
   const dye = presets ? fluoEntries.call(COLORANT, raw, presets, effects) : null;
-  entries = /\n/.test(delim) ? padEntries(text, {
+  entries = /\n/.test(delim) ? entriesPadder(text, {
     raw,
     dye,
     ansi: presets || ansi

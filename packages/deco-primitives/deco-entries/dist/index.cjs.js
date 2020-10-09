@@ -9,7 +9,7 @@ var fluoEntries = require('@palett/fluo-entries');
 var bracket = require('@spare/bracket');
 var enttro = require('@spare/enttro');
 var liner = require('@spare/liner');
-var padEntries = require('@spare/pad-entries');
+var entriesPadder = require('@spare/entries-padder');
 var entriesZipper = require('@vect/entries-zipper');
 
 const HR_ENTRY = ['..', '..'];
@@ -41,7 +41,7 @@ const cosmetics = function (entries = []) {
     hr: HR_ENTRY
   });
   const dye = presets ? fluoEntries.fluoEntries.call(enumColorantModes.COLORANT, raw, presets, effects) : null;
-  entries = /\n/.test(delim) ? padEntries.padEntries(text, {
+  entries = /\n/.test(delim) ? entriesPadder.entriesPadder(text, {
     raw,
     dye,
     ansi: presets || ansi

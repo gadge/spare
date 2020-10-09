@@ -5,8 +5,8 @@ import { fluoVector } from '@palett/fluo-vector';
 import { AEU } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
-import { padKeyedColumn } from '@spare/pad-keyed-column';
-import { padTable } from '@spare/pad-table';
+import { padKeyedColumn } from '@spare/keyed-column-padder';
+import { tablePadder } from '@spare/table-padder';
 import { vettro } from '@spare/vettro';
 import { size } from '@vect/matrix';
 import { zipper } from '@vect/vector-zipper';
@@ -79,7 +79,7 @@ const cosmetics = function (crostab) {
     head,
     hr,
     rows
-  } = padTable(x.text, b.text, {
+  } = tablePadder(x.text, b.text, {
     raw: x.raw,
     dye: dyeX,
     headDye: dyeB,

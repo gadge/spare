@@ -9,7 +9,7 @@ var bracket = require('@spare/bracket');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
-var padMatrix = require('@spare/pad-matrix');
+var matrixPadder = require('@spare/matrix-padder');
 var matrix = require('@vect/matrix');
 
 const cosmetics = function (matrix$1 = []) {
@@ -39,7 +39,7 @@ const cosmetics = function (matrix$1 = []) {
     dye = fluoMatrix.fluoMatrix.call(enumColorantModes.COLORANT, raw, direct, presets);
   }
 
-  const rows = padMatrix.padMatrix(text, {
+  const rows = matrixPadder.padMatrix(text, {
     raw,
     dye,
     ansi

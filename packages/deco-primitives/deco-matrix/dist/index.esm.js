@@ -5,7 +5,7 @@ import { bracket } from '@spare/bracket';
 import { COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { mattro } from '@spare/mattro';
-import { padMatrix } from '@spare/pad-matrix';
+import { padMatrix } from '@spare/matrix-padder';
 import { size } from '@vect/matrix';
 
 const cosmetics = function (matrix = []) {

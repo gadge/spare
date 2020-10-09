@@ -8,7 +8,7 @@ var fluoVector = require('@palett/fluo-vector');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
-var padTable = require('@spare/pad-table');
+var tablePadder = require('@spare/table-padder');
 var vettro = require('@spare/vettro');
 var matrix = require('@vect/matrix');
 
@@ -62,7 +62,7 @@ const cosmetics = function (table) {
     head,
     hr,
     rows
-  } = padTable.padTable(x.text, b.text, {
+  } = tablePadder.tablePadder(x.text, b.text, {
     raw: x.raw,
     dye: dyeX,
     headDye: dyeB,

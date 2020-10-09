@@ -1,6 +1,6 @@
 import { says } from '@palett/says'
 import { Xr }   from '@spare/logger'
-import { HAN }  from '../resources/oneoffRegexes'
+import { HAN }  from '@spare/regex-charset'
 
 const candidates = [
   'Taco青年',
@@ -9,6 +9,9 @@ const candidates = [
   '...'
 ]
 
+
+const tester = HAN.test.bind(HAN)
+
 for (let w of candidates) {
-  Xr().hanHan(HAN.test(w)) |> says[w]
+  Xr().hanHan(tester(w)) |> says[w]
 }

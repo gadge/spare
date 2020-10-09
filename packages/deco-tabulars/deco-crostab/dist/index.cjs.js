@@ -9,8 +9,8 @@ var fluoVector = require('@palett/fluo-vector');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
-var padKeyedColumn = require('@spare/pad-keyed-column');
-var padTable = require('@spare/pad-table');
+var keyedColumnPadder = require('@spare/keyed-column-padder');
+var tablePadder = require('@spare/table-padder');
 var vettro = require('@spare/vettro');
 var matrix = require('@vect/matrix');
 var vectorZipper = require('@vect/vector-zipper');
@@ -75,7 +75,7 @@ const cosmetics = function (crostab) {
     title,
     hr: br,
     side
-  } = padKeyedColumn.padKeyedColumn(s.text, name, {
+  } = keyedColumnPadder.padKeyedColumn(s.text, name, {
     dye: dyeS,
     fullAngle
   });
@@ -83,7 +83,7 @@ const cosmetics = function (crostab) {
     head,
     hr,
     rows
-  } = padTable.padTable(x.text, b.text, {
+  } = tablePadder.tablePadder(x.text, b.text, {
     raw: x.raw,
     dye: dyeX,
     headDye: dyeB,

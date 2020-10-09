@@ -6,8 +6,8 @@ var enttro = require('@spare/enttro');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var mattro = require('@spare/mattro');
-var padEntries = require('@spare/pad-entries');
-var padTable = require('@spare/pad-table');
+var entriesPadder = require('@spare/entries-padder');
+var tablePadder = require('@spare/table-padder');
 var vettro = require('@spare/vettro');
 var matrix = require('@vect/matrix');
 
@@ -89,7 +89,7 @@ class Markdown {
       read,
       hr: HR_ENTRY
     });
-    entries = pad ? padEntries.padEntries(text, {
+    entries = pad ? entriesPadder.entriesPadder(text, {
       raw,
       ansi
     }) : text;
@@ -159,7 +159,7 @@ class Markdown {
       head,
       hr,
       rows
-    } = padTable.padTable(x.text, b.text, {
+    } = tablePadder.tablePadder(x.text, b.text, {
       raw: x.raw,
       ansi,
       fullAngle

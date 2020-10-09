@@ -21,10 +21,10 @@
     "@spare/bracket": "^0.9.9",
     "@spare/enttro": "^0.9.9",
     "@spare/liner": "^0.9.9",
-    "@spare/pad-entries": "^0.9.9",
+    "@spare/entries-padder": "^0.9.9",
     "@spare/preset-deco": "^0.9.9",
     "@spare/quote": "^0.9.9",
-    "@vect/entries-zipper": "^0.2.10"
+    "@vect/entries-zipper": "^0.3.0"
   },
   "repository": {
     "type": "git",

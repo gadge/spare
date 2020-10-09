@@ -19,11 +19,11 @@
     "@spare/enum-chars": "^0.9.9",
     "@spare/liner": "^0.9.9",
     "@spare/mattro": "^0.9.9",
-    "@spare/pad-entries": "^0.9.9",
-    "@spare/pad-table": "^0.9.9",
+    "@spare/entries-padder": "^0.9.9",
+    "@spare/table-padder": "^0.9.9",
     "@spare/vettro": "^0.9.9",
-    "@vect/matrix": "^0.2.10",
-    "@vect/vector-merge": "^0.2.10"
+    "@vect/matrix": "^0.3.0",
+    "@vect/vector-merge": "^0.3.0"
   },
   "repository": {
     "type": "git",
