@@ -2,6 +2,13 @@ import { totx } from '@spare/util';
 import { VectorMargin } from '@spare/vector-margin';
 import { marginCopy, marginMutate, marginMapper } from '@vect/entries-margin';
 
+const entriesMargin = (entries, {
+  head,
+  tail,
+  keyRead,
+  read,
+  rule
+} = {}) => EntriesMargin.build(entries, head, tail).stringify(keyRead, read).toVector(rule !== null && rule !== void 0 ? rule : ['..', '..']);
 class EntriesMargin extends VectorMargin {
   constructor(entries, head, tail, dash) {
     super(entries, head, tail, dash);
@@ -47,9 +54,9 @@ class EntriesMargin extends VectorMargin {
  * @param {number} [tail]
  * @param {function(*):string} [keyRead]
  * @param {function(*):string} [read]
- * @param {*} hr
+ * @param {*} rule
  * @param {boolean} [pad]
- * @return {{text:*[], raw:*[]}}
+ * @return {{raw:*[], alt:*[]}}
  */
 
 const enttro = (entries, {
@@ -57,13 +64,13 @@ const enttro = (entries, {
   tail,
   keyRead,
   read,
-  hr = '...'
+  rule = '...'
 } = {}) => {
   let vn = EntriesMargin.build(entries, head, tail);
   return {
-    raw: vn.toVector(hr),
-    text: vn.stringify(keyRead, read).toVector(hr)
+    raw: vn.toVector(rule),
+    alt: vn.stringify(keyRead, read).toVector(rule)
   };
 };
 
-export { EntriesMargin, enttro };
+export { EntriesMargin, entriesMargin, enttro };

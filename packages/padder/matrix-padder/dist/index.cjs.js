@@ -2,9 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var comparer = require('@aryth/comparer');
 var lange = require('@spare/lange');
 var padder = require('@spare/padder');
-var columnsIndicator = require('@vect/columns-indicator');
+var columnsStat = require('@vect/columns-stat');
 var matrixZipper = require('@vect/matrix-zipper');
 
 const matrixPadder = (mx, {
@@ -13,19 +14,21 @@ const matrixPadder = (mx, {
   ansi,
   fill
 }) => {
-  raw = raw || mx;
-  const len = ansi ? lange.lange : x => x.length;
+  const len = lange.Lange(ansi);
+  const widths = columnsStat.stat.call({
+    init: () => 0,
+    acc: (a, b) => comparer.max(a, len(b))
+  }, mx);
   const pad = padder.Pad({
     ansi,
     fill
   });
-  const wds = columnsIndicator.maxBy(mx, len);
   let zipper;
   return dye ? (zipper = matrixZipper.Trizipper((tx, va, dy, i, j) => {
     var _pad;
 
-    return _pad = pad(tx, wds[j], va), dy(_pad);
-  }), zipper(mx, raw, dye)) : (zipper = matrixZipper.Duozipper((tx, va, i, j) => pad(tx, wds[j], va)), zipper(mx, raw));
+    return _pad = pad(tx, widths[j], va), dy(_pad);
+  }), zipper(mx, raw !== null && raw !== void 0 ? raw : mx, dye)) : (zipper = matrixZipper.Duozipper((tx, va, i, j) => pad(tx, widths[j], va)), zipper(mx, raw !== null && raw !== void 0 ? raw : mx));
 };
 
 exports.matrixPadder = matrixPadder;

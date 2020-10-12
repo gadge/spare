@@ -7,13 +7,13 @@ export class VectorMarginClassic {
    * @param {*[]|null} tail
    * @param {boolean|null}  dash
    */
-  constructor (head, tail, dash = true) {
+  constructor(head, tail, dash = true) {
     this.head = head
     this.tail = tail
     this.dash = dash
   }
 
-  reboot (head, tail) {
+  reboot(head, tail) {
     if (head) this.head = head
     if (tail) this.tail = tail
     return this
@@ -27,7 +27,7 @@ export class VectorMarginClassic {
    * @param {number} [length]
    * @return {VectorMarginClassic}
    */
-  static fromArr (arr, head, tail, length) {
+  static fromArr(arr, head, tail, length) {
     if (!length) {
       if (!arr || !arr.length) return new VectorMarginClassic(null, null, false)
       length = arr.length
@@ -38,13 +38,13 @@ export class VectorMarginClassic {
     return new VectorMarginClassic(arr.slice(0, head), arr.slice(-tail), true)
   }
 
-  first () {
+  first() {
     if (this.head) return this.head[0]
     if (this.tail) return this.tail[0]
     return undefined
   }
 
-  get length () {
+  get length() {
     return (this.head?.length || 0) + (this.tail?.length || 0)
   }
 
@@ -53,7 +53,7 @@ export class VectorMarginClassic {
    * @param {*} [el] - the element to be inserted between head and tail
    * @return {*[]}
    */
-  toList (el) {
+  toList(el) {
     // let arr = []
     // if (this.head) arr = arr.concat(this.head)
     // if (this.dash && !!el) arr.push(el)
@@ -65,19 +65,19 @@ export class VectorMarginClassic {
     )
   }
 
-  convHead (fn) {
+  convHead(fn) {
     if (!fn || !this.head) return this
     this.head = fn(this.head)
     return this
   }
 
-  convTail (fn) {
+  convTail(fn) {
     if (!fn || !this.tail) return this
     this.tail = fn(this.tail)
     return this
   }
 
-  conv (fn, tailFn = undefined) {
+  conv(fn, tailFn = undefined) {
     return this.convHead(fn).convTail(tailFn || fn)
   }
 
@@ -87,7 +87,7 @@ export class VectorMarginClassic {
    * @param {boolean} [mutate]
    * @return {VectorMarginClassic}
    */
-  map (fn, mutate = true) {
+  map(fn, mutate = true) {
     if (!fn) return this
     const
       head = this.head?.map(fn),
@@ -103,7 +103,7 @@ export class VectorMarginClassic {
    * @param {boolean} [mutate]
    * @return {VectorMarginClassic}
    */
-  stringify (read, mutate = true) {
+  stringify(read, mutate = true) {
     const br = read ? (_ => String(read(_))) : totx
     return this.map(br)
   }

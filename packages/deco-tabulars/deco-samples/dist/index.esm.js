@@ -1,103 +1,80 @@
 import { presetSamples } from '@spare/preset-deco';
-import { intExpon } from '@aryth/math';
-import { COLORANT } from '@palett/enum-colorant-modes';
+import { samplesToTabular } from '@analys/convert';
+import { samplesSelect } from '@analys/samples-select';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { fluoVector } from '@palett/fluo-vector';
-import { COLF } from '@spare/enum-chars';
+import { deco as deco$1 } from '@spare/deco-vector';
+import { COSP, SP, ELLIP, COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
-import { mattro } from '@spare/mattro';
-import { padMatrix } from '@spare/matrix-padder';
-import { marginSizing, Vectogin } from '@spare/vettro';
-import { unwind } from '@vect/entries-unwind';
-import { marginMapper } from '@vect/matrix-margin';
-import { size } from '@vect/matrix-size';
-import { lookupKeys, selectValues } from '@vect/object-select';
-import { mutate } from '@vect/vector-mapper';
-import { mutazip } from '@vect/vector-zipper';
+import { matrixPadder } from '@spare/matrix-padder';
+import { tableMargin } from '@spare/table-margin';
+import { vectorPadder } from '@spare/vector-padder';
+import { zipper } from '@vect/vector-zipper';
 
+const MUTATE = {
+  mutate: true
+};
 const cosmetics = function (samples) {
-  var _lookupKeys$call;
+  var _samples;
 
-  let height, sample, keys, dye, rows;
-  if (!(height = samples === null || samples === void 0 ? void 0 : samples.length)) return '[]';
-  if (!([sample] = samples) || !(keys = Object.keys(sample)) || !keys.length) return '[]';
+  const config = this,
+        original = samples;
+  if (!((_samples = samples) === null || _samples === void 0 ? void 0 : _samples.length)) return '[]';
   let {
     fields,
     indexed,
-    headRead,
-    read,
-    direct,
-    preset,
-    ansi,
-    delim,
-    top,
-    bottom,
-    left,
-    right,
     bracket,
     discrete,
-    level,
+    level
+  } = config;
+
+  if (fields) {
+    samples = samplesSelect(samples, fields);
+  }
+
+  let table = samplesToTabular(samples, fields);
+  let {
+    head,
+    rows
+  } = tableMargin(table, config); // { top: 0, bottom: 0, left, right, height, width, read, headRead }
+
+  rows = matrixPadder(rows, config);
+  const {
     presets
-  } = this;
-  let [pick, head] = fields ? (_lookupKeys$call = lookupKeys.call(sample, fields), unwind(_lookupKeys$call)) : [keys, keys.slice()];
-  const {
-    head: l,
-    tail: r,
-    dash: dashY
-  } = marginSizing(pick, left, right);
-  const {
-    head: t,
-    tail: b,
-    dash: dashX
-  } = marginSizing(samples, top, bottom);
-  const headVG = new Vectogin(null, l, r, dashY);
-  const rowsVG = new Vectogin(samples, t, b, dashX);
-  [pick, head] = [headVG.reboot(pick).toVector(), headVG.reboot(head).toVector()];
-  if (headRead) head = head.map(headRead);
-  rows = rowsVG.map(sample => selectValues(sample, pick)).toVector();
-  let [h, w] = size(rows);
-  const {
-    raw,
-    text
-  } = mattro(rows, {
-    top: t,
-    bottom: b,
-    left: l,
-    right: r,
-    height: h,
-    width: w,
-    dashX,
-    dashY,
-    read: read,
-    hr: null,
-    validate: false
-  });
+  } = config;
 
   if (presets) {
-    const [numericPreset,, headingPreset] = presets;
-    dye = fluoMatrix.call(COLORANT, raw, direct, presets);
-    head = fluoVector(head, [numericPreset, headingPreset]);
+    head = fluoVector.call(MUTATE, head, {
+      presets: [presets[0], presets[2]]
+    });
+    rows = fluoMatrix.call(MUTATE, rows, config);
   }
 
-  rows = padMatrix(text, {
-    raw,
-    dye,
-    ansi
-  });
-  rows = marginMapper(rows, (x, i, j) => head[j] + ':' + x, t, b, l, r);
-  dashY ? mutate(rows, line => (line.splice(l, 0, '..'), `{ ${line.join(delim)} }`)) : mutate(rows, line => `{ ${line.join(delim)} }`);
+  let lines = rows.map(line => '{ ' + zipper(head, line, (h, x) => h + ':' + x).join(COSP) + ' }');
 
   if (indexed) {
-    const digits = intExpon(height) + 1;
-    let indices = rowsVG.map((_, i) => String(i).padStart(digits)).toVector();
-    if (preset) indices = fluoVector.call({
-      colorant: false
-    }, indices, presets);
-    mutazip(rows, indices, (line, index) => '(' + index + ') ' + line);
+    let side = Object.keys(original);
+    const {
+      top: head,
+      bottom: tail,
+      ansi,
+      presets
+    } = config;
+    side = deco$1(side, {
+      head,
+      tail,
+      ansi,
+      presets,
+      discrete: true
+    });
+    side = vectorPadder(side, {
+      ansi: true
+    });
+    lines = zipper(lines, side, (line, index) => '[' + index + ']' + SP + line);
   }
 
-  if (dashX) rows.splice(t, 0, '...');
-  return liner(rows, {
+  if (config.top) lines.splice(config.top, 1, ELLIP);
+  return liner(lines, {
     discrete,
     delim: COLF,
     bracket,

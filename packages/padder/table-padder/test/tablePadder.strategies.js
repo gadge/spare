@@ -1,6 +1,7 @@
 import { Table }                     from '@analys/table'
 import { TableCollection }           from '@foba/table'
 import { makeEmbedded }              from '@foba/util'
+import { deco }                      from '@spare/deco'
 import { decoCrostab, logger, says } from '@spare/logger'
 import { strategies }                from '@valjoux/strategies'
 import { dateTime }                  from '@valjoux/timestamp-pretty'
@@ -24,6 +25,6 @@ const test = () => {
   '' |> logger
   const FUNCTION_TAG = 'dev'
   for (let member of result.side)
-    result.cell(member, FUNCTION_TAG)  |> says[member].br(FUNCTION_TAG)
+    result.cell(member, FUNCTION_TAG)  |> deco |> says[member].br(FUNCTION_TAG)
 }
 test()

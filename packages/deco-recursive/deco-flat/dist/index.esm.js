@@ -40,16 +40,18 @@ function decoflat(lv, node) {
 }
 
 function deVec(lv, ve) {
-  const presets = this === null || this === void 0 ? void 0 : this.presets;
-  const list = ve.map(decoflat.bind(this, lv + 1));
-  fluoVector.call(MUTABLE, list, presets);
+  const config = this; // const presets = this?.presets
+
+  const list = ve.map(decoflat.bind(config, lv + 1));
+  fluoVector.call(MUTABLE, list, config);
   return list.join(COSP);
 }
 
 function deOb(lv, ob) {
-  const presets = this === null || this === void 0 ? void 0 : this.presets;
+  const config = this; // const presets = this?.presets
+
   const ents = mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1));
-  fluoEntries.call(MUTABLE, ents, presets);
+  fluoEntries.call(MUTABLE, ents, config);
   return ents.map(([k, v]) => k + RT + v).join(COSP);
 }
 

@@ -1,47 +1,39 @@
-import { COLORANT }       from '@palett/enum-colorant-modes'
-import { fluoMatrix }     from '@palett/fluo-matrix'
-import { fluoVector }     from '@palett/fluo-vector'
-import { AEU }            from '@spare/enum-chars'
-import { liner }          from '@spare/liner'
-import { mattro }         from '@spare/mattro'
-import { padKeyedColumn } from '@spare/keyed-column-padder'
-import { tablePadder }       from '@spare/table-padder'
-import { vettro }         from '@spare/vettro'
-import { size }           from '@vect/matrix'
-import { zipper }         from '@vect/vector-zipper'
-import { HCONN, VLINE }   from '../resources/conns'
+import { fluoMatrix }    from '@palett/fluo-matrix'
+import { fluoVector }    from '@palett/fluo-vector'
+import { crostabMargin } from '@spare/crostab-margin'
+import { crostabPadder } from '@spare/crostab-padder'
+import { AEU }           from '@spare/enum-chars'
+import { liner }         from '@spare/liner'
+import { size }          from '@vect/matrix'
+import { acquire }       from '@vect/vector-merge'
+import { zipper }        from '@vect/vector-zipper'
+import { HCONN, VLINE }  from '../resources/conns'
+
+const MUTATE = { mutate: true }
 
 export const cosmetics = function (crostab) {
   if (!crostab) return AEU
-  let matrix = crostab.rows || crostab.matrix, banner = crostab.head || crostab.banner,
-    stand = crostab.side, name = crostab.title || ''
-  const [height, width] = size(matrix), labelWidth = banner && banner.length, labelHeight = stand && stand.length
+  const config = this
+  const [height, width] = size(crostab.rows), labelWidth = crostab.head?.length, labelHeight = crostab.side?.length
   if (!height || !width || !labelWidth || !labelHeight) return AEU
-  const {
-    direct, read, headRead, sideRead, presets,
-    top, left, bottom, right, ansi, fullAngle, discrete, delim, level
-  } = this
-  const [x, b, s] = [
-    mattro(matrix, { top, bottom, left, right, height, width, read }),
-    vettro(banner, { head: left, tail: right, read: headRead }),
-    vettro(stand, { head: top, tail: bottom, read: sideRead }),
-  ]
-  let dyeX, dyeB, dyeS
+  crostab = crostabMargin(crostab, config) // use: top, bottom, left, right, height, width, read, sideRead, headRead
+  crostab = crostabPadder(crostab, config) // use: ansi, fullAngle
+  const { presets } = config
   if (presets) {
-    const
-      [numericPreset, , headingPreset] = presets,
-      labelPresets = [numericPreset, headingPreset]
-    dyeX = fluoMatrix.call(COLORANT, x.raw, direct, presets)
-    dyeB = fluoVector.call(COLORANT, b.raw, labelPresets)
-    dyeS = fluoVector.call(COLORANT, s.raw, labelPresets)
+    const vectorPresets = { presets: [presets[0], presets[2]] }
+    crostab.side = fluoVector.call(MUTATE, crostab.side, vectorPresets)
+    crostab.head = fluoVector.call(MUTATE, crostab.head, vectorPresets)
+    crostab.rows = fluoMatrix.call(MUTATE, crostab.rows, config) // use: direct, presets
   }
-  let { title, hr: br, side } = padKeyedColumn(s.text, name, { dye: dyeS, fullAngle })
-  let { head, hr, rows } = tablePadder(x.text, b.text, { raw: x.raw, dye: dyeX, headDye: dyeB, ansi, fullAngle })
-  const lines = [
-    title + VLINE + head.join(VLINE),
-    br + HCONN + hr.join(HCONN)
-  ].concat(
-    zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE))
+  const lines = acquire(
+    [
+      crostab.title + VLINE + crostab.head.join(VLINE),
+      crostab.rule.join(HCONN)
+    ],
+    zipper(
+      crostab.side,
+      crostab.rows, (s, r) => s + VLINE + r.join(VLINE)
+    )
   )
-  return liner(lines, { discrete, delim, level })
+  return liner(lines, config) // use: discrete, delim, level
 }

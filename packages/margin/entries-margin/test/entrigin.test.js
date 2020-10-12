@@ -1,7 +1,7 @@
 import { simpleEntries } from '@foba/foo'
 import { deca }          from '@spare/deco'
 import { logNeL }        from '@spare/logger'
-import { xr }       from '@spare/xr'
+import { xr }            from '@spare/xr'
 import { EntriesMargin } from '../src/EntriesMargin'
 
 const Entries = simpleEntries({ h: 8 })

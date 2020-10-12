@@ -14,6 +14,22 @@ const marginSizing = (ar, head, tail) => {
   };
 };
 
+/**
+ *
+ * @param {*[]} vec
+ * @param {number} [head]
+ * @param {number} [tail]
+ * @param {Function} [read]
+ * @param {string} [rule='..']
+ * @return {string[]}
+ */
+
+const vectorMargin = (vec, {
+  head,
+  tail,
+  read,
+  rule = '...'
+} = {}) => VectorMargin.build(vec, head, tail).stringify(read).toVector(rule);
 class VectorMargin {
   constructor(vec, head, tail, dash) {
     this.vec = vec;
@@ -44,6 +60,8 @@ class VectorMargin {
   stringify(fn, mutate = true) {
     return this.map(fn ? _ => String(fn(_)) : totx, mutate);
   }
+  /** @return {*[]} */
+
 
   toVector(el) {
     const {
@@ -75,9 +93,9 @@ class VectorMargin {
  * @param {*|number} [tail]
  * @param {*|boolean} [dash]
  * @param {*|function(*):string} [read]
- * @param {*|string} [hr='..']
+ * @param {*|string} [rule='..']
  * @param {*|boolean} [validate=true]
- * @return {{raw:*[],text:*[]}}
+ * @return {{raw:*[],alt:*[]}}
  */
 
 const vettro = (arr, {
@@ -85,14 +103,14 @@ const vettro = (arr, {
   tail,
   dash,
   read,
-  hr = '...',
+  rule = '...',
   validate = true
 } = {}) => {
-  let vn = validate ? VectorMargin.build(arr, head, tail) : new VectorMargin(arr, head, tail, dash);
+  const vn = validate ? VectorMargin.build(arr, head, tail) : new VectorMargin(arr, head, tail, dash);
   return {
-    raw: vn.map(oneself).toVector(hr),
-    text: vn.stringify(read).toVector(hr)
+    raw: vn.map(oneself).toVector(rule),
+    alt: vn.stringify(read).toVector(rule)
   };
 };
 
-export { VectorMargin, marginSizing, vettro };
+export { VectorMargin, marginSizing, vectorMargin, vettro };

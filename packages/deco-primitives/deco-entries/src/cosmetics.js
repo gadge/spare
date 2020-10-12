@@ -1,22 +1,23 @@
-import { oneself }     from '@ject/oneself'
-import { COLORANT }    from '@palett/enum-colorant-modes'
-import { fluoEntries } from '@palett/fluo-entries'
-import { Br }          from '@spare/bracket'
-import { enttro }      from '@spare/enttro'
-import { liner }       from '@spare/liner'
-import { entriesPadder }  from '@spare/entries-padder'
-import { zipper }   from '@vect/entries-zipper'
-import { HR_ENTRY } from '../utils/HR_ENTRY'
+import { oneself }       from '@ject/oneself'
+import { fluoEntries }   from '@palett/fluo-entries'
+import { Br }            from '@spare/bracket'
+import { entriesMargin } from '@spare/entries-margin'
+import { entriesPadder } from '@spare/entries-padder'
+import { liner }         from '@spare/liner'
+
+const LF = /\n/
+const fluo = fluoEntries.bind({ colorant: false, mutate: true })
 
 export const cosmetics = function (entries = []) {
-  if (!entries?.length) return liner([], this)
-  const { keyRead, read, head, tail, ansi, dash, delim, bracket, presets, effects } = this
-  const { raw, text } = enttro(entries, { head, tail, keyRead, read, hr: HR_ENTRY })
-  const dye = presets ? fluoEntries.call(COLORANT, raw, presets, effects) : null
-  entries = /\n/.test(delim)
-    ? entriesPadder(text, { raw, dye, ansi: presets || ansi })
-    : presets ? zipper(text, dye, (tx, dy) => tx |> dy) : text
-  const brk = Br(bracket) || oneself
-  const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()))
-  return liner(lines, this)
+  const config = this
+  if (!entries?.length) return liner([], config)
+  let { ansi, dash, delim, bracket } = config
+  bracket = Br(bracket) ?? oneself
+  entries = entriesMargin(entries, config) // use: head, tail, keyRead, read
+  if (LF.test(delim)) entries = entriesPadder(entries, { ansi: config.presets ?? ansi })
+  if (config.presets) entries = fluo(entries, config) // use: presets, effects
+  return liner(
+    entries.map(([k, v]) => bracket(k + dash + v.trimRight())),
+    config
+  )
 }

@@ -1,8 +1,8 @@
 import { simpleMatrices } from '@foba/foo'
 import { deco }           from '@spare/deco'
 import { logNeL }         from '@spare/logger'
-import { xr }       from '@spare/xr'
-import { MatrixMargin } from '../src/MatrixMargin'
+import { xr }             from '@spare/xr'
+import { MatrixMargin }   from '../src/MatrixMargin'
 
 const Matrices = simpleMatrices({ h: 8, w: 6 })
 const Params = {
@@ -19,7 +19,7 @@ const marginConfig = Params.c0121 |> (({ t, b, l, r }) => [t, b, l, r])
 for (const [key, entries] of Object.entries(Matrices)) {
   xr(key).matrigin(MatrixMargin
     .build(entries, ...marginConfig)
-    .map(k => `'${k}'`)
+    .map(k => `'${ k }'`)
     |> deco
   ) |> logNeL
 }

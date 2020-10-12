@@ -7,74 +7,44 @@ var fluoMatrix = require('@palett/fluo-matrix');
 var fluoVector = require('@palett/fluo-vector');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
-var mattro = require('@spare/mattro');
+var tableMargin = require('@spare/table-margin');
 var tablePadder = require('@spare/table-padder');
-var vettro = require('@spare/vettro');
 var matrix = require('@vect/matrix');
+var vectorMerge = require('@vect/vector-merge');
 
+const MUTATE = {
+  mutate: true
+};
 const cosmetics = function (table) {
+  var _head;
+
+  const config = this;
   if (!table) return enumChars.AEU;
-  let matrix$1 = table.rows || table.matrix,
-      banner = table.head || table.banner;
-  const [height, width] = matrix.size(matrix$1),
-        labelWidth = banner && banner.length;
+  let head = table.head || table.banner,
+      rows = table.rows || table.matrix,
+      rule = null;
+  const [height, width] = matrix.size(rows),
+        labelWidth = (_head = head) === null || _head === void 0 ? void 0 : _head.length;
   if (!height || !width || !labelWidth) return enumChars.AEU;
   const {
-    direct,
-    read,
-    headRead,
-    presets,
-    top,
-    left,
-    bottom,
-    right,
-    ansi,
-    fullAngle,
-    discrete,
-    delim,
-    level
-  } = this;
-  const [x, b] = [mattro.mattro(matrix$1, {
-    top,
-    bottom,
-    left,
-    right,
-    height,
-    width,
-    read
-  }), vettro.vettro(banner, {
-    head: left,
-    tail: right,
-    read: headRead
-  })];
-  let dyeX, dyeB;
+    presets
+  } = config;
+  table = tableMargin.tableMargin(table, config); // use: top, left, bottom ,right, read, headRead
+
+  ({
+    head,
+    rule,
+    rows
+  } = tablePadder.tablePadder(table, config)); // use: ansi, fullAngle
 
   if (presets) {
-    const COLORANT = {
-      colorant: true
-    };
-    const [numeralPreset,, headingPreset] = presets;
-    dyeX = fluoMatrix.fluoMatrix.call(COLORANT, x.raw, direct, presets);
-    dyeB = fluoVector.fluoVector.call(COLORANT, b.raw, [numeralPreset, headingPreset]);
+    [head, rows] = [fluoVector.fluoVector.call(MUTATE, head, {
+      presets: [presets[0], presets[2]]
+    }), fluoMatrix.fluoMatrix.call(MUTATE, rows, config)];
   }
 
-  let {
-    head,
-    hr,
-    rows
-  } = tablePadder.tablePadder(x.text, b.text, {
-    raw: x.raw,
-    dye: dyeX,
-    headDye: dyeB,
-    ansi,
-    fullAngle
-  });
-  const lines = [head.join(' | '), hr.join('-+-')].concat(rows.map(row => row.join(' | ')));
-  return liner.liner(lines, {
-    discrete,
-    delim,
-    level
-  });
+  const lines = vectorMerge.acquire([head.join(' | '), rule.join('-+-')], rows.map(row => row.join(' | ')));
+  return liner.liner(lines, config); // use: discrete, delim, level
 };
 
 /**

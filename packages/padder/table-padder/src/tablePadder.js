@@ -1,38 +1,46 @@
-import { DA }                                             from '@spare/enum-chars'
-import { Lange }                                          from '@spare/lange'
-import { Pad }                                            from '@spare/padder'
-import { maxBy as columnsMaxBy }                          from '@vect/columns-indicator'
-import { Duozipper as MatDuoZip, Trizipper as MatTriZip } from '@vect/matrix-zipper'
-import { mapper }                                         from '@vect/vector-mapper'
-import { Duozipper as VecDuoZip, Trizipper as VecTriZip } from '@vect/vector-zipper'
-import { tablePadderFullAngle }                              from './tablePadderFullAngle'
-// /**
-//  *
-//  *
-//  * @param {string[][]} text
-//  * @param {*[]} head
-//  * @param {*[][]} raw
-//  * @param {function[][]} [dye]
-//  * @param {*[]} dyeHead
-//  * @param {boolean=false} [ansi]
-//  * @param {boolean=false} [fullAngle]
-//  * @return {{head: string[], rows: string[][], hr: string[]}}
-//  */
+import { max }                    from '@aryth/comparer'
+import { DA }                     from '@spare/enum-chars'
+import { Lange }                  from '@spare/lange'
+import { Pad }                    from '@spare/padder'
+import { stat }                   from '@vect/columns-stat'
+import { mapper as mapperMatrix } from '@vect/matrix-mapper'
+import { acquire }                from '@vect/vector'
+import { mapper }                 from '@vect/vector-mapper'
+import { zipper }                 from '@vect/vector-zipper'
+import { tablePadderFullAngle }   from './tablePadderFullAngle'
+
+/**
+ *
+ *
+ * @param {*[]} head
+ * @param {string[][]} rows
+ * @param {*[][]} raw
+ * @param {boolean=false} [ansi]
+ * @param {boolean=false} [fullAngle]
+ * @return {{head: string[], rule: string[], rows: string[][]}}
+ */
 export const tablePadder = (
-  text, head, {
-    raw, dye, headDye, ansi = false, fullAngle = false
+  { head, rows },
+  {
+    raw, ansi = false, fullAngle = false
   } = {},
 ) => {
-  if (fullAngle) return tablePadderFullAngle(text, head, { raw, dye, ansi })
+  if (fullAngle) return tablePadderFullAngle({ head, rows }, { raw, ansi })
   const padder = Pad({ ansi })
-  const pads = columnsMaxBy([head].concat(text), Lange(ansi))
+  let len = Lange(ansi)
+  const pads = stat.call({ init: () => 0, acc: (a, b) => max(a, len(b)) }, acquire([head], rows))
   return {
-    head: headDye
-      ? VecTriZip((x, d, p) => padder(x, p) |> d)(head, headDye, pads)
-      : VecDuoZip((x, p) => padder(x, p))(head, pads),
-    hr: mapper(pads, p => DA.repeat(p)),
-    rows: dye
-      ? MatTriZip((x, v, d, i, j) => padder(x, pads[j], v) |> d)(text, raw, dye)
-      : MatDuoZip((x, v, i, j) => padder(x, pads[j], v))(text, raw)
+    head: zipper(head, pads, (x, p) => padder(x, p, x)),
+    rule: mapper(pads, p => DA.repeat(p)),
+    rows: mapperMatrix(rows, (x, i, j) => padder(x, pads[j], x))
   }
+  // return {
+  //   head: headDye
+  //     ? VecTriZip((x, d, p) => padder(x, p) |> d)(head, headDye, pads)
+  //     : VecDuoZip((x, p) => padder(x, p))(head, pads),
+  //   rule: mapper(pads, p => DA.repeat(p)),
+  //   rows: dye
+  //     ? MatTriZip((x, v, d, i, j) => padder(x, pads[j], v) |> d)(rows, raw ?? rows, dye)
+  //     : MatDuoZip((x, v, i, j) => padder(x, pads[j], v))(rows, raw ?? rows)
+  // }
 }

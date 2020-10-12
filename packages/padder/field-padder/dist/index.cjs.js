@@ -15,12 +15,21 @@ var vectorZipper = require('@vect/vector-zipper');
 const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
 
 const hasHan = HAN.test.bind(HAN);
-const keyedColumnPadder = (side, title, {
+const fieldPadder = ({
+  title = '',
+  side
+}, {
   dye,
   ansi,
   fullAngle
 } = {}) => {
-  if (fullAngle) return keyedColumnPadderFullWidth(side, title, ansi);
+  if (fullAngle) return fieldPadderFullWidth({
+    title,
+    side
+  }, {
+    dye,
+    ansi
+  });
   const lpad = padder.LPad({
     ansi
   }),
@@ -39,7 +48,10 @@ const keyedColumnPadder = (side, title, {
     }) : vectorMapper.mapper(side, x => lpad(x, pad))
   };
 };
-const keyedColumnPadderFullWidth = (side, title, {
+const fieldPadderFullWidth = ({
+  title = '',
+  side
+}, {
   dye,
   ansi,
   dash = enumFullAngleChars.DASH,
@@ -49,7 +61,10 @@ const keyedColumnPadderFullWidth = (side, title, {
     ansi
   });
   const han = hasHan(title) || side.some(hasHan);
-  if (!han) return keyedColumnPadder(side, title, {
+  if (!han) return fieldPadder({
+    title,
+    side
+  }, {
     ansi
   });
   const lpad = padder.LPad({
@@ -73,4 +88,4 @@ const keyedColumnPadderFullWidth = (side, title, {
   };
 };
 
-exports.keyedColumnPadder = keyedColumnPadder;
+exports.fieldPadder = fieldPadder;

@@ -1,6 +1,6 @@
-import { deca }        from '@spare/deco'
-import { logger }      from '@spare/logger'
-import { Mx }          from 'veho'
+import { deca }            from '@spare/deco'
+import { logger }          from '@spare/logger'
+import { Mx }              from 'veho'
 import { MatrixMargin }    from '../../../src/MatrixMargin'
 import { MatrixMarginDev } from '../matriginDev'
 

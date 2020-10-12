@@ -11,12 +11,21 @@ import { zipper } from '@vect/vector-zipper';
 const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
 
 const hasHan = HAN.test.bind(HAN);
-const keyedColumnPadder = (side, title, {
+const fieldPadder = ({
+  title = '',
+  side
+}, {
   dye,
   ansi,
   fullAngle
 } = {}) => {
-  if (fullAngle) return keyedColumnPadderFullWidth(side, title, ansi);
+  if (fullAngle) return fieldPadderFullWidth({
+    title,
+    side
+  }, {
+    dye,
+    ansi
+  });
   const lpad = LPad({
     ansi
   }),
@@ -35,7 +44,10 @@ const keyedColumnPadder = (side, title, {
     }) : mapper(side, x => lpad(x, pad))
   };
 };
-const keyedColumnPadderFullWidth = (side, title, {
+const fieldPadderFullWidth = ({
+  title = '',
+  side
+}, {
   dye,
   ansi,
   dash = DASH,
@@ -45,7 +57,10 @@ const keyedColumnPadderFullWidth = (side, title, {
     ansi
   });
   const han = hasHan(title) || side.some(hasHan);
-  if (!han) return keyedColumnPadder(side, title, {
+  if (!han) return fieldPadder({
+    title,
+    side
+  }, {
     ansi
   });
   const lpad = LPad({
@@ -69,4 +84,4 @@ const keyedColumnPadderFullWidth = (side, title, {
   };
 };
 
-export { keyedColumnPadder };
+export { fieldPadder };

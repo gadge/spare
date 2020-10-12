@@ -1,2 +1,2 @@
-export { EntriesMargin } from './src/EntriesMargin'
-export { enttro }   from './src/enttro'
+export { EntriesMargin, entriesMargin } from './src/EntriesMargin'
+export { enttro }                       from './src/enttro'

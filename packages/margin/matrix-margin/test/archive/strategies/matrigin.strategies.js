@@ -1,8 +1,8 @@
-import { Chrono }              from 'elprimero'
-import { Ar, Mx }              from 'veho'
-import { CrosTabX }            from 'xbrief'
+import { Chrono }                  from 'elprimero'
+import { Ar, Mx }                  from 'veho'
+import { CrosTabX }                from 'xbrief'
 import { MatrixMargin as PreXFut } from '../../../src/MatrixMargin'
-import { PreADev }             from '../../archive/VectorMarginClassic'
+import { PreADev }                 from '../../archive/VectorMarginClassic'
 import { MatrixMarginDev }         from '../matriginDev'
 
 const { ini, zip } = Ar
@@ -15,7 +15,7 @@ const copyMargin = (ar, h, ts, l) => {
 }
 
 class PreXStrategies {
-  static testPrototype () {
+  static testPrototype() {
     let funcList
     funcList = {
       stable: (mx, [t, b], [l, r]) => PreADev
@@ -86,7 +86,7 @@ class PreXStrategies {
     }
   }
 
-  static test () {
+  static test() {
     const mx = [
       [1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10],

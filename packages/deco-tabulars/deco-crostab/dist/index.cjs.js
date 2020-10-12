@@ -3,99 +3,50 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
-var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoMatrix = require('@palett/fluo-matrix');
 var fluoVector = require('@palett/fluo-vector');
+var crostabMargin = require('@spare/crostab-margin');
+var crostabPadder = require('@spare/crostab-padder');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
-var mattro = require('@spare/mattro');
-var keyedColumnPadder = require('@spare/keyed-column-padder');
-var tablePadder = require('@spare/table-padder');
-var vettro = require('@spare/vettro');
 var matrix = require('@vect/matrix');
+var vectorMerge = require('@vect/vector-merge');
 var vectorZipper = require('@vect/vector-zipper');
 
 const VLINE = ' | ',
       HCONN = '-+-';
 
+const MUTATE = {
+  mutate: true
+};
 const cosmetics = function (crostab) {
+  var _crostab$head, _crostab$side;
+
   if (!crostab) return enumChars.AEU;
-  let matrix$1 = crostab.rows || crostab.matrix,
-      banner = crostab.head || crostab.banner,
-      stand = crostab.side,
-      name = crostab.title || '';
-  const [height, width] = matrix.size(matrix$1),
-        labelWidth = banner && banner.length,
-        labelHeight = stand && stand.length;
+  const config = this;
+  const [height, width] = matrix.size(crostab.rows),
+        labelWidth = (_crostab$head = crostab.head) === null || _crostab$head === void 0 ? void 0 : _crostab$head.length,
+        labelHeight = (_crostab$side = crostab.side) === null || _crostab$side === void 0 ? void 0 : _crostab$side.length;
   if (!height || !width || !labelWidth || !labelHeight) return enumChars.AEU;
+  crostab = crostabMargin.crostabMargin(crostab, config); // use: top, bottom, left, right, height, width, read, sideRead, headRead
+
+  crostab = crostabPadder.crostabPadder(crostab, config); // use: ansi, fullAngle
+
   const {
-    direct,
-    read,
-    headRead,
-    sideRead,
-    presets,
-    top,
-    left,
-    bottom,
-    right,
-    ansi,
-    fullAngle,
-    discrete,
-    delim,
-    level
-  } = this;
-  const [x, b, s] = [mattro.mattro(matrix$1, {
-    top,
-    bottom,
-    left,
-    right,
-    height,
-    width,
-    read
-  }), vettro.vettro(banner, {
-    head: left,
-    tail: right,
-    read: headRead
-  }), vettro.vettro(stand, {
-    head: top,
-    tail: bottom,
-    read: sideRead
-  })];
-  let dyeX, dyeB, dyeS;
+    presets
+  } = config;
 
   if (presets) {
-    const [numericPreset,, headingPreset] = presets,
-          labelPresets = [numericPreset, headingPreset];
-    dyeX = fluoMatrix.fluoMatrix.call(enumColorantModes.COLORANT, x.raw, direct, presets);
-    dyeB = fluoVector.fluoVector.call(enumColorantModes.COLORANT, b.raw, labelPresets);
-    dyeS = fluoVector.fluoVector.call(enumColorantModes.COLORANT, s.raw, labelPresets);
+    const vectorPresets = {
+      presets: [presets[0], presets[2]]
+    };
+    crostab.side = fluoVector.fluoVector.call(MUTATE, crostab.side, vectorPresets);
+    crostab.head = fluoVector.fluoVector.call(MUTATE, crostab.head, vectorPresets);
+    crostab.rows = fluoMatrix.fluoMatrix.call(MUTATE, crostab.rows, config); // use: direct, presets
   }
 
-  let {
-    title,
-    hr: br,
-    side
-  } = keyedColumnPadder.padKeyedColumn(s.text, name, {
-    dye: dyeS,
-    fullAngle
-  });
-  let {
-    head,
-    hr,
-    rows
-  } = tablePadder.tablePadder(x.text, b.text, {
-    raw: x.raw,
-    dye: dyeX,
-    headDye: dyeB,
-    ansi,
-    fullAngle
-  });
-  const lines = [title + VLINE + head.join(VLINE), br + HCONN + hr.join(HCONN)].concat(vectorZipper.zipper(side, rows, (sd, row) => sd + VLINE + row.join(VLINE)));
-  return liner.liner(lines, {
-    discrete,
-    delim,
-    level
-  });
+  const lines = vectorMerge.acquire([crostab.title + VLINE + crostab.head.join(VLINE), crostab.rule.join(HCONN)], vectorZipper.zipper(crostab.side, crostab.rows, (s, r) => s + VLINE + r.join(VLINE)));
+  return liner.liner(lines, config); // use: discrete, delim, level
 };
 
 /**

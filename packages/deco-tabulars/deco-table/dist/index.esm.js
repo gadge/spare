@@ -3,74 +3,44 @@ import { fluoMatrix } from '@palett/fluo-matrix';
 import { fluoVector } from '@palett/fluo-vector';
 import { AEU } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
-import { mattro } from '@spare/mattro';
+import { tableMargin } from '@spare/table-margin';
 import { tablePadder } from '@spare/table-padder';
-import { vettro } from '@spare/vettro';
 import { size } from '@vect/matrix';
+import { acquire } from '@vect/vector-merge';
 
+const MUTATE = {
+  mutate: true
+};
 const cosmetics = function (table) {
+  var _head;
+
+  const config = this;
   if (!table) return AEU;
-  let matrix = table.rows || table.matrix,
-      banner = table.head || table.banner;
-  const [height, width] = size(matrix),
-        labelWidth = banner && banner.length;
+  let head = table.head || table.banner,
+      rows = table.rows || table.matrix,
+      rule = null;
+  const [height, width] = size(rows),
+        labelWidth = (_head = head) === null || _head === void 0 ? void 0 : _head.length;
   if (!height || !width || !labelWidth) return AEU;
   const {
-    direct,
-    read,
-    headRead,
-    presets,
-    top,
-    left,
-    bottom,
-    right,
-    ansi,
-    fullAngle,
-    discrete,
-    delim,
-    level
-  } = this;
-  const [x, b] = [mattro(matrix, {
-    top,
-    bottom,
-    left,
-    right,
-    height,
-    width,
-    read
-  }), vettro(banner, {
-    head: left,
-    tail: right,
-    read: headRead
-  })];
-  let dyeX, dyeB;
+    presets
+  } = config;
+  table = tableMargin(table, config); // use: top, left, bottom ,right, read, headRead
+
+  ({
+    head,
+    rule,
+    rows
+  } = tablePadder(table, config)); // use: ansi, fullAngle
 
   if (presets) {
-    const COLORANT = {
-      colorant: true
-    };
-    const [numeralPreset,, headingPreset] = presets;
-    dyeX = fluoMatrix.call(COLORANT, x.raw, direct, presets);
-    dyeB = fluoVector.call(COLORANT, b.raw, [numeralPreset, headingPreset]);
+    [head, rows] = [fluoVector.call(MUTATE, head, {
+      presets: [presets[0], presets[2]]
+    }), fluoMatrix.call(MUTATE, rows, config)];
   }
 
-  let {
-    head,
-    hr,
-    rows
-  } = tablePadder(x.text, b.text, {
-    raw: x.raw,
-    dye: dyeX,
-    headDye: dyeB,
-    ansi,
-    fullAngle
-  });
-  const lines = [head.join(' | '), hr.join('-+-')].concat(rows.map(row => row.join(' | ')));
-  return liner(lines, {
-    discrete,
-    delim,
-    level
-  });
+  const lines = acquire([head.join(' | '), rule.join('-+-')], rows.map(row => row.join(' | ')));
+  return liner(lines, config); // use: discrete, delim, level
 };
 
 /**

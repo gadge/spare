@@ -1,18 +1,13 @@
 import { fluoVector }                    from '@palett/fluo-vector'
 import { cosmetics as cosmeticsEntries } from '@spare/deco-entries'
-import { ELLIP }                         from '@spare/enum-chars'
 import { liner }                         from '@spare/liner'
-import { vettro }                        from '@spare/vettro'
-import { mutazip }                       from '@vect/vector-zipper'
+import { vectorMargin }                  from '@spare/vector-margin'
 
+const fluo = fluoVector.bind({ colorant: false, mutate: true })
 export function cosmetics(vec = []) {
   const config = this
   if (config?.indexed) return cosmeticsEntries.call(config, Object.entries(vec))
-  let { head, tail, presets, effects, read } = config
-  let { raw, text } = vettro(vec, { head, tail, read, hr: ELLIP })
-  if (presets) {
-    const dyes = fluoVector.call({ colorant: true, mutate: true }, raw, presets, effects)
-    text = mutazip(text, dyes, (x, dye) => x |> dye)
-  }
-  return liner(text, config)
+  vec = vectorMargin(vec, config) // use: head, tail, read, rule
+  if (config.presets) vec = fluo(vec, config) // use:  presets, effects
+  return liner(vec, config)
 }

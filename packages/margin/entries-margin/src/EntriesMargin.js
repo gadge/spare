@@ -1,6 +1,13 @@
 import { totx }                                   from '@spare/util'
-import { VectorMargin }                               from '@spare/vector-margin'
+import { VectorMargin }                           from '@spare/vector-margin'
 import { marginCopy, marginMapper, marginMutate } from '@vect/entries-margin'
+
+
+export const entriesMargin = (entries, { head, tail, keyRead, read, rule } = {}) =>
+  EntriesMargin
+    .build(entries, head, tail)
+    .stringify(keyRead, read)
+    .toVector(rule ?? ['..', '..'])
 
 export class EntriesMargin extends VectorMargin {
   constructor(entries, head, tail, dash) {

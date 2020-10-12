@@ -11,8 +11,8 @@ import { zipper }     from '@vect/vector-zipper'
 
 const hasHan = HAN.test.bind(HAN)
 
-export const fieldPadder = (side, title, { dye, ansi, fullAngle } = {}) => {
-  if (fullAngle) return fieldPadderFullWidth(side, title, ansi)
+export const fieldPadder = ({ title = '', side }, { dye, ansi, fullAngle } = {}) => {
+  if (fullAngle) return fieldPadderFullWidth({ title, side }, { dye, ansi })
   const lpad = LPad({ ansi }), rpad = RPad({ ansi }), lange = Lange(ansi)
   const pad = max(lange(title), maxBy(side, lange))
   return {
@@ -24,10 +24,10 @@ export const fieldPadder = (side, title, { dye, ansi, fullAngle } = {}) => {
   }
 }
 
-export const fieldPadderFullWidth = (side, title, { dye, ansi, dash = DASH, fill = SP } = {}) => {
+export const fieldPadderFullWidth = ({ title = '', side }, { dye, ansi, dash = DASH, fill = SP } = {}) => {
   const fullWidth = FullWidth({ ansi })
   const han = hasHan(title) || side.some(hasHan)
-  if (!han) return fieldPadder(side, title, { ansi })
+  if (!han) return fieldPadder({ title, side }, { ansi })
   const lpad = LPad({ ansi, fill }), rpad = RPad({ ansi, fill }), lange = Lange(ansi)
   const pad = max(lange(title), maxBy(side, lange))
   return {

@@ -1,5 +1,4 @@
-import { Table }                     from '@analys/table'
-import { TableCollection }           from '@foba/table'
+import { CrostabCollection }         from '@foba/crostab'
 import { makeEmbedded }              from '@foba/util'
 import { decoCrostab, logger, says } from '@spare/logger'
 import { strategies }                from '@valjoux/strategies'
@@ -10,9 +9,9 @@ const test = () => {
   const { lapse, result } = strategies({
     repeat: 1E+4,
     candidates: {
-      BistroDutyRoster: TableCollection.BistroDutyRoster,
-      AeroEngineSpecs: Table.from(TableCollection.AeroEngineSpecs).find({ country: x => x === 'US' }),
-      AgeOfEmpiresIIUnits: Table.from(TableCollection.AgeOfEmpiresIIUnits).find({ building: x => x === 'Archery Range' })
+      AoEIIUnitsAttackByStages: CrostabCollection.AoEIIUnitsAttackByStages,
+      AreaByCountry: CrostabCollection.AreaByCountry,
+      MilitaryByCountry2019: CrostabCollection.MilitaryByCountry2019
     } |> makeEmbedded,
     methods: {
       arch: x => x,

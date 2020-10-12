@@ -1,8 +1,8 @@
 import { simpleVectors } from '@foba/foo'
 import { deca }          from '@spare/deco'
 import { logNeL }        from '@spare/logger'
-import { xr }       from '@spare/xr'
-import { VectorMargin } from '../src/VectorMargin'
+import { xr }            from '@spare/xr'
+import { VectorMargin }  from '../src/VectorMargin'
 
 const Vectors = simpleVectors({ h: 8 })
 const Params = {
@@ -18,7 +18,7 @@ const marginConfig = Params.h3t2 |> (({ head, tail }) => [head, tail])
 for (const [key, entries] of Object.entries(Vectors)) {
   xr(key).vectogin(VectorMargin
     .build(entries, ...marginConfig)
-    .map(k => `'${k}'`)
+    .map(k => `'${ k }'`)
     |> deca({ vu: 1 })
   ) |> logNeL
 }

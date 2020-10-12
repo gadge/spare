@@ -7,21 +7,21 @@ import { EntriesMargin } from './EntriesMargin'
  * @param {number} [tail]
  * @param {function(*):string} [keyRead]
  * @param {function(*):string} [read]
- * @param {*} hr
+ * @param {*} rule
  * @param {boolean} [pad]
- * @return {{text:*[], raw:*[]}}
+ * @return {{raw:*[], alt:*[]}}
  */
 export const enttro = (entries, {
   head,
   tail,
   keyRead,
   read,
-  hr = '...'
+  rule = '...'
 } = {}) => {
   let vn = EntriesMargin.build(entries, head, tail)
   return {
-    raw: vn.toVector(hr),
-    text: vn.stringify(keyRead, read).toVector(hr)
+    raw: vn.toVector(rule),
+    alt: vn.stringify(keyRead, read).toVector(rule)
   }
 }
 

@@ -2,13 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enttro = require('@spare/enttro');
+var entriesMargin = require('@spare/entries-margin');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
-var mattro = require('@spare/mattro');
+var matrixMargin = require('@spare/matrix-margin');
 var entriesPadder = require('@spare/entries-padder');
 var tablePadder = require('@spare/table-padder');
-var vettro = require('@spare/vettro');
+var vectorMargin = require('@spare/vector-margin');
 var matrix = require('@vect/matrix');
 
 const HR_ENTRY = ['..', '..'];
@@ -82,12 +82,12 @@ class Markdown {
     const {
       raw,
       text
-    } = enttro.enttro(entries, {
+    } = entriesMargin.enttro(entries, {
       head,
       tail,
       keyRead,
       read,
-      hr: HR_ENTRY
+      rule: HR_ENTRY
     });
     entries = pad ? entriesPadder.entriesPadder(text, {
       raw,
@@ -141,7 +141,7 @@ class Markdown {
       fullAngle,
       level
     } = option;
-    const x = mattro.mattro(matrix$1, {
+    const x = matrixMargin.mattro(matrix$1, {
       top,
       bottom,
       left,
@@ -150,21 +150,21 @@ class Markdown {
       width,
       read
     });
-    const b = vettro.vettro(banner, {
+    const b = vectorMargin.vettro(banner, {
       head: left,
       tail: right,
       read: headRead
     });
     let {
       head,
-      hr,
+      rule,
       rows
-    } = tablePadder.tablePadder(x.text, b.text, {
+    } = tablePadder.tablePadder(x.alt, b.alt, {
       raw: x.raw,
       ansi,
       fullAngle
     });
-    return _ref = ['| ' + head.join(' | ') + ' |', '| ' + hr.join(' | ') + ' |', ...rows.map(row => '| ' + row.join(' | ') + ' |')], liner.Liner({
+    return _ref = ['| ' + head.join(' | ') + ' |', '| ' + rule.join(' | ') + ' |', ...rows.map(row => '| ' + row.join(' | ') + ' |')], liner.Liner({
       delim,
       level
     })(_ref);

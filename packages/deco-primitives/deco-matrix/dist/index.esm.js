@@ -1,54 +1,40 @@
 import { presetMatrix } from '@spare/preset-deco';
-import { COLORANT } from '@palett/enum-colorant-modes';
+import { oneself } from '@ject/oneself';
 import { fluoMatrix } from '@palett/fluo-matrix';
-import { bracket } from '@spare/bracket';
+import { Br } from '@spare/bracket';
 import { COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
-import { mattro } from '@spare/mattro';
-import { padMatrix } from '@spare/matrix-padder';
+import { matrixMargin } from '@spare/matrix-margin';
+import { matrixPadder } from '@spare/matrix-padder';
 import { size } from '@vect/matrix';
 
-const cosmetics = function (matrix = []) {
-  const [height, width] = size(matrix);
-  if (!height || !width) return liner([], this);
-  const config = this;
-  const {
-    direct,
-    presets,
-    ansi,
+const fluo = fluoMatrix.bind({
+  colorant: false,
+  mutate: true
+});
+const cosmetics = function (rows = []) {
+  var _Br;
+
+  const config = this,
+        [height, width] = size(rows);
+  if (!height || !width) return liner([], config);
+  let {
     discrete,
     delim,
-    bracket: bracket$1,
+    bracket,
     level
   } = config;
-  const {
-    raw,
-    text
-  } = mattro(matrix, Object.assign(config, {
-    height,
-    width
-  }) // { top, bottom, left, right, dashX, dashY, read } = config
-  );
-  let dye = undefined;
+  bracket = (_Br = Br(bracket)) !== null && _Br !== void 0 ? _Br : oneself;
+  rows = matrixMargin(rows, config); // use: top, bottom, left, right, read, rule
 
-  if (presets) {
-    dye = fluoMatrix.call(COLORANT, raw, direct, presets);
-  }
+  rows = matrixPadder(rows, config); // use: ansi
 
-  const rows = padMatrix(text, {
-    raw,
-    dye,
-    ansi
-  });
-  const lines = bracket$1 ? rows.map(line => {
-    var _line$join;
+  if (config.presets) rows = fluo(rows, config); // use: direct, presets, effects
 
-    return _line$join = line.join(delim), bracket(_line$join);
-  }) : rows.map(line => line.join(delim));
-  return liner(lines, {
+  return liner(rows.map(line => bracket(line.join(delim))), {
     discrete,
     delim: COLF,
-    bracket: bracket$1,
+    bracket,
     level
   });
 };

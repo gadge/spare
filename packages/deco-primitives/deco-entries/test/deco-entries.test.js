@@ -1,12 +1,18 @@
-import { simpleEntries } from '@foba/foo'
-import { OCEAN }         from '@palett/presets'
-import { says }          from '@palett/says'
-import { inferType } from '@typen/num-strict'
-import { Deco }      from '../index'
+import { EntriesCollection } from '@foba/entries'
+import { OCEAN }             from '@palett/presets'
+import { says }              from '@palett/says'
+import { inferType }         from '@typen/num-strict'
+import { Deco }              from '../index'
 
-let SimpleEntries = simpleEntries({ h: 12 })
 
-for (const [key, entries] of Object.entries(SimpleEntries)) {
+const entriesCollection = Object.assign({},
+  EntriesCollection.flopShuffle({ keyed: true, size: 5 }),
+  EntriesCollection.flopShuffle({ keyed: true }),
+  EntriesCollection.flopShuffle({ keyed: true, size: 7 })
+)
+
+
+for (const [key, entries] of Object.entries(entriesCollection)) {
   let words = entries |> Deco({
     head: 5,
     tail: 2,

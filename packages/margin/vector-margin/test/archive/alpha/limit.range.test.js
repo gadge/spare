@@ -1,7 +1,7 @@
 import { Chrono }   from 'elprimero'
 import { CrosTabX } from 'xbrief'
 
-function marginStable (ar, h = 0, t = 0) {
+function marginStable(ar, h = 0, t = 0) {
   let l
   if (!(l = ar?.length)) [h, t] = [0, 0]
   if (!h || h >= l) [h, t] = [l, 0]
@@ -11,7 +11,7 @@ function marginStable (ar, h = 0, t = 0) {
   return vec
 }
 
-function marginFut (ar, h = 0, t = 0) {
+function marginFut(ar, h = 0, t = 0) {
   let l = ar?.length
   if (!l) (ar = [], h = 0, t = 0)
   if ((!h && !t) || h >= l) (h = l, t = 0)

@@ -1,4 +1,4 @@
-import { decoLog }  from '@spare/deco'
+import { decoLog }      from '@spare/deco'
 import { VectorMargin } from '../../src/VectorMargin'
 
 export const superlativeTrees = {
@@ -17,7 +17,7 @@ export const superlativeTrees = {
 }
 
 export class PreciTest {
-  static test () {
+  static test() {
     const arr = [...Object.keys(superlativeTrees)]
     const params = [
       { head: 0, tail: 0 },

@@ -1,4 +1,4 @@
-import { oneself }  from '@ject/oneself'
+import { oneself }      from '@ject/oneself'
 import { VectorMargin } from './VectorMargin'
 
 /**
@@ -8,22 +8,24 @@ import { VectorMargin } from './VectorMargin'
  * @param {*|number} [tail]
  * @param {*|boolean} [dash]
  * @param {*|function(*):string} [read]
- * @param {*|string} [hr='..']
+ * @param {*|string} [rule='..']
  * @param {*|boolean} [validate=true]
- * @return {{raw:*[],text:*[]}}
+ * @return {{raw:*[],alt:*[]}}
  */
 export const vettro = (arr, {
   head,
   tail,
   dash,
   read,
-  hr = '...',
+  rule = '...',
   validate = true,
 } = {}) => {
-  let vn = validate ? VectorMargin.build(arr, head, tail) : new VectorMargin(arr, head, tail, dash)
+  const vn = validate
+    ? VectorMargin.build(arr, head, tail)
+    : new VectorMargin(arr, head, tail, dash)
   return {
-    raw: vn.map(oneself).toVector(hr),
-    text: vn.stringify(read).toVector(hr)
+    raw: vn.map(oneself).toVector(rule),
+    alt: vn.stringify(read).toVector(rule)
   }
 }
 

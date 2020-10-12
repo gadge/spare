@@ -3,14 +3,14 @@ import { simpleVectors }          from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
 import { METRO, SUBTLE }          from '@palett/presets'
 import { BRK }                    from '@spare/enum-brackets'
-import { says } from '@spare/logger'
-import { Deco } from '../index'
+import { says }                   from '@spare/logger'
+import { Deco }                   from '../index'
 
 const Strangers = {
   empty: [],
-  arithmetic: NumberVectorCollection.flopShuffle({}),
+  arithmetic: NumberVectorCollection.flopShuffle(),
   soleElement: [rand(256)],
-  textNum: NumberVectorCollection.flopShuffle({}).map(String),
+  textNum: NumberVectorCollection.flopShuffle().map(String),
   misc: [null, undefined, NaN, 'Infinity', '+', 1.2E+1, 1.2E+2, 1.2E+3, 1.2E+4]
 }
 

@@ -3,53 +3,39 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
-var enumColorantModes = require('@palett/enum-colorant-modes');
+var oneself = require('@ject/oneself');
 var fluoMatrix = require('@palett/fluo-matrix');
 var bracket = require('@spare/bracket');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
-var mattro = require('@spare/mattro');
+var matrixMargin = require('@spare/matrix-margin');
 var matrixPadder = require('@spare/matrix-padder');
 var matrix = require('@vect/matrix');
 
-const cosmetics = function (matrix$1 = []) {
-  const [height, width] = matrix.size(matrix$1);
-  if (!height || !width) return liner.liner([], this);
-  const config = this;
-  const {
-    direct,
-    presets,
-    ansi,
+const fluo = fluoMatrix.fluoMatrix.bind({
+  colorant: false,
+  mutate: true
+});
+const cosmetics = function (rows = []) {
+  var _Br;
+
+  const config = this,
+        [height, width] = matrix.size(rows);
+  if (!height || !width) return liner.liner([], config);
+  let {
     discrete,
     delim,
     bracket: bracket$1,
     level
   } = config;
-  const {
-    raw,
-    text
-  } = mattro.mattro(matrix$1, Object.assign(config, {
-    height,
-    width
-  }) // { top, bottom, left, right, dashX, dashY, read } = config
-  );
-  let dye = undefined;
+  bracket$1 = (_Br = bracket.Br(bracket$1)) !== null && _Br !== void 0 ? _Br : oneself.oneself;
+  rows = matrixMargin.matrixMargin(rows, config); // use: top, bottom, left, right, read, rule
 
-  if (presets) {
-    dye = fluoMatrix.fluoMatrix.call(enumColorantModes.COLORANT, raw, direct, presets);
-  }
+  rows = matrixPadder.matrixPadder(rows, config); // use: ansi
 
-  const rows = matrixPadder.padMatrix(text, {
-    raw,
-    dye,
-    ansi
-  });
-  const lines = bracket$1 ? rows.map(line => {
-    var _line$join;
+  if (config.presets) rows = fluo(rows, config); // use: direct, presets, effects
 
-    return _line$join = line.join(delim), bracket.bracket(_line$join);
-  }) : rows.map(line => line.join(delim));
-  return liner.liner(lines, {
+  return liner.liner(rows.map(line => bracket$1(line.join(delim))), {
     discrete,
     delim: enumChars.COLF,
     bracket: bracket$1,

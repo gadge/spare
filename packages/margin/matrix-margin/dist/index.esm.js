@@ -23,6 +23,30 @@ const marginSizing = (rows, top, bottom, left, right, height, width) => {
   };
 };
 
+/**
+ *
+ * @param {*[][]} mx
+ * @param {number} top
+ * @param {number} bottom
+ * @param {number} left
+ * @param {number} right
+ * @param {number} [height]
+ * @param {number} [width]
+ * @param {Function} [read]
+ * @param {string} [rule='..']
+ * @return {string[][]}
+ */
+
+const matrixMargin = (mx, {
+  top,
+  bottom,
+  left,
+  right,
+  height,
+  width,
+  read,
+  rule = '..'
+} = {}) => MatrixMargin.build(mx, top, bottom, left, right, height, width).stringify(read).toMatrix(rule);
 class MatrixMargin {
   constructor(matrix, top, bottom, left, right, height, width, dashX, dashY) {
     this.matrix = matrix;
@@ -104,6 +128,13 @@ class MatrixMargin {
     dashY && el ? mx.forEach(row => row.splice(left, nullWidth, el)) : mx.forEach(row => row.splice(left, nullWidth));
     return mx;
   }
+  /**
+   *
+   * @param {Function} read
+   * @param {boolean} mutate
+   * @return {MatrixMargin}
+   */
+
 
   stringify(read, mutate = true) {
     const brief = read ? _ => String(read(_)) : totx;
@@ -155,9 +186,9 @@ class MatrixMargin {
  * @param {boolean} [dashX]
  * @param {boolean} [dashY]
  * @param {function(*):*} [read]
- * @param {string} [hr='..']
+ * @param {string} [rule='..']
  * @param {boolean} [validate=true]
- * @returns {{raw:*[][],text:*[][]}}
+ * @returns {{raw:*[][],alt:*[][]}}
  */
 
 const mattro = (mx, {
@@ -170,16 +201,16 @@ const mattro = (mx, {
   dashX,
   dashY,
   read,
-  hr = '..',
+  rule = '..',
   validate = true
 } = {}) => {
   const mn = validate ? MatrixMargin.build(mx, top, bottom, left, right, height, width) : new MatrixMargin(mx, top, bottom, left, right, height, width, dashX, dashY),
-        raw = mn.map(oneself).toMatrix(hr),
-        text = mn.stringify(read).toMatrix(hr);
+        raw = mn.map(oneself).toMatrix(rule),
+        alt = mn.stringify(read).toMatrix(rule);
   return {
     raw,
-    text
+    alt
   };
 };
 
-export { MatrixMargin, marginSizing, mattro };
+export { MatrixMargin, marginSizing, matrixMargin, mattro };

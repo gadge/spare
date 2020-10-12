@@ -4,17 +4,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var enumMutabilities = require('@analys/enum-mutabilities');
 var fluoVector = require('@palett/fluo-vector');
+var charset = require('@spare/charset');
 var enumChars = require('@spare/enum-chars');
 var fold = require('@spare/fold');
 var splitter = require('@spare/splitter');
 var presets = require('@palett/presets');
 var nullish = require('@typen/nullish');
-
-const ANSI_ALPHA = /(?:(?:[a-zA-Z\d]*(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?)/;
-const ANSI_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/;
-const ANSI = new RegExp(`[][[\\]()#;?]*(?:${ANSI_ALPHA.source}|${ANSI_BETA.source})`);
-
-const hasAnsi = tx => ANSI.test(tx);
 
 /**
  * @prop width - foldToVector
@@ -34,7 +29,7 @@ const cosmetics = function (text) {
   const context = this,
         length = (_text = text) === null || _text === void 0 ? void 0 : _text.length;
   if (!length) return '';
-  if (hasAnsi(text)) return text;
+  if (charset.hasAnsi(text)) return text;
   const {
     width,
     presets

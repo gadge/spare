@@ -1,5 +1,5 @@
 class TempTest {
-  static test () {
+  static test() {
 
   }
 }

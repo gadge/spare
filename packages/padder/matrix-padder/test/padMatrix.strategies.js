@@ -9,6 +9,7 @@ import { lange }                                          from '@spare/lange'
 import { Liner }                                          from '@spare/liner'
 import { decoCrostab, logger, says }                      from '@spare/logger'
 import { Pad }                                            from '@spare/padder'
+import { STR }                                            from '@typen/enum-data-types'
 import { strategies }                                     from '@valjoux/strategies'
 import { dateTime }                                       from '@valjoux/timestamp-pretty'
 import { maxBy as maxByColumns }                          from '@vect/columns-indicator'
@@ -56,13 +57,24 @@ const test = () => {
         const zipper = Trizipper((tx, dy, va, i, j) => pad(tx, widths[j], va) |> dy)
         return zipper(mx, dye, raw ?? mx)
       },
+      epi: (mx, raw) => {
+        const pad = Pad()
+        const stat = Stat({ init: () => 0, acc: (a, b) => max(a, String(b).length) })
+        const widths = stat(mx)
+        const zipper = Duozipper((tx, va, i, j) => pad(tx, widths[j], va))
+        const padded = zipper(mx, raw ?? mx)
+        return fluoMatrix.call({ colorant: false, mutate: true }, padded, COLUMNWISE, [METRO, FRESH])
+      },
+      bench: (mx) => {
+        return mapper(mx, x => typeof x === STR ? x.trim() : x)
+      }
     }
   })
   lapse |> decoCrostab |> says['lapse'].p(dateTime())
   '' |> logger
   result |> decoCrostab |> says['result'].p(dateTime())
   '' |> logger
-  const FUNCTION_TAG = 'cla'
+  const FUNCTION_TAG = 'epi'
   const deco = mx => mx.map(vec => '[ ' + vec.join(COSP) + ' ]') |> Liner({ level: 0, bracket: BRACKET })
   for (let member of result.side)
     result.cell(member, FUNCTION_TAG) |> deco |> says[member].br(FUNCTION_TAG)

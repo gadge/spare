@@ -34,10 +34,10 @@ const linesHandler = function (lines) {
  *
  * @param {string[]} lines - input string[]
  * @param {Object} p
- * @param {boolean}       [p.discrete=false] - if true, return the input lines as string[]
- * @param {string}        [p.delim=LF] - trailing punctuation added to each line
- * @param {number|string} [p.bracket=NONE] - bracket added to the start and end of the entire rendered lines
- * @param {number}        [p.level=0] - level of indent to each line
+ * @param {boolean|*}       [p.discrete=false] - if true, return the input lines as string[]
+ * @param {string|*}        [p.delim=LF] - trailing punctuation added to each line
+ * @param {number|string|*} [p.bracket=NONE] - bracket added to the start and end of the entire rendered lines
+ * @param {number|*}        [p.level=0] - level of indent to each line
  * @return {string|string[]}
  */
 

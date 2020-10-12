@@ -4,55 +4,37 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
 var oneself = require('@ject/oneself');
-var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoEntries = require('@palett/fluo-entries');
 var bracket = require('@spare/bracket');
-var enttro = require('@spare/enttro');
-var liner = require('@spare/liner');
+var entriesMargin = require('@spare/entries-margin');
 var entriesPadder = require('@spare/entries-padder');
-var entriesZipper = require('@vect/entries-zipper');
+var liner = require('@spare/liner');
 
-const HR_ENTRY = ['..', '..'];
-
+const LF = /\n/;
+const fluo = fluoEntries.fluoEntries.bind({
+  colorant: false,
+  mutate: true
+});
 const cosmetics = function (entries = []) {
-  var _entries;
+  var _entries, _Br, _config$presets;
 
-  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner.liner([], this);
-  const {
-    keyRead,
-    read,
-    head,
-    tail,
+  const config = this;
+  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner.liner([], config);
+  let {
     ansi,
     dash,
     delim,
-    bracket: bracket$1,
-    presets,
-    effects
-  } = this;
-  const {
-    raw,
-    text
-  } = enttro.enttro(entries, {
-    head,
-    tail,
-    keyRead,
-    read,
-    hr: HR_ENTRY
-  });
-  const dye = presets ? fluoEntries.fluoEntries.call(enumColorantModes.COLORANT, raw, presets, effects) : null;
-  entries = /\n/.test(delim) ? entriesPadder.entriesPadder(text, {
-    raw,
-    dye,
-    ansi: presets || ansi
-  }) : presets ? entriesZipper.zipper(text, dye, (tx, dy) => {
-    var _tx;
+    bracket: bracket$1
+  } = config;
+  bracket$1 = (_Br = bracket.Br(bracket$1)) !== null && _Br !== void 0 ? _Br : oneself.oneself;
+  entries = entriesMargin.entriesMargin(entries, config); // use: head, tail, keyRead, read
 
-    return _tx = tx, dy(_tx);
-  }) : text;
-  const brk = bracket.Br(bracket$1) || oneself.oneself;
-  const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()));
-  return liner.liner(lines, this);
+  if (LF.test(delim)) entries = entriesPadder.entriesPadder(entries, {
+    ansi: (_config$presets = config.presets) !== null && _config$presets !== void 0 ? _config$presets : ansi
+  });
+  if (config.presets) entries = fluo(entries, config); // use: presets, effects
+
+  return liner.liner(entries.map(([k, v]) => bracket$1(k + dash + v.trimRight())), config);
 };
 
 /**

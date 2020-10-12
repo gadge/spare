@@ -1,10 +1,10 @@
-import { enttro } from '@spare/enttro';
+import { enttro } from '@spare/entries-margin';
 import { AEU, LF, RTSP } from '@spare/enum-chars';
 import { liner, Liner } from '@spare/liner';
-import { mattro } from '@spare/mattro';
+import { mattro } from '@spare/matrix-margin';
 import { entriesPadder } from '@spare/entries-padder';
 import { tablePadder } from '@spare/table-padder';
-import { vettro } from '@spare/vettro';
+import { vettro } from '@spare/vector-margin';
 import { size } from '@vect/matrix';
 
 const HR_ENTRY = ['..', '..'];
@@ -83,7 +83,7 @@ class Markdown {
       tail,
       keyRead,
       read,
-      hr: HR_ENTRY
+      rule: HR_ENTRY
     });
     entries = pad ? entriesPadder(text, {
       raw,
@@ -153,14 +153,14 @@ class Markdown {
     });
     let {
       head,
-      hr,
+      rule,
       rows
-    } = tablePadder(x.text, b.text, {
+    } = tablePadder(x.alt, b.alt, {
       raw: x.raw,
       ansi,
       fullAngle
     });
-    return _ref = ['| ' + head.join(' | ') + ' |', '| ' + hr.join(' | ') + ' |', ...rows.map(row => '| ' + row.join(' | ') + ' |')], Liner({
+    return _ref = ['| ' + head.join(' | ') + ' |', '| ' + rule.join(' | ') + ' |', ...rows.map(row => '| ' + row.join(' | ') + ' |')], Liner({
       delim,
       level
     })(_ref);

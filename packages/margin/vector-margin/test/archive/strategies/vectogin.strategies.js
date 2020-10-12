@@ -1,10 +1,10 @@
-import { Chrono }          from 'elprimero'
-import { CrosTabX }        from 'xbrief'
+import { Chrono }              from 'elprimero'
+import { CrosTabX }            from 'xbrief'
 import { VectorMargin }        from '../../../src/VectorMargin'
 import { VectorMarginClassic } from '../VectorMarginClassic'
 
 export class VectorMarginStrategies {
-  static test () {
+  static test() {
     const funcList = {
       dev: (ar, head, tail) => VectorMarginClassic.fromArr(ar, head, tail).toList('..'),
       fut: (ar, head, tail) => VectorMargin.build(ar, head, tail).toVector('..'),

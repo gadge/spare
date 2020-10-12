@@ -1,51 +1,21 @@
 import { presetVector } from '@spare/preset-deco';
 import { fluoVector } from '@palett/fluo-vector';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
-import { ELLIP } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
-import { vettro } from '@spare/vettro';
+import { vectorMargin } from '@spare/vector-margin';
 
-const mutazip = (va, vb, fn, l) => {
-  l = l || (va === null || va === void 0 ? void 0 : va.length);
-
-  for (--l; l >= 0; l--) va[l] = fn(va[l], vb[l], l);
-
-  return va;
-};
-
+const fluo = fluoVector.bind({
+  colorant: false,
+  mutate: true
+});
 function cosmetics(vec = []) {
   const config = this;
   if (config === null || config === void 0 ? void 0 : config.indexed) return cosmetics$1.call(config, Object.entries(vec));
-  let {
-    head,
-    tail,
-    presets,
-    effects,
-    read
-  } = config;
-  let {
-    raw,
-    text
-  } = vettro(vec, {
-    head,
-    tail,
-    read,
-    hr: ELLIP
-  });
+  vec = vectorMargin(vec, config); // use: head, tail, read, rule
 
-  if (presets) {
-    const dyes = fluoVector.call({
-      colorant: true,
-      mutate: true
-    }, raw, presets, effects);
-    text = mutazip(text, dyes, (x, dye) => {
-      var _x;
+  if (config.presets) vec = fluo(vec, config); // use:  presets, effects
 
-      return _x = x, dye(_x);
-    });
-  }
-
-  return liner(text, config);
+  return liner(vec, config);
 }
 
 /**

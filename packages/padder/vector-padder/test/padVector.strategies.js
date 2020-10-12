@@ -1,3 +1,4 @@
+import { max }                       from '@aryth/comparer'
 import { makeEmbedded }              from '@foba/util'
 import { StringVectorCollection }    from '@foba/vector'
 import { Lange }                     from '@spare/lange'
@@ -7,7 +8,10 @@ import { strategies }                from '@valjoux/strategies'
 import { dateTime }                  from '@valjoux/timestamp-pretty'
 import { maxBy }                     from '@vect/vector-indicator'
 import { mapper }                    from '@vect/vector-mapper'
+import { Stat }                      from '@vect/vector-stat'
 import { Duozipper, Trizipper }      from '@vect/vector-zipper'
+
+const width = Stat({ init: () => 0, acc: (a, b) => max(a, String(b).length) })
 
 const PadVectorCollection = {
   dev(vec, { raw, dye, ansi, fill } = {}) {
@@ -36,6 +40,11 @@ const PadVectorCollection = {
           zipper(vec, dye))
         : mapper(vec, tx => pad(tx, wd, tx))
   },
+  fut(vec, { ansi, fill } = {}) {
+    const pad = Pad({ ansi, fill })
+    const wd = width(vec)
+    return mapper(vec, tx => pad(tx, wd, tx))
+  },
 }
 
 const test = () => {
@@ -49,6 +58,10 @@ const test = () => {
   lapse |> decoCrostab |> says['lapse'].p(dateTime())
   '' |> logger
   result |> decoCrostab |> says['result'].p(dateTime())
+  const BANNER = 'cla'
+  for (let side of result.side) {
+    result.cell(side, BANNER) |> logger
+  }
 }
 test()
 

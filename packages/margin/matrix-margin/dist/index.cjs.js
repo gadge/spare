@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var matrixSize = require('@vect/matrix-size');
 var util = require('@spare/util');
-var matrixMargin = require('@vect/matrix-margin');
+var matrixMargin$1 = require('@vect/matrix-margin');
 var vectorMargin = require('@vect/vector-margin');
 var oneself = require('@ject/oneself');
 
@@ -27,6 +27,30 @@ const marginSizing = (rows, top, bottom, left, right, height, width) => {
   };
 };
 
+/**
+ *
+ * @param {*[][]} mx
+ * @param {number} top
+ * @param {number} bottom
+ * @param {number} left
+ * @param {number} right
+ * @param {number} [height]
+ * @param {number} [width]
+ * @param {Function} [read]
+ * @param {string} [rule='..']
+ * @return {string[][]}
+ */
+
+const matrixMargin = (mx, {
+  top,
+  bottom,
+  left,
+  right,
+  height,
+  width,
+  read,
+  rule = '..'
+} = {}) => MatrixMargin.build(mx, top, bottom, left, right, height, width).stringify(read).toMatrix(rule);
 class MatrixMargin {
   constructor(matrix, top, bottom, left, right, height, width, dashX, dashY) {
     this.matrix = matrix;
@@ -51,7 +75,7 @@ class MatrixMargin {
       dashX,
       dashY
     } = marginSizing(rows, t, b, l, r, h, w);
-    const cutRows = matrixMargin.marginCopy(rows, top, bottom, left, right, height, width);
+    const cutRows = matrixMargin$1.marginCopy(rows, top, bottom, left, right, height, width);
     return new MatrixMargin(cutRows, top, bottom, left, right, height, width, dashX, dashY);
   }
 
@@ -90,7 +114,7 @@ class MatrixMargin {
       height,
       width
     } = this;
-    return mutate ? this.reboot(matrixMargin.marginMapper(matrix, fn, top, bottom, left, right, height, width)) : this.clone(matrixMargin.marginMutate(matrix, fn, top, bottom, left, right, height, width));
+    return mutate ? this.reboot(matrixMargin$1.marginMapper(matrix, fn, top, bottom, left, right, height, width)) : this.clone(matrixMargin$1.marginMutate(matrix, fn, top, bottom, left, right, height, width));
   }
 
   toMatrix(el, mutate = false) {
@@ -108,6 +132,13 @@ class MatrixMargin {
     dashY && el ? mx.forEach(row => row.splice(left, nullWidth, el)) : mx.forEach(row => row.splice(left, nullWidth));
     return mx;
   }
+  /**
+   *
+   * @param {Function} read
+   * @param {boolean} mutate
+   * @return {MatrixMargin}
+   */
+
 
   stringify(read, mutate = true) {
     const brief = read ? _ => String(read(_)) : util.totx;
@@ -159,9 +190,9 @@ class MatrixMargin {
  * @param {boolean} [dashX]
  * @param {boolean} [dashY]
  * @param {function(*):*} [read]
- * @param {string} [hr='..']
+ * @param {string} [rule='..']
  * @param {boolean} [validate=true]
- * @returns {{raw:*[][],text:*[][]}}
+ * @returns {{raw:*[][],alt:*[][]}}
  */
 
 const mattro = (mx, {
@@ -174,18 +205,19 @@ const mattro = (mx, {
   dashX,
   dashY,
   read,
-  hr = '..',
+  rule = '..',
   validate = true
 } = {}) => {
   const mn = validate ? MatrixMargin.build(mx, top, bottom, left, right, height, width) : new MatrixMargin(mx, top, bottom, left, right, height, width, dashX, dashY),
-        raw = mn.map(oneself.oneself).toMatrix(hr),
-        text = mn.stringify(read).toMatrix(hr);
+        raw = mn.map(oneself.oneself).toMatrix(rule),
+        alt = mn.stringify(read).toMatrix(rule);
   return {
     raw,
-    text
+    alt
   };
 };
 
 exports.MatrixMargin = MatrixMargin;
 exports.marginSizing = marginSizing;
+exports.matrixMargin = matrixMargin;
 exports.mattro = mattro;

@@ -1,1 +1,1 @@
-export { matrixPadder } from './src/matrixPadder'
+export { crostabPadder } from './src/crostabPadder'

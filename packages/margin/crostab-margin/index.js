@@ -1,1 +1,1 @@
-export { tableMargin } from './src/tableMargin'
+export { crostabMargin } from './src/crostabMargin'

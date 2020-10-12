@@ -1,7 +1,7 @@
 import { simpleVectors } from '@foba/foo'
 import { delogger }      from '@spare/deco'
 import { logger }        from '@spare/logger'
-import { vettro }        from '@spare/vettro'
+import { vettro }        from '@spare/vector-margin'
 
 const arrs = simpleVectors({ h: 12 })
 for (const [key, arr] of Object.entries(arrs)) {

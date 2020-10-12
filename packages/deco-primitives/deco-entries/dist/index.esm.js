@@ -1,54 +1,36 @@
 import { presetEntries } from '@spare/preset-deco';
 import { oneself } from '@ject/oneself';
-import { COLORANT } from '@palett/enum-colorant-modes';
 import { fluoEntries } from '@palett/fluo-entries';
 import { Br } from '@spare/bracket';
-import { enttro } from '@spare/enttro';
-import { liner } from '@spare/liner';
+import { entriesMargin } from '@spare/entries-margin';
 import { entriesPadder } from '@spare/entries-padder';
-import { zipper } from '@vect/entries-zipper';
+import { liner } from '@spare/liner';
 
-const HR_ENTRY = ['..', '..'];
-
+const LF = /\n/;
+const fluo = fluoEntries.bind({
+  colorant: false,
+  mutate: true
+});
 const cosmetics = function (entries = []) {
-  var _entries;
+  var _entries, _Br, _config$presets;
 
-  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner([], this);
-  const {
-    keyRead,
-    read,
-    head,
-    tail,
+  const config = this;
+  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner([], config);
+  let {
     ansi,
     dash,
     delim,
-    bracket,
-    presets,
-    effects
-  } = this;
-  const {
-    raw,
-    text
-  } = enttro(entries, {
-    head,
-    tail,
-    keyRead,
-    read,
-    hr: HR_ENTRY
-  });
-  const dye = presets ? fluoEntries.call(COLORANT, raw, presets, effects) : null;
-  entries = /\n/.test(delim) ? entriesPadder(text, {
-    raw,
-    dye,
-    ansi: presets || ansi
-  }) : presets ? zipper(text, dye, (tx, dy) => {
-    var _tx;
+    bracket
+  } = config;
+  bracket = (_Br = Br(bracket)) !== null && _Br !== void 0 ? _Br : oneself;
+  entries = entriesMargin(entries, config); // use: head, tail, keyRead, read
 
-    return _tx = tx, dy(_tx);
-  }) : text;
-  const brk = Br(bracket) || oneself;
-  const lines = entries.map(([k, v]) => brk(k + dash + v.trimRight()));
-  return liner(lines, this);
+  if (LF.test(delim)) entries = entriesPadder(entries, {
+    ansi: (_config$presets = config.presets) !== null && _config$presets !== void 0 ? _config$presets : ansi
+  });
+  if (config.presets) entries = fluo(entries, config); // use: presets, effects
+
+  return liner(entries.map(([k, v]) => bracket(k + dash + v.trimRight())), config);
 };
 
 /**

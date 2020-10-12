@@ -171,15 +171,17 @@ function plainNode(node, level = 0, indent) {
   return node;
 }
 const deVe = function (vector, lv) {
-  vectorMapper.mutate(vector, v => String(decoNode.call(this, v, lv + 1)));
-  if (this.presets) fluoVector.fluoVector.call(enumMutabilities.MUTABLE, vector, this.presets);
-  return renderVector.call(this, vector, lv);
+  const config = this;
+  vectorMapper.mutate(vector, v => String(decoNode.call(config, v, lv + 1)));
+  if (config.presets) fluoVector.fluoVector.call(enumMutabilities.MUTABLE, vector, config);
+  return renderVector.call(config, vector, lv);
 };
 const deEn = function (entries, lv) {
+  const config = this;
   const pad = mutateKeyPad(entries);
-  entriesMapper.mutateValues(entries, v => String(decoNode.call(this, v, lv + 1, pad)));
-  if (this.presets) fluoEntries.fluoEntries.call(enumMutabilities.MUTABLE, entries, this.presets);
-  return renderEntries.call(this, entries, lv);
+  entriesMapper.mutateValues(entries, v => String(decoNode.call(config, v, lv + 1, pad)));
+  if (config.presets) fluoEntries.fluoEntries.call(enumMutabilities.MUTABLE, entries, config);
+  return renderEntries.call(config, entries, lv);
 };
 
 const presetDeco = p => {

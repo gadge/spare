@@ -12,11 +12,11 @@ import { typ }                                    from '@typen/typ'
 import { formatDate }                             from '@valjoux/format-date'
 import { formatDateTime }                         from '@valjoux/format-date-time'
 import { mutateValues }                           from '@vect/entries-mapper'
-import { mutate }        from '@vect/vector-mapper'
-import { mutateKeyPad }  from './helpers/mutateKeyPad'
-import { renderEntries } from './utils/renderEntries'
-import { renderString }  from './utils/renderString'
-import { renderVector }  from './utils/renderVector'
+import { mutate }                                 from '@vect/vector-mapper'
+import { mutateKeyPad }                           from './helpers/mutateKeyPad'
+import { renderEntries }                          from './utils/renderEntries'
+import { renderString }                           from './utils/renderString'
+import { renderVector }                           from './utils/renderVector'
 
 export function decoNode(node, level, indent) {
   return this.presets
@@ -67,16 +67,18 @@ export function plainNode(node, level = 0, indent) {
 }
 
 export const deVe = function (vector, lv) {
-  mutate(vector, v => String(decoNode.call(this, v, lv + 1)))
-  if (this.presets) fluoVector.call(MUTABLE, vector, this.presets)
-  return renderVector.call(this, vector, lv)
+  const config = this
+  mutate(vector, v => String(decoNode.call(config, v, lv + 1)))
+  if (config.presets) fluoVector.call(MUTABLE, vector, config)
+  return renderVector.call(config, vector, lv)
 }
 
 export const deEn = function (entries, lv) {
+  const config = this
   const pad = mutateKeyPad(entries)
-  mutateValues(entries, v => String(decoNode.call(this, v, lv + 1, pad)))
-  if (this.presets) fluoEntries.call(MUTABLE, entries, this.presets)
-  return renderEntries.call(this, entries, lv)
+  mutateValues(entries, v => String(decoNode.call(config, v, lv + 1, pad)))
+  if (config.presets) fluoEntries.call(MUTABLE, entries, config)
+  return renderEntries.call(config, entries, lv)
 }
 
 

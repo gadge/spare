@@ -3,10 +3,17 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var util = require('@spare/util');
-var vettro = require('@spare/vector-margin');
-var entriesMargin = require('@vect/entries-margin');
+var vectorMargin = require('@spare/vector-margin');
+var entriesMargin$1 = require('@vect/entries-margin');
 
-class EntriesMargin extends vettro.VectorMargin {
+const entriesMargin = (entries, {
+  head,
+  tail,
+  keyRead,
+  read,
+  rule
+} = {}) => EntriesMargin.build(entries, head, tail).stringify(keyRead, read).toVector(rule !== null && rule !== void 0 ? rule : ['..', '..']);
+class EntriesMargin extends vectorMargin.VectorMargin {
   constructor(entries, head, tail, dash) {
     super(entries, head, tail, dash);
   }
@@ -18,7 +25,7 @@ class EntriesMargin extends vettro.VectorMargin {
         l;
     if (!(l = (_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) [entries, h, t, d] = [[], 0, 0, false];
     if (!h && !t || h >= l) [h, t, d] = [l, 0, false];
-    return new EntriesMargin(entriesMargin.marginCopy(entries, h, t, l), h, t, d);
+    return new EntriesMargin(entriesMargin$1.marginCopy(entries, h, t, l), h, t, d);
   }
 
   map(keyMapper, valueMapper, mutate = false) {
@@ -27,7 +34,7 @@ class EntriesMargin extends vettro.VectorMargin {
       head,
       tail
     } = this;
-    return mutate ? this.reboot(entriesMargin.marginMutate(vec, keyMapper, valueMapper, head, tail)) : this.clone(entriesMargin.marginMapper(vec, keyMapper, valueMapper, head, tail));
+    return mutate ? this.reboot(entriesMargin$1.marginMutate(vec, keyMapper, valueMapper, head, tail)) : this.clone(entriesMargin$1.marginMapper(vec, keyMapper, valueMapper, head, tail));
   }
   /**
    *
@@ -51,9 +58,9 @@ class EntriesMargin extends vettro.VectorMargin {
  * @param {number} [tail]
  * @param {function(*):string} [keyRead]
  * @param {function(*):string} [read]
- * @param {*} hr
+ * @param {*} rule
  * @param {boolean} [pad]
- * @return {{text:*[], raw:*[]}}
+ * @return {{raw:*[], alt:*[]}}
  */
 
 const enttro = (entries, {
@@ -61,14 +68,15 @@ const enttro = (entries, {
   tail,
   keyRead,
   read,
-  hr = '...'
+  rule = '...'
 } = {}) => {
   let vn = EntriesMargin.build(entries, head, tail);
   return {
-    raw: vn.toVector(hr),
-    text: vn.stringify(keyRead, read).toVector(hr)
+    raw: vn.toVector(rule),
+    alt: vn.stringify(keyRead, read).toVector(rule)
   };
 };
 
 exports.EntriesMargin = EntriesMargin;
+exports.entriesMargin = entriesMargin;
 exports.enttro = enttro;

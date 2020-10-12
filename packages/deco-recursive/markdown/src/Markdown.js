@@ -1,10 +1,10 @@
-import { enttro }        from '@spare/enttro'
+import { enttro }        from '@spare/entries-margin'
 import { AEU, LF, RTSP } from '@spare/enum-chars'
 import { liner, Liner }  from '@spare/liner'
-import { mattro }        from '@spare/mattro'
+import { mattro }        from '@spare/matrix-margin'
 import { entriesPadder }    from '@spare/entries-padder'
 import { tablePadder }      from '@spare/table-padder'
-import { vettro }        from '@spare/vettro'
+import { vettro }        from '@spare/vector-margin'
 import { size }          from '@vect/matrix'
 
 const HR_ENTRY = ['..', '..']
@@ -61,7 +61,7 @@ export class Markdown {
     if (!entries?.length) return liner([], option)
     const delim = LF
     const { keyRead, read, head, tail, ansi, dash = RTSP, level, prefix, suffix, pad } = option
-    const { raw, text } = enttro(entries, { head, tail, keyRead, read, hr: HR_ENTRY })
+    const { raw, text } = enttro(entries, { head, tail, keyRead, read, rule: HR_ENTRY })
     entries = pad ? entriesPadder(text, { raw, ansi }) : text
     return entries
       .map(([k, v]) => (prefix ?? '') + k + dash + v.trimRight() + (suffix ?? ''))
@@ -96,10 +96,10 @@ export class Markdown {
     const { read, headRead, top, left, bottom, right, ansi, fullAngle, level } = option
     const x = mattro(matrix, { top, bottom, left, right, height, width, read })
     const b = vettro(banner, { head: left, tail: right, read: headRead })
-    let { head, hr, rows } = tablePadder(x.text, b.text, { raw: x.raw, ansi, fullAngle })
+    let { head, rule, rows } = tablePadder(x.alt, b.alt, { raw: x.raw, ansi, fullAngle })
     return [
       '| ' + head.join(' | ') + ' |',
-      '| ' + hr.join(' | ') + ' |',
+      '| ' + rule.join(' | ') + ' |',
       ...rows.map(row => '| ' + row.join(' | ') + ' |')
     ] |> Liner({ delim, level })
   }
