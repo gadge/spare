@@ -31,8 +31,9 @@ export const cosmetics = function (text) {
 }
 
 export const fluoString = function (text) {
-  const { vectify, joiner, presets, effects } = this
+  const config = this
+  const { vectify, joiner } = this
   const words = vectify(text)
-  fluoVector.call(MUTABLE, words, presets, effects)
+  fluoVector.call(MUTABLE, words, config) // use: presets, effects
   return joiner ? joiner(words) : words.join('')
 }

@@ -39,14 +39,14 @@ const cosmetics = function (text) {
   return text;
 };
 const fluoString = function (text) {
+  const config = this;
   const {
     vectify,
-    joiner,
-    presets,
-    effects
+    joiner
   } = this;
   const words = vectify(text);
-  fluoVector.call(MUTABLE, words, presets, effects);
+  fluoVector.call(MUTABLE, words, config); // use: presets, effects
+
   return joiner ? joiner(words) : words.join('');
 };
 
