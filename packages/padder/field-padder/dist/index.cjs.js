@@ -15,12 +15,12 @@ var vectorZipper = require('@vect/vector-zipper');
 const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
 
 const hasHan = HAN.test.bind(HAN);
-const padKeyedColumn = (side, title, {
+const keyedColumnPadder = (side, title, {
   dye,
   ansi,
   fullAngle
 } = {}) => {
-  if (fullAngle) return padKeyedColumnFullWidth(side, title, ansi);
+  if (fullAngle) return keyedColumnPadderFullWidth(side, title, ansi);
   const lpad = padder.LPad({
     ansi
   }),
@@ -31,7 +31,7 @@ const padKeyedColumn = (side, title, {
   const pad = comparer.max(lange$1(title), vectorIndicator.maxBy(side, lange$1));
   return {
     title: rpad(title, pad),
-    hr: enumChars.DA.repeat(pad),
+    rule: enumChars.DA.repeat(pad),
     side: dye ? vectorZipper.zipper(side, dye, (x, d) => {
       var _lpad;
 
@@ -39,7 +39,7 @@ const padKeyedColumn = (side, title, {
     }) : vectorMapper.mapper(side, x => lpad(x, pad))
   };
 };
-const padKeyedColumnFullWidth = (side, title, {
+const keyedColumnPadderFullWidth = (side, title, {
   dye,
   ansi,
   dash = enumFullAngleChars.DASH,
@@ -49,7 +49,7 @@ const padKeyedColumnFullWidth = (side, title, {
     ansi
   });
   const han = hasHan(title) || side.some(hasHan);
-  if (!han) return padKeyedColumn(side, title, {
+  if (!han) return keyedColumnPadder(side, title, {
     ansi
   });
   const lpad = padder.LPad({
@@ -64,7 +64,7 @@ const padKeyedColumnFullWidth = (side, title, {
   const pad = comparer.max(lange$1(title), vectorIndicator.maxBy(side, lange$1));
   return {
     title: rpad(fullWidth(title), pad),
-    hr: dash.repeat(pad),
+    rule: dash.repeat(pad),
     side: dye ? vectorZipper.zipper(side, dye, (x, d) => {
       var _lpad2;
 
@@ -73,4 +73,4 @@ const padKeyedColumnFullWidth = (side, title, {
   };
 };
 
-exports.padKeyedColumn = padKeyedColumn;
+exports.keyedColumnPadder = keyedColumnPadder;

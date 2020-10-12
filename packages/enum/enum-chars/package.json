@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-chars",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Chars",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

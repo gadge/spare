@@ -1,6 +1,6 @@
 {
   "name": "@spare/padder",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/pad-string.test.js"
   },
   "dependencies": {
-    "@spare/charset": "^0.10.0",
-    "@spare/fullwidth": "^0.10.0",
-    "@spare/lange": "^0.10.0",
+    "@spare/charset": "^0.10.1",
+    "@spare/fullwidth": "^0.10.1",
+    "@spare/lange": "^0.10.1",
     "@typen/num-strict": "^0.1.10"
   },
   "repository": {
