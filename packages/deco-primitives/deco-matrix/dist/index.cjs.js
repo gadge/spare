@@ -28,14 +28,14 @@ const cosmetics = function (rows = []) {
     bracket: bracket$1,
     level
   } = config;
-  bracket$1 = (_Br = bracket.Br(bracket$1)) !== null && _Br !== void 0 ? _Br : oneself.oneself;
+  const br = (_Br = bracket.Br(bracket$1)) !== null && _Br !== void 0 ? _Br : oneself.oneself;
   rows = matrixMargin.matrixMargin(rows, config); // use: top, bottom, left, right, read, rule
 
   rows = matrixPadder.matrixPadder(rows, config); // use: ansi
 
   if (config.presets) rows = fluo(rows, config); // use: direct, presets, effects
 
-  return liner.liner(rows.map(line => bracket$1(line.join(delim))), {
+  return liner.liner(rows.map(line => br(line.join(delim))), {
     discrete,
     delim: enumChars.COLF,
     bracket: bracket$1,

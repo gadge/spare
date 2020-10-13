@@ -15,12 +15,12 @@ export const cosmetics = function (rows = []) {
     [height, width] = size(rows)
   if (!height || !width) return liner([], config)
   let { discrete, delim, bracket, level } = config
-  bracket = Br(bracket) ?? oneself
+  const br = Br(bracket) ?? oneself
   rows = matrixMargin(rows, config) // use: top, bottom, left, right, read, rule
   rows = matrixPadder(rows, config) // use: ansi
   if (config.presets) rows = fluo(rows, config) // use: direct, presets, effects
   return liner(
-    rows.map(line => bracket(line.join(delim))),
+    rows.map(line => br(line.join(delim))),
     { discrete, delim: COLF, bracket, level }
   )
 }

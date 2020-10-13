@@ -24,14 +24,14 @@ const cosmetics = function (rows = []) {
     bracket,
     level
   } = config;
-  bracket = (_Br = Br(bracket)) !== null && _Br !== void 0 ? _Br : oneself;
+  const br = (_Br = Br(bracket)) !== null && _Br !== void 0 ? _Br : oneself;
   rows = matrixMargin(rows, config); // use: top, bottom, left, right, read, rule
 
   rows = matrixPadder(rows, config); // use: ansi
 
   if (config.presets) rows = fluo(rows, config); // use: direct, presets, effects
 
-  return liner(rows.map(line => bracket(line.join(delim))), {
+  return liner(rows.map(line => br(line.join(delim))), {
     discrete,
     delim: COLF,
     bracket,
