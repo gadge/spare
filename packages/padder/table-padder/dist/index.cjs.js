@@ -92,14 +92,14 @@ const tablePadder = ({
     ansi
   });
   let len = lange.Lange(ansi);
-  const pads = columnsStat.stat.call({
+  const widths = columnsStat.stat.call({
     init: () => 0,
     acc: (a, b) => comparer.max(a, len(b))
   }, vector.acquire([head], rows));
   return {
-    head: vectorZipper.zipper(head, pads, (x, p) => padder$1(x, p, x)),
-    rule: vectorMapper.mapper(pads, p => enumChars.DA.repeat(p)),
-    rows: matrixMapper.mapper(rows, (x, i, j) => padder$1(x, pads[j], x))
+    head: vectorZipper.zipper(head, widths, (x, p) => padder$1(x, p, x)),
+    rule: vectorMapper.mapper(widths, p => enumChars.DA.repeat(p)),
+    rows: matrixMapper.mapper(rows, (x, i, j) => padder$1(x, widths[j], x))
   }; // return {
   //   head: headDye
   //     ? VecTriZip((x, d, p) => padder(x, p) |> d)(head, headDye, pads)

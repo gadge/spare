@@ -24,4 +24,3 @@ export const cosmetics = function (rows = []) {
     { discrete, delim: COLF, bracket, level }
   )
 }
-

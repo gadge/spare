@@ -14,7 +14,8 @@ import { marginSizing }                           from './marginSizing'
 export const vectorMargin = (vec, { head, tail, read, rule = '...' } = {}) =>
   VectorMargin
     .build(vec, head, tail)
-    .stringify(read).toVector(rule)
+    .stringify(read)
+    .toVector(rule)
 
 export class VectorMargin {
   constructor(vec, head, tail, dash) {

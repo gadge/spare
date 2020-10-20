@@ -23,7 +23,6 @@ const cosmetics = function (samples) {
 
   const config = this,
         original = samples;
-  if (!((_samples = samples) === null || _samples === void 0 ? void 0 : _samples.length)) return '[]';
   let {
     fields,
     indexed,
@@ -31,6 +30,12 @@ const cosmetics = function (samples) {
     discrete,
     level
   } = config;
+
+  if (indexed) {
+    samples = Object.values(samples);
+  }
+
+  if (!((_samples = samples) === null || _samples === void 0 ? void 0 : _samples.length)) return '[]';
 
   if (fields) {
     samples = samplesSelect.samplesSelect(samples, fields);
@@ -64,6 +69,9 @@ const cosmetics = function (samples) {
       ansi,
       presets
     } = config;
+    side = vectorPadder.vectorPadder(side, {
+      ansi: true
+    });
     side = decoVector.deco(side, {
       head,
       tail,
@@ -71,10 +79,7 @@ const cosmetics = function (samples) {
       presets,
       discrete: true
     });
-    side = vectorPadder.vectorPadder(side, {
-      ansi: true
-    });
-    lines = vectorZipper.zipper(lines, side, (line, index) => '[' + index + ']' + enumChars.SP + line);
+    lines = vectorZipper.zipper(side, lines, (key, line) => '[' + key + ']' + enumChars.SP + line);
   }
 
   if (config.top) lines.splice(config.top, 1, enumChars.ELLIP);

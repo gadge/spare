@@ -19,7 +19,6 @@ const cosmetics = function (samples) {
 
   const config = this,
         original = samples;
-  if (!((_samples = samples) === null || _samples === void 0 ? void 0 : _samples.length)) return '[]';
   let {
     fields,
     indexed,
@@ -27,6 +26,12 @@ const cosmetics = function (samples) {
     discrete,
     level
   } = config;
+
+  if (indexed) {
+    samples = Object.values(samples);
+  }
+
+  if (!((_samples = samples) === null || _samples === void 0 ? void 0 : _samples.length)) return '[]';
 
   if (fields) {
     samples = samplesSelect(samples, fields);
@@ -60,6 +65,9 @@ const cosmetics = function (samples) {
       ansi,
       presets
     } = config;
+    side = vectorPadder(side, {
+      ansi: true
+    });
     side = deco$1(side, {
       head,
       tail,
@@ -67,10 +75,7 @@ const cosmetics = function (samples) {
       presets,
       discrete: true
     });
-    side = vectorPadder(side, {
-      ansi: true
-    });
-    lines = zipper(lines, side, (line, index) => '[' + index + ']' + SP + line);
+    lines = zipper(side, lines, (key, line) => '[' + key + ']' + SP + line);
   }
 
   if (config.top) lines.splice(config.top, 1, ELLIP);

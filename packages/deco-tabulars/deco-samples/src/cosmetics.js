@@ -14,8 +14,9 @@ const MUTATE = { mutate: true }
 
 export const cosmetics = function (samples) {
   const config = this, original = samples
-  if (!(samples?.length)) return '[]'
   let { fields, indexed, bracket, discrete, level } = config
+  if (indexed) { samples = Object.values(samples) }
+  if (!(samples?.length)) return '[]'
   if (fields) { samples = samplesSelect(samples, fields) }
   let table = samplesToTabular(samples, fields)
   let { head, rows } = tableMargin(table, config) // { top: 0, bottom: 0, left, right, height, width, read, headRead }
@@ -29,9 +30,9 @@ export const cosmetics = function (samples) {
   if (indexed) {
     let side = Object.keys(original)
     const { top: head, bottom: tail, ansi, presets } = config
-    side = decoVector(side, { head, tail, ansi, presets, discrete: true })
     side = vectorPadder(side, { ansi: true })
-    lines = zipper(lines, side, (line, index) => '[' + index + ']' + SP + line)
+    side = decoVector(side, { head, tail, ansi, presets, discrete: true })
+    lines = zipper(side, lines, (key, line) => '[' + key + ']' + SP + line)
   }
   if (config.top) lines.splice(config.top, 1, ELLIP)
   return liner(lines, { discrete, delim: COLF, bracket, level })

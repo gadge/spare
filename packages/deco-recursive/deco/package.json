@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@analys/enum-mutabilities": "^0.4.17",
+    "@analys/enum-mutabilities": "^0.4.20",
     "@aryth/comparer": "^0.3.0",
     "@palett/fluo-entries": "^0.5.2",
     "@palett/fluo-vector": "^0.5.2",

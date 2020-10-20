@@ -88,14 +88,14 @@ const tablePadder = ({
     ansi
   });
   let len = Lange(ansi);
-  const pads = stat.call({
+  const widths = stat.call({
     init: () => 0,
     acc: (a, b) => max(a, len(b))
   }, acquire([head], rows));
   return {
-    head: zipper(head, pads, (x, p) => padder(x, p, x)),
-    rule: mapper(pads, p => DA.repeat(p)),
-    rows: mapper$1(rows, (x, i, j) => padder(x, pads[j], x))
+    head: zipper(head, widths, (x, p) => padder(x, p, x)),
+    rule: mapper(widths, p => DA.repeat(p)),
+    rows: mapper$1(rows, (x, i, j) => padder(x, widths[j], x))
   }; // return {
   //   head: headDye
   //     ? VecTriZip((x, d, p) => padder(x, p) |> d)(head, headDye, pads)

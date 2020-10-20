@@ -1,34 +1,24 @@
-import { randMatrix }                                     from '@foba/foo'
-import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { FRESH, METRO }                                   from '@palett/presets'
-import { says }                                           from '@spare/logger'
-import { COLUMNWISE } from '@vect/enum-matrix-directions'
-import { Deco }       from '../index'
+import { CrostabMatrixCollection, ModestMatrixCollection } from '@foba/foo'
+import { FRESH, METRO }                                    from '@palett/presets'
+import { BRACKET }                                         from '@spare/enum-brackets'
+import { says }                                            from '@spare/logger'
+import { Deco }                                            from '../index'
 
-const unVec = null
-const emptyVec = []
-const emptyRow = [[]]
-const randRows = randMatrix({ h: 8, w: 12 })
-// const miscRows = [
-//   StringVectorCollection.flopShuffle({ size: 8 }),
-//   NumberVectorCollection.flopShuffle({ size: 8 }),
-//   NumberVectorCollection.flopShuffle({ size: 8 }),
-//   StringVectorCollection.flopShuffle({ size: 8 }),
-//   StringVectorCollection.flopShuffle({ size: 8 }),
-// ]
+const matrixCollection = Object.assign({},
+  ModestMatrixCollection,
+  CrostabMatrixCollection
+)
 
-unVec |> Deco() |> says['unVec']
-emptyVec |> Deco() |> says['emptyVec']
-emptyRow |> Deco() |> says['emptyRow']
+const deco = Deco({
+  left: 4,
+  right: 2,
+  presets: [FRESH, METRO],
+  discrete: false,
+  bracket: BRACKET,
+})
 
-randRows |> Deco({ top: 3, bottom: 2, left: 3, right: 2, direct: COLUMNWISE }) |> says['randRows']
+for (let [key, matrix] of Object.entries(matrixCollection)) {
+  matrix |> deco |> says[key]
+}
 
-// miscRows |> Deco({
-//   left: 4,
-//   right: 2,
-//   // preset: FRESH,
-//   // stringPreset: METRO,
-//   presets: [FRESH, METRO],
-//   discrete: false,
-//   bracket: true,
-// })  |> says['miscRows']
+

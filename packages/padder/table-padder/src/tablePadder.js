@@ -28,11 +28,11 @@ export const tablePadder = (
   if (fullAngle) return tablePadderFullAngle({ head, rows }, { raw, ansi })
   const padder = Pad({ ansi })
   let len = Lange(ansi)
-  const pads = stat.call({ init: () => 0, acc: (a, b) => max(a, len(b)) }, acquire([head], rows))
+  const widths = stat.call({ init: () => 0, acc: (a, b) => max(a, len(b)) }, acquire([head], rows))
   return {
-    head: zipper(head, pads, (x, p) => padder(x, p, x)),
-    rule: mapper(pads, p => DA.repeat(p)),
-    rows: mapperMatrix(rows, (x, i, j) => padder(x, pads[j], x))
+    head: zipper(head, widths, (x, p) => padder(x, p, x)),
+    rule: mapper(widths, p => DA.repeat(p)),
+    rows: mapperMatrix(rows, (x, i, j) => padder(x, widths[j], x))
   }
   // return {
   //   head: headDye
