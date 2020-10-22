@@ -18,8 +18,8 @@
     "@aryth/comparer": "^0.3.0",
     "@spare/lange": "^0.10.4",
     "@spare/padder": "^0.10.4",
-    "@vect/columns-stat": "^0.3.0",
-    "@vect/matrix-zipper": "^0.3.0"
+    "@vect/columns-stat": "^0.3.4",
+    "@vect/matrix-zipper": "^0.3.4"
   },
   "repository": {
     "type": "git",

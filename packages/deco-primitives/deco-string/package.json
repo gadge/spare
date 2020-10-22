@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@analys/enum-mutabilities": "^0.4.20",
-    "@palett/fluo-vector": "^0.5.2",
-    "@palett/presets": "^0.5.2",
+    "@analys/enum-mutabilities": "^0.4.23",
+    "@palett/fluo-vector": "^0.5.5",
+    "@palett/presets": "^0.5.5",
     "@spare/charset": "^0.10.4",
     "@spare/enum-chars": "^0.10.4",
     "@spare/fold": "^0.10.4",

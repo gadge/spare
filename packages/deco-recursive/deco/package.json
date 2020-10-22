@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@analys/enum-mutabilities": "^0.4.20",
+    "@analys/enum-mutabilities": "^0.4.23",
     "@aryth/comparer": "^0.3.0",
-    "@palett/fluo-entries": "^0.5.2",
-    "@palett/fluo-vector": "^0.5.2",
-    "@palett/presets": "^0.5.2",
+    "@palett/fluo-entries": "^0.5.5",
+    "@palett/fluo-vector": "^0.5.5",
+    "@palett/presets": "^0.5.5",
     "@spare/bracket": "^0.10.4",
     "@spare/deco-colors": "^0.10.4",
     "@spare/deco-date": "^0.10.4",
@@ -35,11 +35,11 @@
     "@typen/nullish": "^0.1.10",
     "@typen/num-loose": "^0.1.10",
     "@typen/typ": "^0.1.10",
-    "@valjoux/format-date": "^0.2.0",
-    "@valjoux/format-date-time": "^0.2.0",
-    "@vect/column-mapper": "^0.3.0",
-    "@vect/entries-mapper": "^0.3.0",
-    "@vect/vector-mapper": "^0.3.0"
+    "@valjoux/format-date": "^0.2.2",
+    "@valjoux/format-date-time": "^0.2.2",
+    "@vect/column-mapper": "^0.3.4",
+    "@vect/entries-mapper": "^0.3.4",
+    "@vect/vector-mapper": "^0.3.4"
   },
   "repository": {
     "type": "git",
