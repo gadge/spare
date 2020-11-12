@@ -14,8 +14,6 @@ var vectorZipper = require('@vect/vector-zipper');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 var fullwidth = require('@spare/fullwidth');
 var matrixTranspose = require('@vect/matrix-transpose');
-var matrixZipper = require('@vect/matrix-zipper');
-var vectorIndicator = require('@vect/vector-indicator');
 
 /**
  *
@@ -35,31 +33,43 @@ const tablePadderFullAngle = ({
   head,
   rows
 }, {
-  raw,
   ansi = false,
   dash = enumChars.DA,
   fwdash = enumFullAngleChars.DASH,
   fill = enumChars.SP,
   fwfill = enumFullAngleChars.SP
 } = {}) => {
-  const columns = matrixTranspose.transpose([head].concat(rows));
-  const [pads, chns] = [vectorMapper.mapper(columns, vectorIndicator.Max(lange.Lange(ansi))), vectorMapper.mapper(columns, col => col.some(fullwidth.hasFullWidth))];
-  const [padR, padN] = [padder.PadFW({
+  var _acquire;
+
+  const len = lange.Lange(ansi);
+  const columns = (_acquire = vector.acquire([head], rows), matrixTranspose.transpose(_acquire));
+  const widths = vectorMapper.mapper(columns, columnsStat.Stat({
+    init: () => 0,
+    acc: (a, b) => comparer.max(a, b ? len(b) : 0)
+  }));
+  const checks = vectorMapper.mapper(columns, col => col.some(fullwidth.hasFullWidth));
+  const padR = padder.PadFW({
     dock: padder.RIGHT,
     ansi,
     fill,
     fwfill
-  }), padder.PadFW({
+  });
+  const padN = padder.PadFW({
     dock: padder.CENTRE,
     ansi,
     fill,
     fwfill
-  })];
+  });
   return {
-    head: vector.Trizipper(padR)(head, pads, chns),
-    rule: vector.Duozipper((pad, cn) => (cn ? fwdash : dash).repeat(pad))(pads, chns),
-    rows: matrixZipper.Duozipper((x, v, i, j) => padN(x, pads[j], chns[j], v))(rows, raw)
-  };
+    head: vectorZipper.zipper(head, widths, (value, width, j) => padR(value, width, checks[j])),
+    rule: vectorZipper.zipper(widths, checks, (width, check) => (check ? fwdash : dash).repeat(width)),
+    rows: matrixMapper.mapper(rows, (x, i, j) => padN(x, widths[j], checks[j], x))
+  }; // const [widths, fwChecks] = [mapper(columns, Max(Lange(ansi))), mapper(columns, col => col.some(hasFullWidth))]
+  // return {
+  //   head: VecTriZip(padR)(head, widths, checks),
+  //   rule: VecDuoZip((pad, cn) => (cn ? fwdash : dash).repeat(pad))(widths, checks),
+  //   rows: MatDuoZip((x, v, i, j) => padN(x, widths[j], checks[j], v))(rows, raw)
+  // }
 };
 
 /**
@@ -91,7 +101,7 @@ const tablePadder = ({
   const padder$1 = padder.Pad({
     ansi
   });
-  let len = lange.Lange(ansi);
+  const len = lange.Lange(ansi);
   const widths = columnsStat.stat.call({
     init: () => 0,
     acc: (a, b) => comparer.max(a, len(b))

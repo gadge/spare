@@ -21,13 +21,11 @@ import { tablePadderFullAngle }   from './tablePadderFullAngle'
  */
 export const tablePadder = (
   { head, rows },
-  {
-    raw, ansi = false, fullAngle = false
-  } = {},
+  { raw, ansi = false, fullAngle = false } = {},
 ) => {
   if (fullAngle) return tablePadderFullAngle({ head, rows }, { raw, ansi })
   const padder = Pad({ ansi })
-  let len = Lange(ansi)
+  const len = Lange(ansi)
   const widths = stat.call({ init: () => 0, acc: (a, b) => max(a, len(b)) }, acquire([head], rows))
   return {
     head: zipper(head, widths, (x, p) => padder(x, p, x)),
