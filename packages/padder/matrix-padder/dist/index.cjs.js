@@ -11,7 +11,7 @@ var matrixZipper = require('@vect/matrix-zipper');
 const matrixPadder = (mx, {
   raw,
   dye,
-  ansi = true,
+  ansi,
   fill
 }) => {
   const len = lange.Lange(ansi);
