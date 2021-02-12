@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,16 +17,16 @@
   "dependencies": {
     "@analys/crostab-init": "^0.4.23",
     "@analys/table-init": "^0.4.23",
-    "@spare/bracket": "^0.10.7",
-    "@spare/deco-entries": "^0.10.7",
-    "@spare/deco-matrix": "^0.10.7",
-    "@spare/deco-object": "^0.10.7",
-    "@spare/deco-samples": "^0.10.7",
-    "@spare/deco-vector": "^0.10.7",
-    "@spare/enum-brackets": "^0.10.7",
-    "@spare/liner": "^0.10.7",
-    "@spare/preset-verse": "^0.10.7",
-    "@spare/quote": "^0.10.7"
+    "@spare/bracket": "^0.10.8",
+    "@spare/deco-entries": "^0.10.8",
+    "@spare/deco-matrix": "^0.10.8",
+    "@spare/deco-object": "^0.10.8",
+    "@spare/deco-samples": "^0.10.8",
+    "@spare/deco-vector": "^0.10.8",
+    "@spare/enum-brackets": "^0.10.8",
+    "@spare/liner": "^0.10.8",
+    "@spare/preset-verse": "^0.10.8",
+    "@spare/quote": "^0.10.8"
   },
   "repository": {
     "type": "git",
