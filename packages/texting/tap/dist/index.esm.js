@@ -5,7 +5,7 @@ import { wordsToCamel, wordsToPascal } from '@spare/phrasing';
 const tap = (...words) => {
   const ve = [];
 
-  for (let word of words) if (word === null || word === void 0 ? void 0 : word.length) ve.push(word);
+  for (let word of words) if (word !== null && word !== void 0 && word.length) ve.push(word);
 
   return ve;
 };

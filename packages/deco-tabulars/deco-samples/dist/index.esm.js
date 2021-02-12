@@ -31,7 +31,7 @@ const cosmetics = function (samples) {
     samples = Object.values(samples);
   }
 
-  if (!((_samples = samples) === null || _samples === void 0 ? void 0 : _samples.length)) return '[]';
+  if (!((_samples = samples) !== null && _samples !== void 0 && _samples.length)) return '[]';
 
   if (fields) {
     samples = samplesSelect(samples, fields);

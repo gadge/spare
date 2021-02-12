@@ -88,7 +88,7 @@ const tablePadder = ({
   rows
 }, {
   raw,
-  ansi = false,
+  ansi = true,
   fullAngle = false
 } = {}) => {
   if (fullAngle) return tablePadderFullAngle({

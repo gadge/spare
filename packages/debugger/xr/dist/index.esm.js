@@ -49,7 +49,7 @@ function render(text) {
         {
     indent
   } = queue;
-  if (text === null || text === void 0 ? void 0 : text.length) queue.push(text);
+  if (text !== null && text !== void 0 && text.length) queue.push(text);
   return SP.repeat(indent << 1) + queue.join(SP);
 }
 

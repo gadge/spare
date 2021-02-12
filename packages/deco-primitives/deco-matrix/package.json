@@ -16,14 +16,14 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@palett/fluo-matrix": "^0.5.6",
+    "@palett/fluo-matrix": "^0.5.10",
     "@spare/bracket": "^0.10.6",
     "@spare/enum-chars": "^0.10.6",
     "@spare/liner": "^0.10.6",
     "@spare/matrix-margin": "^0.10.6",
     "@spare/matrix-padder": "^0.10.6",
     "@spare/preset-deco": "^0.10.6",
-    "@vect/matrix": "^0.3.4"
+    "@vect/matrix": "^0.3.5"
   },
   "repository": {
     "type": "git",

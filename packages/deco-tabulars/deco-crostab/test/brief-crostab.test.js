@@ -4,8 +4,8 @@ import { CrostabCollection }  from '@foba/crostab'
 import { FRESH, MOSS, OCEAN } from '@palett/presets'
 import { logger }             from '@spare/logger'
 import { isNumeric }          from '@typen/num-strict'
-import { POINTWISE } from '@vect/enum-matrix-directions'
-import { Deco }      from '../index'
+import { POINTWISE }          from '@vect/enum-matrix-directions'
+import { Deco }               from '../index'
 
 const mag = new Mag(0)
 
@@ -17,7 +17,7 @@ crostab |> Deco({
   presets: [OCEAN, FRESH, MOSS],
   read: x => isNumeric(x) ? mag.format(+x) : NaN,
   top: 4, bottom: 3, left: 3, right: 2,
-  fullAngle: false
+  fullAngle: false,
 }) |> logger
 
 

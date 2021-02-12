@@ -132,7 +132,7 @@ const adjoin = function (...words) {
   const ve = [],
         config = presetAdjoin(this);
 
-  for (let word of words) if (word === null || word === void 0 ? void 0 : word.length) ve.push(word);
+  for (let word of words) if (word !== null && word !== void 0 && word.length) ve.push(word);
 
   return decoVector.cosmetics.call(config, ve);
 };

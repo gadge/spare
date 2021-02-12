@@ -66,7 +66,7 @@ const wrapEntries = function (entries, width) {
     if (!row) row = [], len = 0;
     row.push(kvp);
   });
-  if ((_row = row) === null || _row === void 0 ? void 0 : _row.length) lines.push(row.join(enumChars.COSP));
+  if ((_row = row) !== null && _row !== void 0 && _row.length) lines.push(row.join(enumChars.COSP));
   return lines;
 };
 

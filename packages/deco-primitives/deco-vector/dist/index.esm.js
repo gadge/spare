@@ -10,7 +10,7 @@ const fluo = fluoVector.bind({
 });
 function cosmetics(vec = []) {
   const config = this;
-  if (config === null || config === void 0 ? void 0 : config.indexed) return cosmetics$1.call(config, Object.entries(vec));
+  if (config !== null && config !== void 0 && config.indexed) return cosmetics$1.call(config, Object.entries(vec));
   vec = vectorMargin(vec, config); // use: head, tail, read, rule
 
   if (config.presets) vec = fluo(vec, config); // use:  presets, effects

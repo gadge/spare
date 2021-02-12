@@ -1,12 +1,12 @@
 import { rand }          from '@aryth/rand'
-import { simpleObjects } from '@foba/foo'
+import { simpleObjectCollection } from '@foba/foo'
 import { OCEAN }         from '@palett/presets'
 import { says }          from '@palett/says'
 import { delogger }      from '@spare/deco'
 import { inferType } from '@typen/num-strict'
 import { Deco }      from '../index'
 
-let SimpleObjects = simpleObjects({ h: 12 })
+let SimpleObjects = simpleObjectCollection({ h: 12 })
 
 SimpleObjects |> delogger
 

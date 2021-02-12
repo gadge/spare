@@ -61,7 +61,7 @@ class Markdown {
   static entries(entries = [], option = {}) {
     var _entries, _entries$map;
 
-    if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner([], option);
+    if (!((_entries = entries) !== null && _entries !== void 0 && _entries.length)) return liner([], option);
     const delim = LF;
     const {
       keyRead,

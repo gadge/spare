@@ -7,7 +7,7 @@ import { Trizipper, Duozipper } from '@vect/matrix-zipper';
 const matrixPadder = (mx, {
   raw,
   dye,
-  ansi,
+  ansi = true,
   fill
 }) => {
   const len = Lange(ansi);

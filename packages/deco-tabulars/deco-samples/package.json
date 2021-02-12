@@ -17,8 +17,8 @@
   "dependencies": {
     "@analys/convert": "^0.4.23",
     "@analys/samples-select": "^0.4.23",
-    "@palett/fluo-matrix": "^0.5.6",
-    "@palett/fluo-vector": "^0.5.6",
+    "@palett/fluo-matrix": "^0.5.10",
+    "@palett/fluo-vector": "^0.5.10",
     "@spare/deco-vector": "^0.10.6",
     "@spare/enum-chars": "^0.10.6",
     "@spare/liner": "^0.10.6",
@@ -26,7 +26,7 @@
     "@spare/preset-deco": "^0.10.6",
     "@spare/table-margin": "^0.10.6",
     "@spare/vector-padder": "^0.10.6",
-    "@vect/vector-zipper": "^0.3.4"
+    "@vect/vector-zipper": "^0.3.5"
   },
   "repository": {
     "type": "git",

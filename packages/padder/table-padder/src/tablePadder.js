@@ -21,7 +21,7 @@ import { tablePadderFullAngle }   from './tablePadderFullAngle'
  */
 export const tablePadder = (
   { head, rows },
-  { raw, ansi = false, fullAngle = false } = {},
+  { raw, ansi, fullAngle = false } = {},
 ) => {
   if (fullAngle) return tablePadderFullAngle({ head, rows }, { raw, ansi })
   const padder = Pad({ ansi })

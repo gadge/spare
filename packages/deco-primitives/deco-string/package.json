@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@analys/enum-mutabilities": "^0.4.23",
-    "@palett/fluo-vector": "^0.5.6",
-    "@palett/presets": "^0.5.6",
+    "@palett/fluo-vector": "^0.5.10",
+    "@palett/presets": "^0.5.10",
     "@spare/charset": "^0.10.6",
     "@spare/enum-chars": "^0.10.6",
     "@spare/fold": "^0.10.6",

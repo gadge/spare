@@ -19,7 +19,7 @@ const cosmetics = function (entries = []) {
   var _entries, _Br, _config$presets;
 
   const config = this;
-  if (!((_entries = entries) === null || _entries === void 0 ? void 0 : _entries.length)) return liner.liner([], config);
+  if (!((_entries = entries) !== null && _entries !== void 0 && _entries.length)) return liner.liner([], config);
   let {
     ansi,
     dash,

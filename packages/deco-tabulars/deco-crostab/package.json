@@ -15,16 +15,16 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.5.6",
-    "@palett/fluo-vector": "^0.5.6",
+    "@palett/fluo-matrix": "^0.5.10",
+    "@palett/fluo-vector": "^0.5.10",
     "@spare/crostab-margin": "^0.10.6",
     "@spare/crostab-padder": "^0.10.6",
     "@spare/enum-chars": "^0.10.6",
     "@spare/liner": "^0.10.6",
     "@spare/preset-deco": "^0.10.6",
-    "@vect/matrix": "^0.3.4",
-    "@vect/vector-merge": "^0.3.4",
-    "@vect/vector-zipper": "^0.3.4"
+    "@vect/matrix": "^0.3.5",
+    "@vect/vector-merge": "^0.3.5",
+    "@vect/vector-zipper": "^0.3.5"
   },
   "repository": {
     "type": "git",
