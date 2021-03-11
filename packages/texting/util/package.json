@@ -1,6 +1,6 @@
 {
   "name": "@spare/util",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "description": "A util toolset for @spare.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.10.7",
-    "@spare/enum-full-angle-chars": "^0.10.7",
-    "@spare/lange": "^0.10.7",
+    "@spare/enum-chars": "^0.10.8",
+    "@spare/enum-full-angle-chars": "^0.10.8",
+    "@spare/lange": "^0.10.8",
     "@typen/enum-data-types": "^0.1.10",
     "@typen/num-strict": "^0.1.10",
     "@vect/matrix": "^0.3.6",
