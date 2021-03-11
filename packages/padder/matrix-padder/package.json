@@ -1,6 +1,6 @@
 {
   "name": "@spare/matrix-padder",
-  "version": "0.10.6",
+  "version": "0.10.7",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.3.3",
-    "@spare/lange": "^0.10.6",
-    "@spare/padder": "^0.10.6",
-    "@vect/columns-stat": "^0.3.5",
-    "@vect/matrix-zipper": "^0.3.5"
+    "@aryth/comparer": "^0.3.4",
+    "@spare/lange": "^0.10.7",
+    "@spare/padder": "^0.10.7",
+    "@vect/columns-stat": "^0.3.6",
+    "@vect/matrix-zipper": "^0.3.6"
   },
   "repository": {
     "type": "git",

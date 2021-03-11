@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-table",
-  "version": "0.10.6",
+  "version": "0.10.7",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,15 +15,15 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.5.10",
-    "@palett/fluo-vector": "^0.5.10",
-    "@spare/enum-chars": "^0.10.6",
-    "@spare/liner": "^0.10.6",
-    "@spare/preset-deco": "^0.10.6",
-    "@spare/table-margin": "^0.10.6",
-    "@spare/table-padder": "^0.10.6",
-    "@vect/matrix": "^0.3.5",
-    "@vect/vector-merge": "^0.3.5"
+    "@palett/fluo-matrix": "^0.5.11",
+    "@palett/fluo-vector": "^0.5.11",
+    "@spare/enum-chars": "^0.10.7",
+    "@spare/liner": "^0.10.7",
+    "@spare/preset-deco": "^0.10.7",
+    "@spare/table-margin": "^0.10.7",
+    "@spare/table-padder": "^0.10.7",
+    "@vect/matrix": "^0.3.6",
+    "@vect/vector-merge": "^0.3.6"
   },
   "repository": {
     "type": "git",
