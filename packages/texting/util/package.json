@@ -1,6 +1,6 @@
 {
   "name": "@spare/util",
-  "version": "0.10.11",
+  "version": "0.10.12",
   "description": "A util toolset for @spare.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.10.11",
-    "@spare/enum-full-angle-chars": "^0.10.11",
-    "@spare/lange": "^0.10.11",
+    "@spare/enum-chars": "^0.10.12",
+    "@spare/enum-full-angle-chars": "^0.10.12",
+    "@spare/lange": "^0.10.12",
     "@typen/enum-data-types": "^0.1.15",
     "@typen/num-strict": "^0.1.15",
     "@vect/matrix": "^0.3.6",
@@ -39,5 +39,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "f86f0a8df3fbaa9124dbb125d469155677e385cd"
+  "gitHead": "7880d791c1d47f99c223bbf53589194a448c0acf"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-pale",
-  "version": "0.10.11",
+  "version": "0.10.12",
   "description": "Preset for pale",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,10 +17,10 @@
   "dependencies": {
     "@ject/pipe": "^0.0.6",
     "@palett/presets": "^0.5.13",
-    "@spare/deco-pale": "^0.10.11",
-    "@spare/enum-brackets": "^0.10.11",
-    "@spare/enum-chars": "^0.10.11",
-    "@spare/quote": "^0.10.11",
+    "@spare/deco-pale": "^0.10.12",
+    "@spare/enum-brackets": "^0.10.12",
+    "@spare/enum-chars": "^0.10.12",
+    "@spare/quote": "^0.10.12",
     "@vect/enum-matrix-directions": "^0.3.6"
   },
   "repository": {
@@ -39,5 +39,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "f86f0a8df3fbaa9124dbb125d469155677e385cd"
+  "gitHead": "7880d791c1d47f99c223bbf53589194a448c0acf"
 }

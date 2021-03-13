@@ -1,6 +1,6 @@
 {
   "name": "@spare/vector-margin",
-  "version": "0.10.11",
+  "version": "0.10.12",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@spare/util": "^0.10.11",
+    "@spare/util": "^0.10.12",
     "@vect/vector-margin": "^0.3.6"
   },
   "repository": {
@@ -35,5 +35,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "f86f0a8df3fbaa9124dbb125d469155677e385cd"
+  "gitHead": "7880d791c1d47f99c223bbf53589194a448c0acf"
 }
