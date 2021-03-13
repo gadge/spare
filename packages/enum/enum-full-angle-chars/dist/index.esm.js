@@ -1,5 +1,6 @@
 const SP = '　';
 const TB = '　　';
 const DASH = '－';
+const DA = '－';
 
-export { DASH, SP, TB };
+export { DA, DASH, SP, TB };

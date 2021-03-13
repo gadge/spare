@@ -1,87 +1,79 @@
-import { max } from '@aryth/comparer';
-import { DA } from '@spare/enum-chars';
-import { DASH, SP } from '@spare/enum-full-angle-chars';
-import { FullWidth } from '@spare/fullwidth';
-import { Lange } from '@spare/lange';
+import { DA as DA$1 } from '@spare/enum-chars';
 import { LPad, RPad } from '@spare/padder';
-import { maxBy } from '@vect/vector-indicator';
 import { mapper } from '@vect/vector-mapper';
-import { zipper } from '@vect/vector-zipper';
+import { DA, SP } from '@spare/enum-full-angle-chars';
+import { FullWidth } from '@spare/fullwidth';
+import { max } from '@aryth/comparer';
+import { Lange } from '@spare/lange';
+import { maxBy } from '@vect/vector-indicator';
 
 const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
 
+const fieldWidth = (name, list, ansi) => {
+  const lange = Lange(ansi);
+  return max(lange(name), maxBy(list, lange));
+};
+
+/**
+ *
+ * @param {object} field
+ * @param {string} field.name
+ * @param {string[]} field.list
+ * @param {object} config
+ * @param {boolean} [config.ansi]
+ * @returns {{name:string,rule:string,list:string[]}}
+ */
+
+const fieldPadderFullWidth = (field, config = {}) => {
+  const {
+    name,
+    list
+  } = field;
+  const toFull = FullWidth(config); // use config.ansi
+
+  const configPad = {
+    ansi: config.ansi,
+    fill: SP
+  },
+        lpad = LPad(configPad),
+        rpad = RPad(configPad);
+  const width = fieldWidth(name, list, config.ansi);
+  return {
+    name: rpad(toFull(name), width),
+    rule: DA.repeat(width),
+    list: mapper(list, x => lpad(toFull(x), width))
+  };
+};
+
 const hasHan = HAN.test.bind(HAN);
-const fieldPadder = ({
-  title = '',
-  side
-}, {
-  dye,
-  ansi,
-  fullAngle
-} = {}) => {
-  if (fullAngle) return fieldPadderFullWidth({
-    title,
-    side
-  }, {
-    dye,
-    ansi
-  });
-  const lpad = LPad({
-    ansi
-  }),
-        rpad = RPad({
-    ansi
-  }),
-        lange = Lange(ansi);
-  const pad = max(lange(title), maxBy(side, lange));
-  return {
-    title: rpad(title, pad),
-    rule: DA.repeat(pad),
-    side: dye ? zipper(side, dye, (x, d) => {
-      var _lpad;
+/**
+ *
+ * @param {object} field
+ * @param {string} field.name
+ * @param {string[]} field.list
+ * @param {object} config
+ * @param {function[]} [config.dye]
+ * @param {boolean} [config.ansi]
+ * @param {boolean} [config.fullAngle]
+ * @returns {{name:string,rule:string,list:string[]}}
+ */
 
-      return _lpad = lpad(x, pad), d(_lpad);
-    }) : mapper(side, x => lpad(x, pad))
-  };
-};
-const fieldPadderFullWidth = ({
-  title = '',
-  side
-}, {
-  dye,
-  ansi,
-  dash = DASH,
-  fill = SP
-} = {}) => {
-  const fullWidth = FullWidth({
-    ansi
-  });
-  const han = hasHan(title) || side.some(hasHan);
-  if (!han) return fieldPadder({
-    title,
-    side
-  }, {
-    ansi
-  });
-  const lpad = LPad({
-    ansi,
-    fill
-  }),
-        rpad = RPad({
-    ansi,
-    fill
-  }),
-        lange = Lange(ansi);
-  const pad = max(lange(title), maxBy(side, lange));
-  return {
-    title: rpad(fullWidth(title), pad),
-    rule: dash.repeat(pad),
-    side: dye ? zipper(side, dye, (x, d) => {
-      var _lpad2;
+const fieldPadder = (field, config = {}) => {
+  const {
+    name,
+    list
+  } = field;
+  if (config.fullAngle && (hasHan(name) || list.some(hasHan))) return fieldPadderFullWidth(field, config);
+  const lpad = LPad(config),
+        // use config.ansi
+  rpad = RPad(config); // use config.ansi
 
-      return _lpad2 = lpad(fullWidth(x), pad), d(_lpad2);
-    }) : mapper(side, x => lpad(fullWidth(x), pad))
+  const width = fieldWidth(name, list, config.ansi);
+  return {
+    name: rpad(name, width),
+    rule: DA$1.repeat(width),
+    list: mapper(list, x => lpad(x, width))
   };
 };
 
-export { fieldPadder };
+export { fieldPadder, fieldWidth };

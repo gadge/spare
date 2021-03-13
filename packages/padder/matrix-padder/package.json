@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.3.4",
+    "@aryth/comparer": "^0.3.6",
     "@spare/lange": "^0.10.9",
     "@spare/padder": "^0.10.9",
     "@vect/columns-stat": "^0.3.6",

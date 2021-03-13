@@ -18,7 +18,8 @@
     "@spare/lange": "^0.10.9",
     "@spare/padder": "^0.10.9",
     "@vect/entries-indicator": "^0.3.6",
-    "@vect/entries-zipper": "^0.3.6"
+    "@vect/entries-zipper": "^0.3.6",
+    "@vect/entries-mapper": "^0.3.6"
   },
   "repository": {
     "type": "git",

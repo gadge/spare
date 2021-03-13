@@ -1,6 +1,6 @@
 import { totx }                                   from '@spare/util'
 import { marginCopy, marginMapper, marginMutate } from '@vect/vector-margin'
-import { marginSizing }                           from './marginSizing'
+import { sizing }                                 from './sizing'
 
 /**
  *
@@ -26,9 +26,9 @@ export class VectorMargin {
   }
 
   static build(ar, h = 0, t = 0) {
-    const { head, tail, dash } = marginSizing(ar, h, t)
-    const cutVec = marginCopy(ar, head, tail)
-    return new VectorMargin(cutVec, head, tail, dash)
+    const { head, tail, dash } = sizing(ar, h, t)
+    const margined = marginCopy(ar, head, tail)
+    return new VectorMargin(margined, head, tail, dash)
   }
 
   map(fn, mutate = false) {

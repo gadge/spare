@@ -2,123 +2,79 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var comparer = require('@aryth/comparer');
 var enumChars = require('@spare/enum-chars');
-var lange = require('@spare/lange');
+var matrixPadder = require('@spare/matrix-padder');
 var padder = require('@spare/padder');
-var columnsStat = require('@vect/columns-stat');
 var matrixMapper = require('@vect/matrix-mapper');
 var vector = require('@vect/vector');
 var vectorMapper = require('@vect/vector-mapper');
 var vectorZipper = require('@vect/vector-zipper');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 var fullwidth = require('@spare/fullwidth');
-var matrixTranspose = require('@vect/matrix-transpose');
+var columnsMapper = require('@vect/columns-mapper');
 
 /**
  *
- * @param {string[][]} rows
- * @param {*[]} head
- * @param {*[][]} [raw]
- * @param {function[][]} [dye]
- * @param {boolean=false} [ansi]
- * @param {string} [dash]
- * @param {string} [fwdash]
- * @param {string} [fill]
- * @param {string} [fwfill]
+ * @param {object} table
+ * @param {*[]}  table.head
+ * @param {string[][]} table.rows
+ * @param {object} config
+ * @param {boolean=false} [config.ansi]
  * @return {{head: string[], rows: string[][], rule: string[]}}
  */
 
-const tablePadderFullAngle = ({
-  head,
-  rows
-}, {
-  ansi = false,
-  dash = enumChars.DA,
-  fwdash = enumFullAngleChars.DASH,
-  fill = enumChars.SP,
-  fwfill = enumFullAngleChars.SP
-} = {}) => {
-  var _acquire;
-
-  const len = lange.Lange(ansi);
-  const columns = (_acquire = vector.acquire([head], rows), matrixTranspose.transpose(_acquire));
-  const widths = vectorMapper.mapper(columns, columnsStat.Stat({
-    init: () => 0,
-    acc: (a, b) => comparer.max(a, b ? len(b) : 0)
-  }));
-  const checks = vectorMapper.mapper(columns, col => col.some(fullwidth.hasFullWidth));
-  const padR = padder.PadFW({
+const tablePadderFullAngle = (table, config = {}) => {
+  const {
+    head,
+    rows
+  } = table;
+  const {
+    ansi = false
+  } = config;
+  const columns = vector.acquire([head], rows);
+  const widths = matrixPadder.widthsByColumns(columns, ansi);
+  const marks = columnsMapper.mapper(columns, col => col.some(fullwidth.hasFullWidth));
+  const padRight = padder.PadFull({
     dock: padder.RIGHT,
-    ansi,
-    fill,
-    fwfill
-  });
-  const padN = padder.PadFW({
+    ansi
+  }),
+        padCentre = padder.PadFull({
     dock: padder.CENTRE,
-    ansi,
-    fill,
-    fwfill
+    ansi
   });
   return {
-    head: vectorZipper.zipper(head, widths, (value, width, j) => padR(value, width, checks[j])),
-    rule: vectorZipper.zipper(widths, checks, (width, check) => (check ? fwdash : dash).repeat(width)),
-    rows: matrixMapper.mapper(rows, (x, i, j) => padN(x, widths[j], checks[j], x))
-  }; // const [widths, fwChecks] = [mapper(columns, Max(Lange(ansi))), mapper(columns, col => col.some(hasFullWidth))]
-  // return {
-  //   head: VecTriZip(padR)(head, widths, checks),
-  //   rule: VecDuoZip((pad, cn) => (cn ? fwdash : dash).repeat(pad))(widths, checks),
-  //   rows: MatDuoZip((x, v, i, j) => padN(x, widths[j], checks[j], v))(rows, raw)
-  // }
+    head: vectorZipper.zipper(head, widths, (value, width, j) => padRight(value, width, marks[j])),
+    rule: vectorZipper.zipper(widths, marks, (width, check) => (check ? enumFullAngleChars.DA : enumChars.DA).repeat(width)),
+    rows: matrixMapper.mapper(rows, (x, i, j) => padCentre(x, widths[j], marks[j], x))
+  };
 };
 
 /**
  *
  *
- * @param {*[]} head
- * @param {string[][]} rows
- * @param {*[][]} raw
- * @param {boolean=false} [ansi]
- * @param {boolean=false} [fullAngle]
+ * @param {object} table
+ * @param {*[]} table.head
+ * @param {string[][]} table.rows
+ * @param config
+ * @param {boolean=false} [config.ansi]
+ * @param {boolean=false} [config.fullAngle]
  * @return {{head: string[], rule: string[], rows: string[][]}}
  */
 
-const tablePadder = ({
-  head,
-  rows
-}, {
-  raw,
-  ansi = true,
-  fullAngle = false
-} = {}) => {
-  if (fullAngle) return tablePadderFullAngle({
+const tablePadder = (table, config = {}) => {
+  if (config.fullAngle) return tablePadderFullAngle(table, config);
+  const padder$1 = padder.Pad(config); // use ansi
+
+  const {
     head,
     rows
-  }, {
-    raw,
-    ansi
-  });
-  const padder$1 = padder.Pad({
-    ansi
-  });
-  const len = lange.Lange(ansi);
-  const widths = columnsStat.stat.call({
-    init: () => 0,
-    acc: (a, b) => comparer.max(a, len(b))
-  }, vector.acquire([head], rows));
+  } = table;
+  const widths = matrixPadder.widthsByColumns(vector.acquire([head], rows), config.ansi);
   return {
     head: vectorZipper.zipper(head, widths, (x, p) => padder$1(x, p, x)),
     rule: vectorMapper.mapper(widths, p => enumChars.DA.repeat(p)),
     rows: matrixMapper.mapper(rows, (x, i, j) => padder$1(x, widths[j], x))
-  }; // return {
-  //   head: headDye
-  //     ? VecTriZip((x, d, p) => padder(x, p) |> d)(head, headDye, pads)
-  //     : VecDuoZip((x, p) => padder(x, p))(head, pads),
-  //   rule: mapper(pads, p => DA.repeat(p)),
-  //   rows: dye
-  //     ? MatTriZip((x, v, d, i, j) => padder(x, pads[j], v) |> d)(rows, raw ?? rows, dye)
-  //     : MatDuoZip((x, v, i, j) => padder(x, pads[j], v))(rows, raw ?? rows)
-  // }
+  };
 };
 
 exports.tablePadder = tablePadder;

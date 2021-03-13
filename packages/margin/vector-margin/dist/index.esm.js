@@ -2,7 +2,7 @@ import { totx } from '@spare/util';
 import { marginCopy, marginMutate, marginMapper } from '@vect/vector-margin';
 import { oneself } from '@ject/oneself';
 
-const marginSizing = (ar, head, tail) => {
+const sizing = (ar, head, tail) => {
   let l,
       dash = true;
   if (!(l = ar === null || ar === void 0 ? void 0 : ar.length)) [head, tail, dash] = [0, 0, false];
@@ -43,9 +43,9 @@ class VectorMargin {
       head,
       tail,
       dash
-    } = marginSizing(ar, h, t);
-    const cutVec = marginCopy(ar, head, tail);
-    return new VectorMargin(cutVec, head, tail, dash);
+    } = sizing(ar, h, t);
+    const margined = marginCopy(ar, head, tail);
+    return new VectorMargin(margined, head, tail, dash);
   }
 
   map(fn, mutate = false) {
@@ -91,26 +91,22 @@ class VectorMargin {
  * @param {*[]} arr
  * @param {*|number} [head]
  * @param {*|number} [tail]
- * @param {*|boolean} [dash]
  * @param {*|function(*):string} [read]
  * @param {*|string} [rule='..']
- * @param {*|boolean} [validate=true]
  * @return {{raw:*[],alt:*[]}}
  */
 
 const vettro = (arr, {
   head,
   tail,
-  dash,
   read,
-  rule = '...',
-  validate = true
+  rule = '...'
 } = {}) => {
-  const vn = validate ? VectorMargin.build(arr, head, tail) : new VectorMargin(arr, head, tail, dash);
+  const vn = VectorMargin.build(arr, head, tail);
   return {
     raw: vn.map(oneself).toVector(rule),
     alt: vn.stringify(read).toVector(rule)
   };
 };
 
-export { VectorMargin, marginSizing, vectorMargin, vettro };
+export { VectorMargin, sizing, vectorMargin, vettro };

@@ -50,30 +50,32 @@ const Pad = ({
   thousand
 });
 
-const PadFW = ({
+const SP = '　';
+
+const PadFull = ({
   dock,
   ansi,
   fill,
-  fwfill
+  fillFull = SP
 }) => {
-  const padHW = Pad({
+  const padHalf = Pad({
     dock,
     ansi,
     fill
   }),
-        padFW = Pad({
+        padFull = Pad({
     dock,
     ansi,
-    fill: fwfill
+    fill: fillFull
   }),
-        toFW = FullWidth({
+        toFull = FullWidth({
     ansi
   });
-  return (x, pd, fw, v) => fw ? padFW(toFW(x), pd, v) : padHW(x, pd, v);
+  return (word, width, full, raw) => full ? padFull(toFull(word), width, raw) : padHalf(word, width, raw);
 };
 
 const LEFT = -1;
 const RIGHT = 1;
 const CENTRE = 0;
 
-export { CENTRE, LEFT, LPad, Pad, PadFW, RIGHT, RPad };
+export { CENTRE, LEFT, LPad, Pad, PadFull, RIGHT, RPad };

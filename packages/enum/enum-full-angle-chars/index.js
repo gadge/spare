@@ -4,6 +4,7 @@ export {
   // CR,
   // LF,
   // RN,
+  DA,
   DASH,
   // ELLIP,
   // AEU,

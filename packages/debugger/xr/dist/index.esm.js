@@ -29,14 +29,14 @@ const DEF = 'default';
 var _Cards$orange$lighten, _Cards$indigo$lighten;
 const orange = Dye((_Cards$orange$lighten = Cards.orange.lighten_3, hexToRgb(_Cards$orange$lighten)));
 const indigo = Dye((_Cards$indigo$lighten = Cards.indigo.lighten_1, hexToRgb(_Cards$indigo$lighten)));
-const bracket = tx => orange('[') + tx + orange(']');
-const parenth = tx => indigo('(') + tx + indigo(')');
+const bracket$1 = tx => orange('[') + tx + orange(']');
+const parenth$1 = tx => indigo('(') + tx + indigo(')');
 
 var _Cards$blueGrey$base, _Cards$grey$darken_;
 const blueGrey = Dye((_Cards$blueGrey$base = Cards.blueGrey.base, hexToRgb(_Cards$blueGrey$base)));
 const grey = Dye((_Cards$grey$darken_ = Cards.grey.darken_1, hexToRgb(_Cards$grey$darken_)));
-const bracket$1 = (tx = '') => blueGrey('[') + grey(tx) + blueGrey(']');
-const parenth$1 = (tx = '') => blueGrey('(') + grey(tx) + blueGrey(')');
+const bracket = (tx = '') => blueGrey('[') + grey(tx) + blueGrey(']');
+const parenth = (tx = '') => blueGrey('(') + grey(tx) + blueGrey(')');
 
 /**
  *
@@ -129,15 +129,15 @@ class XrStream extends Callable {
     });
     Object.assign(this, initQueue(word));
     _classPrivateFieldLooseBase(this, _conf)[_conf].bracket = pretty ? {
-      major: bracket,
-      minor: bracket$1
+      major: bracket$1,
+      minor: bracket
     } : {
       major: bracket$2,
       minor: bracket$2
     };
     _classPrivateFieldLooseBase(this, _conf)[_conf].parenth = pretty ? {
-      major: parenth,
-      minor: parenth$1
+      major: parenth$1,
+      minor: parenth
     } : {
       major: parenth$2,
       minor: parenth$2

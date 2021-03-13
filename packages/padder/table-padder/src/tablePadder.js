@@ -1,8 +1,6 @@
-import { max }                    from '@aryth/comparer'
 import { DA }                     from '@spare/enum-chars'
-import { Lange }                  from '@spare/lange'
+import { widthsByColumns }        from '@spare/matrix-padder'
 import { Pad }                    from '@spare/padder'
-import { stat }                   from '@vect/columns-stat'
 import { mapper as mapperMatrix } from '@vect/matrix-mapper'
 import { acquire }                from '@vect/vector'
 import { mapper }                 from '@vect/vector-mapper'
@@ -12,33 +10,25 @@ import { tablePadderFullAngle }   from './tablePadderFullAngle'
 /**
  *
  *
- * @param {*[]} head
- * @param {string[][]} rows
- * @param {*[][]} raw
- * @param {boolean=false} [ansi]
- * @param {boolean=false} [fullAngle]
+ * @param {object} table
+ * @param {*[]} table.head
+ * @param {string[][]} table.rows
+ * @param config
+ * @param {boolean=false} [config.ansi]
+ * @param {boolean=false} [config.fullAngle]
  * @return {{head: string[], rule: string[], rows: string[][]}}
  */
 export const tablePadder = (
-  { head, rows },
-  { raw, ansi, fullAngle = false } = {},
+  table,
+  config = {}
 ) => {
-  if (fullAngle) return tablePadderFullAngle({ head, rows }, { raw, ansi })
-  const padder = Pad({ ansi })
-  const len = Lange(ansi)
-  const widths = stat.call({ init: () => 0, acc: (a, b) => max(a, len(b)) }, acquire([head], rows))
+  if (config.fullAngle) return tablePadderFullAngle(table, config)
+  const padder = Pad(config) // use ansi
+  const { head, rows } = table
+  const widths = widthsByColumns(acquire([head], rows), config.ansi)
   return {
     head: zipper(head, widths, (x, p) => padder(x, p, x)),
     rule: mapper(widths, p => DA.repeat(p)),
     rows: mapperMatrix(rows, (x, i, j) => padder(x, widths[j], x))
   }
-  // return {
-  //   head: headDye
-  //     ? VecTriZip((x, d, p) => padder(x, p) |> d)(head, headDye, pads)
-  //     : VecDuoZip((x, p) => padder(x, p))(head, pads),
-  //   rule: mapper(pads, p => DA.repeat(p)),
-  //   rows: dye
-  //     ? MatTriZip((x, v, d, i, j) => padder(x, pads[j], v) |> d)(rows, raw ?? rows, dye)
-  //     : MatDuoZip((x, v, i, j) => padder(x, pads[j], v))(rows, raw ?? rows)
-  // }
 }

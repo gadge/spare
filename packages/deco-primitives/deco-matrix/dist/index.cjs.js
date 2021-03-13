@@ -16,6 +16,22 @@ const fluo = fluoMatrix.fluoMatrix.bind({
   colorant: false,
   mutate: true
 });
+/**
+ *
+ * @param {*[][]} rows
+ * @param {object} config
+ * @param {number} config.direct
+ * @param {object|object[]} config.presets
+ * @param {string[]} config.effects
+ * @returns {string[][]}
+ */
+
+const matrixColour = (rows, config) => {
+  if (config.presets) rows = fluo(rows, config); // use: direct, presets, effects
+
+  return rows;
+};
+
 const cosmetics = function (rows = []) {
   var _Br;
 
@@ -31,9 +47,10 @@ const cosmetics = function (rows = []) {
   const br = (_Br = bracket.Br(bracket$1)) !== null && _Br !== void 0 ? _Br : oneself.oneself;
   rows = matrixMargin.matrixMargin(rows, config); // use: top, bottom, left, right, read, rule
 
-  rows = matrixPadder.matrixPadder(rows, config); // use: ansi
+  rows = matrixColour(rows, config); // use: direct, presets, effects
+  // if (config.presets) rows = fluo(rows, config) // use: direct, presets, effects
 
-  if (config.presets) rows = fluo(rows, config); // use: direct, presets, effects
+  rows = matrixPadder.matrixPadder(rows, config); // use: ansi
 
   return liner.liner(rows.map(line => br(line.join(delim))), {
     discrete,

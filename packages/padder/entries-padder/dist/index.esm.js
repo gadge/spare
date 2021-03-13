@@ -1,17 +1,22 @@
-import { lange } from '@spare/lange';
+import { Lange } from '@spare/lange';
 import { Pad, LPad } from '@spare/padder';
 import { maxBy } from '@vect/entries-indicator';
-import { Trizipper, Duozipper } from '@vect/entries-zipper';
+import { mapper } from '@vect/entries-mapper';
+
+/**
+ *
+ * @param {string[][]} entries
+ * @param {boolean} ansi
+ * @param {string} fill
+ * @returns {string[][]}
+ */
 
 const entriesPadder = (entries, {
-  raw,
-  dye,
   ansi,
   fill
 }) => {
-  raw = raw || entries;
-  const len = ansi ? lange : x => x.length;
-  const [kwd, vwd] = maxBy(entries, len, len);
+  const lange = Lange(ansi);
+  const [kwd, vwd] = maxBy(entries, lange, lange);
   const pad = Pad({
     ansi,
     fill
@@ -20,16 +25,13 @@ const entriesPadder = (entries, {
     ansi,
     fill
   });
-  let zipper;
-  return dye ? (zipper = Trizipper((tx, va, dy) => {
-    var _lpad;
-
-    return _lpad = lpad(tx, kwd), dy(_lpad);
-  }, (tx, va, dy) => {
-    var _pad;
-
-    return _pad = pad(tx, vwd, va), dy(_pad);
-  }), zipper(entries, raw, dye)) : (zipper = Duozipper(tx => lpad(tx, kwd), (tx, va) => pad(tx, vwd, va)), zipper(entries, raw));
-};
+  return mapper(entries, tx => lpad(tx, kwd), (tx, va) => pad(tx, vwd, va));
+}; // raw = raw || entries
+// let zipper
+// return dye
+//   ? (zipper = Trizipper((tx, va, dy) => lpad(tx, kwd) |> dy, (tx, va, dy) => pad(tx, vwd, va) |> dy),
+//     zipper(entries, raw, dye))
+//   : (zipper = Duozipper(tx => lpad(tx, kwd), (tx, va) => pad(tx, vwd, va)),
+//     zipper(entries, raw))
 
 export { entriesPadder };

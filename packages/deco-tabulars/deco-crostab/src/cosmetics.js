@@ -11,6 +11,25 @@ import { HCONN, VLINE }  from '../resources/conns'
 
 const MUTATE = { mutate: true }
 
+/**
+ *
+ * @param {{side:string[],head:string[],rows:string[]}} crostab
+ * @param {object} config
+ * @param {number} [config.direct]
+ * @param {object|object[]} [config.presets]
+ * @param {string[]} [config.effects]
+ * @returns {*}
+ */
+export const crostabVerbal = (crostab, config = {}) => {
+  const { presets } = config
+  if (!presets) return crostab
+  const labelPresets = { presets: [presets[0], presets[2]] }
+  crostab.side = fluoVector.call(MUTATE, crostab.side, labelPresets)
+  crostab.head = fluoVector.call(MUTATE, crostab.head, labelPresets)
+  crostab.rows = fluoMatrix.call(MUTATE, crostab.rows, config) // use: direct, presets
+  return crostab
+}
+
 export const cosmetics = function (crostab) {
   if (!crostab) return AEU
   const config = this
@@ -18,22 +37,14 @@ export const cosmetics = function (crostab) {
   if (!height || !width || !labelWidth || !labelHeight) return AEU
   crostab = crostabMargin(crostab, config) // use: top, bottom, left, right, height, width, read, sideRead, headRead
   crostab = crostabPadder(crostab, config) // use: ansi, fullAngle
-  const { presets } = config
-  if (presets) {
-    const vectorPresets = { presets: [presets[0], presets[2]] }
-    crostab.side = fluoVector.call(MUTATE, crostab.side, vectorPresets)
-    crostab.head = fluoVector.call(MUTATE, crostab.head, vectorPresets)
-    crostab.rows = fluoMatrix.call(MUTATE, crostab.rows, config) // use: direct, presets
-  }
-  const lines = acquire(
-    [
+  crostab = crostabVerbal(crostab, config) // use: d
+  const lines = acquire([
       crostab.title + VLINE + crostab.head.join(VLINE),
       crostab.rule.join(HCONN)
     ],
     zipper(
       crostab.side,
       crostab.rows, (s, r) => s + VLINE + r.join(VLINE)
-    )
-  )
+    ))
   return liner(lines, config) // use: discrete, delim, level
 }

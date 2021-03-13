@@ -4,6 +4,7 @@ import { liner }                         from '@spare/liner'
 import { vectorMargin }                  from '@spare/vector-margin'
 
 const fluo = fluoVector.bind({ colorant: false, mutate: true })
+
 export function cosmetics(vec = []) {
   const config = this
   if (config?.indexed) return cosmeticsEntries.call(config, Object.entries(vec))

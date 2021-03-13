@@ -20,7 +20,7 @@ const DEFN = {
   pr: false
 };
 
-function decoPale(node) {
+function decoPale$1(node) {
   var _node, _decofun$call, _String;
 
   const {
@@ -37,8 +37,8 @@ function decoPale(node) {
     var _node$map$join, _mutate$map$join, _ref;
 
     const pt = typ(node);
-    if (pt === ARRAY) return _node$map$join = node.map(decoPale.bind(this)).join(COSP), bracket(_node$map$join);
-    if (pt === OBJECT) return _mutate$map$join = mutate(Object.entries(node), decoKey, decoPale.bind(this)).map(pairEnt).join(COSP), brace(_mutate$map$join);
+    if (pt === ARRAY) return _node$map$join = node.map(decoPale$1.bind(this)).join(COSP), bracket(_node$map$join);
+    if (pt === OBJECT) return _mutate$map$join = mutate(Object.entries(node), decoKey, decoPale$1.bind(this)).map(pairEnt).join(COSP), brace(_mutate$map$join);
     if (pt === DATE) return _ref = `${formatDate(node)}'${formatTime(node)}`, cite(_ref);
   }
 
@@ -62,7 +62,7 @@ const presetConfig = p => {
  */
 
 
-const decoPale$1 = (x, p = {}) => decoPale.call(presetConfig(p), x);
+const decoPale = (x, p = {}) => decoPale$1.call(presetConfig(p), x);
 /**
  *
  * @param {Object} p
@@ -70,6 +70,6 @@ const decoPale$1 = (x, p = {}) => decoPale.call(presetConfig(p), x);
  * @param {Function|string|number} [p.quote]
  */
 
-const DecoPale = (p = {}) => decoPale.bind(presetConfig(p));
+const DecoPale = (p = {}) => decoPale$1.bind(presetConfig(p));
 
-export { DecoPale, decoKey, decoPale$1 as decoPale };
+export { DecoPale, decoKey, decoPale };

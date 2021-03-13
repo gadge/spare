@@ -3,45 +3,45 @@ import { Dye } from '@palett/dye';
 import { mapper } from '@vect/object-mapper';
 import { Cards } from '@palett/cards';
 
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
-const Dyes = {
-  0: Dye((_ref = [45, 100, 53], hslToRgb(_ref))),
-  1: Dye((_ref2 = [44, 100, 59], hslToRgb(_ref2))),
-  2: Dye((_ref3 = [43, 100, 64], hslToRgb(_ref3))),
-  3: Dye((_ref4 = [42, 100, 70], hslToRgb(_ref4))),
-  4: Dye((_ref5 = [41, 100, 74], hslToRgb(_ref5))),
-  5: Dye((_ref6 = [40, 100, 78], hslToRgb(_ref6))),
-  6: Dye((_ref7 = [39, 100, 82], hslToRgb(_ref7))),
-  7: Dye((_ref8 = [37, 100, 86], hslToRgb(_ref8)))
-};
-const L = '{ ',
-      R = ' }';
-const BRC = mapper(Dyes, dye => {
-  var _L, _R;
-
-  const l = (_L = L, dye(_L)),
-        r = (_R = R, dye(_R));
-  return content => l + content + r;
-});
-
 var _ref$1, _ref2$1, _ref3$1, _ref4$1, _ref5$1, _ref6$1, _ref7$1, _ref8$1;
 const Dyes$1 = {
-  0: Dye((_ref$1 = [199, 100, 63], hslToRgb(_ref$1))),
-  1: Dye((_ref2$1 = [201, 100, 68], hslToRgb(_ref2$1))),
-  2: Dye((_ref3$1 = [203, 100, 72], hslToRgb(_ref3$1))),
-  3: Dye((_ref4$1 = [205, 100, 76], hslToRgb(_ref4$1))),
-  4: Dye((_ref5$1 = [207, 100, 84], hslToRgb(_ref5$1))),
-  5: Dye((_ref6$1 = [209, 100, 80], hslToRgb(_ref6$1))),
-  6: Dye((_ref7$1 = [211, 100, 88], hslToRgb(_ref7$1))),
-  7: Dye((_ref8$1 = [214, 100, 90], hslToRgb(_ref8$1)))
+  0: Dye((_ref$1 = [45, 100, 53], hslToRgb(_ref$1))),
+  1: Dye((_ref2$1 = [44, 100, 59], hslToRgb(_ref2$1))),
+  2: Dye((_ref3$1 = [43, 100, 64], hslToRgb(_ref3$1))),
+  3: Dye((_ref4$1 = [42, 100, 70], hslToRgb(_ref4$1))),
+  4: Dye((_ref5$1 = [41, 100, 74], hslToRgb(_ref5$1))),
+  5: Dye((_ref6$1 = [40, 100, 78], hslToRgb(_ref6$1))),
+  6: Dye((_ref7$1 = [39, 100, 82], hslToRgb(_ref7$1))),
+  7: Dye((_ref8$1 = [37, 100, 86], hslToRgb(_ref8$1)))
 };
-const L$1 = '[ ',
-      R$1 = ' ]';
-const BRK = mapper(Dyes$1, dye => {
+const L$1 = '{ ',
+      R$1 = ' }';
+const BRC = mapper(Dyes$1, dye => {
   var _L, _R;
 
   const l = (_L = L$1, dye(_L)),
         r = (_R = R$1, dye(_R));
+  return content => l + content + r;
+});
+
+var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
+const Dyes = {
+  0: Dye((_ref = [199, 100, 63], hslToRgb(_ref))),
+  1: Dye((_ref2 = [201, 100, 68], hslToRgb(_ref2))),
+  2: Dye((_ref3 = [203, 100, 72], hslToRgb(_ref3))),
+  3: Dye((_ref4 = [205, 100, 76], hslToRgb(_ref4))),
+  4: Dye((_ref5 = [207, 100, 84], hslToRgb(_ref5))),
+  5: Dye((_ref6 = [209, 100, 80], hslToRgb(_ref6))),
+  6: Dye((_ref7 = [211, 100, 88], hslToRgb(_ref7))),
+  7: Dye((_ref8 = [214, 100, 90], hslToRgb(_ref8)))
+};
+const L = '[ ',
+      R = ' ]';
+const BRK = mapper(Dyes, dye => {
+  var _L, _R;
+
+  const l = (_L = L, dye(_L)),
+        r = (_R = R, dye(_R));
   return content => l + content + r;
 });
 

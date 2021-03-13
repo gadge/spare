@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.5.11",
-    "@palett/fluo-vector": "^0.5.11",
+    "@palett/fluo-matrix": "^0.5.13",
+    "@palett/fluo-vector": "^0.5.13",
     "@spare/enum-chars": "^0.10.9",
     "@spare/liner": "^0.10.9",
     "@spare/preset-deco": "^0.10.9",
@@ -41,5 +41,8 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "f86f0a8df3fbaa9124dbb125d469155677e385cd"
+  "gitHead": "f86f0a8df3fbaa9124dbb125d469155677e385cd",
+  "devDependencies": {
+    "@spare/logger": "^0.10.9"
+  }
 }
