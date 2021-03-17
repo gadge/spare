@@ -31,9 +31,8 @@ export const cosmetics = function (rows = []) {
   let { discrete, delim, bracket, level } = config
   const br = Br(bracket) ?? oneself
   rows = matrixMargin(rows, config) // use: top, bottom, left, right, read, rule
-  rows = matrixColour(rows, config) // use: direct, presets, effects
-  // if (config.presets) rows = fluo(rows, config) // use: direct, presets, effects
   rows = matrixPadder(rows, config) // use: ansi
+  rows = matrixColour(rows, config) // use: direct, presets, effects
   return liner(
     rows.map(line => br(line.join(delim))),
     { discrete, delim: COLF, bracket, level }

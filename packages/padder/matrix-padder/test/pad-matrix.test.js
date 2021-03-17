@@ -15,10 +15,10 @@ const matrix = [
   NumberVectorCollection.flopShuffle({ size: 6 }),
 ]
 
-matrix |> delogger
+// matrix |> delogger
+matrix[0][5] = '赛博朋克'
+matrix[1][5] = '-'
 const word = matrixMapper(matrix, String)
-const dye = fluoMatrix.call({ colorant: true }, word, { presets: [SUBTLE, OCEAN], direct: COLUMNWISE })
-
-matrixPadder(word, { raw: matrix, dye, ansi: true })
+matrixPadder(word, { full: true })
   .map(row => row.join(' | ')).join('\n')
   |> logger

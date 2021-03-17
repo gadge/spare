@@ -1,7 +1,7 @@
 import { lange }  from '@spare/lange'
 import { logger } from '@spare/logger'
 import { xr }   from '@spare/xr'
-import { RPad } from '../src/RPad'
+import { RPad } from '../utils/RPad'
 
 const brc = x => `(${x})`
 String.prototype.padStart.call('abc', 5) |> brc|> logger

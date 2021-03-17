@@ -1,7 +1,7 @@
 import { DA as DA$1 } from '@spare/enum-chars';
-import { LPad, RPad } from '@spare/padder';
+import { PadFull, Pad } from '@spare/padder';
 import { mapper } from '@vect/vector-mapper';
-import { DA, SP } from '@spare/enum-full-angle-chars';
+import { DA } from '@spare/enum-full-angle-chars';
 import { FullWidth } from '@spare/fullwidth';
 import { max } from '@aryth/comparer';
 import { Lange } from '@spare/lange';
@@ -35,17 +35,12 @@ const fieldPadderFull = (field, config = {}) => {
   } = field;
   const toFull = FullWidth(config); // use config.ansi
 
-  const configPad = {
-    ansi: config.ansi,
-    fill: SP
-  },
-        lpad = LPad(configPad),
-        rpad = RPad(configPad);
+  const pad = PadFull(config, config);
   const width = fieldWidth(name, list, config.ansi);
   return {
-    name: rpad(toFull(name), width),
+    name: pad(toFull(name), width, true),
     rule: DA.repeat(width),
-    list: mapper(list, x => lpad(toFull(x), width))
+    list: mapper(list, x => pad(toFull(x), width, true))
   };
 };
 
@@ -63,20 +58,14 @@ const hasHan = HAN.test.bind(HAN);
  */
 
 const fieldPadder = (field, config = {}) => {
-  const {
-    name,
-    list
-  } = field;
-  if (config.fullAngle && (hasHan(name) || list.some(hasHan))) return fieldPadderFull(field, config);
-  const lpad = LPad(config),
-        // use config.ansi
-  rpad = RPad(config); // use config.ansi
+  if (config.fullAngle && (hasHan(field.name) || field.list.some(hasHan))) return fieldPadderFull(field, config);
+  const pad = Pad(config); // use config.ansi
 
-  const width = fieldWidth(name, list, config.ansi);
+  const width = fieldWidth(field.name, field.list, config.ansi);
   return {
-    name: rpad(name, width),
+    name: pad(field.name, width),
     rule: DA$1.repeat(width),
-    list: mapper(list, x => lpad(x, width))
+    list: mapper(field.list, x => pad(x, width))
   };
 };
 

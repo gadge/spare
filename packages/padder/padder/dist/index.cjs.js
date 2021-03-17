@@ -22,60 +22,72 @@ const RPad = ({
   fill
 } = {}) => ansi ? (tx, pd) => rpad(tx, ansiPadLength(tx, pd), fill) : (tx, pd) => rpad(tx, pd, fill);
 
-const COMMA = /,/g;
-const DIGIT_INITIAL = /^\d/;
+const SP$1 = ' ';
 
-const numericDeterminant = tx => {
+const DIGIT_INITIAL = /^\d/;
+const COMMA = /,/g;
+const removeThousandSeparator = tx => {
   if (!tx || tx.length <= 4) return tx;
   if (!DIGIT_INITIAL.test(tx)) return tx;
   return tx.replace(COMMA, '');
 };
 
 const pad = function (tx, wd, va) {
-  let dock, ansi, fill, thousand;
-  if (this) ({
-    dock,
-    ansi,
-    fill,
-    thousand
-  } = this);
-  const padder = !dock ? numStrict.isNumeric(va !== null && va !== void 0 ? va : thousand ? numericDeterminant(tx) : tx) ? lpad : rpad : dock < 0 ? lpad : rpad;
+  const {
+    ansi = true,
+    fill = SP$1,
+    thousand = true
+  } = this !== null && this !== void 0 ? this : {};
+  const padder = numStrict.isNumeric(va !== null && va !== void 0 ? va : thousand ? removeThousandSeparator(tx) : tx) ? lpad : rpad;
   return ansi ? padder(tx, ansiPadLength(tx, wd), fill) : padder(tx, wd, fill);
 };
-const Pad = ({
-  dock,
-  ansi = true,
-  fill,
-  thousand
-} = {}) => pad.bind({
-  dock,
-  ansi,
-  fill,
-  thousand
-});
+/**
+ *
+ * @param {object}  [config]
+ * @param {boolean} [config.ansi]
+ * @param {string}  [config.fill]
+ * @param {boolean} [config.thousand]
+ * @returns {function(string,number,any?):string}
+ * @constructor
+ */
+
+const Pad = (config = {}) => pad.bind(config);
 
 const SP = '　';
 
-const PadFull = ({
-  dock,
-  ansi,
-  fill,
-  fillFull = SP
-}) => {
-  const padHalf = Pad({
-    dock,
-    ansi,
-    fill
-  }),
-        padFull = Pad({
-    dock,
-    ansi,
-    fill: fillFull
-  }),
-        toFull = fullwidth.FullWidth({
-    ansi
-  });
-  return (word, width, full, raw) => full ? padFull(toFull(word), width, raw) : padHalf(word, width, raw);
+const nullish = x => x === null || x === void 0;
+
+const padFull = function (tx, wd, va) {
+  const {
+    ansi = true,
+    fill = SP
+  } = this !== null && this !== void 0 ? this : {};
+  const padder = (!nullish(va) ? numStrict.isNumeric(va) : fullwidth.isNumeric(tx)) ? lpad : rpad;
+  return ansi ? padder(tx, ansiPadLength(tx, wd), fill) : padder(tx, wd, fill);
+};
+/**
+ * @param {object}  [configHalf]
+ * @param {boolean} [configHalf.ansi=true]
+ * @param {string}  [configHalf.fill=' ']
+ * @param {boolean} [configHalf.thousand=true]
+ *
+ * @param {object}  [configFull]
+ * @param {boolean} [configFull.ansi=true]
+ * @param {string}  [configFull.fill='　']
+ * @param {boolean} [configFull.lean=true]
+ *
+ * @returns {function(*=, *=, *, *=): *}
+ * @constructor
+ */
+
+const PadFull = (configHalf = {}, configFull = {}) => {
+  const padderHalf = pad.bind(configHalf),
+        // use: ansi, fill, thousand
+  padderFull = padFull.bind(configFull),
+        // use: ansi, fill
+  toFull = fullwidth.FullWidth(configFull); // use: ansi lean
+
+  return (text, width, full) => full ? padderFull(toFull(text), width) : padderHalf(text, width);
 };
 
 const LEFT = -1;

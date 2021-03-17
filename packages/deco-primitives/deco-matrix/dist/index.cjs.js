@@ -47,10 +47,9 @@ const cosmetics = function (rows = []) {
   const br = (_Br = bracket.Br(bracket$1)) !== null && _Br !== void 0 ? _Br : oneself.oneself;
   rows = matrixMargin.matrixMargin(rows, config); // use: top, bottom, left, right, read, rule
 
-  rows = matrixColour(rows, config); // use: direct, presets, effects
-  // if (config.presets) rows = fluo(rows, config) // use: direct, presets, effects
-
   rows = matrixPadder.matrixPadder(rows, config); // use: ansi
+
+  rows = matrixColour(rows, config); // use: direct, presets, effects
 
   return liner.liner(rows.map(line => br(line.join(delim))), {
     discrete,

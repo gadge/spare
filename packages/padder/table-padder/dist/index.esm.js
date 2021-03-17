@@ -1,6 +1,6 @@
 import { DA as DA$1 } from '@spare/enum-chars';
 import { widthsByColumns } from '@spare/matrix-padder';
-import { PadFull, RIGHT, CENTRE, Pad } from '@spare/padder';
+import { PadFull, Pad } from '@spare/padder';
 import { mapper } from '@vect/matrix-mapper';
 import { acquire } from '@vect/vector';
 import { mapper as mapper$2 } from '@vect/vector-mapper';
@@ -14,34 +14,20 @@ import { mapper as mapper$1 } from '@vect/columns-mapper';
  * @param {object} table
  * @param {*[]}  table.head
  * @param {string[][]} table.rows
- * @param {object} config
+ * @param {object} [config]
  * @param {boolean=false} [config.ansi]
  * @return {{head: string[], rows: string[][], rule: string[]}}
  */
 
 const tablePadderFull = (table, config = {}) => {
-  const {
-    head,
-    rows
-  } = table;
-  const {
-    ansi = false
-  } = config;
-  const columns = acquire([head], rows);
-  const widths = widthsByColumns(columns, ansi);
+  const columns = acquire([table.head], table.rows);
+  const widths = widthsByColumns(columns, config.ansi);
   const marks = mapper$1(columns, col => col.some(hasFull));
-  const padRight = PadFull({
-    dock: RIGHT,
-    ansi
-  }),
-        padCentre = PadFull({
-    dock: CENTRE,
-    ansi
-  });
+  const pad = PadFull(config, config);
   return {
-    head: zipper(head, widths, (value, width, j) => padRight(value, width, marks[j])),
+    head: zipper(table.head, widths, (value, width, j) => pad(value, width, marks[j])),
     rule: zipper(widths, marks, (width, check) => (check ? DA : DA$1).repeat(width)),
-    rows: mapper(rows, (x, i, j) => padCentre(x, widths[j], marks[j], x))
+    rows: mapper(table.rows, (x, i, j) => pad(x, widths[j], marks[j]))
   };
 };
 
@@ -53,23 +39,19 @@ const tablePadderFull = (table, config = {}) => {
  * @param {string[][]} table.rows
  * @param config
  * @param {boolean=false} [config.ansi]
- * @param {boolean=false} [config.fullAngle]
+ * @param {boolean=false} [config.full]
  * @return {{head: string[], rule: string[], rows: string[][]}}
  */
 
 const tablePadder = (table, config = {}) => {
-  if (config.fullAngle) return tablePadderFull(table, config);
+  if (config.full) return tablePadderFull(table, config);
   const padder = Pad(config); // use ansi
 
-  const {
-    head,
-    rows
-  } = table;
-  const widths = widthsByColumns(acquire([head], rows), config.ansi);
+  const widths = widthsByColumns(acquire([table.head], table.rows), config.ansi);
   return {
-    head: zipper(head, widths, (x, p) => padder(x, p, x)),
+    head: zipper(table.head, widths, (x, p) => padder(x, p)),
     rule: mapper$2(widths, p => DA$1.repeat(p)),
-    rows: mapper(rows, (x, i, j) => padder(x, widths[j], x))
+    rows: mapper(table.rows, (x, i, j) => padder(x, widths[j]))
   };
 };
 

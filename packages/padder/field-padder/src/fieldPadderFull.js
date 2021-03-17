@@ -1,6 +1,6 @@
-import { DA, SP }     from '@spare/enum-full-angle-chars'
+import { DA }         from '@spare/enum-full-angle-chars'
 import { FullWidth }  from '@spare/fullwidth'
-import { LPad, RPad } from '@spare/padder'
+import { PadFull }    from '@spare/padder'
 import { mapper }     from '@vect/vector-mapper'
 import { fieldWidth } from './fieldWidth'
 
@@ -16,14 +16,11 @@ import { fieldWidth } from './fieldWidth'
 export const fieldPadderFull = (field, config = {}) => {
   const { name, list } = field
   const toFull = FullWidth(config) // use config.ansi
-  const
-    configPad = { ansi: config.ansi, fill: SP },
-    lpad = LPad(configPad),
-    rpad = RPad(configPad)
+  const pad = PadFull(config, config)
   const width = fieldWidth(name, list, config.ansi)
   return {
-    name: rpad(toFull(name), width),
+    name: pad(toFull(name), width, true),
     rule: DA.repeat(width),
-    list: mapper(list, x => lpad(toFull(x), width))
+    list: mapper(list, x => pad(toFull(x), width, true))
   }
 }

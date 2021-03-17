@@ -39,17 +39,12 @@ const fieldPadderFull = (field, config = {}) => {
   } = field;
   const toFull = fullwidth.FullWidth(config); // use config.ansi
 
-  const configPad = {
-    ansi: config.ansi,
-    fill: enumFullAngleChars.SP
-  },
-        lpad = padder.LPad(configPad),
-        rpad = padder.RPad(configPad);
+  const pad = padder.PadFull(config, config);
   const width = fieldWidth(name, list, config.ansi);
   return {
-    name: rpad(toFull(name), width),
+    name: pad(toFull(name), width, true),
     rule: enumFullAngleChars.DA.repeat(width),
-    list: vectorMapper.mapper(list, x => lpad(toFull(x), width))
+    list: vectorMapper.mapper(list, x => pad(toFull(x), width, true))
   };
 };
 
@@ -67,20 +62,14 @@ const hasHan = HAN.test.bind(HAN);
  */
 
 const fieldPadder = (field, config = {}) => {
-  const {
-    name,
-    list
-  } = field;
-  if (config.fullAngle && (hasHan(name) || list.some(hasHan))) return fieldPadderFull(field, config);
-  const lpad = padder.LPad(config),
-        // use config.ansi
-  rpad = padder.RPad(config); // use config.ansi
+  if (config.fullAngle && (hasHan(field.name) || field.list.some(hasHan))) return fieldPadderFull(field, config);
+  const pad = padder.Pad(config); // use config.ansi
 
-  const width = fieldWidth(name, list, config.ansi);
+  const width = fieldWidth(field.name, field.list, config.ansi);
   return {
-    name: rpad(name, width),
+    name: pad(field.name, width),
     rule: enumChars.DA.repeat(width),
-    list: vectorMapper.mapper(list, x => lpad(x, width))
+    list: vectorMapper.mapper(field.list, x => pad(x, width))
   };
 };
 

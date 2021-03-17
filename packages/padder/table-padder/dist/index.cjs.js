@@ -18,34 +18,20 @@ var columnsMapper = require('@vect/columns-mapper');
  * @param {object} table
  * @param {*[]}  table.head
  * @param {string[][]} table.rows
- * @param {object} config
+ * @param {object} [config]
  * @param {boolean=false} [config.ansi]
  * @return {{head: string[], rows: string[][], rule: string[]}}
  */
 
 const tablePadderFull = (table, config = {}) => {
-  const {
-    head,
-    rows
-  } = table;
-  const {
-    ansi = false
-  } = config;
-  const columns = vector.acquire([head], rows);
-  const widths = matrixPadder.widthsByColumns(columns, ansi);
+  const columns = vector.acquire([table.head], table.rows);
+  const widths = matrixPadder.widthsByColumns(columns, config.ansi);
   const marks = columnsMapper.mapper(columns, col => col.some(fullwidth.hasFull));
-  const padRight = padder.PadFull({
-    dock: padder.RIGHT,
-    ansi
-  }),
-        padCentre = padder.PadFull({
-    dock: padder.CENTRE,
-    ansi
-  });
+  const pad = padder.PadFull(config, config);
   return {
-    head: vectorZipper.zipper(head, widths, (value, width, j) => padRight(value, width, marks[j])),
+    head: vectorZipper.zipper(table.head, widths, (value, width, j) => pad(value, width, marks[j])),
     rule: vectorZipper.zipper(widths, marks, (width, check) => (check ? enumFullAngleChars.DA : enumChars.DA).repeat(width)),
-    rows: matrixMapper.mapper(rows, (x, i, j) => padCentre(x, widths[j], marks[j], x))
+    rows: matrixMapper.mapper(table.rows, (x, i, j) => pad(x, widths[j], marks[j]))
   };
 };
 
@@ -57,23 +43,19 @@ const tablePadderFull = (table, config = {}) => {
  * @param {string[][]} table.rows
  * @param config
  * @param {boolean=false} [config.ansi]
- * @param {boolean=false} [config.fullAngle]
+ * @param {boolean=false} [config.full]
  * @return {{head: string[], rule: string[], rows: string[][]}}
  */
 
 const tablePadder = (table, config = {}) => {
-  if (config.fullAngle) return tablePadderFull(table, config);
+  if (config.full) return tablePadderFull(table, config);
   const padder$1 = padder.Pad(config); // use ansi
 
-  const {
-    head,
-    rows
-  } = table;
-  const widths = matrixPadder.widthsByColumns(vector.acquire([head], rows), config.ansi);
+  const widths = matrixPadder.widthsByColumns(vector.acquire([table.head], table.rows), config.ansi);
   return {
-    head: vectorZipper.zipper(head, widths, (x, p) => padder$1(x, p, x)),
+    head: vectorZipper.zipper(table.head, widths, (x, p) => padder$1(x, p)),
     rule: vectorMapper.mapper(widths, p => enumChars.DA.repeat(p)),
-    rows: matrixMapper.mapper(rows, (x, i, j) => padder$1(x, widths[j], x))
+    rows: matrixMapper.mapper(table.rows, (x, i, j) => padder$1(x, widths[j]))
   };
 };
 

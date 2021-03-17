@@ -9,7 +9,7 @@ const matrix = [
   ['Les Joueurs de cartes', 1890, '保罗·塞尚'],
 
 ]
-matrix |> Deco({ direct: COLUMNWISE, fullAngle: true }) |> says['impressionism']
+matrix |> Deco({ direct: COLUMNWISE, full: true }) |> says['impressionism']
 
 
 
