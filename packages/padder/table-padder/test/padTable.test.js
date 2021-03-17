@@ -2,8 +2,8 @@ import { rand }                 from '@aryth/rand'
 import { delogger }             from '@spare/deco'
 import { ELLIP }                from '@spare/enum-chars'
 import { mapper }               from '@vect/matrix'
-import { tablePadder }          from '../src/tablePadder'
-import { tablePadderFullAngle } from '../src/tablePadderFullAngle'
+import { tablePadder }     from '../src/tablePadder'
+import { tablePadderFull } from '../src/tablePadderFull'
 
 const genRand = () => rand(100) * 100 |> String
 
@@ -21,4 +21,4 @@ rows = mapper(rows, String)
 table |> delogger
 
 tablePadder({ head, rows },) |> console.log
-tablePadderFullAngle({ head, rows },) |> console.log
+tablePadderFull({ head, rows },) |> console.log

@@ -1,4 +1,4 @@
-import { FWCHREG } from './enums/constants'
+import { HAN } from '@spare/regex-charset'
 
 /**
  * Return if a string contains Chinese character.
@@ -8,4 +8,4 @@ import { FWCHREG } from './enums/constants'
  * @param {string} str
  * @returns {boolean}
  */
-export const hasFullWidth = str => FWCHREG.test(str)
+export const hasFull = str => HAN.test(str)

@@ -1,4 +1,5 @@
 export { fullToHalf }           from './src/fullToHalf'
 export { halfToFull }           from './src/halfToFull'
-export { hasFullWidth }         from './src/hasFullWidth'
+export { hasFull }              from './src/hasFull'
 export { FullWidth, fullWidth } from './src/FullWidth'
+export { isNumeric }            from './src/isNumeric'

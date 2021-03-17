@@ -1,5 +1,5 @@
-import { SP }     from '@spare/enum-full-angle-chars'
-import { FWLEAP } from './enums/constants'
+import { SP }         from '@spare/enum-full-angle-chars'
+import { DELTA_FULL } from '../assets/regex'
 
 /**
  * Half-angle string -> Full-angle string
@@ -13,7 +13,11 @@ import { FWLEAP } from './enums/constants'
 export const halfToFull = (text) => {
   let l = text?.length, i = 0, t = '', n
   while (i < l && (n = text.charCodeAt(i))) {
-    if (n === 0x20) { t += SP } else if (0x20 < n && n < 0x7f) { t += String.fromCharCode(n + FWLEAP) } else { t += text[i] }
+    t += n === 0x20
+      ? SP
+      : 0x20 < n && n < 0x7f
+        ? String.fromCharCode(n + DELTA_FULL)
+        : text[i]
     i++
   }
   return t

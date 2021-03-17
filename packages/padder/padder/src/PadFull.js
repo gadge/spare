@@ -1,6 +1,6 @@
 import { SP as SP_FULL } from '@spare/enum-full-angle-chars'
-import { FullWidth }     from '@spare/fullwidth'
-import { Pad }           from './Pad'
+import { FullWidth } from '@spare/fullwidth'
+import { Pad }       from './Pad'
 
 export const PadFull = ({ dock, ansi, fill, fillFull = SP_FULL }) => {
   const

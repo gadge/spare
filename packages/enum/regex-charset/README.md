@@ -23,7 +23,7 @@ $ npm install @spare/regex-charset
 
 ## Usage
 ```js
-import { lange } from '@spare/regex-charset'
+import { lange } from '@spare/assets-charset'
 const list = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',

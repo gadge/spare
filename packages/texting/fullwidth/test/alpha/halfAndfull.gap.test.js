@@ -1,9 +1,0 @@
-const firstHW = 0x0021
-const lastHW = 0x007e
-const diffHW = 0x007e - 0x0021
-
-const gap = 0xff01 - 0x0021 // 65248 0xfee0
-
-const firstFW = 0xff01
-const lastFW = 0xff5e
-const diffFW = 0xff5e - 0xff01

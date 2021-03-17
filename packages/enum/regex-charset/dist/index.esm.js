@@ -1,8 +1,14 @@
+const HALF_CHARS = '\u2000-\u206f';
+const CJK_PUNCS = '\u3000-\u303f';
+const CJK_CHARS = '\u4e00-\u9fbf';
+const FULL_CHARS = '\uff00-\uffef';
+
 const ANSI_ALPHA = /(?:(?:[a-zA-Z\d]*(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?)/;
 const ANSI_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/;
 const ANSI = new RegExp(`[][[\\]()#;?]*(?:${ANSI_ALPHA.source}|${ANSI_BETA.source})`);
-const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
-const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
+const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/; // 1024 * 1024
+
+const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`); // HAN ideographs
 //
 // Block                                   Range       Comment
 // CJK Unified Ideographs                  4E00-9FFF   Common
@@ -18,4 +24,4 @@ const ANSI_G = new RegExp(ANSI, 'g');
 const ASTRAL_G = new RegExp(ASTRAL, 'g');
 const HAN_G = new RegExp(HAN, 'g');
 
-export { ANSI, ANSI_G, ASTRAL, ASTRAL_G, HAN, HAN_G };
+export { ANSI, ANSI_G, ASTRAL, ASTRAL_G, CJK_CHARS, CJK_PUNCS, FULL_CHARS, HALF_CHARS, HAN, HAN_G };

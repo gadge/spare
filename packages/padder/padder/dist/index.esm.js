@@ -1,13 +1,9 @@
-'use strict';
+import { hasAnsi } from '@spare/charset';
+import { lange } from '@spare/lange';
+import { isNumeric } from '@typen/num-strict';
+import { FullWidth } from '@spare/fullwidth';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var charset = require('@spare/charset');
-var lange = require('@spare/lange');
-var numStrict = require('@typen/num-strict');
-var fullwidth = require('@spare/fullwidth');
-
-const ansiPadLength = (tx, pd) => charset.hasAnsi(tx) ? tx.length + pd - lange.lange(tx) : pd; // export const lpad = String.prototype.padStart
+const ansiPadLength = (tx, pd) => hasAnsi(tx) ? tx.length + pd - lange(tx) : pd; // export const lpad = String.prototype.padStart
 // export const rpad = String.prototype.padEnd
 
 const lpad = Function.prototype.call.bind(String.prototype.padStart);
@@ -31,7 +27,7 @@ const numericDeterminant = tx => {
   return tx.replace(COMMA, '');
 };
 
-const pad = function (tx, pd, v) {
+const pad = function (tx, wd, va) {
   let dock, ansi, fill, thousand;
   if (this) ({
     dock,
@@ -39,8 +35,8 @@ const pad = function (tx, pd, v) {
     fill,
     thousand
   } = this);
-  const padder = !dock ? numStrict.isNumeric(v !== null && v !== void 0 ? v : thousand ? numericDeterminant(tx) : tx) ? lpad : rpad : dock < 0 ? lpad : rpad;
-  return ansi ? padder(tx, ansiPadLength(tx, pd), fill) : padder(tx, pd, fill);
+  const padder = !dock ? isNumeric(va !== null && va !== void 0 ? va : thousand ? numericDeterminant(tx) : tx) ? lpad : rpad : dock < 0 ? lpad : rpad;
+  return ansi ? padder(tx, ansiPadLength(tx, wd), fill) : padder(tx, wd, fill);
 };
 const Pad = ({
   dock,
@@ -72,7 +68,7 @@ const PadFull = ({
     ansi,
     fill: fillFull
   }),
-        toFull = fullwidth.FullWidth({
+        toFull = FullWidth({
     ansi
   });
   return (word, width, full, raw) => full ? padFull(toFull(word), width, raw) : padHalf(word, width, raw);
@@ -82,10 +78,4 @@ const LEFT = -1;
 const RIGHT = 1;
 const CENTRE = 0;
 
-exports.CENTRE = CENTRE;
-exports.LEFT = LEFT;
-exports.LPad = LPad;
-exports.Pad = Pad;
-exports.PadFull = PadFull;
-exports.RIGHT = RIGHT;
-exports.RPad = RPad;
+export { CENTRE, LEFT, LPad, Pad, PadFull, RIGHT, RPad };

@@ -1,5 +1,5 @@
-import { delogger }     from '@spare/deco'
-import { hasFullWidth } from '../src/hasFullWidth'
+import { delogger } from '@spare/deco'
+import { hasFull }  from '../src/hasFull'
 
 const vec = [
   'foo',
@@ -9,5 +9,5 @@ const vec = [
 ]
 
 for (let x of vec) {
-  hasFullWidth(x) |> delogger
+  hasFull(x) |> delogger
 }

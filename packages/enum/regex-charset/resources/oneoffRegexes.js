@@ -1,3 +1,5 @@
+import { CJK_CHARS, CJK_PUNCS, FULL_CHARS } from './elements'
+
 const ESC = '\u{1B}'
 const CSI = '\u{9B}'
 const BEL = '\u{7}'
@@ -7,9 +9,9 @@ const ANSI_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/
 
 export const ANSI = new RegExp(`[][[\\]()#;?]*(?:${ ANSI_ALPHA.source }|${ ANSI_BETA.source })`)
 
-export const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/
+export const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/ // 1024 * 1024
 
-export const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/
+export const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`)
 
 // HAN ideographs
 //

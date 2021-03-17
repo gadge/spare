@@ -23,12 +23,10 @@ export const cosmetics = function (table) {
       fluoMatrix.call(MUTATE, rows, config)
     ]
   }
-  const lines = acquire(
-    [
+  const lines = acquire([
       head.join(' | '),
       rule.join('-+-')
     ],
-    rows.map(row => row.join(' | '))
-  )
+    rows.map(row => row.join(' | ')))
   return liner(lines, config) // use: discrete, delim, level
 }

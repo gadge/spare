@@ -1,49 +1,70 @@
-import { SP } from '@spare/enum-chars';
+import { SP, CO, DOT } from '@spare/enum-chars';
 import { SP as SP$1 } from '@spare/enum-full-angle-chars';
 import { hasAnsi, clearAnsi } from '@spare/charset';
 
-const FWREG = /[\uff01-\uff5e|\u3000]+/g;
-const FWCHREG = /[\u4e00-\u9fa5|\uff01-\uff5e|\u3000]+/g;
-const FWLEAP = 0xfee0;
+const CJK_PUNCS = '\u3000-\u303f';
+const CJK_CHARS = '\u4e00-\u9fbf';
+const FULL_CHARS = '\uff00-\uffef';
+
+const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`); // HAN ideographs
+
+const REG_FULL = new RegExp(`[${CJK_PUNCS}${FULL_CHARS}]+`, 'g'); // /[\uff01-\uff5e|\u3000]+/g
+const DELTA_FULL = 0xfee0;
+const REG_NUM_FULL = /^\s*[－＋]?(?:，*[０-９]+)*．?[０-９]+\s*$/;
 
 /**
  * Full-angle string -> Half-angle string
  * 全角转换为半角
- * @param {string} body
+ * @param {string} text
  * @returns {string}
  * @constructor
  */
 
-const fullToHalf = body => {
+const fullToHalf = text => {
   let ms,
-      prev = 0,
-      curr = 0,
-      block,
-      match,
-      text = '';
+      l = 0,
+      r = 0,
+      sp,
+      ph,
+      body = '';
 
-  while ((ms = FWREG.exec(body)) && ([match] = ms)) {
-    curr = ms.index;
-    if (prev !== curr && (block = body.slice(prev, curr))) text += block;
-    text += halfWidth(match);
-    prev = FWREG.lastIndex;
+  while ((ms = REG_FULL.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (l !== r && (sp = text.slice(l, r))) body += sp;
+    body += toHalfWidth(ph);
+    l = REG_FULL.lastIndex;
   }
 
-  return text;
+  if (l < (text === null || text === void 0 ? void 0 : text.length)) body += text.slice(l);
+  return body;
 };
 
-const halfWidth = fw => {
+const toHalfWidth = text => {
   let tx = '',
       i = 0,
-      l = fw.length,
+      l = text.length,
       n;
 
-  while (i < l && (n = fw.charCodeAt(i++))) {
-    tx += n === 0x3000 ? SP : String.fromCharCode(0xFF & n + 0x20);
-  }
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharCodeToHalf.cjkPunc(n) : CharCodeToHalf.full(n);
 
   return tx;
 };
+
+class CharCodeToHalf {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP;
+    if (charCode === 0x3001) return CO;
+    if (charCode === 0x3002) return DOT;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static full(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
 
 /**
  * Half-angle string -> Full-angle string
@@ -62,14 +83,7 @@ const halfToFull = text => {
       n;
 
   while (i < l && (n = text.charCodeAt(i))) {
-    if (n === 0x20) {
-      t += SP$1;
-    } else if (0x20 < n && n < 0x7f) {
-      t += String.fromCharCode(n + FWLEAP);
-    } else {
-      t += text[i];
-    }
-
+    t += n === 0x20 ? SP$1 : 0x20 < n && n < 0x7f ? String.fromCharCode(n + DELTA_FULL) : text[i];
     i++;
   }
 
@@ -85,7 +99,7 @@ const halfToFull = text => {
  * @returns {boolean}
  */
 
-const hasFullWidth = str => FWCHREG.test(str);
+const hasFull = str => HAN.test(str);
 
 const fullWidth = (text, {
   ansi = true,
@@ -112,4 +126,6 @@ const fw = function (tx) {
   return halfToFull(tx);
 };
 
-export { FullWidth, fullToHalf, fullWidth, halfToFull, hasFullWidth };
+const isNumeric = tx => REG_NUM_FULL.test(tx);
+
+export { FullWidth, fullToHalf, fullWidth, halfToFull, hasFull, isNumeric };

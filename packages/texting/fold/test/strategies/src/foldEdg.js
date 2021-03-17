@@ -11,7 +11,7 @@ export const foldEdg = function (sentence) {
   let lines = ''
   let match, pos
   while (match = regex.exec(sentence)) {
-    // ({ index: match.index, lastIndex: regex.lastIndex }) |> delogger
+    // ({ index: match.index, lastIndex: assets.lastIndex }) |> delogger
     lines += sentence.slice(match.index, (pos = regex.lastIndex)) + delim
   }
   if (pos < sentence.length) lines += sentence.slice(pos)

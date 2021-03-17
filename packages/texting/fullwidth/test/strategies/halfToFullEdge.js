@@ -1,5 +1,5 @@
-import { SP }            from '@spare/enum-full-angle-chars'
-import { FWLEAP, HWREG } from '../../src/enums/constants'
+import { SP }                   from '@spare/enum-full-angle-chars'
+import { DELTA_FULL, REG_HALF } from '../../assets/regex'
 
 /**
  * Half-angle string -> Full-angle string
@@ -12,11 +12,11 @@ import { FWLEAP, HWREG } from '../../src/enums/constants'
  */
 export const halfToFullEdge = body => {
   let ms, prev = 0, curr = 0, block, match, text = ''
-  while ((ms = HWREG.exec(body)) && ([match] = ms)) {
+  while ((ms = REG_HALF.exec(body)) && ([match] = ms)) {
     curr = ms.index
     if (prev !== curr && (block = body.slice(prev, curr))) text += block
     text += fullWidth(match)
-    prev = HWREG.lastIndex
+    prev = REG_HALF.lastIndex
   }
   return text
 }
@@ -24,7 +24,7 @@ export const halfToFullEdge = body => {
 const fullWidth = hw => {
   let tx = '', i = 0, l = hw.length, n
   while (i < l && (n = hw.charCodeAt(i++))) {
-    tx += n === 0x20 ? SP : String.fromCharCode(n + FWLEAP)
+    tx += n === 0x20 ? SP : String.fromCharCode(n + DELTA_FULL)
   }
   return tx
 }

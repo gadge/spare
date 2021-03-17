@@ -3,14 +3,14 @@ import { says }                     from '@palett/says'
 import { delogger }                 from '@spare/deco'
 import { SP }                       from '@spare/enum-full-angle-chars'
 import { decoCrostab, decoSamples } from '@spare/logger'
-import { strategies }          from '@valjoux/strategies'
-import { FWLEAP, FWSP, HWREG } from '../../src/enums/constants'
-import { halfToFull }          from '../../src/halfToFull'
+import { strategies }                   from '@valjoux/strategies'
+import { DELTA_FULL, REG_SP, REG_HALF } from '../../assets/regex'
+import { halfToFull }                   from '../../src/halfToFull'
 import { fracture }            from '../utils/matches'
 
 const toFullComplexReg = function (text) {
   let n
-  return text?.replace(/[\u0020-\u007e]/g, s => String.fromCharCode((n = s.charCodeAt(0)) === 0x20 ? FWSP : n + 0xFEE0))
+  return text?.replace(/[\u0020-\u007e]/g, s => String.fromCharCode((n = s.charCodeAt(0)) === 0x20 ? REG_SP : n + 0xFEE0))
 }
 
 const toFullSimpleReg = function (text) {
@@ -20,7 +20,7 @@ const toFullSimpleReg = function (text) {
 export const toFullClassic = (text) => {
   let l = text?.length, i = 0, t = '', n
   while (i < l && (n = text.charCodeAt(i++))) {
-    if (n === 0x20) { t += SP } else if (n < 0x7f) { t += String.fromCharCode(n + FWLEAP) } else { t += String.fromCharCode(n) }
+    if (n === 0x20) { t += SP } else if (n < 0x7f) { t += String.fromCharCode(n + DELTA_FULL) } else { t += String.fromCharCode(n) }
   }
   return t
 }
@@ -39,7 +39,7 @@ const toFullTisko = text => {
   return rs
 }
 
-fracture('() awaits cyberPunk_2077![中]', HWREG) |> delogger
+fracture('() awaits cyberPunk_2077![中]', REG_HALF) |> delogger
 
 const { lapse, result } = strategies({
   repeat: 3E+5,

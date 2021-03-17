@@ -1,5 +1,5 @@
-export { LPad }  from './src/LPad'
-export { RPad }  from './src/RPad'
+export { LPad }    from './src/LPad'
+export { RPad }    from './src/RPad'
 export { Pad }     from './src/Pad'
 export { PadFull } from './src/PadFull'
 

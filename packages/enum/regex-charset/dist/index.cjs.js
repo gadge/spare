@@ -2,11 +2,17 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+const HALF_CHARS = '\u2000-\u206f';
+const CJK_PUNCS = '\u3000-\u303f';
+const CJK_CHARS = '\u4e00-\u9fbf';
+const FULL_CHARS = '\uff00-\uffef';
+
 const ANSI_ALPHA = /(?:(?:[a-zA-Z\d]*(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?)/;
 const ANSI_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/;
 const ANSI = new RegExp(`[][[\\]()#;?]*(?:${ANSI_ALPHA.source}|${ANSI_BETA.source})`);
-const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
-const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
+const ASTRAL = /[\uD800-\uDBFF][\uDC00-\uDFFF]/; // 1024 * 1024
+
+const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`); // HAN ideographs
 //
 // Block                                   Range       Comment
 // CJK Unified Ideographs                  4E00-9FFF   Common
@@ -26,5 +32,9 @@ exports.ANSI = ANSI;
 exports.ANSI_G = ANSI_G;
 exports.ASTRAL = ASTRAL;
 exports.ASTRAL_G = ASTRAL_G;
+exports.CJK_CHARS = CJK_CHARS;
+exports.CJK_PUNCS = CJK_PUNCS;
+exports.FULL_CHARS = FULL_CHARS;
+exports.HALF_CHARS = HALF_CHARS;
 exports.HAN = HAN;
 exports.HAN_G = HAN_G;

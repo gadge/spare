@@ -4,8 +4,8 @@ import { Pad }                    from '@spare/padder'
 import { mapper as mapperMatrix } from '@vect/matrix-mapper'
 import { acquire }                from '@vect/vector'
 import { mapper }                 from '@vect/vector-mapper'
-import { zipper }                 from '@vect/vector-zipper'
-import { tablePadderFullAngle }   from './tablePadderFullAngle'
+import { zipper }          from '@vect/vector-zipper'
+import { tablePadderFull } from './tablePadderFull'
 
 /**
  *
@@ -22,7 +22,7 @@ export const tablePadder = (
   table,
   config = {}
 ) => {
-  if (config.fullAngle) return tablePadderFullAngle(table, config)
+  if (config.fullAngle) return tablePadderFull(table, config)
   const padder = Pad(config) // use ansi
   const { head, rows } = table
   const widths = widthsByColumns(acquire([head], rows), config.ansi)

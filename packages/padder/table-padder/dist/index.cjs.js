@@ -23,7 +23,7 @@ var columnsMapper = require('@vect/columns-mapper');
  * @return {{head: string[], rows: string[][], rule: string[]}}
  */
 
-const tablePadderFullAngle = (table, config = {}) => {
+const tablePadderFull = (table, config = {}) => {
   const {
     head,
     rows
@@ -33,7 +33,7 @@ const tablePadderFullAngle = (table, config = {}) => {
   } = config;
   const columns = vector.acquire([head], rows);
   const widths = matrixPadder.widthsByColumns(columns, ansi);
-  const marks = columnsMapper.mapper(columns, col => col.some(fullwidth.hasFullWidth));
+  const marks = columnsMapper.mapper(columns, col => col.some(fullwidth.hasFull));
   const padRight = padder.PadFull({
     dock: padder.RIGHT,
     ansi
@@ -62,7 +62,7 @@ const tablePadderFullAngle = (table, config = {}) => {
  */
 
 const tablePadder = (table, config = {}) => {
-  if (config.fullAngle) return tablePadderFullAngle(table, config);
+  if (config.fullAngle) return tablePadderFull(table, config);
   const padder$1 = padder.Pad(config); // use ansi
 
   const {

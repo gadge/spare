@@ -1,6 +1,6 @@
 import { DA }                      from '@spare/enum-chars'
 import { DA as DA_FULL }           from '@spare/enum-full-angle-chars'
-import { hasFullWidth }            from '@spare/fullwidth'
+import { hasFull }            from '@spare/fullwidth'
 import { widthsByColumns }         from '@spare/matrix-padder'
 import { CENTRE, PadFull, RIGHT }  from '@spare/padder'
 import { mapper as mapperColumns } from '@vect/columns-mapper'
@@ -17,7 +17,7 @@ import { zipper }                  from '@vect/vector-zipper'
  * @param {boolean=false} [config.ansi]
  * @return {{head: string[], rows: string[][], rule: string[]}}
  */
-export const tablePadderFullAngle = (
+export const tablePadderFull = (
   table,
   config = {}
 ) => {
@@ -25,7 +25,7 @@ export const tablePadderFullAngle = (
   const { ansi = false, } = config
   const columns = acquire([head], rows)
   const widths = widthsByColumns(columns, ansi)
-  const marks = mapperColumns(columns, col => col.some(hasFullWidth))
+  const marks = mapperColumns(columns, col => col.some(hasFull))
   const
     padRight = PadFull({ dock: RIGHT, ansi }),
     padCentre = PadFull({ dock: CENTRE, ansi })

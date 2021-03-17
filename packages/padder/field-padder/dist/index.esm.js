@@ -7,7 +7,11 @@ import { max } from '@aryth/comparer';
 import { Lange } from '@spare/lange';
 import { maxBy } from '@vect/vector-indicator';
 
-const HAN = /[\u4e00-\u9fa5]|[\uff00-\uffff]/; // HAN ideographs
+const CJK_PUNCS = '\u3000-\u303f';
+const CJK_CHARS = '\u4e00-\u9fbf';
+const FULL_CHARS = '\uff00-\uffef';
+
+const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`); // HAN ideographs
 
 const fieldWidth = (name, list, ansi) => {
   const lange = Lange(ansi);
@@ -24,7 +28,7 @@ const fieldWidth = (name, list, ansi) => {
  * @returns {{name:string,rule:string,list:string[]}}
  */
 
-const fieldPadderFullWidth = (field, config = {}) => {
+const fieldPadderFull = (field, config = {}) => {
   const {
     name,
     list
@@ -63,7 +67,7 @@ const fieldPadder = (field, config = {}) => {
     name,
     list
   } = field;
-  if (config.fullAngle && (hasHan(name) || list.some(hasHan))) return fieldPadderFullWidth(field, config);
+  if (config.fullAngle && (hasHan(name) || list.some(hasHan))) return fieldPadderFull(field, config);
   const lpad = LPad(config),
         // use config.ansi
   rpad = RPad(config); // use config.ansi

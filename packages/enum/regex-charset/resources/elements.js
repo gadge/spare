@@ -1,15 +1,10 @@
-const ESC = '\u001B'
-const CSI = '\u009B'
-const BEL = '\u0007'
-const PART_ALPHA = /(?:(?:[a-zA-Z\d]*(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?\u0007)/
-const PART_BETA = /(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~])/
+export const HALF_CHARS = '\u2000-\u206f'
+export const CJK_PUNCS = '\u3000-\u303f'
+export const CJK_CHARS = '\u4e00-\u9fbf'
+export const FULL_CHARS = '\uff00-\uffef'
 
 
-export const ansi = new RegExp(`[][[\\]()#;?]*(?:${ PART_ALPHA.source }|${ PART_BETA.source })`)
 
-export const astral = /[\uD800-\uDBFF][\uDC00-\uDFFF]/
-
-export const han = /[\u4e00-\u9fa5]|[\uff00-\uffff]/
 
 
 

@@ -23,6 +23,7 @@ export { cosmetics }
  * @param {number} [p.right]
  *
  * @param {boolean} [p.ansi]
+ * @param {boolean} [p.full]
  * @param {number} [p.level=0]
  *
  * @returns {Function}
@@ -50,6 +51,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetMatrix(p))
  * @param {number} [p.right]
  *
  * @param {boolean} [p.ansi]
+ * @param {boolean} [p.full]
  * @param {number} [p.level=0]
  *
  * @returns {string}

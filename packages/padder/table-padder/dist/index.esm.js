@@ -6,7 +6,7 @@ import { acquire } from '@vect/vector';
 import { mapper as mapper$2 } from '@vect/vector-mapper';
 import { zipper } from '@vect/vector-zipper';
 import { DA } from '@spare/enum-full-angle-chars';
-import { hasFullWidth } from '@spare/fullwidth';
+import { hasFull } from '@spare/fullwidth';
 import { mapper as mapper$1 } from '@vect/columns-mapper';
 
 /**
@@ -19,7 +19,7 @@ import { mapper as mapper$1 } from '@vect/columns-mapper';
  * @return {{head: string[], rows: string[][], rule: string[]}}
  */
 
-const tablePadderFullAngle = (table, config = {}) => {
+const tablePadderFull = (table, config = {}) => {
   const {
     head,
     rows
@@ -29,7 +29,7 @@ const tablePadderFullAngle = (table, config = {}) => {
   } = config;
   const columns = acquire([head], rows);
   const widths = widthsByColumns(columns, ansi);
-  const marks = mapper$1(columns, col => col.some(hasFullWidth));
+  const marks = mapper$1(columns, col => col.some(hasFull));
   const padRight = PadFull({
     dock: RIGHT,
     ansi
@@ -58,7 +58,7 @@ const tablePadderFullAngle = (table, config = {}) => {
  */
 
 const tablePadder = (table, config = {}) => {
-  if (config.fullAngle) return tablePadderFullAngle(table, config);
+  if (config.fullAngle) return tablePadderFull(table, config);
   const padder = Pad(config); // use ansi
 
   const {

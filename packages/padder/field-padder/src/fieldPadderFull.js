@@ -13,7 +13,7 @@ import { fieldWidth } from './fieldWidth'
  * @param {boolean} [config.ansi]
  * @returns {{name:string,rule:string,list:string[]}}
  */
-export const fieldPadderFullWidth = (field, config = {}) => {
+export const fieldPadderFull = (field, config = {}) => {
   const { name, list } = field
   const toFull = FullWidth(config) // use config.ansi
   const

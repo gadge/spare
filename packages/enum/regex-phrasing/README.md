@@ -23,7 +23,7 @@ $ npm install @spare/regex-phrasing
 
 ## Usage
 ```js
-import { lange } from '@spare/regex-phrasing'
+import { lange } from '@spare/assets-phrasing'
 const list = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',

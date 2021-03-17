@@ -6,12 +6,15 @@ const candidates = [
   'Taco青年',
   '秦时明月',
   'Rome',
-  '...'
+  '...',
+  '-1,234,567.890',
+  '－１，２３４，５６７．８９０',
+  '+-',
+  '＋－',
 ]
 
-
-const tester = HAN.test.bind(HAN)
+const tester = RegExp.prototype.test.bind(HAN)
 
 for (let w of candidates) {
-  Xr().hanHan(tester(w)) |> says[w]
+  Xr()['hanHan'](tester(w)) |> says[w]
 }

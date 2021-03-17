@@ -43,22 +43,27 @@ const widthsByColumns = (mx, ansi) => {
 /**
  *
  * @param {string[][]} mx
- * @param {boolean} ansi
- * @param {string} fill
+ * @param {object} config
+ * @param {boolean} config.ansi
+ * @param {boolean} config.full
+ * @param {string} config.fill
  * @returns {string[][]}
  */
 
-const matrixPadder = (mx, {
-  ansi,
-  fill
-}) => {
+const matrixPadder = (mx, config) => {
+  const {
+    ansi,
+    full,
+    fill
+  } = config;
   const widths = widthsByColumns(mx, ansi);
   const pad = Pad({
     ansi,
-    fill
+    fill,
+    thousand: true
   });
   return mapper(mx, (tx, i, j) => pad(tx, widths[j]));
-}; // let zipper
+};
 // return dye
 //   ? (zipper = Trizipper((tx, va, dy, i, j) => pad(tx, widths[j], va) |> dy),
 //     zipper(mx, mx, dye))
