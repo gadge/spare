@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-brackets",
-  "version": "0.10.13",
+  "version": "0.10.14",
   "description": "String brackets",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
