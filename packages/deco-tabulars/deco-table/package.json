@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-table",
-  "version": "0.10.12",
+  "version": "0.10.13",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,11 +17,11 @@
   "dependencies": {
     "@palett/fluo-matrix": "^0.5.13",
     "@palett/fluo-vector": "^0.5.13",
-    "@spare/enum-chars": "^0.10.12",
-    "@spare/liner": "^0.10.12",
-    "@spare/preset-deco": "^0.10.12",
-    "@spare/table-margin": "^0.10.12",
-    "@spare/table-padder": "^0.10.12",
+    "@spare/enum-chars": "^0.10.13",
+    "@spare/liner": "^0.10.13",
+    "@spare/preset-deco": "^0.10.13",
+    "@spare/table-margin": "^0.10.13",
+    "@spare/table-padder": "^0.10.13",
     "@vect/matrix": "^0.3.6",
     "@vect/vector-merge": "^0.3.6"
   },

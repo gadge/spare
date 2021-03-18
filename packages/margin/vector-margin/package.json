@@ -1,6 +1,6 @@
 {
   "name": "@spare/vector-margin",
-  "version": "0.10.12",
+  "version": "0.10.13",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@spare/util": "^0.10.12",
+    "@spare/util": "^0.10.13",
     "@vect/vector-margin": "^0.3.6"
   },
   "repository": {

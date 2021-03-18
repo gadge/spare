@@ -1,6 +1,6 @@
 {
   "name": "@spare/fold",
-  "version": "0.10.12",
+  "version": "0.10.13",
   "description": "Split one line of words into lines",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.10.12"
+    "@spare/enum-chars": "^0.10.13"
   },
   "repository": {
     "type": "git",

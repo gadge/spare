@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-samples",
-  "version": "0.10.12",
+  "version": "0.10.13",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,13 +19,13 @@
     "@analys/samples-select": "^0.4.23",
     "@palett/fluo-matrix": "^0.5.13",
     "@palett/fluo-vector": "^0.5.13",
-    "@spare/deco-vector": "^0.10.12",
-    "@spare/enum-chars": "^0.10.12",
-    "@spare/liner": "^0.10.12",
-    "@spare/matrix-padder": "^0.10.12",
-    "@spare/preset-deco": "^0.10.12",
-    "@spare/table-margin": "^0.10.12",
-    "@spare/vector-padder": "^0.10.12",
+    "@spare/deco-vector": "^0.10.13",
+    "@spare/enum-chars": "^0.10.13",
+    "@spare/liner": "^0.10.13",
+    "@spare/matrix-padder": "^0.10.13",
+    "@spare/preset-deco": "^0.10.13",
+    "@spare/table-margin": "^0.10.13",
+    "@spare/vector-padder": "^0.10.13",
     "@vect/vector-zipper": "^0.3.6"
   },
   "repository": {
