@@ -33,9 +33,10 @@ const mapper$2 = (mx, fn, h, w) => {
 };
 
 const CJK_PUNCS = '\u3000-\u303f';
-const CJK_CHARS = '\u4e00-\u9fbf';
-const FULL_CHARS = '\uff00-\uffef';
-const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`); // HAN ideographs
+const CJK_LETTERS = '\u4e00-\u9fbf';
+const FULL_CHARS = '\uff00-\uffef'; // full letters + full puncs
+
+const HAN = new RegExp(`[${CJK_PUNCS}${CJK_LETTERS}${FULL_CHARS}]`); // HAN ideographs
 /**
  * Return if a string contains Chinese character.
  * halfAng = str.match(/[\u0000-\u00ff]/g) || [] //半角

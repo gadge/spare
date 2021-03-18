@@ -8,10 +8,10 @@ import { Lange } from '@spare/lange';
 import { maxBy } from '@vect/vector-indicator';
 
 const CJK_PUNCS = '\u3000-\u303f';
-const CJK_CHARS = '\u4e00-\u9fbf';
-const FULL_CHARS = '\uff00-\uffef';
+const CJK_LETTERS = '\u4e00-\u9fbf';
+const FULL_CHARS = '\uff00-\uffef'; // full letters + full puncs
 
-const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`); // HAN ideographs
+const HAN = new RegExp(`[${CJK_PUNCS}${CJK_LETTERS}${FULL_CHARS}]`); // HAN ideographs
 
 const fieldWidth = (name, list, ansi) => {
   const lange = Lange(ansi);

@@ -7,14 +7,16 @@ var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 var charset = require('@spare/charset');
 
 const CJK_PUNCS = '\u3000-\u303f';
-const CJK_CHARS = '\u4e00-\u9fbf';
-const FULL_CHARS = '\uff00-\uffef';
+const CJK_LETTERS = '\u4e00-\u9fbf';
+const FULL_CHARS = '\uff00-\uffef'; // full letters + full puncs
+const FULL_NUM = '０-９'; // 0xff10 - 0xff19
 
-const HAN = new RegExp(`[${CJK_PUNCS}${CJK_CHARS}${FULL_CHARS}]`); // HAN ideographs
+const HAN = new RegExp(`[${CJK_PUNCS}${CJK_LETTERS}${FULL_CHARS}]`); // HAN ideographs
 
 const REG_FULL = new RegExp(`[${CJK_PUNCS}${FULL_CHARS}]+`, 'g'); // /[\uff01-\uff5e|\u3000]+/g
-const DELTA_FULL = 0xfee0;
-const REG_NUM_FULL = /^\s*[－＋]?(?:，*[０-９]+)*．?[０-９]+\s*$/;
+const DELTA_FULL = 0xfee0; // export const REG_NUM_FULL = /^\s*[－＋]?(?:，*[０-９]+)*．?[０-９]+\s*$/
+
+const REG_NUM_FULL = new RegExp(`^\s*[－＋]?(?:，*[${FULL_NUM}]+)*．?[${FULL_NUM}]+\s*$`);
 
 /**
  * Full-angle string -> Half-angle string
