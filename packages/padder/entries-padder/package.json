@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@spare/lange": "^0.10.14",
-    "@spare/padder": "^0.10.14",
+    "@texting/padder": "^0.0.4",
     "@vect/entries-indicator": "^0.3.6",
     "@vect/entries-mapper": "^0.3.6",
     "@vect/entries-zipper": "^0.3.6"

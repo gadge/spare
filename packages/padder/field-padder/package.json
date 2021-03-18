@@ -20,7 +20,7 @@
     "@spare/enum-full-angle-chars": "^0.10.14",
     "@spare/fullwidth": "^0.10.14",
     "@spare/lange": "^0.10.14",
-    "@spare/padder": "^0.10.14",
+    "@texting/padder": "^0.0.4",
     "@vect/vector-indicator": "^0.3.6",
     "@vect/vector-mapper": "^0.3.6"
   },

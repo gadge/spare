@@ -1,5 +1,5 @@
 import { Lange }     from '@spare/lange'
-import { LPad, Pad } from '@spare/padder'
+import { LPad, Pad } from '@texting/padder'
 import { maxBy }     from '@vect/entries-indicator'
 import { mapper }    from '@vect/entries-mapper'
 

@@ -1,7 +1,7 @@
 {
-  "name": "@spare/enum-loggers",
+  "name": "@spare/padder",
   "version": "0.10.14",
-  "description": "String quotes",
+  "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -12,7 +12,13 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/test.index.js"
+    "test": "node -r @babel/register test/pad-string.test.js"
+  },
+  "dependencies": {
+    "@spare/charset": "^0.10.14",
+    "@spare/fullwidth": "^0.10.14",
+    "@spare/lange": "^0.10.14",
+    "@typen/num-strict": "^0.1.16"
   },
   "repository": {
     "type": "git",

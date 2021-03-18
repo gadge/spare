@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var lange = require('@spare/lange');
-var padder = require('@spare/padder');
+var padder = require('@texting/padder');
 var entriesIndicator = require('@vect/entries-indicator');
 var entriesMapper = require('@vect/entries-mapper');
 

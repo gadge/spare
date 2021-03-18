@@ -1,5 +1,5 @@
 import { DA as DA$1 } from '@spare/enum-chars';
-import { PadFull, Pad } from '@spare/padder';
+import { PadFull, Pad } from '@texting/padder';
 import { mapper } from '@vect/vector-mapper';
 import { DA } from '@spare/enum-full-angle-chars';
 import { FullWidth } from '@spare/fullwidth';

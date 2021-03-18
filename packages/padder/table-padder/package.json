@@ -21,7 +21,7 @@
     "@spare/fullwidth": "^0.10.14",
     "@spare/lange": "^0.10.14",
     "@spare/matrix-padder": "^0.10.14",
-    "@spare/padder": "^0.10.14",
+    "@texting/padder": "^0.0.4",
     "@vect/columns-mapper": "^0.3.6",
     "@vect/columns-stat": "^0.3.6",
     "@vect/matrix-mapper": "^0.3.6",

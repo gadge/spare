@@ -1,5 +1,5 @@
 import { DA }              from '@spare/enum-chars'
-import { Pad }             from '@spare/padder'
+import { Pad }             from '@texting/padder'
 import { HAN }             from '@spare/regex-charset'
 import { mapper }          from '@vect/vector-mapper'
 import { fieldPadderFull } from './fieldPadderFull'

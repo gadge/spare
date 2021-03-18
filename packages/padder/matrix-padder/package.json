@@ -17,7 +17,7 @@
   "dependencies": {
     "@aryth/comparer": "^0.3.6",
     "@spare/lange": "^0.10.14",
-    "@spare/padder": "^0.10.14",
+    "@texting/padder": "^0.0.4",
     "@vect/columns-stat": "^0.3.6",
     "@vect/matrix-zipper": "^0.3.6"
   },

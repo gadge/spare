@@ -1,5 +1,5 @@
 import { decoMatrix, logger } from '@spare/logger'
-import { Pad }                from '@spare/padder'
+import { Pad }                from '@texting/padder'
 import { Trizipper } from '@vect/matrix-zipper'
 
 const ax = [

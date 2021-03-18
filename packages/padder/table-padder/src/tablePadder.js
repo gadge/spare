@@ -1,6 +1,6 @@
 import { DA }                     from '@spare/enum-chars'
 import { widthsByColumns }        from '@spare/matrix-padder'
-import { Pad }                    from '@spare/padder'
+import { Pad }                    from '@texting/padder'
 import { mapper as mapperMatrix } from '@vect/matrix-mapper'
 import { acquire }                from '@vect/vector'
 import { mapper }                 from '@vect/vector-mapper'

@@ -1,4 +1,4 @@
-import { PadFull, Pad } from '@spare/padder';
+import { PadFull, Pad } from '@texting/padder';
 import { max } from '@aryth/comparer';
 import { Lange } from '@spare/lange';
 import { stat } from '@vect/columns-stat';

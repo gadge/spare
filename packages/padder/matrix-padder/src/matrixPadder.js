@@ -1,4 +1,4 @@
-import { Pad }              from '@spare/padder'
+import { Pad }              from '@texting/padder'
 import { mapper }           from '@vect/matrix-mapper'
 import { matrixPadderFull } from './matrixPadderFull'
 import { widthsByColumns }  from './widthsByColumns'

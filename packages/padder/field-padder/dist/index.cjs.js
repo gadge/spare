@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var enumChars = require('@spare/enum-chars');
-var padder = require('@spare/padder');
+var padder = require('@texting/padder');
 var vectorMapper = require('@vect/vector-mapper');
 var enumFullAngleChars = require('@spare/enum-full-angle-chars');
 var fullwidth = require('@spare/fullwidth');

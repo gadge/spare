@@ -8,7 +8,7 @@ import { COSP }                                           from '@spare/enum-char
 import { lange }                                          from '@spare/lange'
 import { Liner }                                          from '@spare/liner'
 import { decoCrostab, logger, says }                      from '@spare/logger'
-import { Pad }                                            from '@spare/padder'
+import { Pad }                                            from '@texting/padder'
 import { STR }                                            from '@typen/enum-data-types'
 import { strategies }                                     from '@valjoux/strategies'
 import { dateTime }                                       from '@valjoux/timestamp-pretty'

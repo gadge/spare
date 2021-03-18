@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var enumChars = require('@spare/enum-chars');
 var matrixPadder = require('@spare/matrix-padder');
-var padder = require('@spare/padder');
+var padder = require('@texting/padder');
 var matrixMapper = require('@vect/matrix-mapper');
 var vector = require('@vect/vector');
 var vectorMapper = require('@vect/vector-mapper');

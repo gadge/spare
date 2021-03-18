@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var padder = require('@spare/padder');
+var padder = require('@texting/padder');
 var comparer = require('@aryth/comparer');
 var lange = require('@spare/lange');
 var columnsStat = require('@vect/columns-stat');

@@ -1,9 +1,9 @@
-import { simpleEntries } from '@foba/foo'
+import { simpleEntriesCollection } from '@foba/foo'
 import { says }          from '@palett/says'
 import { delogger }      from '@spare/deco'
 import { Markdown }      from '../src/Markdown'
 
-let SimpleEntries = simpleEntries({ h: 12 })
+let SimpleEntries = simpleEntriesCollection({ h: 12 })
 SimpleEntries |> delogger
 
 for (const [key, entries] of Object.entries(SimpleEntries)) {

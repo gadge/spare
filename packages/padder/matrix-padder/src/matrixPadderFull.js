@@ -1,5 +1,5 @@
 import { hasFull }                 from '@spare/fullwidth'
-import { PadFull }                 from '@spare/padder'
+import { PadFull }                 from '@texting/padder'
 import { mapper as mapperColumns } from '@vect/columns-mapper'
 import { mapper }                  from '@vect/matrix-mapper'
 import { widthsByColumns }         from './widthsByColumns'
