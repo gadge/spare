@@ -20,9 +20,6 @@
     "@spare/enum-full-angle-chars": "^0.10.13",
     "@spare/lange": "^0.10.13"
   },
-  "devDependencies": {
-    "@spare/logger": "^0.10.13"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gadge/spare.git"
