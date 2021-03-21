@@ -43,7 +43,7 @@ const crostabVerbal = (crostab, config = {}) => {
 
   return crostab;
 };
-const cosmetics = function (crostab) {
+const _decoCrostab = function (crostab) {
   var _crostab$head, _crostab$side;
 
   if (!crostab) return enumChars.AEU;
@@ -93,7 +93,7 @@ const cosmetics = function (crostab) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetDeco.presetCrostab(p));
+const Deco = (p = {}) => _decoCrostab.bind(presetDeco.presetCrostab(p));
 /**
  *
  * @param {Object} crostab
@@ -124,8 +124,8 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetCrostab(p));
  * @returns {string}
  */
 
-const deco = (crostab, p = {}) => cosmetics.call(presetDeco.presetCrostab(p), crostab);
+const deco = (crostab, p = {}) => _decoCrostab.call(presetDeco.presetCrostab(p), crostab);
 
 exports.Deco = Deco;
-exports.cosmetics = cosmetics;
+exports._decoCrostab = _decoCrostab;
 exports.deco = deco;

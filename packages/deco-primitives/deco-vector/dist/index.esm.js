@@ -1,14 +1,14 @@
 import { presetVector } from '@spare/preset-deco';
 import { fluoVector } from '@palett/fluo-vector';
-import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
+import { _decoEntries } from '@spare/deco-entries';
 import { liner } from '@spare/liner';
 import { vectorMargin } from '@spare/vector-margin';
 import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 
 const fluo = fluoVector.bind(MUTATE_PIGMENT);
-function cosmetics(vec = []) {
+function _decoVector(vec = []) {
   const config = this;
-  if (config !== null && config !== void 0 && config.indexed) return cosmetics$1.call(config, Object.entries(vec));
+  if (config !== null && config !== void 0 && config.indexed) return _decoEntries.call(config, Object.entries(vec));
   vec = vectorMargin(vec, config); // use: head, tail, read, rule
 
   if (config.fluos) vec = fluo(vec, config.fluos); // use:  presets, effects
@@ -44,7 +44,7 @@ function cosmetics(vec = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetVector(p));
+const Deco = (p = {}) => _decoVector.bind(presetVector(p));
 /***
  *
  * @param {*[]} vector
@@ -70,7 +70,7 @@ const Deco = (p = {}) => cosmetics.bind(presetVector(p));
  * @returns {string}
  */
 
-const deco = (vector, p = {}) => cosmetics.call(presetVector(p), vector);
+const deco = (vector, p = {}) => _decoVector.call(presetVector(p), vector);
 /***
  *
  * @param {Object} p
@@ -95,6 +95,6 @@ const deco = (vector, p = {}) => cosmetics.call(presetVector(p), vector);
  * @returns {Function}
  */
 
-const DecoPale = (p = {}) => cosmetics.bind(presetVector(p));
+const DecoPale = (p = {}) => _decoVector.bind(presetVector(p));
 
-export { Deco, DecoPale, cosmetics, deco };
+export { Deco, DecoPale, _decoVector, deco };

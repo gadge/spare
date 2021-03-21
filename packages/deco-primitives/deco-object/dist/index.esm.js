@@ -1,14 +1,14 @@
 import { presetObject } from '@spare/preset-deco';
-import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
+import { cosmetics } from '@spare/deco-entries';
 import { liner } from '@spare/liner';
 
 const LOCAL_OPTION = {
   discrete: true,
   bracket: undefined
 };
-const cosmetics = function (o = {}) {
+const _decoObject = function (o = {}) {
   const entriesOptions = Object.assign({}, this, LOCAL_OPTION);
-  const lines = cosmetics$1.call(entriesOptions, Object.entries(o));
+  const lines = cosmetics.call(entriesOptions, Object.entries(o));
   return liner(lines, this);
 };
 
@@ -41,7 +41,7 @@ const cosmetics = function (o = {}) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetObject(p));
+const Deco = (p = {}) => _decoObject.bind(presetObject(p));
 /***
  *
  * @param {Object} o
@@ -68,6 +68,6 @@ const Deco = (p = {}) => cosmetics.bind(presetObject(p));
  * @returns {string}
  */
 
-const deco = (o, p = {}) => cosmetics.call(presetObject(p), o);
+const deco = (o, p = {}) => _decoObject.call(presetObject(p), o);
 
-export { Deco, cosmetics, deco };
+export { Deco, _decoObject, deco };

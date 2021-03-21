@@ -18,7 +18,7 @@ var vectorZipper = require('@vect/vector-zipper');
 const MUTATE = {
   mutate: true
 };
-const cosmetics = function (samples) {
+const _decoSamples = function (samples) {
   var _samples;
 
   const config = this,
@@ -119,7 +119,7 @@ const cosmetics = function (samples) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetDeco.presetSamples(p));
+const Deco = (p = {}) => _decoSamples.bind(presetDeco.presetSamples(p));
 /**
  *
  * @param {*[][]} samples
@@ -149,8 +149,8 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetSamples(p));
  * @returns {string}
  */
 
-const deco = (samples, p = {}) => cosmetics.call(presetDeco.presetSamples(p), samples);
+const deco = (samples, p = {}) => _decoSamples.call(presetDeco.presetSamples(p), samples);
 
 exports.Deco = Deco;
-exports.cosmetics = cosmetics;
+exports._decoSamples = _decoSamples;
 exports.deco = deco;

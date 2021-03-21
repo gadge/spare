@@ -1,5 +1,5 @@
 import { FRESH, PLANET } from '@palett/presets';
-import { RTSP, CO as CO$7, COSP, LF } from '@spare/enum-chars';
+import { RTSP, CO as CO$9, COSP, LF } from '@spare/enum-chars';
 import { nullish } from '@typen/nullish';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
@@ -54,7 +54,7 @@ const renderEntries = function (entries, lv) {
         unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   let pad;
   const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? mutate(entries, ([k, v]) => lpad(k, pad) + RTSP + v) : wrapEntries(entries, width);
-  return rows.length > 1 ? joinLines(rows, CO$7, lv) : rows.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$9, lv) : rows.join(COSP);
 };
 const wrapEntries = function (entries, width) {
   var _row;
@@ -97,7 +97,7 @@ const renderVector = function (vector, lv) {
         width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   const rows = lv < vert || vector.some(x => lange(x) > unit) || !width ? vector : wrapVector(vector, width);
-  return rows.length > 1 ? joinLines(rows, CO$7, lv) : vector.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$9, lv) : vector.join(COSP);
 };
 const wrapVector = function (vector, width) {
   const lines = [];
@@ -115,7 +115,7 @@ const wrapVector = function (vector, width) {
   return lines;
 };
 
-function decoNode(node, level, indent) {
+function _deco(node, level, indent) {
   return this.presets ? prettyNode.call(this, node, level, indent) : plainNode.call(this, node, level, indent);
 }
 /**
@@ -178,14 +178,14 @@ function plainNode(node, level = 0, indent) {
 }
 const deVe = function (vector, lv) {
   const config = this;
-  mutate(vector, v => String(decoNode.call(config, v, lv + 1)));
+  mutate(vector, v => String(_deco.call(config, v, lv + 1)));
   if (config.fluos) fluoVector.call(MUTATE_PIGMENT, vector, config.fluos);
   return renderVector.call(config, vector, lv);
 };
 const deEn = function (entries, lv) {
   const config = this;
   const pad = mutateKeyPad(entries);
-  mutateValues(entries, v => String(decoNode.call(config, v, lv + 1, pad)));
+  mutateValues(entries, v => String(_deco.call(config, v, lv + 1, pad)));
   if (config.fluos) fluoEntries.call(MUTATE_PIGMENT, entries, config.fluos);
   return renderEntries.call(config, entries, lv);
 };
@@ -544,6 +544,124 @@ class CharConv$6 {
 
 }
 
+const SP$7 = ' ';
+const CO$7 = ',';
+const DOT$7 = '.';
+
+function _defineProperty$7(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$7 {}
+
+_defineProperty$7(Conv$7, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$7.cjkPunc(n) : CharConv$7.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$7(Conv$7, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$7.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$7 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$7;
+    if (charCode === 0x3001) return CO$7;
+    if (charCode === 0x3002) return DOT$7;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$8 = ' ';
+const CO$8 = ',';
+const DOT$8 = '.';
+
+function _defineProperty$8(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$8 {}
+
+_defineProperty$8(Conv$8, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$8.cjkPunc(n) : CharConv$8.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$8(Conv$8, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$8.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$8 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$8;
+    if (charCode === 0x3001) return CO$8;
+    if (charCode === 0x3002) return DOT$8;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
 /**
  * validate
  * @param x
@@ -796,7 +914,7 @@ const presetDeco = p => {
  */
 
 
-const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob); // TODO: fix string.presets default configuration
+const deco = (ob, p = {}) => _deco.call(presetDeco(p), ob); // TODO: fix string.presets default configuration
 
 /**
  *
@@ -816,7 +934,7 @@ const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob); // TODO: fix stri
  * @returns {string|number}
  */
 
-const Deco = (p = {}) => decoNode.bind(presetDeco(p));
+const Deco = (p = {}) => _deco.bind(presetDeco(p));
 /**
  *
  * @typedef {Object} DecoConfig
@@ -872,4 +990,4 @@ const delogNeL = x => {
 //   }
 // }
 
-export { Deco, deca, deco, decoNode, delogNeL, delogger };
+export { Deco, _deco, deca, deco, delogNeL, delogger };

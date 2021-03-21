@@ -15,7 +15,7 @@ var vectorMerge = require('@vect/vector-merge');
 const MUTATE = {
   mutate: true
 };
-const cosmetics = function (table) {
+const _decoTable = function (table) {
   var _head;
 
   const config = this;
@@ -79,7 +79,7 @@ const cosmetics = function (table) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetDeco.presetTable(p));
+const Deco = (p = {}) => _decoTable.bind(presetDeco.presetTable(p));
 /***
  *
  * @param {Object} table
@@ -109,8 +109,8 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetTable(p));
  * @returns {string}
  */
 
-const deco = (table, p = {}) => cosmetics.call(presetDeco.presetTable(p), table);
+const deco = (table, p = {}) => _decoTable.call(presetDeco.presetTable(p), table);
 
 exports.Deco = Deco;
-exports.cosmetics = cosmetics;
+exports._decoTable = _decoTable;
 exports.deco = deco;

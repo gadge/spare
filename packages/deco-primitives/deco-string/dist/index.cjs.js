@@ -33,7 +33,7 @@ const MUTATE_PIGMENT = {
  * @return {string}
  */
 
-const cosmetics = function (text) {
+const _decoString = function (text) {
   var _text, _context$indent;
 
   const context = this,
@@ -83,7 +83,7 @@ const decoCamel = (text, {
   presets = PRESETS,
   effects
 } = {}) => {
-  return cosmetics.call({
+  return _decoString.call({
     delim,
     presets,
     effects,
@@ -95,7 +95,7 @@ const decoSnake = (text, {
   presets = PRESETS,
   effects
 } = {}) => {
-  return cosmetics.call({
+  return _decoString.call({
     delim,
     presets,
     effects,
@@ -107,7 +107,7 @@ const decoPhrase = (text, {
   presets = PRESETS,
   effects
 } = {}) => {
-  return cosmetics.call({
+  return _decoString.call({
     delim,
     presets,
     effects,
@@ -128,7 +128,7 @@ const decoPhrase = (text, {
  * @return {string}
  */
 
-const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
+const deco = (text, p = {}) => _decoString.call(presetString(p), text);
 /**
  *
  * @param {Object} p
@@ -143,10 +143,10 @@ const deco = (text, p = {}) => cosmetics.call(presetString(p), text);
  * @return {Function}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetString(p));
+const Deco = (p = {}) => _decoString.bind(presetString(p));
 
 exports.Deco = Deco;
-exports.cosmetics = cosmetics;
+exports._decoString = _decoString;
 exports.deco = deco;
 exports.decoCamel = decoCamel;
 exports.decoPhrase = decoPhrase;

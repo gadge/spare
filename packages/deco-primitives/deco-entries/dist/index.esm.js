@@ -11,7 +11,7 @@ const fluo = fluoEntries.bind({
   colorant: false,
   mutate: true
 });
-const cosmetics = function (entries = []) {
+const _decoEntries = function (entries = []) {
   var _entries, _Br, _config$presets;
 
   const config = this;
@@ -61,7 +61,7 @@ const cosmetics = function (entries = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetEntries(p));
+const Deco = (p = {}) => _decoEntries.bind(presetEntries(p));
 /***
  *
  * @param {[*,*][]} entries
@@ -88,6 +88,6 @@ const Deco = (p = {}) => cosmetics.bind(presetEntries(p));
  * @returns {string}
  */
 
-const deco = (entries, p = {}) => cosmetics.call(presetEntries(p), entries);
+const deco = (entries, p = {}) => _decoEntries.call(presetEntries(p), entries);
 
-export { Deco, cosmetics, deco };
+export { Deco, _decoEntries, deco };

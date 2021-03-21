@@ -1,4 +1,4 @@
-import { cosmetics }    from '@spare/deco-string'
+import { _decoString }  from '@spare/deco-string'
 import { splitLiteral } from '@spare/splitter'
 
 
@@ -6,7 +6,7 @@ export const renderString = function (string, level, indent) {
   const
     width = this.string?.width ?? this.width ?? 0,
     presets = this.string?.presets ?? null
-  return cosmetics.call({
+  return _decoString.call({
     vectify: splitLiteral,
     presets,
     width,

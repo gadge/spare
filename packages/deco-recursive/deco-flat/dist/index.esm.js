@@ -364,6 +364,124 @@ class CharConv$6 {
 
 }
 
+const SP$7 = ' ';
+const CO$7 = ',';
+const DOT$7 = '.';
+
+function _defineProperty$7(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$7 {}
+
+_defineProperty$7(Conv$7, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$7.cjkPunc(n) : CharConv$7.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$7(Conv$7, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$7.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$7 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$7;
+    if (charCode === 0x3001) return CO$7;
+    if (charCode === 0x3002) return DOT$7;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$8 = ' ';
+const CO$8 = ',';
+const DOT$8 = '.';
+
+function _defineProperty$8(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$8 {}
+
+_defineProperty$8(Conv$8, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$8.cjkPunc(n) : CharConv$8.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$8(Conv$8, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$8.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$8 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$8;
+    if (charCode === 0x3001) return CO$8;
+    if (charCode === 0x3002) return DOT$8;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
 const SP = ' ';
 const CO = ',';
 const DOT = '.';

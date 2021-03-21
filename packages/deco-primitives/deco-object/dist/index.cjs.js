@@ -10,7 +10,7 @@ const LOCAL_OPTION = {
   discrete: true,
   bracket: undefined
 };
-const cosmetics = function (o = {}) {
+const _decoObject = function (o = {}) {
   const entriesOptions = Object.assign({}, this, LOCAL_OPTION);
   const lines = decoEntries.cosmetics.call(entriesOptions, Object.entries(o));
   return liner.liner(lines, this);
@@ -45,7 +45,7 @@ const cosmetics = function (o = {}) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetDeco.presetObject(p));
+const Deco = (p = {}) => _decoObject.bind(presetDeco.presetObject(p));
 /***
  *
  * @param {Object} o
@@ -72,8 +72,8 @@ const Deco = (p = {}) => cosmetics.bind(presetDeco.presetObject(p));
  * @returns {string}
  */
 
-const deco = (o, p = {}) => cosmetics.call(presetDeco.presetObject(p), o);
+const deco = (o, p = {}) => _decoObject.call(presetDeco.presetObject(p), o);
 
 exports.Deco = Deco;
-exports.cosmetics = cosmetics;
+exports._decoObject = _decoObject;
 exports.deco = deco;

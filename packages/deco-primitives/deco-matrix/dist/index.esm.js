@@ -22,7 +22,7 @@ const MUTATE_PIGMENT = {
 
 fluoMatrix.bind(MUTATE_PIGMENT);
 
-const cosmetics = function (rows = []) {
+const _decoMatrix = function (rows = []) {
   var _Br;
 
   const config = this,
@@ -75,7 +75,7 @@ const cosmetics = function (rows = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetMatrix(p));
+const Deco = (p = {}) => _decoMatrix.bind(presetMatrix(p));
 /***
  *
  * @param {*[][]} matrix
@@ -103,6 +103,6 @@ const Deco = (p = {}) => cosmetics.bind(presetMatrix(p));
  * @returns {string}
  */
 
-const deco = (matrix, p = {}) => cosmetics.call(presetMatrix(p), matrix);
+const deco = (matrix, p = {}) => _decoMatrix.call(presetMatrix(p), matrix);
 
-export { Deco, cosmetics, deco };
+export { Deco, _decoMatrix, deco };

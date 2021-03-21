@@ -11,7 +11,7 @@ import { acquire } from '@vect/vector-merge';
 const MUTATE = {
   mutate: true
 };
-const cosmetics = function (table) {
+const _decoTable = function (table) {
   var _head;
 
   const config = this;
@@ -75,7 +75,7 @@ const cosmetics = function (table) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => cosmetics.bind(presetTable(p));
+const Deco = (p = {}) => _decoTable.bind(presetTable(p));
 /***
  *
  * @param {Object} table
@@ -105,6 +105,6 @@ const Deco = (p = {}) => cosmetics.bind(presetTable(p));
  * @returns {string}
  */
 
-const deco = (table, p = {}) => cosmetics.call(presetTable(p), table);
+const deco = (table, p = {}) => _decoTable.call(presetTable(p), table);
 
-export { Deco, cosmetics, deco };
+export { Deco, _decoTable, deco };
