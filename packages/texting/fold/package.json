@@ -1,6 +1,6 @@
 {
   "name": "@spare/fold",
-  "version": "0.10.14",
+  "version": "0.11.0",
   "description": "Split one line of words into lines",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
