@@ -1,4 +1,4 @@
-import { cosmetics } from '@spare/deco-vector'
+import { _decoVector } from '@spare/deco-vector'
 import { SP }        from '@spare/enum-chars'
 
 const presetAdjoin = p => {
@@ -18,7 +18,7 @@ export const adjoin = function (...words) {
   for (let word of words)
     if (word?.length)
       ve.push(word)
-  return cosmetics.call(config, ve)
+  return _decoVector.call(config, ve)
 }
 
 /**

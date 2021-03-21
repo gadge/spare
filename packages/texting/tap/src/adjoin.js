@@ -1,4 +1,4 @@
-import { cosmetics } from '@spare/deco-vector'
+import { _decoVector } from '@spare/deco-vector'
 import { SP }  from '@spare/enum-chars'
 import { tap } from './tap'
 
@@ -12,7 +12,7 @@ export const adjoin = function (...words) {
   const
     ve = tap.apply(null, words),
     config = presetAdjoin(this)
-  return cosmetics.call(config, ve)
+  return _decoVector.call(config, ve)
 }
 
 /**

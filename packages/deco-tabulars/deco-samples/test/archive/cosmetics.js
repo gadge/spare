@@ -6,7 +6,7 @@ import { COLF, ELLIP } from '@spare/enum-chars'
 import { liner }       from '@spare/liner'
 import { mattro }                             from '@spare/matrix-margin'
 import { matrixPadder }                       from '@spare/matrix-padder'
-import { marginSizing, VectorMargin }         from '@spare/vector-margin'
+import { sizing, VectorMargin }         from '@spare/vector-margin'
 import { unwind }                             from '@vect/entries-unwind'
 import { marginMapper as marginMapperMatrix } from '@vect/matrix-margin'
 import { size }                               from '@vect/matrix-size'
@@ -26,8 +26,8 @@ export const cosmetics = function (samples) {
   let [pick, head] = fields
     ? (lookupKeys.call(sample, fields) |> unwind)
     : [keys, keys.slice()]
-  const { head: l, tail: r, dash: dashY } = marginSizing(pick, left, right)
-  const { head: t, tail: b, dash: dashX } = marginSizing(samples, top, bottom)
+  const { head: l, tail: r, dash: dashY } = sizing(pick, left, right)
+  const { head: t, tail: b, dash: dashX } = sizing(samples, top, bottom)
   const headVG = new VectorMargin(null, l, r, dashY)
   const rowsVG = new VectorMargin(samples, t, b, dashX);
   [pick, head] = [
