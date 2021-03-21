@@ -17,20 +17,22 @@ import { fold }           from '@spare/fold'
  */
 
 export const _decoString = function (text) {
-  const config = this, length = text?.length
+  const
+    config = this,
+    width = config.width,
+    length = text?.length
   if (!length) return ''
   if (hasAnsi(text)) return text
-  const { width, presets } = config
   if (width && length > width) text = fold.call({
     width: width,
     firstLineIndent: config.firstLineIndent,
     delim: LF + TB.repeat(config.indent ?? 0)
   }, text)
-  if (config.fluos) text = fluoString.call(config, text)
+  if (config.fluos) text = stringColour.call(config, text)
   return text
 }
 
-export const fluoString = function (text) {
+export const stringColour = function (text) {
   const config = this
   const { vectify, joiner } = this
   const words = vectify(text)

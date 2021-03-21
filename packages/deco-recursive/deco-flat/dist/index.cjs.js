@@ -722,6 +722,124 @@ class CharConv$c {
 
 }
 
+const SP$d = ' ';
+const CO$d = ',';
+const DOT$d = '.';
+
+function _defineProperty$d(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$d {}
+
+_defineProperty$d(Conv$d, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$d.cjkPunc(n) : CharConv$d.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$d(Conv$d, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$d.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$d {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$d;
+    if (charCode === 0x3001) return CO$d;
+    if (charCode === 0x3002) return DOT$d;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$e = ' ';
+const CO$e = ',';
+const DOT$e = '.';
+
+function _defineProperty$e(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$e {}
+
+_defineProperty$e(Conv$e, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$e.cjkPunc(n) : CharConv$e.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$e(Conv$e, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$e.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$e {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$e;
+    if (charCode === 0x3001) return CO$e;
+    if (charCode === 0x3002) return DOT$e;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
 const SP = ' ';
 const CO = ',';
 const DOT = '.';
@@ -781,8 +899,37 @@ class CharConv {
 
 }
 
-const NUMERIC_PRESET = presets.FRESH;
-const LITERAL_PRESET = presets.PLANET;
+const NUMERIC_PRESET$1 = presets.FRESH;
+const LITERAL_PRESET$1 = presets.PLANET;
+
+const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper.bind(LITERAL);
 
 const MUTABLE = {
   mutate: true
@@ -832,7 +979,7 @@ function deOb(lv, ob) {
  *  */
 
 const decoFlat = (o, {
-  presets = [NUMERIC_PRESET, LITERAL_PRESET]
+  presets = [NUMERIC_PRESET$1, LITERAL_PRESET$1]
 } = {}) => decoflat.call({
   presets,
   mutate: true
@@ -845,7 +992,7 @@ const decoFlat = (o, {
  */
 
 const DecoFlat = ({
-  presets = [NUMERIC_PRESET, LITERAL_PRESET]
+  presets = [NUMERIC_PRESET$1, LITERAL_PRESET$1]
 } = {}) => decoflat.bind({
   presets,
   mutate: true

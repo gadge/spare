@@ -2,14 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var enumChars = require('@spare/enum-chars');
+var presetDeco = require('@spare/preset-deco');
+var splitter = require('@spare/splitter');
 var fluoVector = require('@palett/fluo-vector');
 var charset = require('@spare/charset');
-var enumChars = require('@spare/enum-chars');
 var fold = require('@spare/fold');
-var splitter = require('@spare/splitter');
-var presets = require('@palett/presets');
-var presetDeco = require('@spare/preset-deco');
-var nullish = require('@typen/nullish');
 
 // export const
 //   FUNC = '',
@@ -37,22 +35,19 @@ const _decoString = function (text) {
   var _text, _config$indent;
 
   const config = this,
+        width = config.width,
         length = (_text = text) === null || _text === void 0 ? void 0 : _text.length;
   if (!length) return '';
   if (charset.hasAnsi(text)) return text;
-  const {
-    width,
-    presets
-  } = config;
   if (width && length > width) text = fold.fold.call({
     width: width,
     firstLineIndent: config.firstLineIndent,
     delim: enumChars.LF + enumChars.TB.repeat((_config$indent = config.indent) !== null && _config$indent !== void 0 ? _config$indent : 0)
   }, text);
-  if (config.fluos) text = fluoString.call(config, text);
+  if (config.fluos) text = stringColour.call(config, text);
   return text;
 };
-const fluoString = function (text) {
+const stringColour = function (text) {
   const config = this;
   const {
     vectify,
@@ -64,23 +59,11 @@ const fluoString = function (text) {
   return joiner ? joiner(words) : words.join('');
 };
 
-const NUMERIC_PRESET = presets.ATLAS;
-const LITERAL_PRESET = presets.SUBTLE;
-const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
-const presetString = p => {
-  // if (nullish(p.presets)) p.presets = PRESETS
-  presetDeco.assignFluoConfigs(p); // p |> JSON.stringify |> console.log
-
-  if (nullish.nullish(p.vectify)) p.vectify = splitter.splitLiteral;
-  if (nullish.nullish(p.width)) p.width = 0;
-  return p;
-};
-
 const Splitter = delim => v => String.prototype.split.call(v, delim);
 
 const decoCamel = (text, {
   delim = '',
-  presets = PRESETS,
+  presets,
   effects
 } = {}) => {
   return _decoString.call({
@@ -92,7 +75,7 @@ const decoCamel = (text, {
 };
 const decoSnake = (text, {
   delim = enumChars.DA,
-  presets = PRESETS,
+  presets,
   effects
 } = {}) => {
   return _decoString.call({
@@ -104,7 +87,7 @@ const decoSnake = (text, {
 };
 const decoPhrase = (text, {
   delim = enumChars.SP,
-  presets = PRESETS,
+  presets,
   effects
 } = {}) => {
   return _decoString.call({
@@ -114,7 +97,6 @@ const decoPhrase = (text, {
     vectify: Splitter(delim)
   }, text);
 };
-
 /**
  * @param {string} text
  * @param {Object} [p]
@@ -128,7 +110,7 @@ const decoPhrase = (text, {
  * @return {string}
  */
 
-const deco = (text, p = {}) => _decoString.call(presetString(p), text);
+const deco = (text, p = {}) => _decoString.call(presetDeco.presetString(p), text);
 /**
  *
  * @param {Object} p
@@ -143,7 +125,7 @@ const deco = (text, p = {}) => _decoString.call(presetString(p), text);
  * @return {Function}
  */
 
-const Deco = (p = {}) => _decoString.bind(presetString(p));
+const Deco = (p = {}) => _decoString.bind(presetDeco.presetString(p));
 
 exports.Deco = Deco;
 exports._decoString = _decoString;

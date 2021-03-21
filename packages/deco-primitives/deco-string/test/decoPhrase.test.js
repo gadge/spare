@@ -1,7 +1,7 @@
 import { ObjectCollection } from '@foba/object-string'
 import { says }             from '@palett/says'
 import { delogger }   from '@spare/deco'
-import { decoPhrase } from '../src/decoSpecials'
+import { decoPhrase } from '../src/decoPhrases'
 
 const items = Object.assign({},
   ObjectCollection.flopShuffle({ keyed: true }),

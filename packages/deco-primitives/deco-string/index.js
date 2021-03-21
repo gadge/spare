@@ -1,8 +1,22 @@
-import { _decoString }                      from './src/_decoString'
-import { decoCamel, decoPhrase, decoSnake } from './src/decoSpecials'
-import { presetString }                     from './src/presetString'
+import { DA, SP }                 from '@spare/enum-chars'
+import { presetString }           from '@spare/preset-deco'
+import { splitCamel, splitSnake } from '@spare/splitter'
+import { _decoString }            from './src/_decoString'
 
-export { decoCamel, decoSnake, decoPhrase }
+
+const Splitter = delim => v => String.prototype.split.call(v, delim)
+export const decoCamel = (text, { delim = '', presets, effects } = {}) => {
+  return _decoString.call({ delim, presets, effects, vectify: splitCamel }, text)
+}
+
+export const decoSnake = (text, { delim = DA, presets, effects } = {}) => {
+  return _decoString.call({ delim, presets, effects, vectify: splitSnake }, text)
+}
+
+export const decoPhrase = (text, { delim = SP, presets, effects } = {}) => {
+  return _decoString.call({ delim, presets, effects, vectify: Splitter(delim) }, text)
+}
+
 export { _decoString }
 /**
  * @param {string} text

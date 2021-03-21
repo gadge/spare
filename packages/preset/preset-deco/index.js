@@ -5,6 +5,7 @@ export { presetMatrix }  from './src/presetMatrix'
 export { presetCrostab } from './src/presetCrostab'
 export { presetTable }   from './src/presetTable'
 export { presetSamples } from './src/presetSamples'
+export { presetString }  from './src/presetString'
 export {
   NUMERIC_PRESET,
   LITERAL_PRESET,

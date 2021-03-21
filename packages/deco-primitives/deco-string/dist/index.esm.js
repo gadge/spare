@@ -1,11 +1,9 @@
+import { LF, TB, DA, SP } from '@spare/enum-chars';
+import { presetString } from '@spare/preset-deco';
+import { splitCamel, splitSnake } from '@spare/splitter';
 import { fluoVector } from '@palett/fluo-vector';
 import { hasAnsi } from '@spare/charset';
-import { LF, TB, DA, SP } from '@spare/enum-chars';
 import { fold } from '@spare/fold';
-import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
-import { ATLAS, SUBTLE } from '@palett/presets';
-import { assignFluoConfigs } from '@spare/preset-deco';
-import { nullish } from '@typen/nullish';
 
 // export const
 //   FUNC = '',
@@ -33,22 +31,19 @@ const _decoString = function (text) {
   var _text, _config$indent;
 
   const config = this,
+        width = config.width,
         length = (_text = text) === null || _text === void 0 ? void 0 : _text.length;
   if (!length) return '';
   if (hasAnsi(text)) return text;
-  const {
-    width,
-    presets
-  } = config;
   if (width && length > width) text = fold.call({
     width: width,
     firstLineIndent: config.firstLineIndent,
     delim: LF + TB.repeat((_config$indent = config.indent) !== null && _config$indent !== void 0 ? _config$indent : 0)
   }, text);
-  if (config.fluos) text = fluoString.call(config, text);
+  if (config.fluos) text = stringColour.call(config, text);
   return text;
 };
-const fluoString = function (text) {
+const stringColour = function (text) {
   const config = this;
   const {
     vectify,
@@ -60,23 +55,11 @@ const fluoString = function (text) {
   return joiner ? joiner(words) : words.join('');
 };
 
-const NUMERIC_PRESET = ATLAS;
-const LITERAL_PRESET = SUBTLE;
-const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
-const presetString = p => {
-  // if (nullish(p.presets)) p.presets = PRESETS
-  assignFluoConfigs(p); // p |> JSON.stringify |> console.log
-
-  if (nullish(p.vectify)) p.vectify = splitLiteral;
-  if (nullish(p.width)) p.width = 0;
-  return p;
-};
-
 const Splitter = delim => v => String.prototype.split.call(v, delim);
 
 const decoCamel = (text, {
   delim = '',
-  presets = PRESETS,
+  presets,
   effects
 } = {}) => {
   return _decoString.call({
@@ -88,7 +71,7 @@ const decoCamel = (text, {
 };
 const decoSnake = (text, {
   delim = DA,
-  presets = PRESETS,
+  presets,
   effects
 } = {}) => {
   return _decoString.call({
@@ -100,7 +83,7 @@ const decoSnake = (text, {
 };
 const decoPhrase = (text, {
   delim = SP,
-  presets = PRESETS,
+  presets,
   effects
 } = {}) => {
   return _decoString.call({
@@ -110,7 +93,6 @@ const decoPhrase = (text, {
     vectify: Splitter(delim)
   }, text);
 };
-
 /**
  * @param {string} text
  * @param {Object} [p]
