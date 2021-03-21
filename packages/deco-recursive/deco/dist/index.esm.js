@@ -1,5 +1,5 @@
-import { FRESH, PLANET } from '@palett/presets';
-import { RTSP, CO as CO$e, COSP, LF } from '@spare/enum-chars';
+import { FRESH, PLANET, MOSS, AZURE, SUBTLE, ATLAS } from '@palett/presets';
+import { RTSP, CO as CO$h, COSP, LF } from '@spare/enum-chars';
 import { nullish } from '@typen/nullish';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
@@ -7,7 +7,7 @@ import { bracket, brace } from '@spare/bracket';
 import { BRK, BRC, PAL } from '@spare/deco-colors';
 import { decoDate, decoDateTime } from '@spare/deco-date';
 import { funcName, decoFunc } from '@spare/deco-func';
-import { STR as STR$1, NUM, BIG, FUN, OBJ, BOO, UND, SYM } from '@typen/enum-data-types';
+import { STR, NUM, BIG, FUN, OBJ, BOO, UND, SYM } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE, MAP, SET } from '@typen/enum-object-types';
 import { isNumeric as isNumeric$3 } from '@typen/num-loose';
 import { typ } from '@typen/typ';
@@ -54,7 +54,7 @@ const renderEntries = function (entries, lv) {
         unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   let pad;
   const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? mutate(entries, ([k, v]) => lpad(k, pad) + RTSP + v) : wrapEntries(entries, width);
-  return rows.length > 1 ? joinLines(rows, CO$e, lv) : rows.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$h, lv) : rows.join(COSP);
 };
 const wrapEntries = function (entries, width) {
   var _row;
@@ -97,7 +97,7 @@ const renderVector = function (vector, lv) {
         width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   const rows = lv < vert || vector.some(x => lange(x) > unit) || !width ? vector : wrapVector(vector, width);
-  return rows.length > 1 ? joinLines(rows, CO$e, lv) : vector.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$h, lv) : vector.join(COSP);
 };
 const wrapVector = function (vector, width) {
   const lines = [];
@@ -128,7 +128,7 @@ function _deco(node, level, indent) {
 
 function prettyNode(node, level = 0, indent) {
   const t = typeof node;
-  if (t === STR$1) return isNumeric$3(node) ? node : renderString.call(this, node, level, indent);
+  if (t === STR) return isNumeric$3(node) ? node : renderString.call(this, node, level, indent);
   if (t === NUM || t === BIG) return node;
   if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this);
 
@@ -156,7 +156,7 @@ function plainNode(node, level = 0, indent) {
         {
     qm
   } = this;
-  if (t === STR$1) return qm ? qm + node + qm : renderString.call(this, node, level, indent);
+  if (t === STR) return qm ? qm + node + qm : renderString.call(this, node, level, indent);
   if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this);
 
   if (t === OBJ) {
@@ -957,6 +957,267 @@ class CharConv$d {
 
 }
 
+const SP$e = ' ';
+const CO$e = ',';
+const DOT$e = '.';
+
+function _defineProperty$e(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$e {}
+
+_defineProperty$e(Conv$e, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$e.cjkPunc(n) : CharConv$e.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$e(Conv$e, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$e.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$e {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$e;
+    if (charCode === 0x3001) return CO$e;
+    if (charCode === 0x3002) return DOT$e;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$f = ' ';
+const CO$f = ',';
+const DOT$f = '.';
+
+function _defineProperty$f(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$f {}
+
+_defineProperty$f(Conv$f, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$f.cjkPunc(n) : CharConv$f.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$f(Conv$f, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$f.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$f {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$f;
+    if (charCode === 0x3001) return CO$f;
+    if (charCode === 0x3002) return DOT$f;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const LITERAL$2$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$2$1 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$2$1.bind(LITERAL$2$1);
+const SP$g = ' ';
+const CO$g = ',';
+const DOT$g = '.';
+
+function _defineProperty$g(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$g {}
+
+_defineProperty$g(Conv$g, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$g.cjkPunc(n) : CharConv$g.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$g(Conv$g, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$g.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$g {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$g;
+    if (charCode === 0x3001) return CO$g;
+    if (charCode === 0x3002) return DOT$g;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+const LITERAL$1$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$1$1 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$1$1.bind(LITERAL$1$1);
+const LITERAL$3 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$3 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$3.bind(LITERAL$3);
+
 /**
  * validate
  * @param x
@@ -973,9 +1234,9 @@ const SP = ' ';
 const CO = ',';
 const DOT = '.';
 
-const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
+const FULL_NUM = '０-９'; // 0xff10 - 0xff19
 
-const REG_NUM_FULL = new RegExp(`^\s*[－＋]?(?:，*[${FULL_NUM$1}]+)*．?[${FULL_NUM$1}]+\s*$`);
+const REG_NUM_FULL = new RegExp(`^\s*[－＋]?(?:，*[${FULL_NUM}]+)*．?[${FULL_NUM}]+\s*$`);
 /**
  *
  * @param {string} tx
@@ -1059,71 +1320,71 @@ class CharConv {
 
 const COMMA = /,/g;
 
-const isNumeric$1 = x => {
+const isNumeric = x => {
   var _x;
 
   x = (_x = x) === null || _x === void 0 ? void 0 : _x.replace(COMMA, '');
   return !isNaN(x - parseFloat(x));
 };
 
-const NUMERIC_PRESET = FRESH;
-const LITERAL_PRESET = PLANET;
+const NUMERIC_PRESET$1 = FRESH;
+const LITERAL_PRESET$1 = PLANET;
 
-const STR = 'string';
+const STR$1 = 'string';
 
-const v1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
+const v1$1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
 
-const v2 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
+const v2$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
 
-const v3 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
+const v3$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
 
-const v4 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
+const v4$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
 
-const stringValue = word => {
+const stringValue$1 = word => {
   const l = word === null || word === void 0 ? void 0 : word.length;
   if (!l) return NaN;
-  if (typeof word !== STR) return NaN;
-  if (l >= 8) return (v4(word.slice(0, 4)) << 2) + v4(word.slice(-4));
-  if (l === 7) return (v4(word.slice(0, 4)) << 2) + v3(word.slice(-3));
-  if (l === 6) return (v4(word.slice(0, 4)) << 2) + v2(word.slice(-2));
-  if (l === 5) return (v4(word.slice(0, 4)) << 2) + v1(word.slice(-1));
-  if (l === 4) return v4(word) << 2;
-  if (l === 3) return v3(word) << 2;
-  if (l === 2) return v2(word) << 2;
-  if (l === 1) return v1(word) << 2;
+  if (typeof word !== STR$1) return NaN;
+  if (l >= 8) return (v4$1(word.slice(0, 4)) << 2) + v4$1(word.slice(-4));
+  if (l === 7) return (v4$1(word.slice(0, 4)) << 2) + v3$1(word.slice(-3));
+  if (l === 6) return (v4$1(word.slice(0, 4)) << 2) + v2$1(word.slice(-2));
+  if (l === 5) return (v4$1(word.slice(0, 4)) << 2) + v1$1(word.slice(-1));
+  if (l === 4) return v4$1(word) << 2;
+  if (l === 3) return v3$1(word) << 2;
+  if (l === 2) return v2$1(word) << 2;
+  if (l === 1) return v1$1(word) << 2;
 };
 
-const CJK_LETTERS = '\u4e00-\u9fbf';
-const HALF_NUM = '0-9';
-const HALF_UPPER = 'A-Z';
-const HALF_LOWER = 'a-z';
-const FULL_NUM = '０-９'; // 0xff10 - 0xff19
+const CJK_LETTERS$1 = '\u4e00-\u9fbf';
+const HALF_NUM$1 = '0-9';
+const HALF_UPPER$1 = 'A-Z';
+const HALF_LOWER$1 = 'a-z';
+const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
 
-const FULL_UPPER = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
+const FULL_UPPER$1 = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
 
-const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
+const FULL_LOWER$1 = 'ａ-ｚ'; // 0xff41 - 0xff5a
 
-const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
-const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM}`;
-const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
+const LITERAL_LOWER$1 = `${HALF_UPPER$1}${HALF_LOWER$1}${HALF_NUM$1}`;
+const LITERAL_UPPER$1 = `${FULL_UPPER$1}${FULL_LOWER$1}${FULL_NUM$1}`;
+const LITERAL_ANY$1 = new RegExp(`[${LITERAL_LOWER$1}${CJK_LETTERS$1}${LITERAL_UPPER$1}]+`);
 
-const isLiteralAny = x => LITERAL_ANY.test(x);
+const isLiteralAny$1 = x => LITERAL_ANY$1.test(x);
 
-const isNumeric = x => isNumeric$2(x) || isNumeric$1(x);
+const isNumeric$1 = x => isNumeric$2(x) || isNumeric(x);
 
-const NUM_BOUND_CONF_FULL = {
-  filter: isNumeric,
+const NUM_BOUND_CONF_FULL$1 = {
+  filter: isNumeric$1,
   mapper: parseNum
 };
-const STR_BOUND_CONF_FULL = {
-  filter: isLiteralAny,
-  mapper: stringValue
+const STR_BOUND_CONF_FULL$1 = {
+  filter: isLiteralAny$1,
+  mapper: stringValue$1
 };
 
-const assignFluoConfigs = (p, ...presets) => {
+const assignFluoConfigs$1 = (p, ...presets) => {
   var _p$presets;
 
-  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
+  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET$1, LITERAL_PRESET$1];
 
   if (presets.length === 1) {
     if (!p.fluos) p.fluos = presets.map(preset => ({
@@ -1132,7 +1393,7 @@ const assignFluoConfigs = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
     }
 
     return p;
@@ -1145,8 +1406,8 @@ const assignFluoConfigs = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}, confStr = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
     }
 
     return p;
@@ -1159,14 +1420,99 @@ const assignFluoConfigs = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}, confStr = {}, confLab = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
-      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
+      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL$1);
     }
 
     return p;
   }
 };
+
+const LITERAL$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$1 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$1.bind(LITERAL$1);
+const LITERAL$2 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$2 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$2.bind(LITERAL$2);
+const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper.bind(LITERAL);
 
 const presetDeco = p => {
   var _p$wf;
@@ -1174,7 +1520,7 @@ const presetDeco = p => {
   if (!p) p = {};
   p.wf = (_p$wf = p.wf) !== null && _p$wf !== void 0 ? _p$wf : 160; // if (nullish(p.presets)) p.presets = p.pr ?? [AZURE, MOSS]
 
-  assignFluoConfigs(p);
+  assignFluoConfigs$1(p, AZURE, MOSS);
   if (nullish(p.depth)) p.depth = 8; // 展示级别
 
   if (nullish(p.vert)) p.vert = 0; // 在此级别以下均设为竖排
@@ -1186,7 +1532,7 @@ const presetDeco = p => {
   if (nullish(p.string)) p.string = {};
   const s = p.string; // if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE]
 
-  assignFluoConfigs(s);
+  assignFluoConfigs$1(s, ATLAS, SUBTLE);
   return p;
 };
 /**
