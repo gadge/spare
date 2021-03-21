@@ -1,11 +1,11 @@
 import { matchSlice as matchSliceCrostab } from '@analys/crostab-init'
 import { matchSlice as matchSliceTable }   from '@analys/table-init'
 import { brace, bracket as doBracket }     from '@spare/bracket'
-import { cosmetics as cosmeticsEntries }   from '@spare/deco-entries'
-import { cosmetics as cosmeticsMatrix }    from '@spare/deco-matrix'
-import { cosmetics as cosmeticsObject }    from '@spare/deco-object'
-import { cosmetics as cosmeticsSamples }   from '@spare/deco-samples'
-import { cosmetics as cosmeticsVector }    from '@spare/deco-vector'
+import { _decoEntries }                    from '@spare/deco-entries'
+import { _decoMatrix }                     from '@spare/deco-matrix'
+import { _decoObject }                     from '@spare/deco-object'
+import { _decoSamples }                    from '@spare/deco-samples'
+import { _decoVector }                     from '@spare/deco-vector'
 import { BRACE, BRACKET }                  from '@spare/enum-brackets'
 import { joinLines, liner }                from '@spare/liner'
 import {
@@ -36,7 +36,7 @@ export class Verse {
    * @return {string}
    */
   static vector(vector, p = {}) {
-    return cosmeticsVector.call(presetVector(p), vector)
+    return _decoVector.call(presetVector(p), vector)
   }
 
   /**
@@ -60,7 +60,7 @@ export class Verse {
       ? [presetEntriesAsObject(p), BRACE]
       : [presetEntries(p), BRACKET]
     const { delim, level } = preset
-    const lines = cosmeticsEntries.call(preset, entries)
+    const lines = _decoEntries.call(preset, entries)
     return liner(lines, { bracket, delim, level })
   }
 
@@ -79,7 +79,7 @@ export class Verse {
    *
    * @returns {string}
    */
-  static object(o, p = {}) { return cosmeticsObject.call(presetObject(p), o) }
+  static object(o, p = {}) { return _decoObject.call(presetObject(p), o) }
 
   /**
    * @param {*[][]} matrix
@@ -97,7 +97,7 @@ export class Verse {
   static matrix(matrix, p = {}) {
     p = presetMatrix(p)
     const { delim, level } = p
-    const lines = cosmeticsMatrix.call(p, matrix)
+    const lines = _decoMatrix.call(p, matrix)
     return joinLines(lines, delim, level) |> doBracket
   }
 
@@ -117,7 +117,7 @@ export class Verse {
   static samples(samples, p = {}) {
     p = presetSamples(p)
     const { delim, level } = p
-    const lines = cosmeticsSamples.call(p, samples)
+    const lines = _decoSamples.call(p, samples)
     return joinLines(lines, delim, level) |> doBracket
   }
 
