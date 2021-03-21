@@ -1,5 +1,5 @@
 import { FRESH, PLANET } from '@palett/presets';
-import { RTSP, CO as CO$9, COSP, LF } from '@spare/enum-chars';
+import { RTSP, CO as CO$e, COSP, LF } from '@spare/enum-chars';
 import { nullish } from '@typen/nullish';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
@@ -19,7 +19,7 @@ import { max } from '@aryth/comparer';
 import { lange } from '@spare/lange';
 import { joinLines } from '@spare/liner';
 import { LPad } from '@spare/padder';
-import { cosmetics } from '@spare/deco-string';
+import { _decoString } from '@spare/deco-string';
 import { splitLiteral } from '@spare/splitter';
 import '@vect/column-mapper';
 
@@ -54,7 +54,7 @@ const renderEntries = function (entries, lv) {
         unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   let pad;
   const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? mutate(entries, ([k, v]) => lpad(k, pad) + RTSP + v) : wrapEntries(entries, width);
-  return rows.length > 1 ? joinLines(rows, CO$9, lv) : rows.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$e, lv) : rows.join(COSP);
 };
 const wrapEntries = function (entries, width) {
   var _row;
@@ -81,7 +81,7 @@ const renderString = function (string, level, indent) {
 
   const width = (_ref = (_this$string$width = (_this$string = this.string) === null || _this$string === void 0 ? void 0 : _this$string.width) !== null && _this$string$width !== void 0 ? _this$string$width : this.width) !== null && _ref !== void 0 ? _ref : 0,
         presets = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : null;
-  return cosmetics.call({
+  return _decoString.call({
     vectify: splitLiteral,
     presets,
     width,
@@ -97,7 +97,7 @@ const renderVector = function (vector, lv) {
         width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   const rows = lv < vert || vector.some(x => lange(x) > unit) || !width ? vector : wrapVector(vector, width);
-  return rows.length > 1 ? joinLines(rows, CO$9, lv) : vector.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$e, lv) : vector.join(COSP);
 };
 const wrapVector = function (vector, width) {
   const lines = [];
@@ -651,6 +651,301 @@ class CharConv$8 {
     if (charCode === 0x3000) return SP$8;
     if (charCode === 0x3001) return CO$8;
     if (charCode === 0x3002) return DOT$8;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$9 = ' ';
+const CO$9 = ',';
+const DOT$9 = '.';
+
+function _defineProperty$9(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$9 {}
+
+_defineProperty$9(Conv$9, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$9.cjkPunc(n) : CharConv$9.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$9(Conv$9, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$9.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$9 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$9;
+    if (charCode === 0x3001) return CO$9;
+    if (charCode === 0x3002) return DOT$9;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$a = ' ';
+const CO$a = ',';
+const DOT$a = '.';
+
+function _defineProperty$a(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$a {}
+
+_defineProperty$a(Conv$a, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$a.cjkPunc(n) : CharConv$a.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$a(Conv$a, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$a.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$a {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$a;
+    if (charCode === 0x3001) return CO$a;
+    if (charCode === 0x3002) return DOT$a;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$b = ' ';
+const CO$b = ',';
+const DOT$b = '.';
+
+function _defineProperty$b(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$b {}
+
+_defineProperty$b(Conv$b, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$b.cjkPunc(n) : CharConv$b.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$b(Conv$b, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$b.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$b {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$b;
+    if (charCode === 0x3001) return CO$b;
+    if (charCode === 0x3002) return DOT$b;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$c = ' ';
+const CO$c = ',';
+const DOT$c = '.';
+
+function _defineProperty$c(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$c {}
+
+_defineProperty$c(Conv$c, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$c.cjkPunc(n) : CharConv$c.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$c(Conv$c, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$c.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$c {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$c;
+    if (charCode === 0x3001) return CO$c;
+    if (charCode === 0x3002) return DOT$c;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$d = ' ';
+const CO$d = ',';
+const DOT$d = '.';
+
+function _defineProperty$d(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$d {}
+
+_defineProperty$d(Conv$d, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$d.cjkPunc(n) : CharConv$d.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$d(Conv$d, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$d.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$d {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$d;
+    if (charCode === 0x3001) return CO$d;
+    if (charCode === 0x3002) return DOT$d;
     if (charCode === 0x3010) return '[';
     if (charCode === 0x3011) return ']';
     return String.fromCharCode(charCode);

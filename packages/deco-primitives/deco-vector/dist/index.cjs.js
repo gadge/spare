@@ -12,7 +12,7 @@ var enumColorantModes = require('@palett/enum-colorant-modes');
 const fluo = fluoVector.fluoVector.bind(enumColorantModes.MUTATE_PIGMENT);
 function _decoVector(vec = []) {
   const config = this;
-  if (config !== null && config !== void 0 && config.indexed) return decoEntries.cosmetics.call(config, Object.entries(vec));
+  if (config !== null && config !== void 0 && config.indexed) return decoEntries._decoEntries.call(config, Object.entries(vec));
   vec = vectorMargin.vectorMargin(vec, config); // use: head, tail, read, rule
 
   if (config.fluos) vec = fluo(vec, config.fluos); // use:  presets, effects

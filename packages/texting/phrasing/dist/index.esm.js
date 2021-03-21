@@ -1,7 +1,7 @@
 import { INILOW, CAPWORD, WORD } from '@spare/regex-phrasing';
 export { CAMEL, CAPREST, CAPWORD, DASH_CAPREST, INILOW, INIWORD, WORD } from '@spare/regex-phrasing';
 import { mutate } from '@vect/vector-mapper';
-import { cosmetics } from '@spare/deco-vector';
+import { _decoVector } from '@spare/deco-vector';
 import { SP } from '@spare/enum-chars';
 
 const capitalize = word => word[0].toUpperCase() + word.substring(1).toLowerCase();
@@ -131,7 +131,7 @@ const adjoin = function (...words) {
 
   for (let word of words) if (word !== null && word !== void 0 && word.length) ve.push(word);
 
-  return cosmetics.call(config, ve);
+  return _decoVector.call(config, ve);
 };
 /**
  *

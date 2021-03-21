@@ -51,7 +51,7 @@ const presetAdjoin = p => {
 const adjoin = function (...words) {
   const ve = tap.apply(null, words),
         config = presetAdjoin(this);
-  return decoVector.cosmetics.call(config, ve);
+  return decoVector._decoVector.call(config, ve);
 };
 /**
  *

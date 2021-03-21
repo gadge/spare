@@ -1,5 +1,5 @@
 import { presetObject } from '@spare/preset-deco';
-import { cosmetics } from '@spare/deco-entries';
+import { _decoEntries } from '@spare/deco-entries';
 import { liner } from '@spare/liner';
 
 const LOCAL_OPTION = {
@@ -8,7 +8,9 @@ const LOCAL_OPTION = {
 };
 const _decoObject = function (o = {}) {
   const entriesOptions = Object.assign({}, this, LOCAL_OPTION);
-  const lines = cosmetics.call(entriesOptions, Object.entries(o));
+
+  const lines = _decoEntries.call(entriesOptions, Object.entries(o));
+
   return liner(lines, this);
 };
 

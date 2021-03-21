@@ -134,7 +134,7 @@ const adjoin = function (...words) {
 
   for (let word of words) if (word !== null && word !== void 0 && word.length) ve.push(word);
 
-  return decoVector.cosmetics.call(config, ve);
+  return decoVector._decoVector.call(config, ve);
 };
 /**
  *

@@ -12,7 +12,9 @@ const LOCAL_OPTION = {
 };
 const _decoObject = function (o = {}) {
   const entriesOptions = Object.assign({}, this, LOCAL_OPTION);
-  const lines = decoEntries.cosmetics.call(entriesOptions, Object.entries(o));
+
+  const lines = decoEntries._decoEntries.call(entriesOptions, Object.entries(o));
+
   return liner.liner(lines, this);
 };
 

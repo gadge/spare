@@ -1,11 +1,11 @@
 import { matchSlice } from '@analys/crostab-init';
 import { matchSlice as matchSlice$1 } from '@analys/table-init';
 import { bracket, brace } from '@spare/bracket';
-import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
-import { cosmetics as cosmetics$3 } from '@spare/deco-matrix';
-import { cosmetics as cosmetics$2 } from '@spare/deco-object';
-import { cosmetics as cosmetics$4 } from '@spare/deco-samples';
-import { cosmetics } from '@spare/deco-vector';
+import { _decoEntries } from '@spare/deco-entries';
+import { _decoMatrix } from '@spare/deco-matrix';
+import { _decoObject } from '@spare/deco-object';
+import { _decoSamples } from '@spare/deco-samples';
+import { _decoVector } from '@spare/deco-vector';
 import { BRACE, BRACKET } from '@spare/enum-brackets';
 import { liner, joinLines } from '@spare/liner';
 import { presetVector, presetEntriesAsObject, presetEntries, presetObject, presetMatrix, presetSamples, presetCrostab, presetTable } from '@spare/preset-verse';
@@ -28,7 +28,7 @@ class Verse {
    * @return {string}
    */
   static vector(vector, p = {}) {
-    return cosmetics.call(presetVector(p), vector);
+    return _decoVector.call(presetVector(p), vector);
   }
   /**
    *
@@ -54,7 +54,9 @@ class Verse {
       delim,
       level
     } = preset;
-    const lines = cosmetics$1.call(preset, entries);
+
+    const lines = _decoEntries.call(preset, entries);
+
     return liner(lines, {
       bracket,
       delim,
@@ -79,7 +81,7 @@ class Verse {
 
 
   static object(o, p = {}) {
-    return cosmetics$2.call(presetObject(p), o);
+    return _decoObject.call(presetObject(p), o);
   }
   /**
    * @param {*[][]} matrix
@@ -104,7 +106,9 @@ class Verse {
       delim,
       level
     } = p;
-    const lines = cosmetics$3.call(p, matrix);
+
+    const lines = _decoMatrix.call(p, matrix);
+
     return _joinLines = joinLines(lines, delim, level), bracket(_joinLines);
   }
   /**
@@ -130,7 +134,9 @@ class Verse {
       delim,
       level
     } = p;
-    const lines = cosmetics$4.call(p, samples);
+
+    const lines = _decoSamples.call(p, samples);
+
     return _joinLines2 = joinLines(lines, delim, level), bracket(_joinLines2);
   }
   /**

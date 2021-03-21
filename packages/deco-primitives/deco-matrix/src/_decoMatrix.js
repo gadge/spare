@@ -1,48 +1,14 @@
-import { oneself }                              from '@ject/oneself'
-import { MUTATE_PIGMENT }                       from '@palett/enum-colorant-modes'
-import { fluoMatrix }                           from '@palett/fluo-matrix'
-import { Br }                                   from '@spare/bracket'
-import { COLF }                                 from '@spare/enum-chars'
-import { liner }                                from '@spare/liner'
-import { matrixMargin }                         from '@spare/matrix-margin'
-import { matrixPadder }                         from '@spare/matrix-padder'
-import { isNumeric as isNumericFull, parseNum } from '@texting/charset-fullwidth'
-import { isNumeric }                            from '@typen/num-strict'
-import { size }                                 from '@vect/matrix'
+import { oneself }        from '@ject/oneself'
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
+import { fluoMatrix }     from '@palett/fluo-matrix'
+import { Br }             from '@spare/bracket'
+import { COLF }           from '@spare/enum-chars'
+import { liner }          from '@spare/liner'
+import { matrixMargin }   from '@spare/matrix-margin'
+import { matrixPadder }   from '@spare/matrix-padder'
+import { size }           from '@vect/matrix'
 
 const fluo = fluoMatrix.bind(MUTATE_PIGMENT)
-
-/**
- *
- * @param {*[][]} rows
- * @param {object} config
- * @param {number} config.direct
- * @param {object|object[]} config.presets
- * @param {string[]} config.effects
- * @param {boolean} config.full
- * @returns {string[][]}
- */
-const matrixColour = (rows, config) => {
-  if (config.presets) {
-    let presets
-    if (config.full) {
-      if (Array.isArray(config.presets)) {
-        presets = config.presets.slice().map(o => Object.assign({}, o))
-        presets[0].filter = x => isNumeric(x) || isNumericFull(x)
-        presets[0].mapper = parseNum
-      } else {
-        presets = Object.assign({}, config.presets)
-        presets.filter = x => isNumeric(x) || isNumericFull(x)
-        presets.mapper = parseNum
-      }
-    }
-    const conf = Object.assign({}, config)
-    conf.presets = presets
-    // presets |> deco |> logger
-    rows = fluo(rows, config) // use: direct, presets, effects
-  }
-  return rows
-}
 
 export const _decoMatrix = function (rows = []) {
   const

@@ -10,8 +10,6 @@ var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var matrixMargin = require('@spare/matrix-margin');
 var matrixPadder = require('@spare/matrix-padder');
-require('@texting/charset-fullwidth');
-require('@typen/num-strict');
 var matrix = require('@vect/matrix');
 
 // export const
@@ -25,7 +23,6 @@ const MUTATE_PIGMENT = {
 };
 
 fluoMatrix.fluoMatrix.bind(MUTATE_PIGMENT);
-
 const _decoMatrix = function (rows = []) {
   var _Br;
 

@@ -32,7 +32,7 @@ class Verse {
    * @return {string}
    */
   static vector(vector, p = {}) {
-    return decoVector.cosmetics.call(presetVerse.presetVector(p), vector);
+    return decoVector._decoVector.call(presetVerse.presetVector(p), vector);
   }
   /**
    *
@@ -58,7 +58,9 @@ class Verse {
       delim,
       level
     } = preset;
-    const lines = decoEntries.cosmetics.call(preset, entries);
+
+    const lines = decoEntries._decoEntries.call(preset, entries);
+
     return liner.liner(lines, {
       bracket,
       delim,
@@ -83,7 +85,7 @@ class Verse {
 
 
   static object(o, p = {}) {
-    return decoObject.cosmetics.call(presetVerse.presetObject(p), o);
+    return decoObject._decoObject.call(presetVerse.presetObject(p), o);
   }
   /**
    * @param {*[][]} matrix
@@ -108,7 +110,9 @@ class Verse {
       delim,
       level
     } = p;
-    const lines = decoMatrix.cosmetics.call(p, matrix);
+
+    const lines = decoMatrix._decoMatrix.call(p, matrix);
+
     return _joinLines = liner.joinLines(lines, delim, level), bracket.bracket(_joinLines);
   }
   /**
@@ -134,7 +138,9 @@ class Verse {
       delim,
       level
     } = p;
-    const lines = decoSamples.cosmetics.call(p, samples);
+
+    const lines = decoSamples._decoSamples.call(p, samples);
+
     return _joinLines2 = liner.joinLines(lines, delim, level), bracket.bracket(_joinLines2);
   }
   /**

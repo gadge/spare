@@ -17,16 +17,16 @@ import { fold }           from '@spare/fold'
  */
 
 export const _decoString = function (text) {
-  const context = this, length = text?.length
+  const config = this, length = text?.length
   if (!length) return ''
   if (hasAnsi(text)) return text
-  const { width, presets } = context
+  const { width, presets } = config
   if (width && length > width) text = fold.call({
     width: width,
-    firstLineIndent: context.firstLineIndent,
-    delim: LF + TB.repeat(context.indent ?? 0)
+    firstLineIndent: config.firstLineIndent,
+    delim: LF + TB.repeat(config.indent ?? 0)
   }, text)
-  if (presets) text = fluoString.call(context, text)
+  if (config.fluos) text = fluoString.call(config, text)
   return text
 }
 

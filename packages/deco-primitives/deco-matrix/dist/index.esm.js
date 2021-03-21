@@ -6,8 +6,6 @@ import { COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { matrixMargin } from '@spare/matrix-margin';
 import { matrixPadder } from '@spare/matrix-padder';
-import '@texting/charset-fullwidth';
-import '@typen/num-strict';
 import { size } from '@vect/matrix';
 
 // export const
@@ -21,7 +19,6 @@ const MUTATE_PIGMENT = {
 };
 
 fluoMatrix.bind(MUTATE_PIGMENT);
-
 const _decoMatrix = function (rows = []) {
   var _Br;
 
