@@ -68,21 +68,9 @@ const STR_BOUND_CONF_FULL = {
 };
 
 const assignFluoConfigs = (p, ...presets) => {
-  if (presets.length === 0) {
-    var _p$presets;
+  var _p$presets;
 
-    if (!p.fluos) p.fluos = ((_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET]).map(preset => ({
-      preset
-    }));
-
-    if (p.full) {
-      const [confNum, confStr] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (confStr && !confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
-    }
-
-    return p;
-  }
+  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
 
   if (presets.length === 1) {
     if (!p.fluos) p.fluos = presets.map(preset => ({
@@ -90,8 +78,8 @@ const assignFluoConfigs = (p, ...presets) => {
     }));
 
     if (p.full) {
-      const [confNum] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      const [confNum = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
     }
 
     return p;
@@ -103,9 +91,9 @@ const assignFluoConfigs = (p, ...presets) => {
     }));
 
     if (p.full) {
-      const [confNum, confStr] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (confStr && !confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+      const [confNum = {}, confStr = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
     }
 
     return p;
@@ -117,10 +105,10 @@ const assignFluoConfigs = (p, ...presets) => {
     }));
 
     if (p.full) {
-      const [confNum, confStr, confLab] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (confStr && !confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
-      if (confLab && !confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL);
+      const [confNum = {}, confStr = {}, confLab = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL);
     }
 
     return p;
@@ -161,7 +149,7 @@ const presetEntries = p => {
   p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRK;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat.decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
 
-  assignFluoConfigs(p);
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -197,7 +185,7 @@ const presetObject = p => {
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COLF;
   p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRC;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat.decoFlat;
-  assignFluoConfigs(p);
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -236,7 +224,7 @@ const presetVector = p => {
   p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRK;
   p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : false;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat.decoFlat;
-  assignFluoConfigs(p);
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -274,7 +262,7 @@ const presetMatrix = p => {
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat.decoFlat;
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : enumMatrixDirections.ROWWISE; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
 
-  assignFluoConfigs(p);
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -311,6 +299,8 @@ const presetCrostab = p => {
 
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.LF;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat.decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
+
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET);
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : enumMatrixDirections.POINTWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;

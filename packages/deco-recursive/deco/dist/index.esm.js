@@ -1,5 +1,5 @@
 import { FRESH, PLANET } from '@palett/presets';
-import { RTSP, CO as CO$6, COSP, LF } from '@spare/enum-chars';
+import { RTSP, CO as CO$7, COSP, LF } from '@spare/enum-chars';
 import { nullish } from '@typen/nullish';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
@@ -54,7 +54,7 @@ const renderEntries = function (entries, lv) {
         unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   let pad;
   const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? mutate(entries, ([k, v]) => lpad(k, pad) + RTSP + v) : wrapEntries(entries, width);
-  return rows.length > 1 ? joinLines(rows, CO$6, lv) : rows.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$7, lv) : rows.join(COSP);
 };
 const wrapEntries = function (entries, width) {
   var _row;
@@ -97,7 +97,7 @@ const renderVector = function (vector, lv) {
         width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   const rows = lv < vert || vector.some(x => lange(x) > unit) || !width ? vector : wrapVector(vector, width);
-  return rows.length > 1 ? joinLines(rows, CO$6, lv) : vector.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$7, lv) : vector.join(COSP);
 };
 const wrapVector = function (vector, width) {
   const lines = [];
@@ -485,6 +485,65 @@ class CharConv$5 {
 
 }
 
+const SP$6 = ' ';
+const CO$6 = ',';
+const DOT$6 = '.';
+
+function _defineProperty$6(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$6 {}
+
+_defineProperty$6(Conv$6, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$6.cjkPunc(n) : CharConv$6.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$6(Conv$6, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$6.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$6 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$6;
+    if (charCode === 0x3001) return CO$6;
+    if (charCode === 0x3002) return DOT$6;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
 /**
  * validate
  * @param x
@@ -649,21 +708,9 @@ const STR_BOUND_CONF_FULL = {
 };
 
 const assignFluoConfigs = (p, ...presets) => {
-  if (presets.length === 0) {
-    var _p$presets;
+  var _p$presets;
 
-    if (!p.fluos) p.fluos = ((_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET]).map(preset => ({
-      preset
-    }));
-
-    if (p.full) {
-      const [confNum, confStr] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (confStr && !confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
-    }
-
-    return p;
-  }
+  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
 
   if (presets.length === 1) {
     if (!p.fluos) p.fluos = presets.map(preset => ({
@@ -671,8 +718,8 @@ const assignFluoConfigs = (p, ...presets) => {
     }));
 
     if (p.full) {
-      const [confNum] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      const [confNum = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
     }
 
     return p;
@@ -684,9 +731,9 @@ const assignFluoConfigs = (p, ...presets) => {
     }));
 
     if (p.full) {
-      const [confNum, confStr] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (confStr && !confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+      const [confNum = {}, confStr = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
     }
 
     return p;
@@ -698,10 +745,10 @@ const assignFluoConfigs = (p, ...presets) => {
     }));
 
     if (p.full) {
-      const [confNum, confStr, confLab] = p.fluos;
-      if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (confStr && !confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
-      if (confLab && !confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL);
+      const [confNum = {}, confStr = {}, confLab = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL);
     }
 
     return p;

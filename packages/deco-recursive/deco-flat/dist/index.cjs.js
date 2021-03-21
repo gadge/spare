@@ -309,6 +309,65 @@ class CharConv$5 {
 
 }
 
+const SP$6 = ' ';
+const CO$6 = ',';
+const DOT$6 = '.';
+
+function _defineProperty$6(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$6 {}
+
+_defineProperty$6(Conv$6, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$6.cjkPunc(n) : CharConv$6.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$6(Conv$6, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$6.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$6 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$6;
+    if (charCode === 0x3001) return CO$6;
+    if (charCode === 0x3002) return DOT$6;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
 const SP = ' ';
 const CO = ',';
 const DOT = '.';
