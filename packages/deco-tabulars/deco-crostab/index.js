@@ -1,7 +1,7 @@
 import { presetCrostab } from '@spare/preset-deco'
-import { cosmetics }     from './src/cosmetics'
+import { _decoCrostab }  from './src/_decoCrostab'
 
-export { cosmetics }
+export { _decoCrostab }
 
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
@@ -33,7 +33,7 @@ export { cosmetics }
  *
  * @returns {string}
  */
-export const Deco = (p = {}) => cosmetics.bind(presetCrostab(p))
+export const Deco = (p = {}) => _decoCrostab.bind(presetCrostab(p))
 
 /**
  *
@@ -64,4 +64,4 @@ export const Deco = (p = {}) => cosmetics.bind(presetCrostab(p))
  *
  * @returns {string}
  */
-export const deco = (crostab, p = {}) => cosmetics.call(presetCrostab(p), crostab)
+export const deco = (crostab, p = {}) => _decoCrostab.call(presetCrostab(p), crostab)

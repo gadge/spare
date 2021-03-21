@@ -3,7 +3,7 @@ import { liner }                         from '@spare/liner'
 
 const LOCAL_OPTION = { discrete: true, bracket: undefined }
 
-export const cosmetics = function (o = {}) {
+export const _decoObject = function (o = {}) {
   const entriesOptions = Object.assign({}, this, LOCAL_OPTION)
   const lines = cosmeticsEntries.call(entriesOptions, Object.entries(o))
   return liner(lines, this)

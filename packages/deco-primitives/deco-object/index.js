@@ -1,7 +1,7 @@
 import { presetObject } from '@spare/preset-deco'
-import { cosmetics }    from './src/cosmetics'
+import { _decoObject }  from './src/_decoObject'
 
-export { cosmetics }
+export { _decoObject }
 
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
@@ -31,7 +31,7 @@ export { cosmetics }
  *
  * @returns {Function}
  */
-export const Deco = (p = {}) => cosmetics.bind(presetObject(p))
+export const Deco = (p = {}) => _decoObject.bind(presetObject(p))
 
 /***
  *
@@ -58,4 +58,4 @@ export const Deco = (p = {}) => cosmetics.bind(presetObject(p))
  *
  * @returns {string}
  */
-export const deco = (o, p = {}) => cosmetics.call(presetObject(p), o)
+export const deco = (o, p = {}) => _decoObject.call(presetObject(p), o)

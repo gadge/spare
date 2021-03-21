@@ -1,7 +1,7 @@
 import { presetSamples } from '@spare/preset-deco'
-import { cosmetics }     from './src/cosmetics'
+import { _decoSamples }  from './src/_decoSamples'
 
-export { cosmetics }
+export { _decoSamples }
 
 /**
  *
@@ -30,7 +30,7 @@ export { cosmetics }
  *
  * @returns {string}
  */
-export const Deco = (p = {}) => cosmetics.bind(presetSamples(p))
+export const Deco = (p = {}) => _decoSamples.bind(presetSamples(p))
 
 /**
  *
@@ -60,4 +60,4 @@ export const Deco = (p = {}) => cosmetics.bind(presetSamples(p))
  *
  * @returns {string}
  */
-export const deco = (samples, p = {}) => cosmetics.call(presetSamples(p), samples)
+export const deco = (samples, p = {}) => _decoSamples.call(presetSamples(p), samples)

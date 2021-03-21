@@ -8,7 +8,7 @@ import { size }        from '@vect/matrix'
 import { acquire }     from '@vect/vector-merge'
 
 const MUTATE = { mutate: true }
-export const cosmetics = function (table) {
+export const _decoTable = function (table) {
   const config = this
   if (!table) return AEU
   let head = table.head || table.banner, rows = table.rows || table.matrix, rule = null

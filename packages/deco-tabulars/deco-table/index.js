@@ -1,7 +1,7 @@
 import { presetTable } from '@spare/preset-deco'
-import { cosmetics }   from './src/cosmetics'
+import { _decoTable }  from './src/_decoTable'
 
-export { cosmetics }
+export { _decoTable }
 
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
@@ -34,7 +34,7 @@ export { cosmetics }
  *
  * @returns {string}
  */
-export const Deco = (p = {}) => cosmetics.bind(presetTable(p))
+export const Deco = (p = {}) => _decoTable.bind(presetTable(p))
 
 /***
  *
@@ -64,4 +64,4 @@ export const Deco = (p = {}) => cosmetics.bind(presetTable(p))
  *
  * @returns {string}
  */
-export const deco = (table, p = {}) => cosmetics.call(presetTable(p), table)
+export const deco = (table, p = {}) => _decoTable.call(presetTable(p), table)

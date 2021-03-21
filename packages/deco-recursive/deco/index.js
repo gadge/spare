@@ -1,10 +1,10 @@
 import { ATLAS, AZURE, MOSS, SUBTLE } from '@palett/presets'
 import { LF }                         from '@spare/enum-chars'
-import { nullish }                    from '@typen/nullish'
-import { decoNode }                   from './src/decoNode'
-import { assignFluoConfigs }          from '@spare/preset-deco'
+import { nullish }           from '@typen/nullish'
+import { _deco }             from './src/_deco'
+import { assignFluoConfigs } from '@spare/preset-deco'
 
-export { decoNode }
+export { _deco }
 
 
 const presetDeco = (p) => {
@@ -41,7 +41,7 @@ const presetDeco = (p) => {
  * @param {?string} [p.qm=null] - quotation mark
  * @returns {string|number}
  */
-export const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob)
+export const deco = (ob, p = {}) => _deco.call(presetDeco(p), ob)
 
 // TODO: fix string.presets default configuration
 
@@ -62,7 +62,7 @@ export const deco = (ob, p = {}) => decoNode.call(presetDeco(p), ob)
  * @param {?string} [p.qm=null] - quotation mark
  * @returns {string|number}
  */
-export const Deco = (p = {}) => decoNode.bind(presetDeco(p))
+export const Deco = (p = {}) => _deco.bind(presetDeco(p))
 
 /**
  *

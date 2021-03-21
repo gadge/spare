@@ -1,7 +1,7 @@
 import { COLORANT }         from '@palett/enum-colorant-modes'
 import { fluoVector }          from '@palett/fluo-vector'
 import { mutazip }          from '@vect/vector-zipper'
-import { Joiner, Splitter } from '../../../src/cosmetics'
+import { Joiner, Splitter } from '../../../src/_decoString'
 
 export const decoStringArc = function (text) {
   const { delim, vectify, joiner, presets } = this ?? {}

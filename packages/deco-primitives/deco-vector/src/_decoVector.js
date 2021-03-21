@@ -6,7 +6,7 @@ import { MUTATE_PIGMENT }                from '@palett/enum-colorant-modes'
 
 const fluo = fluoVector.bind(MUTATE_PIGMENT)
 
-export function cosmetics(vec = []) {
+export function _decoVector(vec = []) {
   const config = this
   if (config?.indexed) return cosmeticsEntries.call(config, Object.entries(vec))
   vec = vectorMargin(vec, config) // use: head, tail, read, rule

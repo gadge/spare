@@ -12,7 +12,7 @@ import { zipper }                from '@vect/vector-zipper'
 
 const MUTATE = { mutate: true }
 
-export const cosmetics = function (samples) {
+export const _decoSamples = function (samples) {
   const config = this, original = samples
   let { fields, indexed, bracket, discrete, level } = config
   if (indexed) { samples = Object.values(samples) }

@@ -18,7 +18,7 @@ import { renderEntries }                          from './utils/renderEntries'
 import { renderString }                           from './utils/renderString'
 import { renderVector }                           from './utils/renderVector'
 
-export function decoNode(node, level, indent) {
+export function _deco(node, level, indent) {
   return this.presets
     ? prettyNode.call(this, node, level, indent)
     : plainNode.call(this, node, level, indent)
@@ -68,7 +68,7 @@ export function plainNode(node, level = 0, indent) {
 
 export const deVe = function (vector, lv) {
   const config = this
-  mutate(vector, v => String(decoNode.call(config, v, lv + 1)))
+  mutate(vector, v => String(_deco.call(config, v, lv + 1)))
   if (config.fluos) fluoVector.call(MUTATE_PIGMENT, vector, config.fluos)
   return renderVector.call(config, vector, lv)
 }
@@ -76,7 +76,7 @@ export const deVe = function (vector, lv) {
 export const deEn = function (entries, lv) {
   const config = this
   const pad = mutateKeyPad(entries)
-  mutateValues(entries, v => String(decoNode.call(config, v, lv + 1, pad)))
+  mutateValues(entries, v => String(_deco.call(config, v, lv + 1, pad)))
   if (config.fluos) fluoEntries.call(MUTATE_PIGMENT, entries, config.fluos)
   return renderEntries.call(config, entries, lv)
 }

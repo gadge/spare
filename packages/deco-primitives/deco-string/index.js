@@ -1,9 +1,9 @@
-import { cosmetics }                        from './src/cosmetics'
+import { _decoString }                      from './src/_decoString'
 import { decoCamel, decoPhrase, decoSnake } from './src/decoSpecials'
 import { presetString }                     from './src/presetString'
 
 export { decoCamel, decoSnake, decoPhrase }
-export { cosmetics }
+export { _decoString }
 /**
  * @param {string} text
  * @param {Object} [p]
@@ -16,7 +16,7 @@ export { cosmetics }
  * @param {Function} [p.joiner]
  * @return {string}
  */
-export const deco = (text, p = {}) => cosmetics.call(presetString(p), text)
+export const deco = (text, p = {}) => _decoString.call(presetString(p), text)
 
 /**
  *
@@ -31,5 +31,5 @@ export const deco = (text, p = {}) => cosmetics.call(presetString(p), text)
  * @param {Function} [p.joiner]
  * @return {Function}
  */
-export const Deco = (p = {}) => cosmetics.bind(presetString(p))
+export const Deco = (p = {}) => _decoString.bind(presetString(p))
 

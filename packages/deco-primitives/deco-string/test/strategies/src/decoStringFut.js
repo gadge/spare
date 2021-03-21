@@ -1,7 +1,7 @@
 import { MUTABLE }      from '@analys/enum-mutabilities'
 import { fluoVector }      from '@palett/fluo-vector'
 import { splitLiteral } from '@spare/splitter'
-import { Joiner }       from '../../../src/cosmetics'
+import { Joiner }       from '../../../src/_decoString'
 
 export const decoStringFut = function (text) {
   // const { delim, vectify, joiner, presets } = this ?? {}

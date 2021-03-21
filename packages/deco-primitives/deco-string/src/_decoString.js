@@ -16,7 +16,7 @@ import { fold }           from '@spare/fold'
  * @return {string}
  */
 
-export const cosmetics = function (text) {
+export const _decoString = function (text) {
   const context = this, length = text?.length
   if (!length) return ''
   if (hasAnsi(text)) return text

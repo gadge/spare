@@ -44,7 +44,7 @@ const matrixColour = (rows, config) => {
   return rows
 }
 
-export const cosmetics = function (rows = []) {
+export const _decoMatrix = function (rows = []) {
   const
     config = this,
     [height, width] = size(rows)

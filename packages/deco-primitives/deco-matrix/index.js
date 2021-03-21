@@ -1,7 +1,7 @@
 import { presetMatrix } from '@spare/preset-deco'
-import { cosmetics }    from './src/cosmetics'
+import { _decoMatrix }  from './src/_decoMatrix'
 
-export { cosmetics }
+export { _decoMatrix }
 
 /***
  *
@@ -28,7 +28,7 @@ export { cosmetics }
  *
  * @returns {Function}
  */
-export const Deco = (p = {}) => cosmetics.bind(presetMatrix(p))
+export const Deco = (p = {}) => _decoMatrix.bind(presetMatrix(p))
 
 /***
  *
@@ -56,5 +56,5 @@ export const Deco = (p = {}) => cosmetics.bind(presetMatrix(p))
  *
  * @returns {string}
  */
-export const deco = (matrix, p = {}) => cosmetics.call(presetMatrix(p), matrix)
+export const deco = (matrix, p = {}) => _decoMatrix.call(presetMatrix(p), matrix)
 

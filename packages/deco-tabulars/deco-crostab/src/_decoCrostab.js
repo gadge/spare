@@ -30,7 +30,7 @@ export const crostabVerbal = (crostab, config = {}) => {
   return crostab
 }
 
-export const cosmetics = function (crostab) {
+export const _decoCrostab = function (crostab) {
   if (!crostab) return AEU
   const config = this
   const [height, width] = size(crostab.rows), labelWidth = crostab.head?.length, labelHeight = crostab.side?.length

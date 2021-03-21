@@ -8,7 +8,7 @@ import { liner }         from '@spare/liner'
 const LF = /\n/
 const fluo = fluoEntries.bind({ colorant: false, mutate: true })
 
-export const cosmetics = function (entries = []) {
+export const _decoEntries = function (entries = []) {
   const config = this
   if (!entries?.length) return liner([], config)
   let { ansi, dash, delim, bracket } = config

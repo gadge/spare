@@ -1,7 +1,7 @@
 import { presetVector } from '@spare/preset-deco'
-import { cosmetics }    from './src/cosmetics'
+import { _decoVector }  from './src/_decoVector'
 
-export { cosmetics }
+export { _decoVector }
 
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
@@ -30,7 +30,7 @@ export { cosmetics }
  *
  * @returns {Function}
  */
-export const Deco = (p = {}) => cosmetics.bind(presetVector(p))
+export const Deco = (p = {}) => _decoVector.bind(presetVector(p))
 
 /***
  *
@@ -57,7 +57,7 @@ export const Deco = (p = {}) => cosmetics.bind(presetVector(p))
  * @returns {string}
  */
 export const deco = (vector, p = {}) =>
-  cosmetics.call(presetVector(p), vector)
+  _decoVector.call(presetVector(p), vector)
 
 /***
  *
@@ -82,4 +82,4 @@ export const deco = (vector, p = {}) =>
  *
  * @returns {Function}
  */
-export const DecoPale = (p = {}) => cosmetics.bind(presetVector(p))
+export const DecoPale = (p = {}) => _decoVector.bind(presetVector(p))
