@@ -1,6 +1,6 @@
 {
   "name": "@spare/bracket",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Add parenthesis/bracket/brace/angle-bracket to string",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
