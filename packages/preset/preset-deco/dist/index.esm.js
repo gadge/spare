@@ -2,6 +2,8 @@ import { decoFlat } from '@spare/deco-flat';
 import { BRK, BRC } from '@spare/enum-brackets';
 import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
 import { FRESH, PLANET, SUBTLE } from '@palett/presets';
+import { parseNum, isNumeric as isNumeric$1 } from '@texting/charset-fullwidth';
+import { isNumeric as isNumeric$2 } from '@texting/charset-halfwidth';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
 
 const NUMERIC_PRESET = FRESH;
@@ -81,6 +83,59 @@ const presetObject = p => {
   return p;
 };
 
+// from x => typeof x
+const STR = 'string';
+
+const v1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
+
+const v2 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
+
+const v3 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
+
+const v4 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
+
+const stringValue = word => {
+  const l = word === null || word === void 0 ? void 0 : word.length;
+  if (!l) return NaN;
+  if (typeof word !== STR) return NaN;
+  if (l >= 8) return (v4(word.slice(0, 4)) << 2) + v4(word.slice(-4));
+  if (l === 7) return (v4(word.slice(0, 4)) << 2) + v3(word.slice(-3));
+  if (l === 6) return (v4(word.slice(0, 4)) << 2) + v2(word.slice(-2));
+  if (l === 5) return (v4(word.slice(0, 4)) << 2) + v1(word.slice(-1));
+  if (l === 4) return v4(word) << 2;
+  if (l === 3) return v3(word) << 2;
+  if (l === 2) return v2(word) << 2;
+  if (l === 1) return v1(word) << 2;
+};
+
+const CJK_LETTERS = '\u4e00-\u9fbf';
+
+const HALF_NUM = '0-9';
+const HALF_UPPER = 'A-Z';
+const HALF_LOWER = 'a-z';
+const FULL_NUM = '０-９'; // 0xff10 - 0xff19
+
+const FULL_UPPER = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
+
+const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
+
+const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
+const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM}`;
+
+const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
+
+const isLiteralAny = x => LITERAL_ANY.test(x);
+
+const isNumeric = x => isNumeric$1(x) || isNumeric$2(x);
+const NUM_BOUND_CONF_FULL = {
+  filter: isNumeric,
+  mapper: parseNum
+};
+const STR_BOUND_CONF_FULL = {
+  filter: isLiteralAny,
+  mapper: stringValue
+};
+
 /***
  *
  * @param {Object} p
@@ -95,10 +150,12 @@ const presetObject = p => {
  * @param {Function} [p.read=decoFlat]
  *
  * @param {Object[]} [p.presets]
+ * @param {Object[]} [p.fluos]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
  *
+ * @param {boolean} [p.full=false]
  * @param {boolean} [p.ansi=true]
  * @param {number} [p.level=0]
  *
@@ -113,7 +170,16 @@ const presetVector = p => {
   p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
   p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : false;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
-  p.presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
+  if (!p.fluos) p.fluos = ((_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET]).map(preset => ({
+    preset
+  }));
+
+  if (p.full) {
+    const [confNum, confStr] = p.fluos;
+    if (confNum && !confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+    if (confStr && !confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+  }
+
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };

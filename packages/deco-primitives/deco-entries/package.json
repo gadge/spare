@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@palett/fluo-entries": "^0.5.13",
+    "@palett/fluo-entries": "^0.6.1",
     "@spare/bracket": "^0.10.14",
     "@spare/entries-margin": "^0.10.14",
     "@spare/entries-padder": "^0.10.14",

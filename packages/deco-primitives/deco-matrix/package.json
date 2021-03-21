@@ -16,13 +16,14 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@palett/fluo-matrix": "^0.5.13",
+    "@palett/fluo-matrix": "^0.6.1",
     "@spare/bracket": "^0.10.14",
     "@spare/enum-chars": "^0.10.14",
     "@spare/liner": "^0.10.14",
     "@spare/matrix-margin": "^0.10.14",
     "@spare/matrix-padder": "^0.10.14",
     "@spare/preset-deco": "^0.10.14",
+    "@texting/charset-fullwidth": "^0.0.5",
     "@vect/matrix": "^0.3.6"
   },
   "repository": {

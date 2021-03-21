@@ -16,12 +16,14 @@
   },
   "dependencies": {
     "@ject/pipe": "^0.0.6",
-    "@palett/presets": "^0.5.13",
+    "@palett/presets": "^0.6.1",
     "@spare/deco-flat": "^0.10.14",
     "@spare/enum-brackets": "^0.10.14",
     "@spare/enum-chars": "^0.10.14",
     "@spare/quote": "^0.10.14",
-    "@vect/enum-matrix-directions": "^0.3.6"
+    "@vect/enum-matrix-directions": "^0.3.6",
+    "@texting/charset-halfwidth": "^0.0.5",
+    "@texting/charset-fullwidth": "^0.0.5"
   },
   "repository": {
     "type": "git",

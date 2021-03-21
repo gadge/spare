@@ -18,105 +18,140 @@ var DecoVectorEnv = require('@spare/deco-vector');
 var XrEnv = require('@spare/xr');
 var enumChars = require('@spare/enum-chars');
 
+function _interopNamespace(e) {
+	if (e && e.__esModule) return e;
+	var n = Object.create(null);
+	if (e) {
+		Object.keys(e).forEach(function (k) {
+			if (k !== 'default') {
+				var d = Object.getOwnPropertyDescriptor(e, k);
+				Object.defineProperty(n, k, d.get ? d : {
+					enumerable: true,
+					get: function () {
+						return e[k];
+					}
+				});
+			}
+		});
+	}
+	n['default'] = e;
+	return Object.freeze(n);
+}
+
+var Sayer__namespace = /*#__PURE__*/_interopNamespace(Sayer);
+var DecoGeneric__namespace = /*#__PURE__*/_interopNamespace(DecoGeneric);
+var DecoCrostabEnv__namespace = /*#__PURE__*/_interopNamespace(DecoCrostabEnv);
+var DecoEntriesEnv__namespace = /*#__PURE__*/_interopNamespace(DecoEntriesEnv);
+var DecoFlatEnv__namespace = /*#__PURE__*/_interopNamespace(DecoFlatEnv);
+var DecoFuncEnv__namespace = /*#__PURE__*/_interopNamespace(DecoFuncEnv);
+var DecoMatrixEnv__namespace = /*#__PURE__*/_interopNamespace(DecoMatrixEnv);
+var DecoObjectEnv__namespace = /*#__PURE__*/_interopNamespace(DecoObjectEnv);
+var DecoPaleEnv__namespace = /*#__PURE__*/_interopNamespace(DecoPaleEnv);
+var DecoSamplesEnv__namespace = /*#__PURE__*/_interopNamespace(DecoSamplesEnv);
+var DecoStringEnv__namespace = /*#__PURE__*/_interopNamespace(DecoStringEnv);
+var DecoTableEnv__namespace = /*#__PURE__*/_interopNamespace(DecoTableEnv);
+var DecoVectorEnv__namespace = /*#__PURE__*/_interopNamespace(DecoVectorEnv);
+var XrEnv__namespace = /*#__PURE__*/_interopNamespace(XrEnv);
+
 const logger = (x, ...p) => void console.log(x + '', ...p);
 const logNeL = (x, ...p) => void console.log(x + '', ...p, enumChars.LF);
 
 /** @type {Function} */
 
-const Xr = XrEnv.Xr;
+const Xr = XrEnv__namespace.Xr;
 /** @type {Function} */
 
-const xr = XrEnv.xr;
+const xr = XrEnv__namespace.xr;
 /** @class */
 
-const Says = Sayer.Says;
+const Says = Sayer__namespace.Says;
 /** @type {Function} */
 
-const says = Sayer.says;
+const says = Sayer__namespace.says;
 /** @type {Function} */
 
-const ros = Sayer.ros;
+const ros = Sayer__namespace.ros;
 /** @type {Function} */
 
-const deco = DecoGeneric.deco;
+const deco = DecoGeneric__namespace.deco;
 /** @type {Function} */
 
-const Deco = DecoGeneric.Deco;
+const Deco = DecoGeneric__namespace.Deco;
 /** @type {Function} */
 
-const deca = DecoGeneric.Deco;
+const deca = DecoGeneric__namespace.Deco;
 /** @type {Function} */
 
-const delogger = DecoGeneric.delogger;
+const delogger = DecoGeneric__namespace.delogger;
 /** @type {Function} */
 
-const delogNeL = DecoGeneric.delogNeL;
+const delogNeL = DecoGeneric__namespace.delogNeL;
 /** @type {Function} */
 
-const decoString = DecoStringEnv.deco;
+const decoString = DecoStringEnv__namespace.deco;
 /** @type {Function} */
 
-const decoVector = DecoVectorEnv.deco;
+const decoVector = DecoVectorEnv__namespace.deco;
 /** @type {Function} */
 
-const decoEntries = DecoEntriesEnv.deco;
+const decoEntries = DecoEntriesEnv__namespace.deco;
 /** @type {Function} */
 
-const decoObject = DecoObjectEnv.deco;
+const decoObject = DecoObjectEnv__namespace.deco;
 /** @type {Function} */
 
-const decoMatrix = DecoMatrixEnv.deco;
+const decoMatrix = DecoMatrixEnv__namespace.deco;
 /** @type {Function} */
 
-const decoSamples = DecoSamplesEnv.deco;
+const decoSamples = DecoSamplesEnv__namespace.deco;
 /** @type {Function} */
 
-const decoTable = DecoTableEnv.deco;
+const decoTable = DecoTableEnv__namespace.deco;
 /** @type {Function} */
 
-const decoCrostab = DecoCrostabEnv.deco;
+const decoCrostab = DecoCrostabEnv__namespace.deco;
 /** @type {Function} */
 
-const decoFunc = DecoFuncEnv.decoFunc;
+const decoFunc = DecoFuncEnv__namespace.decoFunc;
 /** @type {Function} */
 
-const decoPale = DecoPaleEnv.decoPale;
+const decoPale = DecoPaleEnv__namespace.decoPale;
 /** @type {Function} */
 
-const decoFlat = DecoFlatEnv.decoFlat;
+const decoFlat = DecoFlatEnv__namespace.decoFlat;
 /** @type {Function} */
 
-const DecoString = DecoStringEnv.Deco;
+const DecoString = DecoStringEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoVector = DecoVectorEnv.Deco;
+const DecoVector = DecoVectorEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoEntries = DecoEntriesEnv.Deco;
+const DecoEntries = DecoEntriesEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoObject = DecoObjectEnv.Deco;
+const DecoObject = DecoObjectEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoMatrix = DecoMatrixEnv.Deco;
+const DecoMatrix = DecoMatrixEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoSamples = DecoSamplesEnv.Deco;
+const DecoSamples = DecoSamplesEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoTable = DecoTableEnv.Deco;
+const DecoTable = DecoTableEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoCrostab = DecoCrostabEnv.Deco;
+const DecoCrostab = DecoCrostabEnv__namespace.Deco;
 /** @type {Function} */
 
-const DecoFunc = DecoFuncEnv.DecoFunc;
+const DecoFunc = DecoFuncEnv__namespace.DecoFunc;
 /** @type {Function} */
 
-const DecoPale = DecoPaleEnv.DecoPale;
+const DecoPale = DecoPaleEnv__namespace.DecoPale;
 /** @type {Function} */
 
-const DecoFlat = DecoFlatEnv.DecoFlat;
+const DecoFlat = DecoFlatEnv__namespace.DecoFlat;
 
 exports.Deco = Deco;
 exports.DecoCrostab = DecoCrostab;

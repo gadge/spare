@@ -3,6 +3,7 @@ import { BRK }                            from '@spare/enum-brackets'
 import { COSP }                           from '@spare/enum-chars'
 import { ROWWISE }                        from '@vect/enum-matrix-directions'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
+import { assignFluoConfigs }              from '../utils/assignFluoConfigs'
 
 /***
  *
@@ -33,7 +34,8 @@ export const presetMatrix = p => {
   p.bracket = p.bracket ?? BRK
   p.read = p.read ?? decoFlat
   p.direct = p.direct ?? ROWWISE
-  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
+  // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
+  assignFluoConfigs(p)
   p.ansi = p.ansi ?? true
   return p
 }

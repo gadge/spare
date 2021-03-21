@@ -1,9 +1,11 @@
 import { rand }                   from '@aryth/rand'
-import { simpleVectors }          from '@foba/foo'
+import { simpleVectorCollection } from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
 import { METRO, SUBTLE }          from '@palett/presets'
 import { BRK }                    from '@spare/enum-brackets'
-import { says }                   from '@spare/logger'
+import { logger, says }           from '@spare/logger'
+import { wordsByIter }            from '@spare/splitter/test/strategies/src/wordsByIter'
+import { wL }                     from '@spare/string'
 import { Deco }                   from '../index'
 
 const Strangers = {
@@ -14,7 +16,7 @@ const Strangers = {
   misc: [null, undefined, NaN, 'Infinity', '+', 1.2E+1, 1.2E+2, 1.2E+3, 1.2E+4]
 }
 
-const SimpleVectors = simpleVectors({ h: 16 })
+const SimpleVectors = simpleVectorCollection({ h: 16 })
 
 const candidates = { ...Strangers, ...SimpleVectors }
 
@@ -32,7 +34,8 @@ export class VectorDecoTest {
         discrete: false,
         label: 1,
       })
-        |> says[key]
+        |> logger
+      // |> says[key]
     }
   }
 }

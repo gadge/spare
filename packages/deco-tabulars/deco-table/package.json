@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.5.13",
-    "@palett/fluo-vector": "^0.5.13",
+    "@palett/fluo-matrix": "^0.6.1",
+    "@palett/fluo-vector": "^0.6.1",
     "@spare/enum-chars": "^0.10.14",
     "@spare/liner": "^0.10.14",
     "@spare/preset-deco": "^0.10.14",

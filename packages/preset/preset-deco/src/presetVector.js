@@ -1,7 +1,9 @@
-import { decoFlat }                       from '@spare/deco-flat'
-import { BRK }                            from '@spare/enum-brackets'
-import { COLF }                           from '@spare/enum-chars'
-import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
+import { decoFlat }                                 from '@spare/deco-flat'
+import { BRK }                                      from '@spare/enum-brackets'
+import { COLF }                                     from '@spare/enum-chars'
+import { LITERAL_PRESET, NUMERIC_PRESET }           from '../resources/dyePresets'
+import { assignFluoConfigs }                        from '../utils/assignFluoConfigs'
+import { NUM_BOUND_CONF_FULL, STR_BOUND_CONF_FULL } from '../utils/fullWidthConfigs'
 
 /***
  *
@@ -17,10 +19,12 @@ import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
  * @param {Function} [p.read=decoFlat]
  *
  * @param {Object[]} [p.presets]
+ * @param {Object[]} [p.fluos]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]
  *
+ * @param {boolean} [p.full=false]
  * @param {boolean} [p.ansi=true]
  * @param {number} [p.level=0]
  *
@@ -32,7 +36,8 @@ export const presetVector = p => {
   p.bracket = p.bracket ?? BRK
   p.indexed = p.indexed ?? false
   p.read = p.read ?? decoFlat
-  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
+  assignFluoConfigs(p)
   p.ansi = p.ansi ?? true
   return p
 }
+

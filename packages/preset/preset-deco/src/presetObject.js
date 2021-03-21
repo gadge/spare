@@ -2,6 +2,7 @@ import { decoFlat }                       from '@spare/deco-flat'
 import { BRC }                            from '@spare/enum-brackets'
 import { COLF, RTSP }                     from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
+import { assignFluoConfigs }              from '../utils/assignFluoConfigs'
 
 /**
  *
@@ -31,7 +32,7 @@ export const presetObject = p => {
   p.delim = p.delim ?? COLF
   p.bracket = p.bracket ?? BRC
   p.read = p.read ?? decoFlat
-  p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
+  assignFluoConfigs(p)
   p.ansi = p.ansi ?? true
   return p
 }

@@ -1,3 +1,5 @@
+import { decoPale }     from '@spare/deco-pale'
+import { logger }       from '@spare/logger'
 import { presetVector } from '@spare/preset-deco'
 import { cosmetics }    from './src/cosmetics'
 
@@ -72,7 +74,7 @@ export const deco = (vector, p = {}) =>
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

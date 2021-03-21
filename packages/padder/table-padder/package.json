@@ -15,13 +15,13 @@
     "test": "node -r @babel/register test/table-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.3.6",
+    "@aryth/comparer": "^0.3.10",
     "@spare/enum-chars": "^0.10.14",
     "@spare/enum-full-angle-chars": "^0.10.14",
     "@spare/fullwidth": "^0.10.14",
     "@spare/lange": "^0.10.14",
     "@spare/matrix-padder": "^0.10.14",
-    "@texting/padder": "^0.0.4",
+    "@texting/padder": "^0.0.5",
     "@vect/columns-mapper": "^0.3.6",
     "@vect/columns-stat": "^0.3.6",
     "@vect/matrix-mapper": "^0.3.6",
