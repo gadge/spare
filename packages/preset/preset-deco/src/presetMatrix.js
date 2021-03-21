@@ -35,7 +35,7 @@ export const presetMatrix = p => {
   p.read = p.read ?? decoFlat
   p.direct = p.direct ?? ROWWISE
   // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
-  assignFluoConfigs(p)
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET)
   p.ansi = p.ansi ?? true
   return p
 }

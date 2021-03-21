@@ -32,7 +32,7 @@ const cosmetics = function (entries = []) {
   if (LF.test(delim)) entries = entriesPadder.entriesPadder(entries, {
     ansi: (_config$presets = config.presets) !== null && _config$presets !== void 0 ? _config$presets : ansi
   });
-  if (config.presets) entries = fluo(entries, config); // use: presets, effects
+  if (config.fluos) entries = fluo(entries, config.fluos); // use: presets, effects
 
   return liner.liner(entries.map(([k, v]) => bracket$1(k + dash + v.trimRight())), config);
 };

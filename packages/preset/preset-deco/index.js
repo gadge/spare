@@ -10,3 +10,7 @@ export {
   LITERAL_PRESET,
   HEADING_PRESET
 }                        from './resources/dyePresets'
+export {
+  assignFluoConfigs,
+  assignFluoConfigsForTabular
+}                        from './utils/assignFluoConfigs'

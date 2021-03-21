@@ -22,7 +22,8 @@
     "@spare/enum-chars": "^0.10.14",
     "@spare/fold": "^0.10.14",
     "@spare/splitter": "^0.10.14",
-    "@typen/nullish": "^0.1.16"
+    "@typen/nullish": "^0.1.16",
+    "@spare/preset-deco": "^0.10.14"
   },
   "repository": {
     "type": "git",

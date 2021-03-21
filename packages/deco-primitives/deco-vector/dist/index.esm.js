@@ -3,17 +3,15 @@ import { fluoVector } from '@palett/fluo-vector';
 import { cosmetics as cosmetics$1 } from '@spare/deco-entries';
 import { liner } from '@spare/liner';
 import { vectorMargin } from '@spare/vector-margin';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 
-const fluo = fluoVector.bind({
-  colorant: false,
-  mutate: true
-});
+const fluo = fluoVector.bind(MUTATE_PIGMENT);
 function cosmetics(vec = []) {
   const config = this;
   if (config !== null && config !== void 0 && config.indexed) return cosmetics$1.call(config, Object.entries(vec));
   vec = vectorMargin(vec, config); // use: head, tail, read, rule
 
-  if (config.presets) vec = fluo(vec, config); // use:  presets, effects
+  if (config.fluos) vec = fluo(vec, config.fluos); // use:  presets, effects
 
   return liner(vec, config);
 }
@@ -86,7 +84,7 @@ const deco = (vector, p = {}) => cosmetics.call(presetVector(p), vector);
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

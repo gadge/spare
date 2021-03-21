@@ -2,7 +2,7 @@ import { decoFlat }                                       from '@spare/deco-flat
 import { LF }                                             from '@spare/enum-chars'
 import { POINTWISE }                                      from '@vect/enum-matrix-directions'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { assignFluoConfigsForTabular }                    from '../utils/assignFluoConfigs'
+import { assignFluoConfigs }                              from '../utils/assignFluoConfigs'
 
 /**
  * @param {Object} p
@@ -34,7 +34,7 @@ export const presetCrostab = p => {
   p.delim = p.delim ?? LF
   p.read = p.read ?? decoFlat
   // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-  assignFluoConfigsForTabular(p)
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
   p.direct = p.direct ?? POINTWISE
   p.ansi = p.ansi ?? true
   return p

@@ -1,16 +1,16 @@
 import { oneself }                              from '@ject/oneself'
+import { MUTATE_PIGMENT }                       from '@palett/enum-colorant-modes'
 import { fluoMatrix }                           from '@palett/fluo-matrix'
 import { Br }                                   from '@spare/bracket'
 import { COLF }                                 from '@spare/enum-chars'
 import { liner }                                from '@spare/liner'
-import { deco, logger }                         from '@spare/logger'
 import { matrixMargin }                         from '@spare/matrix-margin'
 import { matrixPadder }                         from '@spare/matrix-padder'
+import { isNumeric as isNumericFull, parseNum } from '@texting/charset-fullwidth'
 import { isNumeric }                            from '@typen/num-strict'
 import { size }                                 from '@vect/matrix'
-import { isNumeric as isNumericFull, parseNum } from '@texting/charset-fullwidth'
 
-const fluo = fluoMatrix.bind({ colorant: false, mutate: true })
+const fluo = fluoMatrix.bind(MUTATE_PIGMENT)
 
 /**
  *
@@ -38,7 +38,7 @@ const matrixColour = (rows, config) => {
     }
     const conf = Object.assign({}, config)
     conf.presets = presets
-    presets |> deco |> logger
+    // presets |> deco |> logger
     rows = fluo(rows, config) // use: direct, presets, effects
   }
   return rows

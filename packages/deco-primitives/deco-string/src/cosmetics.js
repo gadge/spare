@@ -1,8 +1,8 @@
-import { MUTABLE }    from '@analys/enum-mutabilities'
-import { fluoVector } from '@palett/fluo-vector'
-import { hasAnsi }    from '@spare/charset'
-import { LF, TB }     from '@spare/enum-chars'
-import { fold }       from '@spare/fold'
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
+import { fluoVector }     from '@palett/fluo-vector'
+import { hasAnsi }        from '@spare/charset'
+import { LF, TB }         from '@spare/enum-chars'
+import { fold }           from '@spare/fold'
 
 /**
  * @prop width - foldToVector
@@ -34,6 +34,6 @@ export const fluoString = function (text) {
   const config = this
   const { vectify, joiner } = this
   const words = vectify(text)
-  fluoVector.call(MUTABLE, words, config) // use: presets, effects
+  fluoVector.call(MUTATE_PIGMENT, words, config.fluos) // use: presets, effects
   return joiner ? joiner(words) : words.join('')
 }

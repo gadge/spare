@@ -2,14 +2,24 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumMutabilities = require('@analys/enum-mutabilities');
 var fluoVector = require('@palett/fluo-vector');
 var charset = require('@spare/charset');
 var enumChars = require('@spare/enum-chars');
 var fold = require('@spare/fold');
 var splitter = require('@spare/splitter');
 var presets = require('@palett/presets');
+var presetDeco = require('@spare/preset-deco');
 var nullish = require('@typen/nullish');
+
+// export const
+//   FUNC = '',
+//   PIGM = '',
+//   HEX = ''
+const RENDER = 'render';
+const MUTATE_PIGMENT = {
+  colorant: RENDER,
+  mutate: true
+};
 
 /**
  * @prop width - foldToVector
@@ -49,7 +59,7 @@ const fluoString = function (text) {
     joiner
   } = this;
   const words = vectify(text);
-  fluoVector.fluoVector.call(enumMutabilities.MUTABLE, words, config); // use: presets, effects
+  fluoVector.fluoVector.call(MUTATE_PIGMENT, words, config.fluos); // use: presets, effects
 
   return joiner ? joiner(words) : words.join('');
 };
@@ -58,7 +68,9 @@ const NUMERIC_PRESET = presets.ATLAS;
 const LITERAL_PRESET = presets.SUBTLE;
 const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
 const presetString = p => {
-  if (nullish.nullish(p.presets)) p.presets = PRESETS;
+  // if (nullish(p.presets)) p.presets = PRESETS
+  presetDeco.assignFluoConfigs(p); // p |> JSON.stringify |> console.log
+
   if (nullish.nullish(p.vectify)) p.vectify = splitter.splitLiteral;
   if (nullish.nullish(p.width)) p.width = 0;
   return p;

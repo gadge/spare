@@ -1,7 +1,8 @@
 import { ATLAS, AZURE, MOSS, SUBTLE } from '@palett/presets'
 import { LF }                         from '@spare/enum-chars'
-import { nullish }  from '@typen/nullish'
-import { decoNode } from './src/decoNode'
+import { nullish }                    from '@typen/nullish'
+import { decoNode }                   from './src/decoNode'
+import { assignFluoConfigs }          from '@spare/preset-deco'
 
 export { decoNode }
 
@@ -9,14 +10,16 @@ export { decoNode }
 const presetDeco = (p) => {
   if (!p) p = {}
   p.wf = p.wf ?? 160
-  if (nullish(p.presets)) p.presets = p.pr ?? [AZURE, MOSS]
+  // if (nullish(p.presets)) p.presets = p.pr ?? [AZURE, MOSS]
+  assignFluoConfigs(p)
   if (nullish(p.depth)) p.depth = 8 // 展示级别
   if (nullish(p.vert)) p.vert = 0 // 在此级别以下均设为竖排
   if (nullish(p.unit)) p.unit = 32 // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
   if (nullish(p.width)) p.width = 80 // 字符超过此, 则换行
   if (nullish(p.string)) p.string = {}
   const s = p.string
-  if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE]
+  // if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE]
+  assignFluoConfigs(s)
   return p
 }
 

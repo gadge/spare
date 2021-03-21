@@ -1,11 +1,21 @@
-import { MUTABLE } from '@analys/enum-mutabilities';
 import { fluoVector } from '@palett/fluo-vector';
 import { hasAnsi } from '@spare/charset';
 import { LF, TB, DA, SP } from '@spare/enum-chars';
 import { fold } from '@spare/fold';
 import { splitLiteral, splitCamel, splitSnake } from '@spare/splitter';
 import { ATLAS, SUBTLE } from '@palett/presets';
+import { assignFluoConfigs } from '@spare/preset-deco';
 import { nullish } from '@typen/nullish';
+
+// export const
+//   FUNC = '',
+//   PIGM = '',
+//   HEX = ''
+const RENDER = 'render';
+const MUTATE_PIGMENT = {
+  colorant: RENDER,
+  mutate: true
+};
 
 /**
  * @prop width - foldToVector
@@ -45,7 +55,7 @@ const fluoString = function (text) {
     joiner
   } = this;
   const words = vectify(text);
-  fluoVector.call(MUTABLE, words, config); // use: presets, effects
+  fluoVector.call(MUTATE_PIGMENT, words, config.fluos); // use: presets, effects
 
   return joiner ? joiner(words) : words.join('');
 };
@@ -54,7 +64,9 @@ const NUMERIC_PRESET = ATLAS;
 const LITERAL_PRESET = SUBTLE;
 const PRESETS = [NUMERIC_PRESET, LITERAL_PRESET];
 const presetString = p => {
-  if (nullish(p.presets)) p.presets = PRESETS;
+  // if (nullish(p.presets)) p.presets = PRESETS
+  assignFluoConfigs(p); // p |> JSON.stringify |> console.log
+
   if (nullish(p.vectify)) p.vectify = splitLiteral;
   if (nullish(p.width)) p.width = 0;
   return p;

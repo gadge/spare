@@ -32,7 +32,7 @@ export const presetObject = p => {
   p.delim = p.delim ?? COLF
   p.bracket = p.bracket ?? BRC
   p.read = p.read ?? decoFlat
-  assignFluoConfigs(p)
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET)
   p.ansi = p.ansi ?? true
   return p
 }

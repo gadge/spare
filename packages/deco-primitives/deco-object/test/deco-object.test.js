@@ -1,10 +1,11 @@
-import { rand }          from '@aryth/rand'
+import { rand }                   from '@aryth/rand'
 import { simpleObjectCollection } from '@foba/foo'
-import { OCEAN }         from '@palett/presets'
-import { says }          from '@palett/says'
-import { delogger }      from '@spare/deco'
-import { inferType } from '@typen/num-strict'
-import { Deco }      from '../index'
+import { OCEAN }                  from '@palett/presets'
+import { says }                   from '@palett/says'
+import { delogger }               from '@spare/deco'
+import { logger }                 from '@spare/logger'
+import { inferType }              from '@typen/num-strict'
+import { Deco }                   from '../index'
 
 let SimpleObjects = simpleObjectCollection({ h: 12 })
 
@@ -19,6 +20,7 @@ for (const [key, entries] of Object.entries(SimpleObjects)) {
     discrete: false,
     level: rand(3)
   })
-  words |> says[key].p(inferType(words))
+  words|> logger
+  // |> says[key].p(inferType(words))
   // entries |> Deco({ dash: ',', delim: ',\n', quote: true, quote: '\'' }) |> logger
 }

@@ -1,5 +1,3 @@
-import { decoPale }     from '@spare/deco-pale'
-import { logger }       from '@spare/logger'
 import { presetVector } from '@spare/preset-deco'
 import { cosmetics }    from './src/cosmetics'
 

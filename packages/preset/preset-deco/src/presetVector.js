@@ -36,7 +36,7 @@ export const presetVector = p => {
   p.bracket = p.bracket ?? BRK
   p.indexed = p.indexed ?? false
   p.read = p.read ?? decoFlat
-  assignFluoConfigs(p)
+  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET)
   p.ansi = p.ansi ?? true
   return p
 }

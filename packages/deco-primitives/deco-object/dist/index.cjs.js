@@ -6,11 +6,12 @@ var presetDeco = require('@spare/preset-deco');
 var decoEntries = require('@spare/deco-entries');
 var liner = require('@spare/liner');
 
+const LOCAL_OPTION = {
+  discrete: true,
+  bracket: undefined
+};
 const cosmetics = function (o = {}) {
-  const entriesOptions = Object.assign({}, this, {
-    discrete: true,
-    bracket: undefined
-  });
+  const entriesOptions = Object.assign({}, this, LOCAL_OPTION);
   const lines = decoEntries.cosmetics.call(entriesOptions, Object.entries(o));
   return liner.liner(lines, this);
 };

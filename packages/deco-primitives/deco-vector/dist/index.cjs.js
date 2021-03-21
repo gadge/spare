@@ -7,17 +7,15 @@ var fluoVector = require('@palett/fluo-vector');
 var decoEntries = require('@spare/deco-entries');
 var liner = require('@spare/liner');
 var vectorMargin = require('@spare/vector-margin');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 
-const fluo = fluoVector.fluoVector.bind({
-  colorant: false,
-  mutate: true
-});
+const fluo = fluoVector.fluoVector.bind(enumColorantModes.MUTATE_PIGMENT);
 function cosmetics(vec = []) {
   const config = this;
   if (config !== null && config !== void 0 && config.indexed) return decoEntries.cosmetics.call(config, Object.entries(vec));
   vec = vectorMargin.vectorMargin(vec, config); // use: head, tail, read, rule
 
-  if (config.presets) vec = fluo(vec, config); // use:  presets, effects
+  if (config.fluos) vec = fluo(vec, config.fluos); // use:  presets, effects
 
   return liner.liner(vec, config);
 }
@@ -90,7 +88,7 @@ const deco = (vector, p = {}) => cosmetics.call(presetDeco.presetVector(p), vect
  * @param {boolean} [p.indexed=true]
  * @param {Function} [p.read]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  *
  * @param {number} [p.head]
  * @param {number} [p.tail]

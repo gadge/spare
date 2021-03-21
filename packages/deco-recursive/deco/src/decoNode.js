@@ -1,4 +1,4 @@
-import { MUTABLE }                                from '@analys/enum-mutabilities'
+import { MUTATE_PIGMENT }                         from '@palett/enum-colorant-modes'
 import { fluoEntries }                            from '@palett/fluo-entries'
 import { fluoVector }                             from '@palett/fluo-vector'
 import { brace, bracket }                         from '@spare/bracket'
@@ -42,12 +42,12 @@ export function prettyNode(node, level = 0, indent) {
     if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> BRC[level & 7]
     if (pt === DATE) return level >= depth ? decoDate(node) : decoDateTime(node)
     if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [...node.entries()], level) |> BRK[level & 7]
-    if (pt === SET) return level >= depth ? '(set)' : `set:[${ deVe.call(this, [...node], level) }]`
-    return `${ node }`
+    if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [...node], level)}]`
+    return `${node}`
   }
   if (t === BOO) return PAL.BOO(node)
   if (t === UND || t === SYM) return PAL.UDF(node)
-  return `${ node }`
+  return `${node}`
 }
 
 export function plainNode(node, level = 0, indent) {
@@ -60,8 +60,8 @@ export function plainNode(node, level = 0, indent) {
     if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> brace
     if (pt === DATE) return level >= depth ? formatDate(node) : formatDateTime(node)
     if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [...node.entries()], level) |> bracket
-    if (pt === SET) return level >= depth ? '(set)' : `set:[${ deVe.call(this, [...node], level) }]`
-    return `${ node }`
+    if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [...node], level)}]`
+    return `${node}`
   }
   return node
 }
@@ -69,7 +69,7 @@ export function plainNode(node, level = 0, indent) {
 export const deVe = function (vector, lv) {
   const config = this
   mutate(vector, v => String(decoNode.call(config, v, lv + 1)))
-  if (config.presets) fluoVector.call(MUTABLE, vector, config)
+  if (config.fluos) fluoVector.call(MUTATE_PIGMENT, vector, config.fluos)
   return renderVector.call(config, vector, lv)
 }
 
@@ -77,7 +77,7 @@ export const deEn = function (entries, lv) {
   const config = this
   const pad = mutateKeyPad(entries)
   mutateValues(entries, v => String(decoNode.call(config, v, lv + 1, pad)))
-  if (config.presets) fluoEntries.call(MUTABLE, entries, config)
+  if (config.fluos) fluoEntries.call(MUTATE_PIGMENT, entries, config.fluos)
   return renderEntries.call(config, entries, lv)
 }
 
