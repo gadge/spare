@@ -1,7 +1,6 @@
 import { FluoConfigs }                from '@palett/fluo'
 import { ATLAS, AZURE, MOSS, SUBTLE } from '@palett/presets'
 import { LF }                         from '@spare/enum-chars'
-import { logger }                     from '@spare/logger'
 import { nullish }                    from '@typen/nullish'
 import { _deco }                      from './src/_deco'
 
@@ -20,7 +19,7 @@ const presetDeco = (p) => {
   const s = p.string
   // if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE]
   FluoConfigs.prototype.assignPresets.call(s.fluos, ATLAS, SUBTLE)
-  p |> JSON.stringify |> logger
+  // p |> JSON.stringify |> logger
   return p
 }
 

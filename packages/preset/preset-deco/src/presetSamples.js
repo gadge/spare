@@ -4,7 +4,6 @@ import { COSP }                                           from '@spare/enum-char
 import { COLUMNWISE }                                     from '@vect/enum-matrix-directions'
 import { assignFluoConfigs }                              from '../dist/index.esm'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { assignFluoConfigsForTabular }                    from '../utils/assignFluoConfigs'
 
 /**
  *

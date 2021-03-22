@@ -1,9 +1,8 @@
-import { decoFlat }                                 from '@spare/deco-flat'
-import { BRK }                                      from '@spare/enum-brackets'
-import { COLF }                                     from '@spare/enum-chars'
-import { LITERAL_PRESET, NUMERIC_PRESET }           from '../resources/dyePresets'
-import { assignFluoConfigs }                        from '../utils/assignFluoConfigs'
-import { NUM_BOUND_CONF_FULL, STR_BOUND_CONF_FULL } from '../utils/fullWidthConfigs'
+import { decoFlat }                       from '@spare/deco-flat'
+import { BRK }                            from '@spare/enum-brackets'
+import { COLF }                           from '@spare/enum-chars'
+import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
+import { assignFluoConfigs }              from '../utils/assignFluoConfigs'
 
 /***
  *

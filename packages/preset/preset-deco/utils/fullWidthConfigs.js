@@ -1,6 +1,6 @@
-import { stringValue }                          from '@texting/string-value'
 import { isNumeric as isNumericFull, parseNum } from '@texting/charset-fullwidth'
 import { isNumeric as isNumericHalf }           from '@texting/charset-halfwidth'
+import { stringValue }                          from '@texting/string-value'
 import { isLiteralAny }                         from '@typen/literal'
 
 export const isNumeric = x => isNumericFull(x) || isNumericHalf(x)
