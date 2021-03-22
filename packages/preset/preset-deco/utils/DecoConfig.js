@@ -17,7 +17,7 @@ export class DecoConfig {
   }
 }
 
-export const decoConfig = (p, ...presets) => {
+export const assignFluoConfigs = (p, ...presets) => {
   if (presets.length === 0) presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   if (presets.length === 1) {
     if (!p.fluos) p.fluos = presets.map(preset => ({ preset }))

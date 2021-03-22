@@ -34,8 +34,7 @@ export class VectorDecoTest {
         discrete: false,
         label: 1,
       })
-        |> logger
-      // |> says[key]
+        |> says[key]
     }
   }
 }

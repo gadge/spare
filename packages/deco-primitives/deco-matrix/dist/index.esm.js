@@ -18,7 +18,7 @@ const MUTATE_PIGMENT = {
   mutate: true
 };
 
-fluoMatrix.bind(MUTATE_PIGMENT);
+const fluo = fluoMatrix.bind(MUTATE_PIGMENT);
 const _decoMatrix = function (rows = []) {
   var _Br;
 
@@ -36,7 +36,7 @@ const _decoMatrix = function (rows = []) {
 
   rows = matrixPadder(rows, config); // use: ansi
 
-  if (config.fluos) rows = fluoMatrix(rows, config.direct, config.fluos); // use: direct, presets, effects
+  if (config.fluos) rows = fluo(rows, config.direct, config.fluos); // use: direct, presets, effects
 
   return liner(rows.map(line => br(line.join(delim))), {
     discrete,

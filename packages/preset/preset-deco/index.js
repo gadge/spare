@@ -12,6 +12,6 @@ export {
   HEADING_PRESET
 } from './resources/dyePresets'
 export {
-  decoConfig,
+  assignFluoConfigs,
   DecoConfig
 } from './utils/DecoConfig'
