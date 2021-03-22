@@ -36,11 +36,10 @@ export const CONF_DECO_TABLE = {
  *
  * @returns {Object}
  */
-export const presetTable = p =>
-  DecoConfig
-    .build(p)
-    .assignConfigs(CONF_DECO_TABLE)
-    .assignPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
+export const presetTable = p => DecoConfig
+  .build(p)
+  .assignConfigs(CONF_DECO_TABLE)
+  .assignPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
 
 // p.delim = p.delim ?? LF
 // p.read = p.read ?? decoFlat

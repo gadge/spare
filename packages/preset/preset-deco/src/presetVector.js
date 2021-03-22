@@ -4,7 +4,7 @@ import { COLF }                           from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                     from './DecoConfig'
 
-const CONF_DECO_VECTOR = {
+export const CONF_DECO_VECTOR = {
   dash: ') ',
   delim: COLF,
   bracket: BRK,

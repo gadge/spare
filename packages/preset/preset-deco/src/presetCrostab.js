@@ -4,7 +4,7 @@ import { POINTWISE }                                      from '@vect/enum-matri
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                                     from './DecoConfig'
 
-const CONF_DECO_CROSTAB = {
+export const CONF_DECO_CROSTAB = {
   delim: LF,
   read: decoFlat,
   ansi: true,

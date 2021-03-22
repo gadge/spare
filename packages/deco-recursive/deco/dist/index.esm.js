@@ -1,11 +1,11 @@
 import { FRESH, PLANET, AZURE, MOSS, ATLAS, SUBTLE } from '@palett/presets';
-import { RTSP, CO as CO$q, COSP, LF } from '@spare/enum-chars';
+import { RTSP, CO as CO$r, COSP, LF } from '@spare/enum-chars';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
 import { BRK, BRC, PAL } from '@spare/deco-colors';
 import { decoDate, decoDateTime } from '@spare/deco-date';
 import { funcName, decoFunc } from '@spare/deco-func';
-import { STR as STR$1, NUM, BIG, FUN, OBJ, BOO, UND, SYM } from '@typen/enum-data-types';
+import { STR, NUM, BIG, FUN, OBJ, BOO, UND, SYM } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE, MAP, SET } from '@typen/enum-object-types';
 import { typ } from '@typen/typ';
 import '@vect/column-mapper';
@@ -15,7 +15,7 @@ import { isNumeric as isNumeric$2 } from '@typen/num-loose';
 import { formatDate } from '@valjoux/format-date';
 import { formatDateTime } from '@valjoux/format-date-time';
 import { mutateKeys, mutateValues } from '@vect/entries-mapper';
-import { mutate as mutate$2, iterate as iterate$2 } from '@vect/vector-mapper';
+import { mutate, iterate } from '@vect/vector-mapper';
 import { max } from '@aryth/comparer';
 import { lange } from '@spare/lange';
 import { joinLines } from '@spare/liner';
@@ -2536,9 +2536,9 @@ const ripper$7$2 = function (text) {
 
 
 ripper$7$2.bind(LITERAL$7$2);
-const LITERAL$a$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+const LITERAL$a = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
-const ripper$a = function (text) {
+const ripper$a$1 = function (text) {
   const regex = this;
   let ms,
       l = 0,
@@ -2563,7 +2563,7 @@ const ripper$a = function (text) {
  */
 
 
-ripper$a.bind(LITERAL$a$1);
+ripper$a$1.bind(LITERAL$a);
 const SP$o = ' ';
 const CO$o = ',';
 const DOT$o = '.';
@@ -2871,7 +2871,7 @@ const ripper$8$2 = function (text) {
 
 
 ripper$8$2.bind(LITERAL$8$2);
-const LITERAL$b = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+const LITERAL$b$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
 const ripper$b = function (text) {
   const regex = this;
@@ -2898,7 +2898,7 @@ const ripper$b = function (text) {
  */
 
 
-ripper$b.bind(LITERAL$b);
+ripper$b.bind(LITERAL$b$1);
 const SP$p = ' ';
 const CO$p = ',';
 const DOT$p = '.';
@@ -2961,6 +2961,7 @@ class CharConv$p {
  *
  * @type {Function|function(*):string}
  */
+
 
 Function.prototype.call.bind(Object.prototype.toString);
 /**
@@ -3239,7 +3240,7 @@ const ripper$9$2 = function (text) {
 
 
 ripper$9$2.bind(LITERAL$9$2);
-const LITERAL$c = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+const LITERAL$c$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
 const ripper$c = function (text) {
   const regex = this;
@@ -3266,7 +3267,375 @@ const ripper$c = function (text) {
  */
 
 
-ripper$c.bind(LITERAL$c);
+ripper$c.bind(LITERAL$c$1);
+const SP$q = ' ';
+const CO$q = ',';
+const DOT$q = '.';
+
+function _defineProperty$q(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$q {}
+
+_defineProperty$q(Conv$q, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$q.cjkPunc(n) : CharConv$q.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$q(Conv$q, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$q.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$q {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$q;
+    if (charCode === 0x3001) return CO$q;
+    if (charCode === 0x3002) return DOT$q;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+const LITERAL$1$b = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$1$b = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$1$b.bind(LITERAL$1$b);
+const LITERAL$2$b = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$2$b = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$2$b.bind(LITERAL$2$b);
+const LITERAL$3$a = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$3$a = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$3$a.bind(LITERAL$3$a);
+const LITERAL$4$9 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$4$9 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$4$9.bind(LITERAL$4$9);
+const LITERAL$5$7 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$5$7 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$5$7.bind(LITERAL$5$7);
+const LITERAL$6$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$6$6 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$6$6.bind(LITERAL$6$6);
+const LITERAL$7$5 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$7$5 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$7$5.bind(LITERAL$7$5);
+const LITERAL$8$4 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$8$4 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$8$4.bind(LITERAL$8$4);
+const LITERAL$9$3 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$9$3 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$9$3.bind(LITERAL$9$3);
+const LITERAL$d = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$d = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$d.bind(LITERAL$d);
 
 /**
  * validate
@@ -3284,9 +3653,9 @@ const SP = ' ';
 const CO = ',';
 const DOT = '.';
 
-const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
+const FULL_NUM = '０-９'; // 0xff10 - 0xff19
 
-const REG_NUM_FULL = new RegExp(`^\s*[－＋]?(?:，*[${FULL_NUM$1}]+)*．?[${FULL_NUM$1}]+\s*$`);
+const REG_NUM_FULL = new RegExp(`^\s*[－＋]?(?:，*[${FULL_NUM}]+)*．?[${FULL_NUM}]+\s*$`);
 /**
  *
  * @param {string} tx
@@ -3386,68 +3755,68 @@ const parseNum = x => {
   return validate(x, parseFloat(x));
 };
 
-const STR = 'string';
+const STR$1 = 'string';
 /**
  *
  * @type {Function|function(*):string}
  */
 
 Function.prototype.call.bind(Object.prototype.toString);
-const CJK_LETTERS = '\u4e00-\u9fbf';
-const HALF_NUM = '0-9';
-const HALF_UPPER = 'A-Z';
-const HALF_LOWER = 'a-z';
-const FULL_NUM = '０-９'; // 0xff10 - 0xff19
+const CJK_LETTERS$1 = '\u4e00-\u9fbf';
+const HALF_NUM$1 = '0-9';
+const HALF_UPPER$1 = 'A-Z';
+const HALF_LOWER$1 = 'a-z';
+const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
 
-const FULL_UPPER = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
+const FULL_UPPER$1 = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
 
-const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
+const FULL_LOWER$1 = 'ａ-ｚ'; // 0xff41 - 0xff5a
 
-const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
-const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM}`;
-const LITERAL$a = new RegExp(`[${LITERAL_LOWER}]+`); // LITERAL = /[A-Za-z0-9]+/
+const LITERAL_LOWER$1 = `${HALF_UPPER$1}${HALF_LOWER$1}${HALF_NUM$1}`;
+const LITERAL_UPPER$1 = `${FULL_UPPER$1}${FULL_LOWER$1}${FULL_NUM$1}`;
+const LITERAL$c = new RegExp(`[${LITERAL_LOWER$1}]+`); // LITERAL = /[A-Za-z0-9]+/
 
-const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
+const LITERAL_ANY$1 = new RegExp(`[${LITERAL_LOWER$1}${CJK_LETTERS$1}${LITERAL_UPPER$1}]+`);
 
-const isLiteral = x => LITERAL$a.test(x);
+const isLiteral$1 = x => LITERAL$c.test(x);
 
-const isLiteralAny = x => LITERAL_ANY.test(x);
+const isLiteralAny$1 = x => LITERAL_ANY$1.test(x);
 
-const v1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
+const v1$1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
 
-const v2 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
+const v2$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
 
-const v3 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
+const v3$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
 
-const v4 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
+const v4$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
 
-const stringValue = word => {
+const stringValue$1 = word => {
   const l = word === null || word === void 0 ? void 0 : word.length;
   if (!l) return NaN;
-  if (typeof word !== STR) return NaN;
-  if (l >= 8) return (v4(word.slice(0, 4)) << 2) + v4(word.slice(-4));
-  if (l === 7) return (v4(word.slice(0, 4)) << 2) + v3(word.slice(-3));
-  if (l === 6) return (v4(word.slice(0, 4)) << 2) + v2(word.slice(-2));
-  if (l === 5) return (v4(word.slice(0, 4)) << 2) + v1(word.slice(-1));
-  if (l === 4) return v4(word) << 2;
-  if (l === 3) return v3(word) << 2;
-  if (l === 2) return v2(word) << 2;
-  if (l === 1) return v1(word) << 2;
+  if (typeof word !== STR$1) return NaN;
+  if (l >= 8) return (v4$1(word.slice(0, 4)) << 2) + v4$1(word.slice(-4));
+  if (l === 7) return (v4$1(word.slice(0, 4)) << 2) + v3$1(word.slice(-3));
+  if (l === 6) return (v4$1(word.slice(0, 4)) << 2) + v2$1(word.slice(-2));
+  if (l === 5) return (v4$1(word.slice(0, 4)) << 2) + v1$1(word.slice(-1));
+  if (l === 4) return v4$1(word) << 2;
+  if (l === 3) return v3$1(word) << 2;
+  if (l === 2) return v2$1(word) << 2;
+  if (l === 1) return v1$1(word) << 2;
 };
 
-const iterate$1 = function (vec, fn, l) {
+const iterate$1$1 = function (vec, fn, l) {
   l = l || (vec === null || vec === void 0 ? void 0 : vec.length);
 
   for (let i = 0; i < l; i++) fn.call(this, vec[i], i);
 };
 
-const reviter$1 = function (vec, fn, l) {
+const reviter$1$1 = function (vec, fn, l) {
   l = l || (vec === null || vec === void 0 ? void 0 : vec.length);
 
   for (--l; l >= 0; l--) fn.call(this, vec[l], l);
 };
 
-const mapper$1 = function (vec, fn, l) {
+const mapper$1$1 = function (vec, fn, l) {
   l = l || (vec === null || vec === void 0 ? void 0 : vec.length);
   const ve = Array(l);
 
@@ -3456,7 +3825,7 @@ const mapper$1 = function (vec, fn, l) {
   return ve;
 };
 
-const mutate$1 = (vec, fn, l) => {
+const mutate$1$1 = (vec, fn, l) => {
   l = l || (vec === null || vec === void 0 ? void 0 : vec.length);
 
   for (--l; l >= 0; l--) vec[l] = fn(vec[l], l);
@@ -3464,29 +3833,29 @@ const mutate$1 = (vec, fn, l) => {
   return vec;
 };
 
-var Mapper = /*#__PURE__*/Object.freeze({
+var Mapper$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  iterate: iterate$1,
-  mapper: mapper$1,
-  mutate: mutate$1,
-  reviter: reviter$1
+  iterate: iterate$1$1,
+  mapper: mapper$1$1,
+  mutate: mutate$1$1,
+  reviter: reviter$1$1
 }); // export default Function.prototype.apply.bind(Array.prototype.push)
 
-const acquire$1 = (va, vb) => (Array.prototype.push.apply(va, vb), va); // export default Function.prototype.call.bind(Array.prototype.concat)
+const acquire$1$1 = (va, vb) => (Array.prototype.push.apply(va, vb), va); // export default Function.prototype.call.bind(Array.prototype.concat)
 
 
-const merge$1 = (va, vb) => Array.prototype.concat.call(va, vb);
+const merge$1$1 = (va, vb) => Array.prototype.concat.call(va, vb);
 
-const merges$1 = (...vectors) => Array.prototype.concat.apply([], vectors);
+const merges$1$1 = (...vectors) => Array.prototype.concat.apply([], vectors);
 
-var Merge = /*#__PURE__*/Object.freeze({
+var Merge$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  acquire: acquire$1,
-  merge: merge$1,
-  merges: merges$1
+  acquire: acquire$1$1,
+  merge: merge$1$1,
+  merges: merges$1$1
 });
 
-function duozipper(a, b) {
+function duozipper$1(a, b) {
   let {
     fn,
     lo,
@@ -3500,7 +3869,7 @@ function duozipper(a, b) {
   return vec;
 }
 
-function trizipper(a, b, c) {
+function trizipper$1(a, b, c) {
   let {
     fn,
     lo,
@@ -3514,7 +3883,7 @@ function trizipper(a, b, c) {
   return vec;
 }
 
-function quazipper(a, b, c, d) {
+function quazipper$1(a, b, c, d) {
   let {
     fn,
     lo,
@@ -3528,28 +3897,28 @@ function quazipper(a, b, c, d) {
   return vec;
 }
 
-const Duozipper$1 = (fn, {
+const Duozipper$1$1 = (fn, {
   lo,
   hi
-} = {}) => duozipper.bind({
+} = {}) => duozipper$1.bind({
   fn,
   lo,
   hi
 });
 
-const Trizipper$1 = (fn, {
+const Trizipper$1$1 = (fn, {
   lo,
   hi
-} = {}) => trizipper.bind({
+} = {}) => trizipper$1.bind({
   fn,
   lo,
   hi
 });
 
-const Quazipper$1 = (fn, {
+const Quazipper$1$1 = (fn, {
   lo,
   hi
-} = {}) => quazipper.bind({
+} = {}) => quazipper$1.bind({
   fn,
   lo,
   hi
@@ -3564,12 +3933,12 @@ const Quazipper$1 = (fn, {
  */
 
 
-const zipper$1 = (a, b, fn, l) => duozipper.call({
+const zipper$1$1 = (a, b, fn, l) => duozipper$1.call({
   fn,
   hi: l
 }, a, b);
 
-const mutazip$1 = (va, vb, fn, l) => {
+const mutazip$1$1 = (va, vb, fn, l) => {
   l = l || (va === null || va === void 0 ? void 0 : va.length);
 
   for (--l; l >= 0; l--) va[l] = fn(va[l], vb[l], l);
@@ -3577,93 +3946,93 @@ const mutazip$1 = (va, vb, fn, l) => {
   return va;
 };
 
-var Zipper = /*#__PURE__*/Object.freeze({
+var Zipper$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  Duozipper: Duozipper$1,
-  Quazipper: Quazipper$1,
-  Trizipper: Trizipper$1,
-  mutazip: mutazip$1,
-  zipper: zipper$1
+  Duozipper: Duozipper$1$1,
+  Quazipper: Quazipper$1$1,
+  Trizipper: Trizipper$1$1,
+  mutazip: mutazip$1$1,
+  zipper: zipper$1$1
 });
 const {
-  iterate,
-  reviter,
-  mapper,
-  mutate
-} = Mapper;
+  iterate: iterate$2,
+  reviter: reviter$2,
+  mapper: mapper$2,
+  mutate: mutate$2
+} = Mapper$1;
 const {
-  zipper,
-  mutazip,
-  Duozipper,
-  Trizipper,
-  Quazipper
-} = Zipper;
+  zipper: zipper$2,
+  mutazip: mutazip$2,
+  Duozipper: Duozipper$2,
+  Trizipper: Trizipper$2,
+  Quazipper: Quazipper$2
+} = Zipper$1;
 const {
-  acquire,
-  merge,
-  merges
-} = Merge;
+  acquire: acquire$2,
+  merge: merge$2,
+  merges: merges$2
+} = Merge$1;
 
-const isNumericAny = x => isNumeric$1(x) || isNumeric(x);
+const isNumericAny$1 = x => isNumeric$1(x) || isNumeric(x);
 
-const NUM_BOUND_CONF_FULL$2 = {
-  filter: isNumericAny,
+const NUM_BOUND_CONF_FULL$1 = {
+  filter: isNumericAny$1,
   mapper: parseNum$1
 };
-const STR_BOUND_CONF_FULL$2 = {
-  filter: isLiteralAny,
-  mapper: stringValue
+const STR_BOUND_CONF_FULL$1 = {
+  filter: isLiteralAny$1,
+  mapper: stringValue$1
 };
-const NUM_BOUND_CONF_HALF = {
+const NUM_BOUND_CONF_HALF$1 = {
   filter: isNumeric,
   mapper: parseNum
 };
-const STR_BOUND_CONF_HALF = {
-  filter: isLiteral,
-  mapper: stringValue
+const STR_BOUND_CONF_HALF$1 = {
+  filter: isLiteral$1,
+  mapper: stringValue$1
 };
-const NUMERIC_PRESET = FRESH;
-const LITERAL_PRESET = PLANET;
+const NUMERIC_PRESET$1 = FRESH;
+const LITERAL_PRESET$1 = PLANET;
 
-class FluoConfigs extends Array {
+class FluoConfigs$1 extends Array {
   constructor(presets) {
     super();
-    if (presets.length) acquire(this, presets.map(preset => ({
+    if (presets.length) acquire$2(this, presets.map(preset => ({
       preset
     })));
   }
 
   static build(...presets) {
-    return new FluoConfigs(presets);
+    return new FluoConfigs$1(presets);
   }
 
   assignPresets(...presets) {
-    if (presets.length === 0) presets = [NUMERIC_PRESET, LITERAL_PRESET];
-    return mutazip(this, presets, (conf, preset) => conf ? (conf.preset = preset, conf) : {
+    if (presets.length === 0) presets = [NUMERIC_PRESET$1, LITERAL_PRESET$1];
+    return mutazip$2(this, presets, (conf, preset) => conf ? (conf.preset = preset, conf) : {
       preset
     }, presets.length);
   }
 
   assignEffect(...effects) {
     if (effects.length === 0) return this;
-    return mutate(this, conf => (conf.effects = effects, conf));
+    return mutate$2(this, conf => (conf.effects = effects, conf));
   }
 
   assignBoundConfigs(full) {
-    const boundConfigs = full ? [NUM_BOUND_CONF_FULL$2, STR_BOUND_CONF_FULL$2, STR_BOUND_CONF_FULL$2] : [NUM_BOUND_CONF_HALF, STR_BOUND_CONF_HALF, STR_BOUND_CONF_HALF];
-    return mutazip(this, boundConfigs, (conf, boundConf) => Object.assign(conf, boundConf));
+    const boundConfigs = full ? [NUM_BOUND_CONF_FULL$1, STR_BOUND_CONF_FULL$1, STR_BOUND_CONF_FULL$1] : [NUM_BOUND_CONF_HALF$1, STR_BOUND_CONF_HALF$1, STR_BOUND_CONF_HALF$1];
+    return mutazip$2(this, boundConfigs, (conf, boundConf) => Object.assign(conf, boundConf));
   }
 
 }
 
-class DecoConfig {
+class DecoConfig$1 {
   constructor() {}
 
   assignPresets(...presets) {
     var _this$fluos;
 
     const fluos = (_this$fluos = this.fluos) !== null && _this$fluos !== void 0 ? _this$fluos : this.fluos = [];
-    FluoConfigs.prototype.assignPresets.apply(fluos, presets);
+    FluoConfigs$1.prototype.assignPresets.apply(fluos, presets);
     return this;
   }
 
@@ -3671,7 +4040,7 @@ class DecoConfig {
     var _this$fluos2;
 
     const fluos = (_this$fluos2 = this.fluos) !== null && _this$fluos2 !== void 0 ? _this$fluos2 : this.fluos = [];
-    FluoConfigs.prototype.assignBoundConfigs.call(fluos, charWidth);
+    FluoConfigs$1.prototype.assignBoundConfigs.call(fluos, charWidth);
     return this;
   }
 
@@ -3687,6 +4056,12 @@ Function.prototype.call.bind(Object.prototype.toString);
  * @type {Function|function(*):string}
  */
 
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
 
 Function.prototype.call.bind(Object.prototype.toString);
 /**
@@ -3953,6 +4328,34 @@ const ripper$9 = function (text) {
 
 
 ripper$9.bind(LITERAL$9);
+const LITERAL$b = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$a = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$a.bind(LITERAL$b);
 
 const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
@@ -4013,8 +4416,8 @@ const renderEntries = function (entries, lv) {
         width = (_ref2 = (_this$object$width = (_this$object2 = this.object) === null || _this$object2 === void 0 ? void 0 : _this$object2.width) !== null && _this$object$width !== void 0 ? _this$object$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   let pad;
-  const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? mutate$2(entries, ([k, v]) => lpad(k, pad) + RTSP + v) : wrapEntries(entries, width);
-  return rows.length > 1 ? joinLines(rows, CO$q, lv) : rows.join(COSP);
+  const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? mutate(entries, ([k, v]) => lpad(k, pad) + RTSP + v) : wrapEntries(entries, width);
+  return rows.length > 1 ? joinLines(rows, CO$r, lv) : rows.join(COSP);
 };
 const wrapEntries = function (entries, width) {
   var _row;
@@ -4024,7 +4427,7 @@ const wrapEntries = function (entries, width) {
       len = 0,
       kvp,
       sp = COSP.length;
-  iterate$2(entries, ([k, v]) => {
+  iterate(entries, ([k, v]) => {
     // row.push(kvp = k + RTSP + v), len += lange(kvp) + sp
     // if (len > width) rows.push(row.join(COSP)), row = [], len = 0
     len += lange(kvp = k + RTSP + v) + sp;
@@ -4057,14 +4460,14 @@ const renderVector = function (vector, lv) {
         width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
         unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
   const rows = lv < vert || vector.some(x => lange(x) > unit) || !width ? vector : wrapVector(vector, width);
-  return rows.length > 1 ? joinLines(rows, CO$q, lv) : vector.join(COSP);
+  return rows.length > 1 ? joinLines(rows, CO$r, lv) : vector.join(COSP);
 };
 const wrapVector = function (vector, width) {
   const lines = [];
   let row = null,
       len = 0,
       sp = COSP.length;
-  iterate$2(vector, item => {
+  iterate(vector, item => {
     // row.push(item), len += lange(item) + sp
     // if (len > width) rows.push(row.join(COSP)), row = [], len = 0
     len += lange(item) + sp;
@@ -4088,7 +4491,7 @@ function _deco(node, level, indent) {
 
 function prettyNode(node, level = 0, indent) {
   const t = typeof node;
-  if (t === STR$1) return isNumeric$2(node) ? node : renderString.call(this, node, level, indent);
+  if (t === STR) return isNumeric$2(node) ? node : renderString.call(this, node, level, indent);
   if (t === NUM || t === BIG) return node;
   if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this);
 
@@ -4116,7 +4519,7 @@ function plainNode(node, level = 0, indent) {
         {
     qm
   } = this;
-  if (t === STR$1) return qm ? qm + node + qm : renderString.call(this, node, level, indent);
+  if (t === STR) return qm ? qm + node + qm : renderString.call(this, node, level, indent);
   if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this);
 
   if (t === OBJ) {
@@ -4138,7 +4541,7 @@ function plainNode(node, level = 0, indent) {
 }
 const deVe = function (vector, lv) {
   const config = this;
-  mutate$2(vector, v => String(_deco.call(config, v, lv + 1)));
+  mutate(vector, v => String(_deco.call(config, v, lv + 1)));
   if (config.fluos) fluoVector.call(MUTATE_PIGMENT, vector, config.fluos);
   return renderVector.call(config, vector, lv);
 };
@@ -4156,7 +4559,7 @@ const presetDeco = p => {
   if (!p) p = {};
   p.wf = (_p$wf = p.wf) !== null && _p$wf !== void 0 ? _p$wf : 160;
   if (nullish(p.presets)) p.presets = (_p$pr = p.pr) !== null && _p$pr !== void 0 ? _p$pr : [AZURE, MOSS];
-  DecoConfig.prototype.assignPresets.call(p, AZURE, MOSS);
+  DecoConfig$1.prototype.assignPresets.call(p, AZURE, MOSS);
   if (nullish(p.depth)) p.depth = 8; // 展示级别
 
   if (nullish(p.vert)) p.vert = 0; // 在此级别以下均设为竖排
@@ -4168,7 +4571,7 @@ const presetDeco = p => {
   if (nullish(p.string)) p.string = {};
   const s = p.string; // if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE]
 
-  DecoConfig.prototype.assignPresets.call(s, ATLAS, SUBTLE); // p |> JSON.stringify |> logger
+  DecoConfig$1.prototype.assignPresets.call(s, ATLAS, SUBTLE); // p |> JSON.stringify |> logger
 
   return p;
 };

@@ -5,7 +5,7 @@ import { ROWWISE }                        from '@vect/enum-matrix-directions'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                     from './DecoConfig'
 
-const CONF_DECO_MATRIX = {
+export const CONF_DECO_MATRIX = {
   delim: COSP,
   bracket: BRK,
   read: decoFlat,

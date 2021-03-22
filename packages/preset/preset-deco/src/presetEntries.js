@@ -4,7 +4,7 @@ import { LF }                             from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                     from './DecoConfig'
 
-const CONF_DECO_ENTRIES = {
+export const CONF_DECO_ENTRIES = {
   dash: ' > ',
   delim: LF,
   bracket: BRK,
