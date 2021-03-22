@@ -1527,9 +1527,9 @@ const ripper$4$2 = function (text) {
 
 
 ripper$4$2.bind(LITERAL$4$2);
-const LITERAL$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+const LITERAL$6$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
-const ripper$6 = function (text) {
+const ripper$6$1 = function (text) {
   const regex = this;
   let ms,
       l = 0,
@@ -1554,7 +1554,7 @@ const ripper$6 = function (text) {
  */
 
 
-ripper$6.bind(LITERAL$6);
+ripper$6$1.bind(LITERAL$6$1);
 const SP$k = ' ';
 const CO$k = ',';
 const DOT$k = '.';
@@ -1613,6 +1613,7 @@ class CharConv$k {
   }
 
 }
+
 const LITERAL$1$5 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
 const ripper$1$5 = function (text) {
@@ -1725,9 +1726,9 @@ const ripper$4$3 = function (text) {
 
 
 ripper$4$3.bind(LITERAL$4$3);
-const LITERAL$7 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+const LITERAL$7$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
-const ripper$7 = function (text) {
+const ripper$7$1 = function (text) {
   const regex = this;
   let ms,
       l = 0,
@@ -1752,7 +1753,807 @@ const ripper$7 = function (text) {
  */
 
 
-ripper$7.bind(LITERAL$7);
+ripper$7$1.bind(LITERAL$7$1);
+const SP$l = ' ';
+const CO$l = ',';
+const DOT$l = '.';
+
+function _defineProperty$l(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$l {}
+
+_defineProperty$l(Conv$l, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$l.cjkPunc(n) : CharConv$l.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$l(Conv$l, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$l.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$l {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$l;
+    if (charCode === 0x3001) return CO$l;
+    if (charCode === 0x3002) return DOT$l;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+
+Function.prototype.call.bind(Object.prototype.toString);
+const LITERAL$1$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$1$6 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$1$6.bind(LITERAL$1$6);
+const LITERAL$2$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$2$6 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$2$6.bind(LITERAL$2$6);
+const LITERAL$3$5 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$3$5 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$3$5.bind(LITERAL$3$5);
+const LITERAL$4$4 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$4$4 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$4$4.bind(LITERAL$4$4);
+const LITERAL$5$2 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$5$2 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$5$2.bind(LITERAL$5$2);
+const LITERAL$8$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$8$1 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$8$1.bind(LITERAL$8$1);
+const SP$m = ' ';
+const CO$m = ',';
+const DOT$m = '.';
+
+function _defineProperty$m(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$m {}
+
+_defineProperty$m(Conv$m, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$m.cjkPunc(n) : CharConv$m.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$m(Conv$m, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$m.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$m {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$m;
+    if (charCode === 0x3001) return CO$m;
+    if (charCode === 0x3002) return DOT$m;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+const LITERAL$1$7 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$1$7 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$1$7.bind(LITERAL$1$7);
+const LITERAL$2$7 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$2$7 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$2$7.bind(LITERAL$2$7);
+const LITERAL$3$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$3$6 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$3$6.bind(LITERAL$3$6);
+const LITERAL$4$5 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$4$5 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$4$5.bind(LITERAL$4$5);
+const LITERAL$5$3 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$5$3 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$5$3.bind(LITERAL$5$3);
+const LITERAL$6$2 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$6$2 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$6$2.bind(LITERAL$6$2);
+const LITERAL$9 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$9 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$9.bind(LITERAL$9);
+const SP$n = ' ';
+const CO$n = ',';
+const DOT$n = '.';
+
+function _defineProperty$n(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$n {}
+
+_defineProperty$n(Conv$n, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$n.cjkPunc(n) : CharConv$n.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$n(Conv$n, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$n.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$n {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$n;
+    if (charCode === 0x3001) return CO$n;
+    if (charCode === 0x3002) return DOT$n;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+const LITERAL$1$8 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$1$8 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$1$8.bind(LITERAL$1$8);
+const LITERAL$2$8 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$2$8 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$2$8.bind(LITERAL$2$8);
+const LITERAL$3$7 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$3$7 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$3$7.bind(LITERAL$3$7);
+const LITERAL$4$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$4$6 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$4$6.bind(LITERAL$4$6);
+const LITERAL$5$4 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$5$4 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$5$4.bind(LITERAL$5$4);
+const LITERAL$6$3 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$6$3 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$6$3.bind(LITERAL$6$3);
+const LITERAL$7$2 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$7$2 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$7$2.bind(LITERAL$7$2);
+const LITERAL$a = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$a = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$a.bind(LITERAL$a);
 
 const SP = ' ';
 const CO = ',';
@@ -1813,15 +2614,33 @@ class CharConv {
 
 }
 
-const NUMERIC_PRESET$2 = presets.FRESH;
-const LITERAL_PRESET$2 = presets.PLANET;
+const NUMERIC_PRESET$1 = presets.FRESH;
+const LITERAL_PRESET$1 = presets.PLANET;
 /**
  *
  * @type {Function|function(*):string}
  */
 
 Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
 
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
 const LITERAL$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
 const ripper$1 = function (text) {
@@ -1962,6 +2781,90 @@ const ripper$5 = function (text) {
 
 
 ripper$5.bind(LITERAL$5);
+const LITERAL$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$6 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$6.bind(LITERAL$6);
+const LITERAL$7 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$7 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$7.bind(LITERAL$7);
+const LITERAL$8 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$8 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$8.bind(LITERAL$8);
 
 const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
@@ -2040,7 +2943,7 @@ function deOb(lv, ob) {
  *  */
 
 const decoFlat = (o, {
-  presets = [NUMERIC_PRESET$2, LITERAL_PRESET$2]
+  presets = [NUMERIC_PRESET$1, LITERAL_PRESET$1]
 } = {}) => decoflat.call({
   presets,
   mutate: true
@@ -2053,7 +2956,7 @@ const decoFlat = (o, {
  */
 
 const DecoFlat = ({
-  presets = [NUMERIC_PRESET$2, LITERAL_PRESET$2]
+  presets = [NUMERIC_PRESET$1, LITERAL_PRESET$1]
 } = {}) => decoflat.bind({
   presets,
   mutate: true

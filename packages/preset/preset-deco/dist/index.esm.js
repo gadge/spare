@@ -1,14 +1,14 @@
-import { ATLAS, FRESH, PLANET, SUBTLE }                     from '@palett/presets'
-import { decoFlat }                                         from '@spare/deco-flat'
-import { BRC, BRK }                                         from '@spare/enum-brackets'
-import { COLF, COSP, LF, RTSP }                             from '@spare/enum-chars'
-import { isNumeric as isNumeric$3, parseNum }               from '@texting/charset-fullwidth'
-import { isNumeric as isNumeric$2, parseNum as parseNum$1 } from '@texting/charset-halfwidth'
-import { stringValue as stringValue$1 }                     from '@texting/string-value'
-import { COLUMNWISE, POINTWISE, ROWWISE }                   from '@vect/enum-matrix-directions'
+import { decoFlat } from '@spare/deco-flat';
+import { BRK, BRC } from '@spare/enum-brackets';
+import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
+import { FRESH, PLANET, SUBTLE, ATLAS } from '@palett/presets';
+import { stringValue as stringValue$1 } from '@texting/string-value';
+import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
+import { parseNum, isNumeric as isNumeric$3 } from '@texting/charset-fullwidth';
+import { isNumeric as isNumeric$2, parseNum as parseNum$1 } from '@texting/charset-halfwidth';
 
-const NUMERIC_PRESET$1 = FRESH;
-const LITERAL_PRESET$1 = PLANET;
+const NUMERIC_PRESET$2 = FRESH;
+const LITERAL_PRESET$2 = PLANET;
 const HEADING_PRESET = SUBTLE;
 
 // from x => typeof x
@@ -20,26 +20,26 @@ const STR = 'string';
  */
 Function.prototype.call.bind(Object.prototype.toString);
 
-const CJK_LETTERS$1 = '\u4e00-\u9fbf';
+const CJK_LETTERS = '\u4e00-\u9fbf';
 
-const HALF_NUM$1 = '0-9';
-const HALF_UPPER$1 = 'A-Z';
-const HALF_LOWER$1 = 'a-z';
-const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
+const HALF_NUM = '0-9';
+const HALF_UPPER = 'A-Z';
+const HALF_LOWER = 'a-z';
+const FULL_NUM = '０-９'; // 0xff10 - 0xff19
 
-const FULL_UPPER$1 = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
+const FULL_UPPER = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
 
-const FULL_LOWER$1 = 'ａ-ｚ'; // 0xff41 - 0xff5a
+const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
 
-const LITERAL_LOWER$1 = `${HALF_UPPER$1}${HALF_LOWER$1}${HALF_NUM$1}`;
-const LITERAL_UPPER$1 = `${FULL_UPPER$1}${FULL_LOWER$1}${FULL_NUM$1}`;
-const LITERAL$7 = new RegExp(`[${LITERAL_LOWER$1}]+`); // LITERAL = /[A-Za-z0-9]+/
+const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
+const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM}`;
+const LITERAL$a = new RegExp(`[${LITERAL_LOWER}]+`); // LITERAL = /[A-Za-z0-9]+/
 
-const LITERAL_ANY$1 = new RegExp(`[${LITERAL_LOWER$1}${CJK_LETTERS$1}${LITERAL_UPPER$1}]+`);
+const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
 
-const isLiteral = x => LITERAL$7.test(x);
+const isLiteral = x => LITERAL$a.test(x);
 
-const isLiteralAny$1 = x => LITERAL_ANY$1.test(x);
+const isLiteralAny = x => LITERAL_ANY.test(x);
 
 const nullish = x => x === null || x === void 0;
 
@@ -241,7 +241,7 @@ const NUM_BOUND_CONF_FULL$2 = {
   mapper: parseNum
 };
 const STR_BOUND_CONF_FULL$2 = {
-  filter: isLiteralAny$1,
+  filter: isLiteralAny,
   mapper: stringValue
 };
 const NUM_BOUND_CONF_HALF = {
@@ -286,299 +286,7 @@ class FluoConfigs extends Array {
 
 }
 
-const isNumeric$1 = x => isNumeric$3(x) || isNumeric$2(x);
-const NUM_BOUND_CONF_FULL$1 = {
-  filter: isNumeric$1,
-  mapper: parseNum
-};
-const STR_BOUND_CONF_FULL$1 = {
-  filter: isLiteralAny$1,
-  mapper: stringValue$1
-};
-
-class DecoConfig {
-  assignPresets(...presets) {
-    var _p$fluos;
-
-    const fluos = (_p$fluos = p.fluos) !== null && _p$fluos !== void 0 ? _p$fluos : p.fluos = {};
-    FluoConfigs.prototype.assignPresets.apply(fluos, presets);
-    return this;
-  }
-
-  assignBoundConfig(charWidth) {
-    var _p$fluos2;
-
-    const fluos = (_p$fluos2 = p.fluos) !== null && _p$fluos2 !== void 0 ? _p$fluos2 : p.fluos = {};
-    FluoConfigs.prototype.assignBoundConfigs.call(fluos, charWidth);
-    return this;
-  }
-
-}
-const assignFluoConfigs$1 = (p, ...presets) => {
-  var _p$presets;
-
-  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET$1, LITERAL_PRESET$1];
-
-  if (presets.length === 1) {
-    if (!p.fluos) p.fluos = presets.map(preset => ({
-      preset
-    }));
-
-    if (p.full) {
-      const [confNum = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
-    }
-
-    return p;
-  }
-
-  if (presets.length === 2) {
-    if (!p.fluos) p.fluos = presets.map(preset => ({
-      preset
-    }));
-
-    if (p.full) {
-      const [confNum = {}, confStr = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
-    }
-
-    return p;
-  }
-
-  if (presets.length >= 3) {
-    if (!p.fluos) p.fluos = presets.map(preset => ({
-      preset
-    }));
-
-    if (p.full) {
-      const [confNum = {}, confStr = {}, confLab = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
-      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL$1);
-    }
-
-    return p;
-  }
-};
-
-/***
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=' > ']
- * @param {string} [p.delim='\n']
- *
- *
- * @param {*} [p.bracket=true]
- *
- * @param {Object[]} [p.presets]
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read=decoFlat]
- *
- * @param {Object[]} [p.presets]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi=true]
- * @param {number} [p.level=0]
- *
- * @returns {Object}
- */
-
-const presetEntries = p => {
-  var _p$dash, _p$delim, _p$bracket, _p$read, _p$ansi;
-
-  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ' > ';
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
-
-  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
-  return p;
-};
-
-/**
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=': ']
- * @param {string} [p.delim=',\n']
- *
- *
- * @param {*} [p.bracket=true]
- *
- * @param {Object[]} [p.presets]
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read=decoFlat]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi=true]
- * @param {number} [p.level]
- *
- * @returns {Object}
- */
-
-const presetObject = p => {
-  var _p$dash, _p$delim, _p$bracket, _p$read, _p$ansi;
-
-  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : RTSP;
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRC;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
-  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
-  return p;
-};
-
-/***
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=') ']
- * @param {string} [p.delim=',\n']
- *
- * @param {*} [p.bracket=true] - BRK = 1
- *
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.read=decoFlat]
- *
- * @param {Object[]} [p.presets]
- * @param {Object[]} [p.fluos]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.full=false]
- * @param {boolean} [p.ansi=true]
- * @param {number} [p.level=0]
- *
- * @returns {Object}
- */
-
-const presetVector = p => {
-  var _p$dash, _p$delim, _p$bracket, _p$indexed, _p$read, _p$ansi;
-
-  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ') ';
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
-  p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : false;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
-  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
-  return p;
-};
-
-/***
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim=', ']
- *
- * @param {*} [p.bracket=true]
- *
- * @param {Function} [p.read=decoFlat]
- *
- * @param {Object[]} [p.presets]
- * @param {number} [p.direct=ROWWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi=true]
- * @param {number} [p.level=0]
- *
- * @returns {Object}
- */
-
-const presetMatrix = p => {
-  var _p$delim, _p$bracket, _p$read, _p$direct, _p$ansi;
-
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
-  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : ROWWISE; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
-
-  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
-  return p;
-};
-
-/**
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim='\n']
- *  - currently not functional, keeps for future fix
- * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
- *
- * @param {Function} [p.read=decoFlat]
- * @param {Function} [p.headRead]
- * @param {Function} [p.sideRead]
- *
- * @param {Object[]} [p.presets]
- * @param {number} [p.direct=POINTWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi=true]
- * @param {boolean} [p.fullAngle]
- * @param {number} [p.level=0]
- *
- * @returns {Object}
- */
-
-const presetCrostab = p => {
-  var _p$delim, _p$read, _p$direct, _p$ansi;
-
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-
-  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1, HEADING_PRESET);
-  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : POINTWISE;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
-  return p;
-};
-
-const NUMERIC_PRESET$2 = FRESH;
-const LITERAL_PRESET$2 = PLANET;
-/**
- *
- * @type {Function|function(*):string}
- */
-
-Function.prototype.call.bind(Object.prototype.toString);
-const CJK_LETTERS = '\u4e00-\u9fbf';
-const HALF_NUM = '0-9';
-const HALF_UPPER = 'A-Z';
-const HALF_LOWER = 'a-z';
-const FULL_NUM = '０-９'; // 0xff10 - 0xff19
-
-const FULL_UPPER = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
-
-const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
-
-const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
-const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM}`;
-
-const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
-
-const isLiteralAny = x => LITERAL_ANY.test(x);
-
 const isNumeric = x => isNumeric$3(x) || isNumeric$2(x);
-
 const NUM_BOUND_CONF_FULL = {
   filter: isNumeric,
   mapper: parseNum
@@ -588,7 +296,27 @@ const STR_BOUND_CONF_FULL = {
   mapper: stringValue$1
 };
 
-const assignFluoConfigs = (p, ...presets) => {
+class DecoConfig {
+  constructor() {}
+
+  assignPresets(...presets) {
+    var _this$fluos;
+
+    const fluos = (_this$fluos = this.fluos) !== null && _this$fluos !== void 0 ? _this$fluos : this.fluos = [];
+    FluoConfigs.prototype.assignPresets.apply(fluos, presets);
+    return this;
+  }
+
+  assignBoundConfig(charWidth) {
+    var _this$fluos2;
+
+    const fluos = (_this$fluos2 = this.fluos) !== null && _this$fluos2 !== void 0 ? _this$fluos2 : this.fluos = [];
+    FluoConfigs.prototype.assignBoundConfigs.call(fluos, charWidth);
+    return this;
+  }
+
+}
+const decoConfig = (p, ...presets) => {
   var _p$presets;
 
   if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET$2, LITERAL_PRESET$2];
@@ -636,6 +364,298 @@ const assignFluoConfigs = (p, ...presets) => {
   }
 };
 
+/***
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=' > ']
+ * @param {string} [p.delim='\n']
+ *
+ *
+ * @param {*} [p.bracket=true]
+ *
+ * @param {Object[]} [p.presets]
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read=decoFlat]
+ *
+ * @param {Object[]} [p.presets]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi=true]
+ * @param {number} [p.level=0]
+ *
+ * @returns {Object}
+ */
+
+const presetEntries = p => {
+  var _p$dash, _p$delim, _p$bracket, _p$read, _p$ansi;
+
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ' > ';
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
+  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
+
+  decoConfig(p, NUMERIC_PRESET$2, LITERAL_PRESET$2);
+  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  return p;
+};
+
+/**
+ *
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=': ']
+ * @param {string} [p.delim=',\n']
+ *
+ *
+ * @param {*} [p.bracket=true]
+ *
+ * @param {Object[]} [p.presets]
+ * @param {Function} [p.keyRead]
+ * @param {Function} [p.read=decoFlat]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.ansi=true]
+ * @param {number} [p.level]
+ *
+ * @returns {Object}
+ */
+
+const presetObject = p => {
+  var _p$dash, _p$delim, _p$bracket, _p$read, _p$ansi;
+
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : RTSP;
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRC;
+  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
+  decoConfig(p, NUMERIC_PRESET$2, LITERAL_PRESET$2);
+  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  return p;
+};
+
+/***
+ *
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.dash=') ']
+ * @param {string} [p.delim=',\n']
+ *
+ * @param {*} [p.bracket=true] - BRK = 1
+ *
+ * @param {boolean} [p.indexed=true]
+ * @param {Function} [p.read=decoFlat]
+ *
+ * @param {Object[]} [p.presets]
+ * @param {Object[]} [p.fluos]
+ *
+ * @param {number} [p.head]
+ * @param {number} [p.tail]
+ *
+ * @param {boolean} [p.full=false]
+ * @param {boolean} [p.ansi=true]
+ * @param {number} [p.level=0]
+ *
+ * @returns {Object}
+ */
+
+const presetVector = p => {
+  var _p$dash, _p$delim, _p$bracket, _p$indexed, _p$read, _p$ansi;
+
+  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ') ';
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
+  p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : false;
+  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
+  decoConfig(p, NUMERIC_PRESET$2, LITERAL_PRESET$2);
+  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  return p;
+};
+
+/***
+ *
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim=', ']
+ *
+ * @param {*} [p.bracket=true]
+ *
+ * @param {Function} [p.read=decoFlat]
+ *
+ * @param {Object[]} [p.presets]
+ * @param {number} [p.direct=ROWWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=true]
+ * @param {number} [p.level=0]
+ *
+ * @returns {Object}
+ */
+
+const presetMatrix = p => {
+  var _p$delim, _p$bracket, _p$read, _p$direct, _p$ansi;
+
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COSP;
+  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
+  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
+  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : ROWWISE; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
+
+  decoConfig(p, NUMERIC_PRESET$2, LITERAL_PRESET$2);
+  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  return p;
+};
+
+/**
+ * @param {Object} p
+ *
+ * @param {boolean} [p.discrete]
+ * @param {string} [p.delim='\n']
+ *  - currently not functional, keeps for future fix
+ * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
+ *
+ * @param {Function} [p.read=decoFlat]
+ * @param {Function} [p.headRead]
+ * @param {Function} [p.sideRead]
+ *
+ * @param {Object[]} [p.presets]
+ * @param {number} [p.direct=POINTWISE]
+ *
+ * @param {number} [p.top]
+ * @param {number} [p.bottom]
+ * @param {number} [p.left]
+ * @param {number} [p.right]
+ *
+ * @param {boolean} [p.ansi=true]
+ * @param {boolean} [p.fullAngle]
+ * @param {number} [p.level=0]
+ *
+ * @returns {Object}
+ */
+
+const presetCrostab = p => {
+  var _p$delim, _p$read, _p$direct, _p$ansi;
+
+  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
+  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
+
+  decoConfig(p, NUMERIC_PRESET$2, LITERAL_PRESET$2, HEADING_PRESET);
+  p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : POINTWISE;
+  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  return p;
+};
+
+const NUMERIC_PRESET$1 = FRESH;
+const LITERAL_PRESET$1 = PLANET;
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+const CJK_LETTERS$1 = '\u4e00-\u9fbf';
+const HALF_NUM$1 = '0-9';
+const HALF_UPPER$1 = 'A-Z';
+const HALF_LOWER$1 = 'a-z';
+const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
+
+const FULL_UPPER$1 = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
+
+const FULL_LOWER$1 = 'ａ-ｚ'; // 0xff41 - 0xff5a
+
+const LITERAL_LOWER$1 = `${HALF_UPPER$1}${HALF_LOWER$1}${HALF_NUM$1}`;
+const LITERAL_UPPER$1 = `${FULL_UPPER$1}${FULL_LOWER$1}${FULL_NUM$1}`;
+
+const LITERAL_ANY$1 = new RegExp(`[${LITERAL_LOWER$1}${CJK_LETTERS$1}${LITERAL_UPPER$1}]+`);
+
+const isLiteralAny$1 = x => LITERAL_ANY$1.test(x);
+
+const isNumeric$1 = x => isNumeric$3(x) || isNumeric$2(x);
+
+const NUM_BOUND_CONF_FULL$1 = {
+  filter: isNumeric$1,
+  mapper: parseNum
+};
+const STR_BOUND_CONF_FULL$1 = {
+  filter: isLiteralAny$1,
+  mapper: stringValue$1
+};
+
+const assignFluoConfigs$1 = (p, ...presets) => {
+  var _p$presets;
+
+  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET$1, LITERAL_PRESET$1];
+
+  if (presets.length === 1) {
+    if (!p.fluos) p.fluos = presets.map(preset => ({
+      preset
+    }));
+
+    if (p.full) {
+      const [confNum = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+    }
+
+    return p;
+  }
+
+  if (presets.length === 2) {
+    if (!p.fluos) p.fluos = presets.map(preset => ({
+      preset
+    }));
+
+    if (p.full) {
+      const [confNum = {}, confStr = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
+    }
+
+    return p;
+  }
+
+  if (presets.length >= 3) {
+    if (!p.fluos) p.fluos = presets.map(preset => ({
+      preset
+    }));
+
+    if (p.full) {
+      const [confNum = {}, confStr = {}, confLab = {}] = p.fluos;
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
+      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL$1);
+    }
+
+    return p;
+  }
+};
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+
+Function.prototype.call.bind(Object.prototype.toString);
+/**
+ *
+ * @type {Function|function(*):string}
+ */
+
+Function.prototype.call.bind(Object.prototype.toString);
 const LITERAL$1 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
 const ripper$1 = function (text) {
@@ -776,7 +796,6 @@ const ripper$5 = function (text) {
 
 
 ripper$5.bind(LITERAL$5);
-
 const LITERAL$6 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
 const ripper$6 = function (text) {
@@ -805,6 +824,91 @@ const ripper$6 = function (text) {
 
 
 ripper$6.bind(LITERAL$6);
+const LITERAL$7 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$7 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$7.bind(LITERAL$7);
+const LITERAL$8 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$8 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$8.bind(LITERAL$8);
+
+const LITERAL$9 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$9 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$9.bind(LITERAL$9);
 
 /***
  *
@@ -839,7 +943,7 @@ const presetTable = p => {
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
 
-  assignFluoConfigs(p, NUMERIC_PRESET$1, LITERAL_PRESET$1, HEADING_PRESET);
+  assignFluoConfigs$1(p, NUMERIC_PRESET$2, LITERAL_PRESET$2, HEADING_PRESET);
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : COLUMNWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
@@ -881,7 +985,7 @@ const presetSamples = p => {
   p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : true;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
 
-  assignFluoConfigs(p, NUMERIC_PRESET$1, LITERAL_PRESET$1, HEADING_PRESET);
+  assignFluoConfigs$1(p, NUMERIC_PRESET$2, LITERAL_PRESET$2, HEADING_PRESET);
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : COLUMNWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
@@ -918,10 +1022,10 @@ const ripper = function (text) {
 const splitLiteral = ripper.bind(LITERAL);
 
 const presetString = p => {
-  assignFluoConfigs(p, ATLAS, SUBTLE);
+  assignFluoConfigs$1(p, ATLAS, SUBTLE);
   if (nullish(p.vectify)) p.vectify = splitLiteral;
   if (nullish(p.width)) p.width = 0;
   return p;
 };
 
-export { DecoConfig, HEADING_PRESET, LITERAL_PRESET$1 as LITERAL_PRESET, NUMERIC_PRESET$1 as NUMERIC_PRESET, assignFluoConfigs$1 as assignFluoConfigs, presetCrostab, presetEntries, presetMatrix, presetObject, presetSamples, presetString, presetTable, presetVector };
+export { DecoConfig, HEADING_PRESET, LITERAL_PRESET$2 as LITERAL_PRESET, NUMERIC_PRESET$2 as NUMERIC_PRESET, decoConfig, presetCrostab, presetEntries, presetMatrix, presetObject, presetSamples, presetString, presetTable, presetVector };

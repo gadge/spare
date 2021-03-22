@@ -10,8 +10,8 @@ export {
   NUMERIC_PRESET,
   LITERAL_PRESET,
   HEADING_PRESET
-}                        from './resources/dyePresets'
+} from './resources/dyePresets'
 export {
-  assignFluoConfigs,
+  decoConfig,
   DecoConfig
-}                        from './utils/assignFluoConfigs'
+} from './utils/DecoConfig'

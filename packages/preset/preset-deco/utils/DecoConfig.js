@@ -4,19 +4,20 @@ import { NUM_BOUND_CONF_FULL, STR_BOUND_CONF_FULL } from './fullWidthConfigs'
 
 
 export class DecoConfig {
+  constructor() {}
   assignPresets(...presets) {
-    const fluos = p.fluos ?? (p.fluos = {})
+    const fluos = this.fluos ?? (this.fluos = [])
     FluoConfigs.prototype.assignPresets.apply(fluos, presets)
     return this
   }
   assignBoundConfig(charWidth) {
-    const fluos = p.fluos ?? (p.fluos = {})
+    const fluos = this.fluos ?? (this.fluos = [])
     FluoConfigs.prototype.assignBoundConfigs.call(fluos, charWidth)
     return this
   }
 }
 
-export const assignFluoConfigs = (p, ...presets) => {
+export const decoConfig = (p, ...presets) => {
   if (presets.length === 0) presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
   if (presets.length === 1) {
     if (!p.fluos) p.fluos = presets.map(preset => ({ preset }))
