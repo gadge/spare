@@ -21,8 +21,8 @@
     "@spare/fullwidth": "^0.11.1",
     "@spare/lange": "^0.11.1",
     "@texting/padder": "^0.0.5",
-    "@vect/vector-indicator": "^0.3.6",
-    "@vect/vector-mapper": "^0.3.6"
+    "@vect/vector-indicator": "^0.3.7",
+    "@vect/vector-mapper": "^0.3.7"
   },
   "repository": {
     "type": "git",

@@ -22,9 +22,9 @@
     "@spare/enum-chars": "^0.10.14",
     "@spare/liner": "^0.11.1",
     "@spare/preset-deco": "^0.11.1",
-    "@vect/matrix": "^0.3.6",
-    "@vect/vector-merge": "^0.3.6",
-    "@vect/vector-zipper": "^0.3.6"
+    "@vect/matrix": "^0.3.7",
+    "@vect/vector-merge": "^0.3.7",
+    "@vect/vector-zipper": "^0.3.7"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,6 @@
   "homepage": "https://github.com/gadge/spare#readme",
   "gitHead": "7880d791c1d47f99c223bbf53589194a448c0acf",
   "devDependencies": {
-    "@vect/vector-index": "^0.3.6"
+    "@vect/vector-index": "^0.3.7"
   }
 }

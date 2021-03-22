@@ -25,7 +25,7 @@
     "@spare/preset-deco": "^0.11.1",
     "@texting/charset-fullwidth": "^0.0.5",
     "@typen/num-strict": "^0.1.16",
-    "@vect/matrix": "^0.3.6"
+    "@vect/matrix": "^0.3.7"
   },
   "repository": {
     "type": "git",

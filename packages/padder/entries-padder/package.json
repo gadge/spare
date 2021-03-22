@@ -17,9 +17,9 @@
   "dependencies": {
     "@spare/lange": "^0.11.1",
     "@texting/padder": "^0.0.5",
-    "@vect/entries-indicator": "^0.3.6",
-    "@vect/entries-mapper": "^0.3.6",
-    "@vect/entries-zipper": "^0.3.6"
+    "@vect/entries-indicator": "^0.3.7",
+    "@vect/entries-mapper": "^0.3.7",
+    "@vect/entries-zipper": "^0.3.7"
   },
   "repository": {
     "type": "git",

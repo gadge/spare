@@ -3,7 +3,7 @@ import { BRK }                            from '@spare/enum-brackets'
 import { COSP }                           from '@spare/enum-chars'
 import { ROWWISE }                        from '@vect/enum-matrix-directions'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from '../utils/DecoConfig'
+import { DecoConfig }                     from './DecoConfig'
 
 /***
  *

@@ -2,7 +2,7 @@ import { decoFlat }                       from '@spare/deco-flat'
 import { BRK }                            from '@spare/enum-brackets'
 import { LF }                             from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from '../utils/DecoConfig'
+import { DecoConfig }                     from './DecoConfig'
 
 /***
  * @param {Object} p

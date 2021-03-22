@@ -2,7 +2,7 @@ import { decoFlat }                                       from '@spare/deco-flat
 import { LF }                                             from '@spare/enum-chars'
 import { POINTWISE }                                      from '@vect/enum-matrix-directions'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                                     from '../utils/DecoConfig'
+import { DecoConfig }                                     from './DecoConfig'
 
 /**
  * @param {Object} p
