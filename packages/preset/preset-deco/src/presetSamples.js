@@ -5,6 +5,14 @@ import { COLUMNWISE }                                     from '@vect/enum-matri
 import { DecoConfig }                                     from '../dist/index.esm'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
+export const CONF_DECO_SAMPLES = {
+  delim: COSP,
+  bracket: BRK,
+  indexed: true,
+  read: decoFlat,
+  direct: COLUMNWISE,
+  ansi: true,
+}
 /**
  *
  * @param {Object} [p]
@@ -32,14 +40,17 @@ import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dye
  *
  * @returns {Object}
  */
-export const presetSamples = p => {
-  p.delim = p.delim ?? COSP
-  p.bracket = p.bracket ?? BRK
-  p.indexed = p.indexed ?? true
-  p.read = p.read ?? decoFlat
-  // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-  DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
-  p.direct = p.direct ?? COLUMNWISE
-  p.ansi = p.ansi ?? true
-  return p
-}
+export const presetSamples = p => DecoConfig
+  .build(p)
+  .assignConfigs(CONF_DECO_SAMPLES)
+  .assignPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
+
+// p.delim = p.delim ?? COSP
+// p.bracket = p.bracket ?? BRK
+// p.indexed = p.indexed ?? true
+// p.read = p.read ?? decoFlat
+// p.direct = p.direct ?? COLUMNWISE
+// p.ansi = p.ansi ?? true
+// return p
+// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
+// DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)

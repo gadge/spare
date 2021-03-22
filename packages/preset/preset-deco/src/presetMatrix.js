@@ -5,6 +5,13 @@ import { ROWWISE }                        from '@vect/enum-matrix-directions'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                     from './DecoConfig'
 
+const CONF_DECO_MATRIX = {
+  delim: COSP,
+  bracket: BRK,
+  read: decoFlat,
+  direct: ROWWISE,
+  ansi: true,
+}
 /***
  *
  * @param {Object} p
@@ -29,13 +36,14 @@ import { DecoConfig }                     from './DecoConfig'
  *
  * @returns {Object}
  */
-export const presetMatrix = p => {
-  p.delim = p.delim ?? COSP
-  p.bracket = p.bracket ?? BRK
-  p.read = p.read ?? decoFlat
-  p.direct = p.direct ?? ROWWISE
-  // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
-  DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET)
-  p.ansi = p.ansi ?? true
-  return p
-}
+export const presetMatrix = p => DecoConfig
+  .build(p)
+  .assignConfigs(CONF_DECO_MATRIX)
+  .assignPresets(NUMERIC_PRESET, LITERAL_PRESET)
+
+// p.delim = p.delim ?? COSP
+// p.bracket = p.bracket ?? BRK
+// p.read = p.read ?? decoFlat
+// p.direct = p.direct ?? ROWWISE
+// p.ansi = p.ansi ?? true
+// return p

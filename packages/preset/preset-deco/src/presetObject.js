@@ -4,6 +4,13 @@ import { COLF, RTSP }                     from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                     from './DecoConfig'
 
+export const CONF_DECO_OBJECT = {
+  dash: RTSP,
+  delim: COLF,
+  bracket: BRC,
+  read: decoFlat,
+  ansi: true,
+}
 /**
  *
  * @param {Object} p
@@ -27,12 +34,15 @@ import { DecoConfig }                     from './DecoConfig'
  *
  * @returns {Object}
  */
-export const presetObject = p => {
-  p.dash = p.dash ?? RTSP
-  p.delim = p.delim ?? COLF
-  p.bracket = p.bracket ?? BRC
-  p.read = p.read ?? decoFlat
-  DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET)
-  p.ansi = p.ansi ?? true
-  return p
-}
+export const presetObject = p => DecoConfig
+  .build(p)
+  .assignConfigs(CONF_DECO_OBJECT)
+  .assignPresets(NUMERIC_PRESET, LITERAL_PRESET)
+
+
+// p.dash = p.dash ?? RTSP
+// p.delim = p.delim ?? COLF
+// p.bracket = p.bracket ?? BRC
+// p.read = p.read ?? decoFlat
+// p.ansi = p.ansi ?? true
+// return p

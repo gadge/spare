@@ -24,7 +24,8 @@
     "@texting/charset-fullwidth": "^0.0.5",
     "@texting/charset-halfwidth": "^0.0.5",
     "@texting/string-value": "^0.0.5",
-    "@vect/enum-matrix-directions": "^0.3.7"
+    "@vect/enum-matrix-directions": "^0.3.7",
+    "@vect/object-update": "^0.3.7"
   },
   "repository": {
     "type": "git",

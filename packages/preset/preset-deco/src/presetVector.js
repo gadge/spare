@@ -4,6 +4,14 @@ import { COLF }                           from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                     from './DecoConfig'
 
+const CONF_DECO_VECTOR = {
+  dash: ') ',
+  delim: COLF,
+  bracket: BRK,
+  indexed: false,
+  read: decoFlat,
+  ansi: true,
+}
 /***
  *
  * @param {Object} p
@@ -29,14 +37,17 @@ import { DecoConfig }                     from './DecoConfig'
  *
  * @returns {Object}
  */
-export const presetVector = p => {
-  p.dash = p.dash ?? ') '
-  p.delim = p.delim ?? COLF
-  p.bracket = p.bracket ?? BRK
-  p.indexed = p.indexed ?? false
-  p.read = p.read ?? decoFlat
-  DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET)
-  p.ansi = p.ansi ?? true
-  return p
-}
+export const presetVector = p => DecoConfig
+  .build(p)
+  .assignConfigs(CONF_DECO_VECTOR)
+  .assignPresets(NUMERIC_PRESET, LITERAL_PRESET)
+
+// p.dash = p.dash ?? ') '
+// p.delim = p.delim ?? COLF
+// p.bracket = p.bracket ?? BRK
+// p.indexed = p.indexed ?? false
+// p.read = p.read ?? decoFlat
+// p.ansi = p.ansi ?? true
+// DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET)
+// return p
 

@@ -4,6 +4,13 @@ import { POINTWISE }                                      from '@vect/enum-matri
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig }                                     from './DecoConfig'
 
+const CONF_DECO_CROSTAB = {
+  delim: LF,
+  read: decoFlat,
+  ansi: true,
+  direct: POINTWISE,
+}
+
 /**
  * @param {Object} p
  *
@@ -31,13 +38,19 @@ import { DecoConfig }                                     from './DecoConfig'
  * @returns {Object}
  */
 export const presetCrostab = p => {
-  p.delim = p.delim ?? LF
-  p.read = p.read ?? decoFlat
-  // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-  DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
-  p.direct = p.direct ?? POINTWISE
-  p.ansi = p.ansi ?? true
-  return p
+  return DecoConfig
+    .build(p)
+    .assignConfigs(CONF_DECO_CROSTAB)
+    .assignPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
 }
+
+// p.delim = p.delim ?? LF
+// p.read = p.read ?? decoFlat
+// p.ansi = p.ansi ?? true
+// p.direct = p.direct ?? POINTWISE
+// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
+// DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
+
+
 
 

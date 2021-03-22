@@ -4,6 +4,12 @@ import { COLUMNWISE }                                     from '@vect/enum-matri
 import { DecoConfig }                                     from '../dist/index.esm'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 
+export const CONF_DECO_TABLE = {
+  delim: LF,
+  read: decoFlat,
+  direct: COLUMNWISE,
+  ansi: true,
+}
 /***
  *
  * @param {Object} p
@@ -30,12 +36,16 @@ import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dye
  *
  * @returns {Object}
  */
-export const presetTable = p => {
-  p.delim = p.delim ?? LF
-  p.read = p.read ?? decoFlat
-  // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-  DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
-  p.direct = p.direct ?? COLUMNWISE
-  p.ansi = p.ansi ?? true
-  return p
-}
+export const presetTable = p =>
+  DecoConfig
+    .build(p)
+    .assignConfigs(CONF_DECO_TABLE)
+    .assignPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
+
+// p.delim = p.delim ?? LF
+// p.read = p.read ?? decoFlat
+// p.direct = p.direct ?? COLUMNWISE
+// p.ansi = p.ansi ?? true
+// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
+// DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
+// return p

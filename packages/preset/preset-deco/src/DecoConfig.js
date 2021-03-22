@@ -1,16 +1,26 @@
 import { FluoConfigs } from '@palett/fluo'
-
+import { replenish }   from '@vect/object-update'
 
 export class DecoConfig {
-  constructor() {}
+  /**
+   *
+   * @param {Object} configs
+   */
+  constructor(configs) { if (configs) Object.assign(this, configs) }
+  /**
+   *
+   * @param {Object} [configs]
+   * @returns {DecoConfig}
+   */
+  static build(configs) { return new DecoConfig(configs) }
+
+  assignConfigs(configs) { return replenish(this, configs) }
   assignPresets(...presets) {
-    const fluos = this.fluos ?? (this.fluos = [])
-    FluoConfigs.prototype.assignPresets.apply(fluos, presets)
+    FluoConfigs.prototype.assignPresets.apply(this.fluos ?? (this.fluos = []), presets)
     return this
   }
   assignBoundConfig(charWidth) {
-    const fluos = this.fluos ?? (this.fluos = [])
-    FluoConfigs.prototype.assignBoundConfigs.call(fluos, charWidth)
+    if (this.fluos) FluoConfigs.prototype.assignBoundConfigs.call(this.fluos, charWidth)
     return this
   }
 }
