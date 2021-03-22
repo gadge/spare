@@ -13,5 +13,5 @@ export {
 }                        from './resources/dyePresets'
 export {
   assignFluoConfigs,
-  assignFluoConfigsForTabular
+  DecoConfig
 }                        from './utils/assignFluoConfigs'

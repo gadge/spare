@@ -1,4 +1,4 @@
-import { stringValue }                          from '@spare/string-value'
+import { stringValue }                          from '@texting/string-value'
 import { isNumeric as isNumericFull, parseNum } from '@texting/charset-fullwidth'
 import { isNumeric as isNumericHalf }           from '@texting/charset-halfwidth'
 import { isLiteralAny }                         from '@typen/literal'

@@ -6,67 +6,67 @@ import { parseNum, isNumeric as isNumeric$2 } from '@texting/charset-fullwidth';
 import { isNumeric as isNumeric$3 } from '@texting/charset-halfwidth';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
 
-const NUMERIC_PRESET = FRESH;
-const LITERAL_PRESET = PLANET;
+const NUMERIC_PRESET$1 = FRESH;
+const LITERAL_PRESET$1 = PLANET;
 const HEADING_PRESET = SUBTLE;
 
 // from x => typeof x
-const STR = 'string';
+const STR$1 = 'string';
 
-const v1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
+const v1$1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
 
-const v2 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
+const v2$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
 
-const v3 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
+const v3$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
 
-const v4 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
+const v4$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
 
-const stringValue = word => {
+const stringValue$1 = word => {
   const l = word === null || word === void 0 ? void 0 : word.length;
   if (!l) return NaN;
-  if (typeof word !== STR) return NaN;
-  if (l >= 8) return (v4(word.slice(0, 4)) << 2) + v4(word.slice(-4));
-  if (l === 7) return (v4(word.slice(0, 4)) << 2) + v3(word.slice(-3));
-  if (l === 6) return (v4(word.slice(0, 4)) << 2) + v2(word.slice(-2));
-  if (l === 5) return (v4(word.slice(0, 4)) << 2) + v1(word.slice(-1));
-  if (l === 4) return v4(word) << 2;
-  if (l === 3) return v3(word) << 2;
-  if (l === 2) return v2(word) << 2;
-  if (l === 1) return v1(word) << 2;
+  if (typeof word !== STR$1) return NaN;
+  if (l >= 8) return (v4$1(word.slice(0, 4)) << 2) + v4$1(word.slice(-4));
+  if (l === 7) return (v4$1(word.slice(0, 4)) << 2) + v3$1(word.slice(-3));
+  if (l === 6) return (v4$1(word.slice(0, 4)) << 2) + v2$1(word.slice(-2));
+  if (l === 5) return (v4$1(word.slice(0, 4)) << 2) + v1$1(word.slice(-1));
+  if (l === 4) return v4$1(word) << 2;
+  if (l === 3) return v3$1(word) << 2;
+  if (l === 2) return v2$1(word) << 2;
+  if (l === 1) return v1$1(word) << 2;
 };
 
-const CJK_LETTERS = '\u4e00-\u9fbf';
+const CJK_LETTERS$1 = '\u4e00-\u9fbf';
 
-const HALF_NUM = '0-9';
-const HALF_UPPER = 'A-Z';
-const HALF_LOWER = 'a-z';
-const FULL_NUM = '０-９'; // 0xff10 - 0xff19
+const HALF_NUM$1 = '0-9';
+const HALF_UPPER$1 = 'A-Z';
+const HALF_LOWER$1 = 'a-z';
+const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
 
-const FULL_UPPER = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
+const FULL_UPPER$1 = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
 
-const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
+const FULL_LOWER$1 = 'ａ-ｚ'; // 0xff41 - 0xff5a
 
-const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
-const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM}`;
+const LITERAL_LOWER$1 = `${HALF_UPPER$1}${HALF_LOWER$1}${HALF_NUM$1}`;
+const LITERAL_UPPER$1 = `${FULL_UPPER$1}${FULL_LOWER$1}${FULL_NUM$1}`;
 
-const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
+const LITERAL_ANY$1 = new RegExp(`[${LITERAL_LOWER$1}${CJK_LETTERS$1}${LITERAL_UPPER$1}]+`);
 
-const isLiteralAny = x => LITERAL_ANY.test(x);
+const isLiteralAny$1 = x => LITERAL_ANY$1.test(x);
 
-const isNumeric = x => isNumeric$2(x) || isNumeric$3(x);
-const NUM_BOUND_CONF_FULL = {
-  filter: isNumeric,
+const isNumeric$1 = x => isNumeric$2(x) || isNumeric$3(x);
+const NUM_BOUND_CONF_FULL$1 = {
+  filter: isNumeric$1,
   mapper: parseNum
 };
-const STR_BOUND_CONF_FULL = {
-  filter: isLiteralAny,
-  mapper: stringValue
+const STR_BOUND_CONF_FULL$1 = {
+  filter: isLiteralAny$1,
+  mapper: stringValue$1
 };
 
-const assignFluoConfigs = (p, ...presets) => {
+const assignFluoConfigs$1 = (p, ...presets) => {
   var _p$presets;
 
-  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
+  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET$1, LITERAL_PRESET$1];
 
   if (presets.length === 1) {
     if (!p.fluos) p.fluos = presets.map(preset => ({
@@ -75,7 +75,7 @@ const assignFluoConfigs = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
     }
 
     return p;
@@ -88,8 +88,8 @@ const assignFluoConfigs = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}, confStr = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
     }
 
     return p;
@@ -102,9 +102,9 @@ const assignFluoConfigs = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}, confStr = {}, confLab = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
-      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
+      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL$1);
     }
 
     return p;
@@ -145,7 +145,7 @@ const presetEntries = p => {
   p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
 
-  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
+  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -181,7 +181,7 @@ const presetObject = p => {
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : COLF;
   p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRC;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
-  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
+  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -220,7 +220,7 @@ const presetVector = p => {
   p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : BRK;
   p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : false;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
-  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
+  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -258,7 +258,7 @@ const presetMatrix = p => {
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat;
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : ROWWISE; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
 
-  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET);
+  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1);
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
 };
@@ -296,7 +296,7 @@ const presetCrostab = p => {
   p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : LF;
   p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoFlat; // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
 
-  assignFluoConfigs(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET);
+  assignFluoConfigs$1(p, NUMERIC_PRESET$1, LITERAL_PRESET$1, HEADING_PRESET);
   p.direct = (_p$direct = p.direct) !== null && _p$direct !== void 0 ? _p$direct : POINTWISE;
   p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
   return p;
@@ -379,64 +379,64 @@ const presetSamples = p => {
   return p;
 };
 
-const NUMERIC_PRESET$1 = FRESH;
-const LITERAL_PRESET$1 = PLANET;
+const NUMERIC_PRESET = FRESH;
+const LITERAL_PRESET = PLANET;
 
-const STR$1 = 'string';
+const STR = 'string';
 
-const v1$1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
+const v1 = word => (word.toLowerCase().charCodeAt(0) & 0x7f) << 21;
 
-const v2$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
+const v2 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14);
 
-const v3$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
+const v3 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7);
 
-const v4$1 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
+const v4 = word => (((word = word.toLowerCase()).charCodeAt(0) & 0x7f) << 21) + ((word.charCodeAt(1) & 0x7f) << 14) + ((word.charCodeAt(2) & 0x7f) << 7) + (word.charCodeAt(3) & 0x7f);
 
-const stringValue$1 = word => {
+const stringValue = word => {
   const l = word === null || word === void 0 ? void 0 : word.length;
   if (!l) return NaN;
-  if (typeof word !== STR$1) return NaN;
-  if (l >= 8) return (v4$1(word.slice(0, 4)) << 2) + v4$1(word.slice(-4));
-  if (l === 7) return (v4$1(word.slice(0, 4)) << 2) + v3$1(word.slice(-3));
-  if (l === 6) return (v4$1(word.slice(0, 4)) << 2) + v2$1(word.slice(-2));
-  if (l === 5) return (v4$1(word.slice(0, 4)) << 2) + v1$1(word.slice(-1));
-  if (l === 4) return v4$1(word) << 2;
-  if (l === 3) return v3$1(word) << 2;
-  if (l === 2) return v2$1(word) << 2;
-  if (l === 1) return v1$1(word) << 2;
+  if (typeof word !== STR) return NaN;
+  if (l >= 8) return (v4(word.slice(0, 4)) << 2) + v4(word.slice(-4));
+  if (l === 7) return (v4(word.slice(0, 4)) << 2) + v3(word.slice(-3));
+  if (l === 6) return (v4(word.slice(0, 4)) << 2) + v2(word.slice(-2));
+  if (l === 5) return (v4(word.slice(0, 4)) << 2) + v1(word.slice(-1));
+  if (l === 4) return v4(word) << 2;
+  if (l === 3) return v3(word) << 2;
+  if (l === 2) return v2(word) << 2;
+  if (l === 1) return v1(word) << 2;
 };
 
-const CJK_LETTERS$1 = '\u4e00-\u9fbf';
-const HALF_NUM$1 = '0-9';
-const HALF_UPPER$1 = 'A-Z';
-const HALF_LOWER$1 = 'a-z';
-const FULL_NUM$1 = '０-９'; // 0xff10 - 0xff19
+const CJK_LETTERS = '\u4e00-\u9fbf';
+const HALF_NUM = '0-9';
+const HALF_UPPER = 'A-Z';
+const HALF_LOWER = 'a-z';
+const FULL_NUM = '０-９'; // 0xff10 - 0xff19
 
-const FULL_UPPER$1 = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
+const FULL_UPPER = 'Ａ-Ｚ'; // 0xff21 - 0xff3a
 
-const FULL_LOWER$1 = 'ａ-ｚ'; // 0xff41 - 0xff5a
+const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
 
-const LITERAL_LOWER$1 = `${HALF_UPPER$1}${HALF_LOWER$1}${HALF_NUM$1}`;
-const LITERAL_UPPER$1 = `${FULL_UPPER$1}${FULL_LOWER$1}${FULL_NUM$1}`;
-const LITERAL_ANY$1 = new RegExp(`[${LITERAL_LOWER$1}${CJK_LETTERS$1}${LITERAL_UPPER$1}]+`);
+const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
+const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM}`;
+const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
 
-const isLiteralAny$1 = x => LITERAL_ANY$1.test(x);
+const isLiteralAny = x => LITERAL_ANY.test(x);
 
-const isNumeric$1 = x => isNumeric$2(x) || isNumeric$3(x);
+const isNumeric = x => isNumeric$2(x) || isNumeric$3(x);
 
-const NUM_BOUND_CONF_FULL$1 = {
-  filter: isNumeric$1,
+const NUM_BOUND_CONF_FULL = {
+  filter: isNumeric,
   mapper: parseNum
 };
-const STR_BOUND_CONF_FULL$1 = {
-  filter: isLiteralAny$1,
-  mapper: stringValue$1
+const STR_BOUND_CONF_FULL = {
+  filter: isLiteralAny,
+  mapper: stringValue
 };
 
-const assignFluoConfigs$1 = (p, ...presets) => {
+const assignFluoConfigs = (p, ...presets) => {
   var _p$presets;
 
-  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET$1, LITERAL_PRESET$1];
+  if (presets.length === 0) presets = (_p$presets = p.presets) !== null && _p$presets !== void 0 ? _p$presets : [NUMERIC_PRESET, LITERAL_PRESET];
 
   if (presets.length === 1) {
     if (!p.fluos) p.fluos = presets.map(preset => ({
@@ -445,7 +445,7 @@ const assignFluoConfigs$1 = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
     }
 
     return p;
@@ -458,8 +458,8 @@ const assignFluoConfigs$1 = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}, confStr = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
     }
 
     return p;
@@ -472,9 +472,9 @@ const assignFluoConfigs$1 = (p, ...presets) => {
 
     if (p.full) {
       const [confNum = {}, confStr = {}, confLab = {}] = p.fluos;
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL$1);
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL$1);
-      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL$1);
+      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL);
+      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL);
+      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL);
     }
 
     return p;
@@ -565,6 +565,34 @@ const ripper$3 = function (text) {
 
 
 ripper$3.bind(LITERAL$3);
+const LITERAL$4 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper$4 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+ripper$4.bind(LITERAL$4);
 
 const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
@@ -599,10 +627,10 @@ const splitLiteral = ripper.bind(LITERAL);
 const nullish = x => x === null || x === void 0;
 
 const presetString = p => {
-  assignFluoConfigs$1(p, ATLAS, SUBTLE);
+  assignFluoConfigs(p, ATLAS, SUBTLE);
   if (nullish(p.vectify)) p.vectify = splitLiteral;
   if (nullish(p.width)) p.width = 0;
   return p;
 };
 
-export { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET, assignFluoConfigs, assignFluoConfigsForTabular, presetCrostab, presetEntries, presetMatrix, presetObject, presetSamples, presetString, presetTable, presetVector };
+export { HEADING_PRESET, LITERAL_PRESET$1 as LITERAL_PRESET, NUMERIC_PRESET$1 as NUMERIC_PRESET, assignFluoConfigs$1 as assignFluoConfigs, assignFluoConfigsForTabular, presetCrostab, presetEntries, presetMatrix, presetObject, presetSamples, presetString, presetTable, presetVector };
