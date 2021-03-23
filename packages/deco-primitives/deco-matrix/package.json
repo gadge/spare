@@ -18,7 +18,7 @@
     "@ject/oneself": "^0.0.6",
     "@palett/fluo-matrix": "^0.7.2",
     "@spare/bracket": "^0.11.4",
-    "@spare/enum-chars": "^0.10.14",
+    "@spare/enum-chars": "^0.11.4",
     "@spare/liner": "^0.11.4",
     "@spare/matrix-margin": "^0.11.4",
     "@spare/matrix-padder": "^0.11.4",

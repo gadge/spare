@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@spare/charset": "^0.11.4",
-    "@spare/enum-chars": "^0.10.14",
-    "@spare/enum-full-angle-chars": "^0.10.14",
+    "@spare/enum-chars": "^0.11.4",
+    "@spare/enum-full-angle-chars": "^0.11.4",
     "@spare/lange": "^0.11.4"
   },
   "repository": {
