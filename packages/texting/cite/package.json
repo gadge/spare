@@ -1,10 +1,6 @@
 {
   "name": "@spare/cite",
-<<<<<<< HEAD
   "version": "0.11.2",
-=======
-  "version": "0.10.8",
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   "description": "Process string for file write",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,13 +15,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@spare/quote": "^0.11.2",
     "@spare/translator": "^0.11.2"
-=======
-    "@spare/quote": "^0.10.8",
-    "@spare/translator": "^0.10.8"
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   },
   "repository": {
     "type": "git",

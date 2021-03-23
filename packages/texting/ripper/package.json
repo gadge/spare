@@ -1,10 +1,6 @@
 {
   "name": "@spare/ripper",
-<<<<<<< HEAD
   "version": "0.11.2",
-=======
-  "version": "0.10.8",
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   "description": "Split string by regex",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,17 +15,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@spare/deco-vector": "^0.11.2",
     "@spare/enum-chars": "^0.10.14",
     "@spare/phrasing": "^0.11.2",
     "@typen/nullish": "^0.1.16"
-=======
-    "@spare/deco-vector": "^0.10.8",
-    "@spare/enum-chars": "^0.10.8",
-    "@spare/phrasing": "^0.10.8",
-    "@typen/nullish": "^0.1.10"
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   },
   "repository": {
     "type": "git",

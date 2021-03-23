@@ -6,7 +6,6 @@ var padder = require('@texting/padder');
 var comparer = require('@aryth/comparer');
 var lange = require('@spare/lange');
 var columnsStat = require('@vect/columns-stat');
-<<<<<<< HEAD
 
 /**
  *
@@ -85,16 +84,6 @@ const mapper = (mx, mapOnColumns, h, w) => {
 };
 
 const widthsByColumns = (mx, ansi) => {
-=======
-var matrixZipper = require('@vect/matrix-zipper');
-
-const matrixPadder = (mx, {
-  raw,
-  dye,
-  ansi,
-  fill
-}) => {
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   const len = lange.Lange(ansi);
   return columnsStat.stat.call({
     init: () => 0,

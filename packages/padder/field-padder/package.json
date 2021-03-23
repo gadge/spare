@@ -1,10 +1,6 @@
 {
   "name": "@spare/field-padder",
-<<<<<<< HEAD
   "version": "0.11.2",
-=======
-  "version": "0.10.8",
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   "description": "Pad field (keyed column)",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,7 +15,6 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@aryth/comparer": "^0.3.14",
     "@spare/enum-chars": "^0.10.14",
     "@spare/enum-full-angle-chars": "^0.10.14",
@@ -28,17 +23,6 @@
     "@texting/padder": "^0.0.5",
     "@vect/vector-indicator": "^0.3.7",
     "@vect/vector-mapper": "^0.3.7"
-=======
-    "@aryth/comparer": "^0.3.3",
-    "@spare/enum-chars": "^0.10.8",
-    "@spare/enum-full-angle-chars": "^0.10.8",
-    "@spare/fullwidth": "^0.10.8",
-    "@spare/lange": "^0.10.8",
-    "@spare/padder": "^0.10.8",
-    "@vect/vector-indicator": "^0.3.5",
-    "@vect/vector-mapper": "^0.3.5",
-    "@vect/vector-zipper": "^0.3.5"
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,6 @@
 {
   "name": "@spare/xr",
-<<<<<<< HEAD
   "version": "0.11.2",
-=======
-  "version": "0.10.8",
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   "description": "A sentence builder",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,7 +15,6 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@palett/cards": "^0.7.2",
     "@palett/convert": "^0.7.2",
     "@palett/dye": "^0.7.2",
@@ -29,17 +24,6 @@
     "@spare/util": "^0.11.2",
     "@typen/nullish": "^0.1.16",
     "@vect/callable": "^0.3.7"
-=======
-    "@palett/cards": "^0.5.10",
-    "@palett/convert": "^0.5.10",
-    "@palett/dye": "^0.5.10",
-    "@spare/bracket": "^0.10.8",
-    "@spare/charset": "^0.10.8",
-    "@spare/enum-chars": "^0.10.8",
-    "@spare/util": "^0.10.8",
-    "@typen/nullish": "^0.1.10",
-    "@vect/callable": "^0.3.5"
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   },
   "repository": {
     "type": "git",
