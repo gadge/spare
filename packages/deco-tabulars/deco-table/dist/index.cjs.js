@@ -12,9 +12,16 @@ var tablePadder = require('@spare/table-padder');
 var matrix = require('@vect/matrix');
 var vectorMerge = require('@vect/vector-merge');
 
-const MUTATE = {
+// export const
+//   FUNC = '',
+//   PIGM = '',
+//   HEX = ''
+const RENDER = 'render';
+const MUTATE_PIGMENT = {
+  colorant: RENDER,
   mutate: true
 };
+
 const _decoTable = function (table) {
   var _head;
 
@@ -26,9 +33,6 @@ const _decoTable = function (table) {
   const [height, width] = matrix.size(rows),
         labelWidth = (_head = head) === null || _head === void 0 ? void 0 : _head.length;
   if (!height || !width || !labelWidth) return enumChars.AEU;
-  const {
-    presets
-  } = config;
   table = tableMargin.tableMargin(table, config); // use: top, left, bottom ,right, read, headRead
 
   ({
@@ -37,10 +41,12 @@ const _decoTable = function (table) {
     rows
   } = tablePadder.tablePadder(table, config)); // use: ansi, fullAngle
 
-  if (presets) {
-    [head, rows] = [fluoVector.fluoVector.call(MUTATE, head, {
-      presets: [presets[0], presets[2]]
-    }), fluoMatrix.fluoMatrix.call(MUTATE, rows, config)];
+  const {
+    fluos
+  } = config; // fluos |> deco |> logger
+
+  if (fluos) {
+    [head, rows] = [fluoVector.fluoVector.call(MUTATE_PIGMENT, head, [fluos[0], fluos[2]]), fluoMatrix.fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, fluos)];
   }
 
   const lines = vectorMerge.acquire([head.join(' | '), rule.join('-+-')], rows.map(row => row.join(' | ')));

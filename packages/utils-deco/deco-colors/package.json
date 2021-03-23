@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.6.2",
-    "@palett/convert": "^0.6.2",
-    "@palett/dye": "^0.6.2",
+    "@palett/cards": "^0.7.1",
+    "@palett/convert": "^0.7.1",
+    "@palett/dye": "^0.7.1",
     "@vect/object-mapper": "^0.3.7"
   },
   "repository": {

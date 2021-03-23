@@ -21,10 +21,10 @@ export const _decoSamples = function (samples) {
   let table = samplesToTabular(samples, fields)
   let { head, rows } = tableMargin(table, config) // { top: 0, bottom: 0, left, right, height, width, read, headRead }
   rows = matrixPadder(rows, config)
-  const { presets } = config
-  if (presets) {
-    head = fluoVector.call(MUTATE, head, { presets: [presets[0], presets[2]] })
-    rows = fluoMatrix.call(MUTATE, rows, config)
+  const { fluos } = config
+  if (fluos) {
+    head = fluoVector.call(MUTATE, head, [fluos[0], fluos[2]])
+    rows = fluoMatrix.call(MUTATE, rows, config.direct, fluos)
   }
   let lines = rows.map(line => '{ ' + (zipper(head, line, (h, x) => h + ':' + x).join(COSP)) + ' }')
   if (indexed) {

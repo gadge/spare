@@ -49,14 +49,12 @@ const _decoSamples = function (samples) {
 
   rows = matrixPadder.matrixPadder(rows, config);
   const {
-    presets
+    fluos
   } = config;
 
-  if (presets) {
-    head = fluoVector.fluoVector.call(MUTATE, head, {
-      presets: [presets[0], presets[2]]
-    });
-    rows = fluoMatrix.fluoMatrix.call(MUTATE, rows, config);
+  if (fluos) {
+    head = fluoVector.fluoVector.call(MUTATE, head, [fluos[0], fluos[2]]);
+    rows = fluoMatrix.fluoMatrix.call(MUTATE, rows, config.direct, fluos);
   }
 
   let lines = rows.map(line => '{ ' + vectorZipper.zipper(head, line, (h, x) => h + ':' + x).join(enumChars.COSP) + ' }');

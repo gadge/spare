@@ -2,7 +2,7 @@ import { decoFlat }                       from '@spare/deco-flat'
 import { BRC }                            from '@spare/enum-brackets'
 import { COLF, RTSP }                     from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from './DecoConfig'
+import { DecoConfig }                     from '../src/DecoConfig'
 
 export const CONF_DECO_OBJECT = {
   dash: RTSP,
@@ -36,8 +36,8 @@ export const CONF_DECO_OBJECT = {
  */
 export const presetObject = p => DecoConfig
   .build(p)
-  .assignConfigs(CONF_DECO_OBJECT)
-  .assignPresets(NUMERIC_PRESET, LITERAL_PRESET)
+  .replenishConfigs(CONF_DECO_OBJECT)
+  .defaultPresets(NUMERIC_PRESET, LITERAL_PRESET)
 
 
 // p.dash = p.dash ?? RTSP

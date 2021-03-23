@@ -2,7 +2,7 @@ import { decoFlat }                       from '@spare/deco-flat'
 import { BRK }                            from '@spare/enum-brackets'
 import { LF }                             from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from './DecoConfig'
+import { DecoConfig }                     from '../src/DecoConfig'
 
 export const CONF_DECO_ENTRIES = {
   dash: ' > ',
@@ -37,8 +37,8 @@ export const CONF_DECO_ENTRIES = {
  */
 export const presetEntries = p => DecoConfig
   .build(p)
-  .assignConfigs(CONF_DECO_ENTRIES)
-  .assignPresets(NUMERIC_PRESET, LITERAL_PRESET)
+  .replenishConfigs(CONF_DECO_ENTRIES)
+  .defaultPresets(NUMERIC_PRESET, LITERAL_PRESET)
 
 // p.dash = p.dash ?? ' > '
 // p.delim = p.delim ?? LF
@@ -46,5 +46,5 @@ export const presetEntries = p => DecoConfig
 // p.read = p.read ?? decoFlat
 // p.ansi = p.ansi ?? true
 // // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
-// DecoConfig.prototype.assignPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET)
+// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET)
 // return p

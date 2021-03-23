@@ -1,5 +1,5 @@
 import { ATLAS, SUBTLE } from '@palett/presets'
-import { DecoConfig }    from '@spare/preset-deco'
+import { DecoConfig }    from 'packages/preset/preset-deco/dist/index.esm'
 import { splitLiteral }  from '@spare/splitter'
 
 export const CONF_DECO_STRING = {
@@ -9,11 +9,11 @@ export const CONF_DECO_STRING = {
 export const presetString = p => {
   return DecoConfig
     .build(p)
-    .assignConfigs(CONF_DECO_STRING)
-    .assignPresets(ATLAS, SUBTLE)
+    .replenishConfigs(CONF_DECO_STRING)
+    .defaultPresets(ATLAS, SUBTLE)
 }
 
-// DecoConfig.prototype.assignPresets.call(p, ATLAS, SUBTLE)
+// DecoConfig.prototype.defaultPresets.call(p, ATLAS, SUBTLE)
 // if (nullish(p.vectify)) p.vectify = splitLiteral
 // if (nullish(p.width)) p.width = 0
 // return p

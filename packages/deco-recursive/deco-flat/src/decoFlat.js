@@ -8,9 +8,9 @@ import { BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT }               from '@typen/enum-object-types'
 import { typ }                               from '@typen/typ'
 import { mutate }                            from '@vect/column-mapper'
+import { MUTATE_PIGMENT }                    from '@palett/enum-colorant-modes'
 
-const MUTABLE = { mutate: true }
-export function decoflat(lv, node) {
+export function _decoFlat(lv, node) {
   const t = typeof node
   if (t === STR) return node // isNumeric(node) ? node : PAL.STR(node)
   if (t === NUM) return node
@@ -20,7 +20,7 @@ export function decoflat(lv, node) {
     if (pt === ARRAY) return deVec.call(this, lv, node) |> BRK[lv & 7]
     if (pt === OBJECT) return deOb.call(this, lv, node) |> BRC[lv & 7]
     if (pt === DATE) return decoDateTime(node)
-    return `${ node }`
+    return `${node}`
   }
   if (t === BOO) return PAL.BOO(node)
   if (t === UND) return PAL.UDF(node)
@@ -31,16 +31,16 @@ export function decoflat(lv, node) {
 function deVec(lv, ve) {
   const config = this
   // const presets = this?.presets
-  const list = ve.map(decoflat.bind(config, lv + 1))
-  fluoVector.call(MUTABLE, list, config)
+  const list = ve.map(_decoFlat.bind(config, lv + 1))
+  fluoVector.call(MUTATE_PIGMENT, list, config.fluos)
   return list.join(COSP)
 }
 
 function deOb(lv, ob) {
   const config = this
   // const presets = this?.presets
-  const ents = mutate(Object.entries(ob), 1, decoflat.bind(this, lv + 1))
-  fluoEntries.call(MUTABLE, ents, config)
+  const ents = mutate(Object.entries(ob), 1, _decoFlat.bind(this, lv + 1))
+  fluoEntries.call(MUTATE_PIGMENT, ents, config.fluos)
   return ents.map(([k, v]) => k + RT + v).join(COSP)
 }
 
