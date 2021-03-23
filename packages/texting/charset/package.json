@@ -1,6 +1,6 @@
 {
   "name": "@spare/charset",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "description": "Regex sets",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

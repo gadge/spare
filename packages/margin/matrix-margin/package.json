@@ -1,6 +1,6 @@
 {
   "name": "@spare/matrix-margin",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@spare/util": "^0.11.3",
+    "@spare/util": "^0.11.4",
     "@vect/matrix-margin": "^0.3.7",
     "@vect/matrix-size": "^0.3.7",
     "@vect/vector-margin": "^0.3.7"

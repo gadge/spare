@@ -1,6 +1,6 @@
 {
   "name": "@spare/field-padder",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "description": "Pad field (keyed column)",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,8 +18,8 @@
     "@aryth/comparer": "^0.3.14",
     "@spare/enum-chars": "^0.10.14",
     "@spare/enum-full-angle-chars": "^0.10.14",
-    "@spare/fullwidth": "^0.11.3",
-    "@spare/lange": "^0.11.3",
+    "@spare/fullwidth": "^0.11.4",
+    "@spare/lange": "^0.11.4",
     "@texting/padder": "^0.0.5",
     "@vect/vector-indicator": "^0.3.7",
     "@vect/vector-mapper": "^0.3.7"
