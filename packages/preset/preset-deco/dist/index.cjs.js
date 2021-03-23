@@ -90,11 +90,11 @@ class DecoConfig {
 
 }
 
-var _assignPresets2 = function _assignPresets2(...presets) {
+function _assignPresets2(...presets) {
   var _this$presets3;
 
   return (_this$presets3 = this.presets) !== null && _this$presets3 !== void 0 && _this$presets3.assignPresets.apply(this.presets, presets), this;
-};
+}
 
 const NUMERIC_PRESET = presets.FRESH;
 const LITERAL_PRESET = presets.PLANET;
