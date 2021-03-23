@@ -1,8 +1,8 @@
 import { decoFlat }                                       from '@spare/deco-flat'
 import { LF }                                             from '@spare/enum-chars'
 import { COLUMNWISE }                                     from '@vect/enum-matrix-directions'
-import { DecoConfig }                                     from '../dist/index.esm'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
+import { DecoConfig }                                     from '../src/decoConfig'
 
 export const CONF_DECO_TABLE = {
   delim: LF,
@@ -40,11 +40,3 @@ export const presetTable = p => DecoConfig
   .build(p)
   .replenishConfigs(CONF_DECO_TABLE)
   .defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
-
-// p.delim = p.delim ?? LF
-// p.read = p.read ?? decoFlat
-// p.direct = p.direct ?? COLUMNWISE
-// p.ansi = p.ansi ?? true
-// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
-// return p

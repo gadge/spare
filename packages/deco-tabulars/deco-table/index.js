@@ -19,7 +19,7 @@ export { _decoTable }
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *
@@ -49,7 +49,7 @@ export const Deco = (p = {}) => _decoTable.bind(presetTable(p))
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *

@@ -19,7 +19,7 @@ export const _decoMatrix = function (rows = []) {
   const br = Br(bracket) ?? oneself
   rows = matrixMargin(rows, config) // use: top, bottom, left, right, read, rule
   rows = matrixPadder(rows, config) // use: ansi
-  if (config.fluos) rows = fluo(rows, config.direct, config.fluos) // use: direct, presets, effects
+  if (config.presets) rows = fluo(rows, config.direct, config.presets) // use: direct, presets, effects
   return liner(
     rows.map(line => br(line.join(delim))),
     { discrete, delim: COLF, bracket, level }

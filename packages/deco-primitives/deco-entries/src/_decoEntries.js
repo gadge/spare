@@ -15,7 +15,7 @@ export const _decoEntries = function (entries = []) {
   bracket = Br(bracket) ?? oneself
   entries = entriesMargin(entries, config) // use: head, tail, keyRead, read
   if (LF.test(delim)) entries = entriesPadder(entries, { ansi: config.presets ?? ansi })
-  if (config.fluos) entries = fluo(entries, config.fluos) // use: presets, effects
+  if (config.presets) entries = fluo(entries, config.presets) // use: presets, effects
   return liner(
     entries.map(([k, v]) => bracket(k + dash + v.trimRight())),
     config

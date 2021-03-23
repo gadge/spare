@@ -11,7 +11,7 @@ function _decoVector(vec = []) {
   if (config !== null && config !== void 0 && config.indexed) return _decoEntries.call(config, Object.entries(vec));
   vec = vectorMargin(vec, config); // use: head, tail, read, rule
 
-  if (config.fluos) vec = fluo(vec, config.fluos); // use:  presets, effects
+  if (config.presets) vec = fluo(vec, config.presets); // use:  presets, effects
 
   return liner(vec, config);
 }

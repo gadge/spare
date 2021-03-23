@@ -15,15 +15,16 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.7.1",
-    "@palett/fluo-vector": "^0.7.1",
+    "@palett/fluo-matrix": "^0.7.2",
+    "@palett/fluo-vector": "^0.7.2",
     "@spare/enum-chars": "^0.10.14",
     "@spare/liner": "^0.11.1",
     "@spare/preset-deco": "^0.11.1",
     "@spare/table-margin": "^0.11.1",
     "@spare/table-padder": "^0.11.1",
     "@vect/matrix": "^0.3.7",
-    "@vect/vector-merge": "^0.3.7"
+    "@vect/vector-merge": "^0.3.7",
+    "@palett/enum-colorant-modes": "^0.7.2"
   },
   "repository": {
     "type": "git",

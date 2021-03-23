@@ -27,13 +27,15 @@ const MUTATE = {
 
 const crostabVerbal = (crostab, config = {}) => {
   const {
-    fluos
+    presets
   } = config;
-  if (!fluos) return crostab;
-  const labelConfigs = [fluos[0], fluos[2]];
-  crostab.side = fluoVector.call(MUTATE, crostab.side, labelConfigs);
-  crostab.head = fluoVector.call(MUTATE, crostab.head, labelConfigs);
-  crostab.rows = fluoMatrix.call(MUTATE, crostab.rows, config.direct, fluos); // use: direct, presets
+  if (!presets) return crostab;
+  const [alpha, beta, gamma] = presets;
+  const presetLabels = [alpha, gamma !== null && gamma !== void 0 ? gamma : beta],
+        presetPoints = [alpha, beta];
+  crostab.side = fluoVector.call(MUTATE, crostab.side, presetLabels);
+  crostab.head = fluoVector.call(MUTATE, crostab.head, presetLabels);
+  crostab.rows = fluoMatrix.call(MUTATE, crostab.rows, config.direct, presetPoints); // use: direct, presets
 
   return crostab;
 };

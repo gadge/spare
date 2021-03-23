@@ -2,7 +2,7 @@ import { decoFlat }                                       from '@spare/deco-flat
 import { LF }                                             from '@spare/enum-chars'
 import { POINTWISE }                                      from '@vect/enum-matrix-directions'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                                     from '../src/DecoConfig'
+import { DecoConfig }                                     from '../src/decoConfig'
 
 export const CONF_DECO_CROSTAB = {
   delim: LF,
@@ -43,13 +43,6 @@ export const presetCrostab = p => {
     .replenishConfigs(CONF_DECO_CROSTAB)
     .defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
 }
-
-// p.delim = p.delim ?? LF
-// p.read = p.read ?? decoFlat
-// p.ansi = p.ansi ?? true
-// p.direct = p.direct ?? POINTWISE
-// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
 
 
 

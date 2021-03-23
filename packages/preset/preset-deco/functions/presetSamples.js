@@ -2,8 +2,8 @@ import { decoFlat }                                       from '@spare/deco-flat
 import { BRK }                                            from '@spare/enum-brackets'
 import { COSP }                                           from '@spare/enum-chars'
 import { COLUMNWISE }                                     from '@vect/enum-matrix-directions'
-import { DecoConfig }                                     from '../dist/index.esm'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
+import { DecoConfig }                                     from '../src/decoConfig'
 
 export const CONF_DECO_SAMPLES = {
   delim: COSP,
@@ -44,13 +44,3 @@ export const presetSamples = p => DecoConfig
   .build(p)
   .replenishConfigs(CONF_DECO_SAMPLES)
   .defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
-
-// p.delim = p.delim ?? COSP
-// p.bracket = p.bracket ?? BRK
-// p.indexed = p.indexed ?? true
-// p.read = p.read ?? decoFlat
-// p.direct = p.direct ?? COLUMNWISE
-// p.ansi = p.ansi ?? true
-// return p
-// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)

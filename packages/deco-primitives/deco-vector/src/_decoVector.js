@@ -10,6 +10,6 @@ export function _decoVector(vec = []) {
   const config = this
   if (config?.indexed) return _decoEntries.call(config, Object.entries(vec))
   vec = vectorMargin(vec, config) // use: head, tail, read, rule
-  if (config.fluos) vec = fluo(vec, config.fluos) // use:  presets, effects
+  if (config.presets) vec = fluo(vec, config.presets) // use:  presets, effects
   return liner(vec, config)
 }

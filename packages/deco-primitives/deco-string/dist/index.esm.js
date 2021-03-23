@@ -40,7 +40,7 @@ const _decoString = function (text) {
     firstLineIndent: config.firstLineIndent,
     delim: LF + TB.repeat((_config$indent = config.indent) !== null && _config$indent !== void 0 ? _config$indent : 0)
   }, text);
-  if (config.fluos) text = stringColour.call(config, text);
+  if (config.presets) text = stringColour.call(config, text);
   return text;
 };
 const stringColour = function (text) {
@@ -50,7 +50,7 @@ const stringColour = function (text) {
     joiner
   } = this;
   const words = vectify(text);
-  fluoVector.call(MUTATE_PIGMENT, words, config.fluos); // use: presets, effects
+  fluoVector.call(MUTATE_PIGMENT, words, config.presets); // use: presets, effects
 
   return joiner ? joiner(words) : words.join('');
 };

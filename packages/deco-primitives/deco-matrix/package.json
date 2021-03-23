@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.6",
-    "@palett/fluo-matrix": "^0.7.1",
+    "@palett/fluo-matrix": "^0.7.2",
     "@spare/bracket": "^0.11.1",
     "@spare/enum-chars": "^0.10.14",
     "@spare/liner": "^0.11.1",

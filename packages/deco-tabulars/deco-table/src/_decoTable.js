@@ -8,7 +8,6 @@ import { tablePadder }    from '@spare/table-padder'
 import { size }           from '@vect/matrix'
 import { acquire }        from '@vect/vector-merge'
 
-
 export const _decoTable = function (table) {
   const config = this
   if (!table) return AEU
@@ -18,13 +17,12 @@ export const _decoTable = function (table) {
   table = tableMargin(table, config); // use: top, left, bottom ,right, read, headRead
 
   ({ head, rule, rows } = tablePadder(table, config)) // use: ansi, fullAngle
-  const { fluos } = config
-  // fluos |> deco |> logger
-  if (fluos) {
-    [head, rows] = [
-      fluoVector.call(MUTATE_PIGMENT, head, [fluos[0], fluos[2]]),
-      fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, fluos)
-    ]
+  const { presets } = config
+  // presets |> deco |> logger
+  if (presets) {
+    const [alpha, beta, gamma] = presets
+    head = fluoVector.call(MUTATE_PIGMENT, head, [alpha, gamma ?? beta])
+    rows = fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, [alpha, beta])
   }
   const lines = acquire([
       head.join(' | '),

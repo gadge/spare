@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var presetDeco = require('@spare/preset-deco');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoMatrix = require('@palett/fluo-matrix');
 var fluoVector = require('@palett/fluo-vector');
 var enumChars = require('@spare/enum-chars');
@@ -11,16 +12,6 @@ var tableMargin = require('@spare/table-margin');
 var tablePadder = require('@spare/table-padder');
 var matrix = require('@vect/matrix');
 var vectorMerge = require('@vect/vector-merge');
-
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
-};
 
 const _decoTable = function (table) {
   var _head;
@@ -42,11 +33,13 @@ const _decoTable = function (table) {
   } = tablePadder.tablePadder(table, config)); // use: ansi, fullAngle
 
   const {
-    fluos
-  } = config; // fluos |> deco |> logger
+    presets
+  } = config; // presets |> deco |> logger
 
-  if (fluos) {
-    [head, rows] = [fluoVector.fluoVector.call(MUTATE_PIGMENT, head, [fluos[0], fluos[2]]), fluoMatrix.fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, fluos)];
+  if (presets) {
+    const [alpha, beta, gamma] = presets;
+    head = fluoVector.fluoVector.call(enumColorantModes.MUTATE_PIGMENT, head, [alpha, gamma !== null && gamma !== void 0 ? gamma : beta]);
+    rows = fluoMatrix.fluoMatrix.call(enumColorantModes.MUTATE_PIGMENT, rows, config.direct, [alpha, beta]);
   }
 
   const lines = vectorMerge.acquire([head.join(' | '), rule.join('-+-')], rows.map(row => row.join(' | ')));
@@ -69,7 +62,7 @@ const _decoTable = function (table) {
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *
@@ -99,7 +92,7 @@ const Deco = (p = {}) => _decoTable.bind(presetDeco.presetTable(p));
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *

@@ -36,7 +36,7 @@ const _decoMatrix = function (rows = []) {
 
   rows = matrixPadder(rows, config); // use: ansi
 
-  if (config.fluos) rows = fluo(rows, config.direct, config.fluos); // use: direct, presets, effects
+  if (config.presets) rows = fluo(rows, config.direct, config.presets); // use: direct, presets, effects
 
   return liner(rows.map(line => br(line.join(delim))), {
     discrete,

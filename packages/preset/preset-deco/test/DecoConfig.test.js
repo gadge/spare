@@ -1,5 +1,5 @@
 import { LAVA, METRO } from '@palett/presets'
-import { DecoConfig }  from '../src/DecoConfig'
+import { DecoConfig }  from '../src/decoConfig'
 
 const config = {
   foo: true,
@@ -13,7 +13,7 @@ const additional = {
 
 DecoConfig
   .build(config)
-  .assignConfigs(additional)
+  .replenishConfigs(additional)
   .resetPresets(LAVA)
   .assignPresets(LAVA, METRO)
   |> JSON.stringify |> console.log

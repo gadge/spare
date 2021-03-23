@@ -28,7 +28,7 @@ export const _decoString = function (text) {
     firstLineIndent: config.firstLineIndent,
     delim: LF + TB.repeat(config.indent ?? 0)
   }, text)
-  if (config.fluos) text = stringColour.call(config, text)
+  if (config.presets) text = stringColour.call(config, text)
   return text
 }
 
@@ -36,6 +36,6 @@ export const stringColour = function (text) {
   const config = this
   const { vectify, joiner } = this
   const words = vectify(text)
-  fluoVector.call(MUTATE_PIGMENT, words, config.fluos) // use: presets, effects
+  fluoVector.call(MUTATE_PIGMENT, words, config.presets) // use: presets, effects
   return joiner ? joiner(words) : words.join('')
 }

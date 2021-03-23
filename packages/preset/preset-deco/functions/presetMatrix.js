@@ -3,7 +3,7 @@ import { BRK }                            from '@spare/enum-brackets'
 import { COSP }                           from '@spare/enum-chars'
 import { ROWWISE }                        from '@vect/enum-matrix-directions'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from '../src/DecoConfig'
+import { DecoConfig }                     from '../src/decoConfig'
 
 export const CONF_DECO_MATRIX = {
   delim: COSP,
@@ -40,10 +40,3 @@ export const presetMatrix = p => DecoConfig
   .build(p)
   .replenishConfigs(CONF_DECO_MATRIX)
   .defaultPresets(NUMERIC_PRESET, LITERAL_PRESET)
-
-// p.delim = p.delim ?? COSP
-// p.bracket = p.bracket ?? BRK
-// p.read = p.read ?? decoFlat
-// p.direct = p.direct ?? ROWWISE
-// p.ansi = p.ansi ?? true
-// return p

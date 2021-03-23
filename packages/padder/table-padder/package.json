@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/table-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.3.13",
+    "@aryth/comparer": "^0.3.14",
     "@spare/enum-chars": "^0.10.14",
     "@spare/enum-full-angle-chars": "^0.10.14",
     "@spare/fullwidth": "^0.11.1",

@@ -5,23 +5,23 @@ import { replenish }        from '@vect/object-update'
 export class DecoConfig {
   /** @type {PresetCollection} */ presets
 
-  /** @param {Object} configs */
-  constructor(configs) {
-    if (!configs) { return }
-    Object.assign(this, configs)
-    if (configs.presets) this.resetPresets(configs.presets)
+  /** @param {Object} conf */
+  constructor(conf) {
+    if (!conf) { return }
+    Object.assign(this, conf)
+    if (conf.presets) this.resetPresets.apply(this, conf.presets)
   }
   /**
-   * @param {Object} [configs]
+   * @param {Object} [conf]
    * @returns {DecoConfig}
    */
-  static build(configs) { return new DecoConfig(configs) }
+  static build(conf) { return new DecoConfig(conf) }
 
   assignConfigs(configs) { return Object.assign(this, configs) }
   replenishConfigs(configs) { return replenish(this, configs) }
 
   #assignPresets(...presets) { return this.presets?.assignPresets.apply(this.presets, presets), this }
-  resetPresets(...presets) { return this.presets = PresetCollection.build.apply(null, presets), this }
+  resetPresets(...presets) { return this.presets = PresetCollection.build(...presets), this }
   assignPresets(...presets) {
     return this.presets
       ? this.#assignPresets.apply(this, presets)

@@ -5,6 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var presetDeco = require('@spare/preset-deco');
 var convert = require('@analys/convert');
 var samplesSelect = require('@analys/samples-select');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoMatrix = require('@palett/fluo-matrix');
 var fluoVector = require('@palett/fluo-vector');
 var decoVector = require('@spare/deco-vector');
@@ -15,9 +16,6 @@ var tableMargin = require('@spare/table-margin');
 var vectorPadder = require('@spare/vector-padder');
 var vectorZipper = require('@vect/vector-zipper');
 
-const MUTATE = {
-  mutate: true
-};
 const _decoSamples = function (samples) {
   var _samples;
 
@@ -49,12 +47,13 @@ const _decoSamples = function (samples) {
 
   rows = matrixPadder.matrixPadder(rows, config);
   const {
-    fluos
+    presets
   } = config;
 
-  if (fluos) {
-    head = fluoVector.fluoVector.call(MUTATE, head, [fluos[0], fluos[2]]);
-    rows = fluoMatrix.fluoMatrix.call(MUTATE, rows, config.direct, fluos);
+  if (presets) {
+    const [alpha, beta, gamma] = presets;
+    head = fluoVector.fluoVector.call(enumColorantModes.MUTATE_PIGMENT, head, [alpha, gamma !== null && gamma !== void 0 ? gamma : beta]);
+    rows = fluoMatrix.fluoMatrix.call(enumColorantModes.MUTATE_PIGMENT, rows, config.direct, [alpha, beta]);
   }
 
   let lines = rows.map(line => '{ ' + vectorZipper.zipper(head, line, (h, x) => h + ':' + x).join(enumChars.COSP) + ' }');

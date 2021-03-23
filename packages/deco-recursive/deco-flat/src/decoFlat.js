@@ -32,7 +32,7 @@ function deVec(lv, ve) {
   const config = this
   // const presets = this?.presets
   const list = ve.map(_decoFlat.bind(config, lv + 1))
-  fluoVector.call(MUTATE_PIGMENT, list, config.fluos)
+  fluoVector.call(MUTATE_PIGMENT, list, config.presets)
   return list.join(COSP)
 }
 
@@ -40,7 +40,7 @@ function deOb(lv, ob) {
   const config = this
   // const presets = this?.presets
   const ents = mutate(Object.entries(ob), 1, _decoFlat.bind(this, lv + 1))
-  fluoEntries.call(MUTATE_PIGMENT, ents, config.fluos)
+  fluoEntries.call(MUTATE_PIGMENT, ents, config.presets)
   return ents.map(([k, v]) => k + RT + v).join(COSP)
 }
 

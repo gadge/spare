@@ -2,7 +2,7 @@ import { decoFlat }                       from '@spare/deco-flat'
 import { BRK }                            from '@spare/enum-brackets'
 import { COLF }                           from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from '../src/DecoConfig'
+import { DecoConfig }                     from '../src/decoConfig'
 
 export const CONF_DECO_VECTOR = {
   dash: ') ',
@@ -40,5 +40,5 @@ export const CONF_DECO_VECTOR = {
 export const presetVector = p => DecoConfig
   .build(p)
   .replenishConfigs(CONF_DECO_VECTOR)
-  .defaultPreset(NUMERIC_PRESET, LITERAL_PRESET)
+  .defaultPresets(NUMERIC_PRESET, LITERAL_PRESET)
 

@@ -1,4 +1,5 @@
 import { presetTable } from '@spare/preset-deco';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { fluoVector } from '@palett/fluo-vector';
 import { AEU } from '@spare/enum-chars';
@@ -7,16 +8,6 @@ import { tableMargin } from '@spare/table-margin';
 import { tablePadder } from '@spare/table-padder';
 import { size } from '@vect/matrix';
 import { acquire } from '@vect/vector-merge';
-
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
-};
 
 const _decoTable = function (table) {
   var _head;
@@ -38,11 +29,13 @@ const _decoTable = function (table) {
   } = tablePadder(table, config)); // use: ansi, fullAngle
 
   const {
-    fluos
-  } = config; // fluos |> deco |> logger
+    presets
+  } = config; // presets |> deco |> logger
 
-  if (fluos) {
-    [head, rows] = [fluoVector.call(MUTATE_PIGMENT, head, [fluos[0], fluos[2]]), fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, fluos)];
+  if (presets) {
+    const [alpha, beta, gamma] = presets;
+    head = fluoVector.call(MUTATE_PIGMENT, head, [alpha, gamma !== null && gamma !== void 0 ? gamma : beta]);
+    rows = fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, [alpha, beta]);
   }
 
   const lines = acquire([head.join(' | '), rule.join('-+-')], rows.map(row => row.join(' | ')));
@@ -65,7 +58,7 @@ const _decoTable = function (table) {
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *
@@ -95,7 +88,7 @@ const Deco = (p = {}) => _decoTable.bind(presetTable(p));
  * @param {Function} [p.read]
  * @param {Function} [p.headRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=COLUMNWISE]
  *

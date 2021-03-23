@@ -1,6 +1,7 @@
 import { presetSamples } from '@spare/preset-deco';
 import { samplesToTabular } from '@analys/convert';
 import { samplesSelect } from '@analys/samples-select';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { fluoVector } from '@palett/fluo-vector';
 import { deco as deco$1 } from '@spare/deco-vector';
@@ -11,9 +12,6 @@ import { tableMargin } from '@spare/table-margin';
 import { vectorPadder } from '@spare/vector-padder';
 import { zipper } from '@vect/vector-zipper';
 
-const MUTATE = {
-  mutate: true
-};
 const _decoSamples = function (samples) {
   var _samples;
 
@@ -45,12 +43,13 @@ const _decoSamples = function (samples) {
 
   rows = matrixPadder(rows, config);
   const {
-    fluos
+    presets
   } = config;
 
-  if (fluos) {
-    head = fluoVector.call(MUTATE, head, [fluos[0], fluos[2]]);
-    rows = fluoMatrix.call(MUTATE, rows, config.direct, fluos);
+  if (presets) {
+    const [alpha, beta, gamma] = presets;
+    head = fluoVector.call(MUTATE_PIGMENT, head, [alpha, gamma !== null && gamma !== void 0 ? gamma : beta]);
+    rows = fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, [alpha, beta]);
   }
 
   let lines = rows.map(line => '{ ' + zipper(head, line, (h, x) => h + ':' + x).join(COSP) + ' }');

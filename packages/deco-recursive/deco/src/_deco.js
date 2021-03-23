@@ -69,7 +69,7 @@ export function plainNode(node, level = 0, indent) {
 export const deVe = function (vector, lv) {
   const config = this
   mutate(vector, v => String(_deco.call(config, v, lv + 1)))
-  if (config.fluos) fluoVector.call(MUTATE_PIGMENT, vector, config.fluos)
+  if (config.presets) fluoVector.call(MUTATE_PIGMENT, vector, config.presets)
   return renderVector.call(config, vector, lv)
 }
 
@@ -77,7 +77,7 @@ export const deEn = function (entries, lv) {
   const config = this
   const pad = mutateKeyPad(entries)
   mutateValues(entries, v => String(_deco.call(config, v, lv + 1, pad)))
-  if (config.fluos) fluoEntries.call(MUTATE_PIGMENT, entries, config.fluos)
+  if (config.presets) fluoEntries.call(MUTATE_PIGMENT, entries, config.presets)
   return renderEntries.call(config, entries, lv)
 }
 
