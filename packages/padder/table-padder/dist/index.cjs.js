@@ -47,11 +47,37 @@ const tablePadderFull = (table, config = {}) => {
  * @return {{head: string[], rule: string[], rows: string[][]}}
  */
 
+<<<<<<< HEAD
 const tablePadder = (table, config = {}) => {
   if (config.full) return tablePadderFull(table, config);
   const padder$1 = padder.Pad(config); // use ansi
 
   const widths = matrixPadder.widthsByColumns(vector.acquire([table.head], table.rows), config.ansi);
+=======
+const tablePadder = ({
+  head,
+  rows
+}, {
+  raw,
+  ansi,
+  fullAngle = false
+} = {}) => {
+  if (fullAngle) return tablePadderFullAngle({
+    head,
+    rows
+  }, {
+    raw,
+    ansi
+  });
+  const padder$1 = padder.Pad({
+    ansi
+  });
+  const len = lange.Lange(ansi);
+  const widths = columnsStat.stat.call({
+    init: () => 0,
+    acc: (a, b) => comparer.max(a, len(b))
+  }, vector.acquire([head], rows));
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   return {
     head: vectorZipper.zipper(table.head, widths, (x, p) => padder$1(x, p)),
     rule: vectorMapper.mapper(widths, p => enumChars.DA.repeat(p)),

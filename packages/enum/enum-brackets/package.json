@@ -1,11 +1,7 @@
 {
-  "name": "@spare/deco-date",
-<<<<<<< HEAD
-  "version": "0.11.2",
-=======
+  "name": "@spare/enum-brackets",
   "version": "0.10.8",
->>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
-  "description": "Colored stringify date",
+  "description": "String brackets",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -18,18 +14,15 @@
     "pub": "npm publish",
     "test": "node -r @babel/register test/test.index.js"
   },
-  "dependencies": {
-    "@valjoux/timestamp-pretty": "^0.2.3"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gadge/spare.git"
   },
   "keywords": [
-    "date",
-    "time",
-    "stringify",
-    "ansi"
+    "test",
+    "console",
+    "debug",
+    "print"
   ],
   "author": "Hoyeung Wong",
   "license": "MIT",
@@ -37,5 +30,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "7880d791c1d47f99c223bbf53589194a448c0acf"
+  "gitHead": "f86f0a8df3fbaa9124dbb125d469155677e385cd"
 }

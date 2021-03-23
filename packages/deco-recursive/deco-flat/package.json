@@ -1,6 +1,10 @@
 {
   "name": "@spare/deco-flat",
+<<<<<<< HEAD
   "version": "0.11.2",
+=======
+  "version": "0.10.8",
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   "description": "Colored stringify",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,6 +19,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@palett/fluo-entries": "^0.7.2",
     "@palett/fluo-vector": "^0.7.2",
     "@palett/presets": "^0.7.2",
@@ -28,6 +33,20 @@
     "@typen/num-loose": "^0.1.16",
     "@typen/typ": "^0.1.16",
     "@vect/column-mapper": "^0.3.7"
+=======
+    "@palett/fluo-entries": "^0.5.10",
+    "@palett/fluo-vector": "^0.5.10",
+    "@palett/presets": "^0.5.10",
+    "@spare/deco-colors": "^0.10.8",
+    "@spare/deco-date": "^0.10.8",
+    "@spare/deco-func": "^0.10.8",
+    "@spare/enum-chars": "^0.10.8",
+    "@typen/enum-data-types": "^0.1.10",
+    "@typen/enum-object-types": "^0.1.10",
+    "@typen/num-loose": "^0.1.10",
+    "@typen/typ": "^0.1.10",
+    "@vect/column-mapper": "^0.3.5"
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   },
   "repository": {
     "type": "git",

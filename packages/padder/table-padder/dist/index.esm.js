@@ -43,11 +43,37 @@ const tablePadderFull = (table, config = {}) => {
  * @return {{head: string[], rule: string[], rows: string[][]}}
  */
 
+<<<<<<< HEAD
 const tablePadder = (table, config = {}) => {
   if (config.full) return tablePadderFull(table, config);
   const padder = Pad(config); // use ansi
 
   const widths = widthsByColumns(acquire([table.head], table.rows), config.ansi);
+=======
+const tablePadder = ({
+  head,
+  rows
+}, {
+  raw,
+  ansi,
+  fullAngle = false
+} = {}) => {
+  if (fullAngle) return tablePadderFullAngle({
+    head,
+    rows
+  }, {
+    raw,
+    ansi
+  });
+  const padder = Pad({
+    ansi
+  });
+  const len = Lange(ansi);
+  const widths = stat.call({
+    init: () => 0,
+    acc: (a, b) => max(a, len(b))
+  }, acquire([head], rows));
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   return {
     head: zipper(table.head, widths, (x, p) => padder(x, p)),
     rule: mapper$2(widths, p => DA$1.repeat(p)),

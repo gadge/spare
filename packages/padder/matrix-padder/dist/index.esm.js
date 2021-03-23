@@ -2,6 +2,7 @@ import { PadFull, Pad } from '@texting/padder';
 import { max } from '@aryth/comparer';
 import { Lange } from '@spare/lange';
 import { stat } from '@vect/columns-stat';
+<<<<<<< HEAD
 
 /**
  *
@@ -80,6 +81,16 @@ const mapper = (mx, mapOnColumns, h, w) => {
 };
 
 const widthsByColumns = (mx, ansi) => {
+=======
+import { Trizipper, Duozipper } from '@vect/matrix-zipper';
+
+const matrixPadder = (mx, {
+  raw,
+  dye,
+  ansi,
+  fill
+}) => {
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   const len = Lange(ansi);
   return stat.call({
     init: () => 0,

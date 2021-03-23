@@ -2,7 +2,11 @@
   "packages": [
     "packages/*/*"
   ],
+<<<<<<< HEAD
   "version": "0.11.2",
+=======
+  "version": "0.10.8",
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   "npmClient": "yarn",
   "useWorkspaces": true
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 0 silly argv {
 0 silly argv   _: [ 'publish' ],
 0 silly argv   'force-publish': true,
@@ -915,3 +916,11 @@
 761 error     at TLSSocket.emit (events.js:327:22)
 761 error     at emitErrorNT (internal/streams/destroy.js:106:8)
 761 error     at emitErrorCloseNT (internal/streams/destroy.js:74:3)
+=======
+266 error Error: Command failed: git push --follow-tags --no-verify --atomic origin master
+266 error remote: Invalid username or password.
+266 error fatal: Authentication failed for 'https://github.com/gadge/spare.git/'
+266 error
+266 error     at makeError (/home/alkindus/banyan/spare/node_modules/execa/index.js:174:9)
+266 error     at /home/alkindus/banyan/spare/node_modules/execa/index.js:278:16
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24

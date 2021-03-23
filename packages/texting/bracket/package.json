@@ -1,6 +1,10 @@
 {
   "name": "@spare/bracket",
+<<<<<<< HEAD
   "version": "0.11.2",
+=======
+  "version": "0.10.8",
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   "description": "Add parenthesis/bracket/brace/angle-bracket to string",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +19,11 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@spare/enum-brackets": "^0.10.14"
+=======
+    "@spare/enum-brackets": "^0.10.8"
+>>>>>>> 6f5edcecac4b662f63a48f5be560fac3ca8bfd24
   },
   "repository": {
     "type": "git",
