@@ -128,14 +128,7 @@ const CONF_DECO_ENTRIES = {
  * @returns {Object}
  */
 
-const presetEntries = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_ENTRIES).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET); // p.dash = p.dash ?? ' > '
-// p.delim = p.delim ?? LF
-// p.bracket = p.bracket ?? BRK
-// p.read = p.read ?? decoFlat
-// p.ansi = p.ansi ?? true
-// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET]
-// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET)
-// return p
+const presetEntries = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_ENTRIES).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET);
 
 const CONF_DECO_OBJECT = {
   dash: RTSP,
@@ -168,12 +161,7 @@ const CONF_DECO_OBJECT = {
  * @returns {Object}
  */
 
-const presetObject = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_OBJECT).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET); // p.dash = p.dash ?? RTSP
-// p.delim = p.delim ?? COLF
-// p.bracket = p.bracket ?? BRC
-// p.read = p.read ?? decoFlat
-// p.ansi = p.ansi ?? true
-// return p
+const presetObject = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_OBJECT).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET);
 
 const CONF_DECO_VECTOR = {
   dash: ') ',
@@ -243,12 +231,7 @@ const CONF_DECO_MATRIX = {
  * @returns {Object}
  */
 
-const presetMatrix = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_MATRIX).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET); // p.delim = p.delim ?? COSP
-// p.bracket = p.bracket ?? BRK
-// p.read = p.read ?? decoFlat
-// p.direct = p.direct ?? ROWWISE
-// p.ansi = p.ansi ?? true
-// return p
+const presetMatrix = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_MATRIX).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET);
 
 const CONF_DECO_CROSTAB = {
   delim: LF,
@@ -285,12 +268,7 @@ const CONF_DECO_CROSTAB = {
 
 const presetCrostab = p => {
   return DecoConfig.build(p).replenishConfigs(CONF_DECO_CROSTAB).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET);
-}; // p.delim = p.delim ?? LF
-// p.read = p.read ?? decoFlat
-// p.ansi = p.ansi ?? true
-// p.direct = p.direct ?? POINTWISE
-// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
+};
 
 const CONF_DECO_TABLE = {
   delim: LF,
@@ -325,13 +303,7 @@ const CONF_DECO_TABLE = {
  * @returns {Object}
  */
 
-const presetTable = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_TABLE).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET); // p.delim = p.delim ?? LF
-// p.read = p.read ?? decoFlat
-// p.direct = p.direct ?? COLUMNWISE
-// p.ansi = p.ansi ?? true
-// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
-// return p
+const presetTable = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_TABLE).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET);
 
 const CONF_DECO_SAMPLES = {
   delim: COSP,
@@ -369,15 +341,7 @@ const CONF_DECO_SAMPLES = {
  * @returns {Object}
  */
 
-const presetSamples = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_SAMPLES).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET); // p.delim = p.delim ?? COSP
-// p.bracket = p.bracket ?? BRK
-// p.indexed = p.indexed ?? true
-// p.read = p.read ?? decoFlat
-// p.direct = p.direct ?? COLUMNWISE
-// p.ansi = p.ansi ?? true
-// return p
-// // p.presets = p.presets ?? [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]
-// DecoConfig.prototype.defaultPresets.call(p, NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET)
+const presetSamples = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_SAMPLES).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET);
 
 const CONF_DECO_STRING = {
   vectify: splitLiteral,
@@ -385,10 +349,7 @@ const CONF_DECO_STRING = {
 };
 const presetString = p => {
   return DecoConfig.build(p).replenishConfigs(CONF_DECO_STRING).defaultPresets(ATLAS, SUBTLE);
-}; // DecoConfig.prototype.defaultPresets.call(p, ATLAS, SUBTLE)
-// if (nullish(p.vectify)) p.vectify = splitLiteral
-// if (nullish(p.width)) p.width = 0
-// return p
+};
 
 const CONF_DECO_FLAT = {
   mutate: true
@@ -411,19 +372,6 @@ const presetDeco = p => {
   const conf = DecoConfig.build(p).replenishConfigs(CONF_DECO).defaultPresets(AZURE, MOSS);
   conf.string = DecoConfig.build(conf.string).defaultPresets(ATLAS, SUBTLE);
   return conf;
-}; // if (!p) p = {}
-// p.wf = p.wf ?? 160
-// if (nullish(p.presets)) p.presets = p.pr ?? [AZURE, MOSS]
-// DecoConfig.prototype.assignPresets.call(p, AZURE, MOSS)
-// if (nullish(p.depth)) p.depth = 8 // 展示级别
-// if (nullish(p.vert)) p.vert = 0 // 在此级别以下均设为竖排
-// if (nullish(p.unit)) p.unit = 32 // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
-// if (nullish(p.width)) p.width = 80 // 字符超过此, 则换行
-// if (nullish(p.string)) p.string = {}
-// const s = p.string
-// // if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE]
-// DecoConfig.prototype.assignPresets.call(s, ATLAS, SUBTLE)
-// // p |> JSON.stringify |> logger
-// return p
+};
 
 export { CONF_DECO, CONF_DECO_CROSTAB, CONF_DECO_ENTRIES, CONF_DECO_FLAT, CONF_DECO_MATRIX, CONF_DECO_OBJECT, CONF_DECO_SAMPLES, CONF_DECO_STRING, CONF_DECO_TABLE, CONF_DECO_VECTOR, DecoConfig, HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET, presetCrostab, presetDeco, presetDecoFlat, presetEntries, presetMatrix, presetObject, presetSamples, presetString, presetTable, presetVector };
