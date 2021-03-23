@@ -42,7 +42,7 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "7880d791c1d47f99c223bbf53589194a448c0acf",
+  "gitHead": "2e6e35c26d89b8a14e136877cee21a24b72ee1f9",
   "devDependencies": {
     "@vect/vector-index": "^0.3.7"
   }

@@ -1,4 +1,4 @@
-import { presetDecoFlat } from '@spare/preset-deco';
+import { DecoConfig, NUMERIC_PRESET, LITERAL_PRESET } from '@spare/preset-deco';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
 import { BRK, BRC, PAL } from '@spare/deco-colors';
@@ -59,6 +59,10 @@ function deOb(lv, ob) {
   return ents.map(([k, v]) => k + RT + v).join(COSP);
 }
 
+const CONF_DECO_FLAT = {
+  mutate: true
+};
+const presetDecoFlat = p => DecoConfig.build(p).replenishConfigs(CONF_DECO_FLAT).defaultPresets(NUMERIC_PRESET, LITERAL_PRESET); // const CONF_DECO_FLAT = { mutate: true }
 // const parseConfig = conf => DecoConfig
 //   .build(conf)
 //   .assignConfigs(CONF_DECO_FLAT)
@@ -79,4 +83,4 @@ const decoFlat = (o, config = {}) => _decoFlat.call(presetDecoFlat(config), 0, o
 
 const DecoFlat = (config = {}) => _decoFlat.bind(presetDecoFlat(config), 0);
 
-export { DecoFlat, decoFlat };
+export { CONF_DECO_FLAT, DecoFlat, decoFlat, presetDecoFlat };

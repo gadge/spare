@@ -63,6 +63,10 @@ function deOb(lv, ob) {
   return ents.map(([k, v]) => k + enumChars.RT + v).join(enumChars.COSP);
 }
 
+const CONF_DECO_FLAT = {
+  mutate: true
+};
+const presetDecoFlat = p => presetDeco.DecoConfig.build(p).replenishConfigs(CONF_DECO_FLAT).defaultPresets(presetDeco.NUMERIC_PRESET, presetDeco.LITERAL_PRESET); // const CONF_DECO_FLAT = { mutate: true }
 // const parseConfig = conf => DecoConfig
 //   .build(conf)
 //   .assignConfigs(CONF_DECO_FLAT)
@@ -73,7 +77,7 @@ function deOb(lv, ob) {
  * @type {Function|function(*):string}
  *  */
 
-const decoFlat = (o, config = {}) => _decoFlat.call(presetDeco.presetDecoFlat(config), 0, o);
+const decoFlat = (o, config = {}) => _decoFlat.call(presetDecoFlat(config), 0, o);
 /**
  *
  * @param {Object} config
@@ -81,7 +85,9 @@ const decoFlat = (o, config = {}) => _decoFlat.call(presetDeco.presetDecoFlat(co
  * @constructor
  */
 
-const DecoFlat = (config = {}) => _decoFlat.bind(presetDeco.presetDecoFlat(config), 0);
+const DecoFlat = (config = {}) => _decoFlat.bind(presetDecoFlat(config), 0);
 
+exports.CONF_DECO_FLAT = CONF_DECO_FLAT;
 exports.DecoFlat = DecoFlat;
 exports.decoFlat = decoFlat;
+exports.presetDecoFlat = presetDecoFlat;
