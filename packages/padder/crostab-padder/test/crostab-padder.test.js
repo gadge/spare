@@ -14,6 +14,7 @@ const samples = Object.assign({},
   NumVecs.flopShuffle({ size: 6, keyed: true }),
 )
 
+'' |> logger
 samples |> delogger
 const side = Object.keys(samples)
 const rows = Object.values(samples)
