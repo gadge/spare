@@ -10,7 +10,7 @@ var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
 var presets = require('@palett/presets');
 var enumMatrixDirections = require('@vect/enum-matrix-directions');
-var splitter = require('@spare/splitter');
+var splitter = require('@texting/splitter');
 
 var id = 0;
 

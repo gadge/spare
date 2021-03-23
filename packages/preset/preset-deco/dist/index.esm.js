@@ -6,7 +6,7 @@ import { BRK, BRC } from '@spare/enum-brackets';
 import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
 import { FRESH, PLANET, SUBTLE, ATLAS, AZURE, MOSS } from '@palett/presets';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
-import { splitLiteral } from '@spare/splitter';
+import { splitLiteral } from '@texting/splitter';
 
 var id = 0;
 
