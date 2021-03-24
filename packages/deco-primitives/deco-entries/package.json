@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-entries",
-  "version": "0.11.8",
+  "version": "0.11.9",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,17 +15,17 @@
     "test": "node -r @babel/register test/deco-entries.test.js"
   },
   "dependencies": {
-    "@spare/deco-flat": "^0.11.8",
-    "@spare/enum-brackets": "^0.11.8",
-    "@spare/enum-chars": "^0.11.8",
     "@ject/oneself": "^0.0.6",
     "@palett/fluo-entries": "^0.7.2",
-    "@spare/bracket": "^0.11.8",
-    "@spare/deco-config": "^0.11.8",
-    "@spare/entries-margin": "^0.11.8",
-    "@spare/entries-padder": "^0.11.8",
-    "@spare/liner": "^0.11.8",
-    "@spare/preset-deco": "^0.11.8"
+    "@spare/bracket": "^0.11.9",
+    "@spare/deco-config": "^0.11.9",
+    "@spare/deco-flat": "^0.11.9",
+    "@spare/entries-margin": "^0.11.9",
+    "@spare/entries-padder": "^0.11.9",
+    "@spare/enum-brackets": "^0.11.9",
+    "@spare/enum-chars": "^0.11.9",
+    "@spare/liner": "^0.11.9",
+    "@spare/preset-deco": "^0.11.9"
   },
   "repository": {
     "type": "git",
