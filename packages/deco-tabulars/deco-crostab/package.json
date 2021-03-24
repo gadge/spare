@@ -19,6 +19,7 @@
     "@palett/fluo-vector": "^0.7.2",
     "@spare/crostab-margin": "^0.11.8",
     "@spare/crostab-padder": "^0.11.8",
+    "@spare/deco-config": "^0.11.8",
     "@spare/enum-chars": "^0.11.8",
     "@spare/liner": "^0.11.8",
     "@spare/preset-deco": "^0.11.8",

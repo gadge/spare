@@ -1,12 +1,16 @@
+import { FRESH, PLANET, SUBTLE, ATLAS, AZURE, MOSS } from '@palett/presets';
 import { PresetCollection } from '@palett/fluo';
 import { nullish } from '@typen/nullish';
 import { replenish } from '@vect/object-update';
 import { decoFlat } from '@spare/deco-flat';
 import { BRK, BRC } from '@spare/enum-brackets';
 import { LF, RTSP, COLF, COSP } from '@spare/enum-chars';
-import { FRESH, PLANET, SUBTLE, ATLAS, AZURE, MOSS } from '@palett/presets';
 import { ROWWISE, POINTWISE, COLUMNWISE } from '@vect/enum-matrix-directions';
 import { splitLiteral } from '@texting/splitter';
+
+const NUMERIC_PRESET = FRESH;
+const LITERAL_PRESET = PLANET;
+const HEADING_PRESET = SUBTLE;
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -109,10 +113,6 @@ class DecoConfig {
 
 
 }
-
-const NUMERIC_PRESET = FRESH;
-const LITERAL_PRESET = PLANET;
-const HEADING_PRESET = SUBTLE;
 
 const CONF_DECO_ENTRIES = {
   dash: ' > ',
@@ -392,4 +392,7 @@ const presetDeco = p => {
   return conf;
 };
 
-export { CONF_DECO, CONF_DECO_CROSTAB, CONF_DECO_ENTRIES, CONF_DECO_FLAT, CONF_DECO_MATRIX, CONF_DECO_OBJECT, CONF_DECO_SAMPLES, CONF_DECO_STRING, CONF_DECO_TABLE, CONF_DECO_VECTOR, DecoConfig, HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET, presetCrostab, presetDeco, presetDecoFlat, presetEntries, presetMatrix, presetObject, presetSamples, presetString, presetTable, presetVector };
+const DUAL_PRESET_COLLECTION = [NUMERIC_PRESET, LITERAL_PRESET];
+const TRI_PRESET_COLLECTION = [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET];
+
+export { CONF_DECO, CONF_DECO_CROSTAB, CONF_DECO_ENTRIES, CONF_DECO_FLAT, CONF_DECO_MATRIX, CONF_DECO_OBJECT, CONF_DECO_SAMPLES, CONF_DECO_STRING, CONF_DECO_TABLE, CONF_DECO_VECTOR, DUAL_PRESET_COLLECTION, DecoConfig, HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET, TRI_PRESET_COLLECTION, presetCrostab, presetDeco, presetDecoFlat, presetEntries, presetMatrix, presetObject, presetSamples, presetString, presetTable, presetVector };

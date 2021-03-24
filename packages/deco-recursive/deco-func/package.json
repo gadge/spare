@@ -19,6 +19,7 @@
     "@palett/convert": "^0.7.2",
     "@palett/dye": "^0.7.2",
     "@spare/bracket": "^0.11.8",
+    "@spare/deco-config": "^0.11.8",
     "@spare/enum-chars": "^0.11.8",
     "@spare/lange": "^0.11.8",
     "@spare/translator": "^0.11.8"

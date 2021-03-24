@@ -18,6 +18,7 @@
     "@ject/oneself": "^0.0.6",
     "@palett/fluo-entries": "^0.7.2",
     "@spare/bracket": "^0.11.8",
+    "@spare/deco-config": "^0.11.8",
     "@spare/entries-margin": "^0.11.8",
     "@spare/entries-padder": "^0.11.8",
     "@spare/liner": "^0.11.8",

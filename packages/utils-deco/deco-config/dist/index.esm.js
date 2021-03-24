@@ -49,6 +49,13 @@ class DecoConfig {
     return new DecoConfig(conf);
   }
 
+  static parse(userConfig, defaultConfig, defaultPresets) {
+    const conf = DecoConfig.build(userConfig);
+    if (defaultConfig) conf.replenishConfigs(defaultConfig);
+    if (defaultPresets) conf.defaultPresets.apply(conf, defaultPresets);
+    return conf;
+  }
+
   assignConfigs(configs) {
     return Object.assign(this, configs);
   }

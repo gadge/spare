@@ -1,3 +1,5 @@
+import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from './resources/dyePresets'
+
 export { DecoConfig }                       from './src/DecoConfig'
 export { CONF_DECO_ENTRIES, presetEntries } from './functions/presetEntries'
 export { CONF_DECO_OBJECT, presetObject }   from './functions/presetObject'
@@ -14,3 +16,6 @@ export {
   LITERAL_PRESET,
   HEADING_PRESET
 }                                           from './resources/dyePresets'
+
+export const DUAL_PRESET_COLLECTION = [NUMERIC_PRESET, LITERAL_PRESET]
+export const TRI_PRESET_COLLECTION = [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET]

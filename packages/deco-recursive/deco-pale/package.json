@@ -17,6 +17,7 @@
   "dependencies": {
     "@spare/bracket": "^0.11.8",
     "@spare/cite": "^0.11.8",
+    "@spare/deco-config": "^0.11.8",
     "@spare/deco-func": "^0.11.8",
     "@spare/deco-object": "^0.11.8",
     "@spare/deco-util": "^0.11.8",

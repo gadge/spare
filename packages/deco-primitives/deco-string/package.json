@@ -19,6 +19,7 @@
     "@palett/fluo-vector": "^0.7.2",
     "@palett/presets": "^0.7.2",
     "@spare/charset": "^0.11.8",
+    "@spare/deco-config": "^0.11.8",
     "@spare/enum-chars": "^0.11.8",
     "@spare/fold": "^0.11.8",
     "@spare/preset-deco": "^0.11.8",

@@ -2,15 +2,19 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var presets = require('@palett/presets');
 var fluo = require('@palett/fluo');
 var nullish = require('@typen/nullish');
 var objectUpdate = require('@vect/object-update');
 var decoFlat = require('@spare/deco-flat');
 var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
-var presets = require('@palett/presets');
 var enumMatrixDirections = require('@vect/enum-matrix-directions');
 var splitter = require('@texting/splitter');
+
+const NUMERIC_PRESET = presets.FRESH;
+const LITERAL_PRESET = presets.PLANET;
+const HEADING_PRESET = presets.SUBTLE;
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -113,10 +117,6 @@ class DecoConfig {
 
 
 }
-
-const NUMERIC_PRESET = presets.FRESH;
-const LITERAL_PRESET = presets.PLANET;
-const HEADING_PRESET = presets.SUBTLE;
 
 const CONF_DECO_ENTRIES = {
   dash: ' > ',
@@ -396,6 +396,9 @@ const presetDeco = p => {
   return conf;
 };
 
+const DUAL_PRESET_COLLECTION = [NUMERIC_PRESET, LITERAL_PRESET];
+const TRI_PRESET_COLLECTION = [NUMERIC_PRESET, LITERAL_PRESET, HEADING_PRESET];
+
 exports.CONF_DECO = CONF_DECO;
 exports.CONF_DECO_CROSTAB = CONF_DECO_CROSTAB;
 exports.CONF_DECO_ENTRIES = CONF_DECO_ENTRIES;
@@ -406,10 +409,12 @@ exports.CONF_DECO_SAMPLES = CONF_DECO_SAMPLES;
 exports.CONF_DECO_STRING = CONF_DECO_STRING;
 exports.CONF_DECO_TABLE = CONF_DECO_TABLE;
 exports.CONF_DECO_VECTOR = CONF_DECO_VECTOR;
+exports.DUAL_PRESET_COLLECTION = DUAL_PRESET_COLLECTION;
 exports.DecoConfig = DecoConfig;
 exports.HEADING_PRESET = HEADING_PRESET;
 exports.LITERAL_PRESET = LITERAL_PRESET;
 exports.NUMERIC_PRESET = NUMERIC_PRESET;
+exports.TRI_PRESET_COLLECTION = TRI_PRESET_COLLECTION;
 exports.presetCrostab = presetCrostab;
 exports.presetDeco = presetDeco;
 exports.presetDecoFlat = presetDecoFlat;
