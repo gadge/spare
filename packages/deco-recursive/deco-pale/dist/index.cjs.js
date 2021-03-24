@@ -25,7 +25,7 @@ const DEFN = {
 };
 
 function decoPale$1(node) {
-  var _node, _decofun$call, _String;
+  var _node, _decoFunc$call, _String;
 
   const {
     loose,
@@ -35,7 +35,7 @@ function decoPale$1(node) {
   const t = typeof node;
   if (t === enumDataTypes.NUM || t === enumDataTypes.BOO) return node;
   if (t === enumDataTypes.STR) return loose && numStrict.isNumeric(node) ? node : (_node = node, cite(_node));
-  if (t === enumDataTypes.FUN) return _decofun$call = decoFunc.decofun.call(DEFN, node), cite(_decofun$call);
+  if (t === enumDataTypes.FUN) return _decoFunc$call = decoFunc._decoFunc.call(DEFN, node), cite(_decoFunc$call);
 
   if (t === enumDataTypes.OBJ) {
     var _node$map$join, _mutate$map$join, _ref;

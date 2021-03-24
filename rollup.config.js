@@ -17,7 +17,7 @@ const babelPluginOptions = {
   exclude: 'node_modules/**',
   babelHelpers: 'bundled',
   plugins: [
-    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    // ['@babel/plugin-proposal-decorators', { legacy: true }],
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     ['@babel/plugin-proposal-private-methods', { loose: true }],
     ['@babel/plugin-proposal-nullish-coalescing-operator'],

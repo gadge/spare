@@ -2,7 +2,7 @@ import { tenseQuote } from '@spare/quote';
 import { isNumeric } from '@typen/num-strict';
 import { cite } from '@spare/cite';
 import { bracket, brace } from '@spare/bracket';
-import { decofun } from '@spare/deco-func';
+import { _decoFunc } from '@spare/deco-func';
 import { pairEnt } from '@spare/deco-util';
 import { COSP } from '@spare/enum-chars';
 import { NUM, BOO, STR, FUN, OBJ } from '@typen/enum-data-types';
@@ -21,7 +21,7 @@ const DEFN = {
 };
 
 function decoPale$1(node) {
-  var _node, _decofun$call, _String;
+  var _node, _decoFunc$call, _String;
 
   const {
     loose,
@@ -31,7 +31,7 @@ function decoPale$1(node) {
   const t = typeof node;
   if (t === NUM || t === BOO) return node;
   if (t === STR) return loose && isNumeric(node) ? node : (_node = node, cite(_node));
-  if (t === FUN) return _decofun$call = decofun.call(DEFN, node), cite(_decofun$call);
+  if (t === FUN) return _decoFunc$call = _decoFunc.call(DEFN, node), cite(_decoFunc$call);
 
   if (t === OBJ) {
     var _node$map$join, _mutate$map$join, _ref;
