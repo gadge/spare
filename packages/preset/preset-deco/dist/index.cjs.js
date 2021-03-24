@@ -12,30 +12,11 @@ var presets = require('@palett/presets');
 var enumMatrixDirections = require('@vect/enum-matrix-directions');
 var splitter = require('@texting/splitter');
 
-var id = 0;
-
-function _classPrivateFieldLooseKey(name) {
-  return "__private_" + id++ + "_" + name;
-}
-
-function _classPrivateFieldLooseBase(receiver, privateKey) {
-  if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) {
-    throw new TypeError("attempted to use private field on non-instance");
-  }
-
-  return receiver;
-}
-
-var _assignPresets = _classPrivateFieldLooseKey("assignPresets");
-
 class DecoConfig {
   /** @type {PresetCollection} */
 
   /** @param {Object} conf */
   constructor(conf) {
-    Object.defineProperty(this, _assignPresets, {
-      value: _assignPresets2
-    });
     this.presets = void 0;
 
     if (!conf) {
@@ -43,7 +24,7 @@ class DecoConfig {
     }
 
     Object.assign(this, conf);
-    if (conf.presets) this.resetPresets.apply(this, conf.presets);
+    if (conf.presets) this.resetPresets(conf.presets, conf.effects, conf.full);
   }
   /**
    * @param {Object} [conf]
@@ -63,37 +44,44 @@ class DecoConfig {
     return objectUpdate.replenish(this, configs);
   }
 
-  resetPresets(...presets) {
-    return this.presets = fluo.PresetCollection.build(...presets), this;
-  }
-
-  assignPresets(...presets) {
-    return this.presets ? _classPrivateFieldLooseBase(this, _assignPresets)[_assignPresets].apply(this, presets) : this.resetPresets.apply(this, presets);
-  }
-
-  defaultPresets(...presets) {
-    if (nullish.nullish(this.presets)) this.resetPresets.apply(this, presets);
+  resetPresets(presets, effects, full) {
+    this.presets = fluo.PresetCollection.build(...presets);
+    if (effects !== null && effects !== void 0 && effects.length) this.assignEffect.apply(this, effects);
+    if (!nullish.nullish(full)) this.setBound(full);
     return this;
   }
 
-  assignEffect(...effects) {
+  assignPresets(...presets) {
     var _this$presets;
 
-    return (_this$presets = this.presets) !== null && _this$presets !== void 0 && _this$presets.assignEffect.apply(this.presets, effects), this;
+    return this.presets ? ((_this$presets = this.presets) !== null && _this$presets !== void 0 && _this$presets.assignPresets.apply(this.presets, presets), this) : this.resetPresets(presets);
+  }
+
+  assignEffect(...effects) {
+    var _this$presets2;
+
+    return (_this$presets2 = this.presets) !== null && _this$presets2 !== void 0 && _this$presets2.assignEffect.apply(this.presets, effects), this;
   }
 
   setBound(full) {
-    var _this$presets2;
+    var _this$presets3;
 
-    return (_this$presets2 = this.presets) !== null && _this$presets2 !== void 0 && _this$presets2.setBound.call(this.presets, full), this;
+    return (_this$presets3 = this.presets) !== null && _this$presets3 !== void 0 && _this$presets3.setBound.call(this.presets, full), this;
   }
 
-}
+  defaultPresets(...presets) {
+    if (nullish.nullish(this.presets)) this.resetPresets(presets);
+    return this;
+  } // defaultEffects(...effects) {
+  //   if (effects?.length && !nullish(this.presets)) iterate(this.presets, preset => { if (!preset?.effect) preset.effects = effects })
+  //   return this
+  // }
+  // defaultBound(full) {
+  //   if (!nullish(full) && !nullish(this.presets)) this.setBound(full)
+  //   return this
+  // }
 
-function _assignPresets2(...presets) {
-  var _this$presets3;
 
-  return (_this$presets3 = this.presets) !== null && _this$presets3 !== void 0 && _this$presets3.assignPresets.apply(this.presets, presets), this;
 }
 
 const NUMERIC_PRESET = presets.FRESH;

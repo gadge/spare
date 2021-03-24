@@ -1,5 +1,7 @@
-import { LAVA, METRO } from '@palett/presets'
-import { DecoConfig }  from '../src/decoConfig'
+import { BOLD, ITALIC }        from '@palett/enum-font-effects'
+import { LAVA, METRO, PLANET } from '@palett/presets'
+import { DecoConfig }          from '../src/decoConfig'
+import { deco }                from '@spare/deco'
 
 const config = {
   foo: true,
@@ -14,6 +16,18 @@ const additional = {
 DecoConfig
   .build(config)
   .replenishConfigs(additional)
-  .resetPresets(LAVA)
-  .assignPresets(LAVA, METRO)
-  |> JSON.stringify |> console.log
+  .resetPresets([LAVA, PLANET], [BOLD], true)
+  // .assignPresets(LAVA, METRO)
+  |> deco |> console.log
+
+const configBeta = {
+  foo: true,
+  bar: null,
+  presets: [LAVA, PLANET],
+  effects: [ITALIC],
+  full: true
+}
+
+DecoConfig
+  .build(configBeta)
+  |> deco |> console.log

@@ -1,4 +1,5 @@
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
+import { FRESH, SUBTLE }                                  from '@palett/presets'
 import { logger }                                         from '@spare/logger'
 import { mapper as matrixMapper }                         from '@vect/matrix'
 import { matrixPadder }                                   from '../src/matrixPadder'

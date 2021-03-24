@@ -9,7 +9,7 @@ export class DecoConfig {
   constructor(conf) {
     if (!conf) { return }
     Object.assign(this, conf)
-    if (conf.presets) this.resetPresets.apply(this, conf.presets)
+    if (conf.presets) this.resetPresets(conf.presets, conf.effects, conf.full)
   }
   /**
    * @param {Object} [conf]
@@ -20,18 +20,32 @@ export class DecoConfig {
   assignConfigs(configs) { return Object.assign(this, configs) }
   replenishConfigs(configs) { return replenish(this, configs) }
 
-  #assignPresets(...presets) { return this.presets?.assignPresets.apply(this.presets, presets), this }
-  resetPresets(...presets) { return this.presets = PresetCollection.build(...presets), this }
-  assignPresets(...presets) {
-    return this.presets
-      ? this.#assignPresets.apply(this, presets)
-      : this.resetPresets.apply(this, presets)
-  }
-  defaultPresets(...presets) {
-    if (nullish(this.presets)) this.resetPresets.apply(this, presets)
+  resetPresets(presets, effects, full) {
+    this.presets = PresetCollection.build(...presets)
+    if (effects?.length) this.assignEffect.apply(this, effects)
+    if (!nullish(full)) this.setBound(full)
     return this
   }
+  assignPresets(...presets) {
+    return this.presets
+      ? (this.presets?.assignPresets.apply(this.presets, presets), this)
+      : this.resetPresets(presets)
+  }
+
   assignEffect(...effects) { return this.presets?.assignEffect.apply(this.presets, effects), this }
   setBound(full) { return this.presets?.setBound.call(this.presets, full), this }
+
+  defaultPresets(...presets) {
+    if (nullish(this.presets)) this.resetPresets(presets)
+    return this
+  }
+  // defaultEffects(...effects) {
+  //   if (effects?.length && !nullish(this.presets)) iterate(this.presets, preset => { if (!preset?.effect) preset.effects = effects })
+  //   return this
+  // }
+  // defaultBound(full) {
+  //   if (!nullish(full) && !nullish(this.presets)) this.setBound(full)
+  //   return this
+  // }
 }
 
