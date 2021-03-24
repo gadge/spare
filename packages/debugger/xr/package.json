@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.11.5",
+  "version": "0.11.6",
   "description": "A sentence builder",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,10 +18,10 @@
     "@palett/cards": "^0.7.2",
     "@palett/convert": "^0.7.2",
     "@palett/dye": "^0.7.2",
-    "@spare/bracket": "^0.11.5",
-    "@spare/charset": "^0.11.5",
-    "@spare/enum-chars": "^0.11.5",
-    "@spare/util": "^0.11.5",
+    "@spare/bracket": "^0.11.6",
+    "@spare/charset": "^0.11.6",
+    "@spare/enum-chars": "^0.11.6",
+    "@spare/util": "^0.11.6",
     "@typen/nullish": "^0.1.16",
     "@vect/callable": "^0.3.7"
   },
