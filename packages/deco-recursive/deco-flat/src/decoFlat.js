@@ -2,7 +2,7 @@ import { fluoEntries }                       from '@palett/fluo-entries'
 import { fluoVector }                        from '@palett/fluo-vector'
 import { BRC, BRK, PAL }                     from '@spare/deco-colors'
 import { decoDateTime }                      from '@spare/deco-date'
-import { decofun, DECOFUN_CONFIG }           from '@spare/deco-func'
+import { _decoFunc, DECOFUN_CONFIG }         from '@spare/deco-func'
 import { COSP, RT }                          from '@spare/enum-chars'
 import { BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT }               from '@typen/enum-object-types'
@@ -14,7 +14,7 @@ export function _decoFlat(lv, node) {
   const t = typeof node
   if (t === STR) return node // isNumeric(node) ? node : PAL.STR(node)
   if (t === NUM) return node
-  if (t === FUN) return decofun.call(DECOFUN_CONFIG, node)
+  if (t === FUN) return _decoFunc.call(DECOFUN_CONFIG, node)
   if (t === OBJ) {
     const pt = typ(node)
     if (pt === ARRAY) return deVec.call(this, lv, node) |> BRK[lv & 7]

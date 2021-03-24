@@ -10,11 +10,18 @@ var entriesMargin = require('@spare/entries-margin');
 var entriesPadder = require('@spare/entries-padder');
 var liner = require('@spare/liner');
 
-const LF = /\n/;
-const fluo = fluoEntries.fluoEntries.bind({
-  colorant: false,
+// export const
+//   FUNC = '',
+//   PIGM = '',
+//   HEX = ''
+const RENDER = 'render';
+const MUTATE_PIGMENT = {
+  colorant: RENDER,
   mutate: true
-});
+};
+
+const LF = /\n/;
+const fluo = fluoEntries.fluoEntries.bind(MUTATE_PIGMENT);
 const _decoEntries = function (entries = []) {
   var _entries, _Br, _config$presets;
 

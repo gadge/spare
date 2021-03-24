@@ -6,11 +6,18 @@ import { entriesMargin } from '@spare/entries-margin';
 import { entriesPadder } from '@spare/entries-padder';
 import { liner } from '@spare/liner';
 
-const LF = /\n/;
-const fluo = fluoEntries.bind({
-  colorant: false,
+// export const
+//   FUNC = '',
+//   PIGM = '',
+//   HEX = ''
+const RENDER = 'render';
+const MUTATE_PIGMENT = {
+  colorant: RENDER,
   mutate: true
-});
+};
+
+const LF = /\n/;
+const fluo = fluoEntries.bind(MUTATE_PIGMENT);
 const _decoEntries = function (entries = []) {
   var _entries, _Br, _config$presets;
 

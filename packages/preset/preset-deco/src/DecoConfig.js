@@ -4,6 +4,8 @@ import { replenish }        from '@vect/object-update'
 
 export class DecoConfig {
   /** @type {PresetCollection} */ presets
+  /** @type {string[]} */ effects
+  /** @type {boolean} */ full
 
   /** @param {Object} conf */
   constructor(conf) {
@@ -40,7 +42,7 @@ export class DecoConfig {
   setBound(full) { return this.presets?.setBound.call(this.presets, full), this }
 
   defaultPresets(...presets) {
-    if (nullish(this.presets)) this.resetPresets(presets)
+    if (nullish(this.presets)) this.resetPresets(presets, this.effects, this.full)
     return this
   }
   // defaultEffects(...effects) {

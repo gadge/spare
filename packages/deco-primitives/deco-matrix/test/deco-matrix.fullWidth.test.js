@@ -1,6 +1,6 @@
-import { logger, says } from '@spare/logger'
-import { COLUMNWISE }   from '@vect/matrix'
-import { Deco }         from '../index'
+import { says }       from '@spare/logger'
+import { COLUMNWISE } from '@vect/matrix'
+import { Deco }       from '../index'
 
 const matrix = [
   ['De sterrennacht', '１８９０', '文森特·梵高',],

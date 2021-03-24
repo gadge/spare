@@ -46,6 +46,7 @@ const _decoMatrix = function (rows = []) {
   });
 };
 
+// import { deco as _deco, logger } from '@spare/logger'
 /***
  *
  * @param {Object} p
@@ -72,7 +73,11 @@ const _decoMatrix = function (rows = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => _decoMatrix.bind(presetMatrix(p));
+const Deco = (p = {}) => {
+  const conf = presetMatrix(p); // conf |> _deco |> logger
+
+  return _decoMatrix.bind(conf);
+};
 /***
  *
  * @param {*[][]} matrix

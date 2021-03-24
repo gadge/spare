@@ -11,9 +11,15 @@ import { splitLiteral } from '@texting/splitter';
 class DecoConfig {
   /** @type {PresetCollection} */
 
+  /** @type {string[]} */
+
+  /** @type {boolean} */
+
   /** @param {Object} conf */
   constructor(conf) {
     this.presets = void 0;
+    this.effects = void 0;
+    this.full = void 0;
 
     if (!conf) {
       return;
@@ -66,7 +72,7 @@ class DecoConfig {
   }
 
   defaultPresets(...presets) {
-    if (nullish(this.presets)) this.resetPresets(presets);
+    if (nullish(this.presets)) this.resetPresets(presets, this.effects, this.full);
     return this;
   } // defaultEffects(...effects) {
   //   if (effects?.length && !nullish(this.presets)) iterate(this.presets, preset => { if (!preset?.effect) preset.effects = effects })

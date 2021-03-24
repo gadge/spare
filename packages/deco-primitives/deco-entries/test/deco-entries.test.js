@@ -1,6 +1,6 @@
 import { EntriesCollection } from '@foba/entries'
 import { OCEAN }             from '@palett/presets'
-import { says }              from '@palett/says'
+import { says }              from '@spare/says'
 import { inferType }         from '@typen/num-strict'
 import { Deco }              from '../index'
 
