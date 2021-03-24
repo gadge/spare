@@ -1,6 +1,8 @@
+import { DecoConfig }             from '@spare/deco-config'
 import { DA, SP }                 from '@spare/enum-chars'
-import { presetString }           from '@spare/preset-deco'
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { splitCamel, splitSnake } from '@spare/splitter'
+import { CONFIG }                 from './resources/config'
 import { _decoString }            from './src/_decoString'
 
 
@@ -30,7 +32,8 @@ export { _decoString }
  * @param {Function} [p.joiner]
  * @return {string}
  */
-export const deco = (text, p = {}) => _decoString.call(presetString(p), text)
+export const deco = (text, p = {}) => _decoString
+  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), text)
 
 /**
  *
@@ -45,5 +48,6 @@ export const deco = (text, p = {}) => _decoString.call(presetString(p), text)
  * @param {Function} [p.joiner]
  * @return {Function}
  */
-export const Deco = (p = {}) => _decoString.bind(presetString(p))
+export const Deco = (p = {}) => _decoString
+  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 

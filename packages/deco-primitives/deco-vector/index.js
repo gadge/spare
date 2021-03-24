@@ -1,5 +1,7 @@
-import { presetVector } from '@spare/preset-deco'
-import { _decoVector }  from './src/_decoVector'
+import { DecoConfig }                           from '@spare/deco-config'
+import { DUAL_PRESET_COLLECTION, presetVector } from '@spare/preset-deco'
+import { CONFIG }                               from './resources/config'
+import { _decoVector }                          from './src/_decoVector'
 
 export { _decoVector }
 
@@ -30,7 +32,8 @@ export { _decoVector }
  *
  * @returns {Function}
  */
-export const Deco = (p = {}) => _decoVector.bind(presetVector(p))
+export const Deco = (p = {}) => _decoVector
+  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
 /***
  *
@@ -56,8 +59,8 @@ export const Deco = (p = {}) => _decoVector.bind(presetVector(p))
  *
  * @returns {string}
  */
-export const deco = (vector, p = {}) =>
-  _decoVector.call(presetVector(p), vector)
+export const deco = (vector, p = {}) => _decoVector
+  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), vector)
 
 /***
  *
@@ -82,4 +85,4 @@ export const deco = (vector, p = {}) =>
  *
  * @returns {Function}
  */
-export const DecoPale = (p = {}) => _decoVector.bind(presetVector(p))
+export const DecoPale = (p = {}) => _decoVector.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))

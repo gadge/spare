@@ -1,5 +1,7 @@
-import { presetObject } from '@spare/preset-deco'
-import { _decoObject }  from './src/_decoObject'
+import { DecoConfig }             from '@spare/deco-config'
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
+import { CONFIG }                 from './resources/config'
+import { _decoObject }            from './src/_decoObject'
 
 export { _decoObject }
 
@@ -31,7 +33,8 @@ export { _decoObject }
  *
  * @returns {Function}
  */
-export const Deco = (p = {}) => _decoObject.bind(presetObject(p))
+export const Deco = (p = {}) => _decoObject
+  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
 /***
  *
@@ -58,4 +61,5 @@ export const Deco = (p = {}) => _decoObject.bind(presetObject(p))
  *
  * @returns {string}
  */
-export const deco = (o, p = {}) => _decoObject.call(presetObject(p), o)
+export const deco = (o, p = {}) => _decoObject
+  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), o)
