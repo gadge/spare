@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@spare/lange": "^0.11.5",
-    "@texting/padder": "^0.0.5",
+    "@texting/padder": "^0.0.6",
     "@vect/vector-indicator": "^0.3.7",
     "@vect/vector-mapper": "^0.3.7",
     "@vect/vector-zipper": "^0.3.7"
