@@ -1,11 +1,12 @@
-import { DA as DA$1 } from '@spare/enum-chars';
+import { DA as DA$2 } from '@spare/enum-chars';
 import { widthsByColumns } from '@spare/matrix-padder';
 import { PadFull, Pad } from '@texting/padder';
 import { mapper } from '@vect/matrix-mapper';
 import { acquire } from '@vect/vector';
 import { mapper as mapper$2 } from '@vect/vector-mapper';
 import { zipper } from '@vect/vector-zipper';
-import { DA } from '@spare/enum-full-angle-chars';
+import { DA as DA$1 } from '@texting/enum-chars';
+import { DA } from '@texting/enum-chars-fullwidth';
 import { hasFull } from '@spare/fullwidth';
 import { mapper as mapper$1 } from '@vect/columns-mapper';
 
@@ -50,7 +51,7 @@ const tablePadder = (table, config = {}) => {
   const widths = widthsByColumns(acquire([table.head], table.rows), config.ansi);
   return {
     head: zipper(table.head, widths, (x, p) => padder(x, p)),
-    rule: mapper$2(widths, p => DA$1.repeat(p)),
+    rule: mapper$2(widths, p => DA$2.repeat(p)),
     rows: mapper(table.rows, (x, i, j) => padder(x, widths[j]))
   };
 };

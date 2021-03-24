@@ -2,7 +2,10 @@ import { bracket, parenth } from '@spare/bracket'
 import { SP }               from '@spare/enum-chars'
 import { FUN, STR }         from '@typen/enum-data-types'
 import { Callable }         from '../util/Callable'
-import { narrate }          from './narrate'
+import { logBy }            from './logBy'
+
+const NAME = 'name'
+const WRITABLE = { writable: true }
 
 /** @type {function} */
 export class Pal extends Callable {
@@ -12,7 +15,9 @@ export class Pal extends Callable {
   /** @type {Function} */ log = console.log
   /** @type {Function} */ att = void 0
   constructor(name, { indent = 0, logger, attach } = {}) {
-    super(text => narrate(text, this))
+    const f = text => logBy(text, this)
+    Object.defineProperty(f, NAME, WRITABLE)
+    super(f)
     if (name) this.name = name
     if (indent) this.ind = indent
     if (logger) this.log = logger

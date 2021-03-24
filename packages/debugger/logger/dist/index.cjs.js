@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var Sayer = require('@palett/says');
+var Sayer = require('@spare/says');
 var DecoGeneric = require('@spare/deco');
 var DecoCrostabEnv = require('@spare/deco-crostab');
 var DecoEntriesEnv = require('@spare/deco-entries');

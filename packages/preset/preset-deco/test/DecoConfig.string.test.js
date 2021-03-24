@@ -1,16 +1,8 @@
 import { METRO, SUBTLE } from '@palett/presets'
-import { BRK }           from '@spare/enum-brackets'
 import { logger }        from '@spare/logger'
-import { presetVector }  from '../functions/presetVector'
+import { presetString } from '../dist/index.esm'
 
 const p = {
-  head: 4,
-  tail: 4,
-  indexed: false,
-  bracket: BRK,
-  presets: [SUBTLE, METRO],
-  // delim: ', ',
-  discrete: false,
-  label: 1,
+  // presets: [SUBTLE, METRO],
 }
-presetVector(p) |> JSON.stringify |> logger
+presetString(p) |> JSON.stringify |> logger

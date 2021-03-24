@@ -10,61 +10,18 @@ var objectMapper = require('@vect/object-mapper');
 var bracket = require('@spare/bracket');
 var enumChars = require('@spare/enum-chars');
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
+var id = 0;
+
+function _classPrivateFieldLooseKey(name) {
+  return "__private_" + id++ + "_" + name;
+}
+
+function _classPrivateFieldLooseBase(receiver, privateKey) {
+  if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) {
+    throw new TypeError("attempted to use private field on non-instance");
   }
 
-  return obj;
-}
-
-function _classPrivateFieldGet(receiver, privateMap) {
-  var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get");
-
-  return _classApplyDescriptorGet(receiver, descriptor);
-}
-
-function _classPrivateFieldSet(receiver, privateMap, value) {
-  var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set");
-
-  _classApplyDescriptorSet(receiver, descriptor, value);
-
-  return value;
-}
-
-function _classExtractFieldDescriptor(receiver, privateMap, action) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to " + action + " private field on non-instance");
-  }
-
-  return privateMap.get(receiver);
-}
-
-function _classApplyDescriptorGet(receiver, descriptor) {
-  if (descriptor.get) {
-    return descriptor.get.call(receiver);
-  }
-
-  return descriptor.value;
-}
-
-function _classApplyDescriptorSet(receiver, descriptor, value) {
-  if (descriptor.set) {
-    descriptor.set.call(receiver, value);
-  } else {
-    if (!descriptor.writable) {
-      throw new TypeError("attempted to set read only private field");
-    }
-
-    descriptor.value = value;
-  }
+  return receiver;
 }
 
 class Callable extends Function {
@@ -77,21 +34,25 @@ class Callable extends Function {
 }
 
 const tab = ind => enumChars.SP.repeat(ind << 1);
-const narrate = (text, context) => {
+const logBy = (text, config) => {
   let {
     name,
     des,
     ind,
     log,
     att
-  } = context;
+  } = config;
   let signature = `${tab(ind)}[${name}]`;
   if (att) signature += enumChars.SP + att();
-  if (des !== null && des !== void 0 && des.length) signature += des, context.des = '';
+  if (des !== null && des !== void 0 && des.length) signature += des, config.des = '';
   if (typeof text !== enumDataTypes.STR) text += '';
   return void log(signature, text.includes(enumChars.LF) ? (enumChars.LF + text).replace(/\n/g, enumChars.LF + tab(++ind)) : text);
 };
 
+const NAME = 'name';
+const WRITABLE = {
+  writable: true
+};
 /** @type {function} */
 
 class Pal extends Callable {
@@ -109,18 +70,15 @@ class Pal extends Callable {
     logger,
     attach
   } = {}) {
-    super(text => narrate(text, this));
+    const f = text => logBy(text, this);
 
-    _defineProperty(this, "name", '');
-
-    _defineProperty(this, "des", '');
-
-    _defineProperty(this, "ind", 0);
-
-    _defineProperty(this, "log", console.log);
-
-    _defineProperty(this, "att", void 0);
-
+    Object.defineProperty(f, NAME, WRITABLE);
+    super(f);
+    this.name = '';
+    this.des = '';
+    this.ind = 0;
+    this.log = console.log;
+    this.att = void 0;
     if (name) this.name = name;
     if (indent) this.ind = indent;
     if (logger) this.log = logger;
@@ -185,11 +143,11 @@ class Pal extends Callable {
 
 }
 
-var _roster = new WeakMap();
+var _roster = _classPrivateFieldLooseKey("roster");
 
-var _pool = new WeakMap();
+var _pool = _classPrivateFieldLooseKey("pool");
 
-var _effects = new WeakMap();
+var _effects = _classPrivateFieldLooseKey("effects");
 
 class Says {
   /** @type {Object<string,Pal|function>} */
@@ -198,55 +156,47 @@ class Says {
 
   /** @type {string[]!} */
   constructor(roster, effects) {
-    _roster.set(this, {
+    Object.defineProperty(this, _roster, {
       writable: true,
       value: {}
     });
-
-    _pool.set(this, {
+    Object.defineProperty(this, _pool, {
       writable: true,
       value: flopper.presetFlopper({
         exhausted: false
       })
     });
-
-    _effects.set(this, {
+    Object.defineProperty(this, _effects, {
       writable: true,
       value: undefined
     });
-
-    if (roster) _classPrivateFieldSet(this, _roster, roster);
-
-    _classPrivateFieldSet(this, _effects, effects);
-
+    if (roster) _classPrivateFieldLooseBase(this, _roster)[_roster] = roster;
+    _classPrivateFieldLooseBase(this, _effects)[_effects] = effects;
     return new Proxy(this, {
       /** @returns {Pal|function} */
       get(t, p) {
         if (p in t) return typeof (p = t[p]) === enumDataTypes.FUN ? p.bind(t) : p;
-        if (p in _classPrivateFieldGet(t, _roster)) return _classPrivateFieldGet(t, _roster)[p];
-        return t.aboard(p, _classPrivateFieldGet(t, _pool).next().value);
+        if (p in _classPrivateFieldLooseBase(t, _roster)[_roster]) return _classPrivateFieldLooseBase(t, _roster)[_roster][p];
+        return t.aboard(p, _classPrivateFieldLooseBase(t, _pool)[_pool].next().value);
       }
 
     });
   }
 
   aboard(name, presets) {
-    const effects = _classPrivateFieldGet(this, _effects);
+    var _deco;
 
-    if (!presets) ({
-      value: presets
-    } = _classPrivateFieldGet(this, _pool).next());
-    return _classPrivateFieldGet(this, _roster)[name] = Pal.build(decoString.deco(String(name), {
-      presets,
-      effects
-    }));
+    return _classPrivateFieldLooseBase(this, _roster)[_roster][name] = (_deco = decoString.deco(String(name), {
+      presets: presets !== null && presets !== void 0 ? presets : _classPrivateFieldLooseBase(this, _pool)[_pool].next().value,
+      effects: _classPrivateFieldLooseBase(this, _effects)[_effects]
+    }), Pal.build(_deco));
   }
 
   roster(name) {
-    var _classPrivateFieldGet2;
+    var _classPrivateFieldLoo;
 
-    if (name) return ((_classPrivateFieldGet2 = _classPrivateFieldGet(this, _roster)[name]) !== null && _classPrivateFieldGet2 !== void 0 ? _classPrivateFieldGet2 : this.aboard(name)).name;
-    return objectMapper.mapper(_classPrivateFieldGet(this, _roster), ({
+    if (name) return ((_classPrivateFieldLoo = _classPrivateFieldLooseBase(this, _roster)[_roster][name]) !== null && _classPrivateFieldLoo !== void 0 ? _classPrivateFieldLoo : this.aboard(name)).name;
+    return objectMapper.mapper(_classPrivateFieldLooseBase(this, _roster)[_roster], ({
       name
     }) => name);
   }

@@ -45,8 +45,8 @@ class DecoConfig {
   }
 
   resetPresets(presets, effects, full) {
-    this.presets = fluo.PresetCollection.build(...presets);
-    if (effects !== null && effects !== void 0 && effects.length) this.assignEffect.apply(this, effects);
+    this.presets = Array.isArray(presets) ? fluo.PresetCollection.build.apply(null, presets) : fluo.PresetCollection.build.call(null, presets, presets);
+    if (effects !== null && effects !== void 0 && effects.length) Array.isArray(effects) ? this.assignEffect.apply(this, effects) : this.assignEffect.call(this, effects);
     if (!nullish.nullish(full)) this.setBound(full);
     return this;
   }

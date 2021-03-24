@@ -76,7 +76,7 @@ const prettify = (text, pretty) => {
   return text;
 };
 
-const decofun = function (func) {
+const _decoFunc = function (func) {
   let text;
   const {
     pr,
@@ -118,7 +118,7 @@ const parseConfig = p => {
  */
 
 
-const decoFunc = (func, p = DECOFUNC_CONFIG) => decofun.call(parseConfig(p), func);
+const decoFunc = (func, p = DECOFUNC_CONFIG) => _decoFunc.call(parseConfig(p), func);
 /**
  * @param {Object} p
  * @param {boolean} [p.pretty=true]
@@ -127,11 +127,11 @@ const decoFunc = (func, p = DECOFUNC_CONFIG) => decofun.call(parseConfig(p), fun
  * @returns {Function}
  */
 
-const DecoFunc = (p = DECOFUNC_CONFIG) => decofun.bind(parseConfig(p));
+const DecoFunc = (p = DECOFUNC_CONFIG) => _decoFunc.bind(parseConfig(p));
 
 exports.DECOFUN_CONFIG = DECOFUN_CONFIG;
 exports.DecoFunc = DecoFunc;
+exports._decoFunc = _decoFunc;
 exports.argnames = argnames;
 exports.decoFunc = decoFunc;
-exports.decofun = decofun;
 exports.funcName = funcName;

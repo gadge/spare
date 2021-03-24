@@ -2,14 +2,15 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
+var enumChars$1 = require('@spare/enum-chars');
 var matrixPadder = require('@spare/matrix-padder');
 var padder = require('@texting/padder');
 var matrixMapper = require('@vect/matrix-mapper');
 var vector = require('@vect/vector');
 var vectorMapper = require('@vect/vector-mapper');
 var vectorZipper = require('@vect/vector-zipper');
-var enumFullAngleChars = require('@spare/enum-full-angle-chars');
+var enumChars = require('@texting/enum-chars');
+var enumCharsFullwidth = require('@texting/enum-chars-fullwidth');
 var fullwidth = require('@spare/fullwidth');
 var columnsMapper = require('@vect/columns-mapper');
 
@@ -30,7 +31,7 @@ const tablePadderFull = (table, config = {}) => {
   const pad = padder.PadFull(config, config);
   return {
     head: vectorZipper.zipper(table.head, widths, (value, width, j) => pad(value, width, marks[j])),
-    rule: vectorZipper.zipper(widths, marks, (width, check) => (check ? enumFullAngleChars.DA : enumChars.DA).repeat(width)),
+    rule: vectorZipper.zipper(widths, marks, (width, check) => (check ? enumCharsFullwidth.DA : enumChars.DA).repeat(width)),
     rows: matrixMapper.mapper(table.rows, (x, i, j) => pad(x, widths[j], marks[j]))
   };
 };
@@ -54,7 +55,7 @@ const tablePadder = (table, config = {}) => {
   const widths = matrixPadder.widthsByColumns(vector.acquire([table.head], table.rows), config.ansi);
   return {
     head: vectorZipper.zipper(table.head, widths, (x, p) => padder$1(x, p)),
-    rule: vectorMapper.mapper(widths, p => enumChars.DA.repeat(p)),
+    rule: vectorMapper.mapper(widths, p => enumChars$1.DA.repeat(p)),
     rows: matrixMapper.mapper(table.rows, (x, i, j) => padder$1(x, widths[j]))
   };
 };

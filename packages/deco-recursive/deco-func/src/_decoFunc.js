@@ -43,7 +43,7 @@ const prettify = (text, pretty) => {
   return text
 }
 
-export const decofun = function (func) {
+export const _decoFunc = function (func) {
   let text
   const { pr, fw, aw } = this
   text = funcToLined(func)

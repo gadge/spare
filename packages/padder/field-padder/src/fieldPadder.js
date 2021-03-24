@@ -1,4 +1,4 @@
-import { DA }              from '@spare/enum-chars'
+import { DA }              from '@texting/enum-chars'
 import { Pad }             from '@texting/padder'
 import { HAN }             from '@spare/regex-charset'
 import { mapper }          from '@vect/vector-mapper'

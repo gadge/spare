@@ -1,4 +1,4 @@
-import { DA }         from '@spare/enum-full-angle-chars'
+import { DA }         from '@texting/enum-chars-fullwidth'
 import { FullWidth }  from '@spare/fullwidth'
 import { PadFull }    from '@texting/padder'
 import { mapper }     from '@vect/vector-mapper'

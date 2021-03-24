@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var enumChars = require('@spare/enum-chars');
+var enumChars = require('@texting/enum-chars');
 var padder = require('@texting/padder');
 var vectorMapper = require('@vect/vector-mapper');
-var enumFullAngleChars = require('@spare/enum-full-angle-chars');
+var enumCharsFullwidth = require('@texting/enum-chars-fullwidth');
 var fullwidth = require('@spare/fullwidth');
 var comparer = require('@aryth/comparer');
 var lange = require('@spare/lange');
@@ -43,7 +43,7 @@ const fieldPadderFull = (field, config = {}) => {
   const width = fieldWidth(name, list, config.ansi);
   return {
     name: pad(toFull(name), width, true),
-    rule: enumFullAngleChars.DA.repeat(width),
+    rule: enumCharsFullwidth.DA.repeat(width),
     list: vectorMapper.mapper(list, x => pad(toFull(x), width, true))
   };
 };

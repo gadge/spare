@@ -1,7 +1,7 @@
 import { DECOFUN_CONFIG, DECOFUNC_CONFIG } from './resources/config'
-import { decofun }                         from './src/decoFunc'
+import { _decoFunc }                       from './src/_decoFunc'
 
-export { decofun }
+export { _decoFunc }
 
 const parseConfig = p => {
   p.pr = p.pretty ?? p.pr ?? true
@@ -17,7 +17,7 @@ const parseConfig = p => {
  * @param {number} [p.abbrMark=192]
  * @returns {string}
  */
-export const decoFunc = (func, p = DECOFUNC_CONFIG) => decofun.call(parseConfig(p), func)
+export const decoFunc = (func, p = DECOFUNC_CONFIG) => _decoFunc.call(parseConfig(p), func)
 
 /**
  * @param {Object} p
@@ -26,7 +26,7 @@ export const decoFunc = (func, p = DECOFUNC_CONFIG) => decofun.call(parseConfig(
  * @param {number} [p.abbrMark=192]
  * @returns {Function}
  */
-export const DecoFunc = (p = DECOFUNC_CONFIG) => decofun.bind(parseConfig(p))
+export const DecoFunc = (p = DECOFUNC_CONFIG) => _decoFunc.bind(parseConfig(p))
 
 export { funcName } from './src/funcName'
 

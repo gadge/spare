@@ -1,4 +1,4 @@
-import * as Sayer from '@palett/says';
+import * as Sayer from '@spare/says';
 import * as DecoGeneric from '@spare/deco';
 import * as DecoCrostabEnv from '@spare/deco-crostab';
 import * as DecoEntriesEnv from '@spare/deco-entries';

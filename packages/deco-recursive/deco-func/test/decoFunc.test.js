@@ -1,6 +1,5 @@
-import { says }               from '@palett/says'
 import { LF }                 from '@spare/enum-chars'
-import { logger }             from '@spare/logger'
+import { logger, says }       from '@spare/logger'
 import { decoFunc }           from '../index'
 import { FunctionCollection } from './assets/FunctionCollection'
 

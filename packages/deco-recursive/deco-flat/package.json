@@ -22,7 +22,6 @@
     "@spare/deco-date": "^0.11.7",
     "@spare/deco-func": "^0.11.7",
     "@spare/enum-chars": "^0.11.7",
-    "@spare/preset-deco": "^0.11.7",
     "@typen/enum-data-types": "^0.1.16",
     "@typen/enum-object-types": "^0.1.16",
     "@typen/num-loose": "^0.1.16",

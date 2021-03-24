@@ -59,7 +59,7 @@
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
-    "@spare/logger": "workspace:packages/debugger/logger",
+    "@palett/says": "^0.7.2",
     "@typen/enum-data-types": "^0.1.16",
     "@valjoux/format-time": "^0.2.3",
     "@valjoux/strategies": "^0.2.3",

@@ -1,5 +1,5 @@
-import { DA }                      from '@spare/enum-chars'
-import { DA as DA_FULL }           from '@spare/enum-full-angle-chars'
+import { DA }                      from '@texting/enum-chars'
+import { DA as DA_FULL }           from '@texting/enum-chars-fullwidth'
 import { hasFull }                 from '@spare/fullwidth'
 import { widthsByColumns }         from '@spare/matrix-padder'
 import { PadFull }                 from '@texting/padder'

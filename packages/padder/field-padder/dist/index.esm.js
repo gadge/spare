@@ -1,7 +1,7 @@
-import { DA as DA$1 } from '@spare/enum-chars';
+import { DA as DA$1 } from '@texting/enum-chars';
 import { PadFull, Pad } from '@texting/padder';
 import { mapper } from '@vect/vector-mapper';
-import { DA } from '@spare/enum-full-angle-chars';
+import { DA } from '@texting/enum-chars-fullwidth';
 import { FullWidth } from '@spare/fullwidth';
 import { max } from '@aryth/comparer';
 import { Lange } from '@spare/lange';

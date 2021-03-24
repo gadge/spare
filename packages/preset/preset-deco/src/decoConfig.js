@@ -21,8 +21,12 @@ export class DecoConfig {
   replenishConfigs(configs) { return replenish(this, configs) }
 
   resetPresets(presets, effects, full) {
-    this.presets = PresetCollection.build(...presets)
-    if (effects?.length) this.assignEffect.apply(this, effects)
+    this.presets = Array.isArray(presets)
+      ? PresetCollection.build.apply(null, presets)
+      : PresetCollection.build.call(null, presets, presets)
+    if (effects?.length) Array.isArray(effects)
+      ? this.assignEffect.apply(this, effects)
+      : this.assignEffect.call(this, effects)
     if (!nullish(full)) this.setBound(full)
     return this
   }

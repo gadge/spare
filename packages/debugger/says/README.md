@@ -21,7 +21,7 @@ $ npm install says
 
 ### Simple
 ```js
-import { Says } from '@palett/says'
+import { Says } from '@spare/says'
 import { greys, palette } from 'spettro'
 
 const castList = {
@@ -38,7 +38,7 @@ debug.says('server', '\'Dickens\'')
 
 ### Factorial with pipeline operator
 ```js
-import { Says } from '@palett/says'
+import { Says } from '@spare/says'
 import { greys, palette } from 'spettro'
 
 const castList = {
