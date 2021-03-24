@@ -1,12 +1,24 @@
-import { oneself }      from '@ject/oneself'
-import { fluoMatrix }   from '@palett/fluo-matrix'
-import { Br }           from '@spare/bracket'
-import { COLF }         from '@spare/enum-chars'
-import { liner }        from '@spare/liner'
-import { matrixMargin } from '@spare/matrix-margin'
-import { matrixPadder } from '@spare/matrix-padder'
-import { presetMatrix } from '@spare/preset-deco'
-import { size }         from '@vect/matrix'
+import { DecoConfig } from '@spare/deco-config';
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
+import { decoFlat } from '@spare/deco-flat';
+import { BRK } from '@spare/enum-brackets';
+import { COSP, COLF } from '@spare/enum-chars';
+import { ROWWISE } from '@vect/enum-matrix-directions';
+import { oneself } from '@ject/oneself';
+import { fluoMatrix } from '@palett/fluo-matrix';
+import { Br } from '@spare/bracket';
+import { liner } from '@spare/liner';
+import { matrixMargin } from '@spare/matrix-margin';
+import { matrixPadder } from '@spare/matrix-padder';
+import { size } from '@vect/matrix';
+
+const CONFIG = {
+  delim: COSP,
+  bracket: BRK,
+  read: decoFlat,
+  direct: ROWWISE,
+  ansi: true
+};
 
 // export const
 //   FUNC = '',
@@ -46,7 +58,6 @@ const _decoMatrix = function (rows = []) {
   });
 };
 
-// import { deco as _deco, logger } from '@spare/logger'
 /***
  *
  * @param {Object} p
@@ -73,11 +84,7 @@ const _decoMatrix = function (rows = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => {
-  const conf = presetMatrix(p); // conf |> _deco |> logger
-
-  return _decoMatrix.bind(conf);
-};
+const Deco = (p = {}) => _decoMatrix.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION));
 /***
  *
  * @param {*[][]} matrix
@@ -105,6 +112,6 @@ const Deco = (p = {}) => {
  * @returns {string}
  */
 
-const deco = (matrix, p = {}) => _decoMatrix.call(presetMatrix(p), matrix);
+const deco = (matrix, p = {}) => _decoMatrix.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), matrix);
 
 export { Deco, _decoMatrix, deco };

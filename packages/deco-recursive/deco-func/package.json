@@ -22,6 +22,7 @@
     "@spare/deco-config": "^0.11.8",
     "@spare/enum-chars": "^0.11.8",
     "@spare/lange": "^0.11.8",
+    "@spare/preset-deco": "^0.11.8",
     "@spare/translator": "^0.11.8"
   },
   "devDependencies": {

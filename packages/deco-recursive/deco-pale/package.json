@@ -24,6 +24,7 @@
     "@spare/deco-vector": "^0.11.8",
     "@spare/enum-brackets": "^0.11.8",
     "@spare/enum-chars": "^0.11.8",
+    "@spare/preset-deco": "^0.11.8",
     "@spare/quote": "^0.11.8",
     "@typen/enum-data-types": "^0.1.16",
     "@typen/enum-object-types": "^0.1.16",

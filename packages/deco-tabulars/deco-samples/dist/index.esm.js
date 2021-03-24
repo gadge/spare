@@ -1,16 +1,29 @@
-import { presetSamples } from '@spare/preset-deco';
+import { DecoConfig } from '@spare/deco-config';
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
+import { decoFlat } from '@spare/deco-flat';
+import { BRK } from '@spare/enum-brackets';
+import { COSP, SP, ELLIP, COLF } from '@spare/enum-chars';
+import { COLUMNWISE } from '@vect/enum-matrix-directions';
 import { samplesToTabular } from '@analys/convert';
 import { samplesSelect } from '@analys/samples-select';
 import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { fluoVector } from '@palett/fluo-vector';
 import { deco as deco$1 } from '@spare/deco-vector';
-import { COSP, SP, ELLIP, COLF } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { matrixPadder } from '@spare/matrix-padder';
 import { tableMargin } from '@spare/table-margin';
 import { vectorPadder } from '@spare/vector-padder';
 import { zipper } from '@vect/vector-zipper';
+
+const CONFIG = {
+  delim: COSP,
+  bracket: BRK,
+  indexed: true,
+  read: decoFlat,
+  direct: COLUMNWISE,
+  ansi: true
+};
 
 const _decoSamples = function (samples) {
   var _samples;
@@ -112,7 +125,7 @@ const _decoSamples = function (samples) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => _decoSamples.bind(presetSamples(p));
+const Deco = (p = {}) => _decoSamples.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION));
 /**
  *
  * @param {*[][]} samples
@@ -142,6 +155,6 @@ const Deco = (p = {}) => _decoSamples.bind(presetSamples(p));
  * @returns {string}
  */
 
-const deco = (samples, p = {}) => _decoSamples.call(presetSamples(p), samples);
+const deco = (samples, p = {}) => _decoSamples.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), samples);
 
 export { Deco, _decoSamples, deco };

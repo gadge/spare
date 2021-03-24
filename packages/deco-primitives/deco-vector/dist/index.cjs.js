@@ -2,12 +2,25 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoConfig = require('@spare/deco-config');
 var presetDeco = require('@spare/preset-deco');
+var decoFlat = require('@spare/deco-flat');
+var enumBrackets = require('@spare/enum-brackets');
+var enumChars = require('@spare/enum-chars');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoVector = require('@palett/fluo-vector');
 var decoEntries = require('@spare/deco-entries');
 var liner = require('@spare/liner');
 var vectorMargin = require('@spare/vector-margin');
-var enumColorantModes = require('@palett/enum-colorant-modes');
+
+const CONFIG = {
+  dash: ') ',
+  delim: enumChars.COLF,
+  bracket: enumBrackets.BRK,
+  indexed: false,
+  read: decoFlat.decoFlat,
+  ansi: true
+};
 
 const fluo = fluoVector.fluoVector.bind(enumColorantModes.MUTATE_PIGMENT);
 function _decoVector(vec = []) {
@@ -48,7 +61,7 @@ function _decoVector(vec = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => _decoVector.bind(presetDeco.presetVector(p));
+const Deco = (p = {}) => _decoVector.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION));
 /***
  *
  * @param {*[]} vector
@@ -74,7 +87,7 @@ const Deco = (p = {}) => _decoVector.bind(presetDeco.presetVector(p));
  * @returns {string}
  */
 
-const deco = (vector, p = {}) => _decoVector.call(presetDeco.presetVector(p), vector);
+const deco = (vector, p = {}) => _decoVector.call(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION), vector);
 /***
  *
  * @param {Object} p
@@ -99,7 +112,7 @@ const deco = (vector, p = {}) => _decoVector.call(presetDeco.presetVector(p), ve
  * @returns {Function}
  */
 
-const DecoPale = (p = {}) => _decoVector.bind(presetDeco.presetVector(p));
+const DecoPale = (p = {}) => _decoVector.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION));
 
 exports.Deco = Deco;
 exports.DecoPale = DecoPale;

@@ -2,19 +2,32 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoConfig = require('@spare/deco-config');
 var presetDeco = require('@spare/preset-deco');
+var decoFlat = require('@spare/deco-flat');
+var enumBrackets = require('@spare/enum-brackets');
+var enumChars = require('@spare/enum-chars');
+var enumMatrixDirections = require('@vect/enum-matrix-directions');
 var convert = require('@analys/convert');
 var samplesSelect = require('@analys/samples-select');
 var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoMatrix = require('@palett/fluo-matrix');
 var fluoVector = require('@palett/fluo-vector');
 var decoVector = require('@spare/deco-vector');
-var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var matrixPadder = require('@spare/matrix-padder');
 var tableMargin = require('@spare/table-margin');
 var vectorPadder = require('@spare/vector-padder');
 var vectorZipper = require('@vect/vector-zipper');
+
+const CONFIG = {
+  delim: enumChars.COSP,
+  bracket: enumBrackets.BRK,
+  indexed: true,
+  read: decoFlat.decoFlat,
+  direct: enumMatrixDirections.COLUMNWISE,
+  ansi: true
+};
 
 const _decoSamples = function (samples) {
   var _samples;
@@ -116,7 +129,7 @@ const _decoSamples = function (samples) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => _decoSamples.bind(presetDeco.presetSamples(p));
+const Deco = (p = {}) => _decoSamples.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION));
 /**
  *
  * @param {*[][]} samples
@@ -146,7 +159,7 @@ const Deco = (p = {}) => _decoSamples.bind(presetDeco.presetSamples(p));
  * @returns {string}
  */
 
-const deco = (samples, p = {}) => _decoSamples.call(presetDeco.presetSamples(p), samples);
+const deco = (samples, p = {}) => _decoSamples.call(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION), samples);
 
 exports.Deco = Deco;
 exports._decoSamples = _decoSamples;

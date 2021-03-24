@@ -18,7 +18,10 @@
     "@spare/deco-config": "^0.11.8",
     "@spare/deco-entries": "^0.11.8",
     "@spare/liner": "^0.11.8",
-    "@spare/preset-deco": "^0.11.8"
+    "@spare/preset-deco": "^0.11.8",
+    "@spare/deco-flat": "^0.11.8",
+    "@spare/enum-brackets": "^0.11.8",
+    "@spare/enum-chars": "^0.11.8"
   },
   "repository": {
     "type": "git",

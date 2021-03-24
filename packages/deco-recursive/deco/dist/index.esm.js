@@ -1,5 +1,5 @@
 import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
-import { presetDeco } from '@spare/preset-deco';
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
 import { bracket, brace } from '@spare/bracket';
@@ -20,6 +20,20 @@ import { joinLines } from '@spare/liner';
 import { LPad } from '@spare/padder';
 import { _decoString } from '@spare/deco-string';
 import { splitLiteral } from '@spare/splitter';
+import { DecoConfig } from '@spare/deco-config';
+
+const CONFIG = {
+  depth: 8,
+  // 展示级别
+  vert: 0,
+  // 在此级别以下均设为竖排
+  unit: 32,
+  // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
+  width: 80,
+  // 字符超过此, 则换行
+  string: {} // 设置字符串
+
+};
 
 // export const
 //   FUNC = '',
@@ -223,7 +237,7 @@ const deEn = function (entries, lv) {
  * @returns {string|number}
  */
 
-const deco = (ob, p = {}) => _deco.call(presetDeco(p), ob); // TODO: fix string.presets default configuration
+const deco = (ob, p = {}) => _deco.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), ob); // TODO: fix string.presets default configuration
 
 /**
  *
@@ -243,7 +257,7 @@ const deco = (ob, p = {}) => _deco.call(presetDeco(p), ob); // TODO: fix string.
  * @returns {string|number}
  */
 
-const Deco = (p = {}) => _deco.bind(presetDeco(p));
+const Deco = (p = {}) => _deco.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION));
 /**
  *
  * @typedef {Object} DecoConfig

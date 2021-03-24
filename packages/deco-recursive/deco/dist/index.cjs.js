@@ -24,6 +24,20 @@ var liner = require('@spare/liner');
 var padder = require('@spare/padder');
 var decoString = require('@spare/deco-string');
 var splitter = require('@spare/splitter');
+var decoConfig = require('@spare/deco-config');
+
+const CONFIG = {
+  depth: 8,
+  // 展示级别
+  vert: 0,
+  // 在此级别以下均设为竖排
+  unit: 32,
+  // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
+  width: 80,
+  // 字符超过此, 则换行
+  string: {} // 设置字符串
+
+};
 
 // export const
 //   FUNC = '',
@@ -227,7 +241,7 @@ const deEn = function (entries, lv) {
  * @returns {string|number}
  */
 
-const deco = (ob, p = {}) => _deco.call(presetDeco.presetDeco(p), ob); // TODO: fix string.presets default configuration
+const deco = (ob, p = {}) => _deco.call(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION), ob); // TODO: fix string.presets default configuration
 
 /**
  *
@@ -247,7 +261,7 @@ const deco = (ob, p = {}) => _deco.call(presetDeco.presetDeco(p), ob); // TODO: 
  * @returns {string|number}
  */
 
-const Deco = (p = {}) => _deco.bind(presetDeco.presetDeco(p));
+const Deco = (p = {}) => _deco.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION));
 /**
  *
  * @typedef {Object} DecoConfig

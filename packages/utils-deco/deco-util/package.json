@@ -15,7 +15,8 @@
     "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.11.8"
+    "@spare/enum-chars": "^0.11.8",
+    "@spare/preset-deco": "^0.11.8"
   },
   "repository": {
     "type": "git",

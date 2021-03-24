@@ -1,13 +1,23 @@
-import { presetTable } from '@spare/preset-deco';
+import { DecoConfig } from '@spare/deco-config';
+import { TRI_PRESET_COLLECTION } from '@spare/preset-deco';
+import { decoFlat } from '@spare/deco-flat';
+import { LF, AEU } from '@spare/enum-chars';
+import { COLUMNWISE } from '@vect/enum-matrix-directions';
 import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { fluoVector } from '@palett/fluo-vector';
-import { AEU } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { tableMargin } from '@spare/table-margin';
 import { tablePadder } from '@spare/table-padder';
 import { size } from '@vect/matrix';
 import { acquire } from '@vect/vector-merge';
+
+const CONFIG = {
+  delim: LF,
+  read: decoFlat,
+  direct: COLUMNWISE,
+  ansi: true
+};
 
 const _decoTable = function (table) {
   var _head;
@@ -74,7 +84,7 @@ const _decoTable = function (table) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => _decoTable.bind(presetTable(p));
+const Deco = (p = {}) => _decoTable.bind(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION));
 /***
  *
  * @param {Object} table
@@ -104,6 +114,6 @@ const Deco = (p = {}) => _decoTable.bind(presetTable(p));
  * @returns {string}
  */
 
-const deco = (table, p = {}) => _decoTable.call(presetTable(p), table);
+const deco = (table, p = {}) => _decoTable.call(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION), table);
 
 export { Deco, _decoTable, deco };

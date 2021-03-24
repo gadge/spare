@@ -1,13 +1,23 @@
-import { presetCrostab } from '@spare/preset-deco';
+import { DecoConfig } from '@spare/deco-config';
+import { TRI_PRESET_COLLECTION } from '@spare/preset-deco';
+import { decoFlat } from '@spare/deco-flat';
+import { LF, AEU } from '@spare/enum-chars';
+import { POINTWISE } from '@vect/enum-matrix-directions';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { fluoVector } from '@palett/fluo-vector';
 import { crostabMargin } from '@spare/crostab-margin';
 import { crostabPadder } from '@spare/crostab-padder';
-import { AEU } from '@spare/enum-chars';
 import { liner } from '@spare/liner';
 import { size } from '@vect/matrix';
 import { acquire } from '@vect/vector-merge';
 import { zipper } from '@vect/vector-zipper';
+
+const CONFIG = {
+  delim: LF,
+  read: decoFlat,
+  ansi: true,
+  direct: POINTWISE
+};
 
 const VLINE = ' | ',
       HCONN = '-+-';
@@ -89,7 +99,7 @@ const _decoCrostab = function (crostab) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => _decoCrostab.bind(presetCrostab(p));
+const Deco = (p = {}) => _decoCrostab.bind(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION));
 /**
  *
  * @param {Object} crostab
@@ -104,7 +114,7 @@ const Deco = (p = {}) => _decoCrostab.bind(presetCrostab(p));
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=POINTWISE]
  *
@@ -120,6 +130,6 @@ const Deco = (p = {}) => _decoCrostab.bind(presetCrostab(p));
  * @returns {string}
  */
 
-const deco = (crostab, p = {}) => _decoCrostab.call(presetCrostab(p), crostab);
+const deco = (crostab, p = {}) => _decoCrostab.call(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION), crostab);
 
 export { Deco, _decoCrostab, deco };

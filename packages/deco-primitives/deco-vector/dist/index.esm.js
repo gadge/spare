@@ -1,9 +1,22 @@
-import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
-import { fluoVector }     from '@palett/fluo-vector'
-import { _decoEntries }   from '@spare/deco-entries'
-import { liner }          from '@spare/liner'
-import { presetVector }   from '@spare/preset-deco'
-import { vectorMargin }   from '@spare/vector-margin'
+import { DecoConfig } from '@spare/deco-config';
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
+import { decoFlat } from '@spare/deco-flat';
+import { BRK } from '@spare/enum-brackets';
+import { COLF } from '@spare/enum-chars';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
+import { fluoVector } from '@palett/fluo-vector';
+import { _decoEntries } from '@spare/deco-entries';
+import { liner } from '@spare/liner';
+import { vectorMargin } from '@spare/vector-margin';
+
+const CONFIG = {
+  dash: ') ',
+  delim: COLF,
+  bracket: BRK,
+  indexed: false,
+  read: decoFlat,
+  ansi: true
+};
 
 const fluo = fluoVector.bind(MUTATE_PIGMENT);
 function _decoVector(vec = []) {
@@ -44,7 +57,7 @@ function _decoVector(vec = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => _decoVector.bind(presetVector(p));
+const Deco = (p = {}) => _decoVector.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION));
 /***
  *
  * @param {*[]} vector
@@ -70,7 +83,7 @@ const Deco = (p = {}) => _decoVector.bind(presetVector(p));
  * @returns {string}
  */
 
-const deco = (vector, p = {}) => _decoVector.call(presetVector(p), vector);
+const deco = (vector, p = {}) => _decoVector.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), vector);
 /***
  *
  * @param {Object} p
@@ -95,6 +108,6 @@ const deco = (vector, p = {}) => _decoVector.call(presetVector(p), vector);
  * @returns {Function}
  */
 
-const DecoPale = (p = {}) => _decoVector.bind(presetVector(p));
+const DecoPale = (p = {}) => _decoVector.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION));
 
 export { Deco, DecoPale, _decoVector, deco };

@@ -1,6 +1,18 @@
-import { _decoEntries } from '@spare/deco-entries'
-import { liner }        from '@spare/liner'
-import { presetObject } from '@spare/preset-deco'
+import { DecoConfig } from '@spare/deco-config';
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
+import { decoFlat } from '@spare/deco-flat';
+import { BRC } from '@spare/enum-brackets';
+import { RTSP, COLF } from '@spare/enum-chars';
+import { _decoEntries } from '@spare/deco-entries';
+import { liner } from '@spare/liner';
+
+const CONFIG = {
+  dash: RTSP,
+  delim: COLF,
+  bracket: BRC,
+  read: decoFlat,
+  ansi: true
+};
 
 const LOCAL_OPTION = {
   discrete: true,
@@ -43,7 +55,7 @@ const _decoObject = function (o = {}) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => _decoObject.bind(presetObject(p));
+const Deco = (p = {}) => _decoObject.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION));
 /***
  *
  * @param {Object} o
@@ -70,6 +82,6 @@ const Deco = (p = {}) => _decoObject.bind(presetObject(p));
  * @returns {string}
  */
 
-const deco = (o, p = {}) => _decoObject.call(presetObject(p), o);
+const deco = (o, p = {}) => _decoObject.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), o);
 
 export { Deco, _decoObject, deco };

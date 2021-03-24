@@ -15,6 +15,9 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
+    "@spare/deco-flat": "^0.11.8",
+    "@spare/enum-brackets": "^0.11.8",
+    "@vect/enum-matrix-directions": "^0.3.7",
     "@ject/oneself": "^0.0.6",
     "@palett/fluo-matrix": "^0.7.2",
     "@spare/bracket": "^0.11.8",

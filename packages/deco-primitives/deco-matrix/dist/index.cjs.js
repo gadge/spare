@@ -2,15 +2,27 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoConfig = require('@spare/deco-config');
 var presetDeco = require('@spare/preset-deco');
+var decoFlat = require('@spare/deco-flat');
+var enumBrackets = require('@spare/enum-brackets');
+var enumChars = require('@spare/enum-chars');
+var enumMatrixDirections = require('@vect/enum-matrix-directions');
 var oneself = require('@ject/oneself');
 var fluoMatrix = require('@palett/fluo-matrix');
 var bracket = require('@spare/bracket');
-var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var matrixMargin = require('@spare/matrix-margin');
 var matrixPadder = require('@spare/matrix-padder');
 var matrix = require('@vect/matrix');
+
+const CONFIG = {
+  delim: enumChars.COSP,
+  bracket: enumBrackets.BRK,
+  read: decoFlat.decoFlat,
+  direct: enumMatrixDirections.ROWWISE,
+  ansi: true
+};
 
 // export const
 //   FUNC = '',
@@ -50,7 +62,6 @@ const _decoMatrix = function (rows = []) {
   });
 };
 
-// import { deco as _deco, logger } from '@spare/logger'
 /***
  *
  * @param {Object} p
@@ -77,11 +88,7 @@ const _decoMatrix = function (rows = []) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => {
-  const conf = presetDeco.presetMatrix(p); // conf |> _deco |> logger
-
-  return _decoMatrix.bind(conf);
-};
+const Deco = (p = {}) => _decoMatrix.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION));
 /***
  *
  * @param {*[][]} matrix
@@ -109,7 +116,7 @@ const Deco = (p = {}) => {
  * @returns {string}
  */
 
-const deco = (matrix, p = {}) => _decoMatrix.call(presetDeco.presetMatrix(p), matrix);
+const deco = (matrix, p = {}) => _decoMatrix.call(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION), matrix);
 
 exports.Deco = Deco;
 exports._decoMatrix = _decoMatrix;

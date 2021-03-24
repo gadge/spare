@@ -2,9 +2,21 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoConfig = require('@spare/deco-config');
 var presetDeco = require('@spare/preset-deco');
+var decoFlat = require('@spare/deco-flat');
+var enumBrackets = require('@spare/enum-brackets');
+var enumChars = require('@spare/enum-chars');
 var decoEntries = require('@spare/deco-entries');
 var liner = require('@spare/liner');
+
+const CONFIG = {
+  dash: enumChars.RTSP,
+  delim: enumChars.COLF,
+  bracket: enumBrackets.BRC,
+  read: decoFlat.decoFlat,
+  ansi: true
+};
 
 const LOCAL_OPTION = {
   discrete: true,
@@ -47,7 +59,7 @@ const _decoObject = function (o = {}) {
  * @returns {Function}
  */
 
-const Deco = (p = {}) => _decoObject.bind(presetDeco.presetObject(p));
+const Deco = (p = {}) => _decoObject.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION));
 /***
  *
  * @param {Object} o
@@ -74,7 +86,7 @@ const Deco = (p = {}) => _decoObject.bind(presetDeco.presetObject(p));
  * @returns {string}
  */
 
-const deco = (o, p = {}) => _decoObject.call(presetDeco.presetObject(p), o);
+const deco = (o, p = {}) => _decoObject.call(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION), o);
 
 exports.Deco = Deco;
 exports._decoObject = _decoObject;

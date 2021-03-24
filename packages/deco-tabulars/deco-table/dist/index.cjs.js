@@ -2,16 +2,26 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoConfig = require('@spare/deco-config');
 var presetDeco = require('@spare/preset-deco');
+var decoFlat = require('@spare/deco-flat');
+var enumChars = require('@spare/enum-chars');
+var enumMatrixDirections = require('@vect/enum-matrix-directions');
 var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoMatrix = require('@palett/fluo-matrix');
 var fluoVector = require('@palett/fluo-vector');
-var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var tableMargin = require('@spare/table-margin');
 var tablePadder = require('@spare/table-padder');
 var matrix = require('@vect/matrix');
 var vectorMerge = require('@vect/vector-merge');
+
+const CONFIG = {
+  delim: enumChars.LF,
+  read: decoFlat.decoFlat,
+  direct: enumMatrixDirections.COLUMNWISE,
+  ansi: true
+};
 
 const _decoTable = function (table) {
   var _head;
@@ -78,7 +88,7 @@ const _decoTable = function (table) {
  * @returns {string}
  */
 
-const Deco = (p = {}) => _decoTable.bind(presetDeco.presetTable(p));
+const Deco = (p = {}) => _decoTable.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.TRI_PRESET_COLLECTION));
 /***
  *
  * @param {Object} table
@@ -108,7 +118,7 @@ const Deco = (p = {}) => _decoTable.bind(presetDeco.presetTable(p));
  * @returns {string}
  */
 
-const deco = (table, p = {}) => _decoTable.call(presetDeco.presetTable(p), table);
+const deco = (table, p = {}) => _decoTable.call(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.TRI_PRESET_COLLECTION), table);
 
 exports.Deco = Deco;
 exports._decoTable = _decoTable;

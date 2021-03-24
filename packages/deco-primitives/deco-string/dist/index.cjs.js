@@ -2,12 +2,47 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoConfig = require('@spare/deco-config');
 var enumChars = require('@spare/enum-chars');
 var presetDeco = require('@spare/preset-deco');
-var splitter = require('@spare/splitter');
+var splitter$1 = require('@spare/splitter');
 var fluoVector = require('@palett/fluo-vector');
 var charset = require('@spare/charset');
 var fold = require('@spare/fold');
+
+const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const splitter = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+const splitLiteral = splitter.bind(LITERAL);
+
+const CONFIG = {
+  vectify: splitLiteral,
+  width: 0
+};
 
 // export const
 //   FUNC = '',
@@ -70,7 +105,7 @@ const decoCamel = (text, {
     delim,
     presets,
     effects,
-    vectify: splitter.splitCamel
+    vectify: splitter$1.splitCamel
   }, text);
 };
 const decoSnake = (text, {
@@ -82,7 +117,7 @@ const decoSnake = (text, {
     delim,
     presets,
     effects,
-    vectify: splitter.splitSnake
+    vectify: splitter$1.splitSnake
   }, text);
 };
 const decoPhrase = (text, {
@@ -110,7 +145,7 @@ const decoPhrase = (text, {
  * @return {string}
  */
 
-const deco = (text, p = {}) => _decoString.call(presetDeco.presetString(p), text);
+const deco = (text, p = {}) => _decoString.call(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION), text);
 /**
  *
  * @param {Object} p
@@ -125,7 +160,7 @@ const deco = (text, p = {}) => _decoString.call(presetDeco.presetString(p), text
  * @return {Function}
  */
 
-const Deco = (p = {}) => _decoString.bind(presetDeco.presetString(p));
+const Deco = (p = {}) => _decoString.bind(decoConfig.DecoConfig.parse(p, CONFIG, presetDeco.DUAL_PRESET_COLLECTION));
 
 exports.Deco = Deco;
 exports._decoString = _decoString;

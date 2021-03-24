@@ -1,7 +1,7 @@
-import { DecoConfig }             from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
-import { _decoCrostab }           from './src/_decoCrostab'
+import { DecoConfig }                                    from '@spare/deco-config'
+import { DUAL_PRESET_COLLECTION, TRI_PRESET_COLLECTION } from '@spare/preset-deco'
+import { CONFIG }                                        from './resources/config'
+import { _decoCrostab }                                  from './src/_decoCrostab'
 
 export { _decoCrostab }
 
@@ -36,7 +36,7 @@ export { _decoCrostab }
  * @returns {string}
  */
 export const Deco = (p = {}) => _decoCrostab
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
+  .bind(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION))
 
 /**
  *
@@ -68,4 +68,4 @@ export const Deco = (p = {}) => _decoCrostab
  * @returns {string}
  */
 export const deco = (crostab, p = {}) => _decoCrostab
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), crostab)
+  .call(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION), crostab)

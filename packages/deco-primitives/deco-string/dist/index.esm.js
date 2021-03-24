@@ -1,9 +1,44 @@
-import { fluoVector }             from '@palett/fluo-vector'
-import { hasAnsi }                from '@spare/charset'
-import { DA, LF, SP, TB }         from '@spare/enum-chars'
-import { fold }                   from '@spare/fold'
-import { presetString }           from '@spare/preset-deco'
-import { splitCamel, splitSnake } from '@spare/splitter'
+import { DecoConfig } from '@spare/deco-config';
+import { LF, TB, DA, SP } from '@spare/enum-chars';
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
+import { splitCamel, splitSnake } from '@spare/splitter';
+import { fluoVector } from '@palett/fluo-vector';
+import { hasAnsi } from '@spare/charset';
+import { fold } from '@spare/fold';
+
+const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const splitter = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+const splitLiteral = splitter.bind(LITERAL);
+
+const CONFIG = {
+  vectify: splitLiteral,
+  width: 0
+};
 
 // export const
 //   FUNC = '',
@@ -106,7 +141,7 @@ const decoPhrase = (text, {
  * @return {string}
  */
 
-const deco = (text, p = {}) => _decoString.call(presetString(p), text);
+const deco = (text, p = {}) => _decoString.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), text);
 /**
  *
  * @param {Object} p
@@ -121,6 +156,6 @@ const deco = (text, p = {}) => _decoString.call(presetString(p), text);
  * @return {Function}
  */
 
-const Deco = (p = {}) => _decoString.bind(presetString(p));
+const Deco = (p = {}) => _decoString.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION));
 
 export { Deco, _decoString, deco, decoCamel, decoPhrase, decoSnake };

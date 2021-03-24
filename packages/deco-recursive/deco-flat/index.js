@@ -3,7 +3,6 @@ import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { CONFIG }                 from './resources/config'
 import { _decoFlat }              from './src/decoFlat'
 
-
 // const CONF_DECO_FLAT = { mutate: true }
 // const parseConfig = conf => DecoConfig
 //   .build(conf)
