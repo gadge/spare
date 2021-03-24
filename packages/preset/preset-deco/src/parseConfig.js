@@ -1,2 +1,0 @@
-import { DecoConfig } from './DecoConfig'
-
