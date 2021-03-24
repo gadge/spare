@@ -18,12 +18,6 @@ export class DecoConfig {
    * @returns {DecoConfig}
    */
   static build(conf) { return new DecoConfig(conf) }
-  static parse(userConfig, defaultConfig, defaultPresets) {
-    const conf = DecoConfig.build(userConfig)
-    if (defaultConfig) conf.replenishConfigs(conf)
-    if (defaultPresets) conf.defaultPresets.apply(conf, defaultPresets)
-    return conf
-  }
 
   assignConfigs(configs) { return Object.assign(this, configs) }
   replenishConfigs(configs) { return replenish(this, configs) }

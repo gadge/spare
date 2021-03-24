@@ -1,7 +1,7 @@
 import { METRO, SUBTLE } from '@palett/presets'
 import { BRK }           from '@spare/enum-brackets'
-import { deco, logger }  from '@spare/logger'
-import { presetVector }  from '../functions/presetVector'
+import { deco, logger } from '@spare/logger'
+import { presetVector } from '@spare/preset-deco/functions/presetVector'
 
 const p = {
   head: 4,

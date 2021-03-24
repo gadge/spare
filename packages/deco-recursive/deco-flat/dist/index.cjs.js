@@ -43,11 +43,11 @@ const FULL_LOWER = 'ａ-ｚ'; // 0xff41 - 0xff5a
 
 const LITERAL_LOWER = `${HALF_UPPER}${HALF_LOWER}${HALF_NUM}`;
 const LITERAL_UPPER = `${FULL_UPPER}${FULL_LOWER}${FULL_NUM$1}`;
-const LITERAL$9 = new RegExp(`[${LITERAL_LOWER}]+`); // LITERAL = /[A-Za-z0-9]+/
+const LITERAL$d = new RegExp(`[${LITERAL_LOWER}]+`); // LITERAL = /[A-Za-z0-9]+/
 
 const LITERAL_ANY = new RegExp(`[${LITERAL_LOWER}${CJK_LETTERS}${LITERAL_UPPER}]+`);
 
-const isLiteral = x => LITERAL$9.test(x);
+const isLiteral = x => LITERAL$d.test(x);
 
 const isLiteralAny = x => LITERAL_ANY.test(x);
 
@@ -73,9 +73,9 @@ const stringValue = word => {
   if (l === 1) return v1(word) << 2;
 };
 
-const SP$8 = ' ';
-const CO$8 = ',';
-const DOT$8 = '.';
+const SP$c = ' ';
+const CO$c = ',';
+const DOT$c = '.';
 
 const FULL_NUM = '０-９'; // 0xff10 - 0xff19
 
@@ -106,7 +106,7 @@ const parseNum$1 = text => {
   return parseNum$2(t);
 };
 
-function _defineProperty$8(obj, key, value) {
+function _defineProperty$d(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -121,35 +121,35 @@ function _defineProperty$8(obj, key, value) {
   return obj;
 }
 
-class Conv$8 {}
+class Conv$c {}
 
-_defineProperty$8(Conv$8, "cjkAndFullChars", text => {
+_defineProperty$d(Conv$c, "cjkAndFullChars", text => {
   let tx = '',
       i = 0,
       l = text.length,
       n;
 
-  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$8.cjkPunc(n) : CharConv$8.fullChars(n);
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$c.cjkPunc(n) : CharConv$c.fullChars(n);
 
   return tx;
 });
 
-_defineProperty$8(Conv$8, "fullChars", text => {
+_defineProperty$d(Conv$c, "fullChars", text => {
   let tx = '',
       i = 0,
       l = text.length,
       n;
 
-  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$8.fullChars(n);
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$c.fullChars(n);
 
   return tx;
 });
 
-class CharConv$8 {
+class CharConv$c {
   static cjkPunc(charCode) {
-    if (charCode === 0x3000) return SP$8;
-    if (charCode === 0x3001) return CO$8;
-    if (charCode === 0x3002) return DOT$8;
+    if (charCode === 0x3000) return SP$c;
+    if (charCode === 0x3001) return CO$c;
+    if (charCode === 0x3002) return DOT$c;
     if (charCode === 0x3010) return '[';
     if (charCode === 0x3011) return ']';
     return String.fromCharCode(charCode);
@@ -388,6 +388,243 @@ class PresetCollection extends Array {
 
 } // if (presets.length === 0) presets = [NUMERIC_PRESET, LITERAL_PRESET]
 
+const SP$b = ' ';
+const CO$b = ',';
+const DOT$b = '.';
+
+function _defineProperty$c(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$b {}
+
+_defineProperty$c(Conv$b, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$b.cjkPunc(n) : CharConv$b.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$c(Conv$b, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$b.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$b {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$b;
+    if (charCode === 0x3001) return CO$b;
+    if (charCode === 0x3002) return DOT$b;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+
+const SP$a = ' ';
+const CO$a = ',';
+const DOT$a = '.';
+
+function _defineProperty$a(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$a {}
+
+_defineProperty$a(Conv$a, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$a.cjkPunc(n) : CharConv$a.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$a(Conv$a, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$a.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$a {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$a;
+    if (charCode === 0x3001) return CO$a;
+    if (charCode === 0x3002) return DOT$a;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$9 = ' ';
+const CO$9 = ',';
+const DOT$9 = '.';
+
+function _defineProperty$9(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$9 {}
+
+_defineProperty$9(Conv$9, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$9.cjkPunc(n) : CharConv$9.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$9(Conv$9, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$9.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$9 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$9;
+    if (charCode === 0x3001) return CO$9;
+    if (charCode === 0x3002) return DOT$9;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
+const SP$8 = ' ';
+const CO$8 = ',';
+const DOT$8 = '.';
+
+function _defineProperty$8(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+class Conv$8 {}
+
+_defineProperty$8(Conv$8, "cjkAndFullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += n < 0xff00 ? CharConv$8.cjkPunc(n) : CharConv$8.fullChars(n);
+
+  return tx;
+});
+
+_defineProperty$8(Conv$8, "fullChars", text => {
+  let tx = '',
+      i = 0,
+      l = text.length,
+      n;
+
+  while (i < l && (n = text.charCodeAt(i++))) tx += CharConv$8.fullChars(n);
+
+  return tx;
+});
+
+class CharConv$8 {
+  static cjkPunc(charCode) {
+    if (charCode === 0x3000) return SP$8;
+    if (charCode === 0x3001) return CO$8;
+    if (charCode === 0x3002) return DOT$8;
+    if (charCode === 0x3010) return '[';
+    if (charCode === 0x3011) return ']';
+    return String.fromCharCode(charCode);
+  }
+
+  static fullChars(charCode) {
+    return String.fromCharCode(0xFF & charCode + 0x20);
+  }
+
+}
+
 const SP$7 = ' ';
 const CO$7 = ',';
 const DOT$7 = '.';
@@ -446,7 +683,6 @@ class CharConv$7 {
   }
 
 }
-
 
 const SP$6 = ' ';
 const CO$6 = ',';
@@ -806,7 +1042,7 @@ const SP = ' ';
 const CO = ',';
 const DOT = '.';
 
-function _defineProperty(obj, key, value) {
+function _defineProperty$b(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -823,7 +1059,7 @@ function _defineProperty(obj, key, value) {
 
 class Conv {}
 
-_defineProperty(Conv, "cjkAndFullChars", text => {
+_defineProperty$b(Conv, "cjkAndFullChars", text => {
   let tx = '',
       i = 0,
       l = text.length,
@@ -834,7 +1070,7 @@ _defineProperty(Conv, "cjkAndFullChars", text => {
   return tx;
 });
 
-_defineProperty(Conv, "fullChars", text => {
+_defineProperty$b(Conv, "fullChars", text => {
   let tx = '',
       i = 0,
       l = text.length,
@@ -1085,6 +1321,118 @@ const splitter$8 = function (text) {
 
 
 splitter$8.bind(LITERAL$8);
+const LITERAL$9 = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const splitter$9 = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+splitter$9.bind(LITERAL$9);
+const LITERAL$a = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const splitter$a = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+splitter$a.bind(LITERAL$a);
+const LITERAL$b = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const splitter$b = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+splitter$b.bind(LITERAL$b);
+const LITERAL$c = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
+
+const splitter$c = function (text) {
+  const regex = this;
+  let ms,
+      l = 0,
+      r = 0,
+      sp,
+      ph;
+  const vec = [];
+
+  while ((ms = regex.exec(text)) && ([ph] = ms)) {
+    r = ms.index;
+    if (sp = text.slice(l, r)) vec.push(sp);
+    vec.push(ph);
+    l = regex.lastIndex;
+  }
+
+  if (l < text.length) vec.push(text.slice(l));
+  return vec;
+};
+/**
+ * @type {Function|function(string):string[]}
+ * @function
+ */
+
+
+splitter$c.bind(LITERAL$c);
 
 const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
@@ -1115,6 +1463,21 @@ const splitter = function (text) {
 
 splitter.bind(LITERAL);
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 class DecoConfig {
   /** @type {PresetCollection} */
 
@@ -1124,9 +1487,11 @@ class DecoConfig {
 
   /** @param {Object} conf */
   constructor(conf) {
-    this.presets = void 0;
-    this.effects = void 0;
-    this.full = void 0;
+    _defineProperty(this, "presets", void 0);
+
+    _defineProperty(this, "effects", void 0);
+
+    _defineProperty(this, "full", void 0);
 
     if (!conf) {
       return;
@@ -1143,6 +1508,13 @@ class DecoConfig {
 
   static build(conf) {
     return new DecoConfig(conf);
+  }
+
+  static parse(userConfig, defaultConfig, defaultPresets) {
+    const conf = DecoConfig.build(userConfig);
+    if (defaultConfig) conf.replenishConfigs(conf);
+    if (defaultPresets) conf.defaultPresets.apply(conf, defaultPresets);
+    return conf;
   }
 
   assignConfigs(configs) {

@@ -1,0 +1,1 @@
+export { DecoConfig } from './src/DecoConfig'

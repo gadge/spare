@@ -12,6 +12,21 @@ var presets = require('@palett/presets');
 var enumMatrixDirections = require('@vect/enum-matrix-directions');
 var splitter = require('@texting/splitter');
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 class DecoConfig {
   /** @type {PresetCollection} */
 
@@ -21,9 +36,11 @@ class DecoConfig {
 
   /** @param {Object} conf */
   constructor(conf) {
-    this.presets = void 0;
-    this.effects = void 0;
-    this.full = void 0;
+    _defineProperty(this, "presets", void 0);
+
+    _defineProperty(this, "effects", void 0);
+
+    _defineProperty(this, "full", void 0);
 
     if (!conf) {
       return;
@@ -40,6 +57,13 @@ class DecoConfig {
 
   static build(conf) {
     return new DecoConfig(conf);
+  }
+
+  static parse(userConfig, defaultConfig, defaultPresets) {
+    const conf = DecoConfig.build(userConfig);
+    if (defaultConfig) conf.replenishConfigs(conf);
+    if (defaultPresets) conf.defaultPresets.apply(conf, defaultPresets);
+    return conf;
   }
 
   assignConfigs(configs) {
