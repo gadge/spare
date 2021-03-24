@@ -1,6 +1,6 @@
 import { ATLAS, SUBTLE } from '@palett/presets'
-import { splitLiteral }  from '@texting/splitter'
-import { DecoConfig }    from '../src/decoConfig'
+import { splitLiteral } from '@texting/splitter'
+import { DecoConfig }   from '../src/DecoConfig'
 
 export const CONF_DECO_STRING = {
   vectify: splitLiteral,

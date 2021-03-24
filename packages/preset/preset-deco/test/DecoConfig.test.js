@@ -1,6 +1,6 @@
 import { BOLD, ITALIC }        from '@palett/enum-font-effects'
 import { LAVA, METRO, PLANET } from '@palett/presets'
-import { DecoConfig }          from '../src/decoConfig'
+import { DecoConfig }          from '../src/DecoConfig'
 import { deco }                from '@spare/deco'
 
 const config = {

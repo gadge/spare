@@ -1,4 +1,4 @@
-export { DecoConfig }                       from './src/decoConfig'
+export { DecoConfig }                       from './src/DecoConfig'
 export { CONF_DECO_ENTRIES, presetEntries } from './functions/presetEntries'
 export { CONF_DECO_OBJECT, presetObject }   from './functions/presetObject'
 export { CONF_DECO_VECTOR, presetVector }   from './functions/presetVector'

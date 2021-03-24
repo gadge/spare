@@ -2,7 +2,7 @@ import { decoFlat }                                       from '@spare/deco-flat
 import { LF }                                             from '@spare/enum-chars'
 import { POINTWISE }                                      from '@vect/enum-matrix-directions'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                                     from '../src/decoConfig'
+import { DecoConfig }                                     from '../src/DecoConfig'
 
 export const CONF_DECO_CROSTAB = {
   delim: LF,

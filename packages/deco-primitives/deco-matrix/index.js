@@ -1,5 +1,6 @@
-import { presetMatrix } from '@spare/preset-deco'
-import { _decoMatrix }  from './src/_decoMatrix'
+import { deco as _deco, logger } from '@spare/logger'
+import { presetMatrix }          from '@spare/preset-deco'
+import { _decoMatrix }           from './src/_decoMatrix'
 
 export { _decoMatrix }
 
@@ -28,7 +29,11 @@ export { _decoMatrix }
  *
  * @returns {Function}
  */
-export const Deco = (p = {}) => _decoMatrix.bind(presetMatrix(p))
+export const Deco = (p = {}) => {
+  const conf = presetMatrix(p)
+  conf |> _deco |> logger
+  return _decoMatrix.bind(conf)
+}
 
 /***
  *

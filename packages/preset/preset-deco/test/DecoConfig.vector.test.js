@@ -11,6 +11,7 @@ const p = {
   presets: [SUBTLE, METRO],
   // delim: ', ',
   discrete: false,
+  full: true,
   label: 1,
 }
 presetVector(p) |> JSON.stringify |> logger

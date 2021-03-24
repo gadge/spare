@@ -3,7 +3,7 @@ import { BRK }                                            from '@spare/enum-brac
 import { COSP }                                           from '@spare/enum-chars'
 import { COLUMNWISE }                                     from '@vect/enum-matrix-directions'
 import { HEADING_PRESET, LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                                     from '../src/decoConfig'
+import { DecoConfig }                                     from '../src/DecoConfig'
 
 export const CONF_DECO_SAMPLES = {
   delim: COSP,

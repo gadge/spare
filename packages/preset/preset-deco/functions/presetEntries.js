@@ -2,7 +2,7 @@ import { decoFlat }                       from '@spare/deco-flat'
 import { BRK }                            from '@spare/enum-brackets'
 import { LF }                             from '@spare/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from '../src/decoConfig'
+import { DecoConfig }                     from '../src/DecoConfig'
 
 export const CONF_DECO_ENTRIES = {
   dash: ' > ',

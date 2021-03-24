@@ -1,5 +1,5 @@
 import { ATLAS, AZURE, MOSS, SUBTLE } from '@palett/presets'
-import { DecoConfig }                 from '../src/decoConfig'
+import { DecoConfig }                 from '../src/DecoConfig'
 
 export const CONF_DECO = {
   depth: 8, // 展示级别

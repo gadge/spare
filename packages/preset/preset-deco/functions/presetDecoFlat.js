@@ -1,5 +1,5 @@
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
-import { DecoConfig }                     from '../src/decoConfig'
+import { DecoConfig }                     from '../src/DecoConfig'
 
 export const CONF_DECO_FLAT = { mutate: true }
 
