@@ -1,5 +1,5 @@
 import { MUTABLE }      from '@analys/enum-mutabilities'
-import { fluoVector }      from '@palett/fluo-vector'
+import { fluoVector }   from '@palett/fluo-vector'
 import { splitLiteral } from '@spare/splitter'
 import { Joiner }       from '../../../src/_decoString'
 

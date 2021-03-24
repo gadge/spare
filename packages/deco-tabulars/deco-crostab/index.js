@@ -1,5 +1,7 @@
-import { presetCrostab } from '@spare/preset-deco'
-import { _decoCrostab }  from './src/_decoCrostab'
+import { DecoConfig }             from '@spare/deco-config'
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
+import { CONFIG }                 from './resources/config'
+import { _decoCrostab }           from './src/_decoCrostab'
 
 export { _decoCrostab }
 
@@ -33,7 +35,8 @@ export { _decoCrostab }
  *
  * @returns {string}
  */
-export const Deco = (p = {}) => _decoCrostab.bind(presetCrostab(p))
+export const Deco = (p = {}) => _decoCrostab
+  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
 /**
  *
@@ -49,7 +52,7 @@ export const Deco = (p = {}) => _decoCrostab.bind(presetCrostab(p))
  * @param {Function} [p.headRead]
  * @param {Function} [p.sideRead]
  *
-* @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+ * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
  * @param {Object} [p.labelPreset=SUBTLE]
  * @param {number} [p.direct=POINTWISE]
  *
@@ -64,4 +67,5 @@ export const Deco = (p = {}) => _decoCrostab.bind(presetCrostab(p))
  *
  * @returns {string}
  */
-export const deco = (crostab, p = {}) => _decoCrostab.call(presetCrostab(p), crostab)
+export const deco = (crostab, p = {}) => _decoCrostab
+  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), crostab)

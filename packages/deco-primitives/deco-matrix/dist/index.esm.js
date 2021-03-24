@@ -1,12 +1,12 @@
-import { presetMatrix } from '@spare/preset-deco';
-import { oneself } from '@ject/oneself';
-import { fluoMatrix } from '@palett/fluo-matrix';
-import { Br } from '@spare/bracket';
-import { COLF } from '@spare/enum-chars';
-import { liner } from '@spare/liner';
-import { matrixMargin } from '@spare/matrix-margin';
-import { matrixPadder } from '@spare/matrix-padder';
-import { size } from '@vect/matrix';
+import { oneself }      from '@ject/oneself'
+import { fluoMatrix }   from '@palett/fluo-matrix'
+import { Br }           from '@spare/bracket'
+import { COLF }         from '@spare/enum-chars'
+import { liner }        from '@spare/liner'
+import { matrixMargin } from '@spare/matrix-margin'
+import { matrixPadder } from '@spare/matrix-padder'
+import { presetMatrix } from '@spare/preset-deco'
+import { size }         from '@vect/matrix'
 
 // export const
 //   FUNC = '',

@@ -1,5 +1,5 @@
 import { _decoEntries } from '@spare/deco-entries'
-import { liner }                         from '@spare/liner'
+import { liner }        from '@spare/liner'
 
 const LOCAL_OPTION = { discrete: true, bracket: undefined }
 

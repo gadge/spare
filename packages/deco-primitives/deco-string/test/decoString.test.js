@@ -1,8 +1,7 @@
 import { ObjectCollection }   from '@foba/object-string'
 import { BOLD }               from '@palett/enum-font-effects'
-import { says }               from '@spare/says'
 import { delogger }           from '@spare/deco'
-import { logger }             from '../../../debugger/logger'
+import { says }               from '@spare/says'
 import { deco as decoString } from '../index'
 
 const items = Object.assign({},

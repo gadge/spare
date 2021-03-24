@@ -1,6 +1,8 @@
-import { LF }         from '@spare/enum-chars'
-import { presetDeco } from '@spare/preset-deco'
-import { _deco }      from './src/_deco'
+import { LF }                     from '@spare/enum-chars'
+import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
+import { CONFIG }                 from './resources/config'
+import { _deco }                  from './src/_deco'
+import { DecoConfig }             from '@spare/deco-config'
 
 export { _deco }
 
@@ -39,7 +41,8 @@ export { _deco }
  * @param {?string} [p.qm=null] - quotation mark
  * @returns {string|number}
  */
-export const deco = (ob, p = {}) => _deco.call(presetDeco(p), ob)
+export const deco = (ob, p = {}) => _deco
+  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), ob)
 
 // TODO: fix string.presets default configuration
 
@@ -60,7 +63,7 @@ export const deco = (ob, p = {}) => _deco.call(presetDeco(p), ob)
  * @param {?string} [p.qm=null] - quotation mark
  * @returns {string|number}
  */
-export const Deco = (p = {}) => _deco.bind(presetDeco(p))
+export const Deco = (p = {}) => _deco.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
 /**
  *

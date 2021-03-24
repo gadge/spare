@@ -3,9 +3,7 @@ import { simpleVectorCollection } from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
 import { METRO, SUBTLE }          from '@palett/presets'
 import { BRK }                    from '@spare/enum-brackets'
-import { logger, says }           from '@spare/logger'
-import { wordsByIter }            from '@spare/splitter/test/strategies/src/wordsByIter'
-import { wL }                     from '@spare/string'
+import { says }                   from '@spare/logger'
 import { Deco }                   from '../index'
 
 const Strangers = {

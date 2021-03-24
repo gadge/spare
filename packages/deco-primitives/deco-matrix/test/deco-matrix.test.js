@@ -1,7 +1,7 @@
 import { CrostabMatrixCollection, ModestMatrixCollection } from '@foba/foo'
 import { FRESH, METRO }                                    from '@palett/presets'
-import { BRACKET }                                         from '@spare/enum-brackets'
 import { says }                                            from '@palett/says'
+import { BRACKET }                                         from '@spare/enum-brackets'
 import { Deco }                                            from '../index'
 
 const matrixCollection = Object.assign({},

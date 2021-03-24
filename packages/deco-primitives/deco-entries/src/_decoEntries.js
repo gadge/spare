@@ -1,10 +1,10 @@
 import { oneself }        from '@ject/oneself'
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
 import { fluoEntries }    from '@palett/fluo-entries'
 import { Br }             from '@spare/bracket'
 import { entriesMargin }  from '@spare/entries-margin'
 import { entriesPadder }  from '@spare/entries-padder'
 import { liner }          from '@spare/liner'
-import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
 
 const LF = /\n/
 const fluo = fluoEntries.bind(MUTATE_PIGMENT)

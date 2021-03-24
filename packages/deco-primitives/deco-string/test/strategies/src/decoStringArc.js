@@ -1,5 +1,5 @@
 import { COLORANT }         from '@palett/enum-colorant-modes'
-import { fluoVector }          from '@palett/fluo-vector'
+import { fluoVector }       from '@palett/fluo-vector'
 import { mutazip }          from '@vect/vector-zipper'
 import { Joiner, Splitter } from '../../../src/_decoString'
 

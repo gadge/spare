@@ -1,11 +1,11 @@
-import { DecoConfig as DecoConfig$1 } from '@spare/deco-config';
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
-import { oneself as oneself$3 } from '@ject/oneself';
-import { fluoEntries } from '@palett/fluo-entries';
-import { parenth, Br } from '@spare/bracket';
-import { entriesMargin } from '@spare/entries-margin';
-import { entriesPadder } from '@spare/entries-padder';
-import { liner } from '@spare/liner';
+import { oneself as oneself$3 }       from '@ject/oneself'
+import { fluoEntries }                from '@palett/fluo-entries'
+import { Br, parenth }                from '@spare/bracket'
+import { DecoConfig as DecoConfig$1 } from '@spare/deco-config'
+import { entriesMargin }              from '@spare/entries-margin'
+import { entriesPadder }              from '@spare/entries-padder'
+import { liner }                      from '@spare/liner'
+import { DUAL_PRESET_COLLECTION }     from '@spare/preset-deco'
 
 const Amber$1 = {
   base: '#FFC107',

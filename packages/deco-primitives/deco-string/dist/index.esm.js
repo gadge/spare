@@ -1,9 +1,9 @@
-import { LF, TB, DA, SP } from '@spare/enum-chars';
-import { presetString } from '@spare/preset-deco';
-import { splitCamel, splitSnake } from '@spare/splitter';
-import { fluoVector } from '@palett/fluo-vector';
-import { hasAnsi } from '@spare/charset';
-import { fold } from '@spare/fold';
+import { fluoVector }             from '@palett/fluo-vector'
+import { hasAnsi }                from '@spare/charset'
+import { DA, LF, SP, TB }         from '@spare/enum-chars'
+import { fold }                   from '@spare/fold'
+import { presetString }           from '@spare/preset-deco'
+import { splitCamel, splitSnake } from '@spare/splitter'
 
 // export const
 //   FUNC = '',

@@ -1,8 +1,8 @@
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
 import { fluoVector }     from '@palett/fluo-vector'
 import { _decoEntries }   from '@spare/deco-entries'
 import { liner }          from '@spare/liner'
 import { vectorMargin }   from '@spare/vector-margin'
-import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
 
 const fluo = fluoVector.bind(MUTATE_PIGMENT)
 

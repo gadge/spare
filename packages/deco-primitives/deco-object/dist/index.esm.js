@@ -1,6 +1,6 @@
-import { presetObject } from '@spare/preset-deco';
-import { _decoEntries } from '@spare/deco-entries';
-import { liner } from '@spare/liner';
+import { _decoEntries } from '@spare/deco-entries'
+import { liner }        from '@spare/liner'
+import { presetObject } from '@spare/preset-deco'
 
 const LOCAL_OPTION = {
   discrete: true,
