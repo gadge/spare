@@ -5,14 +5,17 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var decoConfig = require('@spare/deco-config');
 var enumChars = require('@spare/enum-chars');
 var presetDeco = require('@spare/preset-deco');
-var splitter$1 = require('@spare/splitter');
+var splitter = require('@texting/splitter');
 var fluoVector = require('@palett/fluo-vector');
 var charset = require('@spare/charset');
 var fold = require('@spare/fold');
 
+const INILOW = /^[a-z]+/;
 const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
 
-const splitter = function (text) {
+const CAPWORD = /[A-Z][a-z]+|[A-Z]+(?=[A-Z][a-z]|\d|\W|_|$)|[\d]+[a-z]*/g;
+
+const ripper = function (text) {
   const regex = this;
   let ms,
       l = 0,
@@ -31,16 +34,43 @@ const splitter = function (text) {
   if (l < text.length) vec.push(text.slice(l));
   return vec;
 };
+
 /**
  * @type {Function|function(string):string[]}
  * @function
  */
 
 
-const splitLiteral = splitter.bind(LITERAL);
+ripper.bind(LITERAL);
+/**
+ * Camel/pascal case phrase -> split vector
+ * Snake: fox_jumps_over_dog
+ * Kebab: fox-jumps-over-dog
+ * @param {string} phrase camel/pascal-case phrase
+ * @returns {string[]}
+ */
+
+function splitCamel(phrase) {
+  let ms,
+      wd,
+      ve = [];
+  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ve.push(wd);
+
+  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ve.push(wd);
+
+  return ve;
+}
+/**
+ * snake or kebab phrase -> split vector
+ * @param {string} phrase - dashed phrase
+ * @returns {string[]}
+ */
+
+
+const splitSnake = phrase => phrase.split(/\W/g);
 
 const CONFIG = {
-  vectify: splitLiteral,
+  vectify: splitter.splitLiteral,
   width: 0
 };
 
@@ -105,7 +135,7 @@ const decoCamel = (text, {
     delim,
     presets,
     effects,
-    vectify: splitter$1.splitCamel
+    vectify: splitCamel
   }, text);
 };
 const decoSnake = (text, {
@@ -117,7 +147,7 @@ const decoSnake = (text, {
     delim,
     presets,
     effects,
-    vectify: splitter$1.splitSnake
+    vectify: splitSnake
   }, text);
 };
 const decoPhrase = (text, {
