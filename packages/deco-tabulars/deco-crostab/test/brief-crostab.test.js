@@ -12,13 +12,13 @@ const mag = new Mag(0)
 
 const crostab = CrostabCollection |> flopValue
 const rows = crostab.rows
-const [h, w] = size(rows)
+const [ h, w ] = size(rows)
 rows[h - 2][w - 2] = "三点水"
 crostab.rows |> DecoMatrix({ direct: COLUMNWISE }) |> logger
 crostab.side[0] = '二零七七'
 crostab |> Deco({
   direct: POINTWISE,
-  presets: [OCEAN, FRESH, MOSS],
+  presets: [ OCEAN, FRESH, MOSS ],
   read: x => isNumeric(x) ? mag.format(+x) : x,
   top: 4,
   bottom: 3,

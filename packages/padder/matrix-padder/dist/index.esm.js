@@ -79,7 +79,7 @@ const mapper = (mx, mapOnColumns, h, w) => {
   return tcol;
 };
 
-const widthsByColumns = (mx, ansi) => {
+const columnWidth = (mx, ansi) => {
   const len = Lange(ansi);
   return stat.call({
     init: () => 0,
@@ -89,7 +89,7 @@ const widthsByColumns = (mx, ansi) => {
 
 const matrixPadderFull = (mx, config) => {
   const pad = PadFull(config, config);
-  const widths = widthsByColumns(mx, config.ansi);
+  const widths = columnWidth(mx, config.ansi);
   const marks = mapper(mx, col => col.some(hasFull));
   return mapper$2(mx, (x, i, j) => pad(x, widths[j], marks[j]));
 };
@@ -106,7 +106,7 @@ const matrixPadderFull = (mx, config) => {
 
 const matrixPadder = (mx, config = {}) => {
   if (config.full) return matrixPadderFull(mx, config);
-  const widths = widthsByColumns(mx, config.ansi);
+  const widths = columnWidth(mx, config.ansi);
   const pad = Pad(config);
   return mapper$2(mx, (tx, i, j) => pad(tx, widths[j]));
 }; // let zipper
@@ -116,4 +116,4 @@ const matrixPadder = (mx, config = {}) => {
 //   : (zipper = Duozipper((tx, va, i, j) => pad(tx, widths[j], va)),
 //     zipper(mx, mx))
 
-export { matrixPadder, widthsByColumns };
+export { columnWidth, matrixPadder };

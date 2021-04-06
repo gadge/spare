@@ -1,2 +1,2 @@
-export { matrixPadder }    from './src/matrixPadder'
-export { widthsByColumns } from './src/widthsByColumns'
+export { matrixPadder } from './src/matrixPadder'
+export { columnWidth }  from './src/columnWidth'

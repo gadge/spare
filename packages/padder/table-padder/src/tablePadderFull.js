@@ -1,7 +1,7 @@
 import { DA }                      from '@texting/enum-chars'
 import { DA as DA_FULL }           from '@texting/enum-chars-fullwidth'
 import { hasFull }                 from '@spare/fullwidth'
-import { widthsByColumns }         from '@spare/matrix-padder'
+import { columnWidth }             from '@spare/matrix-padder'
 import { PadFull }                 from '@texting/padder'
 import { mapper as mapperColumns } from '@vect/columns-mapper'
 import { mapper as mapperMatrix }  from '@vect/matrix-mapper'
@@ -21,8 +21,8 @@ export const tablePadderFull = (
   table,
   config = {}
 ) => {
-  const columns = acquire([table.head], table.rows)
-  const widths = widthsByColumns(columns, config.ansi)
+  const columns = acquire([ table.head ], table.rows)
+  const widths = columnWidth(columns, config.ansi)
   const marks = mapperColumns(columns, col => col.some(hasFull))
   const pad = PadFull(config, config)
   return {

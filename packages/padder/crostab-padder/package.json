@@ -17,7 +17,7 @@
   "dependencies": {
     "@spare/field-padder": "^0.11.11",
     "@spare/table-padder": "^0.11.11",
-    "@vect/vector-merge": "^0.3.7"
+    "@vect/vector-merge": "^0.3.8"
   },
   "repository": {
     "type": "git",

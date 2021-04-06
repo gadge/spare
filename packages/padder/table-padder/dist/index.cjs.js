@@ -26,7 +26,7 @@ var columnsMapper = require('@vect/columns-mapper');
 
 const tablePadderFull = (table, config = {}) => {
   const columns = vector.acquire([table.head], table.rows);
-  const widths = matrixPadder.widthsByColumns(columns, config.ansi);
+  const widths = matrixPadder.columnWidth(columns, config.ansi);
   const marks = columnsMapper.mapper(columns, col => col.some(fullwidth.hasFull));
   const pad = padder.PadFull(config, config);
   return {
@@ -36,6 +36,7 @@ const tablePadderFull = (table, config = {}) => {
   };
 };
 
+const columnWidth = (table, config) => matrixPadder.columnWidth(vector.acquire([table.head], table.rows), config.ansi);
 /**
  *
  *
@@ -52,7 +53,8 @@ const tablePadder = (table, config = {}) => {
   if (config.full) return tablePadderFull(table, config);
   const padder$1 = padder.Pad(config); // use ansi
 
-  const widths = matrixPadder.widthsByColumns(vector.acquire([table.head], table.rows), config.ansi);
+  const widths = columnWidth(table, config); // use ansi
+
   return {
     head: vectorZipper.zipper(table.head, widths, (x, p) => padder$1(x, p)),
     rule: vectorMapper.mapper(widths, p => enumChars$1.DA.repeat(p)),
@@ -60,4 +62,5 @@ const tablePadder = (table, config = {}) => {
   };
 };
 
+exports.columnWidth = columnWidth;
 exports.tablePadder = tablePadder;

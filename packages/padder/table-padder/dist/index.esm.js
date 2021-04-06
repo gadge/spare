@@ -1,5 +1,5 @@
 import { DA as DA$2 } from '@spare/enum-chars';
-import { widthsByColumns } from '@spare/matrix-padder';
+import { columnWidth as columnWidth$1 } from '@spare/matrix-padder';
 import { PadFull, Pad } from '@texting/padder';
 import { mapper } from '@vect/matrix-mapper';
 import { acquire } from '@vect/vector';
@@ -22,7 +22,7 @@ import { mapper as mapper$1 } from '@vect/columns-mapper';
 
 const tablePadderFull = (table, config = {}) => {
   const columns = acquire([table.head], table.rows);
-  const widths = widthsByColumns(columns, config.ansi);
+  const widths = columnWidth$1(columns, config.ansi);
   const marks = mapper$1(columns, col => col.some(hasFull));
   const pad = PadFull(config, config);
   return {
@@ -32,6 +32,7 @@ const tablePadderFull = (table, config = {}) => {
   };
 };
 
+const columnWidth = (table, config) => columnWidth$1(acquire([table.head], table.rows), config.ansi);
 /**
  *
  *
@@ -48,7 +49,8 @@ const tablePadder = (table, config = {}) => {
   if (config.full) return tablePadderFull(table, config);
   const padder = Pad(config); // use ansi
 
-  const widths = widthsByColumns(acquire([table.head], table.rows), config.ansi);
+  const widths = columnWidth(table, config); // use ansi
+
   return {
     head: zipper(table.head, widths, (x, p) => padder(x, p)),
     rule: mapper$2(widths, p => DA$2.repeat(p)),
@@ -56,4 +58,4 @@ const tablePadder = (table, config = {}) => {
   };
 };
 
-export { tablePadder };
+export { columnWidth, tablePadder };

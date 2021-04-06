@@ -1,7 +1,7 @@
 import { Pad }              from '@texting/padder'
 import { mapper }           from '@vect/matrix-mapper'
 import { matrixPadderFull } from './matrixPadderFull'
-import { widthsByColumns }  from './widthsByColumns'
+import { columnWidth }      from './columnWidth'
 
 /**
  *
@@ -14,7 +14,7 @@ import { widthsByColumns }  from './widthsByColumns'
  */
 export const matrixPadder = (mx, config = {}) => {
   if (config.full) return matrixPadderFull(mx, config)
-  const widths = widthsByColumns(mx, config.ansi)
+  const widths = columnWidth(mx, config.ansi)
   const pad = Pad(config)
   return mapper(mx, (tx, i, j) => pad(tx, widths[j]))
 }
