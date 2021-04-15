@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
-    "@ject/oneself": "^0.0.6",
-    "@palett/fluo-matrix": "^0.7.5",
+    "@ject/oneself": "^0.0.10",
+    "@palett/fluo-matrix": "^0.7.6",
     "@spare/bracket": "^0.11.12",
     "@spare/deco-config": "^0.11.12",
     "@spare/deco-flat": "^0.11.12",

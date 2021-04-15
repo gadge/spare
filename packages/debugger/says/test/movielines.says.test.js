@@ -1,6 +1,6 @@
 import { flopEntry, rand }           from '@aryth/rand'
 import { ObjectCollection }          from '@foba/object-string'
-import { makeReplaceable }           from '@glossa/translator'
+import { makeReplaceable }           from '@spare/translator'
 import { AQUA, LAVA, OCEAN, SUBTLE } from '@palett/presets'
 import { RN }                        from '@spare/enum-chars'
 import { DecoVector }                from '@spare/logger'

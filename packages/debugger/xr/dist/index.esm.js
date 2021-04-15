@@ -7,41 +7,18 @@ import { hasAnsi, clearAnsi } from '@spare/charset';
 import { nullish } from '@typen/nullish';
 import { deNaTab } from '@spare/util';
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
+var id = 0;
 
-  return obj;
+function _classPrivateFieldLooseKey(name) {
+  return "__private_" + id++ + "_" + name;
 }
 
-function _classPrivateFieldGet(receiver, privateMap) {
-  var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get");
-
-  return _classApplyDescriptorGet(receiver, descriptor);
-}
-
-function _classExtractFieldDescriptor(receiver, privateMap, action) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to " + action + " private field on non-instance");
+function _classPrivateFieldLooseBase(receiver, privateKey) {
+  if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) {
+    throw new TypeError("attempted to use private field on non-instance");
   }
 
-  return privateMap.get(receiver);
-}
-
-function _classApplyDescriptorGet(receiver, descriptor) {
-  if (descriptor.get) {
-    return descriptor.get.call(receiver);
-  }
-
-  return descriptor.value;
+  return receiver;
 }
 
 // from x => typeof x
@@ -133,7 +110,7 @@ const clearQueue = function (word) {
  * @type {Object<string,string>}
  */
 
-var _conf = new WeakMap();
+var _conf = _classPrivateFieldLooseKey("conf");
 
 _Symbol$toPrimitive = Symbol.toPrimitive;
 class XrStream extends Callable {
@@ -144,25 +121,21 @@ class XrStream extends Callable {
   /** @type {{br:{major:Function,minor:Function},pa:{major:Function,minor:Function}} */
   constructor(word, pretty = true) {
     super(word => render.call(this.queue, word));
-
-    _defineProperty(this, "queue", void 0);
-
-    _defineProperty(this, "indent", void 0);
-
-    _conf.set(this, {
+    this.queue = void 0;
+    this.indent = void 0;
+    Object.defineProperty(this, _conf, {
       writable: true,
       value: {}
     });
-
     Object.assign(this, initQueue(word));
-    _classPrivateFieldGet(this, _conf).bracket = pretty ? {
+    _classPrivateFieldLooseBase(this, _conf)[_conf].bracket = pretty ? {
       major: bracket$1,
       minor: bracket
     } : {
       major: bracket$2,
       minor: bracket$2
     };
-    _classPrivateFieldGet(this, _conf).parenth = pretty ? {
+    _classPrivateFieldLooseBase(this, _conf)[_conf].parenth = pretty ? {
       major: parenth$1,
       minor: parenth
     } : {
@@ -179,7 +152,7 @@ class XrStream extends Callable {
   }
 
   get conf() {
-    return _classPrivateFieldGet(this, _conf);
+    return _classPrivateFieldLooseBase(this, _conf)[_conf];
   }
 
   asc() {

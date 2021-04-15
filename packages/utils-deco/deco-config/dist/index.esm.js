@@ -2,21 +2,6 @@ import { PresetCollection } from '@palett/fluo';
 import { nullish } from '@typen/nullish';
 import { replenish } from '@vect/object-update';
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 class DecoConfig {
   /** @type {PresetCollection} */
 
@@ -26,11 +11,9 @@ class DecoConfig {
 
   /** @param {Object} conf */
   constructor(conf) {
-    _defineProperty(this, "presets", void 0);
-
-    _defineProperty(this, "effects", void 0);
-
-    _defineProperty(this, "full", void 0);
+    this.presets = void 0;
+    this.effects = void 0;
+    this.full = void 0;
 
     if (!conf) {
       return;
