@@ -4,12 +4,12 @@ import { FUN, STR }         from '@typen/enum-data-types'
 import { Callable }         from '../util/Callable'
 import { logBy }            from './logBy'
 
-// const NAME = 'name'
+const NAME = 'name'
 // const WRITABLE = { writable: true }
 
 /** @type {function} */
 export class Pal extends Callable {
-  /** @type {string}   */ name = ''
+  // /** @type {string}   */ name
   /** @type {string}   */ des = ''
   /** @type {number}   */ ind = 0
   /** @type {Function} */ log = console.log
@@ -19,7 +19,12 @@ export class Pal extends Callable {
     // Object.defineProperty(f, NAME, WRITABLE)
     // super(f)
     super(text => logBy(text, this))
-    if (name) this.name = name
+    Object.defineProperty(
+      this,
+      NAME,
+      { value: name ?? '', writable: true }
+    )
+    // if (name) this.name = name
     if (indent) this.ind = indent
     if (logger) this.log = logger
     if (attach) this.attach(attach)

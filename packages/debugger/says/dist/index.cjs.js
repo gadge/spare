@@ -49,12 +49,12 @@ const logBy = (text, config) => {
   return void log(signature, text.includes(enumChars.LF) ? (enumChars.LF + text).replace(/\n/g, enumChars.LF + tab(++ind)) : text);
 };
 
-// const WRITABLE = { writable: true }
+const NAME = 'name'; // const WRITABLE = { writable: true }
 
 /** @type {function} */
 
 class Pal extends Callable {
-  /** @type {string}   */
+  // /** @type {string}   */ name
 
   /** @type {string}   */
 
@@ -72,12 +72,15 @@ class Pal extends Callable {
     // Object.defineProperty(f, NAME, WRITABLE)
     // super(f)
     super(text => logBy(text, this));
-    this.name = '';
     this.des = '';
     this.ind = 0;
     this.log = console.log;
     this.att = void 0;
-    if (name) this.name = name;
+    Object.defineProperty(this, NAME, {
+      value: name !== null && name !== void 0 ? name : '',
+      writable: true
+    }); // if (name) this.name = name
+
     if (indent) this.ind = indent;
     if (logger) this.log = logger;
     if (attach) this.attach(attach);
