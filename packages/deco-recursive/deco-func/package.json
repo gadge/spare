@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-func",
-  "version": "0.11.13",
+  "version": "0.11.14",
   "description": "Colored stringify date",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,12 +18,12 @@
     "@palett/cards": "^0.7.7",
     "@palett/convert": "^0.7.7",
     "@palett/dye": "^0.7.7",
-    "@spare/bracket": "^0.11.13",
-    "@spare/deco-config": "^0.11.13",
-    "@spare/enum-chars": "^0.11.13",
-    "@spare/lange": "^0.11.13",
-    "@spare/preset-deco": "^0.11.13",
-    "@spare/translator": "^0.11.13"
+    "@spare/bracket": "^0.11.14",
+    "@spare/deco-config": "^0.11.14",
+    "@spare/enum-chars": "^0.11.14",
+    "@spare/lange": "^0.11.14",
+    "@spare/preset-deco": "^0.11.14",
+    "@spare/translator": "^0.11.14"
   },
   "devDependencies": {
     "@ject/rename": "^0.0.10"
