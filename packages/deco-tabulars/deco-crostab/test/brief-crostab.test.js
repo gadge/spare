@@ -2,6 +2,7 @@ import { flopValue }          from '@aryth/rand'
 import { Mag }                from '@cliche/mag'
 import { CrostabCollection }  from '@foba/crostab'
 import { FRESH, MOSS, OCEAN } from '@palett/presets'
+import { says }               from '@palett/says'
 import { DecoMatrix, logger } from '@spare/logger'
 import { isNumeric }          from '@typen/num-strict'
 import { POINTWISE }          from '@vect/enum-matrix-directions'
@@ -25,6 +26,6 @@ crostab |> Deco({
   left: 3,
   right: 2,
   fullAngle: true,
-}) |> logger
+}) |> says['crostab']
 
 
