@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/archive/test.index.js"
   },
   "dependencies": {
-    "@ject/oneself": "^0.0.10",
+    "@ject/oneself": "^0.0.11",
     "@spare/util": "^0.11.14",
     "@vect/matrix-margin": "^0.3.9",
     "@vect/matrix-size": "^0.3.9",

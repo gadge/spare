@@ -1,13 +1,13 @@
 import { enttro }        from '@spare/entries-margin'
+import { entriesPadder } from '@spare/entries-padder'
 import { AEU, LF, RTSP } from '@spare/enum-chars'
 import { liner, Liner }  from '@spare/liner'
 import { mattro }        from '@spare/matrix-margin'
-import { entriesPadder }    from '@spare/entries-padder'
-import { tablePadder }      from '@spare/table-padder'
+import { tablePadder }   from '@spare/table-padder'
 import { vettro }        from '@spare/vector-margin'
 import { size }          from '@vect/matrix'
 
-const HR_ENTRY = ['..', '..']
+const HR_ENTRY = [ '..', '..' ]
 
 export class Markdown {
 
@@ -64,7 +64,7 @@ export class Markdown {
     const { raw, text } = enttro(entries, { head, tail, keyRead, read, rule: HR_ENTRY })
     entries = pad ? entriesPadder(text, { raw, ansi }) : text
     return entries
-      .map(([k, v]) => (prefix ?? '') + k + dash + v.trimRight() + (suffix ?? ''))
+      .map(([ k, v ]) => (prefix ?? '') + k + dash + v.trimRight() + (suffix ?? ''))
       |> Liner({ delim, level })
   }
   /***
@@ -90,7 +90,7 @@ export class Markdown {
   static table(table, option = {}) {
     if (!table) return AEU
     let matrix = table.rows || table.matrix, banner = table.head || table.banner
-    const [height, width] = size(matrix), labelWidth = banner?.length
+    const [ height, width ] = size(matrix), labelWidth = banner?.length
     if (!height || !width || !labelWidth) return AEU
     const delim = LF
     const { read, headRead, top, left, bottom, right, ansi, fullAngle, level } = option

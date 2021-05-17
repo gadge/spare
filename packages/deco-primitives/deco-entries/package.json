@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/deco-entries.test.js"
   },
   "dependencies": {
-    "@ject/oneself": "^0.0.10",
+    "@ject/oneself": "^0.0.11",
     "@palett/fluo-entries": "^0.7.7",
     "@spare/bracket": "^0.11.14",
     "@spare/deco-config": "^0.11.14",
