@@ -2,7 +2,6 @@ import { parenth } from '@spare/bracket';
 import { SP } from '@spare/enum-chars';
 import { lange } from '@spare/lange';
 import { Blue, LightBlue, Lime, Grey, Brown, BlueGrey, Purple, DeepPurple } from '@palett/cards';
-import { hexToRgb } from '@palett/convert';
 import { Dye } from '@palett/dye';
 import { makeReplaceable } from '@spare/translator';
 
@@ -17,24 +16,12 @@ const DECOFUNC_CONFIG = {
   abbrMark: 192
 };
 
-var _Blue$lighten_, _LightBlue$accent_, _LightBlue$lighten_, _Lime$lighten_, _ref, _function, _Grey$base, _return, _Brown$lighten_;
-const nameDye = Dye((_Blue$lighten_ = Blue.lighten_2, hexToRgb(_Blue$lighten_)));
-const argsDye = Dye((_LightBlue$accent_ = LightBlue.accent_2, hexToRgb(_LightBlue$accent_)));
-const bodyDye = Dye((_LightBlue$lighten_ = LightBlue.lighten_3, hexToRgb(_LightBlue$lighten_)));
-const arrowDye = Dye((_Lime$lighten_ = Lime.lighten_1, hexToRgb(_Lime$lighten_)));
-const PresetDye = (_ref = [[/function/gi, (_function = 'function', Dye((_Grey$base = Grey.base, hexToRgb(_Grey$base)))(_function))], [/return/gi, (_return = 'return', Dye((_Brown$lighten_ = Brown.lighten_3, hexToRgb(_Brown$lighten_)))(_return))], [/\bthis\b/gi, x => {
-  var _x, _BlueGrey$accent_;
-
-  return _x = x, Dye((_BlueGrey$accent_ = BlueGrey.accent_2, hexToRgb(_BlueGrey$accent_)))(_x);
-}], [/\b(if|else|while|do|switch|for)\b/gi, x => {
-  var _x2, _Purple$lighten_;
-
-  return _x2 = x, Dye((_Purple$lighten_ = Purple.lighten_3, hexToRgb(_Purple$lighten_)))(_x2);
-}], [/\b(var|let|const)\b/gi, x => {
-  var _x3, _DeepPurple$lighten_;
-
-  return _x3 = x, Dye((_DeepPurple$lighten_ = DeepPurple.lighten_3, hexToRgb(_DeepPurple$lighten_)))(_x3);
-}]], makeReplaceable(_ref));
+var _ref, _function, _return;
+const nameDye = Dye.hex(Blue.lighten_2);
+const argsDye = Dye.hex(LightBlue.accent_2);
+const bodyDye = Dye.hex(LightBlue.lighten_3);
+const arrowDye = Dye.hex(Lime.lighten_1);
+const PresetDye = (_ref = [[/function/gi, (_function = 'function', Dye.hex(Grey.base)(_function))], [/return/gi, (_return = 'return', Dye.hex(Brown.lighten_3)(_return))], [/\bthis\b/gi, Dye.hex(BlueGrey.accent_2)], [/\b(if|else|while|do|switch|for)\b/gi, Dye.hex(Purple.lighten_3)], [/\b(var|let|const)\b/gi, Dye.hex(DeepPurple.lighten_3)]], makeReplaceable(_ref));
 
 const funcName = func => {
   var _func$name;

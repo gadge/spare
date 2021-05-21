@@ -1,16 +1,15 @@
-import { hslToRgb } from '@palett/convert'
-import { Dye }      from '@palett/dye'
-import { mapper }   from '@vect/object-mapper'
+import { Dye }    from '@palett/dye'
+import { mapper } from '@vect/object-mapper'
 
 const Dyes = {
-  0: Dye([45, 100, 53] |> hslToRgb),
-  1: Dye([44, 100, 59] |> hslToRgb),
-  2: Dye([43, 100, 64] |> hslToRgb),
-  3: Dye([42, 100, 70] |> hslToRgb),
-  4: Dye([41, 100, 74] |> hslToRgb),
-  5: Dye([40, 100, 78] |> hslToRgb),
-  6: Dye([39, 100, 82] |> hslToRgb),
-  7: Dye([37, 100, 86] |> hslToRgb),
+  0: Dye.hsl([ 45, 100, 53 ]),
+  1: Dye.hsl([ 44, 100, 59 ]),
+  2: Dye.hsl([ 43, 100, 64 ]),
+  3: Dye.hsl([ 42, 100, 70 ]),
+  4: Dye.hsl([ 41, 100, 74 ]),
+  5: Dye.hsl([ 40, 100, 78 ]),
+  6: Dye.hsl([ 39, 100, 82 ]),
+  7: Dye.hsl([ 37, 100, 86 ]),
 }
 
 const L = '{ ', R = ' }'

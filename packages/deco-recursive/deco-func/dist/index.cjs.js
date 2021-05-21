@@ -6,7 +6,6 @@ var bracket = require('@spare/bracket');
 var enumChars = require('@spare/enum-chars');
 var lange = require('@spare/lange');
 var cards = require('@palett/cards');
-var convert = require('@palett/convert');
 var dye = require('@palett/dye');
 var translator = require('@spare/translator');
 
@@ -21,24 +20,12 @@ const DECOFUNC_CONFIG = {
   abbrMark: 192
 };
 
-var _Blue$lighten_, _LightBlue$accent_, _LightBlue$lighten_, _Lime$lighten_, _ref, _function, _Grey$base, _return, _Brown$lighten_;
-const nameDye = dye.Dye((_Blue$lighten_ = cards.Blue.lighten_2, convert.hexToRgb(_Blue$lighten_)));
-const argsDye = dye.Dye((_LightBlue$accent_ = cards.LightBlue.accent_2, convert.hexToRgb(_LightBlue$accent_)));
-const bodyDye = dye.Dye((_LightBlue$lighten_ = cards.LightBlue.lighten_3, convert.hexToRgb(_LightBlue$lighten_)));
-const arrowDye = dye.Dye((_Lime$lighten_ = cards.Lime.lighten_1, convert.hexToRgb(_Lime$lighten_)));
-const PresetDye = (_ref = [[/function/gi, (_function = 'function', dye.Dye((_Grey$base = cards.Grey.base, convert.hexToRgb(_Grey$base)))(_function))], [/return/gi, (_return = 'return', dye.Dye((_Brown$lighten_ = cards.Brown.lighten_3, convert.hexToRgb(_Brown$lighten_)))(_return))], [/\bthis\b/gi, x => {
-  var _x, _BlueGrey$accent_;
-
-  return _x = x, dye.Dye((_BlueGrey$accent_ = cards.BlueGrey.accent_2, convert.hexToRgb(_BlueGrey$accent_)))(_x);
-}], [/\b(if|else|while|do|switch|for)\b/gi, x => {
-  var _x2, _Purple$lighten_;
-
-  return _x2 = x, dye.Dye((_Purple$lighten_ = cards.Purple.lighten_3, convert.hexToRgb(_Purple$lighten_)))(_x2);
-}], [/\b(var|let|const)\b/gi, x => {
-  var _x3, _DeepPurple$lighten_;
-
-  return _x3 = x, dye.Dye((_DeepPurple$lighten_ = cards.DeepPurple.lighten_3, convert.hexToRgb(_DeepPurple$lighten_)))(_x3);
-}]], translator.makeReplaceable(_ref));
+var _ref, _function, _return;
+const nameDye = dye.Dye.hex(cards.Blue.lighten_2);
+const argsDye = dye.Dye.hex(cards.LightBlue.accent_2);
+const bodyDye = dye.Dye.hex(cards.LightBlue.lighten_3);
+const arrowDye = dye.Dye.hex(cards.Lime.lighten_1);
+const PresetDye = (_ref = [[/function/gi, (_function = 'function', dye.Dye.hex(cards.Grey.base)(_function))], [/return/gi, (_return = 'return', dye.Dye.hex(cards.Brown.lighten_3)(_return))], [/\bthis\b/gi, dye.Dye.hex(cards.BlueGrey.accent_2)], [/\b(if|else|while|do|switch|for)\b/gi, dye.Dye.hex(cards.Purple.lighten_3)], [/\b(var|let|const)\b/gi, dye.Dye.hex(cards.DeepPurple.lighten_3)]], translator.makeReplaceable(_ref));
 
 const funcName = func => {
   var _func$name;

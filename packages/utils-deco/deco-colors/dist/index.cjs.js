@@ -2,21 +2,20 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var convert = require('@palett/convert');
 var dye = require('@palett/dye');
 var objectMapper = require('@vect/object-mapper');
 var cards = require('@palett/cards');
+var convert = require('@palett/convert');
 
-var _ref$1, _ref2$1, _ref3$1, _ref4$1, _ref5$1, _ref6$1, _ref7$1, _ref8$1;
 const Dyes$1 = {
-  0: dye.Dye((_ref$1 = [45, 100, 53], convert.hslToRgb(_ref$1))),
-  1: dye.Dye((_ref2$1 = [44, 100, 59], convert.hslToRgb(_ref2$1))),
-  2: dye.Dye((_ref3$1 = [43, 100, 64], convert.hslToRgb(_ref3$1))),
-  3: dye.Dye((_ref4$1 = [42, 100, 70], convert.hslToRgb(_ref4$1))),
-  4: dye.Dye((_ref5$1 = [41, 100, 74], convert.hslToRgb(_ref5$1))),
-  5: dye.Dye((_ref6$1 = [40, 100, 78], convert.hslToRgb(_ref6$1))),
-  6: dye.Dye((_ref7$1 = [39, 100, 82], convert.hslToRgb(_ref7$1))),
-  7: dye.Dye((_ref8$1 = [37, 100, 86], convert.hslToRgb(_ref8$1)))
+  0: dye.Dye.hsl([45, 100, 53]),
+  1: dye.Dye.hsl([44, 100, 59]),
+  2: dye.Dye.hsl([43, 100, 64]),
+  3: dye.Dye.hsl([42, 100, 70]),
+  4: dye.Dye.hsl([41, 100, 74]),
+  5: dye.Dye.hsl([40, 100, 78]),
+  6: dye.Dye.hsl([39, 100, 82]),
+  7: dye.Dye.hsl([37, 100, 86])
 };
 const L$1 = '{ ',
       R$1 = ' }';
@@ -28,16 +27,15 @@ const BRC = objectMapper.mapper(Dyes$1, dye => {
   return content => l + content + r;
 });
 
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
 const Dyes = {
-  0: dye.Dye((_ref = [199, 100, 63], convert.hslToRgb(_ref))),
-  1: dye.Dye((_ref2 = [201, 100, 68], convert.hslToRgb(_ref2))),
-  2: dye.Dye((_ref3 = [203, 100, 72], convert.hslToRgb(_ref3))),
-  3: dye.Dye((_ref4 = [205, 100, 76], convert.hslToRgb(_ref4))),
-  4: dye.Dye((_ref5 = [207, 100, 84], convert.hslToRgb(_ref5))),
-  5: dye.Dye((_ref6 = [209, 100, 80], convert.hslToRgb(_ref6))),
-  6: dye.Dye((_ref7 = [211, 100, 88], convert.hslToRgb(_ref7))),
-  7: dye.Dye((_ref8 = [214, 100, 90], convert.hslToRgb(_ref8)))
+  0: dye.Dye.hsl([199, 100, 63]),
+  1: dye.Dye.hsl([201, 100, 68]),
+  2: dye.Dye.hsl([203, 100, 72]),
+  3: dye.Dye.hsl([205, 100, 76]),
+  4: dye.Dye.hsl([207, 100, 84]),
+  5: dye.Dye.hsl([209, 100, 80]),
+  6: dye.Dye.hsl([211, 100, 88]),
+  7: dye.Dye.hsl([214, 100, 90])
 };
 const L = '[ ',
       R = ' ]';
@@ -49,22 +47,21 @@ const BRK = objectMapper.mapper(Dyes, dye => {
   return content => l + content + r;
 });
 
-var _Cards$brown$lighten_, _Cards$lightGreen$acc, _Cards$deepOrange$acc, _Cards$teal$lighten_, _Cards$brown$lighten_2, _Cards$blueGrey$light, _Cards$blue$accent_, _Cards$amber$base, _Cards$green$accent_;
 /**
  *
  * @type {Object<string,Function>}
  */
 
 const PAL = {
-  IDX: dye.Dye((_Cards$brown$lighten_ = cards.Cards.brown.lighten_5, convert.hexToRgb(_Cards$brown$lighten_))),
-  STR: dye.Dye((_Cards$lightGreen$acc = cards.Cards.lightGreen.accent_2, convert.hexToRgb(_Cards$lightGreen$acc))),
-  NUM: dye.Dye((_Cards$deepOrange$acc = cards.Cards.deepOrange.accent_2, convert.hexToRgb(_Cards$deepOrange$acc))),
-  BOO: dye.Dye((_Cards$teal$lighten_ = cards.Cards.teal.lighten_2, convert.hexToRgb(_Cards$teal$lighten_))),
-  UDF: dye.Dye((_Cards$brown$lighten_2 = cards.Cards.brown.lighten_3, convert.hexToRgb(_Cards$brown$lighten_2))),
-  SYM: dye.Dye((_Cards$blueGrey$light = cards.Cards.blueGrey.lighten_2, convert.hexToRgb(_Cards$blueGrey$light))),
-  BRK: dye.Dye((_Cards$blue$accent_ = cards.Cards.blue.accent_2, convert.hexToRgb(_Cards$blue$accent_))),
-  BRC: dye.Dye((_Cards$amber$base = cards.Cards.amber.base, convert.hexToRgb(_Cards$amber$base))),
-  FNC: dye.Dye((_Cards$green$accent_ = cards.Cards.green.accent_4, convert.hexToRgb(_Cards$green$accent_)))
+  IDX: dye.Dye.hex(cards.Cards.brown.lighten_5),
+  STR: dye.Dye.hex(cards.Cards.lightGreen.accent_2),
+  NUM: dye.Dye.hex(cards.Cards.deepOrange.accent_2),
+  BOO: dye.Dye.hex(cards.Cards.teal.lighten_2),
+  UDF: dye.Dye.hex(cards.Cards.brown.lighten_3),
+  SYM: dye.Dye.hex(cards.Cards.blueGrey.lighten_2),
+  BRK: dye.Dye.hex(cards.Cards.blue.accent_2),
+  BRC: dye.Dye.hex(cards.Cards.amber.base),
+  FNC: dye.Dye.hex(cards.Cards.green.accent_4)
 };
 
 const IDX = {

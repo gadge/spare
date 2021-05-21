@@ -1,8 +1,8 @@
 import { enttro } from '@spare/entries-margin';
+import { entriesPadder } from '@spare/entries-padder';
 import { AEU, LF, RTSP } from '@spare/enum-chars';
 import { liner, Liner } from '@spare/liner';
 import { mattro } from '@spare/matrix-margin';
-import { entriesPadder } from '@spare/entries-padder';
 import { tablePadder } from '@spare/table-padder';
 import { vettro } from '@spare/vector-margin';
 import { size } from '@vect/matrix';

@@ -1,18 +1,17 @@
-import { hslToRgb, hexToRgb, hslToHex } from '@palett/convert';
 import { Dye } from '@palett/dye';
 import { mapper } from '@vect/object-mapper';
 import { Cards } from '@palett/cards';
+import { hslToHex } from '@palett/convert';
 
-var _ref$1, _ref2$1, _ref3$1, _ref4$1, _ref5$1, _ref6$1, _ref7$1, _ref8$1;
 const Dyes$1 = {
-  0: Dye((_ref$1 = [45, 100, 53], hslToRgb(_ref$1))),
-  1: Dye((_ref2$1 = [44, 100, 59], hslToRgb(_ref2$1))),
-  2: Dye((_ref3$1 = [43, 100, 64], hslToRgb(_ref3$1))),
-  3: Dye((_ref4$1 = [42, 100, 70], hslToRgb(_ref4$1))),
-  4: Dye((_ref5$1 = [41, 100, 74], hslToRgb(_ref5$1))),
-  5: Dye((_ref6$1 = [40, 100, 78], hslToRgb(_ref6$1))),
-  6: Dye((_ref7$1 = [39, 100, 82], hslToRgb(_ref7$1))),
-  7: Dye((_ref8$1 = [37, 100, 86], hslToRgb(_ref8$1)))
+  0: Dye.hsl([45, 100, 53]),
+  1: Dye.hsl([44, 100, 59]),
+  2: Dye.hsl([43, 100, 64]),
+  3: Dye.hsl([42, 100, 70]),
+  4: Dye.hsl([41, 100, 74]),
+  5: Dye.hsl([40, 100, 78]),
+  6: Dye.hsl([39, 100, 82]),
+  7: Dye.hsl([37, 100, 86])
 };
 const L$1 = '{ ',
       R$1 = ' }';
@@ -24,16 +23,15 @@ const BRC = mapper(Dyes$1, dye => {
   return content => l + content + r;
 });
 
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
 const Dyes = {
-  0: Dye((_ref = [199, 100, 63], hslToRgb(_ref))),
-  1: Dye((_ref2 = [201, 100, 68], hslToRgb(_ref2))),
-  2: Dye((_ref3 = [203, 100, 72], hslToRgb(_ref3))),
-  3: Dye((_ref4 = [205, 100, 76], hslToRgb(_ref4))),
-  4: Dye((_ref5 = [207, 100, 84], hslToRgb(_ref5))),
-  5: Dye((_ref6 = [209, 100, 80], hslToRgb(_ref6))),
-  6: Dye((_ref7 = [211, 100, 88], hslToRgb(_ref7))),
-  7: Dye((_ref8 = [214, 100, 90], hslToRgb(_ref8)))
+  0: Dye.hsl([199, 100, 63]),
+  1: Dye.hsl([201, 100, 68]),
+  2: Dye.hsl([203, 100, 72]),
+  3: Dye.hsl([205, 100, 76]),
+  4: Dye.hsl([207, 100, 84]),
+  5: Dye.hsl([209, 100, 80]),
+  6: Dye.hsl([211, 100, 88]),
+  7: Dye.hsl([214, 100, 90])
 };
 const L = '[ ',
       R = ' ]';
@@ -45,22 +43,21 @@ const BRK = mapper(Dyes, dye => {
   return content => l + content + r;
 });
 
-var _Cards$brown$lighten_, _Cards$lightGreen$acc, _Cards$deepOrange$acc, _Cards$teal$lighten_, _Cards$brown$lighten_2, _Cards$blueGrey$light, _Cards$blue$accent_, _Cards$amber$base, _Cards$green$accent_;
 /**
  *
  * @type {Object<string,Function>}
  */
 
 const PAL = {
-  IDX: Dye((_Cards$brown$lighten_ = Cards.brown.lighten_5, hexToRgb(_Cards$brown$lighten_))),
-  STR: Dye((_Cards$lightGreen$acc = Cards.lightGreen.accent_2, hexToRgb(_Cards$lightGreen$acc))),
-  NUM: Dye((_Cards$deepOrange$acc = Cards.deepOrange.accent_2, hexToRgb(_Cards$deepOrange$acc))),
-  BOO: Dye((_Cards$teal$lighten_ = Cards.teal.lighten_2, hexToRgb(_Cards$teal$lighten_))),
-  UDF: Dye((_Cards$brown$lighten_2 = Cards.brown.lighten_3, hexToRgb(_Cards$brown$lighten_2))),
-  SYM: Dye((_Cards$blueGrey$light = Cards.blueGrey.lighten_2, hexToRgb(_Cards$blueGrey$light))),
-  BRK: Dye((_Cards$blue$accent_ = Cards.blue.accent_2, hexToRgb(_Cards$blue$accent_))),
-  BRC: Dye((_Cards$amber$base = Cards.amber.base, hexToRgb(_Cards$amber$base))),
-  FNC: Dye((_Cards$green$accent_ = Cards.green.accent_4, hexToRgb(_Cards$green$accent_)))
+  IDX: Dye.hex(Cards.brown.lighten_5),
+  STR: Dye.hex(Cards.lightGreen.accent_2),
+  NUM: Dye.hex(Cards.deepOrange.accent_2),
+  BOO: Dye.hex(Cards.teal.lighten_2),
+  UDF: Dye.hex(Cards.brown.lighten_3),
+  SYM: Dye.hex(Cards.blueGrey.lighten_2),
+  BRK: Dye.hex(Cards.blue.accent_2),
+  BRC: Dye.hex(Cards.amber.base),
+  FNC: Dye.hex(Cards.green.accent_4)
 };
 
 const IDX = {

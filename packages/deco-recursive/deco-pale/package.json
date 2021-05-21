@@ -32,7 +32,7 @@
     "@typen/typ": "^0.1.16",
     "@valjoux/format-date": "^0.2.9",
     "@valjoux/format-time": "^0.2.9",
-    "@vect/entries-mapper": "^0.3.9"
+    "@vect/entries-mapper": "^0.3.10"
   },
   "repository": {
     "type": "git",

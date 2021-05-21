@@ -1,7 +1,7 @@
-import { DecoConfig }                                    from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION, TRI_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                                        from './resources/config'
-import { _decoCrostab }                                  from './src/_decoCrostab'
+import { DecoConfig }            from '@spare/deco-config'
+import { TRI_PRESET_COLLECTION } from '@spare/preset-deco'
+import { CONFIG }                from './resources/config'
+import { _decoCrostab }          from './src/_decoCrostab'
 
 export { _decoCrostab }
 

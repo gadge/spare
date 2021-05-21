@@ -3,10 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var entriesMargin = require('@spare/entries-margin');
+var entriesPadder = require('@spare/entries-padder');
 var enumChars = require('@spare/enum-chars');
 var liner = require('@spare/liner');
 var matrixMargin = require('@spare/matrix-margin');
-var entriesPadder = require('@spare/entries-padder');
 var tablePadder = require('@spare/table-padder');
 var vectorMargin = require('@spare/vector-margin');
 var matrix = require('@vect/matrix');

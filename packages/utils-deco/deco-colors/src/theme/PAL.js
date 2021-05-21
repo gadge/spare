@@ -1,19 +1,18 @@
-import { Cards }    from '@palett/cards'
-import { hexToRgb } from '@palett/convert'
-import { Dye }      from '@palett/dye'
+import { Cards } from '@palett/cards'
+import { Dye }   from '@palett/dye'
 
 /**
  *
  * @type {Object<string,Function>}
  */
 export const PAL = {
-  IDX: Dye(Cards.brown.lighten_5 |> hexToRgb),
-  STR: Dye(Cards.lightGreen.accent_2 |> hexToRgb),
-  NUM: Dye(Cards.deepOrange.accent_2 |> hexToRgb),
-  BOO: Dye(Cards.teal.lighten_2 |> hexToRgb),
-  UDF: Dye(Cards.brown.lighten_3 |> hexToRgb),
-  SYM: Dye(Cards.blueGrey.lighten_2 |> hexToRgb),
-  BRK: Dye(Cards.blue.accent_2 |> hexToRgb),
-  BRC: Dye(Cards.amber.base |> hexToRgb),
-  FNC: Dye(Cards.green.accent_4 |> hexToRgb),
+  IDX: Dye.hex(Cards.brown.lighten_5),
+  STR: Dye.hex(Cards.lightGreen.accent_2),
+  NUM: Dye.hex(Cards.deepOrange.accent_2),
+  BOO: Dye.hex(Cards.teal.lighten_2),
+  UDF: Dye.hex(Cards.brown.lighten_3),
+  SYM: Dye.hex(Cards.blueGrey.lighten_2),
+  BRK: Dye.hex(Cards.blue.accent_2),
+  BRC: Dye.hex(Cards.amber.base),
+  FNC: Dye.hex(Cards.green.accent_4),
 }

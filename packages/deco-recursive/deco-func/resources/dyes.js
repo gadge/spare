@@ -1,17 +1,16 @@
 import { Blue, BlueGrey, Brown, DeepPurple, Grey, LightBlue, Lime, Purple } from '@palett/cards'
-import { hexToRgb }                                                         from '@palett/convert'
 import { Dye }                                                              from '@palett/dye'
 import { makeReplaceable }                                                  from '@spare/translator'
 
-export const nameDye = Dye(Blue.lighten_2 |> hexToRgb)
-export const argsDye = Dye(LightBlue.accent_2 |> hexToRgb)
-export const bodyDye = Dye(LightBlue.lighten_3 |> hexToRgb)
-export const arrowDye = Dye(Lime.lighten_1 |> hexToRgb)
+export const nameDye = Dye.hex(Blue.lighten_2)
+export const argsDye = Dye.hex(LightBlue.accent_2)
+export const bodyDye = Dye.hex(LightBlue.lighten_3)
+export const arrowDye = Dye.hex(Lime.lighten_1)
 
 export const PresetDye = [
-  [/function/gi, 'function'|> Dye(Grey.base |> hexToRgb)],
-  [/return/gi, 'return'|> Dye(Brown.lighten_3 |> hexToRgb)],
-  [/\bthis\b/gi, x => x|> Dye(BlueGrey.accent_2 |> hexToRgb)],
-  [/\b(if|else|while|do|switch|for)\b/gi, x => x|> Dye(Purple.lighten_3 |> hexToRgb)],
-  [/\b(var|let|const)\b/gi, x => x|> Dye(DeepPurple.lighten_3 |> hexToRgb)],
+  [ /function/gi, 'function' |> Dye.hex(Grey.base) ],
+  [ /return/gi, 'return' |> Dye.hex(Brown.lighten_3) ],
+  [ /\bthis\b/gi, Dye.hex(BlueGrey.accent_2) ],
+  [ /\b(if|else|while|do|switch|for)\b/gi, Dye.hex(Purple.lighten_3) ],
+  [ /\b(var|let|const)\b/gi, Dye.hex(DeepPurple.lighten_3) ],
 ] |> makeReplaceable

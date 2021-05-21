@@ -1,7 +1,6 @@
 import { bracket as bracket$2, parenth as parenth$2 } from '@spare/bracket';
 import { SP, COSP, CO } from '@spare/enum-chars';
 import { Cards } from '@palett/cards';
-import { hexToRgb } from '@palett/convert';
 import { Dye } from '@palett/dye';
 import { hasAnsi, clearAnsi } from '@spare/charset';
 import { nullish } from '@typen/nullish';
@@ -26,15 +25,13 @@ const NUM = 'number';
 const STR = 'string';
 const DEF = 'default';
 
-var _Cards$orange$lighten, _Cards$indigo$lighten;
-const orange = Dye((_Cards$orange$lighten = Cards.orange.lighten_3, hexToRgb(_Cards$orange$lighten)));
-const indigo = Dye((_Cards$indigo$lighten = Cards.indigo.lighten_1, hexToRgb(_Cards$indigo$lighten)));
+const orange = Dye.hex(Cards.orange.lighten_3);
+const indigo = Dye.hex(Cards.indigo.lighten_1);
 const bracket$1 = tx => orange('[') + tx + orange(']');
 const parenth$1 = tx => indigo('(') + tx + indigo(')');
 
-var _Cards$blueGrey$base, _Cards$grey$darken_;
-const blueGrey = Dye((_Cards$blueGrey$base = Cards.blueGrey.base, hexToRgb(_Cards$blueGrey$base)));
-const grey = Dye((_Cards$grey$darken_ = Cards.grey.darken_1, hexToRgb(_Cards$grey$darken_)));
+const blueGrey = Dye.hex(Cards.blueGrey.base);
+const grey = Dye.hex(Cards.grey.darken_1);
 const bracket = (tx = '') => blueGrey('[') + grey(tx) + blueGrey(']');
 const parenth = (tx = '') => blueGrey('(') + grey(tx) + blueGrey(')');
 
