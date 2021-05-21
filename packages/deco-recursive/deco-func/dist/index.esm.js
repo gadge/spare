@@ -23,11 +23,7 @@ const bodyDye = Dye.hex(LightBlue.lighten_3);
 const arrowDye = Dye.hex(Lime.lighten_1);
 const PresetDye = (_ref = [[/function/gi, (_function = 'function', Dye.hex(Grey.base)(_function))], [/return/gi, (_return = 'return', Dye.hex(Brown.lighten_3)(_return))], [/\bthis\b/gi, Dye.hex(BlueGrey.accent_2)], [/\b(if|else|while|do|switch|for)\b/gi, Dye.hex(Purple.lighten_3)], [/\b(var|let|const)\b/gi, Dye.hex(DeepPurple.lighten_3)]], makeReplaceable(_ref));
 
-const funcName = func => {
-  var _func$name;
-
-  return `[fn:(${(_func$name = func === null || func === void 0 ? void 0 : func.name) !== null && _func$name !== void 0 ? _func$name : '<anonym>'})]`;
-};
+const funcName = func => `[fn:(${(func == null ? void 0 : func.name) ?? '<anonym>'})]`;
 
 const FUNCTION_BODY = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs;
 const THIS_REG = /\bthis\b/;
@@ -68,7 +64,7 @@ const _decoFunc = function (func) {
   } = this;
   text = funcToLined(func);
   text = flatten(text, fw);
-  text = lambdafy(text, pr, func === null || func === void 0 ? void 0 : func.name);
+  text = lambdafy(text, pr, func == null ? void 0 : func.name);
   text = abbrev(text, aw, func);
   return prettify(text, pr);
 };
@@ -84,11 +80,9 @@ const argnames = fn => {
 };
 
 const parseConfig = p => {
-  var _ref, _p$pretty, _ref2, _p$flatMark, _ref3, _p$abbrMark;
-
-  p.pr = (_ref = (_p$pretty = p.pretty) !== null && _p$pretty !== void 0 ? _p$pretty : p.pr) !== null && _ref !== void 0 ? _ref : true;
-  p.fw = (_ref2 = (_p$flatMark = p.flatMark) !== null && _p$flatMark !== void 0 ? _p$flatMark : p.fw) !== null && _ref2 !== void 0 ? _ref2 : 160;
-  p.aw = (_ref3 = (_p$abbrMark = p.abbrMark) !== null && _p$abbrMark !== void 0 ? _p$abbrMark : p.aw) !== null && _ref3 !== void 0 ? _ref3 : 192;
+  p.pr = p.pretty ?? p.pr ?? true;
+  p.fw = p.flatMark ?? p.fw ?? 160;
+  p.aw = p.abbrMark ?? p.aw ?? 192;
   return p;
 };
 /**

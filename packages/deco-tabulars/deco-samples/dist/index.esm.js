@@ -42,7 +42,7 @@ const _decoSamples = function (samples) {
     samples = Object.values(samples);
   }
 
-  if (!((_samples = samples) !== null && _samples !== void 0 && _samples.length)) return '[]';
+  if (!((_samples = samples) != null && _samples.length)) return '[]';
 
   if (fields) {
     samples = samplesSelect(samples, fields);
@@ -61,7 +61,7 @@ const _decoSamples = function (samples) {
 
   if (presets) {
     const [alpha, beta, gamma] = presets;
-    head = fluoVector.call(MUTATE_PIGMENT, head, [alpha, gamma !== null && gamma !== void 0 ? gamma : beta]);
+    head = fluoVector.call(MUTATE_PIGMENT, head, [alpha, gamma ?? beta]);
     rows = fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, [alpha, beta]);
   }
 

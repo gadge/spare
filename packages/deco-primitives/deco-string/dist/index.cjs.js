@@ -97,17 +97,17 @@ const MUTATE_PIGMENT = {
  */
 
 const _decoString = function (text) {
-  var _text, _config$indent;
+  var _text;
 
   const config = this,
         width = config.width,
-        length = (_text = text) === null || _text === void 0 ? void 0 : _text.length;
+        length = (_text = text) == null ? void 0 : _text.length;
   if (!length) return '';
   if (charset.hasAnsi(text)) return text;
   if (width && length > width) text = fold.fold.call({
     width: width,
     firstLineIndent: config.firstLineIndent,
-    delim: enumChars.LF + enumChars.TB.repeat((_config$indent = config.indent) !== null && _config$indent !== void 0 ? _config$indent : 0)
+    delim: enumChars.LF + enumChars.TB.repeat(config.indent ?? 0)
   }, text);
   if (config.presets) text = stringColour.call(config, text);
   return text;

@@ -41,7 +41,7 @@ const fullToHalf = text => {
     l = REG_FULL.lastIndex;
   }
 
-  if (l < (text === null || text === void 0 ? void 0 : text.length)) body += text.slice(l);
+  if (l < (text == null ? void 0 : text.length)) body += text.slice(l);
   return body;
 };
 
@@ -83,7 +83,7 @@ class CharCodeToHalf {
  */
 
 const halfToFull = text => {
-  let l = text === null || text === void 0 ? void 0 : text.length,
+  let l = text == null ? void 0 : text.length,
       i = 0,
       t = '',
       n;

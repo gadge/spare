@@ -44,7 +44,7 @@ const logBy = (text, config) => {
   } = config;
   let signature = `${tab(ind)}[${name}]`;
   if (att) signature += enumChars.SP + att();
-  if (des !== null && des !== void 0 && des.length) signature += des, config.des = '';
+  if (des != null && des.length) signature += des, config.des = '';
   if (typeof text !== enumDataTypes.STR) text += '';
   return void log(signature, text.includes(enumChars.LF) ? (enumChars.LF + text).replace(/\n/g, enumChars.LF + tab(++ind)) : text);
 };
@@ -77,7 +77,7 @@ class Pal extends Callable {
     this.log = console.log;
     this.att = void 0;
     Object.defineProperty(this, NAME, {
-      value: name !== null && name !== void 0 ? name : '',
+      value: name ?? '',
       writable: true
     }); // if (name) this.name = name
 
@@ -188,15 +188,13 @@ class Says {
     var _deco;
 
     return _classPrivateFieldLooseBase(this, _roster)[_roster][name] = (_deco = decoString.deco(String(name), {
-      presets: presets !== null && presets !== void 0 ? presets : _classPrivateFieldLooseBase(this, _pool)[_pool].next().value,
+      presets: presets ?? _classPrivateFieldLooseBase(this, _pool)[_pool].next().value,
       effects: _classPrivateFieldLooseBase(this, _effects)[_effects]
     }), Pal.build(_deco));
   }
 
   roster(name) {
-    var _classPrivateFieldLoo;
-
-    if (name) return ((_classPrivateFieldLoo = _classPrivateFieldLooseBase(this, _roster)[_roster][name]) !== null && _classPrivateFieldLoo !== void 0 ? _classPrivateFieldLoo : this.aboard(name)).name;
+    if (name) return (_classPrivateFieldLooseBase(this, _roster)[_roster][name] ?? this.aboard(name)).name;
     return objectMapper.mapper(_classPrivateFieldLooseBase(this, _roster)[_roster], ({
       name
     }) => name);

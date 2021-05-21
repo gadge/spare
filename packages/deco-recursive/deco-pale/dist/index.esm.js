@@ -46,10 +46,8 @@ function decoPale$1(node) {
 }
 
 const presetConfig = p => {
-  var _p$loose, _ref, _p$cite;
-
-  p.loose = (_p$loose = p.loose) !== null && _p$loose !== void 0 ? _p$loose : true;
-  p.cite = (_ref = (_p$cite = p.cite) !== null && _p$cite !== void 0 ? _p$cite : p.quote) !== null && _ref !== void 0 ? _ref : cite;
+  p.loose = p.loose ?? true;
+  p.cite = p.cite ?? p.quote ?? cite;
   return p;
 };
 /**

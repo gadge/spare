@@ -63,11 +63,11 @@ const lpad = padder.LPad({
   ansi: true
 });
 const renderEntries = function (entries, lv) {
-  var _ref, _this$object$vert, _this$object, _ref2, _this$object$width, _this$object2, _ref3, _this$object$unit, _this$object3, _entries;
+  var _this$object, _this$object2, _this$object3, _entries;
 
-  const vert = (_ref = (_this$object$vert = (_this$object = this.object) === null || _this$object === void 0 ? void 0 : _this$object.vert) !== null && _this$object$vert !== void 0 ? _this$object$vert : this.vert) !== null && _ref !== void 0 ? _ref : 0,
-        width = (_ref2 = (_this$object$width = (_this$object2 = this.object) === null || _this$object2 === void 0 ? void 0 : _this$object2.width) !== null && _this$object$width !== void 0 ? _this$object$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
-        unit = (_ref3 = (_this$object$unit = (_this$object3 = this.object) === null || _this$object3 === void 0 ? void 0 : _this$object3.unit) !== null && _this$object$unit !== void 0 ? _this$object$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
+  const vert = ((_this$object = this.object) == null ? void 0 : _this$object.vert) ?? this.vert ?? 0,
+        width = ((_this$object2 = this.object) == null ? void 0 : _this$object2.width) ?? this.width ?? 0,
+        unit = ((_this$object3 = this.object) == null ? void 0 : _this$object3.unit) ?? this.unit ?? 0;
   let pad;
   const rows = (lv < vert || entries.some(([, v]) => lange.lange(v) > unit) || !width) && (pad = (_entries = entries, mutateKeyPad(_entries))) ? vectorMapper.mutate(entries, ([k, v]) => lpad(k, pad) + enumChars.RTSP + v) : wrapEntries(entries, width);
   return rows.length > 1 ? liner.joinLines(rows, enumChars.CO, lv) : rows.join(enumChars.COSP);
@@ -88,15 +88,15 @@ const wrapEntries = function (entries, width) {
     if (!row) row = [], len = 0;
     row.push(kvp);
   });
-  if ((_row = row) !== null && _row !== void 0 && _row.length) lines.push(row.join(enumChars.COSP));
+  if ((_row = row) != null && _row.length) lines.push(row.join(enumChars.COSP));
   return lines;
 };
 
 const renderString = function (string, level, indent) {
-  var _ref, _this$string$width, _this$string, _this$string$presets, _this$string2;
+  var _this$string, _this$string2;
 
-  const width = (_ref = (_this$string$width = (_this$string = this.string) === null || _this$string === void 0 ? void 0 : _this$string.width) !== null && _this$string$width !== void 0 ? _this$string$width : this.width) !== null && _ref !== void 0 ? _ref : 0,
-        presets = (_this$string$presets = (_this$string2 = this.string) === null || _this$string2 === void 0 ? void 0 : _this$string2.presets) !== null && _this$string$presets !== void 0 ? _this$string$presets : null;
+  const width = ((_this$string = this.string) == null ? void 0 : _this$string.width) ?? this.width ?? 0,
+        presets = ((_this$string2 = this.string) == null ? void 0 : _this$string2.presets) ?? null;
   return decoString._decoString.call({
     vectify: splitter.splitLiteral,
     presets,
@@ -107,11 +107,11 @@ const renderString = function (string, level, indent) {
 };
 
 const renderVector = function (vector, lv) {
-  var _ref, _this$array$vert, _this$array, _ref2, _this$array$width, _this$array2, _ref3, _this$array$unit, _this$array3;
+  var _this$array, _this$array2, _this$array3;
 
-  const vert = (_ref = (_this$array$vert = (_this$array = this.array) === null || _this$array === void 0 ? void 0 : _this$array.vert) !== null && _this$array$vert !== void 0 ? _this$array$vert : this.vert) !== null && _ref !== void 0 ? _ref : 0,
-        width = (_ref2 = (_this$array$width = (_this$array2 = this.array) === null || _this$array2 === void 0 ? void 0 : _this$array2.width) !== null && _this$array$width !== void 0 ? _this$array$width : this.width) !== null && _ref2 !== void 0 ? _ref2 : 0,
-        unit = (_ref3 = (_this$array$unit = (_this$array3 = this.array) === null || _this$array3 === void 0 ? void 0 : _this$array3.unit) !== null && _this$array$unit !== void 0 ? _this$array$unit : this.unit) !== null && _ref3 !== void 0 ? _ref3 : 0;
+  const vert = ((_this$array = this.array) == null ? void 0 : _this$array.vert) ?? this.vert ?? 0,
+        width = ((_this$array2 = this.array) == null ? void 0 : _this$array2.width) ?? this.width ?? 0,
+        unit = ((_this$array3 = this.array) == null ? void 0 : _this$array3.unit) ?? this.unit ?? 0;
   const rows = lv < vert || vector.some(x => lange.lange(x) > unit) || !width ? vector : wrapVector(vector, width);
   return rows.length > 1 ? liner.joinLines(rows, enumChars.CO, lv) : vector.join(enumChars.COSP);
 };

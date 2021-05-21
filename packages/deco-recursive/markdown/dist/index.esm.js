@@ -61,7 +61,7 @@ class Markdown {
   static entries(entries = [], option = {}) {
     var _entries, _entries$map;
 
-    if (!((_entries = entries) !== null && _entries !== void 0 && _entries.length)) return liner([], option);
+    if (!((_entries = entries) != null && _entries.length)) return liner([], option);
     const delim = LF;
     const {
       keyRead,
@@ -89,7 +89,7 @@ class Markdown {
       raw,
       ansi
     }) : text;
-    return _entries$map = entries.map(([k, v]) => (prefix !== null && prefix !== void 0 ? prefix : '') + k + dash + v.trimRight() + (suffix !== null && suffix !== void 0 ? suffix : '')), Liner({
+    return _entries$map = entries.map(([k, v]) => (prefix ?? '') + k + dash + v.trimRight() + (suffix ?? '')), Liner({
       delim,
       level
     })(_entries$map);
@@ -123,7 +123,7 @@ class Markdown {
     let matrix = table.rows || table.matrix,
         banner = table.head || table.banner;
     const [height, width] = size(matrix),
-          labelWidth = banner === null || banner === void 0 ? void 0 : banner.length;
+          labelWidth = banner == null ? void 0 : banner.length;
     if (!height || !width || !labelWidth) return AEU;
     const delim = LF;
     const {

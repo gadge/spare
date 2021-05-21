@@ -53,7 +53,7 @@ class Verse {
 
 
   static entries(entries, p = {}) {
-    const [preset, bracket] = p !== null && p !== void 0 && p.objectify ? [presetVerse.presetEntriesAsObject(p), enumBrackets.BRACE] : [presetVerse.presetEntries(p), enumBrackets.BRACKET];
+    const [preset, bracket] = p != null && p.objectify ? [presetVerse.presetEntriesAsObject(p), enumBrackets.BRACE] : [presetVerse.presetEntries(p), enumBrackets.BRACKET];
     const {
       delim,
       level

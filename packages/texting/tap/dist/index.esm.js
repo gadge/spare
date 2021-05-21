@@ -5,7 +5,7 @@ import { wordsToCamel, wordsToPascal } from '@spare/phrasing';
 const tap = (...words) => {
   const ve = [];
 
-  for (let word of words) if (word !== null && word !== void 0 && word.length) ve.push(word);
+  for (let word of words) if (word != null && word.length) ve.push(word);
 
   return ve;
 };
@@ -14,16 +14,12 @@ const tapBy = function (delim = SP, ...words) {
   return ve.join(delim);
 };
 const tapDot = function (...words) {
-  var _this$delim;
-
-  const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : '.';
+  const delim = (this == null ? void 0 : this.delim) ?? '.';
   const ve = tap.apply(null, words);
   return ve.join(delim);
 };
 const tapSnake = function (...words) {
-  var _this$delim2;
-
-  const delim = (_this$delim2 = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim2 !== void 0 ? _this$delim2 : '_';
+  const delim = (this == null ? void 0 : this.delim) ?? '_';
   const ve = tap.apply(null, words);
   return ve.join(delim);
 };
@@ -37,10 +33,8 @@ const tapPascal = function (...words) {
 };
 
 const presetAdjoin = p => {
-  var _p, _p$delim;
-
-  p = (_p = p) !== null && _p !== void 0 ? _p : {};
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : SP;
+  p = p ?? {};
+  p.delim = p.delim ?? SP;
   return p;
 };
 

@@ -32,7 +32,7 @@ const _decoTable = function (table) {
       rows = table.rows || table.matrix,
       rule = null;
   const [height, width] = matrix.size(rows),
-        labelWidth = (_head = head) === null || _head === void 0 ? void 0 : _head.length;
+        labelWidth = (_head = head) == null ? void 0 : _head.length;
   if (!height || !width || !labelWidth) return enumChars.AEU;
   table = tableMargin.tableMargin(table, config); // use: top, left, bottom ,right, read, headRead
 
@@ -48,7 +48,7 @@ const _decoTable = function (table) {
 
   if (presets) {
     const [alpha, beta, gamma] = presets;
-    head = fluoVector.fluoVector.call(enumColorantModes.MUTATE_PIGMENT, head, [alpha, gamma !== null && gamma !== void 0 ? gamma : beta]);
+    head = fluoVector.fluoVector.call(enumColorantModes.MUTATE_PIGMENT, head, [alpha, gamma ?? beta]);
     rows = fluoMatrix.fluoMatrix.call(enumColorantModes.MUTATE_PIGMENT, rows, config.direct, [alpha, beta]);
   }
 

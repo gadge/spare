@@ -35,21 +35,21 @@ const MUTATE_PIGMENT = {
 const LF = /\n/;
 const fluo = fluoEntries.fluoEntries.bind(MUTATE_PIGMENT);
 const _decoEntries = function (entries = []) {
-  var _entries, _Br, _config$presets;
+  var _entries;
 
   const config = this;
-  if (!((_entries = entries) !== null && _entries !== void 0 && _entries.length)) return liner.liner([], config);
+  if (!((_entries = entries) != null && _entries.length)) return liner.liner([], config);
   let {
     ansi,
     dash,
     delim,
     bracket: bracket$1
   } = config;
-  bracket$1 = (_Br = bracket.Br(bracket$1)) !== null && _Br !== void 0 ? _Br : oneself.oneself;
+  bracket$1 = bracket.Br(bracket$1) ?? oneself.oneself;
   entries = entriesMargin.entriesMargin(entries, config); // use: head, tail, keyRead, read
 
   if (LF.test(delim)) entries = entriesPadder.entriesPadder(entries, {
-    ansi: (_config$presets = config.presets) !== null && _config$presets !== void 0 ? _config$presets : ansi
+    ansi: config.presets ?? ansi
   });
   if (config.presets) entries = fluo(entries, config.presets); // use: presets, effects
 

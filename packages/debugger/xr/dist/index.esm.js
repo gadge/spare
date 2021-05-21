@@ -46,7 +46,7 @@ function render(text) {
         {
     indent
   } = queue;
-  if (text !== null && text !== void 0 && text.length) queue.push(text);
+  if (text != null && text.length) queue.push(text);
   return SP.repeat(indent << 1) + queue.join(SP);
 }
 
@@ -77,7 +77,7 @@ const initQueue = t => {
 
   const queue = [];
   let hi, indent;
-  if (t && (hi = (_t = t = String(t)) === null || _t === void 0 ? void 0 : _t.length) && (indent = deNaTab(t)) < hi) queue.push(t.slice(indent));
+  if (t && (hi = (_t = t = String(t)) == null ? void 0 : _t.length) && (indent = deNaTab(t)) < hi) queue.push(t.slice(indent));
   queue.indent = indent;
   return {
     queue

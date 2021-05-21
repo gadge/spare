@@ -17,7 +17,7 @@ var enumChars = require('@spare/enum-chars');
 
 const joinLines = (lines, delim = '', level, hover = true) => {
   const IND = level > 0 ? enumChars.TB.repeat(level) : '';
-  return hover ? `${enumChars.LF + IND + enumChars.TB}${lines === null || lines === void 0 ? void 0 : lines.join(delim + enumChars.LF + IND + enumChars.TB)}${delim + enumChars.LF + IND}` : `${IND + enumChars.TB}${lines === null || lines === void 0 ? void 0 : lines.join(delim + enumChars.LF + IND + enumChars.TB)}${delim}`;
+  return hover ? `${enumChars.LF + IND + enumChars.TB}${lines == null ? void 0 : lines.join(delim + enumChars.LF + IND + enumChars.TB)}${delim + enumChars.LF + IND}` : `${IND + enumChars.TB}${lines == null ? void 0 : lines.join(delim + enumChars.LF + IND + enumChars.TB)}${delim}`;
 };
 const LINEFEED = /\n/;
 const COMMA = /,/;

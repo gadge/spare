@@ -22,10 +22,8 @@ var vectorMerge = require('@vect/vector-merge');
  */
 
 const crostabPadder = (crostab, config = {}) => {
-  var _crostab$title;
-
   const sidePart = fieldPadder.fieldPadder({
-    name: (_crostab$title = crostab.title) !== null && _crostab$title !== void 0 ? _crostab$title : '',
+    name: crostab.title ?? '',
     list: crostab.side
   }, config);
   const bodyPart = tablePadder.tablePadder(crostab, config);

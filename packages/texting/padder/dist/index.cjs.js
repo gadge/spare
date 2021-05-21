@@ -37,8 +37,8 @@ const pad = function (tx, wd, va) {
     ansi = true,
     fill = SP$1,
     thousand = true
-  } = this !== null && this !== void 0 ? this : {};
-  const padder = numStrict.isNumeric(va !== null && va !== void 0 ? va : thousand ? removeThousandSeparator(tx) : tx) ? lpad : rpad;
+  } = this ?? {};
+  const padder = numStrict.isNumeric(va ?? (thousand ? removeThousandSeparator(tx) : tx)) ? lpad : rpad;
   return ansi ? padder(tx, ansiPadLength(tx, wd), fill) : padder(tx, wd, fill);
 };
 /**
@@ -61,7 +61,7 @@ const padFull = function (tx, wd, va) {
   const {
     ansi = true,
     fill = SP
-  } = this !== null && this !== void 0 ? this : {};
+  } = this ?? {};
   const padder = (!nullish(va) ? numStrict.isNumeric(va) : fullwidth.isNumeric(tx)) ? lpad : rpad;
   return ansi ? padder(tx, ansiPadLength(tx, wd), fill) : padder(tx, wd, fill);
 };

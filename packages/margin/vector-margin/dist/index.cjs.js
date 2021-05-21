@@ -9,7 +9,7 @@ var oneself = require('@ject/oneself');
 const sizing = (ar, head, tail) => {
   let l,
       dash = true;
-  if (!(l = ar === null || ar === void 0 ? void 0 : ar.length)) [head, tail, dash] = [0, 0, false];
+  if (!(l = ar == null ? void 0 : ar.length)) [head, tail, dash] = [0, 0, false];
   if (!head && !tail || head >= l) [head, tail, dash] = [l, 0, false];
   return {
     head,

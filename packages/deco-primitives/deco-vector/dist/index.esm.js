@@ -21,7 +21,7 @@ const CONFIG = {
 const fluo = fluoVector.bind(MUTATE_PIGMENT);
 function _decoVector(vec = []) {
   const config = this;
-  if (config !== null && config !== void 0 && config.indexed) return _decoEntries.call(config, Object.entries(vec));
+  if (config != null && config.indexed) return _decoEntries.call(config, Object.entries(vec));
   vec = vectorMargin(vec, config); // use: head, tail, read, rule
 
   if (config.presets) vec = fluo(vec, config.presets); // use:  presets, effects

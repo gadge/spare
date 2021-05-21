@@ -27,13 +27,11 @@ var enumChars = require('@spare/enum-chars');
  */
 
 const presetEntries = p => {
-  var _p$dash, _p$delim, _p$bracket, _p$read, _p$ansi;
-
-  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ' > ';
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.LF;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRK;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoPale.decoPale;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  p.dash = p.dash ?? ' > ';
+  p.delim = p.delim ?? enumChars.LF;
+  p.bracket = p.bracket ?? enumBrackets.BRK;
+  p.read = p.read ?? decoPale.decoPale;
+  p.ansi = p.ansi ?? true;
   return p;
 };
 
@@ -59,13 +57,11 @@ const presetEntries = p => {
  */
 
 const presetObject = p => {
-  var _p$dash, _p$delim, _p$bracket, _p$read, _p$ansi;
-
-  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : enumChars.RTSP;
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COLF;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRC;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoPale.decoPale;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  p.dash = p.dash ?? enumChars.RTSP;
+  p.delim = p.delim ?? enumChars.COLF;
+  p.bracket = p.bracket ?? enumBrackets.BRC;
+  p.read = p.read ?? decoPale.decoPale;
+  p.ansi = p.ansi ?? true;
   return p;
 };
 
@@ -91,14 +87,12 @@ const presetObject = p => {
  */
 
 const presetVector = p => {
-  var _p$dash, _p$delim, _p$bracket, _p$indexed, _p$read, _p$ansi;
-
-  p.dash = (_p$dash = p.dash) !== null && _p$dash !== void 0 ? _p$dash : ') ';
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COLF;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRK;
-  p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : false;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoPale.decoPale;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  p.dash = p.dash ?? ') ';
+  p.delim = p.delim ?? enumChars.COLF;
+  p.bracket = p.bracket ?? enumBrackets.BRK;
+  p.indexed = p.indexed ?? false;
+  p.read = p.read ?? decoPale.decoPale;
+  p.ansi = p.ansi ?? true;
   return p;
 };
 
@@ -124,12 +118,10 @@ const presetVector = p => {
  */
 
 const presetMatrix = p => {
-  var _p$delim, _p$bracket, _p$read, _p$ansi;
-
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COSP;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRK;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoPale.decoPale;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  p.delim = p.delim ?? enumChars.COSP;
+  p.bracket = p.bracket ?? enumBrackets.BRK;
+  p.read = p.read ?? decoPale.decoPale;
+  p.ansi = p.ansi ?? true;
   return p;
 };
 
@@ -157,11 +149,9 @@ const presetMatrix = p => {
  */
 
 const presetCrostab = p => {
-  var _p$delim, _p$read, _p$ansi;
-
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.LF;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoPale.decoPale;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  p.delim = p.delim ?? enumChars.LF;
+  p.read = p.read ?? decoPale.decoPale;
+  p.ansi = p.ansi ?? true;
   return p;
 };
 
@@ -189,11 +179,9 @@ const presetCrostab = p => {
  */
 
 const presetTable = p => {
-  var _p$delim, _p$read, _p$ansi;
-
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.LF;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoPale.decoPale;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  p.delim = p.delim ?? enumChars.LF;
+  p.read = p.read ?? decoPale.decoPale;
+  p.ansi = p.ansi ?? true;
   return p;
 };
 
@@ -222,13 +210,11 @@ const presetTable = p => {
  */
 
 const presetSamples = p => {
-  var _p$delim, _p$bracket, _p$indexed, _p$read, _p$ansi;
-
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : enumChars.COSP;
-  p.bracket = (_p$bracket = p.bracket) !== null && _p$bracket !== void 0 ? _p$bracket : enumBrackets.BRK;
-  p.indexed = (_p$indexed = p.indexed) !== null && _p$indexed !== void 0 ? _p$indexed : true;
-  p.read = (_p$read = p.read) !== null && _p$read !== void 0 ? _p$read : decoPale.decoPale;
-  p.ansi = (_p$ansi = p.ansi) !== null && _p$ansi !== void 0 ? _p$ansi : true;
+  p.delim = p.delim ?? enumChars.COSP;
+  p.bracket = p.bracket ?? enumBrackets.BRK;
+  p.indexed = p.indexed ?? true;
+  p.read = p.read ?? decoPale.decoPale;
+  p.ansi = p.ansi ?? true;
   return p;
 };
 

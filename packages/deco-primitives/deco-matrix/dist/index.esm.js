@@ -32,8 +32,6 @@ const MUTATE_PIGMENT = {
 
 const fluo = fluoMatrix.bind(MUTATE_PIGMENT);
 const _decoMatrix = function (rows = []) {
-  var _Br;
-
   const config = this,
         [height, width] = size(rows);
   if (!height || !width) return liner([], config);
@@ -43,7 +41,7 @@ const _decoMatrix = function (rows = []) {
     bracket,
     level
   } = config;
-  const br = (_Br = Br(bracket)) !== null && _Br !== void 0 ? _Br : oneself;
+  const br = Br(bracket) ?? oneself;
   rows = matrixMargin(rows, config); // use: top, bottom, left, right, read, rule
 
   rows = matrixPadder(rows, config); // use: ansi

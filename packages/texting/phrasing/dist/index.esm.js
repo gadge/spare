@@ -73,7 +73,7 @@ const wordToCap = word => word[0].toUpperCase() + word.substring(1).toLowerCase(
 
 const wordsToCamel = words => {
   let i = 0,
-      l = words === null || words === void 0 ? void 0 : words.length;
+      l = words == null ? void 0 : words.length;
   if (l) words[i] = words[i].toLowerCase();
 
   while (++i < l) words[i] = capitalize(words[i]);
@@ -111,10 +111,8 @@ function camelToVector(phrase) {
 const snakeToVector = phrase => phrase.split(/\W/g);
 
 const presetAdjoin = p => {
-  var _p, _p$delim;
-
-  p = (_p = p) !== null && _p !== void 0 ? _p : {};
-  p.delim = (_p$delim = p.delim) !== null && _p$delim !== void 0 ? _p$delim : SP;
+  p = p ?? {};
+  p.delim = p.delim ?? SP;
   return p;
 };
 /**
@@ -129,7 +127,7 @@ const adjoin = function (...words) {
   const ve = [],
         config = presetAdjoin(this);
 
-  for (let word of words) if (word !== null && word !== void 0 && word.length) ve.push(word);
+  for (let word of words) if (word != null && word.length) ve.push(word);
 
   return _decoVector.call(config, ve);
 };

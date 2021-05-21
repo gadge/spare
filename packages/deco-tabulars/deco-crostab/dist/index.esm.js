@@ -41,7 +41,7 @@ const crostabVerbal = (crostab, config = {}) => {
   } = config;
   if (!presets) return crostab;
   const [alpha, beta, gamma] = presets;
-  const presetLabels = [alpha, gamma !== null && gamma !== void 0 ? gamma : beta],
+  const presetLabels = [alpha, gamma ?? beta],
         presetPoints = [alpha, beta];
   crostab.side = fluoVector.call(MUTATE, crostab.side, presetLabels);
   crostab.head = fluoVector.call(MUTATE, crostab.head, presetLabels);
@@ -55,8 +55,8 @@ const _decoCrostab = function (crostab) {
   if (!crostab) return AEU;
   const config = this;
   const [height, width] = size(crostab.rows),
-        labelWidth = (_crostab$head = crostab.head) === null || _crostab$head === void 0 ? void 0 : _crostab$head.length,
-        labelHeight = (_crostab$side = crostab.side) === null || _crostab$side === void 0 ? void 0 : _crostab$side.length;
+        labelWidth = (_crostab$head = crostab.head) == null ? void 0 : _crostab$head.length,
+        labelHeight = (_crostab$side = crostab.side) == null ? void 0 : _crostab$side.length;
   if (!height || !width || !labelWidth || !labelHeight) return AEU;
   crostab = crostabMargin(crostab, config); // use: top, bottom, left, right, height, width, read, sideRead, headRead
 

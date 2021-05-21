@@ -7,7 +7,7 @@ const foldToVector = function (text) {
     width: wd = 80,
     regex = SPACE,
     firstLineIndent
-  } = this !== null && this !== void 0 ? this : {};
+  } = this ?? {};
   const lines = [];
   let ms,
       ph,
@@ -32,10 +32,10 @@ const foldToVector = function (text) {
   return lines;
 };
 const fold = function (text) {
-  var _this$delim, _text;
+  var _text;
 
   const context = this;
-  const delim = (_this$delim = this === null || this === void 0 ? void 0 : this.delim) !== null && _this$delim !== void 0 ? _this$delim : LF;
+  const delim = (this == null ? void 0 : this.delim) ?? LF;
   const lines = (_text = text, foldToVector.bind(context)(_text));
   return lines.join(delim);
 };
