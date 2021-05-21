@@ -1,6 +1,6 @@
 {
   "name": "@spare/translator",
-  "version": "0.11.15",
+  "version": "0.11.16",
   "description": "Translator, bulk replace string at a time",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

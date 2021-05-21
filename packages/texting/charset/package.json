@@ -1,6 +1,6 @@
 {
   "name": "@spare/charset",
-  "version": "0.11.15",
+  "version": "0.11.16",
   "description": "Regex sets",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,7 +15,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/regex-charset": "^0.11.15"
+    "@spare/regex-charset": "^0.11.16"
   },
   "repository": {
     "type": "git",
