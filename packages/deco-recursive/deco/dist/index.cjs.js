@@ -2,6 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var decoConfig = require('@spare/deco-config');
 var enumChars = require('@spare/enum-chars');
 var presetDeco = require('@spare/preset-deco');
 var fluoEntries = require('@palett/fluo-entries');
@@ -24,7 +25,6 @@ var liner = require('@spare/liner');
 var padder = require('@spare/padder');
 var decoString = require('@spare/deco-string');
 var splitter = require('@spare/splitter');
-var decoConfig = require('@spare/deco-config');
 
 const CONFIG = {
   depth: 8,

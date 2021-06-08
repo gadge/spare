@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var decoConfig = require('@spare/deco-config');
 var presetDeco = require('@spare/preset-deco');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoEntries = require('@palett/fluo-entries');
 var fluoVector = require('@palett/fluo-vector');
 var decoColors = require('@spare/deco-colors');
@@ -14,7 +15,6 @@ var enumDataTypes = require('@typen/enum-data-types');
 var enumObjectTypes = require('@typen/enum-object-types');
 var typ = require('@typen/typ');
 var columnMapper = require('@vect/column-mapper');
-var enumColorantModes = require('@palett/enum-colorant-modes');
 
 const CONFIG = {
   mutate: true
