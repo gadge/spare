@@ -1,8 +1,8 @@
+import { DecoConfig }             from '@spare/deco-config'
 import { LF }                     from '@spare/enum-chars'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { CONFIG }                 from './resources/config'
 import { _deco }                  from './src/_deco'
-import { DecoConfig }             from '@spare/deco-config'
 
 export { _deco }
 

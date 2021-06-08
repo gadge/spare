@@ -1,3 +1,4 @@
+import { MUTATE_PIGMENT }                    from '@palett/enum-colorant-modes'
 import { fluoEntries }                       from '@palett/fluo-entries'
 import { fluoVector }                        from '@palett/fluo-vector'
 import { BRC, BRK, PAL }                     from '@spare/deco-colors'
@@ -8,7 +9,6 @@ import { BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT }               from '@typen/enum-object-types'
 import { typ }                               from '@typen/typ'
 import { mutate }                            from '@vect/column-mapper'
-import { MUTATE_PIGMENT }                    from '@palett/enum-colorant-modes'
 
 export function _decoFlat(lv, node) {
   const t = typeof node

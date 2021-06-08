@@ -1,9 +1,9 @@
 import { LF }         from '@spare/enum-chars'
 import { logger }     from '@spare/logger'
 import { tenseQuote } from '@spare/quote'
-import { promises }  from 'fs'
-import { DecoPale }  from '../index'
-import { decoValue } from '../src/archive/decoLoose'
+import { promises }   from 'fs'
+import { DecoPale }   from '../index'
+import { decoValue }  from '../src/archive/decoLoose'
 
 
 const candidates = [

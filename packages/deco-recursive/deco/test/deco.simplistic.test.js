@@ -10,7 +10,7 @@ const candidates = [
     date: new Date(),
     obj: { foo: null }
   },
-  [1, 1, 2, 3, 5, 8]
+  [ 1, 1, 2, 3, 5, 8 ]
 ]
 
 for (let candidate of candidates) {

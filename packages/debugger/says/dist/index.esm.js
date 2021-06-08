@@ -140,11 +140,11 @@ class Pal extends Callable {
 
 }
 
-var _roster = _classPrivateFieldLooseKey("roster");
+var _roster = /*#__PURE__*/_classPrivateFieldLooseKey("roster");
 
-var _pool = _classPrivateFieldLooseKey("pool");
+var _pool = /*#__PURE__*/_classPrivateFieldLooseKey("pool");
 
-var _effects = _classPrivateFieldLooseKey("effects");
+var _effects = /*#__PURE__*/_classPrivateFieldLooseKey("effects");
 
 class Says {
   /** @type {Object<string,Pal|function>} */

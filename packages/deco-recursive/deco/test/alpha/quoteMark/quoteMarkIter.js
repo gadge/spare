@@ -1,8 +1,6 @@
-import { pipe }                         from '@ject/pipe'
 import { parenth }                      from '@spare/bracket'
 import { DecoPale }                     from '@spare/deco-pale'
 import { decoString, decoVector, says } from '@spare/logger'
-import { tenseQuote }                   from '@spare/quote'
 
 const { quote } = require('@spare/quote')
 

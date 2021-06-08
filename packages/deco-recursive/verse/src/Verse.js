@@ -9,13 +9,7 @@ import { _decoVector }                     from '@spare/deco-vector'
 import { BRACE, BRACKET }                  from '@spare/enum-brackets'
 import { joinLines, liner }                from '@spare/liner'
 import {
-  presetCrostab,
-  presetEntries,
-  presetEntriesAsObject,
-  presetMatrix,
-  presetObject,
-  presetSamples,
-  presetTable,
+  presetCrostab, presetEntries, presetEntriesAsObject, presetMatrix, presetObject, presetSamples, presetTable,
   presetVector
 }                                          from '@spare/preset-verse'
 

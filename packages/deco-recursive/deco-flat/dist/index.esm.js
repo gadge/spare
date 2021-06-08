@@ -1,5 +1,6 @@
 import { DecoConfig } from '@spare/deco-config';
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoEntries } from '@palett/fluo-entries';
 import { fluoVector } from '@palett/fluo-vector';
 import { BRK, BRC, PAL } from '@spare/deco-colors';
@@ -10,7 +11,6 @@ import { STR, NUM, FUN, OBJ, BOO, UND, SYM } from '@typen/enum-data-types';
 import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
 import { typ } from '@typen/typ';
 import { mutate } from '@vect/column-mapper';
-import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 
 const CONFIG = {
   mutate: true

@@ -1,3 +1,4 @@
+import { DecoConfig } from '@spare/deco-config';
 import { RTSP, CO, COSP, LF } from '@spare/enum-chars';
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
 import { fluoEntries } from '@palett/fluo-entries';
@@ -20,7 +21,6 @@ import { joinLines } from '@spare/liner';
 import { LPad } from '@spare/padder';
 import { _decoString } from '@spare/deco-string';
 import { splitLiteral } from '@spare/splitter';
-import { DecoConfig } from '@spare/deco-config';
 
 const CONFIG = {
   depth: 8,

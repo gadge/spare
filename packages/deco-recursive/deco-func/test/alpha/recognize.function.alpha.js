@@ -4,9 +4,9 @@ import { Dye }                 from '@palett/dye'
 import { UNDERLINE }           from '@palett/enum-font-effects'
 import { SP }                  from '@spare/enum-chars'
 import { decoSamples, logger } from '@spare/logger'
-import { quote }             from '@spare/quote'
-import { ComplexCollection } from '../assets/ComboCollection'
-import { argnames }          from './argnames'
+import { quote }               from '@spare/quote'
+import { ComplexCollection }   from '../assets/ComboCollection'
+import { argnames }            from './argnames'
 
 // no comments
 // no destructuring assignment

@@ -1,7 +1,7 @@
 import { simpleEntries } from '@foba/foo'
 import { says }          from '@palett/says'
-import { delogger } from '@spare/deco'
-import { Verse }    from '../src/Verse'
+import { delogger }      from '@spare/deco'
+import { Verse }         from '../src/Verse'
 
 let SimpleEntries = simpleEntries({ h: 12 })
 SimpleEntries |> delogger

@@ -111,7 +111,7 @@ const clearQueue = function (word) {
  * @type {Object<string,string>}
  */
 
-var _conf = _classPrivateFieldLooseKey("conf");
+var _conf = /*#__PURE__*/_classPrivateFieldLooseKey("conf");
 
 _Symbol$toPrimitive = Symbol.toPrimitive;
 class XrStream extends Callable {

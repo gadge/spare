@@ -1,6 +1,6 @@
 import { randLong } from '@aryth/rand'
-import { logger } from '@spare/logger'
-import { deca }   from '../index'
+import { logger }   from '@spare/logger'
+import { deca }     from '../index'
 
 const candidates = {
   d10: randLong(10),

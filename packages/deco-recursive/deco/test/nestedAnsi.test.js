@@ -2,8 +2,8 @@ import { says }               from '@palett/says'
 import { decoPale }           from '@spare/deco-pale'
 import { hasAnsi }            from '@spare/lange'
 import { decoString, logger } from '@spare/logger'
-import { iterate, mutate } from '@vect/object-mapper'
-import { Deco }            from '../index'
+import { iterate, mutate }    from '@vect/object-mapper'
+import { Deco }               from '../index'
 
 const o = {
   chef: 'chef',
