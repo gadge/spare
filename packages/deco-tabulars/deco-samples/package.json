@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@analys/convert": "^0.5.0",
-    "@analys/samples-select": "^0.5.0",
-    "@palett/enum-colorant-modes": "^0.8.1",
-    "@palett/fluo-matrix": "^0.8.1",
-    "@palett/fluo-vector": "^0.8.1",
+    "@analys/convert": "^0.5.1",
+    "@analys/samples-select": "^0.5.1",
+    "@palett/enum-colorant-modes": "^0.8.14",
+    "@palett/fluo-matrix": "^0.8.14",
+    "@palett/fluo-vector": "^0.8.14",
     "@spare/deco-config": "^0.11.17",
     "@spare/deco-flat": "^0.11.17",
     "@spare/deco-vector": "^0.11.17",
