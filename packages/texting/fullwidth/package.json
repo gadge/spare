@@ -1,6 +1,6 @@
 {
   "name": "@spare/fullwidth",
-  "version": "0.11.17",
+  "version": "0.11.18",
   "description": "Convert between half-width and full-width",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,10 +15,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/charset": "^0.11.17",
-    "@spare/enum-chars": "^0.11.17",
-    "@spare/enum-full-angle-chars": "^0.11.17",
-    "@spare/lange": "^0.11.17"
+    "@spare/charset": "^0.11.18",
+    "@spare/enum-chars": "^0.11.18",
+    "@spare/enum-full-angle-chars": "^0.11.18",
+    "@spare/lange": "^0.11.18"
   },
   "repository": {
     "type": "git",

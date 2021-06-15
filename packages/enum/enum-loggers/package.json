@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-loggers",
-  "version": "0.11.17",
+  "version": "0.11.18",
   "description": "String quotes",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
