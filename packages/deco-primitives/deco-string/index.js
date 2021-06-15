@@ -1,10 +1,9 @@
 import { DecoConfig }             from '@spare/deco-config'
-import { DA, SP }                 from '@spare/enum-chars'
+import { DA, SP }                 from '@texting/enum-chars'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { splitCamel, splitSnake } from '@spare/splitter'
+import { splitCamel, splitSnake } from '@texting/splitter'
 import { CONFIG }                 from './resources/config'
 import { _decoString }            from './src/_decoString'
-
 
 const Splitter = delim => v => String.prototype.split.call(v, delim)
 export const decoCamel = (text, { delim = '', presets, effects } = {}) => {

@@ -3,85 +3,17 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var decoConfig = require('@spare/deco-config');
-var enumChars = require('@spare/enum-chars');
+var enumChars = require('@texting/enum-chars');
 var presetDeco = require('@spare/preset-deco');
 var splitter = require('@texting/splitter');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoVector = require('@palett/fluo-vector');
-var charset = require('@spare/charset');
-var fold = require('@spare/fold');
-
-const INILOW = /^[a-z]+/;
-const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
-
-const CAPWORD = /[A-Z][a-z]+|[A-Z]+(?=[A-Z][a-z]|\d|\W|_|$)|[\d]+[a-z]*/g;
-
-const ripper = function (text) {
-  const regex = this;
-  let ms,
-      l = 0,
-      r = 0,
-      sp,
-      ph;
-  const vec = [];
-
-  while ((ms = regex.exec(text)) && ([ph] = ms)) {
-    r = ms.index;
-    if (sp = text.slice(l, r)) vec.push(sp);
-    vec.push(ph);
-    l = regex.lastIndex;
-  }
-
-  if (l < text.length) vec.push(text.slice(l));
-  return vec;
-};
-
-/**
- * @type {Function|function(string):string[]}
- * @function
- */
-
-
-ripper.bind(LITERAL);
-/**
- * Camel/pascal case phrase -> split vector
- * Snake: fox_jumps_over_dog
- * Kebab: fox-jumps-over-dog
- * @param {string} phrase camel/pascal-case phrase
- * @returns {string[]}
- */
-
-function splitCamel(phrase) {
-  let ms,
-      wd,
-      ve = [];
-  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ve.push(wd);
-
-  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ve.push(wd);
-
-  return ve;
-}
-/**
- * snake or kebab phrase -> split vector
- * @param {string} phrase - dashed phrase
- * @returns {string[]}
- */
-
-
-const splitSnake = phrase => phrase.split(/\W/g);
+var charsetAnsi = require('@texting/charset-ansi');
+var fold = require('@texting/fold');
 
 const CONFIG = {
   vectify: splitter.splitLiteral,
   width: 0
-};
-
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
 };
 
 /**
@@ -103,7 +35,7 @@ const _decoString = function (text) {
         width = config.width,
         length = (_text = text) == null ? void 0 : _text.length;
   if (!length) return '';
-  if (charset.hasAnsi(text)) return text;
+  if (charsetAnsi.hasAnsi(text)) return text;
   if (width && length > width) text = fold.fold.call({
     width: width,
     firstLineIndent: config.firstLineIndent,
@@ -119,7 +51,7 @@ const stringColour = function (text) {
     joiner
   } = this;
   const words = vectify(text);
-  fluoVector.fluoVector.call(MUTATE_PIGMENT, words, config.presets); // use: presets, effects
+  fluoVector.fluoVector.call(enumColorantModes.MUTATE_PIGMENT, words, config.presets); // use: presets, effects
 
   return joiner ? joiner(words) : words.join('');
 };
@@ -135,7 +67,7 @@ const decoCamel = (text, {
     delim,
     presets,
     effects,
-    vectify: splitCamel
+    vectify: splitter.splitCamel
   }, text);
 };
 const decoSnake = (text, {
@@ -147,7 +79,7 @@ const decoSnake = (text, {
     delim,
     presets,
     effects,
-    vectify: splitSnake
+    vectify: splitter.splitSnake
   }, text);
 };
 const decoPhrase = (text, {

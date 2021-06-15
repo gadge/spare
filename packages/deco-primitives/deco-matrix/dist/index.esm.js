@@ -5,6 +5,7 @@ import { BRK } from '@spare/enum-brackets';
 import { COSP, COLF } from '@spare/enum-chars';
 import { ROWWISE } from '@vect/enum-matrix-directions';
 import { oneself } from '@ject/oneself';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoMatrix } from '@palett/fluo-matrix';
 import { Br } from '@spare/bracket';
 import { liner } from '@spare/liner';
@@ -18,16 +19,6 @@ const CONFIG = {
   read: decoFlat,
   direct: ROWWISE,
   ansi: true
-};
-
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
 };
 
 const fluo = fluoMatrix.bind(MUTATE_PIGMENT);

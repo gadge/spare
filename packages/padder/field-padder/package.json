@@ -23,8 +23,8 @@
     "@texting/enum-chars": "^0.0.10",
     "@texting/enum-chars-fullwidth": "^0.0.10",
     "@texting/padder": "^0.0.10",
-    "@vect/vector-indicator": "^0.3.10",
-    "@vect/vector-mapper": "^0.3.10"
+    "@vect/vector-indicator": "^0.4.2",
+    "@vect/vector-mapper": "^0.4.2"
   },
   "repository": {
     "type": "git",

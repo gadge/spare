@@ -8,6 +8,7 @@ var decoFlat = require('@spare/deco-flat');
 var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
 var oneself = require('@ject/oneself');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoEntries = require('@palett/fluo-entries');
 var bracket = require('@spare/bracket');
 var entriesMargin = require('@spare/entries-margin');
@@ -22,18 +23,8 @@ const CONFIG = {
   ansi: true
 };
 
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
-};
-
 const LF = /\n/;
-const fluo = fluoEntries.fluoEntries.bind(MUTATE_PIGMENT);
+const fluo = fluoEntries.fluoEntries.bind(enumColorantModes.MUTATE_PIGMENT);
 const _decoEntries = function (entries = []) {
   var _entries;
 

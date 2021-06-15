@@ -1,8 +1,8 @@
 import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
 import { fluoVector }     from '@palett/fluo-vector'
-import { hasAnsi }        from '@spare/charset'
-import { LF, TB }         from '@spare/enum-chars'
-import { fold }           from '@spare/fold'
+import { hasAnsi }        from '@texting/charset-ansi'
+import { LF, TB }         from '@texting/enum-chars'
+import { fold }           from '@texting/fold'
 
 /**
  * @prop width - foldToVector

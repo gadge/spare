@@ -4,6 +4,7 @@ import { decoFlat } from '@spare/deco-flat';
 import { BRK } from '@spare/enum-brackets';
 import { LF as LF$1 } from '@spare/enum-chars';
 import { oneself } from '@ject/oneself';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoEntries } from '@palett/fluo-entries';
 import { Br } from '@spare/bracket';
 import { entriesMargin } from '@spare/entries-margin';
@@ -16,16 +17,6 @@ const CONFIG = {
   bracket: BRK,
   read: decoFlat,
   ansi: true
-};
-
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
 };
 
 const LF = /\n/;

@@ -9,6 +9,7 @@ var enumBrackets = require('@spare/enum-brackets');
 var enumChars = require('@spare/enum-chars');
 var enumMatrixDirections = require('@vect/enum-matrix-directions');
 var oneself = require('@ject/oneself');
+var enumColorantModes = require('@palett/enum-colorant-modes');
 var fluoMatrix = require('@palett/fluo-matrix');
 var bracket = require('@spare/bracket');
 var liner = require('@spare/liner');
@@ -24,17 +25,7 @@ const CONFIG = {
   ansi: true
 };
 
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
-};
-
-const fluo = fluoMatrix.fluoMatrix.bind(MUTATE_PIGMENT);
+const fluo = fluoMatrix.fluoMatrix.bind(enumColorantModes.MUTATE_PIGMENT);
 const _decoMatrix = function (rows = []) {
   const config = this,
         [height, width] = matrix.size(rows);

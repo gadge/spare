@@ -17,7 +17,7 @@
   "dependencies": {
     "@ject/oneself": "^0.0.12",
     "@spare/util": "^0.11.19",
-    "@vect/vector-margin": "^0.3.10"
+    "@vect/vector-margin": "^0.4.2"
   },
   "repository": {
     "type": "git",

@@ -1,83 +1,15 @@
 import { DecoConfig } from '@spare/deco-config';
-import { LF, TB, DA, SP } from '@spare/enum-chars';
+import { LF, TB, DA, SP } from '@texting/enum-chars';
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco';
-import { splitLiteral } from '@texting/splitter';
+import { splitLiteral, splitCamel, splitSnake } from '@texting/splitter';
+import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes';
 import { fluoVector } from '@palett/fluo-vector';
-import { hasAnsi } from '@spare/charset';
-import { fold } from '@spare/fold';
-
-const INILOW = /^[a-z]+/;
-const LITERAL = /[a-z]+|[A-Z][a-z]+|(?<=[a-z]|\W|_)[A-Z]+(?=[A-Z][a-z]|\W|_|$)|[\d]+[a-z]*/g;
-
-const CAPWORD = /[A-Z][a-z]+|[A-Z]+(?=[A-Z][a-z]|\d|\W|_|$)|[\d]+[a-z]*/g;
-
-const ripper = function (text) {
-  const regex = this;
-  let ms,
-      l = 0,
-      r = 0,
-      sp,
-      ph;
-  const vec = [];
-
-  while ((ms = regex.exec(text)) && ([ph] = ms)) {
-    r = ms.index;
-    if (sp = text.slice(l, r)) vec.push(sp);
-    vec.push(ph);
-    l = regex.lastIndex;
-  }
-
-  if (l < text.length) vec.push(text.slice(l));
-  return vec;
-};
-
-/**
- * @type {Function|function(string):string[]}
- * @function
- */
-
-
-ripper.bind(LITERAL);
-/**
- * Camel/pascal case phrase -> split vector
- * Snake: fox_jumps_over_dog
- * Kebab: fox-jumps-over-dog
- * @param {string} phrase camel/pascal-case phrase
- * @returns {string[]}
- */
-
-function splitCamel(phrase) {
-  let ms,
-      wd,
-      ve = [];
-  if ((ms = INILOW.exec(phrase)) && ([wd] = ms)) ve.push(wd);
-
-  while ((ms = CAPWORD.exec(phrase)) && ([wd] = ms)) ve.push(wd);
-
-  return ve;
-}
-/**
- * snake or kebab phrase -> split vector
- * @param {string} phrase - dashed phrase
- * @returns {string[]}
- */
-
-
-const splitSnake = phrase => phrase.split(/\W/g);
+import { hasAnsi } from '@texting/charset-ansi';
+import { fold } from '@texting/fold';
 
 const CONFIG = {
   vectify: splitLiteral,
   width: 0
-};
-
-// export const
-//   FUNC = '',
-//   PIGM = '',
-//   HEX = ''
-const RENDER = 'render';
-const MUTATE_PIGMENT = {
-  colorant: RENDER,
-  mutate: true
 };
 
 /**

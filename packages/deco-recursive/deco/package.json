@@ -40,9 +40,9 @@
     "@typen/typ": "^0.1.16",
     "@valjoux/format-date": "^0.2.11",
     "@valjoux/format-date-time": "^0.2.11",
-    "@vect/column-mapper": "^0.3.10",
-    "@vect/entries-mapper": "^0.3.10",
-    "@vect/vector-mapper": "^0.3.10"
+    "@vect/column-mapper": "^0.4.2",
+    "@vect/entries-mapper": "^0.4.2",
+    "@vect/vector-mapper": "^0.4.2"
   },
   "repository": {
     "type": "git",
