@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-util",
-  "version": "0.11.18",
+  "version": "0.11.19",
   "description": "A debugging tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,8 @@
     "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.11.18",
-    "@spare/preset-deco": "^0.11.18"
+    "@spare/enum-chars": "^0.11.19",
+    "@spare/preset-deco": "^0.11.19"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "2e6e35c26d89b8a14e136877cee21a24b72ee1f9"
+  "gitHead": "1a5c13c749194d504d0f731014e0ba316e3195f9"
 }

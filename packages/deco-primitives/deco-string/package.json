@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.11.18",
+  "version": "0.11.19",
   "description": "Color a string",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -18,11 +18,11 @@
     "@analys/enum-mutabilities": "^0.5.1",
     "@palett/fluo-vector": "^0.8.15",
     "@palett/presets": "^0.8.15",
-    "@spare/charset": "^0.11.18",
-    "@spare/deco-config": "^0.11.18",
-    "@spare/enum-chars": "^0.11.18",
-    "@spare/fold": "^0.11.18",
-    "@spare/preset-deco": "^0.11.18",
+    "@spare/charset": "^0.11.19",
+    "@spare/deco-config": "^0.11.19",
+    "@spare/enum-chars": "^0.11.19",
+    "@spare/fold": "^0.11.19",
+    "@spare/preset-deco": "^0.11.19",
     "@texting/splitter": "^0.0.10",
     "@typen/nullish": "^0.1.16"
   },
@@ -42,5 +42,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "2e6e35c26d89b8a14e136877cee21a24b72ee1f9"
+  "gitHead": "1a5c13c749194d504d0f731014e0ba316e3195f9"
 }
