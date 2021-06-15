@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.12",
-    "@palett/fluo-entries": "^0.8.14",
+    "@palett/fluo-entries": "^0.8.15",
     "@spare/bracket": "^0.11.17",
     "@spare/deco-config": "^0.11.17",
     "@spare/deco-flat": "^0.11.17",

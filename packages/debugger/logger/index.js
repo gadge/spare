@@ -1,4 +1,3 @@
-import * as Sayer          from '@spare/says'
 import * as DecoGeneric    from '@spare/deco'
 import * as DecoCrostabEnv from '@spare/deco-crostab'
 import * as DecoEntriesEnv from '@spare/deco-entries'
@@ -11,6 +10,7 @@ import * as DecoSamplesEnv from '@spare/deco-samples'
 import * as DecoStringEnv  from '@spare/deco-string'
 import * as DecoTableEnv   from '@spare/deco-table'
 import * as DecoVectorEnv  from '@spare/deco-vector'
+import * as Sayer          from '@spare/says'
 import * as XrEnv          from '@spare/xr'
 
 export { logger, logNeL } from './src/logger'
