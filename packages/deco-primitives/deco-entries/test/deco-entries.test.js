@@ -12,7 +12,7 @@ const entriesCollection = Object.assign({},
 )
 
 
-for (const [key, entries] of Object.entries(entriesCollection)) {
+for (const [ key, entries ] of Object.entries(entriesCollection)) {
   let words = entries |> Deco({
     head: 5,
     tail: 2,
@@ -25,3 +25,17 @@ for (const [key, entries] of Object.entries(entriesCollection)) {
   // words = key + ': ' + words
   words |> says[key].p(inferType(words))
 }
+
+// for (const [ key, entries ] of Object.entries(entriesCollection)) {
+//   let words = deco(entries, {
+//     head: 5,
+//     tail: 2,
+//     stringPreset: OCEAN,
+//     bracket: false,
+//     discrete: false,
+//     level: 0,
+//     // delim: ', ',
+//   })
+//   // words = key + ': ' + words
+//   words |> says[key].p(inferType(words))
+// }
