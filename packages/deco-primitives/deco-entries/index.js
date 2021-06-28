@@ -61,4 +61,4 @@ export const Deco = (p = {}) => _decoEntries
  * @returns {string}
  */
 export const deco = (entries, p = {}) => _decoEntries
-  .call(DecoConfig.parse(p, DUAL_PRESET_COLLECTION), entries)
+  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), entries)
