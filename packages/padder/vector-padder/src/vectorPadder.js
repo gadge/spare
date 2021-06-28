@@ -6,8 +6,8 @@ import { mapper } from '@vect/vector-mapper'
 /**
  *
  * @param {string[]} vec
- * @param {boolean} ansi
- * @param {string} fill
+ * @param {boolean} [ansi]
+ * @param {string} [fill]
  * @returns {string[]}
  */
 export const vectorPadder = (vec, { ansi, fill }) => {
