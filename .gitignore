@@ -1,6 +1,6 @@
 .idea
 node_modules
-dist/*
+dist
 .yarn/*
 #!.yarn/cache
 !.yarn/patches
