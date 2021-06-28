@@ -1,6 +1,6 @@
 {
   "name": "@spare/phrasing",
-  "version": "0.11.20",
+  "version": "0.11.21",
   "description": "Convert among snake/kebab/camel/pascal phrasings",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/deco-vector": "^0.11.20",
-    "@spare/enum-chars": "^0.11.20",
-    "@spare/regex-phrasing": "^0.11.20",
+    "@spare/deco-vector": "^0.11.21",
+    "@spare/enum-chars": "^0.11.21",
+    "@spare/regex-phrasing": "^0.11.21",
     "@vect/vector-mapper": "^0.4.4"
   },
   "repository": {
