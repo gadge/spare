@@ -1,10 +1,9 @@
-import { enttro }        from '@spare/entries-margin'
+import { entriesMargin } from '@spare/entries-margin'
 import { entriesPadder } from '@spare/entries-padder'
 import { AEU, LF, RTSP } from '@spare/enum-chars'
 import { liner, Liner }  from '@spare/liner'
-import { mattro }        from '@spare/matrix-margin'
+import { tableMargin }   from '@spare/table-margin'
 import { tablePadder }   from '@spare/table-padder'
-import { vettro }        from '@spare/vector-margin'
 import { size }          from '@vect/matrix'
 
 const HR_ENTRY = [ '..', '..' ]
@@ -60,11 +59,11 @@ export class Markdown {
   static entries(entries = [], option = {}) {
     if (!entries?.length) return liner([], option)
     const delim = LF
-    const { keyRead, read, head, tail, ansi, dash = RTSP, level, prefix, suffix, pad } = option
-    const { raw, text } = enttro(entries, { head, tail, keyRead, read, rule: HR_ENTRY })
-    entries = pad ? entriesPadder(text, { raw, ansi }) : text
+    const { dash = RTSP, level, prefix, suffix, pad } = option
+    entries = entriesMargin(entries, option) // use head, tail, keyRead, read, rule
+    entries = pad ? entriesPadder(entries, option) : entries // use ansi, fill
     return entries
-      .map(([ k, v ]) => (prefix ?? '') + k + dash + v.trimRight() + (suffix ?? ''))
+      .map(([ k, v ]) => ( prefix ?? '' ) + k + dash + v.trimRight() + ( suffix ?? '' ))
       |> Liner({ delim, level })
   }
   /***
@@ -92,16 +91,13 @@ export class Markdown {
     let matrix = table.rows || table.matrix, banner = table.head || table.banner
     const [ height, width ] = size(matrix), labelWidth = banner?.length
     if (!height || !width || !labelWidth) return AEU
-    const delim = LF
-    const { read, headRead, top, left, bottom, right, ansi, fullAngle, level } = option
-    const x = mattro(matrix, { top, bottom, left, right, height, width, read })
-    const b = vettro(banner, { head: left, tail: right, read: headRead })
-    let { head, rule, rows } = tablePadder(x.alt, b.alt, { raw: x.raw, ansi, fullAngle })
+    table = tableMargin(table, option) // use: top, left, bottom ,right, read, headRead
+    let { head, rule, rows } = tablePadder(table, option)// use: ansi, full
     return [
       '| ' + head.join(' | ') + ' |',
       '| ' + rule.join(' | ') + ' |',
       ...rows.map(row => '| ' + row.join(' | ') + ' |')
-    ] |> Liner({ delim, level })
+    ] |> Liner({ delim: LF, level: option.level })
   }
 }
 
