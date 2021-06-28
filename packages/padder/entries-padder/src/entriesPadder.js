@@ -6,8 +6,8 @@ import { mapper }    from '@vect/entries-mapper'
 /**
  *
  * @param {string[][]} entries
- * @param {boolean} ansi
- * @param {string} fill
+ * @param {boolean} [ansi]
+ * @param {string} [fill]
  * @returns {string[][]}
  */
 export const entriesPadder = (entries, { ansi, fill }) => {
