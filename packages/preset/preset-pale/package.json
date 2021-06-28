@@ -15,13 +15,13 @@
     "test": "node -r @babel/register test/preset-pale.test.js"
   },
   "dependencies": {
-    "@ject/pipe": "^0.0.12",
-    "@palett/presets": "^0.8.15",
+    "@ject/pipe": "^0.0.16",
+    "@palett/presets": "^0.8.16",
     "@spare/deco-pale": "^0.11.20",
     "@spare/enum-brackets": "^0.11.20",
     "@spare/enum-chars": "^0.11.20",
     "@spare/quote": "^0.11.20",
-    "@vect/enum-matrix-directions": "^0.4.2"
+    "@vect/enum-matrix-directions": "^0.4.4"
   },
   "repository": {
     "type": "git",

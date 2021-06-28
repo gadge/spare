@@ -15,11 +15,11 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@analys/convert": "^0.5.1",
-    "@analys/samples-select": "^0.5.1",
-    "@palett/enum-colorant-modes": "^0.8.15",
-    "@palett/fluo-matrix": "^0.8.15",
-    "@palett/fluo-vector": "^0.8.15",
+    "@analys/convert": "^0.5.2",
+    "@analys/samples-select": "^0.5.2",
+    "@palett/enum-colorant-modes": "^0.8.16",
+    "@palett/fluo-matrix": "^0.8.16",
+    "@palett/fluo-vector": "^0.8.16",
     "@spare/deco-config": "^0.11.20",
     "@spare/deco-flat": "^0.11.20",
     "@spare/deco-vector": "^0.11.20",
@@ -30,8 +30,8 @@
     "@spare/preset-deco": "^0.11.20",
     "@spare/table-margin": "^0.11.20",
     "@spare/vector-padder": "^0.11.20",
-    "@vect/enum-matrix-directions": "^0.4.2",
-    "@vect/vector-zipper": "^0.4.2"
+    "@vect/enum-matrix-directions": "^0.4.4",
+    "@vect/vector-zipper": "^0.4.4"
   },
   "repository": {
     "type": "git",

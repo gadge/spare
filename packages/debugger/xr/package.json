@@ -15,15 +15,15 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.8.15",
-    "@palett/convert": "^0.8.15",
-    "@palett/dye": "^0.8.15",
+    "@palett/cards": "^0.8.16",
+    "@palett/convert": "^0.8.16",
+    "@palett/dye": "^0.8.16",
     "@spare/bracket": "^0.11.20",
     "@spare/charset": "^0.11.20",
     "@spare/enum-chars": "^0.11.20",
     "@spare/util": "^0.11.20",
-    "@typen/nullish": "^0.1.16",
-    "@vect/callable": "^0.4.2"
+    "@typen/nullish": "^0.1.17",
+    "@vect/callable": "^0.4.4"
   },
   "repository": {
     "type": "git",

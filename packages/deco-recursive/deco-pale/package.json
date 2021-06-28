@@ -26,13 +26,13 @@
     "@spare/enum-chars": "^0.11.20",
     "@spare/preset-deco": "^0.11.20",
     "@spare/quote": "^0.11.20",
-    "@typen/enum-data-types": "^0.1.16",
-    "@typen/enum-object-types": "^0.1.16",
-    "@typen/num-strict": "^0.1.16",
-    "@typen/typ": "^0.1.16",
-    "@valjoux/format-date": "^0.2.11",
-    "@valjoux/format-time": "^0.2.11",
-    "@vect/entries-mapper": "^0.4.2"
+    "@typen/enum-data-types": "^0.1.17",
+    "@typen/enum-object-types": "^0.1.17",
+    "@typen/num-strict": "^0.1.17",
+    "@typen/typ": "^0.1.17",
+    "@valjoux/format-date": "^0.3.7",
+    "@valjoux/format-time": "^0.3.7",
+    "@vect/entries-mapper": "^0.4.4"
   },
   "repository": {
     "type": "git",

@@ -98,6 +98,6 @@ const Deco = (p = {}) => _decoEntries.bind(DecoConfig.parse(p, CONFIG, DUAL_PRES
  * @returns {string}
  */
 
-const deco = (entries, p = {}) => _decoEntries.call(DecoConfig.parse(p, DUAL_PRESET_COLLECTION), entries);
+const deco = (entries, p = {}) => _decoEntries.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), entries);
 
 export { Deco, _decoEntries, deco };

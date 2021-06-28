@@ -24,7 +24,7 @@ import { stat } from '@vect/columns-stat';
 const mapper$2 = (mx, fn, h, w) => {
   var _mx$;
 
-  h = h || (mx === null || mx === void 0 ? void 0 : mx.length), w = w || h && ((_mx$ = mx[0]) === null || _mx$ === void 0 ? void 0 : _mx$.length);
+  h = h || (mx == null ? void 0 : mx.length), w = w || h && ((_mx$ = mx[0]) == null ? void 0 : _mx$.length);
   const tx = Array(h);
 
   for (let i = 0, j, r, tr; i < h; i++) for (tx[i] = tr = Array(w), r = mx[i], j = 0; j < w; j++) tr[j] = fn(r[j], i, j);
@@ -50,7 +50,7 @@ const HAN = new RegExp(`[${CJK_PUNCS}${CJK_LETTERS}${FULL_CHARS}]`); // HAN ideo
 const hasFull = str => HAN.test(str);
 
 const mapper$1 = function (vec, fn, l) {
-  l = l || (vec === null || vec === void 0 ? void 0 : vec.length);
+  l = l || (vec == null ? void 0 : vec.length);
   const ve = Array(l);
 
   for (--l; l >= 0; l--) ve[l] = fn.call(this, vec[l], l);
@@ -67,7 +67,7 @@ const Columns = mx => columns.bind(mx);
 const mapper = (mx, mapOnColumns, h, w) => {
   var _mx$;
 
-  h = h || (mx === null || mx === void 0 ? void 0 : mx.length), w = w || h && ((_mx$ = mx[0]) === null || _mx$ === void 0 ? void 0 : _mx$.length); // 'mapperColumns' |> logger
+  h = h || (mx == null ? void 0 : mx.length), w = w || h && ((_mx$ = mx[0]) == null ? void 0 : _mx$.length); // 'mapperColumns' |> logger
 
   const tcol = Array(w);
 
