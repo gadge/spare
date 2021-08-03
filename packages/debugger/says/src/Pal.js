@@ -1,4 +1,5 @@
 import { bracket, parenth } from '@spare/bracket'
+import { deco }             from '@spare/deco-string'
 import { SP }               from '@spare/enum-chars'
 import { FUN, STR }         from '@typen/enum-data-types'
 import { Callable }         from '../util/Callable'
@@ -14,22 +15,29 @@ export class Pal extends Callable {
   /** @type {number}   */ ind = 0
   /** @type {Function} */ log = console.log
   /** @type {Function} */ att = void 0
-  constructor(name, { indent = 0, logger, attach } = {}) {
+  /** @type {{max:*,min:*,na:*}} */ preset
+  constructor(name, { indent = 0, logger, attach, decoConf } = {}) {
     // const f = text => logBy(text, this)
     // Object.defineProperty(f, NAME, WRITABLE)
     // super(f)
     super(text => logBy(text, this))
-    Object.defineProperty(
-      this,
-      NAME,
-      { value: name ?? '', writable: true }
-    )
-    // if (name) this.name = name
+    Object.defineProperty(this, NAME, { value: name ?? '', writable: true })
     if (indent) this.ind = indent
     if (logger) this.log = logger
     if (attach) this.attach(attach)
+    if (decoConf) this.decoConf = decoConf
   }
 
+  /**
+   * @param {string} title
+   * @param {Object} [options]
+   * @returns {Pal|function}
+   */
+  static build(title, options) { return new Pal(title, options) }
+  get asc() { return this.ind++, this }
+  get desc() { return ( this.ind && this.ind-- ), this }
+
+  render(message) { return deco(String(message), this.decoConf) }
   p(words) { return this.des += SP + words, this }
   br(words) { return this.des += SP + parenth(words), this }
   to(someone) {
@@ -50,14 +58,5 @@ export class Pal extends Callable {
     return this
   }
 
-  get asc() { return this.ind++, this }
 
-  get desc() { return (this.ind && this.ind--), this }
-
-  /**
-   * @param {string} title
-   * @param {Object} [options]
-   * @returns {Pal|function}
-   */
-  static build(title, options) { return new Pal(title, options) }
 }

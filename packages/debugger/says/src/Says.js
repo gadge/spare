@@ -8,7 +8,7 @@ import { Pal }           from './Pal'
 export class Says {
   /** @type {Object<string,Pal|function>} */ #roster = {}
   /** @type {Generator<{max:*,min:*,na:*}>} */ #pool = presetFlopper({ exhausted: false })
-  /** @type {string[]!} */ #effects = undefined
+  /** @type {string[]} */ #effects = undefined
 
   constructor(roster, effects) {
     if (roster) this.#roster = roster
@@ -16,7 +16,7 @@ export class Says {
     return new Proxy(this, {
       /** @returns {Pal|function} */
       get(t, p) {
-        if (p in t) return typeof (p = t[p]) === FUN ? p.bind(t) : p
+        if (p in t) return typeof ( p = t[p] ) === FUN ? p.bind(t) : p
         if (p in t.#roster) return t.#roster[p]
         return t.aboard(p, t.#pool.next().value)
       }
@@ -24,14 +24,14 @@ export class Says {
   }
 
   aboard(name, presets) {
-    return this.#roster[name] = (deco(String(name), {
-      presets: presets ?? this.#pool.next().value,
-      effects: this.#effects
-    }) |> Pal.build)
+    const preset = presets ?? this.#pool.next().value
+    const decoConf = { presets: preset, effects: this.#effects }
+    const decoName = deco(String(name), decoConf)
+    return this.#roster[name] = Pal.build(decoName, { decoConf })
   }
 
   roster(name) {
-    if (name) return (this.#roster[name] ?? this.aboard(name)).name
+    if (name) return ( this.#roster[name] ?? this.aboard(name) ).name
     return mapper(this.#roster, ({ name }) => name)
   }
 
@@ -41,5 +41,5 @@ export class Says {
    * @param effects
    * @returns {Says|Object<string,function>}
    */
-  static build({ roster, effects = [ITALIC] } = {}) { return new Says(roster, effects) }
+  static build({ roster, effects = [ ITALIC ] } = {}) { return new Says(roster, effects) }
 }

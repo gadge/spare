@@ -19,10 +19,10 @@
     "@palett/fluo-vector": "^0.8.16",
     "@spare/deco-config": "^0.11.22",
     "@spare/preset-deco": "^0.11.22",
-    "@texting/charset-ansi": "^0.0.12",
-    "@texting/enum-chars": "^0.0.12",
-    "@texting/fold": "^0.0.12",
-    "@texting/splitter": "^0.0.12"
+    "@texting/charset-ansi": "^0.0.13",
+    "@texting/enum-chars": "^0.0.13",
+    "@texting/fold": "^0.0.13",
+    "@texting/splitter": "^0.0.13"
   },
   "repository": {
     "type": "git",
