@@ -1,6 +1,6 @@
 {
   "name": "@spare/tap",
-  "version": "0.11.22",
+  "version": "0.12.0",
   "description": "Join strings together",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -15,9 +15,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/deco-vector": "^0.11.22",
-    "@spare/enum-chars": "^0.11.22",
-    "@spare/phrasing": "^0.11.22",
+    "@spare/deco-vector": "^0.12.0",
+    "@spare/enum-chars": "^0.12.0",
+    "@spare/phrasing": "^0.12.0",
     "@typen/nullish": "^0.1.17"
   },
   "repository": {

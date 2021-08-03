@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-verse",
-  "version": "0.11.22",
+  "version": "0.12.0",
   "description": "Preset for verse",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@ject/pipe": "^0.0.16",
-    "@spare/deco-pale": "^0.11.22",
-    "@spare/enum-brackets": "^0.11.22",
-    "@spare/enum-chars": "^0.11.22",
-    "@spare/quote": "^0.11.22"
+    "@spare/deco-pale": "^0.12.0",
+    "@spare/enum-brackets": "^0.12.0",
+    "@spare/enum-chars": "^0.12.0",
+    "@spare/quote": "^0.12.0"
   },
   "repository": {
     "type": "git",
