@@ -1,5 +1,5 @@
 {
-  "name": "@spare/markdown",
+  "name": "@spare/csv",
   "version": "0.12.0",
   "description": "Markdown table formatter",
   "main": "dist/index.cjs.js",

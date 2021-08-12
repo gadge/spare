@@ -6,10 +6,10 @@ const candidates = {
   // void0: null,
   void1: {},
   void2: { head: null, rows: null },
-  void3: { head: [], rows: [[]] },
+  void3: { head: [], rows: [ [] ] },
   table: TableCollection.flopShuffle()
 }
 
-for (let [key, table] of Object.entries(candidates)) {
+for (let [ key, table ] of Object.entries(candidates)) {
   Markdown.table(table, { top: 2, bottom: 3 }) |> says[key]
 }
