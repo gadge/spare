@@ -6,8 +6,6 @@ import { tableMargin }   from '@spare/table-margin'
 import { tablePadder }   from '@spare/table-padder'
 import { size }          from '@vect/matrix'
 
-const HR_ENTRY = [ '..', '..' ]
-
 export class Markdown {
 
   /***
