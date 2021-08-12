@@ -13,9 +13,11 @@ const candidates = {
 
 const test = async () => {
   for (let [ key, table ] of Object.entries(candidates)) {
-    const table = Csv.table(table, { top: 2, bottom: 3 })
-    table |> says[key]
-    await promises.writeFile(process.cwd() + '/packages/deco-recursive/csv/' + key + '.csv', table)
+    const DEST = process.cwd() + '/packages/deco-recursive/csv/test/' + key + '.csv'
+    DEST |> says[key]
+    const csv = Csv.table(table, { top: 2, bottom: 3 })
+    csv |> says[key]
+    await promises.writeFile(DEST, csv)
   }
 }
 
