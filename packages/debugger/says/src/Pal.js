@@ -15,7 +15,7 @@ export class Pal extends Callable {
   /** @type {number}   */ ind = 0
   /** @type {Function} */ log = console.log
   /** @type {Function} */ att = void 0
-  /** @type {{max:*,min:*,na:*}} */ preset
+  /** @type {{max:*,min:*,na:*}} */ decoConf
   constructor(name, { indent = 0, logger, attach, decoConf } = {}) {
     // const f = text => logBy(text, this)
     // Object.defineProperty(f, NAME, WRITABLE)
