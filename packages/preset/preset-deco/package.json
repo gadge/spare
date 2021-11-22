@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-deco",
-  "version": "0.12.4",
+  "version": "0.12.5",
   "description": "Preset for deco",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/says",
-  "version": "0.12.4",
+  "version": "0.12.5",
   "description": "A debug tool",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -19,13 +19,13 @@
     "@palett/dye": "^0.8.18",
     "@palett/enum-font-effects": "^0.8.18",
     "@palett/flopper": "^0.8.18",
-    "@spare/bracket": "^0.12.4",
-    "@spare/deco-string": "^0.12.4",
-    "@spare/enum-chars": "^0.12.4",
-    "@spare/util": "^0.12.4",
+    "@spare/bracket": "^0.12.5",
+    "@spare/deco-string": "^0.12.5",
+    "@spare/enum-chars": "^0.12.5",
+    "@spare/util": "^0.12.5",
     "@typen/enum-data-types": "^0.1.17",
     "@typen/enums": "^0.1.17",
-    "@vect/object-mapper": "^0.4.4"
+    "@vect/object-mapper": "^0.4.9"
   },
   "repository": {
     "type": "git",
