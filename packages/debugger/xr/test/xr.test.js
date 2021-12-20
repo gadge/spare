@@ -1,11 +1,10 @@
 import { deco, logger, says } from '@spare/logger'
-import { xr }                 from '../src/xr'
+import { xr }                 from '../src/xr.js'
 
-xr('william shakespeare')
+says['historian'](xr('william shakespeare')
   .tragedies('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet')
-  .comedies(null)
-  |> says['historian']
+  .comedies(null))
 
-xr().timestamp(new Date()).todo([1, 2, 3] |> deco) |> says['el primero']
+says['el primero'](xr().timestamp(new Date()).todo(deco([ 1, 2, 3 ])))
 
-xr('leo').br('tolstoy') |> logger
+logger(xr('leo').br('tolstoy'))
