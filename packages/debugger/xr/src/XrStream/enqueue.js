@@ -14,7 +14,7 @@ export const enqueue = function (key, ...items) {
     // queue.push(parenth.minor())
   } else {
     items = items.map(String).join(COSP)
-    queue.push(String(key) |> bracket.major)
+    queue.push(bracket.major(String(key)))
     queue.push(hasAnsi(items) && EDGE_BRACKET.test(clearAnsi(items)) ? items : parenth.major(items))
   }
   return this

@@ -1,11 +1,11 @@
 import { bracket, parenth } from '@spare/bracket'
 import { CO }               from '@spare/enum-chars'
 import { DEF, NUM, STR }    from '@typen/enum-data-types'
-import * as Major           from '../../resources/majorSet'
-import * as Minor           from '../../resources/minorSet'
-import { render }           from '../render'
-import { enqueue }          from './enqueue'
-import { initQueue }        from './initQueue'
+import * as Major           from '../../resources/majorSet.js'
+import * as Minor           from '../../resources/minorSet.js'
+import { render }           from '../render.js'
+import { enqueue }          from './enqueue.js'
+import { initQueue }        from './initQueue.js'
 
 class Callable extends Function {
   constructor(f) {
