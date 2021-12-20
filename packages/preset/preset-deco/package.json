@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-deco",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "Preset for deco",
   "type": "module",
   "main": "dist/index.cjs",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/csv",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "Csv table formatter",
   "type": "module",
   "main": "dist/index.cjs",
@@ -19,11 +19,11 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.12.5",
-    "@spare/liner": "^0.12.5",
-    "@spare/table-margin": "^0.12.5",
-    "@spare/table-padder": "^0.12.5",
-    "@vect/matrix": "^0.4.9"
+    "@spare/enum-chars": "^0.13.0",
+    "@spare/liner": "^0.13.0",
+    "@spare/table-margin": "^0.13.0",
+    "@spare/table-padder": "^0.13.0",
+    "@vect/matrix": "^0.4.10"
   },
   "repository": {
     "type": "git",

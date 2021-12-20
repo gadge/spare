@@ -1,6 +1,6 @@
 {
   "name": "@spare/markdown",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "Markdown table formatter",
   "type": "module",
   "main": "dist/index.cjs",
@@ -19,15 +19,15 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@spare/entries-margin": "^0.12.5",
-    "@spare/entries-padder": "^0.12.5",
-    "@spare/enum-chars": "^0.12.5",
-    "@spare/liner": "^0.12.5",
-    "@spare/matrix-margin": "^0.12.5",
-    "@spare/table-padder": "^0.12.5",
-    "@spare/vector-margin": "^0.12.5",
-    "@vect/matrix": "^0.4.9",
-    "@vect/vector-merge": "^0.4.9"
+    "@spare/entries-margin": "^0.13.0",
+    "@spare/entries-padder": "^0.13.0",
+    "@spare/enum-chars": "^0.13.0",
+    "@spare/liner": "^0.13.0",
+    "@spare/matrix-margin": "^0.13.0",
+    "@spare/table-padder": "^0.13.0",
+    "@spare/vector-margin": "^0.13.0",
+    "@vect/matrix": "^0.4.10",
+    "@vect/vector-merge": "^0.4.10"
   },
   "repository": {
     "type": "git",

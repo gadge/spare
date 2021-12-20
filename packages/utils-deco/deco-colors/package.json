@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-colors",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -22,8 +22,8 @@
     "@palett/cards": "^0.8.18",
     "@palett/convert": "^0.8.18",
     "@palett/dye": "^0.8.18",
-    "@spare/preset-deco": "^0.12.5",
-    "@vect/object-mapper": "^0.4.9"
+    "@spare/preset-deco": "^0.13.0",
+    "@vect/object-mapper": "^0.4.10"
   },
   "repository": {
     "type": "git",

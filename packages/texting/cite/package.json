@@ -1,6 +1,6 @@
 {
   "name": "@spare/cite",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "Process string for file write",
   "type": "module",
   "main": "dist/index.cjs",
@@ -19,8 +19,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/quote": "^0.12.5",
-    "@spare/translator": "^0.12.5"
+    "@spare/quote": "^0.13.0",
+    "@spare/translator": "^0.13.0"
   },
   "repository": {
     "type": "git",

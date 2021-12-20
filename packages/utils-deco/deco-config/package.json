@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-config",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "A debugging tool",
   "type": "module",
   "main": "dist/index.cjs",
@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "@palett/fluo": "^0.8.18",
-    "@spare/preset-deco": "^0.12.5",
+    "@spare/preset-deco": "^0.13.0",
     "@typen/nullish": "^0.1.17",
-    "@vect/object-update": "^0.4.9"
+    "@vect/object-update": "^0.4.10"
   },
   "repository": {
     "type": "git",

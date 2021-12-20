@@ -1,6 +1,6 @@
 {
   "name": "@spare/entries-padder",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "A debugging tool",
   "type": "module",
   "main": "dist/index.cjs",
@@ -19,11 +19,11 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.12.5",
+    "@spare/lange": "^0.13.0",
     "@texting/padder": "^0.0.13",
-    "@vect/entries-indicator": "^0.4.9",
-    "@vect/entries-mapper": "^0.4.9",
-    "@vect/entries-zipper": "^0.4.9"
+    "@vect/entries-indicator": "^0.4.10",
+    "@vect/entries-mapper": "^0.4.10",
+    "@vect/entries-zipper": "^0.4.10"
   },
   "repository": {
     "type": "git",

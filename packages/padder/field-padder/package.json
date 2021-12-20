@@ -1,6 +1,6 @@
 {
   "name": "@spare/field-padder",
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "Pad field (keyed column)",
   "type": "module",
   "main": "dist/index.cjs",
@@ -20,15 +20,15 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.3.26",
-    "@spare/enum-chars": "^0.12.5",
-    "@spare/enum-full-angle-chars": "^0.12.5",
-    "@spare/fullwidth": "^0.12.5",
-    "@spare/lange": "^0.12.5",
+    "@spare/enum-chars": "^0.13.0",
+    "@spare/enum-full-angle-chars": "^0.13.0",
+    "@spare/fullwidth": "^0.13.0",
+    "@spare/lange": "^0.13.0",
     "@texting/enum-chars": "^0.0.13",
     "@texting/enum-chars-fullwidth": "^0.0.13",
     "@texting/padder": "^0.0.13",
-    "@vect/vector-indicator": "^0.4.9",
-    "@vect/vector-mapper": "^0.4.9"
+    "@vect/vector-indicator": "^0.4.10",
+    "@vect/vector-mapper": "^0.4.10"
   },
   "repository": {
     "type": "git",
