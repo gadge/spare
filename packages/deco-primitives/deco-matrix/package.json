@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-matrix",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "A debugging tool",
   "type": "module",
   "main": "dist/index.cjs",
@@ -22,15 +22,15 @@
     "@ject/oneself": "^0.0.16",
     "@palett/enum-colorant-modes": "^0.8.18",
     "@palett/fluo-matrix": "^0.8.18",
-    "@spare/bracket": "^0.13.0",
-    "@spare/deco-config": "^0.13.0",
-    "@spare/deco-flat": "^0.13.0",
-    "@spare/enum-brackets": "^0.13.0",
-    "@spare/enum-chars": "^0.13.0",
-    "@spare/liner": "^0.13.0",
-    "@spare/matrix-margin": "^0.13.0",
-    "@spare/matrix-padder": "^0.13.0",
-    "@spare/preset-deco": "^0.13.0",
+    "@spare/bracket": "^0.13.1",
+    "@spare/deco-config": "^0.13.1",
+    "@spare/deco-flat": "^0.13.1",
+    "@spare/enum-brackets": "^0.13.1",
+    "@spare/enum-chars": "^0.13.1",
+    "@spare/liner": "^0.13.1",
+    "@spare/matrix-margin": "^0.13.1",
+    "@spare/matrix-padder": "^0.13.1",
+    "@spare/preset-deco": "^0.13.1",
     "@vect/enum-matrix-directions": "^0.4.10",
     "@vect/matrix": "^0.4.10"
   },
@@ -50,5 +50,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "288ac0aeaab828d078f99f55516add1dbd38daca"
+  "gitHead": "ed47110c69a1ca3f4358dd9c1fca1f5e527cf7ba"
 }

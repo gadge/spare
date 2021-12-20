@@ -1,6 +1,6 @@
 {
   "name": "@spare/tap",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "Join strings together",
   "type": "module",
   "main": "dist/index.cjs",
@@ -19,9 +19,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/deco-vector": "^0.13.0",
-    "@spare/enum-chars": "^0.13.0",
-    "@spare/phrasing": "^0.13.0",
+    "@spare/deco-vector": "^0.13.1",
+    "@spare/enum-chars": "^0.13.1",
+    "@spare/phrasing": "^0.13.1",
     "@typen/nullish": "^0.1.17"
   },
   "repository": {
@@ -42,5 +42,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "288ac0aeaab828d078f99f55516add1dbd38daca"
+  "gitHead": "ed47110c69a1ca3f4358dd9c1fca1f5e527cf7ba"
 }

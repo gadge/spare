@@ -1,6 +1,6 @@
 {
   "name": "@spare/says",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "A debug tool",
   "type": "module",
   "main": "dist/index.cjs",
@@ -23,10 +23,10 @@
     "@palett/dye": "^0.8.18",
     "@palett/enum-font-effects": "^0.8.18",
     "@palett/flopper": "^0.8.18",
-    "@spare/bracket": "^0.13.0",
-    "@spare/deco-string": "^0.13.0",
-    "@spare/enum-chars": "^0.13.0",
-    "@spare/util": "^0.13.0",
+    "@spare/bracket": "^0.13.1",
+    "@spare/deco-string": "^0.13.1",
+    "@spare/enum-chars": "^0.13.1",
+    "@spare/util": "^0.13.1",
     "@typen/enum-data-types": "^0.1.17",
     "@typen/enums": "^0.1.17",
     "@vect/object-mapper": "^0.4.10"
@@ -49,5 +49,5 @@
     "url": "https://github.com/hoyeungw/palett/says"
   },
   "homepage": "https://github.com/hoyeungw/palett/says#readme",
-  "gitHead": "288ac0aeaab828d078f99f55516add1dbd38daca"
+  "gitHead": "ed47110c69a1ca3f4358dd9c1fca1f5e527cf7ba"
 }
