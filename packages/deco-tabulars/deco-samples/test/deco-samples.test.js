@@ -2,6 +2,7 @@ import { tableToSamples }  from '@analys/convert'
 import { TableCollection } from '@foba/table'
 import { FRESH, PLANET }   from '@palett/presets'
 import { says }            from '@palett/says'
+import { decoFlat }        from '@spare/deco-flat'
 import { Deco }            from '../index'
 
 const tableCollection = Object.assign({},
@@ -18,8 +19,8 @@ const tableCollection = Object.assign({},
 //   'FrontierEconomies'
 // ]
 
-for (const [key, table] of Object.entries(tableCollection)) {
-  table|> tableToSamples |> Deco({ presets: [FRESH, PLANET] }) |> says[key]
+for (const [ key, table ] of Object.entries(tableCollection)) {
+  table|> tableToSamples |> Deco({ presets: [ FRESH, PLANET ] }) |> says[key]
 }
 
 const samplesCollection = {
@@ -31,7 +32,7 @@ const samplesCollection = {
   }
 }
 
-for (const [key, samples] of Object.entries(samplesCollection)) {
-  samples |> Deco({ presets: [FRESH, PLANET] }) |> says[key]
+for (const [ key, samples ] of Object.entries(samplesCollection)) {
+  samples |> Deco({ presets: [ FRESH, PLANET ] }) |> says[key]
 }
 

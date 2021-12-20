@@ -8,7 +8,14 @@ const candidates = {
   void1: {},
   void2: { head: null, rows: null },
   void3: { head: [], rows: [ [] ] },
-  table: TableCollection.flopShuffle()
+  table1: {
+    head: [ 'foo', 'bar' ],
+    rows: [
+      [ '1,1', 'a' ],
+      [ '10,2', 'b' ]
+    ]
+  },
+  table2: TableCollection.flopShuffle()
 }
 
 const test = async () => {

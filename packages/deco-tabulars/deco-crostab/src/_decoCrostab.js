@@ -20,7 +20,7 @@ const MUTATE = { mutate: true }
  * @param {string[]} [config.effects]
  * @returns {*}
  */
-export const crostabVerbal = (crostab, config = {}) => {
+export const crostabPigment = (crostab, config = {}) => {
   const { presets } = config
   if (!presets) return crostab
   const [alpha, beta, gamma] = presets
@@ -38,7 +38,7 @@ export const _decoCrostab = function (crostab) {
   if (!height || !width || !labelWidth || !labelHeight) return AEU
   crostab = crostabMargin(crostab, config) // use: top, bottom, left, right, height, width, read, sideRead, headRead
   crostab = crostabPadder(crostab, config) // use: ansi, fullAngle
-  crostab = crostabVerbal(crostab, config) // use: d
+  crostab = crostabPigment(crostab, config) // use: presets
   const lines = acquire([
       crostab.title + VLINE + crostab.head.join(VLINE),
       crostab.rule.join(HCONN)

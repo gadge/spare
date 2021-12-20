@@ -13,10 +13,10 @@ export class DecoConfig {
     Object.assign(this, conf)
     if (conf.presets) this.resetPresets(conf.presets, conf.effects, conf.full)
   }
-  /**
-   * @param {Object} [conf]
-   * @returns {DecoConfig}
-   */
+  // /**
+  //  * @param {Object} [conf]
+  //  * @returns {DecoConfig}
+  //  */
   static build(conf) { return new DecoConfig(conf) }
   static parse(userConfig, defaultConfig, defaultPresets) {
     const conf = DecoConfig.build(userConfig)

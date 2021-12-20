@@ -1,8 +1,8 @@
-import { AEU, LF }     from '@spare/enum-chars'
-import { Liner }       from '@spare/liner'
-import { tableMargin } from '@spare/table-margin'
-import { tablePadder } from '@spare/table-padder'
-import { size }        from '@vect/matrix'
+import { AEU, LF }      from '@spare/enum-chars'
+import { Liner }        from '@spare/liner'
+import { tableMargin }  from '@spare/table-margin'
+import { tablePadder }  from '@spare/table-padder'
+import { mutate, size } from '@vect/matrix'
 
 export class Csv {
   /***
@@ -32,10 +32,11 @@ export class Csv {
     if (!height || !width || !labelWidth) return AEU
     table = tableMargin(table, option) // use: top, left, bottom ,right, read, headRead
     let { head, rule, rows } = tablePadder(table, option)// use: ansi, full
+    mutate(rows, text => text.includes(',') ? `"${ text }"` : text)
     return [
-      head.join(', ') + '',
+      head.join(',') + '',
       ...rows.map(row =>
-        row.join(', ') + ''
+        row.join(',') + ''
       )
     ] |> Liner({ delim: LF, level: option.level })
   }
