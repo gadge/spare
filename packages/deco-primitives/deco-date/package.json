@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-date",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Colored stringify date",
   "type": "module",
   "main": "dist/index.cjs",
@@ -19,8 +19,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/deco-config": "^0.13.1",
-    "@spare/preset-deco": "^0.13.1",
+    "@spare/deco-config": "^0.13.2",
+    "@spare/preset-deco": "^0.13.2",
     "@valjoux/timestamp-pretty": "^0.3.8"
   },
   "repository": {

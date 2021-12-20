@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-vector",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "A debugging tool",
   "type": "module",
   "main": "dist/index.cjs",
@@ -21,14 +21,14 @@
   "dependencies": {
     "@palett/enum-colorant-modes": "^0.8.18",
     "@palett/fluo-vector": "^0.8.18",
-    "@spare/deco-config": "^0.13.1",
-    "@spare/deco-entries": "^0.13.1",
-    "@spare/deco-flat": "^0.13.1",
-    "@spare/enum-brackets": "^0.13.1",
-    "@spare/enum-chars": "^0.13.1",
-    "@spare/liner": "^0.13.1",
-    "@spare/preset-deco": "^0.13.1",
-    "@spare/vector-margin": "^0.13.1"
+    "@spare/deco-config": "^0.13.2",
+    "@spare/deco-entries": "^0.13.2",
+    "@spare/deco-flat": "^0.13.2",
+    "@spare/enum-brackets": "^0.13.2",
+    "@spare/enum-chars": "^0.13.2",
+    "@spare/liner": "^0.13.2",
+    "@spare/preset-deco": "^0.13.2",
+    "@spare/vector-margin": "^0.13.2"
   },
   "repository": {
     "type": "git",

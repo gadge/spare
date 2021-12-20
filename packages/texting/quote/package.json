@@ -1,6 +1,6 @@
 {
   "name": "@spare/quote",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Add quotation mark to string",
   "type": "module",
   "main": "dist/index.cjs",
@@ -19,8 +19,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.13.1",
-    "@spare/enum-quotes": "^0.13.1",
+    "@spare/enum-chars": "^0.13.2",
+    "@spare/enum-quotes": "^0.13.2",
     "@typen/literal": "^0.1.17",
     "@typen/nullish": "^0.1.17"
   },

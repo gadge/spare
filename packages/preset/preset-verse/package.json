@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-verse",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Preset for verse",
   "type": "module",
   "main": "dist/index.cjs",
@@ -20,10 +20,10 @@
   },
   "dependencies": {
     "@ject/pipe": "^0.0.16",
-    "@spare/deco-pale": "^0.13.1",
-    "@spare/enum-brackets": "^0.13.1",
-    "@spare/enum-chars": "^0.13.1",
-    "@spare/quote": "^0.13.1"
+    "@spare/deco-pale": "^0.13.2",
+    "@spare/enum-brackets": "^0.13.2",
+    "@spare/enum-chars": "^0.13.2",
+    "@spare/quote": "^0.13.2"
   },
   "repository": {
     "type": "git",
