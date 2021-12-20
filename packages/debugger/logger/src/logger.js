@@ -1,4 +1,4 @@
-import { LF } from '@spare/enum-chars'
+import { LF } from '@texting/enum-chars'
 
-export const logger = (x, ...p) => void console.log(x + '', ...p)
-export const logNeL = (x, ...p) => void console.log(x + '', ...p, LF)
+export const logger = (x, ...p) => console.log(x + '', ...p)
+export const logNeL = (x, ...p) => console.log(x + '', ...p, LF)
