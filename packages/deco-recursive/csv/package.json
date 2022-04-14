@@ -2,10 +2,9 @@
   "name": "@spare/csv",
   "version": "0.13.2",
   "description": "Csv table formatter",
-  "type": "module",
-  "main": "dist/index.cjs",
+  "main": "./dist/index.cjs",
   "exports": {
-    "import": "./dist/index.js",
+    "import": "./dist/index.mjs",
     "require": "./dist/index.cjs"
   },
   "files": [
