@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-crostab",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -20,13 +20,13 @@
   "dependencies": {
     "@palett/fluo-matrix": "^0.9.0",
     "@palett/fluo-vector": "^0.9.0",
-    "@spare/crostab-margin": "^0.13.2",
-    "@spare/crostab-padder": "^0.13.2",
-    "@spare/deco-config": "^0.13.2",
-    "@spare/deco-flat": "^0.13.2",
-    "@spare/enum-chars": "^0.13.2",
-    "@spare/liner": "^0.13.2",
-    "@spare/preset-deco": "^0.13.2",
+    "@spare/crostab-margin": "^0.13.3",
+    "@spare/crostab-padder": "^0.13.3",
+    "@spare/deco-config": "^0.13.3",
+    "@spare/deco-flat": "^0.13.3",
+    "@spare/enum-chars": "^0.13.3",
+    "@spare/liner": "^0.13.3",
+    "@spare/preset-deco": "^0.13.3",
     "@vect/enum-matrix-directions": "^0.5.1",
     "@vect/matrix": "^0.5.1",
     "@vect/vector-merge": "^0.5.1",
