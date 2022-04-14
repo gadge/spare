@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@analys/enum-mutabilities": "^0.5.3",
-    "@aryth/comparer": "^0.3.26",
+    "@aryth/comparer": "^0.4.10",
     "@palett/fluo": "^0.8.18",
     "@palett/fluo-entries": "^0.8.18",
     "@palett/fluo-vector": "^0.8.18",
@@ -44,9 +44,9 @@
     "@typen/typ": "^0.1.17",
     "@valjoux/format-date": "^0.3.8",
     "@valjoux/format-date-time": "^0.3.8",
-    "@vect/column-mapper": "^0.4.10",
-    "@vect/entries-mapper": "^0.4.10",
-    "@vect/vector-mapper": "^0.4.10"
+    "@vect/column-mapper": "^0.5.1",
+    "@vect/entries-mapper": "^0.5.1",
+    "@vect/vector-mapper": "^0.5.1"
   },
   "repository": {
     "type": "git",

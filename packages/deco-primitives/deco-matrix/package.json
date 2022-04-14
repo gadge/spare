@@ -31,8 +31,8 @@
     "@spare/matrix-margin": "^0.13.2",
     "@spare/matrix-padder": "^0.13.2",
     "@spare/preset-deco": "^0.13.2",
-    "@vect/enum-matrix-directions": "^0.4.10",
-    "@vect/matrix": "^0.4.10"
+    "@vect/enum-matrix-directions": "^0.5.1",
+    "@vect/matrix": "^0.5.1"
   },
   "repository": {
     "type": "git",

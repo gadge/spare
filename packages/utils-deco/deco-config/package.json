@@ -22,7 +22,7 @@
     "@palett/fluo": "^0.8.18",
     "@spare/preset-deco": "^0.13.2",
     "@typen/nullish": "^0.1.17",
-    "@vect/object-update": "^0.4.10"
+    "@vect/object-update": "^0.5.1"
   },
   "repository": {
     "type": "git",

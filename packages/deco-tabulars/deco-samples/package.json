@@ -34,8 +34,8 @@
     "@spare/preset-deco": "^0.13.2",
     "@spare/table-margin": "^0.13.2",
     "@spare/vector-padder": "^0.13.2",
-    "@vect/enum-matrix-directions": "^0.4.10",
-    "@vect/vector-zipper": "^0.4.10"
+    "@vect/enum-matrix-directions": "^0.5.1",
+    "@vect/vector-zipper": "^0.5.1"
   },
   "repository": {
     "type": "git",

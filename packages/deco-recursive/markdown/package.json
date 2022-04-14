@@ -26,8 +26,8 @@
     "@spare/matrix-margin": "^0.13.2",
     "@spare/table-padder": "^0.13.2",
     "@spare/vector-margin": "^0.13.2",
-    "@vect/matrix": "^0.4.10",
-    "@vect/vector-merge": "^0.4.10"
+    "@vect/matrix": "^0.5.1",
+    "@vect/vector-merge": "^0.5.1"
   },
   "repository": {
     "type": "git",
