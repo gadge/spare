@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-loggers",
-  "version": "0.13.3",
+  "version": "0.13.4",
   "description": "String quotes",
   "main": "./dist/index.cjs",
   "exports": {
