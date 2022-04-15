@@ -20,7 +20,7 @@
   "dependencies": {
     "@spare/util": "^0.13.3",
     "@spare/vector-margin": "^0.13.3",
-    "@vect/entries-margin": "^0.5.1"
+    "@vect/entries-margin": "^0.5.3"
   },
   "repository": {
     "type": "git",

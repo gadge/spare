@@ -1,13 +1,15 @@
-import { babel }           from '@rollup/plugin-babel'
-import json                from '@rollup/plugin-json'
-import { nodeResolve }     from '@rollup/plugin-node-resolve'
-// import { decoObject, ros } from '@spare/logger'
-// import fileInfo            from 'rollup-plugin-fileinfo'
+import { babel }                  from '@rollup/plugin-babel'
+import json                       from '@rollup/plugin-json'
+import { nodeResolve }            from '@rollup/plugin-node-resolve'
+import { decoObject, decoString } from '@spare/logger'
+import { readFileSync }           from 'fs'
+import { fileInfo }               from 'rollup-plugin-fileinfo'
 
-const { name, dependencies, exports } = require(process.cwd() + '/package.json')
+const packageJson = readFileSync(process.cwd() + '/package.json', { encoding: 'utf-8' })
+const { name, dependencies, exports } = JSON.parse(packageJson)
 
-// console.log(ros('Executing'), name, process.cwd())
-// console.log(ros('Dependencies'), decoObject(dependencies || {}, { bracket: true }))
+console.log('Executing', name, decoString(process.cwd()))
+console.log('Dependencies', decoObject(dependencies || {}))
 
 export default {
   input: 'index.js',
@@ -18,7 +20,6 @@ export default {
   ],
   plugins: [
     nodeResolve({ preferBuiltins: true }),
-    // commonjs({ include: /node_modules/ }),
     babel({
       babelrc: false,
       comments: true,
@@ -33,7 +34,7 @@ export default {
       ]
     }),
     json(),
-    // fileInfo(),
+    fileInfo(),
   ]
 }
 
