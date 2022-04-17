@@ -1,4 +1,4 @@
-import { says }                       from '@palett/says'
+import { says }                       from '@spare/logger'
 import { decoCrostab, decoSamples }   from '@spare/logger'
 import { strategies }                 from '@valjoux/strategies'
 import { CharCodeToHalf, fullToHalf } from '../../src/fullToHalf'

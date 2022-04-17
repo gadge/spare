@@ -1,5 +1,5 @@
 import { makeEmbedded }                           from '@foba/util'
-import { says }                                   from '@palett/says'
+import { says }                                   from '@spare/logger'
 import { DecoCrostab, decoCrostab }               from '@spare/logger'
 import { candidates }                             from '@spare/splitter/test/alpha/candidates'
 import { strategies }                             from '@valjoux/strategies'

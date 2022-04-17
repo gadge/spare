@@ -1,4 +1,4 @@
-import { says }              from '@palett/says'
+import { says }              from '@spare/logger'
 import { ComplexCollection } from '../../assets/ComboCollection'
 
 export const paramNames = (fn) => {

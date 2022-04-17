@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.9.0",
-    "@palett/fluo-matrix": "^0.9.0",
-    "@palett/fluo-vector": "^0.9.0",
+    "@palett/enum-colorant-modes": "^0.9.1",
+    "@palett/fluo-matrix": "^0.9.1",
+    "@palett/fluo-vector": "^0.9.1",
     "@spare/deco-config": "^0.13.4",
     "@spare/deco-flat": "^0.13.4",
     "@spare/enum-chars": "^0.13.4",

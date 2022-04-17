@@ -1,5 +1,5 @@
 import { CrosTab }                  from '@analys/crostab'
-import { says }                     from '@palett/says'
+import { says }                     from '@spare/logger'
 import { delogger }                 from '@spare/deco'
 import { SP }                       from '@spare/enum-full-angle-chars'
 import { decoCrostab, decoSamples } from '@spare/logger'

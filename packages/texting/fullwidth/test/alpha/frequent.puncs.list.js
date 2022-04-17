@@ -1,5 +1,5 @@
 import { range }                     from '@vect/vector-init'
-import { says }                      from '@palett/says'
+import { says }                      from '@spare/logger'
 import { Xr }                        from '@spare/logger'
 import { codeToHex, toChar, toCode } from '../utils/toChar'
 

@@ -1,5 +1,5 @@
-import { FRESH, PLANET, SUBTLE } from '@palett/presets'
+import { ENSIGN, FRESH, SUBTLE } from '@palett/presets'
 
 export const NUMERIC_PRESET = FRESH
-export const LITERAL_PRESET = PLANET
+export const LITERAL_PRESET = ENSIGN
 export const HEADING_PRESET = SUBTLE
