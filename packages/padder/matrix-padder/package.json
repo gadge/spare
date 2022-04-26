@@ -1,6 +1,6 @@
 {
   "name": "@spare/matrix-padder",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.5.0",
-    "@spare/lange": "^0.13.5",
+    "@spare/lange": "^0.13.6",
     "@texting/padder": "^0.1.0",
     "@vect/columns-stat": "^0.5.8",
     "@vect/matrix-zipper": "^0.5.8"

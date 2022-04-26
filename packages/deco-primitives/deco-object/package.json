@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-object",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,13 +18,13 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@spare/deco-config": "^0.13.5",
-    "@spare/deco-entries": "^0.13.5",
-    "@spare/deco-flat": "^0.13.5",
-    "@spare/enum-brackets": "^0.13.5",
-    "@spare/enum-chars": "^0.13.5",
-    "@spare/liner": "^0.13.5",
-    "@spare/preset-deco": "^0.13.5"
+    "@spare/deco-config": "^0.13.6",
+    "@spare/deco-entries": "^0.13.6",
+    "@spare/deco-flat": "^0.13.6",
+    "@spare/enum-brackets": "^0.13.6",
+    "@spare/enum-chars": "^0.13.6",
+    "@spare/liner": "^0.13.6",
+    "@spare/preset-deco": "^0.13.6"
   },
   "repository": {
     "type": "git",

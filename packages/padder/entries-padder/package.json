@@ -1,6 +1,6 @@
 {
   "name": "@spare/entries-padder",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@spare/lange": "^0.13.5",
+    "@spare/lange": "^0.13.6",
     "@texting/padder": "^0.1.0",
     "@vect/entries-indicator": "^0.5.8",
     "@vect/entries-mapper": "^0.5.8",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-config",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@palett/fluo": "^0.9.2",
-    "@spare/preset-deco": "^0.13.5",
+    "@spare/preset-deco": "^0.13.6",
     "@typen/nullish": "^0.1.17",
     "@vect/object-update": "^0.5.8"
   },

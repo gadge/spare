@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-table",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -21,13 +21,13 @@
     "@palett/enum-colorant-modes": "^0.9.2",
     "@palett/fluo-matrix": "^0.9.2",
     "@palett/fluo-vector": "^0.9.2",
-    "@spare/deco-config": "^0.13.5",
-    "@spare/deco-flat": "^0.13.5",
-    "@spare/enum-chars": "^0.13.5",
-    "@spare/liner": "^0.13.5",
-    "@spare/preset-deco": "^0.13.5",
-    "@spare/table-margin": "^0.13.5",
-    "@spare/table-padder": "^0.13.5",
+    "@spare/deco-config": "^0.13.6",
+    "@spare/deco-flat": "^0.13.6",
+    "@spare/enum-chars": "^0.13.6",
+    "@spare/liner": "^0.13.6",
+    "@spare/preset-deco": "^0.13.6",
+    "@spare/table-margin": "^0.13.6",
+    "@spare/table-padder": "^0.13.6",
     "@vect/enum-matrix-directions": "^0.5.8",
     "@vect/matrix": "^0.5.8",
     "@vect/vector-merge": "^0.5.8"
