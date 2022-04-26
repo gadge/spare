@@ -1,6 +1,6 @@
 {
   "name": "@spare/entries-margin",
-  "version": "0.13.6",
+  "version": "0.13.7",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/entrigin.test.js"
   },
   "dependencies": {
-    "@spare/util": "^0.13.6",
-    "@spare/vector-margin": "^0.13.6",
+    "@spare/util": "^0.13.7",
+    "@spare/vector-margin": "^0.13.7",
     "@vect/entries-margin": "^0.5.12"
   },
   "repository": {

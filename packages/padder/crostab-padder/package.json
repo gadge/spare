@@ -1,6 +1,6 @@
 {
   "name": "@spare/crostab-padder",
-  "version": "0.13.6",
+  "version": "0.13.7",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/crostab-padder.test.js"
   },
   "dependencies": {
-    "@spare/field-padder": "^0.13.6",
-    "@spare/table-padder": "^0.13.6",
+    "@spare/field-padder": "^0.13.7",
+    "@spare/table-padder": "^0.13.7",
     "@vect/vector-merge": "^0.5.12"
   },
   "repository": {
