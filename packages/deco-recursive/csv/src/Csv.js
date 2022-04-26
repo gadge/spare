@@ -32,13 +32,12 @@ export class Csv {
     if (!height || !width || !labelWidth) return AEU
     table = tableMargin(table, option) // use: top, left, bottom ,right, read, headRead
     let { head, rule, rows } = tablePadder(table, option)// use: ansi, full
-    mutate(rows, text => text.includes(',') ? `"${ text }"` : text)
+    mutate(rows, text => text.includes(',') ? `"${text}"` : text)
     return [
       head.join(',') + '',
-      ...rows.map(row =>
-        row.join(',') + ''
-      )
-    ] |> Liner({ delim: LF, level: option.level })
+      ...rows
+        .map(row => row.join(',') + '')
+    ].join(LF)
   }
 }
 

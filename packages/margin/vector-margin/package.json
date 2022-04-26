@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/vectogin.test.js"
   },
   "dependencies": {
-    "@ject/oneself": "^0.0.16",
+    "@ject/oneself": "^0.0.17",
     "@spare/util": "^0.13.6",
-    "@vect/vector-margin": "^0.5.8"
+    "@vect/vector-margin": "^0.5.12"
   },
   "repository": {
     "type": "git",

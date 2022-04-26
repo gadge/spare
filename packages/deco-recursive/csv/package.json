@@ -22,7 +22,7 @@
     "@spare/liner": "^0.13.6",
     "@spare/table-margin": "^0.13.6",
     "@spare/table-padder": "^0.13.6",
-    "@vect/matrix": "^0.5.8"
+    "@vect/matrix": "^0.5.12"
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,9 @@
 import { flop, rand }                                     from '@aryth/rand'
-import { randMatrix, simpleObjects }                      from '@foba/foo'
+import { progressiveRandomMatrix }                        from '@foba/matrix-number'
 import { NumberObjectCollection, StringObjectCollection } from '@foba/object'
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
 
-const randNumMatrix = randMatrix({ h: 3, w: 8 })
+const randNumMatrix = progressiveRandomMatrix(3, 8)
 
 export const Basics = {
   null: null,
@@ -23,11 +23,11 @@ export const Vectors = {
 }
 
 export const Matrices = {
-  inno_row: [randNumMatrix[0]],
-  inno_column: randNumMatrix.map(([x]) => [x]),
+  inno_row: [ randNumMatrix[0] ],
+  inno_column: randNumMatrix.map(([ x ]) => [ x ]),
   inno_matrix: randNumMatrix,
-  void_matrix: [[]],
-  nest_matrix: [[[[[[[[[]]]]]]]]],
+  void_matrix: [ [] ],
+  nest_matrix: [ [ [ [ [ [ [ [ [] ] ] ] ] ] ] ] ],
   inno_entries: (Object.entries(StringObjectCollection.flopShuffle({}))),
 }
 
@@ -44,12 +44,12 @@ export const Objects = {
   },
   json: {
     foo: NumberVectorCollection.flopShuffle({}),
-    bar: simpleObjects(),
-    kha: [[
+    bar: { foo: 1, bar: 2 },
+    kha: [ [
       NumberVectorCollection.flopShuffle({}),
       NumberVectorCollection.flopShuffle({}),
       NumberVectorCollection.flopShuffle({})
-    ]],
+    ] ],
   }
 }
 
