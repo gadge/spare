@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.9.1",
-    "@palett/fluo-matrix": "^0.9.1",
-    "@palett/fluo-vector": "^0.9.1",
+    "@palett/enum-colorant-modes": "^0.9.2",
+    "@palett/fluo-matrix": "^0.9.2",
+    "@palett/fluo-vector": "^0.9.2",
     "@spare/deco-config": "^0.13.5",
     "@spare/deco-flat": "^0.13.5",
     "@spare/enum-chars": "^0.13.5",
@@ -28,9 +28,9 @@
     "@spare/preset-deco": "^0.13.5",
     "@spare/table-margin": "^0.13.5",
     "@spare/table-padder": "^0.13.5",
-    "@vect/enum-matrix-directions": "^0.5.3",
-    "@vect/matrix": "^0.5.3",
-    "@vect/vector-merge": "^0.5.3"
+    "@vect/enum-matrix-directions": "^0.5.8",
+    "@vect/matrix": "^0.5.8",
+    "@vect/vector-merge": "^0.5.8"
   },
   "repository": {
     "type": "git",

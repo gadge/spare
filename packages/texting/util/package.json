@@ -23,8 +23,8 @@
     "@spare/lange": "^0.13.5",
     "@typen/enum-data-types": "^0.1.17",
     "@typen/num-strict": "^0.1.17",
-    "@vect/matrix": "^0.5.3",
-    "@vect/vector": "^0.5.3"
+    "@vect/matrix": "^0.5.8",
+    "@vect/vector": "^0.5.8"
   },
   "repository": {
     "type": "git",

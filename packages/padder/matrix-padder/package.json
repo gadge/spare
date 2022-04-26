@@ -18,11 +18,11 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.4.10",
+    "@aryth/comparer": "^0.5.0",
     "@spare/lange": "^0.13.5",
-    "@texting/padder": "^0.0.13",
-    "@vect/columns-stat": "^0.5.3",
-    "@vect/matrix-zipper": "^0.5.3"
+    "@texting/padder": "^0.1.0",
+    "@vect/columns-stat": "^0.5.8",
+    "@vect/matrix-zipper": "^0.5.8"
   },
   "repository": {
     "type": "git",

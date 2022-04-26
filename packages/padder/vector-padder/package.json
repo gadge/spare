@@ -19,10 +19,10 @@
   },
   "dependencies": {
     "@spare/lange": "^0.13.5",
-    "@texting/padder": "^0.0.13",
-    "@vect/vector-indicator": "^0.5.3",
-    "@vect/vector-mapper": "^0.5.3",
-    "@vect/vector-zipper": "^0.5.3"
+    "@texting/padder": "^0.1.0",
+    "@vect/vector-indicator": "^0.5.8",
+    "@vect/vector-mapper": "^0.5.8",
+    "@vect/vector-zipper": "^0.5.8"
   },
   "repository": {
     "type": "git",

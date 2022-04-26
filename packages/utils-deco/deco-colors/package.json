@@ -18,11 +18,11 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.9.1",
-    "@palett/convert": "^0.9.1",
-    "@palett/dye": "^0.9.1",
+    "@palett/cards": "^0.9.2",
+    "@palett/convert": "^0.9.2",
+    "@palett/dye": "^0.9.2",
     "@spare/preset-deco": "^0.13.5",
-    "@vect/object-mapper": "^0.5.3"
+    "@vect/object-mapper": "^0.5.8"
   },
   "repository": {
     "type": "git",

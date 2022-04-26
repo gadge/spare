@@ -18,12 +18,12 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@analys/enum-mutabilities": "^0.5.6",
-    "@aryth/comparer": "^0.4.10",
-    "@palett/fluo": "^0.9.1",
-    "@palett/fluo-entries": "^0.9.1",
-    "@palett/fluo-vector": "^0.9.1",
-    "@palett/presets": "^0.9.1",
+    "@analys/enum-mutabilities": "^0.5.12",
+    "@aryth/comparer": "^0.5.0",
+    "@palett/fluo": "^0.9.2",
+    "@palett/fluo-entries": "^0.9.2",
+    "@palett/fluo-vector": "^0.9.2",
+    "@palett/presets": "^0.9.2",
     "@spare/bracket": "^0.13.5",
     "@spare/deco-colors": "^0.13.5",
     "@spare/deco-config": "^0.13.5",
@@ -43,9 +43,9 @@
     "@typen/typ": "^0.1.17",
     "@valjoux/format-date": "^0.3.10",
     "@valjoux/format-date-time": "^0.3.10",
-    "@vect/column-mapper": "^0.5.3",
-    "@vect/entries-mapper": "^0.5.3",
-    "@vect/vector-mapper": "^0.5.3"
+    "@vect/column-mapper": "^0.5.8",
+    "@vect/entries-mapper": "^0.5.8",
+    "@vect/vector-mapper": "^0.5.8"
   },
   "repository": {
     "type": "git",
