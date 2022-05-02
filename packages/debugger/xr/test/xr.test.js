@@ -1,10 +1,13 @@
 import { deco, logger, says } from '@spare/logger'
-import { xr }                 from '../src/xr.js'
+import { $, xr }              from '../index'
 
-says['historian'](xr('william shakespeare')
-  .tragedies('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet')
-  .comedies(null))
 
-says['el primero'](xr().timestamp(new Date()).todo(deco([ 1, 2, 3 ])))
+xr('william shakespeare').tragedies('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet').comedies(null) |> says['historian']
 
-logger(xr('leo').br('tolstoy'))
+xr().timestamp(new Date()).todo(deco([ 1, 2, 3 ])) |> says['el primero']
+
+xr('>> leo').br('tolstoy').p(1, 2, 3) |> logger
+
+$['>> LeoTolstoy']('Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes') |> logger
+
+$.earth(90).saturn(90).neptune(90) |> logger
