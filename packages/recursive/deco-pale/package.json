@@ -33,8 +33,8 @@
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-strict": "^0.1.19",
     "@typen/typ": "^0.1.19",
-    "@valjoux/format-date": "^0.3.11",
-    "@valjoux/format-time": "^0.3.11",
+    "@valjoux/format-date": "^0.3.12",
+    "@valjoux/format-time": "^0.3.12",
     "@vect/entries-mapper": "^0.5.22"
   },
   "repository": {
