@@ -1,4 +1,4 @@
-import { DecoConfig }             from '@spare/deco-config'
+import { DecoConfig } from '@spare/deco-config'
 import { DA, SP }                 from '@texting/enum-chars'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { splitCamel, splitSnake } from '@texting/splitter'

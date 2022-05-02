@@ -29,7 +29,7 @@
     "@spare/enum-brackets": "^0.13.7",
     "@spare/preset-verse": "^0.13.7",
     "@spare/quote": "^0.13.7",
-    "@texting/liner": "^0.1.1"
+    "@texting/liner": "^0.1.2"
   },
   "repository": {
     "type": "git",

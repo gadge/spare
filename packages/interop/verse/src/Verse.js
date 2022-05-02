@@ -1,17 +1,17 @@
 import { matchSlice as matchSliceCrostab } from '@analys/crostab-init'
-import { matchSlice as matchSliceTable } from '@analys/table-init'
-import { brace, bracket as doBracket }   from '@spare/bracket'
-import { _decoEntries }                  from '@spare/deco-entries'
-import { _decoMatrix }                   from '@spare/deco-matrix'
-import { _decoObject }  from '@spare/deco-object'
-import { _decoSamples } from 'packages/interop/deco-samples'
-import { _decoVector }  from '@spare/deco-vector'
-import { BRACE, BRACKET }                from '@spare/enum-brackets'
-import { joinLines, liner }              from '@texting/liner'
+import { matchSlice as matchSliceTable }   from '@analys/table-init'
+import { brace, bracket as doBracket }     from '@spare/bracket'
+import { _decoEntries }                    from '@spare/deco-entries'
+import { _decoMatrix }                     from '@spare/deco-matrix'
+import { _decoObject }                     from '@spare/deco-object'
+import { _decoSamples }                    from '@spare/deco-samples'
+import { _decoVector }                     from '@spare/deco-vector'
+import { BRACE, BRACKET }                  from '@spare/enum-brackets'
+import { joinLines, liner } from '@texting/liner'
 import {
   presetCrostab, presetEntries, presetEntriesAsObject, presetMatrix, presetObject, presetSamples, presetTable,
   presetVector
-}                                        from '@spare/preset-verse'
+}                           from '@spare/preset-verse'
 
 const SIDE = 'side', HEAD = 'head', ROWS = 'rows'
 
@@ -50,9 +50,9 @@ export class Verse {
    * @return {string}
    */
   static entries(entries, p = {}) {
-    const [preset, bracket] = (p?.objectify)
-      ? [presetEntriesAsObject(p), BRACE]
-      : [presetEntries(p), BRACKET]
+    const [ preset, bracket ] = (p?.objectify)
+      ? [ presetEntriesAsObject(p), BRACE ]
+      : [ presetEntries(p), BRACKET ]
     const { delim, level } = preset
     const lines = _decoEntries.call(preset, entries)
     return liner(lines, { bracket, delim, level })
@@ -134,7 +134,7 @@ export class Verse {
     p = presetCrostab(p)
     const { side, head, rows } = crostab |> matchSliceCrostab
     const { delim, level, keyRead } = p
-    const [s, h, r] = keyRead ? [SIDE, HEAD, ROWS].map(keyRead) : [SIDE, HEAD, ROWS]
+    const [ s, h, r ] = keyRead ? [ SIDE, HEAD, ROWS ].map(keyRead) : [ SIDE, HEAD, ROWS ]
     const lines = [
       s + ': ' + Verse.vector(side, p),
       h + ': ' + Verse.vector(head, p),
@@ -163,7 +163,7 @@ export class Verse {
     const { head, rows } = table |> matchSliceTable
     // if (!head?.length) return brace()
     const { delim, level, keyRead } = p
-    const [h, r] = keyRead ? [HEAD, ROWS].map(keyRead) : [HEAD, ROWS]
+    const [ h, r ] = keyRead ? [ HEAD, ROWS ].map(keyRead) : [ HEAD, ROWS ]
     const lines = [
       h + ': ' + Verse.vector(head, p),
       r + ': ' + Verse.matrix(rows, p)

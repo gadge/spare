@@ -1,8 +1,8 @@
 import { babel }                  from '@rollup/plugin-babel'
 import json                       from '@rollup/plugin-json'
 import { nodeResolve }            from '@rollup/plugin-node-resolve'
-import { decoObject, decoString } from '@spare/logger'
 import { readFileSync }           from 'fs'
+import { decoObject, decoString } from '@spare/logger'
 import { fileInfo }               from 'rollup-plugin-fileinfo'
 
 const packageJson = readFileSync(process.cwd() + '/package.json', { encoding: 'utf-8' })

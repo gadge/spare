@@ -1,8 +1,9 @@
+import { Callable }         from '@ject/callable'
 import { bracket, parenth } from '@spare/bracket'
 import { deco }             from '@spare/deco-string'
 import { SP }               from '@spare/enum-chars'
 import { FUN, STR }         from '@typen/enum-data-types'
-import { Callable }         from '../util/Callable'
+// import { Callable }         from '../util/Callable'
 import { logBy }            from './logBy'
 
 const NAME = 'name'
@@ -35,11 +36,12 @@ export class Pal extends Callable {
    */
   static build(title, options) { return new Pal(title, options) }
   get asc() { return this.ind++, this }
-  get desc() { return ( this.ind && this.ind-- ), this }
+  get desc() { return (this.ind && this.ind--), this }
 
   render(message) { return deco(String(message), this.decoConf) }
   p(words) { return this.des += SP + words, this }
-  br(words) { return this.des += SP + parenth(words), this }
+  br(words) { return this.des += SP + bracket(words), this }
+  pr(words) { return this.des += SP + parenth(words), this }
   to(someone) {
     if (someone instanceof Pal) someone = someone.name
     this.des += ' -> ' + bracket(someone)
@@ -57,6 +59,4 @@ export class Pal extends Callable {
     if (typeof logger === FUN) { return this.log = logger, this }
     return this
   }
-
-
 }

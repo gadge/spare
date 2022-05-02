@@ -1,4 +1,4 @@
-import { DecoConfig }             from '@spare/deco-config'
+import { DecoConfig } from '@spare/deco-config'
 import { LF }                     from '@spare/enum-chars'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { CONFIG }                 from './resources/config'

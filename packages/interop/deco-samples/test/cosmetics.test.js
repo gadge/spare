@@ -1,10 +1,10 @@
 import { tableToSamples }       from '@analys/convert'
 import { TableCollection }      from '@foba/table'
 import { FRESH, METRO, SUBTLE } from '@palett/presets'
-import { deco }         from '@spare/deco'
-import { BRACKET }      from '@spare/enum-brackets'
-import { logger }       from '@spare/logger'
-import { _decoSamples } from '../src/_decoSamples'
+import { deco }                 from '@spare/deco'
+import { BRACKET }              from '@spare/enum-brackets'
+import { logger }               from '@spare/logger'
+import { _decoSamples }         from '../src/_decoSamples'
 
 const samples = TableCollection.AeroEngineSpecs |> tableToSamples
 _decoSamples.call({
@@ -13,6 +13,6 @@ _decoSamples.call({
   left: 3,
   right: 1,
   indexed: true,
-  presets: [FRESH, METRO, SUBTLE],
+  presets: [ FRESH, METRO, SUBTLE ],
   bracket: BRACKET
 }, samples) |> deco |> logger

@@ -41,8 +41,8 @@ export function prettyNode(node, level = 0, indent) {
     if (pt === ARRAY) return level >= depth ? '[array]' : deVe.call(this, node.slice(), level) |> BRK[level & 7]
     if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> BRC[level & 7]
     if (pt === DATE) return level >= depth ? decoDate(node) : decoDateTime(node)
-    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [...node.entries()], level) |> BRK[level & 7]
-    if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [...node], level)}]`
+    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [ ...node.entries() ], level) |> BRK[level & 7]
+    if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [ ...node ], level)}]`
     return `${node}`
   }
   if (t === BOO) return PAL.BOO(node)
@@ -59,8 +59,8 @@ export function plainNode(node, level = 0, indent) {
     if (pt === ARRAY) return level >= depth ? '[array]' : deVe.call(this, node.slice(), level) |> bracket
     if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> brace
     if (pt === DATE) return level >= depth ? formatDate(node) : formatDateTime(node)
-    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [...node.entries()], level) |> bracket
-    if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [...node], level)}]`
+    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [ ...node.entries() ], level) |> bracket
+    if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [ ...node ], level)}]`
     return `${node}`
   }
   return node

@@ -1,4 +1,4 @@
-import { DecoConfig }             from '@spare/deco-config'
+import { DecoConfig } from '@spare/deco-config'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { CONFIG }                 from './resources/config'
 import { _decoMatrix }            from './src/_decoMatrix'

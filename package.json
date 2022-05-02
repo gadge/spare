@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/*/*"
+    "packages/*/*",
+    "utils/*/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
@@ -20,10 +21,10 @@
     "@analys/crostab": "^0.6.1",
     "@analys/enum-mutabilities": "^0.6.1",
     "@analys/table": "^0.6.1",
-    "@aryth/bound-vector": "^0.5.3",
-    "@aryth/comparer": "^0.5.3",
-    "@aryth/rand": "^0.5.3",
-    "@aryth/rank-vector": "^0.5.3",
+    "@aryth/bound-vector": "^0.5.6",
+    "@aryth/comparer": "^0.5.6",
+    "@aryth/rand": "^0.5.6",
+    "@aryth/rank-vector": "^0.5.6",
     "@babel/core": "^7.17.10",
     "@babel/plugin-external-helpers": "^7.16.7",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
@@ -54,9 +55,9 @@
     "@foba/vector-number": "^0.5.1",
     "@foba/vector-string": "^0.5.1",
     "@ject/pipe": "^0.0.17",
-    "@palett/enum-font-effects": "^0.9.3",
-    "@palett/presets": "^0.9.3",
-    "@palett/says": "^0.9.3",
+    "@palett/enum-font-effects": "^0.9.6",
+    "@palett/presets": "^0.9.6",
+    "@palett/says": "^0.9.6",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",

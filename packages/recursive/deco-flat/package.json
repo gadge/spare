@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.9.3",
-    "@palett/fluo-entries": "^0.9.3",
-    "@palett/fluo-vector": "^0.9.3",
-    "@palett/presets": "^0.9.3",
+    "@palett/enum-colorant-modes": "^0.9.6",
+    "@palett/fluo-entries": "^0.9.6",
+    "@palett/fluo-vector": "^0.9.6",
+    "@palett/presets": "^0.9.6",
     "@spare/deco-colors": "^0.13.7",
     "@spare/deco-config": "^0.13.7",
     "@spare/deco-date": "^0.13.7",

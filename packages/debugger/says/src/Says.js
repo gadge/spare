@@ -16,7 +16,7 @@ export class Says {
     return new Proxy(this, {
       /** @returns {Pal|function} */
       get(t, p) {
-        if (p in t) return typeof ( p = t[p] ) === FUN ? p.bind(t) : p
+        if (p in t) return typeof (p = t[p]) === FUN ? p.bind(t) : p
         if (p in t.#roster) return t.#roster[p]
         return t.aboard(p, t.#pool.next().value)
       }
@@ -30,10 +30,9 @@ export class Says {
     return this.#roster[name] = Pal.build(decoName, { decoConf })
   }
 
-  roster(name) {
-    if (name) return ( this.#roster[name] ?? this.aboard(name) ).name
-    return mapper(this.#roster, ({ name }) => name)
-  }
+  roster(name) { return name?.length ? (this.#roster[name] ?? this.aboard(name)).name : null }
+
+  rosters() { return mapper(this.#roster, ({ name }) => name) }
 
   /**
    *
