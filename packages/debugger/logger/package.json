@@ -1,6 +1,6 @@
 {
   "name": "@spare/logger",
-  "version": "0.13.8",
+  "version": "0.13.9",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,20 +18,20 @@
     "test": "node -r @babel/register test/logger.test.js"
   },
   "dependencies": {
-    "@spare/deco": "^0.13.8",
-    "@spare/deco-crostab": "^0.13.8",
-    "@spare/deco-entries": "^0.13.8",
-    "@spare/deco-flat": "^0.13.8",
-    "@spare/deco-func": "^0.13.8",
-    "@spare/deco-matrix": "^0.13.8",
-    "@spare/deco-object": "^0.13.8",
-    "@spare/deco-pale": "^0.13.8",
-    "@spare/deco-samples": "^0.13.8",
-    "@spare/deco-string": "^0.13.8",
-    "@spare/deco-table": "^0.13.8",
-    "@spare/deco-vector": "^0.13.8",
-    "@spare/says": "^0.13.8",
-    "@spare/xr": "^0.13.8",
+    "@spare/deco": "^0.13.9",
+    "@spare/deco-crostab": "^0.13.9",
+    "@spare/deco-entries": "^0.13.9",
+    "@spare/deco-flat": "^0.13.9",
+    "@spare/deco-func": "^0.13.9",
+    "@spare/deco-matrix": "^0.13.9",
+    "@spare/deco-object": "^0.13.9",
+    "@spare/deco-pale": "^0.13.9",
+    "@spare/deco-samples": "^0.13.9",
+    "@spare/deco-string": "^0.13.9",
+    "@spare/deco-table": "^0.13.9",
+    "@spare/deco-vector": "^0.13.9",
+    "@spare/says": "^0.13.9",
+    "@spare/xr": "^0.13.9",
     "@texting/enum-chars": "^0.1.2"
   },
   "repository": {

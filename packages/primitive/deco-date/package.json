@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-date",
-  "version": "0.13.8",
+  "version": "0.13.9",
   "description": "Colored stringify date",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@spare/deco-config": "^0.13.7",
-    "@spare/preset-deco": "^0.13.8",
+    "@spare/preset-deco": "^0.13.9",
     "@valjoux/timestamp-pretty": "^0.3.12"
   },
   "repository": {
