@@ -4,7 +4,6 @@ import { STR }    from '@typen/enum-data-types'
 
 export const tab = ind => SP.repeat(ind << 1)
 
-
 export const logBy = (text, thisArg) => {
   let { name, des, ind, log, att } = thisArg
   let signature = `${tab(ind)}[${name}]`
