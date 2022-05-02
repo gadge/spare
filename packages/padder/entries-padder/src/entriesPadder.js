@@ -1,20 +1,22 @@
-import { Lange }     from '@spare/lange'
+import { Lange }     from '@texting/lange'
 import { LPad, Pad } from '@texting/padder'
 import { maxBy }     from '@vect/entries-indicator'
 import { mapper }    from '@vect/entries-mapper'
 
+const DEFAULT_OPTIONS = {}
 /**
  *
  * @param {string[][]} entries
- * @param {boolean} [ansi]
- * @param {string} [fill]
+ * @param {object} options
+ * @param {boolean} [options.ansi]
+ * @param {string} [options.fill]
  * @returns {string[][]}
  */
-export const entriesPadder = (entries, { ansi, fill }) => {
-  const lange = Lange(ansi)
-  const [kwd, vwd] = maxBy(entries, lange, lange)
-  const pad = Pad({ ansi, fill }), lpad = LPad({ ansi, fill })
-  return mapper(entries, tx => lpad(tx, kwd), (tx, va) => pad(tx, vwd, va))
+export const entriesPadder = (entries, options = DEFAULT_OPTIONS) => {
+  const lange = Lange(options.ansi)
+  const [ kw, vw ] = maxBy(entries, lange, lange)
+  const lpad = LPad(options), pad = Pad(options)
+  return mapper(entries, k => lpad(k, kw), v => pad(v, vw))
 }
 
 // raw = raw || entries

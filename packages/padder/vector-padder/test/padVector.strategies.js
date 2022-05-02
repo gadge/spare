@@ -1,7 +1,7 @@
 import { max }                       from '@aryth/comparer'
 import { makeEmbedded }              from '@foba/util'
 import { StringVectorCollection }    from '@foba/vector'
-import { Lange }                     from '@spare/lange'
+import { Lange }                     from '@texting/lange'
 import { decoCrostab, logger, says } from '@spare/logger'
 import { Pad }                       from '@texting/padder'
 import { strategies }                from '@valjoux/strategies'

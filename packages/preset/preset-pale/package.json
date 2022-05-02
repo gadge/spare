@@ -24,7 +24,7 @@
     "@spare/enum-brackets": "^0.13.7",
     "@spare/enum-chars": "^0.13.7",
     "@spare/quote": "^0.13.7",
-    "@vect/enum-matrix-directions": "^0.5.12"
+    "@vect/enum-matrix-directions": "^0.5.22"
   },
   "repository": {
     "type": "git",

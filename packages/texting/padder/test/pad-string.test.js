@@ -1,4 +1,4 @@
-import { lange }  from '@spare/lange'
+import { lange }  from '@texting/lange'
 import { logger } from '@spare/logger'
 import { xr }   from '@spare/xr'
 import { RPad } from '../utils/RPad'

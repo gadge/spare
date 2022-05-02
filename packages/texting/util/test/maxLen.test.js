@@ -1,7 +1,7 @@
 // import { max } from '../src/vectorStringProperties'
 import { simpleVectors } from '@foba/foo'
 import { makeEmbedded }  from '@foba/util'
-import { lange }         from '@spare/lange'
+import { lange }         from '@texting/lange'
 import { mapper }        from '@vect/object-mapper'
 import { Chrono }        from 'elprimero'
 import { CrosTabX }      from 'xbrief'

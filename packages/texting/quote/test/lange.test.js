@@ -1,4 +1,4 @@
-import { hasAnsi } from '@spare/lange'
+import { hasAnsi } from '@texting/lange'
 import { ASTRAL }  from '@spare/regex-charset'
 import { quote }   from '../index'
 

@@ -22,12 +22,12 @@
     "@spare/enum-chars": "^0.13.7",
     "@spare/enum-full-angle-chars": "^0.13.7",
     "@spare/fullwidth": "^0.13.7",
-    "@spare/lange": "^0.13.7",
     "@texting/enum-chars": "^0.1.1",
     "@texting/enum-chars-fullwidth": "^0.1.1",
+    "@texting/lange": "^0.1.1",
     "@texting/padder": "^0.1.1",
-    "@vect/vector-indicator": "^0.5.12",
-    "@vect/vector-mapper": "^0.5.12"
+    "@vect/vector-indicator": "^0.5.22",
+    "@vect/vector-mapper": "^0.5.22"
   },
   "repository": {
     "type": "git",

@@ -20,11 +20,11 @@
   "dependencies": {
     "@spare/enum-chars": "^0.13.7",
     "@spare/enum-full-angle-chars": "^0.13.7",
-    "@spare/lange": "^0.13.7",
+    "@texting/lange": "^0.1.1",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/num-strict": "^0.1.19",
-    "@vect/matrix": "^0.5.12",
-    "@vect/vector": "^0.5.12"
+    "@vect/matrix": "^0.5.22",
+    "@vect/vector": "^0.5.22"
   },
   "repository": {
     "type": "git",
