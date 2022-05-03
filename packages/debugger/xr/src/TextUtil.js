@@ -1,6 +1,8 @@
-import { min }                from '@aryth/comparer'
-import { bracket, parenth }   from '@texting/bracket'
-import { clearAnsi, hasAnsi } from '@texting/charset-ansi'
+import { min }                                    from '@aryth/comparer'
+import { bracket, parenth }                       from '@texting/bracket'
+import { clearAnsi, hasAnsi }                     from '@texting/charset-ansi'
+import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
+import { Record }                                 from './Record'
 
 export const separate = text => {
   const pos = min(//.exec(text)?.index, /\b\w/.exec(text)?.index)
@@ -14,3 +16,5 @@ export class Keep {
   /** @type {function} */ static bracket = Keep.make(bracket)
   /** @type {function} */ static parenth = Keep.make(parenth)
 }
+
+

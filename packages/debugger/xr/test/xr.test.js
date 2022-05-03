@@ -1,5 +1,5 @@
-import { deco, logger, says, } from '@spare/logger'
-import { $, xr }               from '../index'
+import { deco, logger } from '@spare/logger'
+import { $, says, xr }  from '../index'
 
 
 xr('william shakespeare')['tragedies']('Macbeth', 'King Lear', 'Hamlet', 'Romeo and Juliet')['comedies'](null) |> says['historian']
@@ -12,7 +12,7 @@ $['>> LeoTolstoy']('Well, Prince, so Genoa and Lucca are now just family estates
 
 $.earth(90).saturn(90).neptune(90).br('a').br('b') |> logger
 
-$['foo']('bar').br('a').br('b').log('what if');
+$['foo']('bar').br('a').br('b').log('what if')
 
 // ('what if 2') |> $['foo']('bar').br('a').br('b')
 // cr('key')('what if')

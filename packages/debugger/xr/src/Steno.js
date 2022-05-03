@@ -1,9 +1,10 @@
-import { SP }             from '@texting/enum-chars'
-import { DEF, NUM, STR }  from '@typen/enum-data-types'
-import { valid }          from '@typen/nullish'
-import { ProxyUtil }      from './ProxyUtil'
-import { Record }         from './Record'
-import { Keep, separate } from './TextUtil'
+import { SP }                                               from '@texting/enum-chars'
+import { BIG, BOO, DEF, FUN, NUL, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
+import { valid }                                            from '@typen/nullish'
+import { typ }                                              from '@typen/typ'
+import { ProxyUtil }                                        from './ProxyUtil'
+import { Record }                                           from './Record'
+import { Keep, separate }                                   from './TextUtil'
 
 
 /**
@@ -25,7 +26,7 @@ export class Steno extends Function {
         return steno.proxy = proxy, ProxyUtil.getMethodOrNull(steno, key) ?? Steno.prototype.rec.bind(steno, key)
       },
       apply(steno, thisArg, args) {
-        return console.log(steno.toString(), ...args), steno.proxy
+        return console.log(steno.toString(), args.map(x => steno.render(x)).join(SP)), steno.proxy
       },
     })
   }
@@ -74,8 +75,25 @@ export class Steno extends Function {
         ? this.valFn(val) : ''
   }
 
+  render(x) {
+    const type = typeof x
+    if (x === null) return x
+    if (x === void 0) return x
+    if (type === STR) return x
+    if (type === OBJ) {
+      if (x instanceof Record) return this.renderRecord(x)
+      if (x instanceof Steno) return x.toString()
+    }
+    if (type === SYM) return x.description
+    // if (type === BOO) return x
+    // if (type === FUN) return x
+    // if (type === NUM) return x
+    // if (type === BIG) return x
+    return String(x)
+  }
+
   log(message) {
-    return console.log(this.toString() + SP + message), this.proxy
+    return console.log(this.toString() + SP + this.render(message)), this.proxy
   }
 
   toString() {
