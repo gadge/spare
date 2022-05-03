@@ -1,9 +1,9 @@
+import { min }                from '@aryth/comparer'
+import { bracket, parenth }   from '@texting/bracket'
 import { clearAnsi, hasAnsi } from '@texting/charset-ansi'
-import { parenth, bracket }   from '@texting/bracket'
 
 export const separate = text => {
-  const ms = /\b\w/.exec(text)
-  const pos = ms?.index
+  const pos = min(//.exec(text)?.index, /\b\w/.exec(text)?.index)
   return !pos ? [ null, text ] : [ text.slice(0, pos), text.slice(pos) ]
 }
 
