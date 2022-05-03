@@ -1,20 +1,27 @@
-import { min }                                    from '@aryth/comparer'
-import { bracket, parenth }                       from '@texting/bracket'
-import { clearAnsi, hasAnsi }                     from '@texting/charset-ansi'
-import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
-import { Record }                                 from './Record'
+import { min }                from '@aryth/comparer'
+import { bracket, parenth }   from '@texting/bracket'
+import { clearAnsi, hasAnsi } from '@texting/charset-ansi'
+import { camelToSnake } from '@texting/phrasing'
+import { Rosters }      from './singletons'
 
-export const separate = text => {
-  const pos = min(//.exec(text)?.index, /\b\w/.exec(text)?.index)
-  return !pos ? [ null, text ] : [ text.slice(0, pos), text.slice(pos) ]
+export function identify(tx) {
+  const pos = min(//.exec(tx)?.index, /\b\w/.exec(tx)?.index)
+  return !pos ? [ null, tx ] : [ tx.slice(0, pos), tx.slice(pos) ]
 }
 
-export const hasBr = tx => /^\s*[(\[{].*[)\]}]\s*$/.test(hasAnsi(tx) ? clearAnsi(tx) : tx)
+identify.body = tx => {
+  const pos = min(//.exec(tx)?.index, /\b\w/.exec(tx)?.index)
+  return !pos ? tx : tx.slice(pos)
+}
+
+export function hasBr(tx) { return /^\s*[(\[{].*[)\]}]\s*$/.test(hasAnsi(tx) ? clearAnsi(tx) : tx) }
+const ansiOrSnake = tx => hasAnsi(tx) ? tx : camelToSnake(tx)
 
 export class Keep {
   static make(fn) { return tx => hasBr(tx) ? tx : fn(tx) }
   /** @type {function} */ static bracket = Keep.make(bracket)
   /** @type {function} */ static parenth = Keep.make(parenth)
+  /** @type {function} */ static snakePrettyKey = Keep.make(x => x|> ansiOrSnake |> Rosters.main.get |> bracket)
 }
 
 

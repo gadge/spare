@@ -1,5 +1,5 @@
 import { logger }   from '@spare/logger'
-import { separate } from '../src/TextUtil'
+import { identify } from '../src/TextUtil'
 
 const candidates = [
   undefined,
@@ -11,7 +11,7 @@ const candidates = [
 ]
 
 for (let candidate of candidates) {
-  const [ a, b ] = separate(candidate);
+  const [ a, b ] = identify(candidate);
   `[candidate] (${candidate}) [a] (${a}) [b] (${b})` |> logger
 }
 

@@ -1,14 +1,14 @@
-import { SP }                                               from '@texting/enum-chars'
-import { BIG, BOO, DEF, FUN, NUL, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
-import { valid }                                            from '@typen/nullish'
-import { typ }                                              from '@typen/typ'
-import { ProxyUtil }                                        from './ProxyUtil'
-import { Record }                                           from './Record'
-import { Keep, separate }                                   from './TextUtil'
+import { LF }                      from '@spare/enum-chars'
+import { SP }                      from '@texting/enum-chars'
+import { DEF, NUM, OBJ, STR, SYM } from '@typen/enum-data-types'
+import { nullish, valid }          from '@typen/nullish'
+import { ProxyUtil }               from './ProxyUtil'
+import { Record }                  from './Record'
+import { identify, Keep }          from './TextUtil'
 
 
 /**
- * @type {Object<string,string>}
+ * @type {function}
  */
 export class Steno extends Function {
   /** @type {Proxy<Steno>} */ proxy
@@ -23,21 +23,23 @@ export class Steno extends Function {
     this.init(title, prefix, keyFn, valFn)
     return new Proxy(this, {
       get(steno, key, proxy) {
-        return steno.proxy = proxy, ProxyUtil.getMethodOrNull(steno, key) ?? Steno.prototype.rec.bind(steno, key)
+        // `>> [proxy] .get (${typeof key === SYM ? key.description : key}) (${+steno})`  |> console.log
+        return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Steno.prototype.rec.bind(steno, key)
       },
       apply(steno, thisArg, args) {
+        // `>> [proxy].call (${args}) (${+steno})`  |> console.log
         return console.log(steno.toString(), args.map(x => steno.render(x)).join(SP)), steno.proxy
       },
     })
   }
 
   static build(text, keyFn, valFn) {
-    const [ prefix, title ] = separate(text)
+    const [ prefix, title ] = identify(text)
     return new Steno(title, prefix, keyFn, valFn)
   }
 
   iso(text, keyFn, valFn) {
-    const [ prefix, title ] = separate(text)
+    const [ prefix, title ] = identify(text)
     this.init(title, prefix, keyFn, valFn)
     return this.proxy
   }
@@ -46,9 +48,15 @@ export class Steno extends Function {
     if (keyFn) this.keyFn = keyFn
     if (valFn) this.valFn = valFn
     if (this.list.length) this.list.length = 0
-    if (title?.length) this.list.push(this.keyFn(title))
+    if (title?.length) this.list.push(this.keyFn(identify.body(title)))
     this.prefix = prefix ?? ''
     return this.proxy
+  }
+
+  get indent() {
+    let ms, ph
+    if ((ms = this.prefix?.match(/\s+/)) && ([ ph ] = ms)) return ph
+    return null
   }
 
   asc() { return this.prefix = SP + SP + this.prefix, this.proxy }
@@ -76,20 +84,16 @@ export class Steno extends Function {
   }
 
   render(x) {
+    const { indent } = this
+    function prep(x) { return (x += '').includes(LF) ? (LF + x).replace(/\n/g, LF + indent) : x}
+    if (nullish(x)) return x
     const type = typeof x
-    if (x === null) return x
-    if (x === void 0) return x
-    if (type === STR) return x
+    if (type === STR) return prep(x)
     if (type === OBJ) {
-      if (x instanceof Record) return this.renderRecord(x)
+      if (x instanceof Record) return prep(this.renderRecord(x))
       if (x instanceof Steno) return x.toString()
     }
-    if (type === SYM) return x.description
-    // if (type === BOO) return x
-    // if (type === FUN) return x
-    // if (type === NUM) return x
-    // if (type === BIG) return x
-    return String(x)
+    if (type === SYM) return x.description // BOO / FUN / NUM / BIG
   }
 
   log(message) {
@@ -97,11 +101,7 @@ export class Steno extends Function {
   }
 
   toString() {
-    const list = this.list.map(x => {
-      if (x instanceof Record) return this.renderRecord(x)
-      if (typeof x === STR) return x
-      return x.toString()
-    }, this)
+    const list = this.list.map(x => this.render(x), this)
     let prefix = this.prefix ?? ''
     if (this.info instanceof Function) prefix += (/\s$/.test(prefix) ? '' : SP) + this.info()
     return prefix + (/\s$/.test(prefix) ? '' : SP) + list.join(SP)

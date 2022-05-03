@@ -29,3 +29,9 @@ export class Roster {
     return this.#roll[name] ?? this.aboard(name)
   }
 }
+
+// if (!name?.length) return console.log('>> [roster].get', parenth(name), '(null)', parenth(null)), null
+// if (hasAnsi(name)) return console.log('>> [roster].get', parenth(name), '(ansi)', parenth(name)), name
+// let result = this.#roll[name] ?? this.aboard(name)
+// return console.log('>> [roster].get', parenth(name), '(roll)', parenth(result)), result
+
