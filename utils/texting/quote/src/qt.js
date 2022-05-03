@@ -13,3 +13,8 @@ export const qt = (x, mode) => {
   return x
 }
 
+export const Qt = (mode) => {
+  if (mode === APOS || mode === QT) return quote
+  if (mode === DITTO || mode === DT) return ditto
+  return null
+}

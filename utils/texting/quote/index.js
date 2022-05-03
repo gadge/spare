@@ -1,5 +1,3 @@
-export { quote, ditto, qt, } from './src/qt'
-
-export { Qt } from './src/Qt'
+export { quote, ditto, qt, Qt } from './src/qt'
 
 export { tenseQuote } from './src/tenseQuote'

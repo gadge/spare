@@ -1,3 +1,2 @@
-export { parenth, bracket, brace, anglebr, br, } from './src/br'
+export { parenth, bracket, brace, anglebr, br, Br } from './src/br'
 
-export { Br } from './src/Br'
