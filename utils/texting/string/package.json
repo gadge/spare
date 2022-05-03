@@ -1,6 +1,6 @@
 {
   "name": "@spare/string",
-  "version": "0.13.13",
+  "version": "0.13.14",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.13.13",
-    "@spare/util": "^0.13.13"
+    "@spare/enum-chars": "^0.13.14",
+    "@spare/util": "^0.13.14"
   },
   "repository": {
     "type": "git",

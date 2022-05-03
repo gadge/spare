@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-pale",
-  "version": "0.13.13",
+  "version": "0.13.14",
   "description": "Preset for pale",
   "main": "dist/index.cjs",
   "exports": {
@@ -20,10 +20,10 @@
   "dependencies": {
     "@ject/pipe": "^0.0.17",
     "@palett/presets": "^0.9.6",
-    "@spare/deco-pale": "^0.13.13",
-    "@spare/enum-brackets": "^0.13.13",
-    "@spare/enum-chars": "^0.13.13",
-    "@spare/quote": "^0.13.13",
+    "@spare/deco-pale": "^0.13.14",
+    "@spare/enum-brackets": "^0.13.14",
+    "@spare/enum-chars": "^0.13.14",
+    "@spare/quote": "^0.13.14",
     "@vect/enum-matrix-directions": "^0.5.22"
   },
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-object",
-  "version": "0.13.13",
+  "version": "0.13.14",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,11 +19,11 @@
   },
   "dependencies": {
     "@spare/deco-config": "^0.13.7",
-    "@spare/deco-entries": "^0.13.13",
-    "@spare/deco-flat": "^0.13.13",
-    "@spare/enum-brackets": "^0.13.13",
-    "@spare/enum-chars": "^0.13.13",
-    "@spare/preset-deco": "^0.13.13",
+    "@spare/deco-entries": "^0.13.14",
+    "@spare/deco-flat": "^0.13.14",
+    "@spare/enum-brackets": "^0.13.14",
+    "@spare/enum-chars": "^0.13.14",
+    "@spare/preset-deco": "^0.13.14",
     "@texting/liner": "^0.1.2"
   },
   "repository": {
