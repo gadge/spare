@@ -7,22 +7,26 @@ const NUL = 'NUL'
 const OMIT = Symbol('omit')
 
 export class Record {
-  key
-  val
+  #k
+  #v
   constructor(key, val) {
-    this.key = key
-    this.val = val
+    this.#k = key
+    this.#v = val
   }
-  static build(key, val, keyFn, valFn) { return new Record(key, val, keyFn, valFn) }
-  static ofKey(key, fn) { return new Record(key, OMIT, fn, null) }
-  static ofVal(val, fn) { return new Record(OMIT, val, null, fn) }
+  static build(key, val) { return new Record(key, val) }
+  static ofKey(key) { return new Record(key, OMIT) }
+  static ofVal(val) { return new Record(OMIT, val) }
 
   static eval(value) {
-    if (value === OMIT) return ''
-    if (value === void 0) return UND
+    if (value === OMIT) return null
     if (value === null) return NUL
+    if (value === void 0) return UND
     return value
   }
-  toObject() { return { key: Record.eval(this.key), val: Record.eval(this.val) } }
-  toString() { return tapBy(SP, bracket(Record.eval(this.key)), parenth(Record.eval(this.val))) }
+
+  get key() { return Record.eval(this.#k) }
+  get val() { return Record.eval(this.#v) }
+
+  toObject() { return { key: this.key, val: this.val } }
+  toString() { return tapBy(SP, bracket(this.key), parenth(this.val)) }
 }
