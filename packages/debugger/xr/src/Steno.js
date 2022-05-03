@@ -56,7 +56,7 @@ export class Steno extends Function {
   get indent() {
     let ms, ph
     if ((ms = this.prefix?.match(/\s+/)) && ([ ph ] = ms)) return ph
-    return null
+    return ''
   }
 
   asc() { return this.prefix = SP + SP + this.prefix, this.proxy }
