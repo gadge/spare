@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.13.15",
+  "version": "0.13.16",
   "description": "Color a string",
   "main": "./dist/index.cjs",
   "exports": {
@@ -21,7 +21,7 @@
     "@palett/enum-colorant-modes": "^0.9.6",
     "@palett/fluo-vector": "^0.9.6",
     "@spare/deco-config": "^0.13.7",
-    "@spare/preset-deco": "^0.13.15",
+    "@spare/preset-deco": "^0.13.16",
     "@texting/charset-ansi": "^0.1.2",
     "@texting/enum-chars": "^0.1.2",
     "@texting/fold": "^0.1.2",
