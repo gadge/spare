@@ -1,6 +1,6 @@
 {
   "name": "@spare/vector-margin",
-  "version": "0.13.14",
+  "version": "0.13.15",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.17",
-    "@spare/util": "^0.13.14",
+    "@spare/util": "^0.13.15",
     "@vect/vector-margin": "^0.5.22"
   },
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@spare/padder",
-  "version": "0.13.14",
+  "version": "0.13.15",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/pad-string.test.js"
   },
   "dependencies": {
-    "@spare/charset": "^0.13.14",
-    "@spare/fullwidth": "^0.13.14",
+    "@spare/charset": "^0.13.15",
+    "@spare/fullwidth": "^0.13.15",
     "@texting/lange": "^0.1.2",
     "@typen/num-strict": "^0.1.19"
   },

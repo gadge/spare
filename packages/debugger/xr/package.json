@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.13.14",
+  "version": "0.13.15",
   "description": "A sentence builder",
   "main": "./dist/index.cjs",
   "exports": {
@@ -20,10 +20,10 @@
   "dependencies": {
     "@aryth/comparer": "^0.5.6",
     "@palett/flopper": "^0.9.6",
-    "@spare/deco-string": "^0.13.14",
-    "@spare/enum-chars": "^0.13.14",
-    "@spare/phrasing": "^0.13.14",
-    "@spare/says": "^0.13.14",
+    "@spare/deco-string": "^0.13.15",
+    "@spare/enum-chars": "^0.13.15",
+    "@spare/phrasing": "^0.13.15",
+    "@spare/says": "^0.13.15",
     "@texting/bracket": "^0.1.2",
     "@texting/charset-ansi": "^0.1.2",
     "@texting/enum-chars": "^0.1.2",

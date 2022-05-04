@@ -1,6 +1,6 @@
 {
   "name": "@spare/matrix-padder",
-  "version": "0.13.14",
+  "version": "0.13.15",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
