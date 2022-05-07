@@ -1,6 +1,6 @@
 {
   "name": "@spare/field-padder",
-  "version": "0.13.16",
+  "version": "0.14.0",
   "description": "Pad field (keyed column)",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.5.9",
-    "@spare/enum-chars": "^0.13.16",
-    "@spare/enum-full-angle-chars": "^0.13.16",
-    "@spare/fullwidth": "^0.13.16",
+    "@spare/enum-chars": "^0.14.0",
+    "@spare/enum-full-angle-chars": "^0.14.0",
+    "@spare/fullwidth": "^0.14.0",
     "@texting/enum-chars": "^0.1.3",
     "@texting/enum-chars-fullwidth": "^0.1.3",
     "@texting/lange": "^0.1.3",
