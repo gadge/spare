@@ -19,14 +19,9 @@ export class Verse {
   /**
    * @param {Array} vector
    * @param {Object} p
-   *
    * @param {string} [p.delim=', ']
-   *
-   *
    * @param {Function} [p.read=decoValue]
-   *
    * @param {number} [p.level]
-   *
    * @return {string}
    */
   static vector(vector, p = {}) {

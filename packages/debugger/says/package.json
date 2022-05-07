@@ -19,17 +19,17 @@
   },
   "dependencies": {
     "@ject/callable": "^0.0.17",
-    "@palett/convert": "^0.9.6",
-    "@palett/dye": "^0.9.6",
-    "@palett/enum-font-effects": "^0.9.6",
-    "@palett/flopper": "^0.9.6",
+    "@palett/convert": "^0.9.7",
+    "@palett/dye": "^0.9.7",
+    "@palett/enum-font-effects": "^0.9.7",
+    "@palett/flopper": "^0.9.7",
     "@spare/bracket": "^0.13.16",
     "@spare/deco-string": "^0.13.16",
     "@spare/enum-chars": "^0.13.16",
     "@spare/util": "^0.13.16",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enums": "^0.1.19",
-    "@vect/object-mapper": "^0.5.22"
+    "@vect/object-mapper": "^0.6.2"
   },
   "repository": {
     "type": "git",

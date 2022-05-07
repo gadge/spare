@@ -28,7 +28,7 @@ export class Steno extends Function {
       },
       apply(steno, thisArg, args) {
         // `>> [proxy].call (${args}) (${+steno})`  |> console.log
-        return console.log(steno.toString(), steno.renderMany(args)), steno.proxy
+        return console.log(steno.toString(), steno.renderMany(args).replace(/^ +/, '')), steno.proxy
       },
     })
   }
@@ -84,19 +84,20 @@ export class Steno extends Function {
   }
 
   renderMany(list) {
-    if (!list?.length) return ''
-    if (list.length === 1) return Steno.prototype.render.call(this, list[0]).trim()
-    return list.map(Steno.prototype.render.bind(this)).join(SP).trim()
+    return !list?.length
+      ? ''
+      : list.length === 1
+        ? Steno.prototype.render.call(this, list[0])
+        : list.map(Steno.prototype.render.bind(this)).join(SP)
   }
   render(x) {
     const { indent } = this
-    function prep(x) { return (x += '').includes(LF) ? (LF + x).replace(/\n/g, LF + indent) : x}
+    function prep(x) { return (x += '').includes(LF) ? (LF + x).replace(/\n/g, LF + indent) : x }
     if (nullish(x)) return x
-    const type = typeof x
-    if (type === STR) return prep(x)
-    if (type === OBJ) return prep(x instanceof Record ? this.renderRecord(x) : x.toString())
-    if (type === SYM) return x.description // BOO / FUN / NUM / BIG
-    return prep('' + x)
+    if (typeof x === STR) return prep(x)
+    if (typeof x === OBJ) return prep(x instanceof Record ? this.renderRecord(x) : x)
+    if (typeof x === SYM) return x.description // BOO / FUN / NUM / BIG
+    return prep(x)
   }
 
   log(message) { return console.log(this.toString() + SP + this.render(message)), this.proxy }

@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.17",
-    "@palett/enum-colorant-modes": "^0.9.6",
-    "@palett/fluo-entries": "^0.9.6",
+    "@palett/enum-colorant-modes": "^0.9.7",
+    "@palett/fluo-entries": "^0.9.7",
     "@spare/bracket": "^0.13.16",
     "@spare/deco-config": "^0.13.7",
     "@spare/deco-flat": "^0.13.16",
@@ -29,7 +29,7 @@
     "@spare/enum-brackets": "^0.13.16",
     "@spare/enum-chars": "^0.13.16",
     "@spare/preset-deco": "^0.13.16",
-    "@texting/liner": "^0.1.2"
+    "@texting/liner": "^0.1.3"
   },
   "repository": {
     "type": "git",

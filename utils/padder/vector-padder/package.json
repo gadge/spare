@@ -18,11 +18,11 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@texting/lange": "^0.1.2",
-    "@texting/padder": "^0.1.2",
-    "@vect/vector-indicator": "^0.5.22",
-    "@vect/vector-mapper": "^0.5.22",
-    "@vect/vector-zipper": "^0.5.22"
+    "@texting/lange": "^0.1.3",
+    "@texting/padder": "^0.1.3",
+    "@vect/vector-indicator": "^0.6.2",
+    "@vect/vector-mapper": "^0.6.2",
+    "@vect/vector-zipper": "^0.6.2"
   },
   "repository": {
     "type": "git",
