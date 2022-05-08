@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "Color a string",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.9.7",
-    "@palett/fluo-vector": "^0.9.7",
+    "@palett/enum-colorant-modes": "^0.9.10",
+    "@palett/fluo-vector": "^0.9.10",
     "@spare/deco-config": "^0.13.7",
-    "@spare/preset-deco": "^0.14.0",
+    "@spare/preset-deco": "^0.14.1",
     "@texting/charset-ansi": "^0.1.3",
     "@texting/enum-chars": "^0.1.3",
     "@texting/fold": "^0.1.3",

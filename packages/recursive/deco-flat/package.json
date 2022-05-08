@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-flat",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "Colored stringify",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,16 +18,16 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.9.7",
-    "@palett/fluo-entries": "^0.9.7",
-    "@palett/fluo-vector": "^0.9.7",
-    "@palett/presets": "^0.9.7",
+    "@palett/enum-colorant-modes": "^0.9.10",
+    "@palett/fluo-entries": "^0.9.10",
+    "@palett/fluo-vector": "^0.9.10",
+    "@palett/presets": "^0.9.10",
     "@spare/deco-colors": "^0.13.7",
     "@spare/deco-config": "^0.13.7",
-    "@spare/deco-date": "^0.14.0",
-    "@spare/deco-func": "^0.14.0",
-    "@spare/enum-chars": "^0.14.0",
-    "@spare/preset-deco": "^0.14.0",
+    "@spare/deco-date": "^0.14.1",
+    "@spare/deco-func": "^0.14.1",
+    "@spare/enum-chars": "^0.14.1",
+    "@spare/preset-deco": "^0.14.1",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-loose": "^0.1.19",
