@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.9.10",
-    "@palett/fluo-vector": "^0.9.10",
+    "@palett/fluo-matrix": "^0.9.11",
+    "@palett/fluo-vector": "^0.9.11",
     "@spare/crostab-margin": "^0.14.1",
     "@spare/crostab-padder": "^0.14.1",
     "@spare/deco-config": "^0.13.7",
@@ -27,10 +27,10 @@
     "@spare/enum-chars": "^0.14.1",
     "@spare/preset-deco": "^0.14.1",
     "@texting/liner": "^0.1.3",
-    "@vect/enum-matrix-directions": "^0.6.2",
-    "@vect/matrix": "^0.6.2",
-    "@vect/vector-merge": "^0.6.2",
-    "@vect/vector-zipper": "^0.6.2"
+    "@vect/enum-matrix-directions": "^0.6.13",
+    "@vect/matrix": "^0.7.11",
+    "@vect/vector-merge": "^0.6.13",
+    "@vect/vector-zipper": "^0.7.11"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,6 @@
   "homepage": "https://github.com/gadge/spare#readme",
   "gitHead": "4af2221a77981097b77090b501e717186a9d8166",
   "devDependencies": {
-    "@vect/vector-index": "^0.6.2"
+    "@vect/vector-index": "^0.7.11"
   }
 }

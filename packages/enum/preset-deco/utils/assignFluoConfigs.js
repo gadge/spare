@@ -7,7 +7,7 @@ export const assignPresetCollection = (p, ...presets) => {
     if (!p.fluos) p.fluos = presets.map(preset => ({ preset }))
     if (p.full) {
       const [confNum = {}] = p.fluos
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL)
+      if (!confNum.by && !confNum.to) Object.assign(confNum, NUM_BOUND_CONF_FULL)
     }
     return p
   }
@@ -15,8 +15,8 @@ export const assignPresetCollection = (p, ...presets) => {
     if (!p.fluos) p.fluos = presets.map(preset => ({ preset }))
     if (p.full) {
       const [confNum = {}, confStr = {}] = p.fluos
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL)
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL)
+      if (!confNum.by && !confNum.to) Object.assign(confNum, NUM_BOUND_CONF_FULL)
+      if (!confStr.by && !confStr.to) Object.assign(confStr, STR_BOUND_CONF_FULL)
     }
     return p
   }
@@ -24,9 +24,9 @@ export const assignPresetCollection = (p, ...presets) => {
     if (!p.fluos) p.fluos = presets.map(preset => ({ preset }))
     if (p.full) {
       const [confNum = {}, confStr = {}, confLab = {}] = p.fluos
-      if (!confNum.filter && !confNum.mapper) Object.assign(confNum, NUM_BOUND_CONF_FULL)
-      if (!confStr.filter && !confStr.mapper) Object.assign(confStr, STR_BOUND_CONF_FULL)
-      if (!confLab.filter && !confLab.mapper) Object.assign(confLab, STR_BOUND_CONF_FULL)
+      if (!confNum.by && !confNum.to) Object.assign(confNum, NUM_BOUND_CONF_FULL)
+      if (!confStr.by && !confStr.to) Object.assign(confStr, STR_BOUND_CONF_FULL)
+      if (!confLab.by && !confLab.to) Object.assign(confLab, STR_BOUND_CONF_FULL)
     }
     return p
   }

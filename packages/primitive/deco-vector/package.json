@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.9.10",
-    "@palett/fluo-vector": "^0.9.10",
+    "@palett/enum-colorant-modes": "^0.9.11",
+    "@palett/fluo-vector": "^0.9.11",
     "@spare/deco-config": "^0.13.7",
     "@spare/deco-entries": "^0.14.1",
     "@spare/deco-flat": "^0.14.1",

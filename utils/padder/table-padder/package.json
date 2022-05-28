@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/table-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.5.9",
+    "@aryth/comparer": "^0.6.0",
     "@spare/enum-chars": "^0.14.1",
     "@spare/enum-full-angle-chars": "^0.14.1",
     "@spare/fullwidth": "^0.14.1",
@@ -27,16 +27,16 @@
     "@texting/enum-chars-fullwidth": "^0.1.3",
     "@texting/lange": "^0.1.3",
     "@texting/padder": "^0.1.3",
-    "@vect/columns-mapper": "^0.6.2",
-    "@vect/columns-stat": "^0.6.2",
-    "@vect/matrix-mapper": "^0.6.2",
-    "@vect/matrix-transpose": "^0.6.2",
-    "@vect/matrix-zipper": "^0.6.2",
-    "@vect/vector": "^0.6.2",
-    "@vect/vector-indicator": "^0.6.2",
-    "@vect/vector-mapper": "^0.6.2",
-    "@vect/vector-stat": "^0.6.2",
-    "@vect/vector-zipper": "^0.6.2"
+    "@vect/columns-mapper": "^0.7.11",
+    "@vect/columns-stat": "^0.7.11",
+    "@vect/matrix-mapper": "^0.7.11",
+    "@vect/matrix-transpose": "^0.6.13",
+    "@vect/matrix-zipper": "^0.7.11",
+    "@vect/vector": "^0.7.11",
+    "@vect/vector-indicator": "^0.6.13",
+    "@vect/vector-mapper": "^0.7.11",
+    "@vect/vector-stat": "^0.7.11",
+    "@vect/vector-zipper": "^0.7.11"
   },
   "repository": {
     "type": "git",

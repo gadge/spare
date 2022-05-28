@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.17",
-    "@palett/enum-colorant-modes": "^0.9.10",
-    "@palett/fluo-entries": "^0.9.10",
+    "@palett/enum-colorant-modes": "^0.9.11",
+    "@palett/fluo-entries": "^0.9.11",
     "@spare/bracket": "^0.14.1",
     "@spare/deco-config": "^0.13.7",
     "@spare/deco-flat": "^0.14.1",

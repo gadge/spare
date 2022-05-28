@@ -2,7 +2,8 @@ import { BOLD }           from '@palett/enum-font-effects'
 import { Deco }           from '@spare/deco'
 import { LF }             from '@spare/enum-chars'
 import { logger, logNeL } from '@spare/logger'
-import { says }           from '../dist/index.esm'
+import { says }           from '../index'
+
 
 // const says = Says.build({ effects: [BOLD] })
 
