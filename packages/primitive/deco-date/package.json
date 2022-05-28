@@ -20,7 +20,7 @@
   "dependencies": {
     "@spare/deco-config": "^0.13.7",
     "@spare/preset-deco": "^0.14.2",
-    "@valjoux/timestamp-pretty": "^0.3.12"
+    "@valjoux/timestamp-pretty": "^0.3.13"
   },
   "repository": {
     "type": "git",
