@@ -1,4 +1,4 @@
-import { says }       from '@palett/says'
+import { says }       from '@spare/xr'
 import { Xr }         from '@spare/logger'
 import { tenseQuote } from '@spare/quote'
 import { decoKey }    from '..'

@@ -1,5 +1,5 @@
 import { simpleEntries } from '@foba/foo'
-import { says }     from '@palett/says'
+import { says }     from '@spare/xr'
 import { delogger } from '@spare/deco'
 import { Verse }    from '../src/Verse'
 

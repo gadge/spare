@@ -1,4 +1,4 @@
-import { says }      from '@palett/says'
+import { says }      from '@spare/xr'
 import { deco }      from '@spare/deco'
 import { joinLines } from '../index'
 

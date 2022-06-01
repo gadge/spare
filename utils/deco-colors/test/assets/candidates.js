@@ -1,9 +1,9 @@
 import { flop, rand }                                     from '@aryth/rand'
-import { randMatrix, simpleObjects }                      from '@foba/foo'
+import { simpleMatrixCollection, simpleObjectCollection } from '@foba/foo'
 import { NumberObjectCollection, StringObjectCollection } from '@foba/object'
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
 
-const randNumMatrix = randMatrix({ h: 3, w: 8 })
+const randNumMatrix = simpleMatrixCollection({ h: 3, w: 8 })
 
 export const Basics = {
   null: null,
@@ -44,7 +44,7 @@ export const Objects = {
   },
   json: {
     foo: NumberVectorCollection.flopShuffle({}),
-    bar: simpleObjects(),
+    bar: simpleObjectCollection(),
     kha: [[
       NumberVectorCollection.flopShuffle({}),
       NumberVectorCollection.flopShuffle({}),

@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.6.0",
-    "@palett/flopper": "^0.9.11",
+    "@aryth/comparer": "^0.6.1",
+    "@palett/flopper": "^0.9.14",
     "@spare/deco-string": "^0.14.3",
     "@spare/enum-chars": "^0.14.3",
     "@spare/phrasing": "^0.14.3",

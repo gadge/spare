@@ -1,5 +1,5 @@
 import { simpleEntriesCollection } from '@foba/foo'
-import { says }     from '@palett/says'
+import { says }     from '@spare/xr'
 import { delogger } from '@spare/deco'
 import { Csv }      from '../src/Csv'
 

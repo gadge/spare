@@ -1,5 +1,4 @@
-import { logger }                                   from '@spare/logger'
-import { deca }                                     from '../index'
+import { deco, logger }                             from '@spare/logger'
 import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates'
 
 const candidates = {
@@ -10,4 +9,4 @@ const candidates = {
   ...Misc
 }
 
-candidates |> deca({ hi: 10, wa: 10 }) |> logger
+candidates |> deco |> logger

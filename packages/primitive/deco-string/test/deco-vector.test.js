@@ -1,7 +1,7 @@
 import { flopEntry }        from '@aryth/rand'
 import { ObjectCollection } from '@foba/object-string'
 import { INSTA }            from '@palett/presets'
-import { says }             from '@palett/says'
+import { says }             from '@spare/xr'
 import { init }             from '@vect/object-init'
 import { Deco }             from '../index'
 

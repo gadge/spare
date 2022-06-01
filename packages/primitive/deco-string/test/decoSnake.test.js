@@ -1,5 +1,5 @@
 import { ObjectCollection } from '@foba/object-string'
-import { says }             from '@palett/says'
+import { says }             from '@spare/xr'
 import { delogger }         from '@spare/deco'
 import { decoSnake }        from '../src/decoPhrases'
 

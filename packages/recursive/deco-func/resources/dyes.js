@@ -1,16 +1,17 @@
 import { Blue, BlueGrey, Brown, DeepPurple, Grey, LightBlue, Lime, Purple } from '@palett/cards'
-import { Dye }                                                              from '@palett/dye'
+import { DyeFab }                                                           from '@palett/dye'
 import { makeReplaceable }                                                  from '@spare/translator'
 
-export const nameDye = Dye.hex(Blue.lighten_2)
-export const argsDye = Dye.hex(LightBlue.accent_2)
-export const bodyDye = Dye.hex(LightBlue.lighten_3)
-export const arrowDye = Dye.hex(Lime.lighten_1)
+const hexDye = DyeFab.hex()
+export const nameDye = hexDye.make(Blue.lighten_2)
+export const argsDye = hexDye.make(LightBlue.accent_2)
+export const bodyDye = hexDye.make(LightBlue.lighten_3)
+export const arrowDye = hexDye.make(Lime.lighten_1)
 
 export const PresetDye = [
-  [ /function/gi, 'function' |> Dye.hex(Grey.base) ],
-  [ /return/gi, 'return' |> Dye.hex(Brown.lighten_3) ],
-  [ /\bthis\b/gi, Dye.hex(BlueGrey.accent_2) ],
-  [ /\b(if|else|while|do|switch|for)\b/gi, Dye.hex(Purple.lighten_3) ],
-  [ /\b(var|let|const)\b/gi, Dye.hex(DeepPurple.lighten_3) ],
+  [/function/gi, hexDye.render(Grey.base, 'function')],
+  [/return/gi, hexDye.render(Brown.lighten_3, 'return')],
+  [/\bthis\b/gi, hexDye.make(BlueGrey.accent_2)],
+  [/\b(if|else|while|do|switch|for)\b/gi, hexDye.make(Purple.lighten_3)],
+  [/\b(var|let|const)\b/gi, hexDye.make(DeepPurple.lighten_3)],
 ] |> makeReplaceable

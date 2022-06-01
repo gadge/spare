@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@palett/fluo-matrix": "^0.9.11",
-    "@palett/fluo-vector": "^0.9.11",
+    "@palett/fluo-matrix": "^0.9.14",
+    "@palett/fluo-vector": "^0.9.14",
     "@spare/crostab-margin": "^0.14.3",
     "@spare/crostab-padder": "^0.14.3",
     "@spare/deco-config": "^0.13.7",

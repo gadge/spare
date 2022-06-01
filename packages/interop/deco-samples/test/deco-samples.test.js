@@ -1,7 +1,7 @@
 import { tableToSamples }  from '@analys/convert'
 import { TableCollection } from '@foba/table'
 import { FRESH, PLANET }   from '@palett/presets'
-import { says }            from '@palett/says'
+import { says }            from '@spare/xr'
 import { Deco }            from '../index'
 
 const tableCollection = Object.assign({},

@@ -18,7 +18,7 @@ export const _decoEntries = function (entries = []) {
   if (LF.test(delim)) entries = entriesPadder(entries, { ansi: config.presets ?? ansi })
   if (config.presets) entries = fluo(entries, config.presets) // use: presets, effects
   return liner(
-    entries.map(([k, v]) => bracket(k + dash + v.trimRight())),
+    entries.map(([k, v]) => bracket(k + dash + v.trimEnd())),
     config
   )
 }
