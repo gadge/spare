@@ -55,8 +55,8 @@
     "@foba/vector-number": "^0.5.7",
     "@foba/vector-string": "^0.5.7",
     "@ject/pipe": "^0.0.17",
-    "@palett/enum-font-effects": "^0.9.14",
-    "@palett/presets": "^0.9.14",
+    "@palett/enum-font-effects": "^0.9.18",
+    "@palett/presets": "^0.9.18",
     "@palett/says": "^0.9.10",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.0",
@@ -64,9 +64,9 @@
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@spare/logger": "^0.14.1",
     "@typen/enum-data-types": "^0.1.19",
-    "@valjoux/format-time": "^0.3.13",
-    "@valjoux/strategies": "^0.3.13",
-    "@valjoux/timeout": "^0.3.13",
+    "@valjoux/format-time": "^0.3.14",
+    "@valjoux/strategies": "^0.3.14",
+    "@valjoux/timeout": "^0.3.14",
     "@vect/columns-stat": "^0.7.11",
     "@vect/matrix": "^0.7.11",
     "@vect/object-init": "^0.7.11",
@@ -74,8 +74,8 @@
     "@vect/vector-select": "^0.7.11",
     "gulp": "^4.0.2",
     "lerna": "^5.0.0",
-    "rollup": "^2.75.4",
+    "rollup": "^2.75.5",
     "rollup-plugin-fileinfo": "^0.3.3"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.2.1"
 }
