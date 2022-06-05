@@ -1,6 +1,6 @@
 {
   "name": "@spare/util",
-  "version": "0.14.6",
+  "version": "0.14.7",
   "description": "A util toolset for @spare.",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.14.6",
-    "@spare/enum-full-angle-chars": "^0.14.6",
+    "@spare/enum-chars": "^0.14.7",
+    "@spare/enum-full-angle-chars": "^0.14.7",
     "@texting/lange": "^0.1.4",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/num-strict": "^0.1.19",
