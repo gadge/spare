@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-full-angle-chars",
-  "version": "0.14.5",
+  "version": "0.14.6",
   "description": "Full-angle chars",
   "main": "./dist/index.cjs",
   "exports": {
