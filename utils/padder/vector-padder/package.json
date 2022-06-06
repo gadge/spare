@@ -1,6 +1,6 @@
 {
   "name": "@spare/vector-padder",
-  "version": "0.14.7",
+  "version": "0.14.8",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
