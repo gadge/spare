@@ -29,7 +29,7 @@
     "@spare/table-padder": "^0.14.7",
     "@texting/liner": "^0.1.4",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/matrix": "^0.7.11",
+    "@vect/matrix": "^0.7.14",
     "@vect/vector-merge": "^0.6.13"
   },
   "repository": {

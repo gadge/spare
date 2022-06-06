@@ -21,8 +21,8 @@
     "@aryth/comparer": "^0.6.1",
     "@texting/lange": "^0.1.4",
     "@texting/padder": "^0.1.4",
-    "@vect/columns-stat": "^0.7.11",
-    "@vect/matrix-zipper": "^0.7.11"
+    "@vect/columns-stat": "^0.7.14",
+    "@vect/matrix-zipper": "^0.7.14"
   },
   "repository": {
     "type": "git",

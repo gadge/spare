@@ -32,7 +32,7 @@
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-loose": "^0.1.19",
     "@typen/typ": "^0.1.19",
-    "@vect/column-mapper": "^0.7.11"
+    "@vect/column-mapper": "^0.7.14"
   },
   "repository": {
     "type": "git",

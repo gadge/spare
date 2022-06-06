@@ -36,7 +36,7 @@
     "@texting/liner": "^0.1.4",
     "@vect/entries-unwind": "^0.6.13",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/vector-zipper": "^0.7.11"
+    "@vect/vector-zipper": "^0.7.14"
   },
   "repository": {
     "type": "git",
