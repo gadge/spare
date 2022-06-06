@@ -1,6 +1,6 @@
 {
   "name": "@spare/padder",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/pad-string.test.js"
   },
   "dependencies": {
-    "@spare/charset": "^0.14.8",
-    "@spare/fullwidth": "^0.14.8",
+    "@spare/charset": "^0.14.9",
+    "@spare/fullwidth": "^0.14.9",
     "@texting/lange": "^0.1.4",
     "@typen/num-strict": "^0.1.19"
   },
@@ -39,5 +39,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "4af2221a77981097b77090b501e717186a9d8166"
+  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -20,15 +20,15 @@
   "dependencies": {
     "@analys/crostab-init": "^0.6.14",
     "@analys/table-init": "^0.6.14",
-    "@spare/bracket": "^0.14.8",
-    "@spare/deco-entries": "^0.14.8",
-    "@spare/deco-matrix": "^0.14.8",
-    "@spare/deco-object": "^0.14.8",
-    "@spare/deco-samples": "^0.14.8",
-    "@spare/deco-vector": "^0.14.8",
-    "@spare/enum-brackets": "^0.14.8",
-    "@spare/preset-verse": "^0.14.8",
-    "@spare/quote": "^0.14.8",
+    "@spare/bracket": "^0.14.9",
+    "@spare/deco-entries": "^0.14.9",
+    "@spare/deco-matrix": "^0.14.9",
+    "@spare/deco-object": "^0.14.9",
+    "@spare/deco-samples": "^0.14.9",
+    "@spare/deco-vector": "^0.14.9",
+    "@spare/enum-brackets": "^0.14.9",
+    "@spare/preset-verse": "^0.14.9",
+    "@spare/quote": "^0.14.9",
     "@texting/liner": "^0.1.4"
   },
   "repository": {
@@ -47,5 +47,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "4af2221a77981097b77090b501e717186a9d8166"
+  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
 }

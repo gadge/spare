@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-crostab",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -20,12 +20,12 @@
   "dependencies": {
     "@palett/fluo-matrix": "^0.9.18",
     "@palett/fluo-vector": "^0.9.18",
-    "@spare/crostab-margin": "^0.14.8",
-    "@spare/crostab-padder": "^0.14.8",
+    "@spare/crostab-margin": "^0.14.9",
+    "@spare/crostab-padder": "^0.14.9",
     "@spare/deco-config": "^0.13.7",
-    "@spare/deco-flat": "^0.14.8",
-    "@spare/enum-chars": "^0.14.8",
-    "@spare/preset-deco": "^0.14.8",
+    "@spare/deco-flat": "^0.14.9",
+    "@spare/enum-chars": "^0.14.9",
+    "@spare/preset-deco": "^0.14.9",
     "@texting/liner": "^0.1.4",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix": "^0.7.14",
@@ -48,7 +48,7 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "4af2221a77981097b77090b501e717186a9d8166",
+  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2",
   "devDependencies": {
     "@vect/vector-index": "^0.7.14"
   }

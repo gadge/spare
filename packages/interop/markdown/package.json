@@ -1,6 +1,6 @@
 {
   "name": "@spare/markdown",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "description": "Markdown table formatter",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,12 +18,12 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@spare/entries-margin": "^0.14.8",
-    "@spare/entries-padder": "^0.14.8",
-    "@spare/enum-chars": "^0.14.8",
-    "@spare/matrix-margin": "^0.14.8",
-    "@spare/table-padder": "^0.14.8",
-    "@spare/vector-margin": "^0.14.8",
+    "@spare/entries-margin": "^0.14.9",
+    "@spare/entries-padder": "^0.14.9",
+    "@spare/enum-chars": "^0.14.9",
+    "@spare/matrix-margin": "^0.14.9",
+    "@spare/table-padder": "^0.14.9",
+    "@spare/vector-margin": "^0.14.9",
     "@texting/liner": "^0.1.4",
     "@vect/matrix": "^0.7.14",
     "@vect/vector-merge": "^0.6.13"
@@ -44,5 +44,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "4af2221a77981097b77090b501e717186a9d8166"
+  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
 }

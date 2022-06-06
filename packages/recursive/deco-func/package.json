@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-func",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "description": "Colored stringify date",
   "main": "./dist/index.cjs",
   "exports": {
@@ -21,11 +21,11 @@
     "@palett/cards": "^0.9.18",
     "@palett/convert": "^0.9.18",
     "@palett/dye": "^0.9.18",
-    "@spare/bracket": "^0.14.8",
+    "@spare/bracket": "^0.14.9",
     "@spare/deco-config": "^0.13.7",
-    "@spare/enum-chars": "^0.14.8",
-    "@spare/preset-deco": "^0.14.8",
-    "@spare/translator": "^0.14.8",
+    "@spare/enum-chars": "^0.14.9",
+    "@spare/preset-deco": "^0.14.9",
+    "@spare/translator": "^0.14.9",
     "@texting/lange": "^0.1.4"
   },
   "devDependencies": {
@@ -49,5 +49,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "4af2221a77981097b77090b501e717186a9d8166"
+  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
 }

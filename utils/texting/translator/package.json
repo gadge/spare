@@ -1,6 +1,6 @@
 {
   "name": "@spare/translator",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "description": "Translator, bulk replace string at a time",
   "main": "dist/index.cjs",
   "exports": {
@@ -30,5 +30,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "4af2221a77981097b77090b501e717186a9d8166"
+  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
 }

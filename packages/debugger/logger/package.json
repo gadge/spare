@@ -1,6 +1,6 @@
 {
   "name": "@spare/logger",
-  "version": "0.14.8",
+  "version": "0.14.9",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,20 +18,20 @@
     "test": "node -r @babel/register test/logger.test.js"
   },
   "dependencies": {
-    "@spare/deco": "^0.14.8",
-    "@spare/deco-crostab": "^0.14.8",
-    "@spare/deco-entries": "^0.14.8",
-    "@spare/deco-flat": "^0.14.8",
-    "@spare/deco-func": "^0.14.8",
-    "@spare/deco-matrix": "^0.14.8",
-    "@spare/deco-object": "^0.14.8",
-    "@spare/deco-pale": "^0.14.8",
-    "@spare/deco-samples": "^0.14.8",
-    "@spare/deco-string": "^0.14.8",
-    "@spare/deco-table": "^0.14.8",
-    "@spare/deco-vector": "^0.14.8",
-    "@spare/says": "^0.14.8",
-    "@spare/xr": "^0.14.8",
+    "@spare/deco": "^0.14.9",
+    "@spare/deco-crostab": "^0.14.9",
+    "@spare/deco-entries": "^0.14.9",
+    "@spare/deco-flat": "^0.14.9",
+    "@spare/deco-func": "^0.14.9",
+    "@spare/deco-matrix": "^0.14.9",
+    "@spare/deco-object": "^0.14.9",
+    "@spare/deco-pale": "^0.14.9",
+    "@spare/deco-samples": "^0.14.9",
+    "@spare/deco-string": "^0.14.9",
+    "@spare/deco-table": "^0.14.9",
+    "@spare/deco-vector": "^0.14.9",
+    "@spare/says": "^0.14.9",
+    "@spare/xr": "^0.14.9",
     "@texting/enum-chars": "^0.1.4"
   },
   "repository": {
@@ -50,5 +50,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "4af2221a77981097b77090b501e717186a9d8166"
+  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
 }
