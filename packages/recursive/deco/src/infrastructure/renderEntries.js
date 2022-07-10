@@ -3,7 +3,7 @@ import { lange }           from '@texting/lange'
 import { joinLines }       from '@texting/liner'
 import { LPad }            from '@texting/padder'
 import { iterate, mutate } from '@vect/vector-mapper'
-import { mutateKeyPad }    from '../helpers/mutateKeyPad'
+import { mutateKeyPad }    from './mutateKeyPad'
 
 
 const lpad = LPad({ ansi: true })
@@ -26,11 +26,9 @@ export const wrapEntries = function (entries, width) {
   const lines = []
   let row = null, len = 0, kvp, sp = COSP.length
   iterate(entries, ([k, v]) => {
-    // row.push(kvp = k + RTSP + v), len += lange(kvp) + sp
-    // if (len > width) rows.push(row.join(COSP)), row = [], len = 0
     len += lange(kvp = k + RTSP + v) + sp
-    if (row && len > width) lines.push(row.join(COSP)), row = null
-    if (!row) row = [], len = 0
+    if (row && len > width) { lines.push(row.join(COSP)), row = null }
+    if (!row) { row = [], len = 0 }
     row.push(kvp)
   })
   if (row?.length) lines.push(row.join(COSP))

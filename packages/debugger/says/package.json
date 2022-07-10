@@ -23,10 +23,10 @@
     "@palett/dye": "^0.9.18",
     "@palett/enum-font-effects": "^0.9.18",
     "@palett/flopper": "^0.9.18",
-    "@spare/bracket": "^0.14.9",
     "@spare/deco-string": "^0.14.9",
     "@spare/enum-chars": "^0.14.9",
     "@spare/util": "^0.14.9",
+    "@texting/bracket": "^0.1.7",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enums": "^0.1.19",
     "@vect/object-mapper": "^0.7.14"

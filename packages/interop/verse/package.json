@@ -20,7 +20,6 @@
   "dependencies": {
     "@analys/crostab-init": "^0.6.14",
     "@analys/table-init": "^0.6.14",
-    "@spare/bracket": "^0.14.9",
     "@spare/deco-entries": "^0.14.9",
     "@spare/deco-matrix": "^0.14.9",
     "@spare/deco-object": "^0.14.9",
@@ -29,7 +28,8 @@
     "@spare/enum-brackets": "^0.14.9",
     "@spare/preset-verse": "^0.14.9",
     "@spare/quote": "^0.14.9",
-    "@texting/liner": "^0.1.4"
+    "@texting/bracket": "^0.1.7",
+    "@texting/liner": "^0.1.7"
   },
   "repository": {
     "type": "git",

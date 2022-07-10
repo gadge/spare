@@ -17,10 +17,7 @@ import { fold }           from '@texting/fold'
  */
 
 export const _decoString = function (text) {
-  const
-    config = this,
-    width = config.width,
-    length = text?.length
+  const config = this, width = config.width, length = text?.length
   if (!length) return ''
   if (hasAnsi(text)) return text
   if (width && length > width) text = fold.call({

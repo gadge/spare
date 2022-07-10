@@ -1,5 +1,5 @@
 import { makeEmbedded }              from '@foba/util'
-import { bracket }                   from '@spare/bracket'
+import { bracket }                   from '@texting/bracket'
 import { decoCrostab, logger, says } from '@spare/logger'
 import { strategies }                from '@valjoux/strategies'
 import { dateTime }                  from '@valjoux/timestamp-pretty'

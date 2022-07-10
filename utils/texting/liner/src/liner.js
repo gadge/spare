@@ -1,4 +1,4 @@
-import { br }         from '@spare/bracket'
+import { br }         from '@texting/bracket'
 import { NONE }       from '@spare/enum-brackets'
 import { CO, LF, TB } from '@spare/enum-chars'
 

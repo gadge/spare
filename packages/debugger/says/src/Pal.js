@@ -1,5 +1,5 @@
 import { Callable }         from '@ject/callable'
-import { bracket, parenth } from '@spare/bracket'
+import { bracket, parenth } from '@texting/bracket'
 import { deco }             from '@spare/deco-string'
 import { LF, SP }           from '@spare/enum-chars'
 import { FUN, STR }         from '@typen/enum-data-types'

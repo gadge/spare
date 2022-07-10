@@ -27,7 +27,7 @@
     "@spare/preset-deco": "^0.14.9",
     "@spare/table-margin": "^0.14.9",
     "@spare/table-padder": "^0.14.9",
-    "@texting/liner": "^0.1.4",
+    "@texting/liner": "^0.1.7",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix": "^0.7.14",
     "@vect/vector-merge": "^0.6.13"

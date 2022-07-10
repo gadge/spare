@@ -1,6 +1,6 @@
 import { matchSlice as matchSliceCrostab } from '@analys/crostab-init'
 import { matchSlice as matchSliceTable }   from '@analys/table-init'
-import { brace, bracket as doBracket }     from '@spare/bracket'
+import { brace, bracket as doBracket }     from '@texting/bracket'
 import { _decoEntries }                    from '@spare/deco-entries'
 import { _decoMatrix }                     from '@spare/deco-matrix'
 import { _decoObject }                     from '@spare/deco-object'

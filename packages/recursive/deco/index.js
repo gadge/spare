@@ -41,8 +41,7 @@ export { _deco }
  * @param {?string} [p.qm=null] - quotation mark
  * @returns {string|number}
  */
-export const deco = (ob, p = {}) => _deco
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), ob)
+export const deco = (ob, p = {}) => _deco.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), ob)
 
 // TODO: fix string.presets default configuration
 

@@ -21,12 +21,12 @@
     "@palett/cards": "^0.9.18",
     "@palett/convert": "^0.9.18",
     "@palett/dye": "^0.9.18",
-    "@spare/bracket": "^0.14.9",
     "@spare/deco-config": "^0.13.7",
     "@spare/enum-chars": "^0.14.9",
     "@spare/preset-deco": "^0.14.9",
     "@spare/translator": "^0.14.9",
-    "@texting/lange": "^0.1.4"
+    "@texting/bracket": "^0.1.7",
+    "@texting/lange": "^0.1.7"
   },
   "devDependencies": {
     "@ject/rename": "^0.0.17"

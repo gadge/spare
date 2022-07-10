@@ -1,4 +1,4 @@
-import { brace, bracket } from '@spare/bracket'
+import { brace, bracket } from '@texting/bracket'
 import { COSP, RT }       from '@spare/enum-chars'
 import { logger }         from '@spare/logger'
 import { OBJ }            from '@typen/enum-data-types'

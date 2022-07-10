@@ -20,12 +20,4 @@ export const matrixPadder = (mx, config = {}) => {
 }
 
 
-// let zipper
-// return dye
-//   ? (zipper = Trizipper((tx, va, dy, i, j) => pad(tx, widths[j], va) |> dy),
-//     zipper(mx, mx, dye))
-//   : (zipper = Duozipper((tx, va, i, j) => pad(tx, widths[j], va)),
-//     zipper(mx, mx))
-
-
 

@@ -1,7 +1,7 @@
 import { fluoEntries }         from '@palett/fluo-entries'
 import { fluoVector }          from '@palett/fluo-vector'
 import { FRESH, JUNGLE }  from '@palett/presets'
-import { brace, bracket } from '@spare/bracket'
+import { brace, bracket } from '@texting/bracket'
 import { decoDateTime }   from '@spare/deco-date'
 import { COSP, RT }       from '@spare/enum-chars'
 import { logger }         from '@spare/logger'

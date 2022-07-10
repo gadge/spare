@@ -1,6 +1,6 @@
 import { COLORANT }      from '@palett/enum-colorant-modes'
 import { fluoMatrix }    from '@palett/fluo-matrix'
-import { bracket as br } from '@spare/bracket'
+import { bracket as br } from '@texting/bracket'
 import { COLF }          from '@spare/enum-chars'
 import { liner }         from '@texting/liner'
 import { mattro }        from '@spare/matrix-margin'

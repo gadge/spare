@@ -1,4 +1,4 @@
-import { bracket as bracket$2, parenth as parenth$2 } from '@spare/bracket'
+import { bracket as bracket$2, parenth as parenth$2 } from '@texting/bracket'
 import { SP, COSP, CO }                               from '@spare/enum-chars'
 import { Cards }                                      from '@palett/cards'
 import { Dye }                                        from '@palett/dye'

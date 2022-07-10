@@ -1,4 +1,4 @@
-import { brace, bracket }          from '@spare/bracket'
+import { brace, bracket }          from '@texting/bracket'
 import { _decoFunc } from '@spare/deco-func'
 import { pairEnt }   from '@spare/deco-util'
 import { COSP }      from '@spare/enum-chars'

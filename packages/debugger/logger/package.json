@@ -32,7 +32,7 @@
     "@spare/deco-vector": "^0.14.9",
     "@spare/says": "^0.14.9",
     "@spare/xr": "^0.14.9",
-    "@texting/enum-chars": "^0.1.4"
+    "@texting/enum-chars": "^0.1.7"
   },
   "repository": {
     "type": "git",

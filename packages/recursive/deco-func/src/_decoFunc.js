@@ -1,4 +1,4 @@
-import { parenth }                                        from '@spare/bracket'
+import { parenth }                                        from '@texting/bracket'
 import { SP }                                             from '@spare/enum-chars'
 import { lange }                                          from '@texting/lange'
 import { argsDye, arrowDye, bodyDye, nameDye, PresetDye } from '../resources/dyes'
