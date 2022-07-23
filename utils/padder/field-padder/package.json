@@ -1,6 +1,6 @@
 {
   "name": "@spare/field-padder",
-  "version": "0.14.10",
+  "version": "0.14.11",
   "description": "Pad field (keyed column)",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.6.1",
-    "@spare/enum-chars": "^0.14.10",
-    "@spare/enum-full-angle-chars": "^0.14.10",
-    "@spare/fullwidth": "^0.14.10",
+    "@aryth/comparer": "^0.6.5",
+    "@spare/enum-chars": "^0.14.11",
+    "@spare/enum-full-angle-chars": "^0.14.11",
+    "@spare/fullwidth": "^0.14.11",
     "@texting/enum-chars": "^0.1.7",
     "@texting/enum-chars-fullwidth": "^0.1.7",
     "@texting/lange": "^0.1.7",
