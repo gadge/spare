@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.9.18",
-    "@palett/convert": "^0.9.18",
-    "@palett/dye": "^0.9.18",
+    "@palett/cards": "^0.9.19",
+    "@palett/convert": "^0.9.19",
+    "@palett/dye": "^0.9.19",
     "@spare/deco-config": "^0.13.7",
     "@spare/enum-chars": "^0.14.11",
     "@spare/preset-deco": "^0.14.11",

@@ -1,9 +1,27 @@
-import { DecoConfig } from '@spare/deco-config'
+import { DecoConfig }            from '@spare/deco-config'
 import { TRI_PRESET_COLLECTION } from '@spare/preset-deco'
+import { liner }                 from '@texting/liner'
+import { acquire }               from '@vect/vector-merge'
+import { zipper }                from '@vect/vector-zipper'
 import { CONFIG }                from './resources/config'
+import { HCONN, VLINE }          from './resources/conns.js'
 import { _decoCrostab }          from './src/_decoCrostab'
 
 export { _decoCrostab }
+
+export class DecoCrostab {
+  static simple(crostab, config) {
+    const lines = acquire([
+        crostab.title + VLINE + crostab.head.join(VLINE),
+        crostab.rule.join(HCONN)
+      ],
+      zipper(
+        crostab.side,
+        crostab.rows, (s, r) => s + VLINE + r.join(VLINE)
+      ))
+    return liner(lines, config) // use: discrete, delim, level
+  }
+}
 
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
