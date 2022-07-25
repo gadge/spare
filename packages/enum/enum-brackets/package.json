@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-brackets",
-  "version": "0.14.18",
+  "version": "0.14.19",
   "description": "String brackets",
   "main": "./dist/index.cjs",
   "exports": {
