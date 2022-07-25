@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.14.17",
+  "version": "0.14.18",
   "description": "Color a string",
   "main": "./dist/index.cjs",
   "exports": {
@@ -21,7 +21,7 @@
     "@palett/enum-colorant-modes": "^0.9.19",
     "@palett/fluo-vector": "^0.9.19",
     "@spare/deco-config": "^0.13.7",
-    "@spare/preset-deco": "^0.14.17",
+    "@spare/preset-deco": "^0.14.18",
     "@texting/charset-ansi": "^0.1.7",
     "@texting/enum-chars": "^0.1.7",
     "@texting/fold": "^0.1.7",
@@ -43,5 +43,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
+  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/bracket",
-  "version": "0.14.17",
+  "version": "0.14.18",
   "description": "Add parenthesis/bracket/brace/angle-bracket to string",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-brackets": "^0.14.17"
+    "@spare/enum-brackets": "^0.14.18"
   },
   "repository": {
     "type": "git",
@@ -36,5 +36,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
+  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/table-padder",
-  "version": "0.14.17",
+  "version": "0.14.18",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,10 +19,10 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.6.5",
-    "@spare/enum-chars": "^0.14.17",
-    "@spare/enum-full-angle-chars": "^0.14.17",
-    "@spare/fullwidth": "^0.14.17",
-    "@spare/matrix-padder": "^0.14.17",
+    "@spare/enum-chars": "^0.14.18",
+    "@spare/enum-full-angle-chars": "^0.14.18",
+    "@spare/fullwidth": "^0.14.18",
+    "@spare/matrix-padder": "^0.14.18",
     "@texting/enum-chars": "^0.1.7",
     "@texting/enum-chars-fullwidth": "^0.1.7",
     "@texting/lange": "^0.1.7",
@@ -54,5 +54,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
+  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
 }

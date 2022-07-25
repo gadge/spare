@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-flat",
-  "version": "0.14.17",
+  "version": "0.14.18",
   "description": "Colored stringify",
   "main": "./dist/index.cjs",
   "exports": {
@@ -24,10 +24,10 @@
     "@palett/presets": "^0.9.19",
     "@spare/deco-colors": "^0.13.7",
     "@spare/deco-config": "^0.13.7",
-    "@spare/deco-date": "^0.14.17",
-    "@spare/deco-func": "^0.14.17",
-    "@spare/enum-chars": "^0.14.17",
-    "@spare/preset-deco": "^0.14.17",
+    "@spare/deco-date": "^0.14.18",
+    "@spare/deco-func": "^0.14.18",
+    "@spare/enum-chars": "^0.14.18",
+    "@spare/preset-deco": "^0.14.18",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-loose": "^0.1.19",
@@ -50,5 +50,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
+  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
 }

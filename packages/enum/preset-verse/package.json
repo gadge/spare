@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-verse",
-  "version": "0.14.17",
+  "version": "0.14.18",
   "description": "Preset for verse",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,10 +19,10 @@
   },
   "dependencies": {
     "@ject/pipe": "^0.0.17",
-    "@spare/deco-pale": "^0.14.17",
-    "@spare/enum-brackets": "^0.14.17",
-    "@spare/enum-chars": "^0.14.17",
-    "@spare/quote": "^0.14.17"
+    "@spare/deco-pale": "^0.14.18",
+    "@spare/enum-brackets": "^0.14.18",
+    "@spare/enum-chars": "^0.14.18",
+    "@spare/quote": "^0.14.18"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
+  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
 }
