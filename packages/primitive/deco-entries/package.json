@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-entries",
-  "version": "0.14.16",
+  "version": "0.14.17",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -22,12 +22,12 @@
     "@palett/enum-colorant-modes": "^0.9.19",
     "@palett/fluo-entries": "^0.9.19",
     "@spare/deco-config": "^0.13.7",
-    "@spare/deco-flat": "^0.14.16",
-    "@spare/entries-margin": "^0.14.16",
-    "@spare/entries-padder": "^0.14.16",
-    "@spare/enum-brackets": "^0.14.16",
-    "@spare/enum-chars": "^0.14.16",
-    "@spare/preset-deco": "^0.14.16",
+    "@spare/deco-flat": "^0.14.17",
+    "@spare/entries-margin": "^0.14.17",
+    "@spare/entries-padder": "^0.14.17",
+    "@spare/enum-brackets": "^0.14.17",
+    "@spare/enum-chars": "^0.14.17",
+    "@spare/preset-deco": "^0.14.17",
     "@texting/bracket": "^0.1.7",
     "@texting/liner": "^0.1.7"
   },
