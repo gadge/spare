@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-full-angle-chars",
-  "version": "0.14.15",
+  "version": "0.14.16",
   "description": "Full-angle chars",
   "main": "./dist/index.cjs",
   "exports": {
@@ -33,5 +33,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
+  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/liner",
-  "version": "0.14.15",
+  "version": "0.14.16",
   "description": "Join lines together",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/bracket": "^0.14.15",
-    "@spare/enum-brackets": "^0.14.15",
-    "@spare/enum-chars": "^0.14.15"
+    "@spare/bracket": "^0.14.16",
+    "@spare/enum-brackets": "^0.14.16",
+    "@spare/enum-chars": "^0.14.16"
   },
   "repository": {
     "type": "git",
@@ -38,5 +38,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
+  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
 }

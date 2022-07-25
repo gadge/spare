@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.14.15",
+  "version": "0.14.16",
   "description": "A sentence builder",
   "main": "./dist/index.cjs",
   "exports": {
@@ -20,10 +20,10 @@
   "dependencies": {
     "@aryth/comparer": "^0.6.5",
     "@palett/flopper": "^0.9.19",
-    "@spare/deco-string": "^0.14.15",
-    "@spare/enum-chars": "^0.14.15",
-    "@spare/phrasing": "^0.14.15",
-    "@spare/says": "^0.14.15",
+    "@spare/deco-string": "^0.14.16",
+    "@spare/enum-chars": "^0.14.16",
+    "@spare/phrasing": "^0.14.16",
+    "@spare/says": "^0.14.16",
     "@texting/bracket": "^0.1.7",
     "@texting/charset-ansi": "^0.1.7",
     "@texting/enum-chars": "^0.1.7",
@@ -50,5 +50,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
+  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
 }

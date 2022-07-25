@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-vector",
-  "version": "0.14.15",
+  "version": "0.14.16",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -21,12 +21,12 @@
     "@palett/enum-colorant-modes": "^0.9.19",
     "@palett/fluo-vector": "^0.9.19",
     "@spare/deco-config": "^0.13.7",
-    "@spare/deco-entries": "^0.14.15",
-    "@spare/deco-flat": "^0.14.15",
-    "@spare/enum-brackets": "^0.14.15",
-    "@spare/enum-chars": "^0.14.15",
-    "@spare/preset-deco": "^0.14.15",
-    "@spare/vector-margin": "^0.14.15",
+    "@spare/deco-entries": "^0.14.16",
+    "@spare/deco-flat": "^0.14.16",
+    "@spare/enum-brackets": "^0.14.16",
+    "@spare/enum-chars": "^0.14.16",
+    "@spare/preset-deco": "^0.14.16",
+    "@spare/vector-margin": "^0.14.16",
     "@texting/liner": "^0.1.7"
   },
   "repository": {
@@ -45,5 +45,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
+  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
 }

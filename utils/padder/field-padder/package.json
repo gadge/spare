@@ -1,6 +1,6 @@
 {
   "name": "@spare/field-padder",
-  "version": "0.14.15",
+  "version": "0.14.16",
   "description": "Pad field (keyed column)",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.6.5",
-    "@spare/enum-chars": "^0.14.15",
-    "@spare/enum-full-angle-chars": "^0.14.15",
-    "@spare/fullwidth": "^0.14.15",
+    "@spare/enum-chars": "^0.14.16",
+    "@spare/enum-full-angle-chars": "^0.14.16",
+    "@spare/fullwidth": "^0.14.16",
     "@texting/enum-chars": "^0.1.7",
     "@texting/enum-chars-fullwidth": "^0.1.7",
     "@texting/lange": "^0.1.7",
@@ -45,5 +45,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "40bb98d1da2202ef72e2e849e0ae9cf64bb044c2"
+  "gitHead": "44bb52a7411e1c8655919c03928816a0d20a97a1"
 }
