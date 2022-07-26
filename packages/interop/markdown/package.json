@@ -25,7 +25,7 @@
     "@spare/table-padder": "^0.14.19",
     "@spare/vector-margin": "^0.14.19",
     "@texting/liner": "^0.1.7",
-    "@vect/matrix": "^0.7.14",
+    "@vect/matrix": "^0.7.15",
     "@vect/vector-merge": "^0.6.13"
   },
   "repository": {

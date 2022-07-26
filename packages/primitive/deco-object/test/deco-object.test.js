@@ -9,11 +9,11 @@ let SimpleObjects = simpleObjectCollection({ h: 12 })
 
 SimpleObjects |> delogger
 
-for (const [key, entries] of Object.entries(SimpleObjects)) {
+for (const [ key, entries ] of Object.entries(SimpleObjects)) {
   const words = entries |> Deco({
     head: 5,
     tail: 2,
-    stringPreset: OCEAN,
+    presets: OCEAN,
     bracket: true,
     discrete: false,
     level: rand(3)

@@ -20,10 +20,10 @@
   "dependencies": {
     "@analys/enum-mutabilities": "^0.6.14",
     "@aryth/comparer": "^0.6.5",
-    "@palett/fluo": "^0.9.19",
-    "@palett/fluo-entries": "^0.9.19",
-    "@palett/fluo-vector": "^0.9.19",
-    "@palett/presets": "^0.9.19",
+    "@palett/fluo": "^0.10.1",
+    "@palett/fluo-entries": "^0.10.1",
+    "@palett/fluo-vector": "^0.10.1",
+    "@palett/presets": "^0.10.1",
     "@spare/deco-colors": "^0.13.7",
     "@spare/deco-config": "^0.13.7",
     "@spare/deco-date": "^0.14.19",
@@ -43,9 +43,9 @@
     "@typen/typ": "^0.1.19",
     "@valjoux/format-date": "^0.3.18",
     "@valjoux/format-date-time": "^0.3.18",
-    "@vect/column-mapper": "^0.7.14",
-    "@vect/entries-mapper": "^0.7.14",
-    "@vect/vector-mapper": "^0.7.14"
+    "@vect/column-mapper": "^0.7.15",
+    "@vect/entries-mapper": "^0.7.15",
+    "@vect/vector-mapper": "^0.7.15"
   },
   "repository": {
     "type": "git",
