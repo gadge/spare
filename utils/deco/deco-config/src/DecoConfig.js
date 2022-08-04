@@ -14,10 +14,10 @@ export class DecoConfig {
     if (conf.presets) this.resetPresets(conf.presets, conf.effects, conf.full)
   }
   static build(conf) { return new DecoConfig(conf) }
-  static parse(userConfig, defaultConfig, defaultPresets) {
-    const conf = DecoConfig.build(userConfig)
-    if (defaultConfig) conf.replenishConfigs(defaultConfig)
-    if (defaultPresets) conf.defaultPresets.apply(conf, defaultPresets)
+  static parse(pref, makeup, presets) {
+    const conf = DecoConfig.build(pref)
+    if (makeup) conf.replenishConfigs(makeup)
+    if (presets) conf.defaultPresets.apply(conf, presets)
     return conf
   }
 

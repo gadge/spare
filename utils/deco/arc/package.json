@@ -1,7 +1,7 @@
 {
-  "name": "@spare/deco-colors",
-  "version": "0.13.7",
-  "description": "A light and simple console debug tool.",
+  "name": "@spare/arc",
+  "version": "0.14.21",
+  "description": "Arc",
   "main": "dist/index.cjs",
   "exports": {
     "import": "./dist/index.mjs",
@@ -15,14 +15,17 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/test.index.js"
+    "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.9.6",
-    "@palett/convert": "^0.9.6",
-    "@palett/dye": "^0.9.6",
-    "@spare/preset-deco": "^0.13.7",
-    "@vect/object-mapper": "^0.5.22"
+    "@aryth/bound": "^0.6.7",
+    "@texting/lange": "^0.1.9",
+    "@texting/padder": "^0.1.9",
+    "@texting/string-value": "^0.1.9",
+    "@typen/enum-data-types": "^0.1.19",
+    "@typen/literal": "^0.1.19",
+    "@typen/num-strict": "^0.1.19",
+    "@vect/vector-indicator": "^0.6.13"
   },
   "repository": {
     "type": "git",

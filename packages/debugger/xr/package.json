@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.14.20",
+  "version": "0.14.21",
   "description": "A sentence builder",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,17 +18,17 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.6.5",
-    "@palett/flopper": "^0.10.1",
-    "@spare/deco-string": "^0.14.20",
-    "@spare/enum-chars": "^0.14.20",
-    "@spare/phrasing": "^0.14.20",
-    "@spare/says": "^0.14.20",
-    "@texting/bracket": "^0.1.7",
-    "@texting/charset-ansi": "^0.1.7",
-    "@texting/enum-chars": "^0.1.7",
-    "@texting/phrasing": "^0.1.7",
-    "@texting/tap": "^0.1.7",
+    "@aryth/comparer": "^0.6.7",
+    "@palett/flopper": "^0.10.4",
+    "@spare/deco-string": "^0.14.21",
+    "@spare/enum-chars": "^0.14.21",
+    "@spare/phrasing": "^0.14.21",
+    "@spare/says": "^0.14.21",
+    "@texting/bracket": "^0.1.9",
+    "@texting/charset-ansi": "^0.1.9",
+    "@texting/enum-chars": "^0.1.9",
+    "@texting/phrasing": "^0.1.9",
+    "@texting/tap": "^0.1.9",
     "@typen/enum-data-types": "^0.1.19"
   },
   "devDependencies": {

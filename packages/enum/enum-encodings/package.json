@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-encodings",
-  "version": "0.14.20",
+  "version": "0.14.21",
   "description": "String encodings",
   "main": "./dist/index.cjs",
   "exports": {
