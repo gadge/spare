@@ -31,7 +31,7 @@ const { lapse, result } = strategies({
   methods: {
     ben: x => x,
     arc: vec => {
-      const arc = arcFab.make(vec)
+      const arc = arcFab.toArc(vec)
       return arc.pad() // .rates(arcFab.str.to)
     },
     alpha: alpha,

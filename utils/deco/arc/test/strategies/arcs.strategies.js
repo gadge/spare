@@ -1,9 +1,9 @@
 import { makeEmbedded }                                   from '@foba/util'
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { strategies }      from '@valjoux/strategies'
-import { ArcFab }          from '../../src/Arc.js'
-import { alpha }           from './arcs/arc.alpha.js'
-import { beta, stringify } from './arcs/arcs.beta.js'
+import { strategies }                                     from '@valjoux/strategies'
+import { alpha }                                          from './arcs/arc.alpha.js'
+import { beta, stringify }                                from './arcs/arcs.beta.js'
+import { ArcFab }                                         from '../../src/ArcFab.js'
 
 const Strangers = {
   empty: [],
@@ -31,12 +31,13 @@ const { lapse, result } = strategies({
   methods: {
     ben: x => x,
     arc: vec => {
-      const arc = arcFab.make(vec)
+      const arc = arcFab.toArc(vec)
       return arc.pad() // .rates(arcFab.str.to)
     },
     alpha: alpha,
     beta: vec => beta(stringify(vec, true)),
-  }
+  },
+  showPretty: false,
 })
 
 

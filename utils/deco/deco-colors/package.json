@@ -21,6 +21,7 @@
     "@palett/cards": "^0.10.4",
     "@palett/convert": "^0.10.4",
     "@palett/dye": "^0.10.4",
+    "@palett/presets": "^0.10.4",
     "@spare/preset-deco": "^0.14.21",
     "@vect/object-mapper": "^0.7.15"
   },

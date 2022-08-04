@@ -3,6 +3,7 @@ import { length }              from '@texting/lange'
 import { value }               from '@texting/string-value'
 import { NUM, OBJ, STR, SYM }  from '@typen/enum-data-types'
 import { isLiteral }           from '@typen/literal'
+import { valid }               from '@typen/nullish'
 import { isNumeric, parseNum } from '@typen/num-strict'
 import { Arc }                 from './Arc.js'
 import { Cate }                from './Cate.js'
@@ -18,7 +19,8 @@ export class ArcFab {
     to: value,
     by: isLiteral,
   }
-  constructor(num, str) {
+  mutate = false
+  constructor(num, str, mutate) {
     if (num) {
       if (num.to) this.num.to = num.to
       if (num.by) this.num.by = num.by
@@ -28,11 +30,14 @@ export class ArcFab {
       if (str.by) this.str.by = str.by
       if (str.wd) this.str.wd = str.wd
     }
+    if (mutate !== void 0) {
+      this.mutate = mutate
+    }
   }
-
+  static to(vec, conf) { return (new ArcFab(conf.num, conf.str, conf.mutate)).toArc(vec) }
   toArc(vec) {
     const size = vec.length
-    const strs = Array(size), nums = Array(size), cats = new Uint8Array(size)
+    const strs = this.mutate ? vec : Array(size), nums = Array(size), cats = new Uint8Array(size)
     if (!size) return new Arc(strs, nums, cats)
     const tbd = new StringBound(), nbd = new Bound()
     const { by: numBy, to: numTo } = this.num
