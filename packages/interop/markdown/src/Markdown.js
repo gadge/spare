@@ -61,7 +61,7 @@ export class Markdown {
     entries = entriesMargin(entries, option) // use head, tail, keyRead, read, rule
     entries = pad ? entriesPadder(entries, option) : entries // use ansi, fill
     return entries
-      .map(([ k, v ]) => ( prefix ?? '' ) + k + dash + v.trimRight() + ( suffix ?? '' ))
+      .map(([ k, v ]) => (prefix ?? '') + k + dash + v.trimEnd() + (suffix ?? ''))
       |> Liner({ delim, level })
   }
   /***

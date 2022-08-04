@@ -1,8 +1,8 @@
 import { says }               from '@palett/says'
 import { logger }             from '@spare/logger'
 import { protoType }          from '@typen/typ'
-import { deco }               from '../index'
-import { FunctionCollection } from './alpha/assets/FunctionCollection'
+import { deco }               from '../index.js'
+import { FunctionCollection } from './alpha/assets/FunctionCollection.js'
 
 for (const [key, func] of Object.entries(FunctionCollection)) {
   deco(func) |> says[key]

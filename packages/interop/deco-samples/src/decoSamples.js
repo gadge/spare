@@ -11,7 +11,7 @@ import { tableMargin }           from '@spare/table-margin'
 import { vectorPadder }          from '@spare/vector-padder'
 import { zipper }                from '@vect/vector-zipper'
 
-export const _decoSamples = function (samples) {
+export const decoSamples = function (samples) {
   const config = this, original = samples
   let { fields, indexed, bracket, discrete, level } = config
   if (indexed) { samples = Object.values(samples) }

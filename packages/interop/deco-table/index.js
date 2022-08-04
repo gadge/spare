@@ -1,9 +1,9 @@
-import { DecoConfig } from '@spare/deco-config'
+import { DecoConfig }            from '@spare/deco-config'
 import { TRI_PRESET_COLLECTION } from '@spare/preset-deco'
 import { CONFIG }                from './resources/config'
-import { _decoTable }            from './src/_decoTable'
+import { decoTable }             from './src/decoTable.js'
 
-export { _decoTable }
+export { decoTable, decoTable as _decoTable }
 
 /**
  * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
@@ -36,7 +36,7 @@ export { _decoTable }
  *
  * @returns {string}
  */
-export const Deco = (p = {}) => _decoTable
+export const Deco = (p = {}) => decoTable
   .bind(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION))
 
 /***
@@ -67,5 +67,5 @@ export const Deco = (p = {}) => _decoTable
  *
  * @returns {string}
  */
-export const deco = (table, p = {}) => _decoTable
+export const deco = (table, p = {}) => decoTable
   .call(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION), table)

@@ -1,1 +1,1 @@
-export { pairEnt } from './src/pairEnt'
+export { pairEnt } from './src/pairEnt.js'

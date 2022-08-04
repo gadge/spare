@@ -1,9 +1,9 @@
-import { DecoConfig } from '@spare/deco-config'
+import { DecoConfig }             from '@spare/deco-config'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { CONFIG }                 from './resources/config'
-import { _decoMatrix }            from './src/_decoMatrix'
+import { decoMatrix }             from './src/decoMatrix.js'
 
-export { _decoMatrix }
+export { decoMatrix, decoMatrix as _decoMatrix }
 
 /***
  *
@@ -30,7 +30,7 @@ export { _decoMatrix }
  *
  * @returns {Function}
  */
-export const Deco = (p = {}) => _decoMatrix
+export const Deco = (p = {}) => decoMatrix
   .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
 /***
@@ -59,6 +59,6 @@ export const Deco = (p = {}) => _decoMatrix
  *
  * @returns {string}
  */
-export const deco = (matrix, p = {}) => _decoMatrix
+export const deco = (matrix, p = {}) => decoMatrix
   .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), matrix)
 

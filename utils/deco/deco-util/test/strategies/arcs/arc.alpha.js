@@ -1,6 +1,6 @@
-import { duobound }            from '@aryth/bound-vector'
-import { stringValue }         from '@spare/string-value'
-import { isLiteral }           from '@typen/literal'
+import { duobound }    from '@aryth/bound-vector'
+import { stringValue } from '@spare/string-value'
+import { isLiteral }   from '@typen/literal'
 import { isNumeric, parseNum } from '@typen/numeral'
 import { maxBy }               from '@vect/vector'
 

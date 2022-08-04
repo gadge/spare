@@ -1,7 +1,7 @@
 import { BOLD, ITALIC } from '@palett/enum-font-effects'
 import { LAVA, PLANET } from '@palett/presets'
 import { deco }         from '@spare/deco'
-import { DecoConfig }   from '../src/DecoConfig'
+import { DecoConfig }   from '../src/DecoConfig.js'
 
 const config = {
   foo: true,

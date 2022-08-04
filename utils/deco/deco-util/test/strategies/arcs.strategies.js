@@ -1,9 +1,9 @@
 import { makeEmbedded }                                   from '@foba/util'
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { strategies }                                     from '@valjoux/strategies'
-import { ArcFab }                                         from '../../src/Arc.js'
-import { alpha }                                          from './arcs/arc.alpha.js'
-import { beta, stringify }                                from './arcs/arcs.beta.js'
+import { strategies }      from '@valjoux/strategies'
+import { ArcFab }          from '../../src/Arc.js'
+import { alpha }           from './arcs/arc.alpha.js'
+import { beta, stringify } from './arcs/arcs.beta.js'
 
 const Strangers = {
   empty: [],

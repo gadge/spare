@@ -5,9 +5,9 @@ import { acquire }               from '@vect/vector-merge'
 import { zipper }                from '@vect/vector-zipper'
 import { CONFIG }                from './resources/config'
 import { HCONN, VLINE }          from './resources/conns.js'
-import { _decoCrostab }          from './src/_decoCrostab'
+import { decoCrostab }           from './src/decoCrostab.js'
 
-export { _decoCrostab }
+export { decoCrostab, decoCrostab as _decoCrostab }
 
 export class DecoCrostab {
   static simple(crostab, config) {
@@ -53,7 +53,7 @@ export class DecoCrostab {
  *
  * @returns {string}
  */
-export const Deco = (p = {}) => _decoCrostab
+export const Deco = (p = {}) => decoCrostab
   .bind(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION))
 
 /**
@@ -85,5 +85,5 @@ export const Deco = (p = {}) => _decoCrostab
  *
  * @returns {string}
  */
-export const deco = (crostab, p = {}) => _decoCrostab
+export const deco = (crostab, p = {}) => decoCrostab
   .call(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION), crostab)

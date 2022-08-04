@@ -1,24 +1,24 @@
-import { DecoConfig } from '@spare/deco-config'
+import { DecoConfig }             from '@spare/deco-config'
 import { DA, SP }                 from '@texting/enum-chars'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { splitCamel, splitSnake } from '@texting/splitter'
 import { CONFIG }                 from './resources/config'
-import { _decoString }            from './src/_decoString'
+import { decoString }             from './src/decoString.js'
 
 const Splitter = delim => v => String.prototype.split.call(v, delim)
 export const decoCamel = (text, { delim = '', presets, effects } = {}) => {
-  return _decoString.call({ delim, presets, effects, vectify: splitCamel }, text)
+  return decoString.call({ delim, presets, effects, vectify: splitCamel }, text)
 }
 
 export const decoSnake = (text, { delim = DA, presets, effects } = {}) => {
-  return _decoString.call({ delim, presets, effects, vectify: splitSnake }, text)
+  return decoString.call({ delim, presets, effects, vectify: splitSnake }, text)
 }
 
 export const decoPhrase = (text, { delim = SP, presets, effects } = {}) => {
-  return _decoString.call({ delim, presets, effects, vectify: Splitter(delim) }, text)
+  return decoString.call({ delim, presets, effects, vectify: Splitter(delim) }, text)
 }
 
-export { _decoString }
+export { decoString, decoString as _decoString }
 /**
  * @param {string} text
  * @param {Object} [p]
@@ -31,7 +31,7 @@ export { _decoString }
  * @param {Function} [p.joiner]
  * @return {string}
  */
-export const deco = (text, p = {}) => _decoString
+export const deco = (text, p = {}) => decoString
   .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), text)
 
 /**
@@ -47,6 +47,6 @@ export const deco = (text, p = {}) => _decoString
  * @param {Function} [p.joiner]
  * @return {Function}
  */
-export const Deco = (p = {}) => _decoString
+export const Deco = (p = {}) => decoString
   .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 

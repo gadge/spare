@@ -1,9 +1,9 @@
-import { DecoConfig } from '@spare/deco-config'
+import { DecoConfig }             from '@spare/deco-config'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
 import { CONFIG }                 from './resources/config'
-import { _decoSamples }           from './src/_decoSamples'
+import { decoSamples }            from './src/decoSamples.js'
 
-export { _decoSamples }
+export { decoSamples, decoSamples as _decoSamples }
 
 /**
  *
@@ -32,7 +32,7 @@ export { _decoSamples }
  *
  * @returns {string}
  */
-export const Deco = (p = {}) => _decoSamples
+export const Deco = (p = {}) => decoSamples
   .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
 /**
@@ -63,5 +63,5 @@ export const Deco = (p = {}) => _decoSamples
  *
  * @returns {string}
  */
-export const deco = (samples, p = {}) => _decoSamples
+export const deco = (samples, p = {}) => decoSamples
   .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), samples)

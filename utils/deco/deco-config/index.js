@@ -1,1 +1,1 @@
-export { DecoConfig } from './src/DecoConfig'
+export { DecoConfig } from './src/DecoConfig.js'

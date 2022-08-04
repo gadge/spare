@@ -1,5 +1,5 @@
 import { mapper } from '@vect/object-mapper'
-import { hslFab } from '../dye'
+import { hslFab } from '../dye.js'
 
 
 const Dyes = {

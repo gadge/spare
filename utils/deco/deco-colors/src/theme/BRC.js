@@ -1,5 +1,5 @@
 import { mapVal } from '@vect/object-mapper'
-import { hslFab } from '../dye'
+import { hslFab } from '../dye.js'
 
 const Dyes = {
   0: hslFab.make([45, 100, 53]),

@@ -1,5 +1,5 @@
 import { logger }   from '@spare/logger'
-import { delogger } from '../../../index'
+import { delogger } from '../../../index.js'
 import { deco }     from '../../../src/decoPale'
 
 {

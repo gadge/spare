@@ -1,5 +1,5 @@
 import { Cards }  from '@palett/cards'
-import { hexFab } from '../dye'
+import { hexFab } from '../dye.js'
 
 /**
  *

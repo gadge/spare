@@ -6,7 +6,7 @@ import { vectorMargin }   from '@spare/vector-margin'
 
 const fluo = fluoVector.bind(MUTATE_PIGMENT)
 
-export function _decoVector(vec = []) {
+export function decoVector(vec = []) {
   const config = this
   if (config?.indexed) return _decoEntries.call(config, Object.entries(vec))
   vec = vectorMargin(vec, config) // use: head, tail, read, rule

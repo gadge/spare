@@ -9,7 +9,7 @@ import { liner }          from '@texting/liner'
 const LF = /\n/
 const fluo = fluoEntries.bind(MUTATE_PIGMENT)
 
-export const _decoEntries = function (entries = []) {
+export const decoEntries = function (entries = []) {
   const config = this
   if (!entries?.length) return liner([], config)
   const { ansi, dash, delim, bracket } = config

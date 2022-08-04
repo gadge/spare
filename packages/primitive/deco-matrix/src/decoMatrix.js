@@ -9,7 +9,7 @@ import { matrixPadder }   from '@spare/matrix-padder'
 
 const fluo = fluoMatrix.bind(MUTATE_PIGMENT)
 
-export function _decoMatrix(rows = []) {
+export function decoMatrix(rows = []) {
   const config = this, ht = height(rows), wd = width(rows)
   if (!ht || !wd) return liner([], config)
   let { discrete, delim, bracket, level } = config

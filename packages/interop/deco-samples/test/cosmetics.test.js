@@ -3,11 +3,11 @@ import { TableCollection }      from '@foba/table'
 import { FRESH, METRO, SUBTLE } from '@palett/presets'
 import { deco }                 from '@spare/deco'
 import { BRACKET }              from '@spare/enum-brackets'
-import { logger }               from '@spare/logger'
-import { _decoSamples }         from '../src/_decoSamples'
+import { logger }      from '@spare/logger'
+import { decoSamples } from '../src/decoSamples.js'
 
 const samples = TableCollection.AeroEngineSpecs |> tableToSamples
-_decoSamples.call({
+decoSamples.call({
   top: 4,
   bottom: 4,
   left: 3,
