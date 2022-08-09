@@ -11,7 +11,7 @@ export class StringBound {
     const { lo, hi } = this
     if (!this.lo || !this.hi) { this.lo = x, this.hi = x }
     if (x < lo) this.lo = x
-    if (x > hi) this.hi = x
+    else if (x > hi) this.hi = x
     return x
   }
   toBound(strTo, width) {

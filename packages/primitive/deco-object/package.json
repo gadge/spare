@@ -24,7 +24,7 @@
     "@spare/enum-brackets": "^0.14.22",
     "@spare/enum-chars": "^0.14.22",
     "@spare/preset-deco": "^0.14.22",
-    "@texting/liner": "^0.1.9"
+    "@texting/liner": "^0.1.11"
   },
   "repository": {
     "type": "git",

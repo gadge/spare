@@ -19,14 +19,14 @@
   },
   "dependencies": {
     "@ject/callable": "^0.0.17",
-    "@palett/convert": "^0.10.4",
-    "@palett/dye": "^0.10.4",
-    "@palett/enum-font-effects": "^0.10.4",
+    "@palett/convert": "^0.10.5",
+    "@palett/dye": "^0.10.5",
+    "@palett/enum-font-effects": "^0.10.6",
     "@palett/flopper": "^0.10.4",
     "@spare/deco-string": "^0.14.22",
     "@spare/enum-chars": "^0.14.22",
     "@spare/util": "^0.14.22",
-    "@texting/bracket": "^0.1.9",
+    "@texting/bracket": "^0.1.11",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enums": "^0.1.19",
     "@vect/object-mapper": "^0.7.15"

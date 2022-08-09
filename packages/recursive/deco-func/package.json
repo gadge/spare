@@ -18,15 +18,15 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.10.4",
-    "@palett/convert": "^0.10.4",
-    "@palett/dye": "^0.10.4",
+    "@palett/cards": "^0.10.5",
+    "@palett/convert": "^0.10.5",
+    "@palett/dye": "^0.10.5",
     "@spare/deco-config": "^0.14.22",
     "@spare/enum-chars": "^0.14.22",
     "@spare/preset-deco": "^0.14.22",
     "@spare/translator": "^0.14.22",
-    "@texting/bracket": "^0.1.9",
-    "@texting/lange": "^0.1.9"
+    "@texting/bracket": "^0.1.11",
+    "@texting/lange": "^0.1.11"
   },
   "devDependencies": {
     "@ject/rename": "^0.0.17"

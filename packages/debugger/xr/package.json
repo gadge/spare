@@ -24,11 +24,11 @@
     "@spare/enum-chars": "^0.14.22",
     "@spare/phrasing": "^0.14.22",
     "@spare/says": "^0.14.22",
-    "@texting/bracket": "^0.1.9",
-    "@texting/charset-ansi": "^0.1.9",
-    "@texting/enum-chars": "^0.1.9",
-    "@texting/phrasing": "^0.1.9",
-    "@texting/tap": "^0.1.9",
+    "@texting/bracket": "^0.1.11",
+    "@texting/charset-ansi": "^0.1.11",
+    "@texting/enum-chars": "^0.1.11",
+    "@texting/phrasing": "^0.1.11",
+    "@texting/tap": "^0.1.11",
     "@typen/enum-data-types": "^0.1.19"
   },
   "devDependencies": {

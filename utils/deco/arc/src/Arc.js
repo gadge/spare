@@ -7,12 +7,15 @@ export class Arc {
   strs
   nums
   cats
+  lo = 0
+  hi = 0
   constructor(strs, nums, cats) {
     this.strs = strs
     this.nums = nums
     this.cats = cats
+    this.hi = this.size
   }
-  get width() { return this.strs.width ?? (this.strs.width = this.size ? maxBy(this.strs, lange) : 0)}
+  get width() { return this.strs.pad ?? (this.strs.pad = this.size ? maxBy(this.strs, lange) : 0)}
   get size() { return this.strs.length }
   pad(fill = ' ', ansi = false) {
     const { strs, nums, size, width } = this
@@ -20,6 +23,21 @@ export class Arc {
     for (let i = 0; i < size; i++) { strs[i] = padder.render(strs[i], nums[i]) }
     return this
   }
+  padDet(fill = ' ', ansi = false) {
+    const { strs, nums, size, width } = this
+    const padder = new Padder(width, fill, ansi)
+    for (let i = 0; i < size; i++) { strs[i] = padder.render(strs[i], nums[i]) }
+    return this
+  }
+  [Symbol.iterator]() { return this }
+  next() {
+    const { lo } = this
+    this.lo++
+    return lo < this.hi
+      ? { done: false, value: this.nums[lo], text: this.strs[lo].padStart(this.strs.width) }
+      : { done: true, value: undefined }
+  }
+
   rates(strTo) {
     const { strs, nums, cats, size, width: wd } = this
     const rates = new Uint16Array(size)

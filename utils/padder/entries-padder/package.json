@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@texting/lange": "^0.1.9",
-    "@texting/padder": "^0.1.9",
+    "@texting/lange": "^0.1.11",
+    "@texting/padder": "^0.1.11",
     "@vect/entries-indicator": "^0.6.13",
     "@vect/entries-mapper": "^0.7.15",
     "@vect/entries-zipper": "^0.7.15"

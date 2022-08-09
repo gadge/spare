@@ -9,6 +9,8 @@ const matrixCollection = Object.assign({},
   CrostabMatrixCollection
 )
 
+matrixCollection |> console.log
+
 const deco = Deco({
   left: 4,
   right: 2,

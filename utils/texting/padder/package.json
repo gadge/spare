@@ -20,7 +20,7 @@
   "dependencies": {
     "@spare/charset": "^0.14.22",
     "@spare/fullwidth": "^0.14.22",
-    "@texting/lange": "^0.1.9",
+    "@texting/lange": "^0.1.11",
     "@typen/num-strict": "^0.1.19"
   },
   "repository": {

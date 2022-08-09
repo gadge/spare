@@ -21,7 +21,7 @@
     "@analys/convert": "^0.6.14",
     "@analys/samples-select": "^0.6.14",
     "@aryth/math": "^0.6.7",
-    "@palett/enum-colorant-modes": "^0.10.4",
+    "@palett/enum-colorant-modes": "^0.10.5",
     "@palett/fluo-matrix": "^0.10.4",
     "@palett/fluo-vector": "^0.10.4",
     "@spare/deco-config": "^0.14.22",
@@ -33,7 +33,7 @@
     "@spare/preset-deco": "^0.14.22",
     "@spare/table-margin": "^0.14.22",
     "@spare/vector-padder": "^0.14.22",
-    "@texting/liner": "^0.1.9",
+    "@texting/liner": "^0.1.11",
     "@vect/entries-unwind": "^0.6.13",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/vector-zipper": "^0.7.15"
