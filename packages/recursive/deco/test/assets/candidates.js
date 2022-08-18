@@ -24,7 +24,7 @@ export const Vectors = {
 
 export const Matrices = {
   inno_row: [ randNumMatrix[0] ],
-  inno_column: randNumMatrix.map(([ x ]) => [ x ]),
+  inno_col: randNumMatrix.map(([ x ]) => [ x ]),
   inno_matrix: randNumMatrix,
   void_matrix: [ [] ],
   nest_matrix: [ [ [ [ [ [ [ [ [] ] ] ] ] ] ] ] ],
@@ -45,7 +45,16 @@ export const Objects = {
   json: {
     foo: NumberVectorCollection.flopShuffle({}),
     bar: { foo: 1, bar: 2 },
-    kha: [ [
+    kha: [
+      NumberVectorCollection.flopShuffle({}),
+      NumberVectorCollection.flopShuffle({}),
+      NumberVectorCollection.flopShuffle({})
+    ],
+    mia: [ [
+      NumberVectorCollection.flopShuffle({}),
+      NumberVectorCollection.flopShuffle({}),
+      NumberVectorCollection.flopShuffle({})
+    ], [
       NumberVectorCollection.flopShuffle({}),
       NumberVectorCollection.flopShuffle({}),
       NumberVectorCollection.flopShuffle({})

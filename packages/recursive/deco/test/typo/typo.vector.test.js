@@ -1,13 +1,14 @@
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
 import { FRESH, METRO, OCEAN }                            from '@palett/presets'
-import { COSP }                                           from '@texting/enum-chars'
+import { LF, SP }                                         from '@texting/enum-chars'
 import { indexed }                                        from '@vect/object-mapper'
-import { Typo }                                           from '../src/Typo.js'
+import { Typo }                                           from '../../target/Typo.js'
+
 
 const VECTORS = {
   empty: [],
   arithmetic: NumberVectorCollection.fibonacci(12),
-  stringed: StringVectorCollection.megaCities.slice(0, 7),
+  megaCity: StringVectorCollection.megaCities.slice(0, 16),
   textNum: NumberVectorCollection.primes(7).map(String),
   nums: [ 1, 2, 3, 0, -1, -2, -3 ],
   alpha: [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n' ],
@@ -16,8 +17,15 @@ const VECTORS = {
 }
 
 const typo = new Typo({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO } })
+// for (let [ key, vec ] of indexed(VECTORS)) {
+//   TB + TB + key + SP + typo.vector(vec, null, 2) |> console.log
+// }
+
+const W = 16
+const LINE = '+'.repeat(W) + W
 for (let [ key, vec ] of indexed(VECTORS)) {
-  key |> console.log;
-  // vec |> console.log;
-  ('[ ' + typo.renderVector(vec).join(COSP) + ' ]') |> console.log
+  // const iter = typo.groupVector(vec, W, key.length + 2, 2)
+  // key + SP + '[' + It.chain(iter, LF) + ']'  |> console.log
+  key + SP + typo.vector(vec, W, 2, key.length + 1) |> console.log
+  LINE |> console.log
 }
