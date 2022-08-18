@@ -24,10 +24,15 @@ const NESTED = {
   }
 }
 
-const WD = 72
+const WD = 36
 const LINE = '+'.repeat(WD) + WD
-const CONF = { fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE }, vt: 16, dp: 16, th: WD }
+const CONF = {
+  pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE },
+  vert: 4,
+  depth: 16,
+  width: WD
+}
 
 LINE |> console.log
-deco(NESTED) |> console.log
+deco(NESTED, CONF) |> console.log
 LINE |> console.log

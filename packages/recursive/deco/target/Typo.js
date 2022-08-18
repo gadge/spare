@@ -181,17 +181,17 @@ export class Typo {
     const cn = vec?.length ?? 0
     if (cn === 0) { return '[]' }
     const ts = this.flatVector(vec)
-    if (cn === 1) { return '[ ' + ts[0] + ' ]' }
+    // if (cn === 1) { return '[ ' + ts[0] + ' ]' }
     if (th > 0) { return '[' + Re.vector(ts, COSP, th, id, sr) + ']' }
-    if (th === 0) { return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']' }
+    if (th === 0 && cn > 1) { return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']' }
     else { return '[ ' + Re.chain(ts, COSP) + ' ]' }
   }
   object(obj, th, id = 0, sr = 0) {
     let ts = this.flatObject(obj), cn = ts.length
     if (cn === 0) { return '{}' }
-    if (cn <= 2) { return '{ ' + ts[0] + RTSP + ts[1] + ' }' }
+    // if (cn <= 2) { return '{ ' + ts[0] + RTSP + ts[1] + ' }' }
     if (th > 0) { return '{' + Re.object(ts, COSP, th, id, sr + 2) + '}' }
-    if (th === 0) { return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}' }
+    if (th === 0 && cn > 2) { return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}' }
     else { return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }' }
   }
   entries(ent, hr, id = 0) {

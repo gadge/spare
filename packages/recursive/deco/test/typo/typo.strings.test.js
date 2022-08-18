@@ -27,7 +27,7 @@ const typo = new Typo({
   pres: { pos: BESQUE, neg: OCEAN, str: PAGODA },
 })
 
-const WD = 36
+const WD = 42
 const LINE = '+'.repeat(WD) + WD
 LINE |> console.log
 for (let [ key, text ] of indexed(STRINGS)) {
