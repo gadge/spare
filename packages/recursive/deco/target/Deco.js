@@ -1,74 +1,84 @@
-import { mutate }                                 from '@vect/vector-mapper'
-import { fluoVector }                             from '@palett/fluo-vector'
-import { MUTATE_PIGMENT }                         from '@palett/enum-colorant-modes'
-import { renderVector }                           from '../src/infrastructure/renderVector'
-import { mutateKeyPad }                           from '../src/infrastructure/mutateKeyPad'
-import { mutateValues }                           from '@vect/entries-mapper'
-import { fluoEntries }                            from '@palett/fluo-entries'
-import { renderEntries }                          from '../src/infrastructure/renderEntries'
-import { _deco }                                  from '../src/_deco'
-import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
-import { isNumeric }                              from '@typen/num-loose'
-import { renderString }                           from '../src/infrastructure/renderString'
-import { decoFunc, funcName }                     from '@spare/deco-func'
-import { typ }                                    from '@typen/typ'
-import { ARRAY, DATE, MAP, OBJECT, SET }          from '@typen/enum-object-types'
-import { BRC, BRK, PAL }                          from '@spare/deco-colors'
+import { PAL }                                    from '@spare/deco-colors'
 import { decoDate, decoDateTime }                 from '@spare/deco-date'
-import { _decoString }                            from '@spare/deco-string'
-import { splitLiteral }                           from '@spare/splitter'
+import { decoFunc, funcName }                     from '@spare/deco-func'
+import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
+import { ARRAY, DATE, OBJECT, SET }               from '@typen/enum-object-types'
+import { isNumeric }                              from '@typen/num-loose'
+import { typ }                                    from '@typen/typ'
+import { mapKeyVal }                              from '@vect/object-mapper'
+import { isVector }                               from '@vect/vector-index'
+import { Typo }                                   from './Typo.js'
 
-export class Deco {
-  pres
-  style
-  full
-  depth
-  vert
-  unit
-  width
-  constructor(config) {
-    this.pres = config.pres
-    this.style = config.style
-    this.full = config.full
-    this.depth = config.depth ?? 8  // 级高于此则不展示
-    this.vert = config.vert ?? 0    // 级低于则竖排显示
-    this.unit = config.unit ?? 32   // 值/键值对的元素宽度大于此, 则进行竖排
-    this.width = config.width ?? 80 // 行字符的宽度大于此, 则换行
+export function depth(node) {
+  let d = 0
+  while (true) {
+    if (isVector(node)) { [ node ] = node, d++ }
+    else { return d }
+  }
+}
+
+
+export class Deco extends Typo {
+  dp
+  vt
+  kv
+  th
+  br = false
+  constructor(conf) {
+    super(conf)
+    this.dp = conf.depth ?? conf.dp ?? 8  // depth 级高于此则不展示
+    this.vt = conf.vert ?? conf.vt ?? 1  // vert 级低于则竖排显示
+    this.kv = conf.unit ?? conf.kv ?? 32 // unit 值/键值对的元素宽度大于此, 则进行竖排
+    this.th = conf.width ?? conf.th ?? 80 // width 行字符的宽度大于此, 则换行
+    this.br = conf.broad ?? conf.br ?? false
   }
 
-  render(node, level = 0, indent) {
-    const t = typeof node
-    if (t === STR) return isNumeric(node) ? node : renderString.call(this, node, level, indent)
-    if (t === NUM || t === BIG) return node
-    if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this)
+  node(x, id = 0, sr = 0) {
+    const t = typeof x
+    if (t === STR) return isNumeric(x) ? x : this.nodeString(x, id, sr)
+    if (t === NUM || t === BIG) return x
+    if (t === FUN) return (id >> 1) >= this.dp ? funcName(x) : decoFunc(x, this)
     if (t === OBJ) {
-      const { depth } = this, pt = typ(node)
-      if (pt === ARRAY) return level >= depth ? '[array]' : this.vector(node.slice(), level) |> BRK[level & 7]
-      if (pt === OBJECT) return level >= depth ? '{object}' : this.entries(Object.entries(node), level) |> BRC[level & 7]
-      if (pt === DATE) return level >= depth ? decoDate(node) : decoDateTime(node)
-      if (pt === MAP) return level >= depth ? '(map)' : this.entries([...node.entries()], level) |> BRK[level & 7]
-      if (pt === SET) return level >= depth ? '(set)' : `set:[${this.vector([...node], level)}]`
-      return `${node}`
+      const { dp } = this, pt = typ(x)
+      if (pt === ARRAY) return (id >> 1) >= dp ? '[array]' : this.nodeVector(x, id)
+      if (pt === OBJECT) return (id >> 1) >= dp ? '{object}' : this.nodeObject(x, id)
+      if (pt === DATE) return (id >> 1) >= dp ? decoDate(x) : decoDateTime(x)
+      // if (pt === MAP) return lv >= dp ? '(map)' : this.entries([ ...x.entries() ], lv)
+      if (pt === SET) return (id >> 1) >= dp ? '(set)' : `set:${this.nodeVector([ ...x ], id)}`
+      return `${x}`
     }
-    if (t === BOO) return PAL.BOO(node)
-    if (t === UND || t === SYM) return PAL.UDF(node)
-    return `${node}`
+    if (t === BOO) return PAL.BOO(x)
+    if (t === UND || t === SYM) return PAL.UDF(x)
+    return `${x}`
   }
 
-  string(string, lv, indent) {
-    const width = this.string?.width ?? this.width ?? 0, presets = this.string?.presets ?? null
-    const ctx = { vectify: splitLiteral, presets, width, indent: level + 1, firstLineIndent: indent, }
-    return _decoString.call(ctx, string)
+  threshold(id) { return (id >> 1) < this.vt ? 0 : this.th }
+  nodeString(str, id = 0, sr) {
+    return this.string(str, this.th, this.br ? id : id + 2, sr)
   }
-  vector(vector, lv) {
-    mutate(vector, v => String(_deco.call(this, v, lv + 1)))
-    if (this.pres) fluoVector.call(MUTATE_PIGMENT, vector, this.pres)
-    return renderVector.call(this, vector, lv)
+  nodeVector(vec, id = 0) {
+    switch (depth(vec)) {
+      case 0:
+        return '[]'
+      case 1:
+        vec = vec.map(v => this.node(v, id + 2))
+        return this.vector(vec, this.threshold(id), id)
+      case 2:
+        return this.matrix(vec, id)
+      default:
+        vec = vec.map(v => this.node(v, id + 1))
+        return this.vector(vec, NaN)
+    }
   }
-  entries(entries, lv) {
-    const pad = mutateKeyPad(entries)
-    mutateValues(entries, v => String(_deco.call(this, v, lv + 1, pad)))
-    if (this.pres) fluoEntries.call(MUTATE_PIGMENT, entries, this.pres)
-    return renderEntries.call(this, entries, lv)
+  nodeObject(obj, id = 0) {
+
+    obj = mapKeyVal(obj, (k, v) => {
+      const sr = id + 2 + k.length + 2
+      const nx = this.br
+        ? sr >= (this.th >> 1) ? (id + 4) : sr
+        : id + 2
+      return this.node(v, nx, sr) // nx could also be id+2, alternatively
+    })
+    return this.object(obj, this.threshold(id), id)
   }
 }
