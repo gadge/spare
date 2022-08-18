@@ -1,7 +1,7 @@
 import { flop, flopValue }                          from '@aryth/rand'
 import { Quotes }                                   from '@foba/quotes-creativity'
 import { BESQUE, OCEAN, SUBTLE }                    from '@palett/presets'
-import { Deco }                                     from '../target/Deco.js'
+import { deco }                                     from '../index.js'
 import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates'
 
 const CANDIDATES = {
@@ -15,11 +15,17 @@ const CANDIDATES = {
 
 const WD = 54
 const LINE = '+'.repeat(WD) + WD
-const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE }, vt: 6, dp: 18, th: WD, br: true })
+const CONF = {
+  pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE },
+  vert: 6,
+  depth: 18,
+  width: WD,
+  broad: true
+}
 
 LINE |> console.log
-deco.node(CANDIDATES, 0) |> console.log
+deco(CANDIDATES, CONF) |> console.log
 LINE |> console.log
 
-null |> deco.node |> console.log;
-({ some: null }) |> deco.node |> console.log
+null |> deco |> console.log;
+({ some: null }) |> deco |> console.log

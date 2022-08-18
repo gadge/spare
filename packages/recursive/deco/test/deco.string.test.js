@@ -1,5 +1,5 @@
 import { BESQUE, OCEAN, SUBTLE } from '@palett/presets'
-import { Deco }                  from '../target/Deco.js'
+import { deco }                  from '../index.js'
 
 export const STRINGS = {
   "empty": '',
@@ -10,8 +10,13 @@ export const STRINGS = {
 
 const WD = 60
 const LINE = '+'.repeat(WD) + WD
-const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE }, vt: 2, th: WD, br: true })
+const CONF = {
+  pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE },
+  vert: 2,
+  width: WD,
+  broad: true
+}
 
 LINE |> console.log
-deco.node(STRINGS, 0) |> console.log
+deco(STRINGS, CONF) |> console.log
 LINE |> console.log

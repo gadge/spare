@@ -1,5 +1,5 @@
 import { BESQUE, OCEAN, SUBTLE } from '@palett/presets'
-import { Deco }                  from '../target/Deco.js'
+import { deco }                  from '../index.js'
 
 const NESTED = {
   EMPTY: {},
@@ -26,8 +26,8 @@ const NESTED = {
 
 const WD = 72
 const LINE = '+'.repeat(WD) + WD
-const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE }, vt: 16, dp: 16, th: WD })
+const CONF = { fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE }, vt: 16, dp: 16, th: WD }
 
 LINE |> console.log
-deco.node(NESTED, 0) |> console.log
+deco(NESTED) |> console.log
 LINE |> console.log

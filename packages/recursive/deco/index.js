@@ -1,115 +1,53 @@
-import { DecoConfig } from '@spare/deco-config'
-import { LF }                     from '@spare/enum-chars'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
-import { _deco }                  from './src/_deco'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { Cate }                   from './target/Cate.js'
+import { Deco as De }             from './target/Deco.js'
+import { Die }                    from './target/Die.js'
+import { It, Re, tabs }           from './target/Joins.js'
+import { Typo }                   from './target/Typo.js'
 
-export { _deco }
+export { Cate, De, Die, Re, It, tabs, Typo }
 
-// const presetDeco = (p) => {
-//   if (!p) p = {}
-//   p.wf = p.wf ?? 160
-//   if (nullish(p.presets)) p.presets = p.pr ?? [AZURE, MOSS]
-//   DecoConfig.prototype.assignPresets.call(p, AZURE, MOSS)
-//   if (nullish(p.depth)) p.depth = 8 // 展示级别
-//   if (nullish(p.vert)) p.vert = 0 // 在此级别以下均设为竖排
-//   if (nullish(p.unit)) p.unit = 32 // 若 数组/键值对的值 单个元素长度超过此, 则进行竖排
-//   if (nullish(p.width)) p.width = 80 // 字符超过此, 则换行
-//   if (nullish(p.string)) p.string = {}
-//   const s = p.string
-//   // if (nullish(s.presets)) s.presets = [ATLAS, SUBTLE]
-//   DecoConfig.prototype.assignPresets.call(s, ATLAS, SUBTLE)
-//   // p |> JSON.stringify |> logger
-//   return p
-// }
+const DEF_PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
+
+const node = De.prototype.node
 
 /**
- *
- * @typedef {Object} DecoConfig
- * @typedef {Object} [DecoConfig.presets] - if set, prettify the result
- * @typedef {Object} [DecoConfig.depth] - if set, only output levels under it
- * @typedef {Object} [DecoConfig.vert] - if set, all levels under it output elements vertically
- * @typedef {Object} [DecoConfig.unit]  - if set, if array/key-value-pair element length exceeds it, vertically output the array/key-value-pair
- * @typedef {Object} [DecoConfig.width] - if set, wrap lines if string length exceeds it
- *
- * @param {*} ob
- * @param {DecoConfig} [p]
- * @param {DecoConfig} [p.object]
- * @param {DecoConfig} [p.array]
- * @param {DecoConfig} [p.string]
- * @param {number} [p.wf=160] - maximum length of string to hold function contents
- * @param {?string} [p.qm=null] - quotation mark
- * @returns {string|number}
+ * @param {{[depth],[vert],[width],[broad],[pres]}} p
+ * @returns {function(*):string}
  */
-export const deco = (ob, p = {}) => _deco.call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), ob)
-
-// TODO: fix string.presets default configuration
+export const Deco = (p = {}) => {
+  return node.bind(new De(p))
+}
 
 /**
- *
- * @typedef {Object} DecoConfig
- * @typedef {Object} [DecoConfig.presets] - if set, prettify the result
- * @typedef {Object} [DecoConfig.depth] - if set, only output levels under it
- * @typedef {Object} [DecoConfig.vert] - if set, all levels under it output elements vertically
- * @typedef {Object} [DecoConfig.unit]  - if set, if array/key-value-pair element length exceeds it, vertically output the array/key-value-pair
- * @typedef {Object} [DecoConfig.width] - if set, wrap lines if string length exceeds it
- *
- * @param {DecoConfig} [p]
- * @param {DecoConfig} [p.object]
- * @param {DecoConfig} [p.array]
- * @param {DecoConfig} [p.string]
- * @param {number} [p.wf=160] - maximum length of string to hold function contents
- * @param {?string} [p.qm=null] - quotation mark
- * @returns {string|number}
+ * @param {*} o
+ * @param {{[depth],[vert],[width],[broad],[pres]}} [p]
+ * @returns {string}
  */
-export const Deco = (p = {}) => _deco.bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
+export const deco = (o, p = {}) => {
+  p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
+  p.vert = p.vert ?? 1        // 更低位竖排列; vertically show all levels under 'vert'
+  p.width = p.width ?? 80     // 换行宽度; linefeed if line width exceeds 'width'
+  p.broad = p.broad ?? false   // 宽幅展示; set if broaden view
+  p.pres = p.pres ?? DEF_PRES
+  return node.call(new De(p), o)
+}
 
 /**
- *
- * @typedef {Object} DecoConfig
- * @typedef {Object} [DecoConfig.presets] - if set, prettify the result
- * @typedef {Object} [DecoConfig.depth] - if set, only output levels under it
- * @typedef {Object} [DecoConfig.vert] - if set, all levels under it output elements vertically
- * @typedef {Object} [DecoConfig.unit]  - if set, if array/key-value-pair element length exceeds it, vertically output the array/key-value-pair
- * @typedef {Object} [DecoConfig.width] - if set, wrap lines if string length exceeds it
- *
- * @param {*} ob
- * @param {DecoConfig} [p]
- * @param {DecoConfig} [p.object]
- * @param {DecoConfig} [p.array]
- * @param {DecoConfig} [p.string]
- * @param {number} [p.wf=160] - maximum length of string to hold function contents
- * @param {?string} [p.quote=null] - quotation mark
- * @returns {string|number}
+ * @param {*} o
+ * @param {{[depth],[vert],[width],[broad]}} [p]
+ * @returns {string}
  */
-export const deca = Deco
+export const decoPlain = (o, p = {}) => {
+  p.depth = p.depth ?? 8      // 更高级不展示; only detail levels under 'depth'
+  p.vert = p.vert ?? 1        // 更低级竖排显示; vertically show all levels under 'vert'
+  p.width = p.width ?? 80     // 换行宽度; linefeed if line width exceeds 'width'
+  p.broad = p.broad ?? false  // 宽幅展示; set if broaden view
+  return node.call(new De(p), o)
+}
 
-export const delogger = (x) => void console.log(x |> deco)
-
-export const delogNeL = (x) => void console.log(x |> deco, LF)
-
-// const config = {
-//   depth: 5,
-//   presets: [AZURE, MOSS],
-//   width: 64,
-//   vert: 5,
-//   method: {
-//     width: 64,
-//     presets: [AZURE, MOSS],
-//   },
-//   object: {
-//     width: 64,
-//     vert: 5,
-//     presets: [AZURE, MOSS],
-//   },
-//   array: {
-//     width: 64,
-//     vert: 5,
-//     presets: [AZURE, MOSS],
-//   },
-//   string: {
-//     width: 64,
-//     vert: 5,
-//     presets: [AZURE, MOSS],
-//   }
-// }
+// this.kv = conf.unit ?? conf.kv ?? 32 // unit 值/键值对的元素宽度大于此, 则进行竖排
