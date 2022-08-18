@@ -1,5 +1,6 @@
-import { logger } from '@spare/logger'
-import { deco }   from '../index'
+import { FRESH, METRO, OCEAN } from '@palett/presets'
+import { logger }              from '@spare/logger'
+import { Deco }                from '../target/Deco.js'
 
 const candidates = [
   {
@@ -10,9 +11,15 @@ const candidates = [
     date: new Date(),
     obj: { foo: null }
   },
-  [ 1, 1, 2, 3, 5, 8 ]
+  {
+    vec: [
+      [ 1, 1, 2, 3, 5, 8 ],
+      // [ 1, 1, 2, 3, 5, 8 ]
+
+    ],
+  }
 ]
 
-for (let candidate of candidates) {
-  candidate |> deco |> logger
-}
+
+const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO }, vt: 4 })
+deco.node(candidates) |> logger
