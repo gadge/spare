@@ -1,11 +1,7 @@
-import { isNumeric }          from '@texting/charset-halfwidth'
-import { BRK }                from '@texting/enum-brackets'
+import { Typo }               from '@spare/arc/src/Typo.js'
 import { COSP }               from '@texting/enum-chars'
-import { lange }              from '@texting/lange'
-import { value }              from '@texting/string-value'
 import { NUM, OBJ, STR, SYM } from '@typen/enum-data-types'
 import { isLiteral }          from '@typen/literal'
-import { parseNum }           from '@typen/num-strict'
 
 function toStr(x) {
   if (typeof x !== STR) { x = String(x) }
@@ -30,31 +26,24 @@ export class Type {
 //   case 'undefined':
 // }
 
+
 export class DecoVector {
-  join = false
+  join = true
+
+
   delim = COSP
-  brac = BRK
   read = toStr
-  fluo = null
+  pres = null
   padd = true
   ansi = false
   full = false
   level = 0
 
-  isLiteral = isLiteral
-  isNumeric = isNumeric
-  parseNum = parseNum
-  strValue = value
+  typo
 
-  types = []
-  rates = []
-  texts = []
-  width = 0
-  num
-  str
+
   constructor(conf) {
-    this.measure = this.ansi ? lange : x => x.length
-
+    if (conf.pres) this.pres = new Typo(conf)
   }
   static deco(vec, config) {
     const d = new DecoVector(config)
@@ -62,9 +51,8 @@ export class DecoVector {
   }
   project(vec) {
     vec = this.load(vec)
-    if (this.padd) vec = this.padder(vec)
-    if (this.fluo) vec = this.pretty(vec)
-    if (this.join) vec = this.joiner(vec)
+    if (this.pres) vec = this.pres.vector(vec)
+    if (this.join) vec = this.join(vec)
     return vec
   }
 

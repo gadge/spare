@@ -6,6 +6,7 @@ import { COLF }           from '@spare/enum-chars'
 import { liner }          from '@texting/liner'
 import { matrixMargin }   from '@spare/matrix-margin'
 import { matrixPadder }   from '@spare/matrix-padder'
+import { height, width }  from '@vect/matrix-index'
 
 const fluo = fluoMatrix.bind(MUTATE_PIGMENT)
 

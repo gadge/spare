@@ -20,7 +20,7 @@
   "dependencies": {
     "@analys/convert": "^0.6.14",
     "@analys/samples-select": "^0.6.14",
-    "@aryth/math": "^0.6.7",
+    "@aryth/math": "^0.6.8",
     "@palett/enum-colorant-modes": "^0.10.5",
     "@palett/fluo-matrix": "^0.10.4",
     "@palett/fluo-vector": "^0.10.4",
@@ -36,7 +36,7 @@
     "@texting/liner": "^0.1.11",
     "@vect/entries-unwind": "^0.6.13",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/vector-zipper": "^0.7.15"
+    "@vect/vector-zipper": "^0.7.16"
   },
   "repository": {
     "type": "git",
