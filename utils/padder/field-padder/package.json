@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.6.7",
+    "@aryth/comparer": "^0.6.8",
     "@spare/enum-chars": "^0.14.22",
     "@spare/enum-full-angle-chars": "^0.14.22",
     "@spare/fullwidth": "^0.14.22",
@@ -27,7 +27,7 @@
     "@texting/lange": "^0.1.11",
     "@texting/padder": "^0.1.11",
     "@vect/vector-indicator": "^0.6.13",
-    "@vect/vector-mapper": "^0.7.15"
+    "@vect/vector-mapper": "^0.7.16"
   },
   "repository": {
     "type": "git",

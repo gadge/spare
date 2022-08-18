@@ -23,7 +23,7 @@
     "@palett/dye": "^0.10.5",
     "@palett/presets": "^0.10.5",
     "@spare/preset-deco": "^0.14.22",
-    "@vect/object-mapper": "^0.7.15"
+    "@vect/object-mapper": "^0.7.16"
   },
   "repository": {
     "type": "git",
