@@ -1,0 +1,19 @@
+0 silly argv {
+0 silly argv   _: [ 'exec' ],
+0 silly argv   parallel: true,
+0 silly argv   args: [],
+0 silly argv   '--': [ 'rollup', '-c', '../../../rollup.config.mjs' ],
+0 silly argv   lernaVersion: '5.4.0',
+0 silly argv   '$0': 'node_modules/lerna/cli.js'
+0 silly argv }
+1 notice cli v5.4.0
+2 verbose rootPath /home/alkindus/banyan/spare
+3 error Error: Invalid tag name "^": Tags may not have any characters that encodeURIComponent encodes.
+3 error     at invalidTagName (/home/alkindus/banyan/spare/node_modules/npm-package-arg/npa.js:94:15)
+3 error     at fromRegistry (/home/alkindus/banyan/spare/node_modules/npm-package-arg/npa.js:299:13)
+3 error     at Function.resolve (/home/alkindus/banyan/spare/node_modules/npm-package-arg/npa.js:84:12)
+3 error     at /home/alkindus/banyan/spare/node_modules/@lerna/package-graph/index.js:66:30
+3 error     at Array.forEach (<anonymous>)
+3 error     at /home/alkindus/banyan/spare/node_modules/@lerna/package-graph/index.js:60:38
+3 error     at PackageGraph.forEach (<anonymous>)
+3 error     at new PackageGraph (/home/alkindus/banyan/spare/node_modules/@lerna/package-graph/index.js:49:10)

@@ -17,21 +17,21 @@ export function depth(node) {
   }
 }
 
-
 export class Deco extends Typo {
   dp
   vt
-  kv
   th
-  br = false
+  br
   constructor(conf) {
     super(conf)
-    this.dp = conf.depth ?? conf.dp ?? 8  // depth 级高于此则不展示
-    this.vt = conf.vert ?? conf.vt ?? 1  // vert 级低于则竖排显示
-    this.kv = conf.unit ?? conf.kv ?? 32 // unit 值/键值对的元素宽度大于此, 则进行竖排
-    this.th = conf.width ?? conf.th ?? 80 // width 行字符的宽度大于此, 则换行
-    this.br = conf.broad ?? conf.br ?? false
+    this.dp = conf.depth ?? conf.dp ?? 8     // 更高级不展示
+    this.vt = conf.vert ?? conf.vt ?? 1      // 更低级竖排显示
+    this.th = conf.width ?? conf.th ?? 80    // 换行宽度
+    this.br = conf.broad ?? conf.br ?? false // 宽幅展示
   }
+  static build(conf) { return new Deco(conf) }
+  static deco(x, conf) { return (new Deco(conf)).node(x) }
+  static make(conf) { return Deco.prototype.node.bind(new Deco(conf)) }
 
   node(x, id = 0, sr = 0) {
     const t = typeof x
@@ -71,7 +71,6 @@ export class Deco extends Typo {
     }
   }
   nodeObject(obj, id = 0) {
-
     obj = mapKeyVal(obj, (k, v) => {
       const sr = id + 2 + k.length + 2
       const nx = this.br

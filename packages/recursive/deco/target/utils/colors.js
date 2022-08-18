@@ -1,8 +1,33 @@
-import { round, roundD2 }            from '@aryth/math'
-import { hexAt, hexToInt, hexToRgb } from '@palett/convert'
+import { roundD2 } from '@aryth/math'
+import { hexAt }   from '@palett/convert'
+import {
+  BLI_OFF, BLI_ON, BOL_OFF, BOL_ON, CRO_OFF, CRO_ON, CSI, DIM_OFF, DIM_ON, FORE_DEF, FORE_INI, HID_OFF, HID_ON, INV_OFF, INV_ON, ITA_OFF,
+  ITA_ON, SGR, UND_OFF, UND_ON
+}                  from '@palett/enum-ansi-codes'
+import { SC }      from '@palett/util-ansi'
 
 const { max, min } = Math
 
+/**
+ * @this {{head,tail}}
+ * @param {string[]} style
+ * @returns {{head,tail}}
+ */
+export function style(style) {
+  if (!style?.length) return this
+  for (let t of style) {
+    t === 'bold' ? (this.head += BOL_ON + SC, this.tail += BOL_OFF + SC) // BOLD
+      : t === 'dim' ? (this.head += DIM_ON + SC, this.tail += DIM_OFF + SC) // DIM
+        : t === 'italic' ? (this.head += ITA_ON + SC, this.tail += ITA_OFF + SC) // ITALIC
+          : t === 'underline' ? (this.head += UND_ON + SC, this.tail += UND_OFF + SC) // UNDERLINE
+            : t === 'blink' ? (this.head += BLI_ON + SC, this.tail += BLI_OFF + SC) // BLINK
+              : t === 'inverse' ? (this.head += INV_ON + SC, this.tail += INV_OFF + SC) // INVERSE
+                : t === 'hide' ? (this.head += HID_ON + SC, this.tail += HID_OFF + SC) // HIDE
+                  : t === 'strike' ? (this.head += CRO_ON + SC, this.tail += CRO_OFF + SC) // STRIKE
+                    : void 0
+  }
+  return this
+}
 
 export const hue = (r, g, b, hi, df) => {
   if (df === 0) return 0
@@ -93,6 +118,23 @@ export function hexOntoRgb(hex, uca, pos = 0) {
   uca[pos++] = hexAt(hex, ++i) << 4 | hexAt(hex, ++i)
   uca[pos++] = hexAt(hex, ++i) << 4 | hexAt(hex, ++i)
   return uca
+}
+
+const H = CSI + FORE_INI + SC
+const T = CSI + FORE_DEF + SGR
+export function render(int, text) {
+  const r = int >> 16 & 0xFF, g = int >> 8 & 0xFF, b = int & 0xFF
+  return (this.head ?? H) + r + SC + g + SC + b + SGR + text + (this.tail ?? T)
+}
+
+export const scale = (val, vlo, lev, tlo) => val < vlo ? tlo : (val - vlo) * lev + tlo
+
+export const limFF = (val, vlo, lev, tlo) => {
+  if (val < vlo) return tlo
+  let t = (val - vlo) * lev + tlo
+  if (t < 0x0) return 0
+  if (t > 0xFF) return 255
+  return t
 }
 
 

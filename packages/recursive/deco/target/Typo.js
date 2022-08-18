@@ -1,53 +1,33 @@
-import { oneself }                      from '@ject/oneself'
-import { CSI, FORE_DEF, FORE_INI, SGR } from '@palett/enum-ansi-codes'
-import { BESQUE, SUBTLE }               from '@palett/presets'
-import { SC }                           from '@palett/util-ansi'
-import { hasAnsi }                      from '@texting/charset-ansi'
-import { BRACKET, NONE }                from '@texting/enum-brackets'
-import { COLF, COSP, LF, RTSP }         from '@texting/enum-chars'
-import { lange, length }                from '@texting/lange'
-import { splitLiteral }                 from '@texting/splitter'
-import { value }                        from '@texting/string-value'
-import { NUM, OBJ, STR, SYM }           from '@typen/enum-data-types'
-import { parseNum }                     from '@typen/num-strict'
-import { height, width }                from '@vect/matrix-index'
-import { init, iso }                    from '@vect/vector-init'
-import { cate, Cate }                   from './Cate.js'
-import { Die }                          from './Die.js'
-import { Re, tabs }                     from './Joins.js'
-import { hslToInt, presToUCA }          from './utils/colors.js'
-import { fixPad, priPad }               from './utils/padder.js'
-import { style }                        from './utils/style.js'
+import { oneself }                                          from '@ject/oneself'
+import { CSI, FORE_DEF, FORE_INI, SGR }                     from '@palett/enum-ansi-codes'
+import { BESQUE, SUBTLE }                                   from '@palett/presets'
+import { SC }                                               from '@palett/util-ansi'
+import { hasAnsi }                                          from '@texting/charset-ansi'
+import { BRACKET, NONE }                                    from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP }                             from '@texting/enum-chars'
+import { lange, length }                                    from '@texting/lange'
+import { splitLiteral }                                     from '@texting/splitter'
+import { value }                                            from '@texting/string-value'
+import { NUM, OBJ, STR, SYM }                               from '@typen/enum-data-types'
+import { parseNum }                                         from '@typen/num-strict'
+import { height, width }                                    from '@vect/matrix-index'
+import { init, iso }                                        from '@vect/vector-init'
+import { cate, Cate }                                       from './Cate.js'
+import { Die }                                              from './Die.js'
+import { Re, tabs }                                         from './Joins.js'
+import { hslToInt, limFF, presToUCA, render, scale, style } from './utils/colors.js'
+import { fixPad, priPad }                                   from './utils/padder.js'
 
 export function parseStr(x) {
   const p = typeof x
   return x === null ? '' + x : p === OBJ || p === SYM ? x.toString() : p === STR ? x : '' + x
 }
 
-const H = CSI + FORE_INI + SC
-const T = CSI + FORE_DEF + SGR
-export function render(int, text) {
-  const r = int >> 16 & 0xFF, g = int >> 8 & 0xFF, b = int & 0xFF
-  return (this.head ?? H) + r + SC + g + SC + b + SGR + text + (this.tail ?? T)
-}
-
-export const scale = (val, vlo, lev, tlo) => val < vlo ? tlo : (val - vlo) * lev + tlo
-
-export const limFF = (val, vlo, lev, tlo) => {
-  if (val < vlo) return tlo
-  let t = (val - vlo) * lev + tlo
-  if (t < 0x0) return 0
-  if (t > 0xFF) return 255
-  return t
-}
-
 const { Str: S, Num: N, NaN: E } = Cate
 
-export const { noteStr, noteNum, lever } = Die.prototype
-
 export class Typo {
-  /** @type {function} */ str = parseStr // parseStr
-  /** @type {function} */ num = parseNum // parseNum
+  /** @type {function} */ str = parseStr
+  /** @type {function} */ num = parseNum
   /** @type {function} */ len = length
   /** @type {function} */ pad = oneself
   /** @type {Uint8ClampedArray} */ tbd = null
@@ -96,8 +76,8 @@ export class Typo {
   store(ts, ns, bd, x, i) {
     let c, t, n, g
     typeof x === NUM ? (t = '' + x, n = x, c = N) : (t = this.str(x), n = this.num(x), c = cate(n, t), g = hasAnsi(t))
-    ts[i] = c === S && !(g = hasAnsi(t)) ? noteStr.call(bd, t) : t
-    ns[i] = c === S ? (g ? null : void 0) : c === N ? noteNum.call(bd, n) : NaN
+    ts[i] = c === S && !(g = hasAnsi(t)) ? bd.noteStr(t) : t
+    ns[i] = c === S ? (g ? null : void 0) : c === N ? bd.noteNum(n) : NaN
     return this.len(t)
   }
   render(bd, t, n, w) {
@@ -137,7 +117,7 @@ export class Typo {
       if ((ws[++i] = this.store(ts, ns, kd, k, i)) > kw) kw = ws[i]
       if ((ws[++i] = this.store(ts, ns, vd, obj[k], i)) > vw) vw = ws[i]
     }
-    for (hi = i, i = -1, lever.call(kd, this, kw), lever.call(vd, this, vw); i < hi;) {
+    for (hi = i, i = -1, kd.lever(this, kw), vd.lever(this, vw); i < hi;) {
       ts[++i] = this.render(kd, ts[i], ns[i])
       ts[++i] = this.render(vd, ts[i], ns[i])
     }
@@ -154,7 +134,7 @@ export class Typo {
       }
     }
     for (let i = 0, p = 0; i < ht; i++) {
-      lever.call(bd, this, xs[i])
+      bd.lever(this, xs[i])
       for (let j = 0; j < wd; j++, p++) ts[p] = this.render(bd, ts[p], ns[p], ys[j])
     }
     return ts
@@ -195,50 +175,42 @@ export class Typo {
   string(str, th, id, sr) {
     const vec = splitLiteral(str)
     const ts = this.flatVector(vec)
-    return th
-      ? Re.string(ts, '', th, id, sr)
-      : Re.chain(ts, '')
+    return th ? Re.string(ts, '', th, id, sr) : Re.chain(ts, '')
   }
   vector(vec, th, id = 0, sr = 0) {
     const cn = vec?.length ?? 0
     if (cn === 0) { return '[]' }
     const ts = this.flatVector(vec)
+    if (cn === 1) { return '[ ' + ts[0] + ' ]' }
     if (th > 0) { return '[' + Re.vector(ts, COSP, th, id, sr) + ']' }
-    if (th === 0 && cn > 1) { return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']' }
+    if (th === 0) { return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']' }
     else { return '[ ' + Re.chain(ts, COSP) + ' ]' }
   }
   object(obj, th, id = 0, sr = 0) {
     let ts = this.flatObject(obj), cn = ts.length
     if (cn === 0) { return '{}' }
+    if (cn <= 2) { return '{ ' + ts[0] + RTSP + ts[1] + ' }' }
     if (th > 0) { return '{' + Re.object(ts, COSP, th, id, sr + 2) + '}' }
-    if (th === 0 && cn > 2) { return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}' }
+    if (th === 0) { return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}' }
     else { return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }' }
   }
   entries(ent, hr, id = 0) {
     const cn = ent?.length ?? 0
     if (cn === 0) return '[]'
     const ts = this.flatEntries(ent, !(hr ||= cn <= 1))
-    return hr
-      ? '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']'
-      : '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
+    return hr ? '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']' : '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
   }
   matrix(mat, id = 0, sr = 0) {
     const ts = this.flatMatrix(mat), cn = ts.length, wd = width(mat)
-    return cn <= wd
-      ? '[[ ' + Re.chain(ts, COSP) + ' ]]'
-      : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
+    return cn <= wd ? '[[ ' + Re.chain(ts, COSP) + ' ]]' : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
   }
   rows(mat, id = 0) {
     const ts = this.flatRows(mat), cn = ts.length, wd = width(mat)
-    return cn <= wd
-      ? '[[ ' + Re.chain(ts, COSP) + ' ]]'
-      : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
+    return cn <= wd ? '[[ ' + Re.chain(ts, COSP) + ' ]]' : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
   }
   columns(mat, id = 0) {
     const ts = this.flatColumns(mat), cn = ts.length, wd = width(mat)
-    return cn <= wd
-      ? '[[ ' + Re.chain(ts, COSP) + ' ]]'
-      : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
+    return cn <= wd ? '[[ ' + Re.chain(ts, COSP) + ' ]]' : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
   }
 }
 

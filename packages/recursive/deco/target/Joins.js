@@ -99,10 +99,10 @@ export class Re {
   }
   static vector(ts, de = '', wd = 80, id = 0, sr = 0) {
     const cn = ts.length, ws = ts.ws ?? ts.map(lange)
-    let tx = '', cx = ' ', i = 0, hi = sr + ws[i], tb = tabs(id + 2), tw = tb.length, cl = hi > wd, dw = de?.length
+    let tx = '', cx = ' ', i = 0, p = sr + ws[i], tb = tabs(id + 2), tw = tb.length, cl = p > wd, dw = de?.length
     while (i < cn) {
-      if (hi > wd) tx += cx + LF, cx = tb, hi = tw + ws[i]
-      cx += ts[i], hi += ws[++i] + dw
+      if (p > wd) tx += cx + LF, cx = tb, p = tw + ws[i]
+      cx += ts[i], p += ws[++i] + dw
       if (i < cn) cx += de
     }
     if (cx.length) tx += cx + ' '
