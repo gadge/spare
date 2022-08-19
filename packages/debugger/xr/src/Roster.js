@@ -1,6 +1,6 @@
-import { presetFlopper }      from '@palett/flopper'
-import { deco as decoString } from '@spare/deco-string'
-import { hasAnsi }            from '@texting/charset-ansi'
+import { presetFlopper } from '@palett/flopper'
+import { decoString }    from '@spare/deco-string'
+import { hasAnsi }       from '@texting/charset-ansi'
 
 export class Roster {
   /** @type {Object<string,string>} */ #roll = {}
@@ -16,12 +16,18 @@ export class Roster {
   list() { return this.#roll }
 
   /**
-   * @param {Preset} [presets]
-   * @returns {{[presets]: Preset|Preset[], [effects]: ?string[]}}
+   * @param {Preset} [pres]
+   * @returns {Object}
    */
-  config(presets) { return { presets: presets ?? this.#pool.next().value, effects: this.effects } }
+  config(pres) {
+    if (pres) return { pres: { str: pres, num: pres, effects: this.effects } }
+    const { done, value } = pres ?? this.#pool.next()
+    return done ? {} : { pres: { str: value, num: value, effects: this.effects } }
+  }
 
-  aboard(name, presets) { return this.#roll[name] = decoString(name, this.config(presets)) }
+  aboard(name, pres) {
+    return this.#roll[name] = decoString(name, this.config(pres))
+  }
 
   get(name) {
     if (!name?.length) return null

@@ -1,6 +1,6 @@
 import { Callable }         from '@ject/callable'
 import { bracket, parenth } from '@texting/bracket'
-import { deco }             from '@spare/deco-string'
+import { decoString }       from '@spare/deco-string'
 import { LF, SP }           from '@spare/enum-chars'
 import { FUN, STR }         from '@typen/enum-data-types'
 
@@ -49,7 +49,7 @@ export class Pal extends Callable {
     )
   }
 
-  render(message) { return deco(String(message), this.decoConf) }
+  render(message) { return decoString(String(message), this.decoConf) }
   p(words) { return this.des += SP + words, this }
   br(words) { return this.des += SP + bracket(words), this }
   pr(words) { return this.des += SP + parenth(words), this }
