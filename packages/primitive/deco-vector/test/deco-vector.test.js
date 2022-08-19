@@ -1,10 +1,11 @@
-import { rand }                                  from '@aryth/rand'
-import { simpleVectorCollection }                from '@foba/foo'
-import { NumberVectorCollection }                from '@foba/vector'
-import { DECANTE, FRESH, METRO, SUBTLE, SUMMER } from '@palett/presets'
-import { BRK }                                   from '@spare/enum-brackets'
-import { says }                                  from '@spare/logger'
-import { Deco }                                  from '../index'
+import { rand }                   from '@aryth/rand'
+import { simpleVectorCollection } from '@foba/foo'
+import { NumberVectorCollection } from '@foba/vector'
+import { DECANTE, METRO, SUMMER } from '@palett/presets'
+import { BRK }                    from '@spare/enum-brackets'
+import { says }                   from '@spare/logger'
+import { Deco }                   from '../index.js'
+import { mapper, mapVal }         from '@vect/object-mapper'
 
 const Strangers = {
   empty: [],
@@ -14,15 +15,15 @@ const Strangers = {
   misc: [ null, undefined, NaN, 'Infinity', '+', 1.2E+1, 1.2E+2, 1.2E+3, 1.2E+4 ]
 }
 
-const SimpleVectors = simpleVectorCollection({ h: 16 })
+const SimpleVectors = mapVal(simpleVectorCollection({ h: 16 }), Object.values)
 
 const candidates = { ...Strangers, ...SimpleVectors }
+
+candidates |> console.log
 
 export class VectorDecoTest {
   static test() {
     for (const [ key, vector ] of Object.entries(candidates)) {
-      if (!Array.isArray(vector)) continue
-      vector |> console.log
       vector
         |> Deco({
         // head: 4,
@@ -34,7 +35,7 @@ export class VectorDecoTest {
         discrete: false,
         label: 1,
       })
-        |> says[key]
+        |> console.log
     }
   }
 }

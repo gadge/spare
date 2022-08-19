@@ -1,84 +1,65 @@
-import { DecoConfig }             from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
-import { decoVector }             from './src/decoVector.js'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { Typo }                   from '@spare/deco'
 
-export { decoVector, decoVector as _decoVector }
 
 /**
- * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
+ * @typedef {Object}    Opt
+ * @typedef {?Preset}   Opt.pres
+ * @typedef {?function} Opt.str
+ * @typedef {?function} Opt.num
+ * @typedef {?boolean}  Opt.ansi
+ * @typedef {?string}   Opt.fill
+ * @typedef {?number}   Opt.head
+ * @typedef {?number}   Opt.tail
  */
 
-/***
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string}  [p.dash=') ']
- * @param {string}  [p.delim=',\n']
- * @param {boolean|number} [p.bracket=true] - BRK = 1
- * @param {boolean}  [p.indexed=true]
- * @param {Function} [p.read]
- * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
- * @param {number}  [p.head]
- * @param {number}  [p.tail]
- * @param {boolean} [p.ansi]
- * @param {number}  [p.level=0]
- *
- * @returns {Function}
- */
-export const Deco = (p = {}) => decoVector
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
 
-/***
- *
- * @param {*[]} vector
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=') ']
- * @param {string} [p.delim=',\n']
- *
- * @param {boolean|number} [p.bracket=true] - BRK = 1
- *
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level=0]
- *
- * @returns {string}
- */
-export const deco = (vector, p = {}) => decoVector
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), vector)
+const { vector } = Typo.prototype
 
-/***
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=') ']
- * @param {string} [p.delim=',\n']
- *
- * @param {boolean|number} [p.bracket=true] - BRK = 1
- *
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level=0]
- *
- * @returns {Function}
+/**
+ * @param {Opt} p
+ * @returns {function}
  */
-export const DecoPale = (p = {}) => decoVector
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
+export const DecoVector = (p = {}) => {
+  p.pres = p.pres ?? PRES
+  return vector.bind(new Typo(p))
+}
+
+export const decoVector = (vec, p = {}, th, id, sr) => {
+  p.pres = p.pres ?? PRES
+  return vector.call(new Typo(p), p, th, id, sr)
+}
+
+/**
+ * @param {Opt} p
+ * @returns {function}
+ */
+export const PaleVector = (p = {}) => {
+  return vector.bind(new Typo(p))
+}
+
+export const paleVector = (vec, p = {}, th, id, sr) => {
+  return vector.call(new Typo(p), p, th, id, sr)
+}
+
+export {
+  decoVector as deco,
+  DecoVector as Deco,
+}
+
+// {boolean} [p.discrete]
+// {string}  [p.dash=') ']
+// {string}  [p.delim=',\n']
+// {boolean|number} [p.bracket=true] - BRK = 1
+// {boolean}  [p.indexed=true]
+// {Function} [p.read]
+// {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
+// {number}  [p.head]
+// {number}  [p.tail]
+// {boolean} [p.ansi]
+// {number}  [p.level=0]

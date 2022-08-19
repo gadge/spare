@@ -1,52 +1,49 @@
-import { DecoConfig }             from '@spare/deco-config'
-import { DA, SP }                 from '@texting/enum-chars'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { splitCamel, splitSnake } from '@texting/splitter'
-import { CONFIG }                 from './resources/config'
-import { decoString }             from './src/decoString.js'
+import { Typo } from '@spare/deco'
 
-const Splitter = delim => v => String.prototype.split.call(v, delim)
-export const decoCamel = (text, { delim = '', presets, effects } = {}) => {
-  return decoString.call({ delim, presets, effects, vectify: splitCamel }, text)
-}
+const { string } = Typo.prototype
 
-export const decoSnake = (text, { delim = DA, presets, effects } = {}) => {
-  return decoString.call({ delim, presets, effects, vectify: splitSnake }, text)
-}
-
-export const decoPhrase = (text, { delim = SP, presets, effects } = {}) => {
-  return decoString.call({ delim, presets, effects, vectify: Splitter(delim) }, text)
-}
-
-export { decoString, decoString as _decoString }
 /**
- * @param {string} text
- * @param {Object} [p]
- * @param {number} [p.width=80]
- * @param {number} [p.indent]
- * @param {number} [p.firstLineIndent]
- * @param {Object[]} [p.presets]
- * @param {string[]} [p.effects]
- * @param {Function} [p.vectify]
- * @param {Function} [p.joiner]
- * @return {string}
+ * @typedef {Object}    Opt
+ * @typedef {?Object}   Opt.pres
+ * @typedef {?function} Opt.str
+ * @typedef {?function} Opt.num
+ * @typedef {?boolean}  Opt.ansi
+ * @typedef {?string}   Opt.fill
+ * @typedef {?number}   Opt.head
+ * @typedef {?number}   Opt.tail
  */
-export const deco = (text, p = {}) => decoString
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), text)
 
 /**
  *
- * @param {Object} p
- * @param {string} [p.delim]
- * @param {number} [p.width=80]
- * @param {number} [p.indent]
- * @param {number} [p.firstLineIndent]
- * @param {Object[]} [p.presets]
- * @param {string[]} [p.effects]
- * @param {Function} [p.vectify]
- * @param {Function} [p.joiner]
- * @return {Function}
+ * @param {string} str
+ * @param {Opt}    [p]
+ * @param {number} [th]
+ * @param {number} [id]
+ * @param {number} [sr]
+ * @returns {string}
  */
-export const Deco = (p = {}) => decoString
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
+export function decoString(str, p = {}, th, id, sr) {
+  return string.call(new Typo(p), str, th, id, sr)
+}
+
+/**
+ *
+ * @param {Opt}    p
+ * @returns {function}
+ */
+export function DecoString(p = {}) {
+  return string.bind(new Typo(p))
+}
+
+// {string} text
+// {Object} [p]
+// {number} [p.width=80]
+// {number} [p.indent]
+// {number} [p.firstLineIndent]
+// {Object[]} [p.presets]
+// {string[]} [p.effects]
+// {Function} [p.vectify]
+// {Function} [p.joiner]
+
+
 
