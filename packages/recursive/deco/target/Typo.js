@@ -174,8 +174,7 @@ export class Typo {
 
   string(str, th, id, sr) {
     const vec = splitLiteral(str)
-    const ts = this.flatVector(vec)
-    return th ? Re.string(ts, '', th, id, sr) : Re.chain(ts, '')
+    return Re.string(this.flatVector(vec), '', th, id, sr)
   }
   vector(vec, th, id = 0, sr = 0) {
     const cn = vec?.length ?? 0

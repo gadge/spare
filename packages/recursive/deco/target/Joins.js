@@ -83,6 +83,7 @@ export class Re {
     return tx
   }
   static string(ts, de = '', wd = 80, id = 0, sr = 0) {
+    if (!wd) return Re.chain(ts, de)
     const cn = ts.length, ws = ts.ws ?? ts.map(lange)
     let tx = '', cx = '', ph = '', i = 0, p = sr + ws[i], rn = false
     const tb = tabs(id), tw = tb.length, dw = de?.length
