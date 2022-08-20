@@ -1,64 +1,76 @@
-import { DecoConfig }             from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
-import { decoMatrix }             from './src/decoMatrix.js'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { Typo }                   from '@spare/deco'
+import { SP }                     from '@spare/enum-chars'
 
-export { decoMatrix, decoMatrix as _decoMatrix }
-
-/***
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim=', ']
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
- * @param {number} [p.direct=ROWWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi]
- * @param {boolean} [p.full]
- * @param {number} [p.level=0]
- *
- * @returns {Function}
+/**
+ * @typedef {Object}    Opt
+ * @typedef {?Preset}   Opt.pres
+ * @typedef {?function} Opt.str
+ * @typedef {?function} Opt.num
+ * @typedef {?boolean}  Opt.ansi
+ * @typedef {?string}   Opt.fill
+ * @typedef {?number}   Opt.head
+ * @typedef {?number}   Opt.tail
  */
-export const Deco = (p = {}) => decoMatrix
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
-/***
- *
- * @param {*[][]} matrix
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim=', ']
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
- * @param {number} [p.direct=ROWWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi]
- * @param {boolean} [p.full]
- * @param {number} [p.level=0]
- *
- * @returns {string}
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
+
+const { matrix } = Typo.prototype
+
+/**
+ * @param {Opt} p
+ * @returns {function}
  */
-export const deco = (matrix, p = {}) => decoMatrix
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), matrix)
+export const DecoMatrix = (p = {}) => {
+  p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return matrix.bind(new Typo(p))
+}
 
+export const decoMatrix = (vec, p = {}, th, id, sr) => {
+  p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return matrix.call(new Typo(p), p, th, id, sr)
+}
+
+/**
+ * @param {Opt} p
+ * @returns {function}
+ */
+export const PaleMatrix = (p = {}) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return matrix.bind(new Typo(p))
+}
+
+export const paleMatrix = (vec, p = {}, th, id, sr) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return matrix.call(new Typo(p), p, th, id, sr)
+}
+
+export {
+  decoMatrix as deco,
+  DecoMatrix as Deco,
+}
+
+// {Object}          p
+// {boolean}         [p.discrete]
+// {string}          [p.delim=', ']
+// {boolean|number}  [p.bracket=true]
+// {Function}        [p.read]
+// {Object|Object[]} [p.presets=[FRESH, OCEAN]]
+// {number}          [p.direct=ROWWISE]
+// {number}          [p.top]
+// {number}          [p.bottom]
+// {number}          [p.left]
+// {number}          [p.right]
+// {boolean}         [p.ansi]
+// {boolean}         [p.full]
+// {number}          [p.level=0]
