@@ -18,13 +18,8 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@spare/deco-config": "^0.14.22",
-    "@spare/deco-entries": "^0.14.22",
-    "@spare/deco-flat": "^0.14.22",
-    "@spare/enum-brackets": "^0.14.22",
-    "@spare/enum-chars": "^0.14.22",
-    "@spare/preset-deco": "^0.14.22",
-    "@texting/liner": "^0.1.11"
+    "@palett/presets": "^0.10.5",
+    "@spare/deco": "^0.14.23"
   },
   "repository": {
     "type": "git",

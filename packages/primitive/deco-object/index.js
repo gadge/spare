@@ -1,65 +1,64 @@
-import { DecoConfig }             from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
-import { decoObject }             from './src/decoObject.js'
-
-export { decoObject, decoObject as _decoObject }
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { Typo }                   from '@spare/deco'
 
 /**
- * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
+ * @typedef {Object}    Opt
+ * @typedef {?Preset}   Opt.pres
+ * @typedef {?function} Opt.str
+ * @typedef {?function} Opt.num
+ * @typedef {?boolean}  Opt.ansi
+ * @typedef {?string}   Opt.fill
+ * @typedef {?number}   Opt.head
+ * @typedef {?number}   Opt.tail
  */
+
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
+
+const { object } = Typo.prototype
 
 /**
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=': ']
- * @param {string} [p.delim=',\n']
- *
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- *
- * @param {Object[]} [p.presets=[FRESH,PLANET]]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level]
- *
- * @returns {Function}
+ * @param {Opt} p
+ * @returns {function}
  */
-export const Deco = (p = {}) => decoObject
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
+export const DecoObject = (p = {}) => {
+  p.pres = p.pres ?? PRES
+  return object.bind(new Typo(p))
+}
 
-/***
- *
- * @param {Object} o
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=': ']
- * @param {string} [p.delim=',\n']
- *
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- *
- * @param {Object[]|*} [p.presets=[FRESH,PLANET]]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level]
- *
- * @returns {string}
+export const decoObject = (vec, p = {}, th, id, sr) => {
+  p.pres = p.pres ?? PRES
+  return object.call(new Typo(p), p, th, id, sr)
+}
+
+/**
+ * @param {Opt} p
+ * @returns {function}
  */
-export const deco = (o, p = {}) => decoObject
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), o)
+export const PaleObject = (p = {}) => {
+  return object.bind(new Typo(p))
+}
+
+export const paleObject = (vec, p = {}, th, id, sr) => {
+  return object.call(new Typo(p), p, th, id, sr)
+}
+
+export {
+  decoObject as deco,
+  DecoObject as Deco,
+}
+
+// {boolean}        [p.discrete]
+// {string}         [p.dash=': ']
+// {string}         [p.delim=',\n']
+// {boolean|number} [p.bracket=true]
+// {Function}       [p.keyRead]
+// {Function}       [p.read]
+// {Object[]}       [p.presets=[FRESH,PLANET]]
+// {number}         [p.head]
+// {number}         [p.tail]
+// {boolean}        [p.ansi]
+// {number}         [p.level]

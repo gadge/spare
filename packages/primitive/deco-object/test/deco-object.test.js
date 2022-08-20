@@ -1,24 +1,25 @@
 import { rand }                   from '@aryth/rand'
 import { simpleObjectCollection } from '@foba/foo'
-import { OCEAN }                  from '@palett/presets'
-import { delogger }               from '@spare/deco'
-import { logger }                 from '@spare/logger'
-import { Deco }                   from '../index'
+import { LILAC, NORSE }           from '@palett/presets'
+import { RTSP }                   from '@texting/enum-chars'
+import { indexed }                from '@vect/object-mapper'
+import { DecoObject }             from '../index.js'
 
 let SimpleObjects = simpleObjectCollection({ h: 12 })
 
-SimpleObjects |> delogger
+SimpleObjects |> console.log
 
-for (const [ key, entries ] of Object.entries(SimpleObjects)) {
-  const words = entries |> Deco({
+for (const [ key, obj ] of indexed(SimpleObjects)) {
+  const decoObject = DecoObject({
     head: 5,
     tail: 2,
-    presets: OCEAN,
+    pres: {
+      str: NORSE,
+      num: LILAC,
+    },
     bracket: true,
     discrete: false,
     level: rand(3)
   })
-  words|> logger
-  // |> says[key].p(inferType(words))
-  // entries |> Deco({ dash: ',', delim: ',\n', quote: true, quote: '\'' }) |> logger
+  key + RTSP + decoObject(obj, 36, 1, key.length + 2) |> console.log
 }
