@@ -4,7 +4,7 @@ import { NumberVectorCollection } from '@foba/vector'
 import { DECANTE, METRO, SUMMER } from '@palett/presets'
 import { BRK }                    from '@spare/enum-brackets'
 import { mapVal }                 from '@vect/object-mapper'
-import { Deco }                   from '../index.js'
+import { DecoVector }             from '../index.js'
 
 const Strangers = {
   empty: [],
@@ -24,7 +24,7 @@ export class VectorDecoTest {
   static test() {
     for (const [ key, vector ] of Object.entries(candidates)) {
       vector
-        |> Deco({
+        |> DecoVector({
         // head: 4,
         // tail: 4,
         indexed: false,

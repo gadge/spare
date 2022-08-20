@@ -1,64 +1,87 @@
-import { DecoConfig }             from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
-import { decoEntries }            from './src/decoEntries.js'
-
-export { decoEntries, decoEntries as _decoEntries }
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { Typo }                   from '@spare/deco'
+import { SP }                     from '@texting/enum-chars'
 
 /**
- * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
+ * @typedef {Object}    Opt
+ * @typedef {?Preset}   Opt.pres
+ * @typedef {?function} Opt.str
+ * @typedef {?function} Opt.num
+ * @typedef {?boolean}  Opt.ansi
+ * @typedef {?string}   Opt.fill
+ * @typedef {?number}   Opt.head
+ * @typedef {?number}   Opt.tail
  */
+
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
+
+const { entries } = Typo.prototype
 
 /**
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=' > ']
- * @param {string} [p.delim='\n']
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level=0]
- *
- * @returns {Function}
+ * @param {Opt} p
+ * @returns {function}
  */
-export const Deco = (p = {}) => decoEntries
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
+export const DecoEntries = (p = {}) => {
+  p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return entries.bind(new Typo(p))
+}
 
-/***
- *
- * @param {[*,*][]} entries
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.dash=' > ']
- * @param {string} [p.delim='\n']
- *
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, OCEAN]]
- *
- * @param {number} [p.head]
- * @param {number} [p.tail]
- *
- * @param {boolean} [p.ansi]
- * @param {number} [p.level=0]
- *
- * @returns {string}
+export const decoEntries = (vec, p = {}, th, id, sr) => {
+  p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return entries.call(new Typo(p), p, th, id, sr)
+}
+
+/**
+ * @param {Opt} p
+ * @returns {function}
  */
-export const deco = (entries, p = {}) => decoEntries
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), entries)
+export const PaleEntries = (p = {}) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return entries.bind(new Typo(p))
+}
+
+export const paleEntries = (vec, p = {}, th, id, sr) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return entries.call(new Typo(p), p, th, id, sr)
+}
+
+export {
+  decoEntries as deco,
+  DecoEntries as Deco,
+}
+
+// {boolean}         [p.discrete]
+// {string}          [p.dash=') ']
+// {string}          [p.delim=',\n']
+// {boolean|number}  [p.bracket=true] - BRK = 1
+// {boolean}         [p.indexed=true]
+// {Function}        [p.read]
+// {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
+// {number}          [p.head]
+// {number}          [p.tail]
+// {boolean}         [p.ansi]
+// {number}          [p.level=0]
+
+
+// {Object} p
+// {boolean}         [p.discrete]
+// {string}          [p.dash=' > ']
+// {string}          [p.delim='\n']
+// {boolean|number}  [p.bracket=true]
+// {Function}        [p.keyRead]
+// {Function}        [p.read]
+// {Object|Object[]} [p.presets=[FRESH, OCEAN]]
+// {number}          [p.head]
+// {number}          [p.tail]
+// {boolean}         [p.ansi]
+// {number}          [p.level=0]
