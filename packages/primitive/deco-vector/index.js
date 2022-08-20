@@ -1,7 +1,6 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { Typo }                   from '@spare/deco'
 
-
 /**
  * @typedef {Object}    Opt
  * @typedef {?Preset}   Opt.pres
@@ -52,14 +51,14 @@ export {
   DecoVector as Deco,
 }
 
-// {boolean} [p.discrete]
-// {string}  [p.dash=') ']
-// {string}  [p.delim=',\n']
-// {boolean|number} [p.bracket=true] - BRK = 1
-// {boolean}  [p.indexed=true]
-// {Function} [p.read]
+// {boolean}         [p.discrete]
+// {string}          [p.dash=') ']
+// {string}          [p.delim=',\n']
+// {boolean|number}  [p.bracket=true] - BRK = 1
+// {boolean}         [p.indexed=true]
+// {Function}        [p.read]
 // {Object|Object[]} [p.presets=[FRESH,JUNGLE]]
-// {number}  [p.head]
-// {number}  [p.tail]
-// {boolean} [p.ansi]
-// {number}  [p.level=0]
+// {number}          [p.head]
+// {number}          [p.tail]
+// {boolean}         [p.ansi]
+// {number}          [p.level=0]

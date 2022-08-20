@@ -3,9 +3,8 @@ import { simpleVectorCollection } from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
 import { DECANTE, METRO, SUMMER } from '@palett/presets'
 import { BRK }                    from '@spare/enum-brackets'
-import { says }                   from '@spare/logger'
+import { mapVal }                 from '@vect/object-mapper'
 import { Deco }                   from '../index.js'
-import { mapper, mapVal }         from '@vect/object-mapper'
 
 const Strangers = {
   empty: [],
