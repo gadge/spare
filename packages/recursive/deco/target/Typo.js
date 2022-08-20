@@ -150,7 +150,7 @@ export class Typo {
       }
     }
     for (let i = 0, p = 0; i < ht; i++) {
-      lever.call(bds[i], this, xs[i])
+      bds[i].lever(this, xs[i])
       for (let j = 0; j < wd; j++, p++) ts[p] = this.render(bds[i], ts[p], ns[p], ys[j])
     }
     return ts
@@ -165,7 +165,7 @@ export class Typo {
         if (w > ys[j]) ys[j] = w
       }
     }
-    for (let j = 0; j < wd; j++) lever.call(bds[j], this, ys[j])
+    for (let j = 0; j < wd; j++) bds[j].lever(this, ys[j])
     for (let i = 0, p = 0; i < ht; i++) {
       for (let j = 0; j < wd; j++, p++) ts[p] = this.render(bds[j], ts[p], ns[p], ys[j])
     }
@@ -199,7 +199,7 @@ export class Typo {
     const ts = this.flatEntries(ent, !(hr ||= cn <= 1))
     return hr ? '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']' : '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
   }
-  matrix(mat, id = 0, sr = 0) {
+  matrix(mat, id = 0) {
     const ts = this.flatMatrix(mat), cn = ts.length, wd = width(mat)
     return cn <= wd ? '[[ ' + Re.chain(ts, COSP) + ' ]]' : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
   }
