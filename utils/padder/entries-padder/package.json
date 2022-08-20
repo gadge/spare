@@ -1,6 +1,6 @@
 {
   "name": "@spare/entries-padder",
-  "version": "0.14.22",
+  "version": "0.14.24",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {

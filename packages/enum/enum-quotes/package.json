@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-quotes",
-  "version": "0.14.22",
+  "version": "0.14.24",
   "description": "String quotes",
   "main": "./dist/index.cjs",
   "exports": {
