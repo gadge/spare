@@ -1,6 +1,6 @@
 {
   "name": "@spare/bracket",
-  "version": "0.14.26",
+  "version": "0.14.27",
   "description": "Add parenthesis/bracket/brace/angle-bracket to string",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-brackets": "^0.14.26"
+    "@spare/enum-brackets": "^0.14.27"
   },
   "repository": {
     "type": "git",

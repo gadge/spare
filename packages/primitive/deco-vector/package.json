@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-vector",
-  "version": "0.14.26",
+  "version": "0.14.27",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@spare/deco": "^0.14.26",
-    "@spare/vector-margin": "^0.14.26"
+    "@spare/deco": "^0.14.27",
+    "@spare/vector-margin": "^0.14.27"
   },
   "repository": {
     "type": "git",
