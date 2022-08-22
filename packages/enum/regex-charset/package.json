@@ -1,6 +1,6 @@
 {
   "name": "@spare/regex-charset",
-  "version": "0.14.29",
+  "version": "0.15.0",
   "description": "Regex sets",
   "main": "./dist/index.cjs",
   "exports": {
