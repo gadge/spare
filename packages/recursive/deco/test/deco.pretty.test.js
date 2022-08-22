@@ -26,6 +26,7 @@ const CONF = {
 LINE |> console.log
 deco(CANDIDATES, CONF) |> console.log
 LINE |> console.log
+deco([ 'foo', 'bar' ]) |> console.log
 
 null |> deco |> console.log;
 ({ some: null }) |> deco |> console.log

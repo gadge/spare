@@ -92,6 +92,7 @@ export class Typo {
     let wd = 0, i
     for (i = 0; i < cn; i++) if ((ws[i] = this.store(ts, ns, bd, vec[i], i)) > wd) wd = ws[i]
     for (i = 0, bd.lever(this, wd); i < cn; i++) ts[i] = this.render(bd, ts[i], ns[i])
+
     return ts
   }
   flatEntries(ent, pad) {

@@ -62,7 +62,8 @@ export class Deco extends Typo {
         return '[]'
       case 1:
         vec = vec.map(v => this.node(v, id + 2))
-        return this.vector(vec, this.threshold(id), id)
+        const th = vec.length <= 2 ? NaN : this.threshold(id)
+        return this.vector(vec, th, id)
       case 2:
         return this.matrix(vec, id)
       default:

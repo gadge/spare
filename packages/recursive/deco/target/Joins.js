@@ -88,7 +88,7 @@ export class Re {
     let tx = '', cx = '', ph = '', i = 0, p = sr + ws[i], rn = false
     const tb = tabs(id), tw = tb.length, dw = de?.length
     while (i < cn) {
-      if (p > wd || (rn = /\n/.test(cx))) tx += cx + (rn ? '' : LF), cx = tb, p = tw + ws[i]
+      if ((rn = /\n/.test(cx)) || p > wd) tx += cx + (rn ? '' : LF), cx = tb, p = tw + ws[i]
       cx += ts[i], p += ws[++i] + dw
       if (i < cn) {
         if (/[.,;:!?'"`)\]}]?\s*/.test(ph = ts[i])) cx += ph, p += ws[++i] + dw

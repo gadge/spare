@@ -132,8 +132,8 @@ export const scale = (val, vlo, lev, tlo) => val < vlo ? tlo : (val - vlo) * lev
 export const limFF = (val, vlo, lev, tlo) => {
   if (val < vlo) return tlo
   let t = (val - vlo) * lev + tlo
-  if (t < 0x0) return 0
-  if (t > 0xFF) return 255
+  if (t < tlo) return tlo
+  if (t > 0xFF) return 0xFF
   return t
 }
 

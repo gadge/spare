@@ -19,6 +19,7 @@ export const STRINGS = {
     "Drop tears as fast as the Arabian trees\n" +
     "Their medicinal gum. ",
   "some": "1-2-3-4-5-6-7-8-9",
+  "book": "Sharifian, Farzad - Cultural Linguistics Cultural Conceptualisations and Language"
 }
 
 const typo = new Typo({
