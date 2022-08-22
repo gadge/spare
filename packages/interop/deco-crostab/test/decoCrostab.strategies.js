@@ -1,9 +1,9 @@
-import { CrostabCollection }         from '@foba/crostab'
-import { makeEmbedded }              from '@foba/util'
-import { decoCrostab, logger, says } from '@spare/logger'
-import { strategies }                from '@valjoux/strategies'
-import { dateTime }                  from '@valjoux/timestamp-pretty'
-import { deco }                      from '../index'
+import { CrostabCollection } from '@foba/crostab'
+import { makeEmbedded }      from '@foba/util'
+import { says }              from '@spare/xr'
+import { strategies }        from '@valjoux/strategies'
+import { dateTime }          from '@valjoux/timestamp-pretty'
+import { deco, decoCrostab } from '../index.js'
 
 const test = () => {
   const { lapse, result } = strategies({
@@ -15,12 +15,12 @@ const test = () => {
     } |> makeEmbedded,
     methods: {
       arch: x => x,
-      dev: (mx) => deco(mx),
+      dev: decoCrostab,
       // bench: (mx) => mapper(mx, x => typeof x === STR ? x.trim() : x)
     }
   })
   lapse |> decoCrostab |> says['lapse'].p(dateTime())
-  '' |> logger
+  '' |> console.log
   const FUNCTION_TAG = 'dev'
   for (let member of result.side)
     result.cell(member, FUNCTION_TAG)  |> says[member].br(FUNCTION_TAG)

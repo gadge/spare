@@ -1,89 +1,80 @@
-import { DecoConfig }            from '@spare/deco-config'
-import { TRI_PRESET_COLLECTION } from '@spare/preset-deco'
-import { liner }                 from '@texting/liner'
-import { acquire }               from '@vect/vector-merge'
-import { zipper }                from '@vect/vector-zipper'
-import { CONFIG }                from './resources/config'
-import { HCONN, VLINE }          from './resources/conns.js'
-import { decoCrostab }           from './src/decoCrostab.js'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { TableTypo }              from '@spare/deco-table'
+import { SP }                     from '@spare/enum-chars'
 
-export { decoCrostab, decoCrostab as _decoCrostab }
+/**
+ * @typedef {Object}    Opt
+ * @typedef {?Preset}   Opt.pres
+ * @typedef {?function} Opt.str
+ * @typedef {?function} Opt.num
+ * @typedef {?boolean}  Opt.ansi
+ * @typedef {?string}   Opt.fill
+ * @typedef {?number}   Opt.top
+ * @typedef {?number}   Opt.bottom
+ * @typedef {?number}   Opt.left
+ * @typedef {?number}   Opt.right
+ */
 
-export class DecoCrostab {
-  static simple(crostab, config) {
-    const lines = acquire([
-        crostab.title + VLINE + crostab.head.join(VLINE),
-        crostab.rule.join(HCONN)
-      ],
-      zipper(
-        crostab.side,
-        crostab.rows, (s, r) => s + VLINE + r.join(VLINE)
-      ))
-    return liner(lines, config) // use: discrete, delim, level
-  }
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
+
+const { table } = TableTypo.prototype
+
+/**
+ * @param {Opt} p
+ * @returns {function}
+ */
+export const DecoCrostab = (p = {}) => {
+  p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return table.bind(new TableTypo(p))
+}
+
+export const decoCrostab = (vec, p = {}, id) => {
+  p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
 }
 
 /**
- * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
+ * @param {Opt} p
+ * @returns {function}
  */
+export const PaleCrostab = (p = {}) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return table.bind(new TableTypo(p))
+}
 
-/**
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim='\n']
- * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
- *
- * @param {Function} [p.read]
- * @param {Function} [p.headRead]
- * @param {Function} [p.sideRead]
- *
- * @param {Object|Object[]} [p.presets=[FRESH,JUNGLE,SUBTLE]]
- * @param {number} [p.direct=POINTWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi=true]
- * @param {boolean} [p.fullAngle]
- * @param {number} [p.level=0]
- *
- * @returns {string}
- */
-export const Deco = (p = {}) => decoCrostab
-  .bind(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION))
+export const paleCrostab = (vec, p = {}, id) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
+}
 
-/**
- *
- * @param {Object} crostab
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim='\n']
- *  - currently not functional, keeps for future fix
- * @param {number} [p.bracket=NONE] - currently not functional, keeps for future fix
- *
- * @param {Function} [p.read]
- * @param {Function} [p.headRead]
- * @param {Function} [p.sideRead]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
- * @param {Object} [p.labelPreset=SUBTLE]
- * @param {number} [p.direct=POINTWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi=true]
- * @param {boolean} [p.fullAngle]
- * @param {number} [p.level=0]
- *
- * @returns {string}
- */
-export const deco = (crostab, p = {}) => decoCrostab
-  .call(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION), crostab)
+export {
+  decoCrostab as deco,
+  DecoCrostab as Deco,
+}
+
+
+// {boolean}         [p.discrete]
+// {string}          [p.delim=',\n']
+// {boolean|number}  [p.bracket] - currently not functional, keeps for future fix
+// {Function}        [p.read]
+// {Function}        [p.headRead]
+// {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+// {Object}          [p.labelPreset=SUBTLE]
+// {number}          [p.direct=COLUMNWISE]
+// {number}          [p.top]
+// {number}          [p.bottom]
+// {number}          [p.left]
+// {number}          [p.right]
+// {boolean}         [p.ansi=true]
+// {boolean}         [p.fullAngle]
+// {number}          [p.level=0]

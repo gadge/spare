@@ -1,4 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { SP }                     from '@spare/enum-chars'
 import { TableTypo }              from './target/Typo.js'
 
 export { TableTypo }
@@ -30,11 +31,15 @@ const { table } = TableTypo.prototype
  */
 export const DecoTable = (p = {}) => {
   p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
   return table.bind(new TableTypo(p))
 }
 
 export const decoTable = (vec, p = {}, id) => {
   p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
   return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
 }
 
@@ -43,10 +48,14 @@ export const decoTable = (vec, p = {}, id) => {
  * @returns {function}
  */
 export const PaleTable = (p = {}) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
   return table.bind(new TableTypo(p))
 }
 
 export const paleTable = (vec, p = {}, id) => {
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
   return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
 }
 
