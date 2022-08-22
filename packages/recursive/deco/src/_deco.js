@@ -12,11 +12,11 @@ import { typ }                                    from '@typen/typ'
 import { formatDate }                             from '@valjoux/format-date'
 import { formatDateTime }                         from '@valjoux/format-date-time'
 import { mutateValues }                           from '@vect/entries-mapper'
-import { mutate }        from '@vect/vector-mapper'
-import { mutateKeyPad }  from './infrastructure/mutateKeyPad'
-import { renderEntries } from './infrastructure/renderEntries'
-import { renderString }  from './infrastructure/renderString'
-import { renderVector }  from './infrastructure/renderVector'
+import { mutate }                                 from '@vect/vector-mapper'
+import { mutateKeyPad }                           from './infrastructure/mutateKeyPad'
+import { renderEntries }                          from './infrastructure/renderEntries'
+import { renderString }                           from './infrastructure/renderString'
+import { renderVector }                           from './infrastructure/renderVector'
 
 export function _deco(node, level, indent) {
   return this.presets

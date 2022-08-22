@@ -35,13 +35,12 @@ export class Typo {
   /** @type {Uint8ClampedArray} */ pbd = null
   head = ''
   tail = ''
-  constructor(conf) {
+  constructor(conf, pres) {
     if (conf.str) this.str = conf.str
     if (conf.num) this.num = conf.num
     if (conf.ansi) this.len = lange
     if (conf.fill) this.pad = conf.ansi ? fixPad.bind(conf) : priPad.bind(conf)
-    const pres = conf.pres
-    if (pres) {
+    if (pres ?? (pres = conf.pres)) {
       if (pres.effects) style.call(this, pres.effects)
       this.head = CSI + this.head + FORE_INI + SC
       this.tail = CSI + this.tail + FORE_DEF + SGR

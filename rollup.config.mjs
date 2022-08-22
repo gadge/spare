@@ -26,8 +26,8 @@ export default {
       sourceMap: true,
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      presets: [['@babel/preset-env', { targets: { node: '16' } }],],
-      plugins: [['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],]
+      presets: [ [ '@babel/preset-env', { targets: { node: '16' } } ], ],
+      plugins: [ [ '@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' } ], ]
     }),
     json(),
     // fileInfo(),
