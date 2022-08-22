@@ -1,71 +1,73 @@
-import { DecoConfig }            from '@spare/deco-config'
-import { TRI_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                from './resources/config'
-import { decoTable }             from './src/decoTable.js'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { TableTypo }              from './target/Typo.js'
 
-export { decoTable, decoTable as _decoTable }
+export { TableTypo }
 
 /**
- * @typedef {{[max]:string|*[],[min]:string|*[],[na]:string|*[]}} Preset
+ * @typedef {Object}    Opt
+ * @typedef {?Preset}   Opt.pres
+ * @typedef {?function} Opt.str
+ * @typedef {?function} Opt.num
+ * @typedef {?boolean}  Opt.ansi
+ * @typedef {?string}   Opt.fill
+ * @typedef {?number}   Opt.top
+ * @typedef {?number}   Opt.bottom
+ * @typedef {?number}   Opt.left
+ * @typedef {?number}   Opt.right
  */
 
-/***
- *
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim=',\n']
- *  - currently not functional, keeps for future fix
- * @param {boolean|number} [p.bracket] - currently not functional, keeps for future fix
- *
- * @param {Function} [p.read]
- * @param {Function} [p.headRead]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
- * @param {Object} [p.labelPreset=SUBTLE]
- * @param {number} [p.direct=COLUMNWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
 
- * @param {boolean} [p.ansi=true]
- * @param {boolean} [p.fullAngle]
- * @param {number} [p.level=0]
- *
- * @returns {string}
+const { table } = TableTypo.prototype
+
+/**
+ * @param {Opt} p
+ * @returns {function}
  */
-export const Deco = (p = {}) => decoTable
-  .bind(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION))
+export const DecoTable = (p = {}) => {
+  p.pres = p.pres ?? PRES
+  return table.bind(new TableTypo(p))
+}
 
-/***
- *
- * @param {Object} table
- * @param {Object} p
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim=',\n']
- *  - currently not functional, keeps for future fix
- * @param {boolean|number} [p.bracket] - currently not functional, keeps for future fix
- *
- * @param {Function} [p.read]
- * @param {Function} [p.headRead]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
- * @param {Object} [p.labelPreset=SUBTLE]
- * @param {number} [p.direct=COLUMNWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.bottom]
- * @param {number} [p.left]
- * @param {number} [p.right]
+export const decoTable = (vec, p = {}, id) => {
+  p.pres = p.pres ?? PRES
+  return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
+}
 
- * @param {boolean} [p.ansi=true]
- * @param {boolean} [p.fullAngle]
- * @param {number} [p.level=0]
- *
- * @returns {string}
+/**
+ * @param {Opt} p
+ * @returns {function}
  */
-export const deco = (table, p = {}) => decoTable
-  .call(DecoConfig.parse(p, CONFIG, TRI_PRESET_COLLECTION), table)
+export const PaleTable = (p = {}) => {
+  return table.bind(new TableTypo(p))
+}
+
+export const paleTable = (vec, p = {}, id) => {
+  return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
+}
+
+export {
+  decoTable as deco,
+  DecoTable as Deco,
+}
+
+
+// {boolean}         [p.discrete]
+// {string}          [p.delim=',\n']
+// {boolean|number}  [p.bracket] - currently not functional, keeps for future fix
+// {Function}        [p.read]
+// {Function}        [p.headRead]
+// {Object|Object[]} [p.presets=[FRESH, JUNGLE]]
+// {Object}          [p.labelPreset=SUBTLE]
+// {number}          [p.direct=COLUMNWISE]
+// {number}          [p.top]
+// {number}          [p.bottom]
+// {number}          [p.left]
+// {number}          [p.right]
+// {boolean}         [p.ansi=true]
+// {boolean}         [p.fullAngle]
+// {number}          [p.level=0]
