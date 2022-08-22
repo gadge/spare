@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco",
-  "version": "0.14.27",
+  "version": "0.14.28",
   "description": "A light and simple console debug tool.",
   "main": "./dist/index.cjs",
   "exports": {
@@ -23,9 +23,9 @@
     "@palett/enum-ansi-codes": "^0.10.5",
     "@palett/presets": "^0.10.5",
     "@palett/util-ansi": "^0.10.5",
-    "@spare/deco-colors": "^0.14.27",
-    "@spare/deco-date": "^0.14.27",
-    "@spare/deco-func": "^0.14.27",
+    "@spare/deco-colors": "^0.14.28",
+    "@spare/deco-date": "^0.14.28",
+    "@spare/deco-func": "^0.14.28",
     "@texting/charset-ansi": "^0.1.11",
     "@texting/enum-brackets": "^0.1.11",
     "@texting/enum-chars": "^0.1.11",

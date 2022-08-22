@@ -1,6 +1,6 @@
 {
   "name": "@spare/table-margin",
-  "version": "0.14.27",
+  "version": "0.14.28",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/archive/test.index.js"
   },
   "dependencies": {
-    "@spare/matrix-margin": "^0.14.27",
-    "@spare/vector-margin": "^0.14.27"
+    "@spare/matrix-margin": "^0.14.28",
+    "@spare/vector-margin": "^0.14.28"
   },
   "repository": {
     "type": "git",

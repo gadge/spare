@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-util",
-  "version": "0.14.27",
+  "version": "0.14.28",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@aryth/bound": "^0.6.8",
-    "@spare/enum-chars": "^0.14.27",
-    "@spare/preset-deco": "^0.14.27"
+    "@spare/enum-chars": "^0.14.28",
+    "@spare/preset-deco": "^0.14.28"
   },
   "repository": {
     "type": "git",

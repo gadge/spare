@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-object",
-  "version": "0.14.27",
+  "version": "0.14.28",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@palett/presets": "^0.10.5",
-    "@spare/deco": "^0.14.27"
+    "@spare/deco": "^0.14.28"
   },
   "repository": {
     "type": "git",
