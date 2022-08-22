@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-pale",
-  "version": "0.14.28",
+  "version": "0.14.29",
   "description": "Colored stringify",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,16 +18,16 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/cite": "^0.14.28",
-    "@spare/deco-config": "^0.14.28",
-    "@spare/deco-func": "^0.14.28",
-    "@spare/deco-object": "^0.14.28",
-    "@spare/deco-util": "^0.14.28",
-    "@spare/deco-vector": "^0.14.28",
-    "@spare/enum-brackets": "^0.14.28",
-    "@spare/enum-chars": "^0.14.28",
-    "@spare/preset-deco": "^0.14.28",
-    "@spare/quote": "^0.14.28",
+    "@spare/cite": "^0.14.29",
+    "@spare/deco-config": "^0.14.29",
+    "@spare/deco-func": "^0.14.29",
+    "@spare/deco-object": "^0.14.29",
+    "@spare/deco-util": "^0.14.29",
+    "@spare/deco-vector": "^0.14.29",
+    "@spare/enum-brackets": "^0.14.29",
+    "@spare/enum-chars": "^0.14.29",
+    "@spare/preset-deco": "^0.14.29",
+    "@spare/quote": "^0.14.29",
     "@texting/bracket": "^0.1.11",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
@@ -53,5 +53,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
+  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/fullwidth",
-  "version": "0.14.28",
+  "version": "0.14.29",
   "description": "Convert between half-width and full-width",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/charset": "^0.14.28",
-    "@spare/enum-chars": "^0.14.28",
-    "@spare/enum-full-angle-chars": "^0.14.28",
+    "@spare/charset": "^0.14.29",
+    "@spare/enum-chars": "^0.14.29",
+    "@spare/enum-full-angle-chars": "^0.14.29",
     "@texting/lange": "^0.1.11"
   },
   "repository": {
@@ -39,5 +39,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
+  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/lange",
-  "version": "0.14.28",
+  "version": "0.14.29",
   "description": "Get string length s.t. correcting astral codes and skipping ansi codes",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/regex-charset": "^0.14.28"
+    "@spare/regex-charset": "^0.14.29"
   },
   "repository": {
     "type": "git",
@@ -36,5 +36,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38"
+  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
 }

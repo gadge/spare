@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-vector",
-  "version": "0.14.28",
+  "version": "0.14.29",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@spare/deco": "^0.14.28",
-    "@spare/vector-margin": "^0.14.28"
+    "@spare/deco": "^0.14.29",
+    "@spare/vector-margin": "^0.14.29"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "d6e0b36ffe530d15f91c571c1c5746e9b1c63c38",
+  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7",
   "devDependencies": {
     "@texting/string-value": "^0.1.11"
   }

@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-util",
-  "version": "0.14.28",
+  "version": "0.14.29",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@aryth/bound": "^0.6.8",
-    "@spare/enum-chars": "^0.14.28",
-    "@spare/preset-deco": "^0.14.28"
+    "@spare/enum-chars": "^0.14.29",
+    "@spare/preset-deco": "^0.14.29"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "ed47110c69a1ca3f4358dd9c1fca1f5e527cf7ba",
+  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7",
   "devDependencies": {
     "@typen/numeral": "^0.1.19"
   }
