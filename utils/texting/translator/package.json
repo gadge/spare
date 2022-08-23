@@ -1,6 +1,6 @@
 {
   "name": "@spare/translator",
-  "version": "0.15.4",
+  "version": "0.15.5",
   "description": "Translator, bulk replace string at a time",
   "main": "dist/index.cjs",
   "exports": {

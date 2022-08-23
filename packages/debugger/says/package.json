@@ -1,6 +1,6 @@
 {
   "name": "@spare/says",
-  "version": "0.15.4",
+  "version": "0.15.5",
   "description": "A debug tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -23,9 +23,9 @@
     "@palett/dye": "^0.11.1",
     "@palett/enum-font-effects": "^0.11.1",
     "@palett/flopper": "^0.11.1",
-    "@spare/deco-string": "^0.15.4",
-    "@spare/enum-chars": "^0.15.4",
-    "@spare/util": "^0.15.4",
+    "@spare/deco-string": "^0.15.5",
+    "@spare/enum-chars": "^0.15.5",
+    "@spare/util": "^0.15.5",
     "@texting/bracket": "^0.1.12",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enums": "^0.1.19",
