@@ -25,8 +25,8 @@
     "@spare/enum-chars": "^0.15.6",
     "@spare/preset-deco": "^0.15.6",
     "@spare/translator": "^0.15.6",
-    "@texting/bracket": "^0.1.12",
-    "@texting/lange": "^0.1.12"
+    "@texting/bracket": "^0.1.13",
+    "@texting/lange": "^0.1.13"
   },
   "devDependencies": {
     "@ject/rename": "^0.0.17"

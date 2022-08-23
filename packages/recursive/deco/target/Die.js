@@ -1,4 +1,5 @@
-import { value } from '@texting/string-value'
+import { value }   from '@texting/string-value'
+import { compare } from '../target/utils/compare.js'
 
 function onto(x, y, z, at) {
   this[at++] = x
@@ -42,21 +43,21 @@ export class Die {
   noteStr(t) {
     return this.tx === void 0
       ? (this.tx = t, this.sx = t)
-      : (t > this.tx ? (this.tx = t) : t < this.sx ? (this.sx = t) : t)
+      : compare(t, this.sx) < 0 ? (this.sx = t) : compare(t, this.tx) > 0 ? (this.tx = t) : t
   }
   noteNum(v) {
     if (this.u) {
       return this.n === void 0
         ? (this.n = v, this.m = v)
-        : (v > this.n ? (this.n = v) : v < this.m ? (this.m = v) : v)
+        : v < this.m ? (this.m = v) : v > this.n ? (this.n = v) : v
     }
     else {
       if (v > 0) return this.p === void 0
         ? (this.p = this.q = v)
-        : (v > this.q ? (this.q = v) : v < this.p ? (this.p = v) : v)
+        : v < this.p ? (this.p = v) : v > this.q ? (this.q = v) : v
       if (v < 0) return this.m === void 0
         ? (this.m = this.n = v)
-        : (v > this.n ? (this.n = v) : v < this.m ? (this.m = v) : v)
+        : v < this.m ? (this.m = v) : v > this.n ? (this.n = v) : v
       return v
     }
   }

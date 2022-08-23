@@ -26,7 +26,7 @@
     "@spare/deco-string": "^0.15.6",
     "@spare/enum-chars": "^0.15.6",
     "@spare/util": "^0.15.6",
-    "@texting/bracket": "^0.1.12",
+    "@texting/bracket": "^0.1.13",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enums": "^0.1.19",
     "@vect/object-mapper": "^0.7.16"

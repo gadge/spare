@@ -28,13 +28,13 @@
     "@spare/enum-chars": "^0.15.6",
     "@spare/preset-deco": "^0.15.6",
     "@spare/quote": "^0.15.6",
-    "@texting/bracket": "^0.1.12",
+    "@texting/bracket": "^0.1.13",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-strict": "^0.1.19",
     "@typen/typ": "^0.1.19",
-    "@valjoux/format-date": "^0.3.19",
-    "@valjoux/format-time": "^0.3.19",
+    "@valjoux/format-date": "^0.3.21",
+    "@valjoux/format-time": "^0.3.21",
     "@vect/entries-mapper": "^0.7.16"
   },
   "repository": {
