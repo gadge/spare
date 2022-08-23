@@ -19,16 +19,16 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.6.8",
-    "@palett/flopper": "^0.10.4",
+    "@palett/flopper": "^0.11.1",
     "@spare/deco-string": "^0.15.4",
     "@spare/enum-chars": "^0.15.4",
     "@spare/phrasing": "^0.15.4",
     "@spare/says": "^0.15.4",
-    "@texting/bracket": "^0.1.11",
-    "@texting/charset-ansi": "^0.1.11",
-    "@texting/enum-chars": "^0.1.11",
-    "@texting/phrasing": "^0.1.11",
-    "@texting/tap": "^0.1.11",
+    "@texting/bracket": "^0.1.12",
+    "@texting/charset-ansi": "^0.1.12",
+    "@texting/enum-chars": "^0.1.12",
+    "@texting/phrasing": "^0.1.12",
+    "@texting/tap": "^0.1.12",
     "@typen/enum-data-types": "^0.1.19"
   },
   "devDependencies": {

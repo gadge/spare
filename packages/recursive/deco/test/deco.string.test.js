@@ -1,4 +1,4 @@
-import { BESQUE, OCEAN, SUBTLE } from '@palett/presets'
+import { BESQUE, OCEAN, PAGODA } from '@palett/presets'
 import { deco }                  from '../index.js'
 
 export const STRINGS = {
@@ -11,7 +11,7 @@ export const STRINGS = {
 const WD = 60
 const LINE = '+'.repeat(WD) + WD
 const CONF = {
-  pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE },
+  pres: { pos: BESQUE, neg: OCEAN, str: PAGODA },
   vert: 2,
   width: WD,
   broad: true

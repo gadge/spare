@@ -1,5 +1,4 @@
-import { hasAnsi } from '@texting/charset-ansi'
-import { value }   from '@texting/string-value'
+import { value } from '@texting/string-value'
 
 function onto(x, y, z, at) {
   this[at++] = x

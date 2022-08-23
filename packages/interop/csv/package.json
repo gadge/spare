@@ -21,7 +21,7 @@
     "@spare/enum-chars": "^0.15.4",
     "@spare/table-margin": "^0.15.4",
     "@spare/table-padder": "^0.15.4",
-    "@texting/liner": "^0.1.11",
+    "@texting/liner": "^0.1.12",
     "@vect/matrix": "^0.7.15"
   },
   "repository": {

@@ -1,46 +1,26 @@
-import {
-  BLI_OFF, BLI_ON, BOL_OFF, BOL_ON, CRO_OFF, CRO_ON, CSI, DIM_OFF, DIM_ON, FORE_DEF, FORE_INI, HID_OFF, HID_ON, INV_OFF, INV_ON, ITA_OFF,
-  ITA_ON, SGR, UND_OFF, UND_ON
-}                                                    from '@palett/enum-ansi-codes'
-import { Preset }                                    from '@palett/presets'
-import { SC }                                        from '@palett/util-ansi'
-import { hasAnsi }                                   from '@texting/charset-ansi'
-import { BRACKET, NONE }                             from '@texting/enum-brackets'
-import { COLF, COSP, LF, RTSP, SP }                  from '@texting/enum-chars'
-import { lange, length }                             from '@texting/lange'
-import { splitLiteral }                              from '@texting/splitter'
-import { value }                                     from '@texting/string-value'
-import { NUM, OBJ, STR, SYM }                        from '@typen/enum-data-types'
-import { parseNum }                                  from '@typen/num-strict'
-import { COLUMNWISE, POINTWISE, ROWWISE }            from '@vect/matrix'
-import { height, width }                             from '@vect/matrix-index'
-import { init, iso }                                 from '@vect/vector-init'
-import { cate, Cate }                                from './Cate.js'
-import { Die }                                       from './Die.js'
-import { Re, tabs }                                  from './Joins.js'
-import { hslToInt, limFF, presToUCA, render, scale } from './utils/colors.js'
-import { padAnsi, padTypo }                          from './utils/padTypo.js'
+import { Preset }                                     from '@palett/presets'
+import { hasAnsi }                                    from '@texting/charset-ansi'
+import { BRACKET, NONE }                              from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP, SP }                   from '@texting/enum-chars'
+import { lange, length }                              from '@texting/lange'
+import { splitLiteral }                               from '@texting/splitter'
+import { value }                                      from '@texting/string-value'
+import { NUM, OBJ, STR, SYM }                         from '@typen/enum-data-types'
+import { parseNum }                                   from '@typen/num-strict'
+import { COLUMNWISE, POINTWISE, ROWWISE }             from '@vect/matrix'
+import { height, width }                              from '@vect/matrix-index'
+import { init, iso }                                  from '@vect/vector-init'
+import { cate, Cate }                                 from './Cate.js'
+import { Die }                                        from './Die.js'
+import { Re, tabs }                                   from './Joins.js'
+import { hslToInt, initialize, limFF, render, scale } from './utils/colors.js'
+import { padAnsi, padTypo }                           from './utils/padTypo.js'
 
 export function parseStr(x) {
   const p = typeof x
   return x === null ? '' + x : p === OBJ || p === SYM ? x.toString() : p === STR ? x : '' + x
 }
-export function initialize(effects) {
-  let head = '', tail = ''
-  if (effects) for (let t of effects) {
-    t === 'bold' ? (head += BOL_ON + SC, tail += BOL_OFF + SC) // BOLD
-      : t === 'dim' ? (head += DIM_ON + SC, tail += DIM_OFF + SC) // DIM
-        : t === 'italic' ? (head += ITA_ON + SC, tail += ITA_OFF + SC) // ITALIC
-          : t === 'underline' ? (head += UND_ON + SC, tail += UND_OFF + SC) // UNDERLINE
-            : t === 'blink' ? (head += BLI_ON + SC, tail += BLI_OFF + SC) // BLINK
-              : t === 'inverse' ? (head += INV_ON + SC, tail += INV_OFF + SC) // INVERSE
-                : t === 'hide' ? (head += HID_ON + SC, tail += HID_OFF + SC) // HIDE
-                  : t === 'strike' ? (head += CRO_ON + SC, tail += CRO_OFF + SC) // STRIKE
-                    : void 0
-  }
-  this.head = CSI + head + FORE_INI + SC
-  this.tail = CSI + tail + FORE_DEF + SGR
-}
+
 const { Str: S, Num: N, NaN: E } = Cate
 
 export class Typo {
@@ -48,9 +28,9 @@ export class Typo {
   /** @type {function} */ num = parseNum
   /** @type {function} */ len = length
   /** @type {function} */ pad = padAnsi
-  /** @type {Uint8ClampedArray} */ tbd = null
-  /** @type {Uint8ClampedArray} */ nbd = null
-  /** @type {Uint8ClampedArray} */ pbd = null
+  /** @type {Preset}   */ tbd = null
+  /** @type {Preset}   */ nbd = null
+  /** @type {Preset}   */ pbd = null
 
   constructor(conf, pres) {
     if (conf.str) this.str = conf.str
@@ -64,30 +44,30 @@ export class Typo {
 
   set pres(value) {
     initialize.call(this, value.effects)
-    if (value instanceof Preset) return (this.tbd = presToUCA(value), this.nbd = presToUCA(value))
-    if (value.str) this.tbd = presToUCA(value.str)
-    if (value.num) this.nbd = presToUCA(value.num)
-    if (value.neg) this.nbd = presToUCA(value.neg)
-    if (value.pos) this.pbd = presToUCA(value.pos)
+    if (value instanceof Preset) return (this.tbd = value, this.nbd = value)
+    if (value.str) this.tbd = value.str
+    if (value.num) this.nbd = value.num
+    if (value.neg) this.nbd = value.neg
+    if (value.pos) this.pbd = value.pos
   }
 
   get mono() { return !this.tbd }
   get uns() { return !this.pbd }
-  get tNaN() { return this.tbd[6] << 16 | this.tbd[7] << 8 | this.tbd[8] }
-  get nNaN() { return this.nbd[6] << 16 | this.nbd[7] << 8 | this.nbd[8] }
-  preStr(bd, v) {
-    const lo = bd.s, [ h, s, l ] = this.tbd
-    return hslToInt(scale(v, lo, bd[0], h), limFF(v, lo, bd[1], s), limFF(v, lo, bd[2], l))
+  get tNaN() { return this.tbd.nan }
+  get nNaN() { return this.nbd.nan }
+  preStr(die, val) {
+    const vdf = val - (die.s ?? 0), { tbd } = this
+    return hslToInt(scale(vdf, die[0], tbd[0]), limFF(vdf, die[1], tbd[1]), limFF(vdf, die[2], tbd[2]))
   }
-  preNum(bd, v) {
-    if (isNaN(v)) return this.tNaN
-    if (this.uns || v < 0) {
-      const lo = bd.m, [ h, s, l ] = this.nbd
-      return hslToInt(scale(v, lo, bd[3], h), limFF(v, lo, bd[4], s), limFF(v, lo, bd[5], l))
+  preNum(die, val) {
+    if (isNaN(val)) return this.tNaN
+    if (this.uns || val < 0) {
+      const vdf = val - (die.m ?? 0), { nbd } = this
+      return hslToInt(scale(vdf, die[3], nbd[0]), limFF(vdf, die[4], nbd[1]), limFF(vdf, die[5], nbd[2]))
     }
-    if (v > 0) {
-      const lo = bd.p, [ h, s, la ] = this.pbd
-      return hslToInt(scale(v, lo, bd[6], h), limFF(v, lo, bd[7], s), limFF(v, lo, bd[8], la))
+    if (val > 0) {
+      const vdf = val - (die.p ?? 0), { pbd } = this
+      return hslToInt(scale(vdf, die[6], pbd[0]), limFF(vdf, die[7], pbd[1]), limFF(vdf, die[8], pbd[2]))
     }
     return this.nNaN
   }

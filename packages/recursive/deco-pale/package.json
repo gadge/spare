@@ -28,7 +28,7 @@
     "@spare/enum-chars": "^0.15.4",
     "@spare/preset-deco": "^0.15.4",
     "@spare/quote": "^0.15.4",
-    "@texting/bracket": "^0.1.11",
+    "@texting/bracket": "^0.1.12",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-strict": "^0.1.19",

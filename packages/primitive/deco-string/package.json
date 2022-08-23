@@ -18,14 +18,14 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.10.5",
-    "@palett/fluo-vector": "^0.10.4",
+    "@palett/enum-colorant-modes": "^0.11.1",
+    "@palett/fluo-vector": "^0.11.1",
     "@spare/deco-config": "^0.15.4",
     "@spare/preset-deco": "^0.15.4",
-    "@texting/charset-ansi": "^0.1.11",
-    "@texting/enum-chars": "^0.1.11",
-    "@texting/fold": "^0.1.11",
-    "@texting/splitter": "^0.1.11"
+    "@texting/charset-ansi": "^0.1.12",
+    "@texting/enum-chars": "^0.1.12",
+    "@texting/fold": "^0.1.12",
+    "@texting/splitter": "^0.1.12"
   },
   "repository": {
     "type": "git",

@@ -8,25 +8,36 @@ import { SC }      from '@palett/util-ansi'
 
 const { max, min } = Math
 
-/**
- * @this {{head,tail}}
- * @param {string[]} style
- * @returns {{head,tail}}
- */
-export function style(style) {
-  if (!style?.length) return this
-  for (let t of style) {
-    t === 'bold' ? (this.head += BOL_ON + SC, this.tail += BOL_OFF + SC) // BOLD
-      : t === 'dim' ? (this.head += DIM_ON + SC, this.tail += DIM_OFF + SC) // DIM
-        : t === 'italic' ? (this.head += ITA_ON + SC, this.tail += ITA_OFF + SC) // ITALIC
-          : t === 'underline' ? (this.head += UND_ON + SC, this.tail += UND_OFF + SC) // UNDERLINE
-            : t === 'blink' ? (this.head += BLI_ON + SC, this.tail += BLI_OFF + SC) // BLINK
-              : t === 'inverse' ? (this.head += INV_ON + SC, this.tail += INV_OFF + SC) // INVERSE
-                : t === 'hide' ? (this.head += HID_ON + SC, this.tail += HID_OFF + SC) // HIDE
-                  : t === 'strike' ? (this.head += CRO_ON + SC, this.tail += CRO_OFF + SC) // STRIKE
+export function initialize(effects) {
+  let head = '', tail = ''
+  if (effects) for (let t of effects) {
+    t === 'bold' ? (head += BOL_ON + SC, tail += BOL_OFF + SC) // BOLD
+      : t === 'dim' ? (head += DIM_ON + SC, tail += DIM_OFF + SC) // DIM
+        : t === 'italic' ? (head += ITA_ON + SC, tail += ITA_OFF + SC) // ITALIC
+          : t === 'underline' ? (head += UND_ON + SC, tail += UND_OFF + SC) // UNDERLINE
+            : t === 'blink' ? (head += BLI_ON + SC, tail += BLI_OFF + SC) // BLINK
+              : t === 'inverse' ? (head += INV_ON + SC, tail += INV_OFF + SC) // INVERSE
+                : t === 'hide' ? (head += HID_ON + SC, tail += HID_OFF + SC) // HIDE
+                  : t === 'strike' ? (head += CRO_ON + SC, tail += CRO_OFF + SC) // STRIKE
                     : void 0
   }
-  return this
+  this.head = CSI + head + FORE_INI + SC
+  this.tail = CSI + tail + FORE_DEF + SGR
+}
+
+const H = CSI + FORE_INI + SC
+const T = CSI + FORE_DEF + SGR
+export function render(int, text) {
+  const r = int >> 16 & 0xFF, g = int >> 8 & 0xFF, b = int & 0xFF
+  return (this.head ?? H) + r + SC + g + SC + b + SGR + text + (this.tail ?? T)
+}
+
+export const scale = (vdf, lev, tlo) => vdf <= 0 ? tlo : tlo + vdf * lev
+
+export const limFF = (vdf, lev, tlo) => {
+  if (vdf <= 0) return tlo
+  const t = tlo + vdf * lev
+  return t < 0 ? 0 : t > 0xFF ? 0xFF : t
 }
 
 export const hue = (r, g, b, hi, df) => {
@@ -119,23 +130,5 @@ export function hexOntoRgb(hex, uca, pos = 0) {
   uca[pos++] = hexAt(hex, ++i) << 4 | hexAt(hex, ++i)
   return uca
 }
-
-const H = CSI + FORE_INI + SC
-const T = CSI + FORE_DEF + SGR
-export function render(int, text) {
-  const r = int >> 16 & 0xFF, g = int >> 8 & 0xFF, b = int & 0xFF
-  return (this.head ?? H) + r + SC + g + SC + b + SGR + text + (this.tail ?? T)
-}
-
-export const scale = (val, vlo, lev, tlo) => val < vlo ? tlo : (val - vlo) * lev + tlo
-
-export const limFF = (val, vlo, lev, tlo) => {
-  if (val < vlo) return tlo
-  let t = (val - vlo) * lev + tlo
-  if (t < tlo) return tlo
-  if (t > 0xFF) return 0xFF
-  return t
-}
-
 
 
