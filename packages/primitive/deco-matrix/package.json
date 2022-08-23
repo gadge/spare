@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-matrix",
-  "version": "0.15.3",
+  "version": "0.15.4",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@palett/presets": "^0.10.5",
-    "@spare/deco": "^0.15.3",
-    "@spare/enum-chars": "^0.15.3",
+    "@spare/deco": "^0.15.4",
+    "@spare/enum-chars": "^0.15.4",
     "@vect/enum-matrix-directions": "^0.6.13"
   },
   "repository": {
