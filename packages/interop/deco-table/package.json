@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-table",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@palett/presets": "^0.10.5",
-    "@spare/deco": "^0.15.1",
+    "@spare/deco": "^0.15.2",
     "@texting/enum-chars": "^0.1.11",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix-index": "^0.7.16",
