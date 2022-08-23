@@ -1,6 +1,6 @@
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { FRESH, METRO, OCEAN }                            from '@palett/presets'
-import { LF, SP }                                         from '@texting/enum-chars'
+import { FRESH, OCEAN, PAGODA }                           from '@palett/presets'
+import { SP }                                             from '@texting/enum-chars'
 import { indexed }                                        from '@vect/object-mapper'
 import { Typo }                                           from '../../target/Typo.js'
 
@@ -18,11 +18,11 @@ const VECTORS = {
   combo: [ 'kfc', 'starbucks', 'pepsi', '', '1', -12, '-36', 0, 500 ],
 }
 
-const typo = new Typo({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO } })
+const typo = new Typo({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: PAGODA } })
 
 const WD = 16
 const LINE = '+'.repeat(WD) + WD
 for (let [ key, vec ] of indexed(VECTORS)) {
-  key + SP + typo.vector(vec, 0, 2, key.length + 2) |> console.log
+  key + SP + typo.vector(vec, NaN, 2, key.length + 2) |> console.log
   LINE |> console.log
 }

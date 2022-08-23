@@ -1,7 +1,8 @@
-import { BESQUE, METRO, OCEAN } from '@palett/presets'
-import { indexed, mapVal }      from '@vect/object-mapper'
-import { Typo }                 from '../../target/Typo.js'
-import { Passage }              from '../helpers/Passage.js'
+import { BESQUE, METRO, OCEAN }           from '@palett/presets'
+import { COLUMNWISE, POINTWISE, ROWWISE } from '@vect/matrix'
+import { indexed, mapVal }                from '@vect/object-mapper'
+import { Typo }                           from '../../target/Typo.js'
+import { Passage }                        from '../helpers/Passage.js'
 
 
 const MATRICES = {
@@ -16,9 +17,9 @@ const MATRICES = {
 MATRICES |> console.log
 
 const typo = new Typo({ fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: METRO } })
-const matrices = mapVal(MATRICES, mat => typo.matrix(mat, 2))
-const rows = mapVal(MATRICES, mat => typo.rows(mat))
-const columns = mapVal(MATRICES, mat => typo.columns(mat))
+const matrices = mapVal(MATRICES, mat => typo.matrix(mat, POINTWISE, 2))
+const rows = mapVal(MATRICES, mat => typo.matrix(mat, ROWWISE))
+const columns = mapVal(MATRICES, mat => typo.matrix(mat, COLUMNWISE))
 for (let [ key, mat ] of indexed(MATRICES)) {
   `[${key}] (pointwise, rowwise, columnwise)` |> console.log
   Passage.triMatrix(matrices[key], rows[key], columns[key]) |> console.log

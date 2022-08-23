@@ -1,54 +1,74 @@
-import { oneself }                                          from '@ject/oneself'
-import { CSI, FORE_DEF, FORE_INI, SGR }                     from '@palett/enum-ansi-codes'
-import { BESQUE, SUBTLE }                                   from '@palett/presets'
-import { SC }                                               from '@palett/util-ansi'
-import { hasAnsi }                                          from '@texting/charset-ansi'
-import { BRACKET, NONE }                                    from '@texting/enum-brackets'
-import { COLF, COSP, LF, RTSP }                             from '@texting/enum-chars'
-import { lange, length }                                    from '@texting/lange'
-import { splitLiteral }                                     from '@texting/splitter'
-import { value }                                            from '@texting/string-value'
-import { NUM, OBJ, STR, SYM }                               from '@typen/enum-data-types'
-import { parseNum }                                         from '@typen/num-strict'
-import { height, width }                                    from '@vect/matrix-index'
-import { init, iso }                                        from '@vect/vector-init'
-import { cate, Cate }                                       from './Cate.js'
-import { Die }                                              from './Die.js'
-import { Re, tabs }                                         from './Joins.js'
-import { hslToInt, limFF, presToUCA, render, scale, style } from './utils/colors.js'
-import { fixPad, priPad }                                   from './utils/padder.js'
+import {
+  BLI_OFF, BLI_ON, BOL_OFF, BOL_ON, CRO_OFF, CRO_ON, CSI, DIM_OFF, DIM_ON, FORE_DEF, FORE_INI, HID_OFF, HID_ON, INV_OFF, INV_ON, ITA_OFF,
+  ITA_ON, SGR, UND_OFF, UND_ON
+}                                                    from '@palett/enum-ansi-codes'
+import { Preset }                                    from '@palett/presets'
+import { SC }                                        from '@palett/util-ansi'
+import { hasAnsi }                                   from '@texting/charset-ansi'
+import { BRACKET, NONE }                             from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP, SP }                  from '@texting/enum-chars'
+import { lange, length }                             from '@texting/lange'
+import { splitLiteral }                              from '@texting/splitter'
+import { value }                                     from '@texting/string-value'
+import { NUM, OBJ, STR, SYM }                        from '@typen/enum-data-types'
+import { parseNum }                                  from '@typen/num-strict'
+import { COLUMNWISE, POINTWISE, ROWWISE }            from '@vect/matrix'
+import { height, width }                             from '@vect/matrix-index'
+import { init, iso }                                 from '@vect/vector-init'
+import { cate, Cate }                                from './Cate.js'
+import { Die }                                       from './Die.js'
+import { Re, tabs }                                  from './Joins.js'
+import { hslToInt, limFF, presToUCA, render, scale } from './utils/colors.js'
+import { padAnsi, padTypo }                          from './utils/padTypo.js'
 
 export function parseStr(x) {
   const p = typeof x
   return x === null ? '' + x : p === OBJ || p === SYM ? x.toString() : p === STR ? x : '' + x
 }
-
+export function initialize(effects) {
+  let head = '', tail = ''
+  if (effects) for (let t of effects) {
+    t === 'bold' ? (head += BOL_ON + SC, tail += BOL_OFF + SC) // BOLD
+      : t === 'dim' ? (head += DIM_ON + SC, tail += DIM_OFF + SC) // DIM
+        : t === 'italic' ? (head += ITA_ON + SC, tail += ITA_OFF + SC) // ITALIC
+          : t === 'underline' ? (head += UND_ON + SC, tail += UND_OFF + SC) // UNDERLINE
+            : t === 'blink' ? (head += BLI_ON + SC, tail += BLI_OFF + SC) // BLINK
+              : t === 'inverse' ? (head += INV_ON + SC, tail += INV_OFF + SC) // INVERSE
+                : t === 'hide' ? (head += HID_ON + SC, tail += HID_OFF + SC) // HIDE
+                  : t === 'strike' ? (head += CRO_ON + SC, tail += CRO_OFF + SC) // STRIKE
+                    : void 0
+  }
+  this.head = CSI + head + FORE_INI + SC
+  this.tail = CSI + tail + FORE_DEF + SGR
+}
 const { Str: S, Num: N, NaN: E } = Cate
 
 export class Typo {
   /** @type {function} */ str = parseStr
   /** @type {function} */ num = parseNum
   /** @type {function} */ len = length
-  /** @type {function} */ pad = oneself
+  /** @type {function} */ pad = padAnsi
   /** @type {Uint8ClampedArray} */ tbd = null
   /** @type {Uint8ClampedArray} */ nbd = null
   /** @type {Uint8ClampedArray} */ pbd = null
-  head = ''
-  tail = ''
+
   constructor(conf, pres) {
     if (conf.str) this.str = conf.str
     if (conf.num) this.num = conf.num
     if (conf.ansi) this.len = lange
-    if (conf.fill) this.pad = conf.ansi ? fixPad.bind(conf) : priPad.bind(conf)
-    if (pres ?? (pres = conf.pres)) {
-      if (pres.effects) style.call(this, pres.effects)
-      this.head = CSI + this.head + FORE_INI + SC
-      this.tail = CSI + this.tail + FORE_DEF + SGR
-      if (pres.str) this.tbd = presToUCA(pres.str ?? SUBTLE)
-      if (pres.num) this.nbd = presToUCA(pres.num ?? BESQUE)
-      if (pres.neg) this.nbd = presToUCA(pres.neg)
-      if (pres.pos) this.pbd = presToUCA(pres.pos)
-    }
+    if (conf.fill) this.pad = conf.ansi
+      ? conf.fill === SP ? padAnsi : padAnsi.bind(conf)
+      : conf.fill === SP ? padTypo : padTypo.bind(conf)
+    if (pres ?? (pres = conf.pres)) this.pres = pres
+  }
+
+  set pres(value) {
+    initialize.call(this, value.effects)
+    if (value instanceof Preset) return (this.tbd = presToUCA(value), this.nbd = presToUCA(value))
+    if (value.str) this.tbd = presToUCA(value.str)
+    if (value.num) this.nbd = presToUCA(value.num)
+    if (value.neg) this.nbd = presToUCA(value.neg)
+    if (value.pos) this.pbd = presToUCA(value.pos)
   }
 
   get mono() { return !this.tbd }
@@ -82,8 +102,9 @@ export class Typo {
   render(bd, t, n, w) {
     if (w) t = this.pad(t, n, w)
     if (this.mono || n === null) return t
-    n = n === void 0 ? this.preStr(bd, value(t, bd.w)) : !isNaN(n) ? this.preNum(bd, n) : this.tNaN
-    return render.call(this, n, t)
+    if (n === void 0) return this.tbd ? render.call(this, this.preStr(bd, value(t, bd.w)), t) : t
+    if (isNaN(n)) return this.tbd ? render.call(this, this.tNaN, t) : t
+    return this.nbd ? render.call(this, this.preNum(bd, n), t) : t
   }
 
   flatVector(vec) {
@@ -92,7 +113,6 @@ export class Typo {
     let wd = 0, i
     for (i = 0; i < cn; i++) if ((ws[i] = this.store(ts, ns, bd, vec[i], i)) > wd) wd = ws[i]
     for (i = 0, bd.lever(this, wd); i < cn; i++) ts[i] = this.render(bd, ts[i], ns[i])
-
     return ts
   }
   flatEntries(ent, pad) {
@@ -180,7 +200,6 @@ export class Typo {
     const cn = vec?.length ?? 0
     if (cn === 0) { return '[]' }
     const ts = this.flatVector(vec)
-    // if (cn === 1) { return '[ ' + ts[0] + ' ]' }
     if (th > 0) { return '[' + Re.vector(ts, COSP, th, id, sr) + ']' }
     if (th === 0 && cn > 1) { return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']' }
     else { return '[ ' + Re.chain(ts, COSP) + ' ]' }
@@ -188,7 +207,6 @@ export class Typo {
   object(obj, th, id = 0, sr = 0) {
     let ts = this.flatObject(obj), cn = ts.length
     if (cn === 0) { return '{}' }
-    // if (cn <= 2) { return '{ ' + ts[0] + RTSP + ts[1] + ' }' }
     if (th > 0) { return '{' + Re.object(ts, COSP, th, id, sr + 2) + '}' }
     if (th === 0 && cn > 2) { return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}' }
     else { return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }' }
@@ -199,17 +217,16 @@ export class Typo {
     const ts = this.flatEntries(ent, !(hr ||= cn <= 1))
     return hr ? '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']' : '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
   }
-  matrix(mat, id = 0) {
-    const ts = this.flatMatrix(mat), cn = ts.length, wd = width(mat)
-    return cn <= wd ? '[[ ' + Re.chain(ts, COSP) + ' ]]' : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
-  }
-  rows(mat, id = 0) {
-    const ts = this.flatRows(mat), cn = ts.length, wd = width(mat)
-    return cn <= wd ? '[[ ' + Re.chain(ts, COSP) + ' ]]' : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
-  }
-  columns(mat, id = 0) {
-    const ts = this.flatColumns(mat), cn = ts.length, wd = width(mat)
-    return cn <= wd ? '[[ ' + Re.chain(ts, COSP) + ' ]]' : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
+  matrix(mat, dr, id = 0) {
+    const ts =
+            dr === POINTWISE ? this.flatMatrix(mat) :
+              dr === ROWWISE ? this.flatRows(mat) :
+                dr === COLUMNWISE ? this.flatColumns(mat) :
+                  this.flatMatrix(mat)
+    const cn = ts.length, wd = width(mat)
+    return cn <= wd
+      ? '[[ ' + Re.chain(ts, COSP) + ' ]]'
+      : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
   }
 }
 

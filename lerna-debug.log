@@ -1,0 +1,1321 @@
+0 silly argv {
+0 silly argv   _: [ 'publish' ],
+0 silly argv   'force-publish': true,
+0 silly argv   forcePublish: true,
+0 silly argv   composed: 'publish',
+0 silly argv   lernaVersion: '5.4.3',
+0 silly argv   '$0': 'node_modules/lerna/cli.js'
+0 silly argv }
+1 notice cli v5.4.3
+2 verbose rootPath /home/alkindus/banyan/spare
+3 verbose session 24e3a26e5dae127e
+4 verbose user-agent lerna/5.4.3/node@v18.7.0+x64 (linux)
+5 silly argv {
+5 silly argv   _: [ 'publish' ],
+5 silly argv   'force-publish': true,
+5 silly argv   forcePublish: true,
+5 silly argv   composed: 'publish',
+5 silly argv   lernaVersion: '5.4.3'
+5 silly argv }
+6 verbose rootPath /home/alkindus/banyan/spare
+7 info current version 0.14.27
+8 silly isAnythingCommitted
+9 verbose isAnythingCommitted 1
+10 silly getCurrentBranch
+11 verbose currentBranch master
+12 silly remoteBranchExists
+13 silly isBehindUpstream
+14 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 1
+15 silly hasTags
+16 verbose hasTags true
+17 silly git-describe.sync "v0.14.27-1-gcd683aad" => {"lastTagName":"v0.14.27","lastVersion":"v0.14.27","refCount":"1","sha":"cd683aad","isDirty":false}
+18 warn force-publish all packages
+19 info Assuming all packages changed
+20 verbose updated @spare/logger
+21 verbose updated @spare/says
+22 verbose updated @spare/xr
+23 verbose updated @spare/enum-brackets
+24 verbose updated @spare/enum-chars
+25 verbose updated @spare/enum-encodings
+26 verbose updated @spare/enum-full-angle-chars
+27 verbose updated @spare/enum-loggers
+28 verbose updated @spare/enum-quotes
+29 verbose updated @spare/preset-deco
+30 verbose updated @spare/preset-pale
+31 verbose updated @spare/preset-verse
+32 verbose updated @spare/regex-charset
+33 verbose updated @spare/regex-phrasing
+34 verbose updated @spare/csv
+35 verbose updated @spare/deco-crostab
+36 verbose updated @spare/deco-samples
+37 verbose updated @spare/deco-table
+38 verbose updated @spare/markdown
+39 verbose updated @spare/verse
+40 verbose updated @spare/deco-date
+41 verbose updated @spare/deco-entries
+42 verbose updated @spare/deco-matrix
+43 verbose updated @spare/deco-object
+44 verbose updated @spare/deco-string
+45 verbose updated @spare/deco-vector
+46 verbose updated @spare/deco-flat
+47 verbose updated @spare/deco-func
+48 verbose updated @spare/deco-pale
+49 verbose updated @spare/deco
+50 verbose updated @spare/arc
+51 verbose updated @spare/deco-colors
+52 verbose updated @spare/deco-config
+53 verbose updated @spare/deco-util
+54 verbose updated @spare/crostab-margin
+55 verbose updated @spare/entries-margin
+56 verbose updated @spare/matrix-margin
+57 verbose updated @spare/table-margin
+58 verbose updated @spare/vector-margin
+59 verbose updated @spare/crostab-padder
+60 verbose updated @spare/entries-padder
+61 verbose updated @spare/field-padder
+62 verbose updated @spare/matrix-padder
+63 verbose updated @spare/table-padder
+64 verbose updated @spare/vector-padder
+65 verbose updated @spare/bracket
+66 verbose updated @spare/charset
+67 verbose updated @spare/cite
+68 verbose updated @spare/fold
+69 verbose updated @spare/fullwidth
+70 verbose updated @spare/lange
+71 verbose updated @spare/liner
+72 verbose updated @spare/padder
+73 verbose updated @spare/phrasing
+74 verbose updated @spare/quote
+75 verbose updated @spare/ripper
+76 verbose updated @spare/splitter
+77 verbose updated @spare/string-value
+78 verbose updated @spare/string
+79 verbose updated @spare/tap
+80 verbose updated @spare/translator
+81 verbose updated @spare/util
+82 info execute Skipping releases
+83 silly lifecycle No script for "preversion" in "root", continuing
+84 silly lifecycle No script for "preversion" in "@spare/enum-brackets", continuing
+85 silly lifecycle No script for "preversion" in "@spare/enum-chars", continuing
+86 silly lifecycle No script for "preversion" in "@spare/enum-encodings", continuing
+87 silly lifecycle No script for "preversion" in "@spare/enum-full-angle-chars", continuing
+88 silly lifecycle No script for "preversion" in "@spare/enum-loggers", continuing
+89 silly lifecycle No script for "preversion" in "@spare/enum-quotes", continuing
+90 silly lifecycle No script for "preversion" in "@spare/preset-deco", continuing
+91 silly lifecycle No script for "preversion" in "@spare/regex-charset", continuing
+92 silly lifecycle No script for "preversion" in "@spare/regex-phrasing", continuing
+93 silly lifecycle No script for "preversion" in "@spare/arc", continuing
+94 silly lifecycle No script for "preversion" in "@spare/entries-padder", continuing
+95 silly lifecycle No script for "preversion" in "@spare/matrix-padder", continuing
+96 silly lifecycle No script for "preversion" in "@spare/vector-padder", continuing
+97 silly lifecycle No script for "preversion" in "@spare/string-value", continuing
+98 silly lifecycle No script for "preversion" in "@spare/translator", continuing
+99 silly lifecycle No script for "version" in "@spare/enum-chars", continuing
+100 silly lifecycle No script for "preversion" in "@spare/fold", continuing
+101 silly lifecycle No script for "version" in "@spare/enum-encodings", continuing
+102 silly lifecycle No script for "version" in "@spare/enum-brackets", continuing
+103 silly lifecycle No script for "preversion" in "@spare/bracket", continuing
+104 silly lifecycle No script for "version" in "@spare/enum-loggers", continuing
+105 silly lifecycle No script for "version" in "@spare/enum-full-angle-chars", continuing
+106 silly lifecycle No script for "preversion" in "@spare/util", continuing
+107 silly lifecycle No script for "version" in "@spare/preset-deco", continuing
+108 silly lifecycle No script for "preversion" in "@spare/deco-colors", continuing
+109 silly lifecycle No script for "preversion" in "@spare/deco-config", continuing
+110 silly lifecycle No script for "preversion" in "@spare/deco-util", continuing
+111 silly lifecycle No script for "version" in "@spare/enum-quotes", continuing
+112 silly lifecycle No script for "preversion" in "@spare/quote", continuing
+113 silly lifecycle No script for "version" in "@spare/regex-charset", continuing
+114 silly lifecycle No script for "preversion" in "@spare/charset", continuing
+115 silly lifecycle No script for "preversion" in "@spare/lange", continuing
+116 silly lifecycle No script for "version" in "@spare/arc", continuing
+117 silly lifecycle No script for "version" in "@spare/regex-phrasing", continuing
+118 silly lifecycle No script for "version" in "@spare/vector-padder", continuing
+119 silly lifecycle No script for "version" in "@spare/entries-padder", continuing
+120 silly lifecycle No script for "version" in "@spare/matrix-padder", continuing
+121 silly lifecycle No script for "version" in "@spare/translator", continuing
+122 silly lifecycle No script for "version" in "@spare/string-value", continuing
+123 silly lifecycle No script for "version" in "@spare/deco-colors", continuing
+124 silly lifecycle No script for "version" in "@spare/bracket", continuing
+125 silly lifecycle No script for "preversion" in "@spare/liner", continuing
+126 silly lifecycle No script for "version" in "@spare/util", continuing
+127 silly lifecycle No script for "preversion" in "@spare/matrix-margin", continuing
+128 silly lifecycle No script for "preversion" in "@spare/vector-margin", continuing
+129 silly lifecycle No script for "preversion" in "@spare/string", continuing
+130 silly lifecycle No script for "version" in "@spare/fold", continuing
+131 silly lifecycle No script for "version" in "@spare/deco-config", continuing
+132 silly lifecycle No script for "preversion" in "@spare/deco-date", continuing
+133 silly lifecycle No script for "preversion" in "@spare/deco-string", continuing
+134 silly lifecycle No script for "preversion" in "@spare/deco-func", continuing
+135 silly lifecycle No script for "version" in "@spare/deco-util", continuing
+136 silly lifecycle No script for "version" in "@spare/quote", continuing
+137 silly lifecycle No script for "preversion" in "@spare/cite", continuing
+138 silly lifecycle No script for "version" in "@spare/charset", continuing
+139 silly lifecycle No script for "preversion" in "@spare/fullwidth", continuing
+140 silly lifecycle No script for "version" in "@spare/lange", continuing
+141 silly lifecycle No script for "version" in "@spare/vector-margin", continuing
+142 silly lifecycle No script for "preversion" in "@spare/entries-margin", continuing
+143 silly lifecycle No script for "version" in "@spare/deco-date", continuing
+144 silly lifecycle No script for "version" in "@spare/liner", continuing
+145 silly lifecycle No script for "version" in "@spare/matrix-margin", continuing
+146 silly lifecycle No script for "preversion" in "@spare/crostab-margin", continuing
+147 silly lifecycle No script for "preversion" in "@spare/table-margin", continuing
+148 silly lifecycle No script for "version" in "@spare/deco-string", continuing
+149 silly lifecycle No script for "preversion" in "@spare/says", continuing
+150 silly lifecycle No script for "version" in "@spare/deco-func", continuing
+151 silly lifecycle No script for "preversion" in "@spare/deco-flat", continuing
+152 silly lifecycle No script for "preversion" in "@spare/deco", continuing
+153 silly lifecycle No script for "version" in "@spare/string", continuing
+154 silly lifecycle No script for "version" in "@spare/fullwidth", continuing
+155 silly lifecycle No script for "preversion" in "@spare/field-padder", continuing
+156 silly lifecycle No script for "preversion" in "@spare/table-padder", continuing
+157 silly lifecycle No script for "preversion" in "@spare/padder", continuing
+158 silly lifecycle No script for "version" in "@spare/cite", continuing
+159 silly lifecycle No script for "version" in "@spare/entries-margin", continuing
+160 silly lifecycle No script for "version" in "@spare/table-margin", continuing
+161 silly lifecycle No script for "version" in "@spare/crostab-margin", continuing
+162 silly lifecycle No script for "version" in "@spare/says", continuing
+163 silly lifecycle No script for "version" in "@spare/deco-flat", continuing
+164 silly lifecycle No script for "version" in "@spare/deco", continuing
+165 silly lifecycle No script for "preversion" in "@spare/deco-crostab", continuing
+166 silly lifecycle No script for "preversion" in "@spare/deco-table", continuing
+167 silly lifecycle No script for "preversion" in "@spare/deco-entries", continuing
+168 silly lifecycle No script for "preversion" in "@spare/deco-matrix", continuing
+169 silly lifecycle No script for "preversion" in "@spare/deco-object", continuing
+170 silly lifecycle No script for "preversion" in "@spare/deco-vector", continuing
+171 silly lifecycle No script for "version" in "@spare/field-padder", continuing
+172 silly lifecycle No script for "version" in "@spare/table-padder", continuing
+173 silly lifecycle No script for "preversion" in "@spare/csv", continuing
+174 silly lifecycle No script for "preversion" in "@spare/markdown", continuing
+175 silly lifecycle No script for "preversion" in "@spare/crostab-padder", continuing
+176 silly lifecycle No script for "version" in "@spare/padder", continuing
+177 silly lifecycle No script for "version" in "@spare/deco-crostab", continuing
+178 silly lifecycle No script for "version" in "@spare/deco-entries", continuing
+179 silly lifecycle No script for "version" in "@spare/deco-matrix", continuing
+180 silly lifecycle No script for "version" in "@spare/deco-table", continuing
+181 silly lifecycle No script for "version" in "@spare/csv", continuing
+182 silly lifecycle No script for "version" in "@spare/deco-object", continuing
+183 silly lifecycle No script for "version" in "@spare/deco-vector", continuing
+184 silly lifecycle No script for "preversion" in "@spare/deco-samples", continuing
+185 silly lifecycle No script for "preversion" in "@spare/deco-pale", continuing
+186 silly lifecycle No script for "preversion" in "@spare/phrasing", continuing
+187 silly lifecycle No script for "version" in "@spare/crostab-padder", continuing
+188 silly lifecycle No script for "version" in "@spare/markdown", continuing
+189 silly lifecycle No script for "version" in "@spare/deco-pale", continuing
+190 silly lifecycle No script for "preversion" in "@spare/preset-pale", continuing
+191 silly lifecycle No script for "preversion" in "@spare/preset-verse", continuing
+192 silly lifecycle No script for "version" in "@spare/phrasing", continuing
+193 silly lifecycle No script for "preversion" in "@spare/xr", continuing
+194 silly lifecycle No script for "preversion" in "@spare/ripper", continuing
+195 silly lifecycle No script for "preversion" in "@spare/tap", continuing
+196 silly lifecycle No script for "version" in "@spare/deco-samples", continuing
+197 silly lifecycle No script for "version" in "@spare/preset-verse", continuing
+198 silly lifecycle No script for "preversion" in "@spare/verse", continuing
+199 silly lifecycle No script for "version" in "@spare/preset-pale", continuing
+200 silly lifecycle No script for "version" in "@spare/xr", continuing
+201 silly lifecycle No script for "preversion" in "@spare/logger", continuing
+202 silly lifecycle No script for "version" in "@spare/ripper", continuing
+203 silly lifecycle No script for "preversion" in "@spare/splitter", continuing
+204 silly lifecycle No script for "version" in "@spare/tap", continuing
+205 silly lifecycle No script for "version" in "@spare/verse", continuing
+206 silly lifecycle No script for "version" in "@spare/logger", continuing
+207 silly lifecycle No script for "version" in "@spare/splitter", continuing
+208 silly lifecycle No script for "version" in "root", continuing
+209 silly gitAdd [
+209 silly gitAdd   'packages/enum/enum-chars/package.json',
+209 silly gitAdd   'packages/enum/enum-encodings/package.json',
+209 silly gitAdd   'packages/enum/enum-brackets/package.json',
+209 silly gitAdd   'packages/enum/enum-loggers/package.json',
+209 silly gitAdd   'packages/enum/enum-full-angle-chars/package.json',
+209 silly gitAdd   'packages/enum/preset-deco/package.json',
+209 silly gitAdd   'packages/enum/enum-quotes/package.json',
+209 silly gitAdd   'packages/enum/regex-charset/package.json',
+209 silly gitAdd   'utils/deco/arc/package.json',
+209 silly gitAdd   'packages/enum/regex-phrasing/package.json',
+209 silly gitAdd   'utils/padder/vector-padder/package.json',
+209 silly gitAdd   'utils/padder/entries-padder/package.json',
+209 silly gitAdd   'utils/padder/matrix-padder/package.json',
+209 silly gitAdd   'utils/texting/translator/package.json',
+209 silly gitAdd   'utils/texting/string-value/package.json',
+209 silly gitAdd   'utils/deco/deco-colors/package.json',
+209 silly gitAdd   'utils/texting/bracket/package.json',
+209 silly gitAdd   'utils/texting/util/package.json',
+209 silly gitAdd   'utils/texting/fold/package.json',
+209 silly gitAdd   'utils/deco/deco-config/package.json',
+209 silly gitAdd   'utils/deco/deco-util/package.json',
+209 silly gitAdd   'utils/texting/quote/package.json',
+209 silly gitAdd   'utils/texting/charset/package.json',
+209 silly gitAdd   'utils/texting/lange/package.json',
+209 silly gitAdd   'utils/margin/vector-margin/package.json',
+209 silly gitAdd   'packages/primitive/deco-date/package.json',
+209 silly gitAdd   'utils/texting/liner/package.json',
+209 silly gitAdd   'utils/margin/matrix-margin/package.json',
+209 silly gitAdd   'packages/primitive/deco-string/package.json',
+209 silly gitAdd   'packages/recursive/deco-func/package.json',
+209 silly gitAdd   'utils/texting/string/package.json',
+209 silly gitAdd   'utils/texting/fullwidth/package.json',
+209 silly gitAdd   'utils/texting/cite/package.json',
+209 silly gitAdd   'utils/margin/entries-margin/package.json',
+209 silly gitAdd   'utils/margin/table-margin/package.json',
+209 silly gitAdd   'utils/margin/crostab-margin/package.json',
+209 silly gitAdd   'packages/debugger/says/package.json',
+209 silly gitAdd   'packages/recursive/deco-flat/package.json',
+209 silly gitAdd   'packages/recursive/deco/package.json',
+209 silly gitAdd   'utils/padder/field-padder/package.json',
+209 silly gitAdd   'utils/padder/table-padder/package.json',
+209 silly gitAdd   'utils/texting/padder/package.json',
+209 silly gitAdd   'packages/interop/deco-crostab/package.json',
+209 silly gitAdd   'packages/primitive/deco-entries/package.json',
+209 silly gitAdd   'packages/primitive/deco-matrix/package.json',
+209 silly gitAdd   'packages/interop/deco-table/package.json',
+209 silly gitAdd   'packages/interop/csv/package.json',
+209 silly gitAdd   'packages/primitive/deco-object/package.json',
+209 silly gitAdd   'packages/primitive/deco-vector/package.json',
+209 silly gitAdd   'utils/padder/crostab-padder/package.json',
+209 silly gitAdd   'packages/interop/markdown/package.json',
+209 silly gitAdd   'packages/recursive/deco-pale/package.json',
+209 silly gitAdd   'utils/texting/phrasing/package.json',
+209 silly gitAdd   'packages/interop/deco-samples/package.json',
+209 silly gitAdd   'packages/enum/preset-verse/package.json',
+209 silly gitAdd   'packages/enum/preset-pale/package.json',
+209 silly gitAdd   'packages/debugger/xr/package.json',
+209 silly gitAdd   'utils/texting/ripper/package.json',
+209 silly gitAdd   'utils/texting/tap/package.json',
+209 silly gitAdd   'packages/interop/verse/package.json',
+209 silly gitAdd   'packages/debugger/logger/package.json',
+209 silly gitAdd   'utils/texting/splitter/package.json',
+209 silly gitAdd   'lerna.json'
+209 silly gitAdd ]
+210 silly gitCommit v0.14.28
+211 verbose git [ 'commit', '-m', 'v0.14.28' ]
+212 silly gitTag v0.14.28
+213 verbose git [ 'tag', 'v0.14.28', '-m', 'v0.14.28' ]
+214 silly lifecycle No script for "postversion" in "@spare/logger", continuing
+215 silly lifecycle No script for "postversion" in "@spare/says", continuing
+216 silly lifecycle No script for "postversion" in "@spare/xr", continuing
+217 silly lifecycle No script for "postversion" in "@spare/enum-brackets", continuing
+218 silly lifecycle No script for "postversion" in "@spare/enum-chars", continuing
+219 silly lifecycle No script for "postversion" in "@spare/enum-encodings", continuing
+220 silly lifecycle No script for "postversion" in "@spare/enum-full-angle-chars", continuing
+221 silly lifecycle No script for "postversion" in "@spare/enum-loggers", continuing
+222 silly lifecycle No script for "postversion" in "@spare/enum-quotes", continuing
+223 silly lifecycle No script for "postversion" in "@spare/preset-deco", continuing
+224 silly lifecycle No script for "postversion" in "@spare/preset-pale", continuing
+225 silly lifecycle No script for "postversion" in "@spare/preset-verse", continuing
+226 silly lifecycle No script for "postversion" in "@spare/regex-charset", continuing
+227 silly lifecycle No script for "postversion" in "@spare/regex-phrasing", continuing
+228 silly lifecycle No script for "postversion" in "@spare/csv", continuing
+229 silly lifecycle No script for "postversion" in "@spare/deco-crostab", continuing
+230 silly lifecycle No script for "postversion" in "@spare/deco-samples", continuing
+231 silly lifecycle No script for "postversion" in "@spare/deco-table", continuing
+232 silly lifecycle No script for "postversion" in "@spare/markdown", continuing
+233 silly lifecycle No script for "postversion" in "@spare/verse", continuing
+234 silly lifecycle No script for "postversion" in "@spare/deco-date", continuing
+235 silly lifecycle No script for "postversion" in "@spare/deco-entries", continuing
+236 silly lifecycle No script for "postversion" in "@spare/deco-matrix", continuing
+237 silly lifecycle No script for "postversion" in "@spare/deco-object", continuing
+238 silly lifecycle No script for "postversion" in "@spare/deco-string", continuing
+239 silly lifecycle No script for "postversion" in "@spare/deco-vector", continuing
+240 silly lifecycle No script for "postversion" in "@spare/deco-flat", continuing
+241 silly lifecycle No script for "postversion" in "@spare/deco-func", continuing
+242 silly lifecycle No script for "postversion" in "@spare/deco-pale", continuing
+243 silly lifecycle No script for "postversion" in "@spare/deco", continuing
+244 silly lifecycle No script for "postversion" in "@spare/arc", continuing
+245 silly lifecycle No script for "postversion" in "@spare/deco-colors", continuing
+246 silly lifecycle No script for "postversion" in "@spare/deco-config", continuing
+247 silly lifecycle No script for "postversion" in "@spare/deco-util", continuing
+248 silly lifecycle No script for "postversion" in "@spare/crostab-margin", continuing
+249 silly lifecycle No script for "postversion" in "@spare/entries-margin", continuing
+250 silly lifecycle No script for "postversion" in "@spare/matrix-margin", continuing
+251 silly lifecycle No script for "postversion" in "@spare/table-margin", continuing
+252 silly lifecycle No script for "postversion" in "@spare/vector-margin", continuing
+253 silly lifecycle No script for "postversion" in "@spare/crostab-padder", continuing
+254 silly lifecycle No script for "postversion" in "@spare/entries-padder", continuing
+255 silly lifecycle No script for "postversion" in "@spare/field-padder", continuing
+256 silly lifecycle No script for "postversion" in "@spare/matrix-padder", continuing
+257 silly lifecycle No script for "postversion" in "@spare/table-padder", continuing
+258 silly lifecycle No script for "postversion" in "@spare/vector-padder", continuing
+259 silly lifecycle No script for "postversion" in "@spare/bracket", continuing
+260 silly lifecycle No script for "postversion" in "@spare/charset", continuing
+261 silly lifecycle No script for "postversion" in "@spare/cite", continuing
+262 silly lifecycle No script for "postversion" in "@spare/fold", continuing
+263 silly lifecycle No script for "postversion" in "@spare/fullwidth", continuing
+264 silly lifecycle No script for "postversion" in "@spare/lange", continuing
+265 silly lifecycle No script for "postversion" in "@spare/liner", continuing
+266 silly lifecycle No script for "postversion" in "@spare/padder", continuing
+267 silly lifecycle No script for "postversion" in "@spare/phrasing", continuing
+268 silly lifecycle No script for "postversion" in "@spare/quote", continuing
+269 silly lifecycle No script for "postversion" in "@spare/ripper", continuing
+270 silly lifecycle No script for "postversion" in "@spare/splitter", continuing
+271 silly lifecycle No script for "postversion" in "@spare/string-value", continuing
+272 silly lifecycle No script for "postversion" in "@spare/string", continuing
+273 silly lifecycle No script for "postversion" in "@spare/tap", continuing
+274 silly lifecycle No script for "postversion" in "@spare/translator", continuing
+275 silly lifecycle No script for "postversion" in "@spare/util", continuing
+276 silly lifecycle No script for "postversion" in "root", continuing
+277 info git Pushing tags...
+278 silly gitPush origin master
+279 info publish Publishing packages to npm...
+280 silly getCurrentSHA
+281 verbose getCurrentSHA e5d438125c09a16214553e6a1ad6ec2659b085b7
+282 silly lifecycle No script for "prepublish" in "root", continuing
+283 silly lifecycle No script for "prepare" in "root", continuing
+284 silly lifecycle No script for "prepublishOnly" in "root", continuing
+285 silly lifecycle No script for "prepack" in "root", continuing
+286 verbose pack-directory packages/enum/enum-brackets
+287 verbose pack-directory packages/enum/enum-chars
+288 verbose pack-directory packages/enum/enum-encodings
+289 verbose pack-directory packages/enum/enum-full-angle-chars
+290 verbose pack-directory packages/enum/enum-loggers
+291 verbose pack-directory packages/enum/enum-quotes
+292 verbose pack-directory packages/enum/preset-deco
+293 verbose pack-directory packages/enum/regex-charset
+294 verbose pack-directory packages/enum/regex-phrasing
+295 verbose pack-directory utils/deco/arc
+296 verbose pack-directory utils/padder/entries-padder
+297 verbose pack-directory utils/padder/matrix-padder
+298 verbose pack-directory utils/padder/vector-padder
+299 verbose pack-directory utils/texting/string-value
+300 verbose pack-directory utils/texting/translator
+301 silly lifecycle No script for "prepublish" in "@spare/enum-brackets", continuing
+302 silly lifecycle No script for "prepublish" in "@spare/enum-chars", continuing
+303 silly lifecycle No script for "prepublish" in "@spare/enum-encodings", continuing
+304 silly lifecycle No script for "prepublish" in "@spare/enum-full-angle-chars", continuing
+305 silly lifecycle No script for "prepublish" in "@spare/enum-loggers", continuing
+306 silly lifecycle No script for "prepublish" in "@spare/enum-quotes", continuing
+307 silly lifecycle No script for "prepublish" in "@spare/preset-deco", continuing
+308 silly lifecycle No script for "prepublish" in "@spare/regex-charset", continuing
+309 silly lifecycle No script for "prepublish" in "@spare/regex-phrasing", continuing
+310 silly lifecycle No script for "prepublish" in "@spare/arc", continuing
+311 silly lifecycle No script for "prepublish" in "@spare/entries-padder", continuing
+312 silly lifecycle No script for "prepublish" in "@spare/matrix-padder", continuing
+313 silly lifecycle No script for "prepublish" in "@spare/vector-padder", continuing
+314 silly lifecycle No script for "prepublish" in "@spare/string-value", continuing
+315 silly lifecycle No script for "prepublish" in "@spare/translator", continuing
+316 silly lifecycle No script for "prepare" in "@spare/enum-brackets", continuing
+317 silly lifecycle No script for "prepare" in "@spare/enum-chars", continuing
+318 silly lifecycle No script for "prepare" in "@spare/enum-encodings", continuing
+319 silly lifecycle No script for "prepare" in "@spare/enum-full-angle-chars", continuing
+320 silly lifecycle No script for "prepare" in "@spare/enum-loggers", continuing
+321 silly lifecycle No script for "prepare" in "@spare/enum-quotes", continuing
+322 silly lifecycle No script for "prepare" in "@spare/preset-deco", continuing
+323 silly lifecycle No script for "prepare" in "@spare/regex-charset", continuing
+324 silly lifecycle No script for "prepare" in "@spare/regex-phrasing", continuing
+325 silly lifecycle No script for "prepare" in "@spare/arc", continuing
+326 silly lifecycle No script for "prepare" in "@spare/entries-padder", continuing
+327 silly lifecycle No script for "prepare" in "@spare/matrix-padder", continuing
+328 silly lifecycle No script for "prepare" in "@spare/vector-padder", continuing
+329 silly lifecycle No script for "prepare" in "@spare/string-value", continuing
+330 silly lifecycle No script for "prepare" in "@spare/translator", continuing
+331 silly lifecycle No script for "prepublishOnly" in "@spare/enum-brackets", continuing
+332 silly lifecycle No script for "prepublishOnly" in "@spare/enum-chars", continuing
+333 silly lifecycle No script for "prepublishOnly" in "@spare/enum-full-angle-chars", continuing
+334 silly lifecycle No script for "prepublishOnly" in "@spare/enum-encodings", continuing
+335 silly lifecycle No script for "prepublishOnly" in "@spare/enum-loggers", continuing
+336 silly lifecycle No script for "prepublishOnly" in "@spare/enum-quotes", continuing
+337 silly lifecycle No script for "prepublishOnly" in "@spare/preset-deco", continuing
+338 silly lifecycle No script for "prepublishOnly" in "@spare/regex-charset", continuing
+339 silly lifecycle No script for "prepublishOnly" in "@spare/regex-phrasing", continuing
+340 silly lifecycle No script for "prepublishOnly" in "@spare/arc", continuing
+341 silly lifecycle No script for "prepublishOnly" in "@spare/entries-padder", continuing
+342 silly lifecycle No script for "prepublishOnly" in "@spare/matrix-padder", continuing
+343 silly lifecycle No script for "prepublishOnly" in "@spare/vector-padder", continuing
+344 silly lifecycle No script for "prepublishOnly" in "@spare/string-value", continuing
+345 silly lifecycle No script for "prepublishOnly" in "@spare/translator", continuing
+346 silly lifecycle No script for "prepack" in "@spare/enum-brackets", continuing
+347 silly lifecycle No script for "prepack" in "@spare/enum-chars", continuing
+348 silly lifecycle No script for "prepack" in "@spare/enum-full-angle-chars", continuing
+349 silly lifecycle No script for "prepack" in "@spare/enum-encodings", continuing
+350 silly lifecycle No script for "prepack" in "@spare/enum-loggers", continuing
+351 silly lifecycle No script for "prepack" in "@spare/enum-quotes", continuing
+352 silly lifecycle No script for "prepack" in "@spare/preset-deco", continuing
+353 silly lifecycle No script for "prepack" in "@spare/regex-charset", continuing
+354 silly lifecycle No script for "prepack" in "@spare/regex-phrasing", continuing
+355 silly lifecycle No script for "prepack" in "@spare/arc", continuing
+356 silly lifecycle No script for "prepack" in "@spare/entries-padder", continuing
+357 silly lifecycle No script for "prepack" in "@spare/matrix-padder", continuing
+358 silly lifecycle No script for "prepack" in "@spare/vector-padder", continuing
+359 silly lifecycle No script for "prepack" in "@spare/string-value", continuing
+360 silly lifecycle No script for "prepack" in "@spare/translator", continuing
+361 silly lifecycle No script for "postpack" in "@spare/enum-brackets", continuing
+362 verbose packed packages/enum/enum-brackets
+363 silly lifecycle No script for "postpack" in "@spare/enum-chars", continuing
+364 verbose packed packages/enum/enum-chars
+365 silly lifecycle No script for "postpack" in "@spare/enum-full-angle-chars", continuing
+366 verbose packed packages/enum/enum-full-angle-chars
+367 silly lifecycle No script for "postpack" in "@spare/enum-encodings", continuing
+368 verbose packed packages/enum/enum-encodings
+369 silly lifecycle No script for "postpack" in "@spare/enum-loggers", continuing
+370 verbose packed packages/enum/enum-loggers
+371 silly lifecycle No script for "postpack" in "@spare/enum-quotes", continuing
+372 verbose packed packages/enum/enum-quotes
+373 silly lifecycle No script for "postpack" in "@spare/regex-charset", continuing
+374 verbose packed packages/enum/regex-charset
+375 silly lifecycle No script for "postpack" in "@spare/regex-phrasing", continuing
+376 verbose packed packages/enum/regex-phrasing
+377 silly lifecycle No script for "postpack" in "@spare/preset-deco", continuing
+378 verbose packed packages/enum/preset-deco
+379 silly lifecycle No script for "postpack" in "@spare/arc", continuing
+380 verbose packed utils/deco/arc
+381 silly lifecycle No script for "postpack" in "@spare/entries-padder", continuing
+382 verbose packed utils/padder/entries-padder
+383 silly lifecycle No script for "postpack" in "@spare/matrix-padder", continuing
+384 verbose packed utils/padder/matrix-padder
+385 silly lifecycle No script for "postpack" in "@spare/vector-padder", continuing
+386 verbose packed utils/padder/vector-padder
+387 silly lifecycle No script for "postpack" in "@spare/string-value", continuing
+388 verbose packed utils/texting/string-value
+389 silly lifecycle No script for "postpack" in "@spare/translator", continuing
+390 verbose packed utils/texting/translator
+391 verbose pack-directory utils/texting/bracket
+392 silly lifecycle No script for "prepublish" in "@spare/bracket", continuing
+393 silly lifecycle No script for "prepare" in "@spare/bracket", continuing
+394 verbose pack-directory utils/texting/fold
+395 silly lifecycle No script for "prepublish" in "@spare/fold", continuing
+396 silly lifecycle No script for "prepare" in "@spare/fold", continuing
+397 verbose pack-directory utils/texting/util
+398 silly lifecycle No script for "prepublish" in "@spare/util", continuing
+399 silly lifecycle No script for "prepare" in "@spare/util", continuing
+400 verbose pack-directory utils/texting/quote
+401 silly lifecycle No script for "prepublish" in "@spare/quote", continuing
+402 silly lifecycle No script for "prepare" in "@spare/quote", continuing
+403 verbose pack-directory utils/texting/charset
+404 verbose pack-directory utils/texting/lange
+405 silly lifecycle No script for "prepublish" in "@spare/charset", continuing
+406 silly lifecycle No script for "prepublish" in "@spare/lange", continuing
+407 silly lifecycle No script for "prepare" in "@spare/charset", continuing
+408 silly lifecycle No script for "prepare" in "@spare/lange", continuing
+409 verbose pack-directory utils/deco/deco-colors
+410 verbose pack-directory utils/deco/deco-config
+411 verbose pack-directory utils/deco/deco-util
+412 silly lifecycle No script for "prepublish" in "@spare/deco-colors", continuing
+413 silly lifecycle No script for "prepublish" in "@spare/deco-config", continuing
+414 silly lifecycle No script for "prepublish" in "@spare/deco-util", continuing
+415 silly lifecycle No script for "prepare" in "@spare/deco-colors", continuing
+416 silly lifecycle No script for "prepare" in "@spare/deco-config", continuing
+417 silly lifecycle No script for "prepare" in "@spare/deco-util", continuing
+418 silly lifecycle No script for "prepublishOnly" in "@spare/fold", continuing
+419 silly lifecycle No script for "prepublishOnly" in "@spare/bracket", continuing
+420 silly lifecycle No script for "prepublishOnly" in "@spare/util", continuing
+421 silly lifecycle No script for "prepublishOnly" in "@spare/charset", continuing
+422 silly lifecycle No script for "prepublishOnly" in "@spare/quote", continuing
+423 silly lifecycle No script for "prepublishOnly" in "@spare/lange", continuing
+424 silly lifecycle No script for "prepublishOnly" in "@spare/deco-colors", continuing
+425 silly lifecycle No script for "prepublishOnly" in "@spare/deco-util", continuing
+426 silly lifecycle No script for "prepublishOnly" in "@spare/deco-config", continuing
+427 silly lifecycle No script for "prepack" in "@spare/fold", continuing
+428 silly lifecycle No script for "prepack" in "@spare/bracket", continuing
+429 silly lifecycle No script for "prepack" in "@spare/util", continuing
+430 silly lifecycle No script for "prepack" in "@spare/charset", continuing
+431 silly lifecycle No script for "prepack" in "@spare/quote", continuing
+432 silly lifecycle No script for "prepack" in "@spare/lange", continuing
+433 silly lifecycle No script for "prepack" in "@spare/deco-colors", continuing
+434 silly lifecycle No script for "prepack" in "@spare/deco-util", continuing
+435 silly lifecycle No script for "prepack" in "@spare/deco-config", continuing
+436 silly lifecycle No script for "postpack" in "@spare/fold", continuing
+437 verbose packed utils/texting/fold
+438 silly lifecycle No script for "postpack" in "@spare/bracket", continuing
+439 verbose packed utils/texting/bracket
+440 silly lifecycle No script for "postpack" in "@spare/util", continuing
+441 verbose packed utils/texting/util
+442 silly lifecycle No script for "postpack" in "@spare/charset", continuing
+443 verbose packed utils/texting/charset
+444 silly lifecycle No script for "postpack" in "@spare/lange", continuing
+445 verbose packed utils/texting/lange
+446 silly lifecycle No script for "postpack" in "@spare/quote", continuing
+447 verbose packed utils/texting/quote
+448 silly lifecycle No script for "postpack" in "@spare/deco-colors", continuing
+449 verbose packed utils/deco/deco-colors
+450 silly lifecycle No script for "postpack" in "@spare/deco-util", continuing
+451 verbose packed utils/deco/deco-util
+452 silly lifecycle No script for "postpack" in "@spare/deco-config", continuing
+453 verbose packed utils/deco/deco-config
+454 verbose pack-directory utils/texting/liner
+455 silly lifecycle No script for "prepublish" in "@spare/liner", continuing
+456 silly lifecycle No script for "prepare" in "@spare/liner", continuing
+457 verbose pack-directory utils/margin/matrix-margin
+458 verbose pack-directory utils/margin/vector-margin
+459 verbose pack-directory utils/texting/string
+460 silly lifecycle No script for "prepublish" in "@spare/matrix-margin", continuing
+461 silly lifecycle No script for "prepublish" in "@spare/vector-margin", continuing
+462 silly lifecycle No script for "prepublish" in "@spare/string", continuing
+463 silly lifecycle No script for "prepare" in "@spare/matrix-margin", continuing
+464 silly lifecycle No script for "prepare" in "@spare/vector-margin", continuing
+465 silly lifecycle No script for "prepare" in "@spare/string", continuing
+466 verbose pack-directory utils/texting/fullwidth
+467 silly lifecycle No script for "prepublish" in "@spare/fullwidth", continuing
+468 silly lifecycle No script for "prepare" in "@spare/fullwidth", continuing
+469 verbose pack-directory utils/texting/cite
+470 silly lifecycle No script for "prepublish" in "@spare/cite", continuing
+471 silly lifecycle No script for "prepare" in "@spare/cite", continuing
+472 verbose pack-directory packages/primitive/deco-date
+473 verbose pack-directory packages/primitive/deco-string
+474 verbose pack-directory packages/recursive/deco-func
+475 silly lifecycle No script for "prepublish" in "@spare/deco-date", continuing
+476 silly lifecycle No script for "prepublish" in "@spare/deco-string", continuing
+477 silly lifecycle No script for "prepublish" in "@spare/deco-func", continuing
+478 silly lifecycle No script for "prepare" in "@spare/deco-date", continuing
+479 silly lifecycle No script for "prepare" in "@spare/deco-string", continuing
+480 silly lifecycle No script for "prepare" in "@spare/deco-func", continuing
+481 silly lifecycle No script for "prepublishOnly" in "@spare/liner", continuing
+482 silly lifecycle No script for "prepublishOnly" in "@spare/vector-margin", continuing
+483 silly lifecycle No script for "prepublishOnly" in "@spare/matrix-margin", continuing
+484 silly lifecycle No script for "prepublishOnly" in "@spare/fullwidth", continuing
+485 silly lifecycle No script for "prepublishOnly" in "@spare/string", continuing
+486 silly lifecycle No script for "prepublishOnly" in "@spare/cite", continuing
+487 silly lifecycle No script for "prepublishOnly" in "@spare/deco-date", continuing
+488 silly lifecycle No script for "prepublishOnly" in "@spare/deco-string", continuing
+489 silly lifecycle No script for "prepublishOnly" in "@spare/deco-func", continuing
+490 silly lifecycle No script for "prepack" in "@spare/liner", continuing
+491 silly lifecycle No script for "prepack" in "@spare/vector-margin", continuing
+492 silly lifecycle No script for "prepack" in "@spare/fullwidth", continuing
+493 silly lifecycle No script for "prepack" in "@spare/matrix-margin", continuing
+494 silly lifecycle No script for "prepack" in "@spare/string", continuing
+495 silly lifecycle No script for "prepack" in "@spare/cite", continuing
+496 silly lifecycle No script for "prepack" in "@spare/deco-date", continuing
+497 silly lifecycle No script for "prepack" in "@spare/deco-string", continuing
+498 silly lifecycle No script for "prepack" in "@spare/deco-func", continuing
+499 silly lifecycle No script for "postpack" in "@spare/liner", continuing
+500 verbose packed utils/texting/liner
+501 silly lifecycle No script for "postpack" in "@spare/vector-margin", continuing
+502 verbose packed utils/margin/vector-margin
+503 silly lifecycle No script for "postpack" in "@spare/fullwidth", continuing
+504 verbose packed utils/texting/fullwidth
+505 silly lifecycle No script for "postpack" in "@spare/matrix-margin", continuing
+506 verbose packed utils/margin/matrix-margin
+507 silly lifecycle No script for "postpack" in "@spare/deco-date", continuing
+508 verbose packed packages/primitive/deco-date
+509 silly lifecycle No script for "postpack" in "@spare/string", continuing
+510 verbose packed utils/texting/string
+511 silly lifecycle No script for "postpack" in "@spare/cite", continuing
+512 verbose packed utils/texting/cite
+513 silly lifecycle No script for "postpack" in "@spare/deco-func", continuing
+514 verbose packed packages/recursive/deco-func
+515 silly lifecycle No script for "postpack" in "@spare/deco-string", continuing
+516 verbose packed packages/primitive/deco-string
+517 verbose pack-directory utils/margin/entries-margin
+518 silly lifecycle No script for "prepublish" in "@spare/entries-margin", continuing
+519 silly lifecycle No script for "prepare" in "@spare/entries-margin", continuing
+520 verbose pack-directory utils/padder/field-padder
+521 verbose pack-directory utils/padder/table-padder
+522 verbose pack-directory utils/texting/padder
+523 silly lifecycle No script for "prepublish" in "@spare/field-padder", continuing
+524 silly lifecycle No script for "prepublish" in "@spare/table-padder", continuing
+525 silly lifecycle No script for "prepublish" in "@spare/padder", continuing
+526 silly lifecycle No script for "prepare" in "@spare/field-padder", continuing
+527 silly lifecycle No script for "prepare" in "@spare/table-padder", continuing
+528 silly lifecycle No script for "prepare" in "@spare/padder", continuing
+529 verbose pack-directory utils/margin/crostab-margin
+530 verbose pack-directory utils/margin/table-margin
+531 silly lifecycle No script for "prepublish" in "@spare/crostab-margin", continuing
+532 silly lifecycle No script for "prepublish" in "@spare/table-margin", continuing
+533 silly lifecycle No script for "prepare" in "@spare/crostab-margin", continuing
+534 silly lifecycle No script for "prepare" in "@spare/table-margin", continuing
+535 verbose pack-directory packages/recursive/deco-flat
+536 verbose pack-directory packages/recursive/deco
+537 silly lifecycle No script for "prepublish" in "@spare/deco-flat", continuing
+538 silly lifecycle No script for "prepublish" in "@spare/deco", continuing
+539 silly lifecycle No script for "prepare" in "@spare/deco-flat", continuing
+540 silly lifecycle No script for "prepare" in "@spare/deco", continuing
+541 verbose pack-directory packages/debugger/says
+542 silly lifecycle No script for "prepublish" in "@spare/says", continuing
+543 silly lifecycle No script for "prepare" in "@spare/says", continuing
+544 silly lifecycle No script for "prepublishOnly" in "@spare/entries-margin", continuing
+545 silly lifecycle No script for "prepublishOnly" in "@spare/field-padder", continuing
+546 silly lifecycle No script for "prepublishOnly" in "@spare/table-padder", continuing
+547 silly lifecycle No script for "prepublishOnly" in "@spare/padder", continuing
+548 silly lifecycle No script for "prepublishOnly" in "@spare/crostab-margin", continuing
+549 silly lifecycle No script for "prepublishOnly" in "@spare/table-margin", continuing
+550 silly lifecycle No script for "prepublishOnly" in "@spare/deco", continuing
+551 silly lifecycle No script for "prepublishOnly" in "@spare/deco-flat", continuing
+552 silly lifecycle No script for "prepublishOnly" in "@spare/says", continuing
+553 silly lifecycle No script for "prepack" in "@spare/entries-margin", continuing
+554 silly lifecycle No script for "prepack" in "@spare/field-padder", continuing
+555 silly lifecycle No script for "prepack" in "@spare/table-padder", continuing
+556 silly lifecycle No script for "prepack" in "@spare/padder", continuing
+557 silly lifecycle No script for "prepack" in "@spare/crostab-margin", continuing
+558 silly lifecycle No script for "prepack" in "@spare/table-margin", continuing
+559 silly lifecycle No script for "prepack" in "@spare/deco", continuing
+560 silly lifecycle No script for "prepack" in "@spare/deco-flat", continuing
+561 silly lifecycle No script for "prepack" in "@spare/says", continuing
+562 silly lifecycle No script for "postpack" in "@spare/deco", continuing
+563 verbose packed packages/recursive/deco
+564 silly lifecycle No script for "postpack" in "@spare/deco-flat", continuing
+565 verbose packed packages/recursive/deco-flat
+566 silly lifecycle No script for "postpack" in "@spare/entries-margin", continuing
+567 verbose packed utils/margin/entries-margin
+568 silly lifecycle No script for "postpack" in "@spare/field-padder", continuing
+569 verbose packed utils/padder/field-padder
+570 silly lifecycle No script for "postpack" in "@spare/table-padder", continuing
+571 verbose packed utils/padder/table-padder
+572 silly lifecycle No script for "postpack" in "@spare/crostab-margin", continuing
+573 verbose packed utils/margin/crostab-margin
+574 silly lifecycle No script for "postpack" in "@spare/says", continuing
+575 verbose packed packages/debugger/says
+576 silly lifecycle No script for "postpack" in "@spare/table-margin", continuing
+577 verbose packed utils/margin/table-margin
+578 silly lifecycle No script for "postpack" in "@spare/padder", continuing
+579 verbose packed utils/texting/padder
+580 verbose pack-directory packages/interop/deco-crostab
+581 verbose pack-directory packages/interop/deco-table
+582 verbose pack-directory packages/primitive/deco-entries
+583 verbose pack-directory packages/primitive/deco-matrix
+584 verbose pack-directory packages/primitive/deco-object
+585 verbose pack-directory packages/primitive/deco-vector
+586 silly lifecycle No script for "prepublish" in "@spare/deco-crostab", continuing
+587 silly lifecycle No script for "prepublish" in "@spare/deco-table", continuing
+588 silly lifecycle No script for "prepublish" in "@spare/deco-entries", continuing
+589 silly lifecycle No script for "prepublish" in "@spare/deco-matrix", continuing
+590 silly lifecycle No script for "prepublish" in "@spare/deco-object", continuing
+591 silly lifecycle No script for "prepublish" in "@spare/deco-vector", continuing
+592 silly lifecycle No script for "prepare" in "@spare/deco-crostab", continuing
+593 silly lifecycle No script for "prepare" in "@spare/deco-table", continuing
+594 silly lifecycle No script for "prepare" in "@spare/deco-entries", continuing
+595 silly lifecycle No script for "prepare" in "@spare/deco-matrix", continuing
+596 silly lifecycle No script for "prepare" in "@spare/deco-object", continuing
+597 silly lifecycle No script for "prepare" in "@spare/deco-vector", continuing
+598 verbose pack-directory packages/interop/markdown
+599 verbose pack-directory utils/padder/crostab-padder
+600 silly lifecycle No script for "prepublish" in "@spare/markdown", continuing
+601 silly lifecycle No script for "prepublish" in "@spare/crostab-padder", continuing
+602 silly lifecycle No script for "prepare" in "@spare/markdown", continuing
+603 silly lifecycle No script for "prepare" in "@spare/crostab-padder", continuing
+604 verbose pack-directory packages/interop/csv
+605 silly lifecycle No script for "prepublish" in "@spare/csv", continuing
+606 silly lifecycle No script for "prepare" in "@spare/csv", continuing
+607 silly lifecycle No script for "prepublishOnly" in "@spare/deco-crostab", continuing
+608 silly lifecycle No script for "prepublishOnly" in "@spare/deco-table", continuing
+609 silly lifecycle No script for "prepublishOnly" in "@spare/deco-entries", continuing
+610 silly lifecycle No script for "prepublishOnly" in "@spare/deco-object", continuing
+611 silly lifecycle No script for "prepublishOnly" in "@spare/deco-vector", continuing
+612 silly lifecycle No script for "prepublishOnly" in "@spare/deco-matrix", continuing
+613 silly lifecycle No script for "prepublishOnly" in "@spare/markdown", continuing
+614 silly lifecycle No script for "prepublishOnly" in "@spare/crostab-padder", continuing
+615 silly lifecycle No script for "prepublishOnly" in "@spare/csv", continuing
+616 silly lifecycle No script for "prepack" in "@spare/deco-crostab", continuing
+617 silly lifecycle No script for "prepack" in "@spare/deco-table", continuing
+618 silly lifecycle No script for "prepack" in "@spare/deco-object", continuing
+619 silly lifecycle No script for "prepack" in "@spare/deco-entries", continuing
+620 silly lifecycle No script for "prepack" in "@spare/deco-vector", continuing
+621 silly lifecycle No script for "prepack" in "@spare/deco-matrix", continuing
+622 silly lifecycle No script for "prepack" in "@spare/crostab-padder", continuing
+623 silly lifecycle No script for "prepack" in "@spare/markdown", continuing
+624 silly lifecycle No script for "prepack" in "@spare/csv", continuing
+625 silly lifecycle No script for "postpack" in "@spare/deco-object", continuing
+626 verbose packed packages/primitive/deco-object
+627 silly lifecycle No script for "postpack" in "@spare/deco-entries", continuing
+628 verbose packed packages/primitive/deco-entries
+629 silly lifecycle No script for "postpack" in "@spare/deco-matrix", continuing
+630 verbose packed packages/primitive/deco-matrix
+631 silly lifecycle No script for "postpack" in "@spare/deco-crostab", continuing
+632 verbose packed packages/interop/deco-crostab
+633 silly lifecycle No script for "postpack" in "@spare/deco-table", continuing
+634 verbose packed packages/interop/deco-table
+635 silly lifecycle No script for "postpack" in "@spare/deco-vector", continuing
+636 verbose packed packages/primitive/deco-vector
+637 silly lifecycle No script for "postpack" in "@spare/markdown", continuing
+638 verbose packed packages/interop/markdown
+639 silly lifecycle No script for "postpack" in "@spare/crostab-padder", continuing
+640 verbose packed utils/padder/crostab-padder
+641 silly lifecycle No script for "postpack" in "@spare/csv", continuing
+642 verbose packed packages/interop/csv
+643 verbose pack-directory packages/interop/deco-samples
+644 verbose pack-directory packages/recursive/deco-pale
+645 verbose pack-directory utils/texting/phrasing
+646 silly lifecycle No script for "prepublish" in "@spare/deco-samples", continuing
+647 silly lifecycle No script for "prepublish" in "@spare/deco-pale", continuing
+648 silly lifecycle No script for "prepublish" in "@spare/phrasing", continuing
+649 silly lifecycle No script for "prepare" in "@spare/deco-samples", continuing
+650 silly lifecycle No script for "prepare" in "@spare/deco-pale", continuing
+651 silly lifecycle No script for "prepare" in "@spare/phrasing", continuing
+652 silly lifecycle No script for "prepublishOnly" in "@spare/deco-samples", continuing
+653 silly lifecycle No script for "prepublishOnly" in "@spare/deco-pale", continuing
+654 silly lifecycle No script for "prepublishOnly" in "@spare/phrasing", continuing
+655 silly lifecycle No script for "prepack" in "@spare/deco-samples", continuing
+656 silly lifecycle No script for "prepack" in "@spare/phrasing", continuing
+657 silly lifecycle No script for "prepack" in "@spare/deco-pale", continuing
+658 silly lifecycle No script for "postpack" in "@spare/deco-pale", continuing
+659 verbose packed packages/recursive/deco-pale
+660 silly lifecycle No script for "postpack" in "@spare/phrasing", continuing
+661 verbose packed utils/texting/phrasing
+662 silly lifecycle No script for "postpack" in "@spare/deco-samples", continuing
+663 verbose packed packages/interop/deco-samples
+664 verbose pack-directory packages/enum/preset-pale
+665 verbose pack-directory packages/enum/preset-verse
+666 silly lifecycle No script for "prepublish" in "@spare/preset-pale", continuing
+667 silly lifecycle No script for "prepublish" in "@spare/preset-verse", continuing
+668 silly lifecycle No script for "prepare" in "@spare/preset-pale", continuing
+669 silly lifecycle No script for "prepare" in "@spare/preset-verse", continuing
+670 verbose pack-directory packages/debugger/xr
+671 verbose pack-directory utils/texting/ripper
+672 verbose pack-directory utils/texting/tap
+673 silly lifecycle No script for "prepublish" in "@spare/xr", continuing
+674 silly lifecycle No script for "prepublish" in "@spare/ripper", continuing
+675 silly lifecycle No script for "prepublish" in "@spare/tap", continuing
+676 silly lifecycle No script for "prepare" in "@spare/xr", continuing
+677 silly lifecycle No script for "prepare" in "@spare/ripper", continuing
+678 silly lifecycle No script for "prepare" in "@spare/tap", continuing
+679 silly lifecycle No script for "prepublishOnly" in "@spare/preset-pale", continuing
+680 silly lifecycle No script for "prepublishOnly" in "@spare/preset-verse", continuing
+681 silly lifecycle No script for "prepublishOnly" in "@spare/xr", continuing
+682 silly lifecycle No script for "prepublishOnly" in "@spare/ripper", continuing
+683 silly lifecycle No script for "prepublishOnly" in "@spare/tap", continuing
+684 silly lifecycle No script for "prepack" in "@spare/preset-pale", continuing
+685 silly lifecycle No script for "prepack" in "@spare/preset-verse", continuing
+686 silly lifecycle No script for "prepack" in "@spare/xr", continuing
+687 silly lifecycle No script for "prepack" in "@spare/ripper", continuing
+688 silly lifecycle No script for "prepack" in "@spare/tap", continuing
+689 silly lifecycle No script for "postpack" in "@spare/xr", continuing
+690 verbose packed packages/debugger/xr
+691 silly lifecycle No script for "postpack" in "@spare/preset-pale", continuing
+692 verbose packed packages/enum/preset-pale
+693 silly lifecycle No script for "postpack" in "@spare/preset-verse", continuing
+694 verbose packed packages/enum/preset-verse
+695 silly lifecycle No script for "postpack" in "@spare/tap", continuing
+696 verbose packed utils/texting/tap
+697 silly lifecycle No script for "postpack" in "@spare/ripper", continuing
+698 verbose packed utils/texting/ripper
+699 verbose pack-directory packages/debugger/logger
+700 silly lifecycle No script for "prepublish" in "@spare/logger", continuing
+701 silly lifecycle No script for "prepare" in "@spare/logger", continuing
+702 verbose pack-directory packages/interop/verse
+703 silly lifecycle No script for "prepublish" in "@spare/verse", continuing
+704 silly lifecycle No script for "prepare" in "@spare/verse", continuing
+705 verbose pack-directory utils/texting/splitter
+706 silly lifecycle No script for "prepublish" in "@spare/splitter", continuing
+707 silly lifecycle No script for "prepare" in "@spare/splitter", continuing
+708 silly lifecycle No script for "prepublishOnly" in "@spare/logger", continuing
+709 silly lifecycle No script for "prepublishOnly" in "@spare/verse", continuing
+710 silly lifecycle No script for "prepublishOnly" in "@spare/splitter", continuing
+711 silly lifecycle No script for "prepack" in "@spare/logger", continuing
+712 silly lifecycle No script for "prepack" in "@spare/verse", continuing
+713 silly lifecycle No script for "prepack" in "@spare/splitter", continuing
+714 silly lifecycle No script for "postpack" in "@spare/logger", continuing
+715 verbose packed packages/debugger/logger
+716 silly lifecycle No script for "postpack" in "@spare/verse", continuing
+717 verbose packed packages/interop/verse
+718 silly lifecycle No script for "postpack" in "@spare/splitter", continuing
+719 verbose packed utils/texting/splitter
+720 silly lifecycle No script for "postpack" in "root", continuing
+721 verbose publish @spare/enum-brackets
+722 verbose publish @spare/enum-chars
+723 verbose publish @spare/enum-encodings
+724 verbose publish @spare/enum-full-angle-chars
+725 verbose publish @spare/enum-loggers
+726 verbose publish @spare/enum-quotes
+727 verbose publish @spare/preset-deco
+728 verbose publish @spare/regex-charset
+729 verbose publish @spare/regex-phrasing
+730 verbose publish @spare/arc
+731 verbose publish @spare/entries-padder
+732 verbose publish @spare/matrix-padder
+733 verbose publish @spare/vector-padder
+734 verbose publish @spare/string-value
+735 verbose publish @spare/translator
+736 silly lifecycle No script for "publish" in "@spare/enum-brackets", continuing
+737 silly lifecycle No script for "postpublish" in "@spare/enum-brackets", continuing
+738 success published @spare/enum-brackets 0.14.28
+739 notice
+740 notice 📦  @spare/enum-brackets@0.14.28
+741 notice === Tarball Contents ===
+742 notice 1.1kB LICENSE
+742 notice 434B  dist/index.cjs
+742 notice 784B  package.json
+742 notice 1.8kB README.md
+742 notice 224B  dist/index.mjs
+743 notice === Tarball Details ===
+744 notice name:          @spare/enum-brackets
+744 notice version:       0.14.28
+744 notice filename:      spare-enum-brackets-0.14.28.tgz
+744 notice package size:  2.1 kB
+744 notice unpacked size: 4.4 kB
+744 notice shasum:        8bf6e012f3025b0c90062016fecb90e694797af0
+744 notice integrity:     sha512-OzcVpPmIhKrn5[...]vxGCiIOjFKA6w==
+744 notice total files:   5
+745 notice
+746 verbose publish @spare/bracket
+747 silly lifecycle No script for "publish" in "@spare/enum-chars", continuing
+748 silly lifecycle No script for "postpublish" in "@spare/enum-chars", continuing
+749 success published @spare/enum-chars 0.14.28
+750 notice
+751 notice 📦  @spare/enum-chars@0.14.28
+752 notice === Tarball Contents ===
+753 notice 1.1kB LICENSE
+753 notice 847B  dist/index.cjs
+753 notice 771B  package.json
+753 notice 1.8kB README.md
+753 notice 491B  dist/index.mjs
+754 notice === Tarball Details ===
+755 notice name:          @spare/enum-chars
+755 notice version:       0.14.28
+755 notice filename:      spare-enum-chars-0.14.28.tgz
+755 notice package size:  2.2 kB
+755 notice unpacked size: 5.0 kB
+755 notice shasum:        9d7e4bbe1372634c489df11b9cd49892374297c4
+755 notice integrity:     sha512-AxZViAexLzNT6[...]8WWyUEExzyCKA==
+755 notice total files:   5
+756 notice
+757 verbose publish @spare/fold
+758 silly lifecycle No script for "publish" in "@spare/enum-encodings", continuing
+759 silly lifecycle No script for "postpublish" in "@spare/enum-encodings", continuing
+760 success published @spare/enum-encodings 0.14.28
+761 notice
+762 notice 📦  @spare/enum-encodings@0.14.28
+763 notice === Tarball Contents ===
+764 notice 1.1kB LICENSE
+764 notice 365B  dist/index.cjs
+764 notice 786B  package.json
+764 notice 1.8kB README.md
+764 notice 212B  dist/index.mjs
+765 notice === Tarball Details ===
+766 notice name:          @spare/enum-encodings
+766 notice version:       0.14.28
+766 notice filename:      spare-enum-encodings-0.14.28.tgz
+766 notice package size:  2.1 kB
+766 notice unpacked size: 4.3 kB
+766 notice shasum:        d3fbc820ab9614e336be1e7c2b0c973496cf0683
+766 notice integrity:     sha512-ioVr7vZvrlPg3[...]UUSgLB7/fXjag==
+766 notice total files:   5
+767 notice
+768 silly lifecycle No script for "publish" in "@spare/enum-loggers", continuing
+769 silly lifecycle No script for "postpublish" in "@spare/enum-loggers", continuing
+770 success published @spare/enum-loggers 0.14.28
+771 notice
+772 notice 📦  @spare/enum-loggers@0.14.28
+773 notice === Tarball Contents ===
+774 notice 1.1kB LICENSE
+774 notice 340B  dist/index.cjs
+774 notice 781B  package.json
+774 notice 1.8kB README.md
+774 notice 180B  dist/index.mjs
+775 notice === Tarball Details ===
+776 notice name:          @spare/enum-loggers
+776 notice version:       0.14.28
+776 notice filename:      spare-enum-loggers-0.14.28.tgz
+776 notice package size:  2.1 kB
+776 notice unpacked size: 4.2 kB
+776 notice shasum:        236d03e628071bf0d8d0ed08c23edab145d7dbac
+776 notice integrity:     sha512-YpVx6VCwRRhOM[...]eejsCvqDc6pgw==
+776 notice total files:   5
+777 notice
+778 silly lifecycle No script for "publish" in "@spare/enum-quotes", continuing
+779 silly lifecycle No script for "postpublish" in "@spare/enum-quotes", continuing
+780 success published @spare/enum-quotes 0.14.28
+781 notice
+782 notice 📦  @spare/enum-quotes@0.14.28
+783 notice === Tarball Contents ===
+784 notice 1.1kB LICENSE
+784 notice 466B  dist/index.cjs
+784 notice 780B  package.json
+784 notice 1.8kB README.md
+784 notice 270B  dist/index.mjs
+785 notice === Tarball Details ===
+786 notice name:          @spare/enum-quotes
+786 notice version:       0.14.28
+786 notice filename:      spare-enum-quotes-0.14.28.tgz
+786 notice package size:  2.1 kB
+786 notice unpacked size: 4.4 kB
+786 notice shasum:        caae9445b36ff1c79b9b6fa8388a3857a29ca6e9
+786 notice integrity:     sha512-7O1V3jFhB0ddF[...]8D69gdIkXrSBg==
+786 notice total files:   5
+787 notice
+788 verbose publish @spare/quote
+789 silly lifecycle No script for "publish" in "@spare/preset-deco", continuing
+790 silly lifecycle No script for "postpublish" in "@spare/preset-deco", continuing
+791 success published @spare/preset-deco 0.14.28
+792 notice
+793 notice 📦  @spare/preset-deco@0.14.28
+794 notice === Tarball Contents ===
+795 notice 1.1kB LICENSE
+795 notice 621B  dist/index.cjs
+795 notice 844B  package.json
+795 notice 1.5kB README.md
+795 notice 405B  dist/index.mjs
+796 notice === Tarball Details ===
+797 notice name:          @spare/preset-deco
+797 notice version:       0.14.28
+797 notice filename:      spare-preset-deco-0.14.28.tgz
+797 notice package size:  2.0 kB
+797 notice unpacked size: 4.5 kB
+797 notice shasum:        7f4105eceeb9bd28032c1132264fec31eeac308c
+797 notice integrity:     sha512-G/P0Sjkc55/az[...]YFcRdyHziTmmg==
+797 notice total files:   5
+798 notice
+799 verbose publish @spare/deco-colors
+800 verbose publish @spare/deco-config
+801 verbose publish @spare/deco-util
+802 silly lifecycle No script for "publish" in "@spare/entries-padder", continuing
+803 silly lifecycle No script for "postpublish" in "@spare/entries-padder", continuing
+804 success published @spare/entries-padder 0.14.28
+805 notice
+806 notice 📦  @spare/entries-padder@0.14.28
+807 notice === Tarball Contents ===
+808 notice 1.1kB LICENSE
+808 notice 1.1kB dist/index.cjs
+808 notice 1.0kB package.json
+808 notice 1.3kB README.md
+808 notice 972B  dist/index.mjs
+809 notice === Tarball Details ===
+810 notice name:          @spare/entries-padder
+810 notice version:       0.14.28
+810 notice filename:      spare-entries-padder-0.14.28.tgz
+810 notice package size:  2.3 kB
+810 notice unpacked size: 5.5 kB
+810 notice shasum:        bdcc894b25fdcf4e3b71995d272bffc15486bf94
+810 notice integrity:     sha512-hNn2z9STV5tUJ[...]mfirnslqkdskQ==
+810 notice total files:   5
+811 notice
+812 silly lifecycle No script for "publish" in "@spare/vector-padder", continuing
+813 silly lifecycle No script for "postpublish" in "@spare/vector-padder", continuing
+814 success published @spare/vector-padder 0.14.28
+815 notice
+816 notice 📦  @spare/vector-padder@0.14.28
+817 notice === Tarball Contents ===
+818 notice 1.1kB LICENSE
+818 notice 1.1kB dist/index.cjs
+818 notice 999B  package.json
+818 notice 1.3kB README.md
+818 notice 927B  dist/index.mjs
+819 notice === Tarball Details ===
+820 notice name:          @spare/vector-padder
+820 notice version:       0.14.28
+820 notice filename:      spare-vector-padder-0.14.28.tgz
+820 notice package size:  2.2 kB
+820 notice unpacked size: 5.4 kB
+820 notice shasum:        9d39e952f924b3e2b954464ce87b506d79c7197c
+820 notice integrity:     sha512-WlgG16B8hy5aN[...]+ymK2jelpCN2w==
+820 notice total files:   5
+821 notice
+822 silly lifecycle No script for "publish" in "@spare/regex-charset", continuing
+823 silly lifecycle No script for "postpublish" in "@spare/regex-charset", continuing
+824 success published @spare/regex-charset 0.14.28
+825 notice
+826 notice 📦  @spare/regex-charset@0.14.28
+827 notice === Tarball Contents ===
+828 notice 1.1kB LICENSE
+828 notice 2.2kB dist/index.cjs
+828 notice 779B  package.json
+828 notice 1.8kB README.md
+828 notice 1.8kB dist/index.mjs
+829 notice === Tarball Details ===
+830 notice name:          @spare/regex-charset
+830 notice version:       0.14.28
+830 notice filename:      spare-regex-charset-0.14.28.tgz
+830 notice package size:  2.8 kB
+830 notice unpacked size: 7.7 kB
+830 notice shasum:        5128e06c015052fbbfd8ddf55cb8599bd993bc7e
+830 notice integrity:     sha512-EK+8L3vS+h7ME[...]zhyQuAqa7M9iA==
+830 notice total files:   5
+831 notice
+832 verbose publish @spare/charset
+833 verbose publish @spare/lange
+834 silly lifecycle No script for "publish" in "@spare/matrix-padder", continuing
+835 silly lifecycle No script for "postpublish" in "@spare/matrix-padder", continuing
+836 success published @spare/matrix-padder 0.14.28
+837 notice
+838 notice 📦  @spare/matrix-padder@0.14.28
+839 notice === Tarball Contents ===
+840 notice 1.1kB LICENSE
+840 notice 2.9kB dist/index.cjs
+840 notice 990B  package.json
+840 notice 1.3kB README.md
+840 notice 2.8kB dist/index.mjs
+841 notice === Tarball Details ===
+842 notice name:          @spare/matrix-padder
+842 notice version:       0.14.28
+842 notice filename:      spare-matrix-padder-0.14.28.tgz
+842 notice package size:  3.0 kB
+842 notice unpacked size: 9.0 kB
+842 notice shasum:        2223bfe6991649198f1625f91b8f3ceacd408162
+842 notice integrity:     sha512-7WMj31uWlM3N7[...]32nj4Yrt0xMmw==
+842 notice total files:   5
+843 notice
+844 silly lifecycle No script for "publish" in "@spare/arc", continuing
+845 silly lifecycle No script for "postpublish" in "@spare/arc", continuing
+846 success published @spare/arc 0.14.28
+847 notice
+848 notice 📦  @spare/arc@0.14.28
+849 notice === Tarball Contents ===
+850 notice 1.1kB LICENSE
+850 notice 7.7kB dist/index.cjs
+850 notice 1.2kB package.json
+850 notice 1.5kB README.md
+850 notice 7.4kB dist/index.mjs
+851 notice === Tarball Details ===
+852 notice name:          @spare/arc
+852 notice version:       0.14.28
+852 notice filename:      spare-arc-0.14.28.tgz
+852 notice package size:  4.4 kB
+852 notice unpacked size: 18.9 kB
+852 notice shasum:        6a3befa38186c0686756de01deb82b17950e3901
+852 notice integrity:     sha512-+b/trUhZKD9kM[...]2H0jSslThjWmw==
+852 notice total files:   5
+853 notice
+854 silly lifecycle No script for "publish" in "@spare/enum-full-angle-chars", continuing
+855 silly lifecycle No script for "postpublish" in "@spare/enum-full-angle-chars", continuing
+856 success published @spare/enum-full-angle-chars 0.14.28
+857 notice
+858 notice 📦  @spare/enum-full-angle-chars@0.14.28
+859 notice === Tarball Contents ===
+860 notice 1.1kB LICENSE
+860 notice 194B  dist/index.cjs
+860 notice 793B  package.json
+860 notice 1.9kB README.md
+860 notice 85B   dist/index.mjs
+861 notice === Tarball Details ===
+862 notice name:          @spare/enum-full-angle-chars
+862 notice version:       0.14.28
+862 notice filename:      spare-enum-full-angle-chars-0.14.28.tgz
+862 notice package size:  2.0 kB
+862 notice unpacked size: 4.1 kB
+862 notice shasum:        d471305659d86b0abffaa3007f13b9be9e503e21
+862 notice integrity:     sha512-yzQAYeSD4S8uY[...]IJeMC5XlY3F9w==
+862 notice total files:   5
+863 notice
+864 verbose publish @spare/util
+865 silly lifecycle No script for "publish" in "@spare/string-value", continuing
+866 silly lifecycle No script for "postpublish" in "@spare/string-value", continuing
+867 success published @spare/string-value 0.14.28
+868 notice
+869 notice 📦  @spare/string-value@0.14.28
+870 notice === Tarball Contents ===
+871 notice 1.1kB LICENSE
+871 notice 1.3kB dist/index.cjs
+871 notice 865B  package.json
+871 notice 1.5kB README.md
+871 notice 1.2kB dist/index.mjs
+872 notice === Tarball Details ===
+873 notice name:          @spare/string-value
+873 notice version:       0.14.28
+873 notice filename:      spare-string-value-0.14.28.tgz
+873 notice package size:  2.1 kB
+873 notice unpacked size: 6.0 kB
+873 notice shasum:        d79114e458e8c946309c4cfff432858d80f4e160
+873 notice integrity:     sha512-7jFOXY/uimk5B[...]gJy9LEGLWDv7A==
+873 notice total files:   5
+874 notice
+875 silly lifecycle No script for "publish" in "@spare/regex-phrasing", continuing
+876 silly lifecycle No script for "postpublish" in "@spare/regex-phrasing", continuing
+877 success published @spare/regex-phrasing 0.14.28
+878 notice
+879 notice 📦  @spare/regex-phrasing@0.14.28
+880 notice === Tarball Contents ===
+881 notice 1.1kB LICENSE
+881 notice 947B  dist/index.cjs
+881 notice 780B  package.json
+881 notice 1.8kB README.md
+881 notice 736B  dist/index.mjs
+882 notice === Tarball Details ===
+883 notice name:          @spare/regex-phrasing
+883 notice version:       0.14.28
+883 notice filename:      spare-regex-phrasing-0.14.28.tgz
+883 notice package size:  2.3 kB
+883 notice unpacked size: 5.4 kB
+883 notice shasum:        27794a51d28e5b190d1aeb6ed88ee2e0db3fbfab
+883 notice integrity:     sha512-62SlnZa3T2m4Z[...]ZHXdLkiQQf1Sg==
+883 notice total files:   5
+884 notice
+885 silly lifecycle No script for "publish" in "@spare/deco-config", continuing
+886 silly lifecycle No script for "postpublish" in "@spare/deco-config", continuing
+887 success published @spare/deco-config 0.14.28
+888 notice
+889 notice 📦  @spare/deco-config@0.14.28
+890 notice === Tarball Contents ===
+891 notice 1.1kB LICENSE
+891 notice 2.6kB dist/index.cjs
+891 notice 951B  package.json
+891 notice 1.5kB README.md
+891 notice 2.5kB dist/index.mjs
+892 notice === Tarball Details ===
+893 notice name:          @spare/deco-config
+893 notice version:       0.14.28
+893 notice filename:      spare-deco-config-0.14.28.tgz
+893 notice package size:  2.6 kB
+893 notice unpacked size: 8.6 kB
+893 notice shasum:        3ddba7285d2832b5a4376d64715a5abcf2e7acaa
+893 notice integrity:     sha512-Xlip7trStxP28[...]uMNXDSdOe20GA==
+893 notice total files:   5
+894 notice
+895 verbose publish @spare/deco-date
+896 verbose publish @spare/deco-string
+897 silly lifecycle No script for "publish" in "@spare/fold", continuing
+898 silly lifecycle No script for "postpublish" in "@spare/fold", continuing
+899 success published @spare/fold 0.14.28
+900 notice
+901 notice 📦  @spare/fold@0.14.28
+902 notice === Tarball Contents ===
+903 notice 1.1kB LICENSE
+903 notice 1.8kB dist/index.cjs
+903 notice 853B  package.json
+903 notice 2.3kB README.md
+903 notice 1.6kB dist/index.mjs
+904 notice === Tarball Details ===
+905 notice name:          @spare/fold
+905 notice version:       0.14.28
+905 notice filename:      spare-fold-0.14.28.tgz
+905 notice package size:  2.9 kB
+905 notice unpacked size: 7.6 kB
+905 notice shasum:        3ee838d5cd39d9fc9cfdc3ed4d588c1b3a891e05
+905 notice integrity:     sha512-9/BNQMT60Skhz[...]8ruA807zhhFrA==
+905 notice total files:   5
+906 notice
+907 silly lifecycle No script for "publish" in "@spare/deco-util", continuing
+908 silly lifecycle No script for "postpublish" in "@spare/deco-util", continuing
+909 success published @spare/deco-util 0.14.28
+910 notice
+911 notice 📦  @spare/deco-util@0.14.28
+912 notice === Tarball Contents ===
+913 notice 1.1kB LICENSE
+913 notice 204B  dist/index.cjs
+913 notice 972B  package.json
+913 notice 1.5kB README.md
+913 notice 102B  dist/index.mjs
+914 notice === Tarball Details ===
+915 notice name:          @spare/deco-util
+915 notice version:       0.14.28
+915 notice filename:      spare-deco-util-0.14.28.tgz
+915 notice package size:  1.9 kB
+915 notice unpacked size: 3.9 kB
+915 notice shasum:        bd1e531490745af42bc454cd692e17003bd21c02
+915 notice integrity:     sha512-npUtwebW9gfGB[...]24Pg1nh9Duq1Q==
+915 notice total files:   5
+916 notice
+917 silly lifecycle No script for "publish" in "@spare/quote", continuing
+918 silly lifecycle No script for "postpublish" in "@spare/quote", continuing
+919 success published @spare/quote 0.14.28
+920 notice
+921 notice 📦  @spare/quote@0.14.28
+922 notice === Tarball Contents ===
+923 notice 1.1kB LICENSE
+923 notice 1.2kB dist/index.cjs
+923 notice 952B  package.json
+923 notice 1.7kB README.md
+923 notice 892B  dist/index.mjs
+924 notice === Tarball Details ===
+925 notice name:          @spare/quote
+925 notice version:       0.14.28
+925 notice filename:      spare-quote-0.14.28.tgz
+925 notice package size:  2.4 kB
+925 notice unpacked size: 5.8 kB
+925 notice shasum:        b42ca7cf8a9ece29df895e0451b537dd26e0a159
+925 notice integrity:     sha512-WAwYwZdCO5++1[...]nGcMCp0VNQjLQ==
+925 notice total files:   5
+926 notice
+927 silly lifecycle No script for "publish" in "@spare/lange", continuing
+928 silly lifecycle No script for "postpublish" in "@spare/lange", continuing
+929 success published @spare/lange 0.14.28
+930 notice
+931 notice 📦  @spare/lange@0.14.28
+932 notice === Tarball Contents ===
+933 notice 1.1kB LICENSE
+933 notice 745B  dist/index.cjs
+933 notice 893B  package.json
+933 notice 1.7kB README.md
+933 notice 506B  dist/index.mjs
+934 notice === Tarball Details ===
+935 notice name:          @spare/lange
+935 notice version:       0.14.28
+935 notice filename:      spare-lange-0.14.28.tgz
+935 notice package size:  2.2 kB
+935 notice unpacked size: 4.9 kB
+935 notice shasum:        9abc0cad41c59d0524686babe659e07108ab7e32
+935 notice integrity:     sha512-kOgPW2YZh7ozF[...]b9WY3yMY7/80g==
+935 notice total files:   5
+936 notice
+937 silly lifecycle No script for "publish" in "@spare/charset", continuing
+938 silly lifecycle No script for "postpublish" in "@spare/charset", continuing
+939 success published @spare/charset 0.14.28
+940 notice
+941 notice 📦  @spare/charset@0.14.28
+942 notice === Tarball Contents ===
+943 notice 1.1kB LICENSE
+943 notice 491B  dist/index.cjs
+943 notice 835B  package.json
+943 notice 1.7kB README.md
+943 notice 310B  dist/index.mjs
+944 notice === Tarball Details ===
+945 notice name:          @spare/charset
+945 notice version:       0.14.28
+945 notice filename:      spare-charset-0.14.28.tgz
+945 notice package size:  2.1 kB
+945 notice unpacked size: 4.5 kB
+945 notice shasum:        d31641fccdf80b80f3736dad45ff158bb6014c48
+945 notice integrity:     sha512-v+tMsd60mUo5R[...]jPR8ElliLscqA==
+945 notice total files:   5
+946 notice
+947 verbose publish @spare/fullwidth
+948 silly lifecycle No script for "publish" in "@spare/util", continuing
+949 silly lifecycle No script for "postpublish" in "@spare/util", continuing
+950 success published @spare/util 0.14.28
+951 notice
+952 notice 📦  @spare/util@0.14.28
+953 notice === Tarball Contents ===
+954 notice 1.1kB LICENSE
+954 notice 1.1kB dist/index.cjs
+954 notice 1.1kB package.json
+954 notice 1.2kB README.md
+954 notice 808B  dist/index.mjs
+955 notice === Tarball Details ===
+956 notice name:          @spare/util
+956 notice version:       0.14.28
+956 notice filename:      spare-util-0.14.28.tgz
+956 notice package size:  2.2 kB
+956 notice unpacked size: 5.3 kB
+956 notice shasum:        f0fb1004ed04a0572c3bfc495ec09393d2125e23
+956 notice integrity:     sha512-F9WINYnhhmW0e[...]gdLulaGfBxH6Q==
+956 notice total files:   5
+957 notice
+958 verbose publish @spare/matrix-margin
+959 verbose publish @spare/vector-margin
+960 verbose publish @spare/string
+961 silly lifecycle No script for "publish" in "@spare/translator", continuing
+962 silly lifecycle No script for "postpublish" in "@spare/translator", continuing
+963 success published @spare/translator 0.14.28
+964 notice
+965 notice 📦  @spare/translator@0.14.28
+966 notice === Tarball Contents ===
+967 notice 1.1kB LICENSE
+967 notice 1.4kB dist/index.cjs
+967 notice 740B  package.json
+967 notice 1.5kB README.md
+967 notice 1.3kB dist/index.mjs
+968 notice === Tarball Details ===
+969 notice name:          @spare/translator
+969 notice version:       0.14.28
+969 notice filename:      spare-translator-0.14.28.tgz
+969 notice package size:  2.2 kB
+969 notice unpacked size: 6.0 kB
+969 notice shasum:        8ab65cfec10f1b2e7c28b04339d92b689b6bd450
+969 notice integrity:     sha512-UdSAHDMjwdn8m[...]4hvx5Z+a8CXeQ==
+969 notice total files:   5
+970 notice
+971 verbose publish @spare/deco-func
+972 verbose publish @spare/cite
+973 silly FetchError: request to https://registry.npmjs.org/@spare%2fbracket failed, reason: Socket timeout
+973 silly     at ClientRequest.<anonymous> (/home/alkindus/banyan/spare/node_modules/minipass-fetch/lib/index.js:130:14)
+973 silly     at ClientRequest.emit (node:events:513:28)
+973 silly     at TLSSocket.socketErrorListener (node:_http_client:481:9)
+973 silly     at TLSSocket.emit (node:events:525:35)
+973 silly     at emitErrorNT (node:internal/streams/destroy:151:8)
+973 silly     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+973 silly     at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+973 silly  FetchError: request to https://registry.npmjs.org/@spare%2fbracket failed, reason: Socket timeout
+973 silly     at ClientRequest.<anonymous> (/home/alkindus/banyan/spare/node_modules/minipass-fetch/lib/index.js:130:14)
+973 silly     at ClientRequest.emit (node:events:513:28)
+973 silly     at TLSSocket.socketErrorListener (node:_http_client:481:9)
+973 silly     at TLSSocket.emit (node:events:525:35)
+973 silly     at emitErrorNT (node:internal/streams/destroy:151:8)
+973 silly     at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+973 silly     at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+973 silly   code: 'ERR_SOCKET_TIMEOUT',
+973 silly   timeout: 15000,
+973 silly   errno: 'ERR_SOCKET_TIMEOUT',
+973 silly   type: 'system'
+973 silly }
+974 error ERR_SOCKET_TIMEOUT request to https://registry.npmjs.org/@spare%2fbracket failed, reason: Socket timeout
+975 error FetchError: request to https://registry.npmjs.org/@spare%2fbracket failed, reason: Socket timeout
+975 error     at ClientRequest.<anonymous> (/home/alkindus/banyan/spare/node_modules/minipass-fetch/lib/index.js:130:14)
+975 error     at ClientRequest.emit (node:events:513:28)
+975 error     at TLSSocket.socketErrorListener (node:_http_client:481:9)
+975 error     at TLSSocket.emit (node:events:525:35)
+975 error     at emitErrorNT (node:internal/streams/destroy:151:8)
+975 error     at emitErrorCloseNT (node:internal/streams/destroy:116:3)

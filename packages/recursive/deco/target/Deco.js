@@ -5,6 +5,7 @@ import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT, SET }               from '@typen/enum-object-types'
 import { isNumeric }                              from '@typen/num-loose'
 import { typ }                                    from '@typen/typ'
+import { POINTWISE }                              from '@vect/matrix'
 import { mapKeyVal }                              from '@vect/object-mapper'
 import { isVector }                               from '@vect/vector-index'
 import { Typo }                                   from './Typo.js'
@@ -65,7 +66,7 @@ export class Deco extends Typo {
         const th = vec.length <= 2 ? NaN : this.threshold(id)
         return this.vector(vec, th, id)
       case 2:
-        return this.matrix(vec, id)
+        return this.matrix(vec, POINTWISE, id)
       default:
         vec = vec.map(v => this.node(v, id + 1))
         return this.vector(vec, NaN)

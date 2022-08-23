@@ -5,6 +5,8 @@ import { SP }                     from '@spare/enum-chars'
 /**
  * @typedef {Object}    Opt
  * @typedef {?Preset}   Opt.pres
+ * @typedef {?number}   Opt.direct
+ * @typedef {?number}   Opt.indent
  * @typedef {?function} Opt.str
  * @typedef {?function} Opt.num
  * @typedef {?boolean}  Opt.ansi
@@ -32,11 +34,13 @@ export const DecoMatrix = (p = {}) => {
   return matrix.bind(new Typo(p))
 }
 
-export const decoMatrix = (vec, p = {}, th, id, sr) => {
+export const decoMatrix = (mat, p = {}) => {
   p.pres = p.pres ?? PRES
   p.fill = p.fill ?? SP
   p.ansi = p.ansi ?? true
-  return matrix.call(new Typo(p), p, th, id, sr)
+  // p.direct = p.direct ?? POINTWISE
+  // p.indent = p.indent ?? 0
+  return matrix.call(new Typo(p), mat, p.direct, p.indent)
 }
 
 /**
@@ -49,10 +53,10 @@ export const PaleMatrix = (p = {}) => {
   return matrix.bind(new Typo(p))
 }
 
-export const paleMatrix = (vec, p = {}, th, id, sr) => {
+export const paleMatrix = (vec, p = {}) => {
   p.fill = p.fill ?? SP
   p.ansi = p.ansi ?? true
-  return matrix.call(new Typo(p), p, th, id, sr)
+  return matrix.call(new Typo(p), vec, p.direct, p.indent)
 }
 
 export {

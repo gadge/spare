@@ -36,7 +36,7 @@ const ENTRIES = {
   ]
 }
 
-const typo = new Typo({ fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: METRO } })
+const typo = new Typo({ pres: { pos: BESQUE, neg: OCEAN, str: METRO } })
 
 for (let [ key, ent ] of indexed(ENTRIES)) {
   TB + TB + key + SP + typo.entries(ent, false, 2) |> console.log

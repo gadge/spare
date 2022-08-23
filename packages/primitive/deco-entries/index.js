@@ -5,6 +5,8 @@ import { SP }                     from '@texting/enum-chars'
 /**
  * @typedef {Object}    Opt
  * @typedef {?Preset}   Opt.pres
+ * @typedef {?number}   Opt.ind
+ * @typedef {?number}   Opt.hor
  * @typedef {?function} Opt.str
  * @typedef {?function} Opt.num
  * @typedef {?boolean}  Opt.ansi
@@ -32,11 +34,11 @@ export const DecoEntries = (p = {}) => {
   return entries.bind(new Typo(p))
 }
 
-export const decoEntries = (vec, p = {}, th, id, sr) => {
+export const decoEntries = (vec, p = {}) => {
   p.pres = p.pres ?? PRES
   p.fill = p.fill ?? SP
   p.ansi = p.ansi ?? true
-  return entries.call(new Typo(p), p, th, id, sr)
+  return entries.call(new Typo(p), vec, p.hor, p.ind)
 }
 
 /**

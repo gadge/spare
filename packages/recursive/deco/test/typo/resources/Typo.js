@@ -12,8 +12,8 @@ import { wind }                from '@vect/object-init'
 import { max }                 from '@vect/vector-indicator'
 import { init, iso }           from '@vect/vector-init'
 import { Cate }           from '../../../target/Cate.js'
-import { Die }            from '../../../target/Die.js'
-import { fixPad, priPad } from '../../../target/utils/padder.js'
+import { Die }              from '../../../target/Die.js'
+import { padAnsi, padTypo } from '../../../target/utils/padTypo.js'
 
 
 export function parseStr(x) {
@@ -37,7 +37,7 @@ export class Typo {
     if (conf.str) this.str = conf.str
     if (conf.num) this.num = conf.num
     if (conf.ansi) this.len = lange
-    if (conf.fill) this.pad = conf.ansi ? priPad.bind(conf) : fixPad.bind(conf)
+    if (conf.fill) this.pad = conf.ansi ? padTypo.bind(conf) : padAnsi.bind(conf)
     if (conf.value) this.val = value
     if (conf.pres) {
       if (conf.pres.str) this.tpr = new Projec(conf.pres.str)

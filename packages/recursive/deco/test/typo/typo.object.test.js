@@ -1,8 +1,7 @@
-import { FRESH, METRO, OCEAN }          from '@palett/presets'
-import { COLF, COSP, LF, RTSP, SP, TB } from '@texting/enum-chars'
-import { indexed }                      from '@vect/object-mapper'
-import { It }                           from '../../target/Joins.js'
-import { Typo }                         from '../../target/Typo.js'
+import { FRESH, METRO, OCEAN } from '@palett/presets'
+import { SP }                  from '@texting/enum-chars'
+import { indexed }             from '@vect/object-mapper'
+import { Typo }                from '../../target/Typo.js'
 
 
 const OBJECTS = {

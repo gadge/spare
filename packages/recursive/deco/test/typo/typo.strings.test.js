@@ -23,8 +23,8 @@ export const STRINGS = {
 }
 
 const typo = new Typo({
-  fill: ' ',
-  ansi: true,
+  // fill: ' ',
+  // ansi: true,
   pres: { pos: BESQUE, neg: OCEAN, str: PAGODA },
 })
 
