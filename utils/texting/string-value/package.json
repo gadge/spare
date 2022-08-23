@@ -1,6 +1,6 @@
 {
   "name": "@spare/string-value",
-  "version": "0.15.5",
+  "version": "0.15.6",
   "description": "Get quasi pseudo value of a string",
   "main": "dist/index.cjs",
   "exports": {
