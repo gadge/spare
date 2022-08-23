@@ -4,6 +4,9 @@ import { Typo }                   from '@spare/deco'
 /**
  * @typedef {Object}    Opt
  * @typedef {?Preset}   Opt.pres
+ * @typedef {?number}   Opt.thres
+ * @typedef {?number}   Opt.indent
+ * @typedef {?number}   Opt.surge
  * @typedef {?function} Opt.str
  * @typedef {?function} Opt.num
  * @typedef {?boolean}  Opt.ansi
@@ -29,21 +32,9 @@ export const DecoVector = (p = {}) => {
   return vector.bind(new Typo(p))
 }
 
-export const decoVector = (vec, p = {}, th, id, sr) => {
+export const decoVector = (vec, p = {}) => {
   p.pres = p.pres ?? PRES
-  return vector.call(new Typo(p), p, th, id, sr)
-}
-
-/**
- * @param {Opt} p
- * @returns {function}
- */
-export const PaleVector = (p = {}) => {
-  return vector.bind(new Typo(p))
-}
-
-export const paleVector = (vec, p = {}, th, id, sr) => {
-  return vector.call(new Typo(p), p, th, id, sr)
+  return vector.call(new Typo(p), vec, p.thres, p.indent, p.surge)
 }
 
 export {

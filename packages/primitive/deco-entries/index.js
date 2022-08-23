@@ -1,12 +1,11 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { Typo }                   from '@spare/deco'
-import { SP }                     from '@texting/enum-chars'
 
 /**
  * @typedef {Object}    Opt
  * @typedef {?Preset}   Opt.pres
- * @typedef {?number}   Opt.ind
- * @typedef {?number}   Opt.hor
+ * @typedef {?number}   Opt.indent
+ * @typedef {?number}   Opt.thres
  * @typedef {?function} Opt.str
  * @typedef {?function} Opt.num
  * @typedef {?boolean}  Opt.ansi
@@ -29,32 +28,12 @@ const { entries } = Typo.prototype
  */
 export const DecoEntries = (p = {}) => {
   p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
   return entries.bind(new Typo(p))
 }
 
-export const decoEntries = (vec, p = {}) => {
+export const decoEntries = (ent, p = {}) => {
   p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return entries.call(new Typo(p), vec, p.hor, p.ind)
-}
-
-/**
- * @param {Opt} p
- * @returns {function}
- */
-export const PaleEntries = (p = {}) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return entries.bind(new Typo(p))
-}
-
-export const paleEntries = (vec, p = {}, th, id, sr) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return entries.call(new Typo(p), p, th, id, sr)
+  return entries.call(new Typo(p), ent, p.thres, p.indent)
 }
 
 export {

@@ -1,5 +1,5 @@
 import { EntriesCollection } from '@foba/entries'
-import { OCEAN }             from '@palett/presets'
+import { OCEAN, PAGODA }     from '@palett/presets'
 import { says }              from '@spare/xr'
 import { inferType }         from '@typen/num-strict'
 import { indexedTo }         from '@vect/object-mapper'
@@ -18,7 +18,7 @@ for (const [ key, entries ] of indexedTo(entriesCollection, (k, v) => [ k, Objec
   let words = entries |> DecoEntries({
     head: 5,
     tail: 2,
-    stringPreset: OCEAN,
+    pres: PAGODA,
     bracket: false,
     discrete: false,
     level: 0,

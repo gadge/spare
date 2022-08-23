@@ -3,6 +3,7 @@ import { simpleVectorCollection } from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
 import { DECANTE, METRO, SUMMER } from '@palett/presets'
 import { BRK }                    from '@spare/enum-brackets'
+import { says }                   from '@spare/xr'
 import { mapVal }                 from '@vect/object-mapper'
 import { DecoVector }             from '../index.js'
 
@@ -22,19 +23,18 @@ candidates |> console.log
 
 export class VectorDecoTest {
   static test() {
+    const decoVector = DecoVector({
+      // head: 4,
+      // tail: 4,
+      indexed: false,
+      bracket: BRK,
+      presets: [ SUMMER, DECANTE, METRO ],
+      delim: ', ',
+      discrete: false,
+      label: 1,
+    })
     for (const [ key, vector ] of Object.entries(candidates)) {
-      vector
-        |> DecoVector({
-        // head: 4,
-        // tail: 4,
-        indexed: false,
-        bracket: BRK,
-        presets: [ SUMMER, DECANTE, METRO ],
-        delim: ', ',
-        discrete: false,
-        label: 1,
-      })
-        |> console.log
+      decoVector(vector, 32, 0) |> says[key]
     }
   }
 }

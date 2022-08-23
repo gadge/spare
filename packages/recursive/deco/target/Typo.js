@@ -59,7 +59,7 @@ export class Typo {
     if (conf.fill) this.pad = conf.ansi
       ? conf.fill === SP ? padAnsi : padAnsi.bind(conf)
       : conf.fill === SP ? padTypo : padTypo.bind(conf)
-    if (pres ?? (pres = conf.pres)) this.pres = pres
+    if (pres ||= conf.pres) this.pres = pres
   }
 
   set pres(value) {
@@ -215,7 +215,9 @@ export class Typo {
     const cn = ent?.length ?? 0
     if (cn === 0) return '[]'
     const ts = this.flatEntries(ent, !(hr ||= cn <= 1))
-    return hr ? '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']' : '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
+    return hr
+      ? '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']'
+      : '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
   }
   matrix(mat, dr, id = 0) {
     const ts =

@@ -29,34 +29,14 @@ const { matrix } = Typo.prototype
  */
 export const DecoMatrix = (p = {}) => {
   p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
   return matrix.bind(new Typo(p))
 }
 
 export const decoMatrix = (mat, p = {}) => {
   p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
   // p.direct = p.direct ?? POINTWISE
   // p.indent = p.indent ?? 0
   return matrix.call(new Typo(p), mat, p.direct, p.indent)
-}
-
-/**
- * @param {Opt} p
- * @returns {function}
- */
-export const PaleMatrix = (p = {}) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return matrix.bind(new Typo(p))
-}
-
-export const paleMatrix = (vec, p = {}) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return matrix.call(new Typo(p), vec, p.direct, p.indent)
 }
 
 export {
