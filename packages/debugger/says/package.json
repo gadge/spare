@@ -1,6 +1,6 @@
 {
   "name": "@spare/says",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "description": "A debug tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -23,9 +23,9 @@
     "@palett/dye": "^0.10.5",
     "@palett/enum-font-effects": "^0.10.6",
     "@palett/flopper": "^0.10.4",
-    "@spare/deco-string": "^0.15.2",
-    "@spare/enum-chars": "^0.15.2",
-    "@spare/util": "^0.15.2",
+    "@spare/deco-string": "^0.15.3",
+    "@spare/enum-chars": "^0.15.3",
+    "@spare/util": "^0.15.3",
     "@texting/bracket": "^0.1.11",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enums": "^0.1.19",
@@ -49,5 +49,5 @@
     "url": "https://github.com/hoyeungw/spare/xr"
   },
   "homepage": "https://github.com/hoyeungw/spare/xr#readme",
-  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }

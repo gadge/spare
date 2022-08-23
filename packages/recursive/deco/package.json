@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "description": "A light and simple console debug tool.",
   "main": "./dist/index.cjs",
   "exports": {
@@ -23,9 +23,9 @@
     "@palett/enum-ansi-codes": "^0.10.5",
     "@palett/presets": "^0.10.5",
     "@palett/util-ansi": "^0.10.5",
-    "@spare/deco-colors": "^0.15.2",
-    "@spare/deco-date": "^0.15.2",
-    "@spare/deco-func": "^0.15.2",
+    "@spare/deco-colors": "^0.15.3",
+    "@spare/deco-date": "^0.15.3",
+    "@spare/deco-func": "^0.15.3",
     "@texting/charset-ansi": "^0.1.11",
     "@texting/enum-brackets": "^0.1.11",
     "@texting/enum-chars": "^0.1.11",
@@ -60,5 +60,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }

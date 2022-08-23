@@ -1,6 +1,6 @@
 {
   "name": "@spare/fold",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "description": "Split one line of words into lines",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/enum-chars": "^0.15.2"
+    "@spare/enum-chars": "^0.15.3"
   },
   "repository": {
     "type": "git",
@@ -36,5 +36,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }

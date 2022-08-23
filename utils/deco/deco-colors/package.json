@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-colors",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "description": "A light and simple console debug tool.",
   "main": "dist/index.cjs",
   "exports": {
@@ -22,7 +22,7 @@
     "@palett/convert": "^0.10.5",
     "@palett/dye": "^0.10.5",
     "@palett/presets": "^0.10.5",
-    "@spare/preset-deco": "^0.15.2",
+    "@spare/preset-deco": "^0.15.3",
     "@vect/object-mapper": "^0.7.16"
   },
   "repository": {
@@ -41,5 +41,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }

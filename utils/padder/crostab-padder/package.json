@@ -1,6 +1,6 @@
 {
   "name": "@spare/crostab-padder",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/crostab-padder.test.js"
   },
   "dependencies": {
-    "@spare/field-padder": "^0.15.2",
-    "@spare/table-padder": "^0.15.2",
+    "@spare/field-padder": "^0.15.3",
+    "@spare/table-padder": "^0.15.3",
     "@vect/vector-merge": "^0.6.13"
   },
   "repository": {
@@ -38,5 +38,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "e5d438125c09a16214553e6a1ad6ec2659b085b7"
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }
