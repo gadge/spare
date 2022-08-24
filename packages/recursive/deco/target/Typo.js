@@ -191,13 +191,13 @@ export class Typo {
     if (th === 0 && cn > 2) { return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}' }
     else { return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }' }
   }
-  entries(ent, hr, id = 0) {
+  entries(ent, th, id = 0) {
     const cn = ent?.length ?? 0
     if (cn === 0) return '[]'
-    const ts = this.flatEntries(ent, !(hr ||= cn <= 1))
-    return hr
-      ? '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']'
-      : '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
+    const ts = this.flatEntries(ent, th &&= cn > 1)
+    return th > 0
+      ? '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
+      : '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']'
   }
   matrix(mat, dr, id = 0) {
     const ts =

@@ -65,9 +65,9 @@
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@spare/logger": "^0.15.4",
     "@typen/enum-data-types": "^0.1.19",
-    "@valjoux/format-time": "^0.3.19",
-    "@valjoux/strategies": "^0.3.19",
-    "@valjoux/timeout": "^0.3.19",
+    "@valjoux/format-time": "^0.3.21",
+    "@valjoux/strategies": "^0.3.21",
+    "@valjoux/timeout": "^0.3.21",
     "@vect/columns-stat": "^0.7.16",
     "@vect/matrix": "^0.7.15",
     "@vect/object-init": "^0.7.16",
@@ -76,7 +76,7 @@
     "gulp": "^4.0.2",
     "lerna": "^5.4.3",
     "rollup": "^2.78.1",
-    "rollup-plugin-fileinfo": "^0.3.4"
+    "rollup-plugin-fileinfo": "^0.3.5"
   },
   "packageManager": "yarn@3.2.1"
 }

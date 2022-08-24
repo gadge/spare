@@ -1,6 +1,6 @@
 import { rand }                   from '@aryth/rand'
 import { simpleObjectCollection } from '@foba/foo'
-import { LILAC, NORSE }           from '@palett/presets'
+import { LAVA, LILAC, NORSE }     from '@palett/presets'
 import { RTSP }                   from '@texting/enum-chars'
 import { indexed }                from '@vect/object-mapper'
 import { DecoObject }             from '../index.js'
@@ -15,11 +15,11 @@ for (const [ key, obj ] of indexed(SimpleObjects)) {
     tail: 2,
     pres: {
       str: NORSE,
-      num: LILAC,
+      num: LAVA,
     },
     bracket: true,
     discrete: false,
-    level: rand(3)
+    level: rand(3),
   })
-  key + RTSP + decoObject(obj, 36, 1, key.length + 2) |> console.log
+  key + RTSP + decoObject(obj, 36, 0, key.length + 2) |> console.log
 }
