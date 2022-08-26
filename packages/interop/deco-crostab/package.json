@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-crostab",
-  "version": "0.15.10",
+  "version": "0.15.11",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@palett/presets": "^0.11.4",
-    "@spare/deco": "^0.15.10",
+    "@spare/deco": "^0.15.11",
     "@texting/enum-chars": "^0.1.13",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix-index": "^0.7.16",
