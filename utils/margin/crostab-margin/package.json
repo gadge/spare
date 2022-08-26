@@ -1,6 +1,6 @@
 {
   "name": "@spare/crostab-margin",
-  "version": "0.15.8",
+  "version": "0.15.9",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/archive/test.index.js"
   },
   "dependencies": {
-    "@spare/matrix-margin": "^0.15.8",
-    "@spare/vector-margin": "^0.15.8"
+    "@spare/matrix-margin": "^0.15.9",
+    "@spare/vector-margin": "^0.15.9"
   },
   "repository": {
     "type": "git",
