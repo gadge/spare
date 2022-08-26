@@ -1,6 +1,6 @@
 {
   "name": "@spare/matrix-margin",
-  "version": "0.15.9",
+  "version": "0.15.10",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@ject/oneself": "^0.0.17",
-    "@spare/util": "^0.15.9",
+    "@spare/util": "^0.15.10",
     "@vect/matrix-margin": "^0.6.13",
     "@vect/matrix-size": "^0.5.23",
     "@vect/vector-margin": "^0.6.13"
