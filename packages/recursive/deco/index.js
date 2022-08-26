@@ -7,7 +7,7 @@ import { Typo }                   from './target/Typo.js'
 
 export { Cate, De, Die, Re, It, tabs, Typo }
 
-const DEF_PRES = {
+const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
   pos: BESQUE,
@@ -16,25 +16,31 @@ const DEF_PRES = {
 const node = De.prototype.node
 
 /**
- * @param {{[depth],[vert],[width],[broad],[pres]}} p
+ * @param {{[depth],[vert],[width],[broad],[pres],[indent]}} p
  * @returns {function(*):string}
  */
 export const Deco = (p = {}) => {
+  p.pres = p.pres ?? PRES
+  p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
+  p.vert = p.vert ?? 1        // 更低位竖排列; vertically show all levels under 'vert'
+  p.width = p.width ?? 80     // 换行宽度; linefeed if line width exceeds 'width'
+  p.broad = p.broad ?? false   // 宽幅展示; set if broaden view
   return node.bind(new De(p))
 }
 
 /**
  * @param {*} o
- * @param {{[depth],[vert],[width],[broad],[pres]}} [p]
+ * @param {{[depth],[vert],[width],[broad],[pres],[indent]}} [p]
  * @returns {string}
  */
 export const deco = (o, p = {}) => {
+  p.pres = p.pres ?? PRES
   p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
   p.vert = p.vert ?? 1        // 更低位竖排列; vertically show all levels under 'vert'
   p.width = p.width ?? 80     // 换行宽度; linefeed if line width exceeds 'width'
   p.broad = p.broad ?? false   // 宽幅展示; set if broaden view
-  p.pres = p.pres ?? DEF_PRES
-  return node.call(new De(p), o)
+  p.indent = p.indent ?? 0
+  return node.call(new De(p), o, p.indent)
 }
 
 /**

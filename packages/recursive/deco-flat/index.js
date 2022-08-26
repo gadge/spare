@@ -1,26 +1,37 @@
-import { DecoConfig } from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
-import { _decoFlat }              from './src/decoFlat'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { Deco }                   from './src/Deco.js'
 
-// const CONF_DECO_FLAT = { mutate: true }
-// const parseConfig = conf => DecoConfig
-//   .build(conf)
-//   .assignConfigs(CONF_DECO_FLAT)
-//   .assignPresets(...conf.presets)
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE,
+}
 
-/**
- * @Function
- * @type {Function|function(*):string}
- *  */
-export const decoFlat = (o, p = {}) => _decoFlat
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), 0, o)
+const node = Deco.prototype.node
 
 /**
- *
- * @param {Object} p
- * @return {Function|function(*):string}
- * @constructor
+ * @param {{[depth],[vert],[width],[broad],[pres]}} p
+ * @returns {function(*):string}
  */
-export const DecoFlat = (p = {}) => _decoFlat
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), 0)
+export const DecoFlat = (p = {}) => {
+  p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
+  p.vert = p.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
+  p.width = p.width ?? 512    // 换行宽度; linefeed if line width exceeds 'width'
+  p.broad = p.broad ?? false  // 宽幅展示; set if broaden view
+  p.pres = p.pres ?? PRES
+  return node.bind(new Deco(p))
+}
+
+/**
+ * @param {*} o
+ * @param {{[depth],[vert],[width],[broad],[pres]}} [p]
+ * @returns {string}
+ */
+export const decoFlat = (o, p = {}) => {
+  p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
+  p.vert = p.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
+  p.width = p.width ?? 512    // 换行宽度; linefeed if line width exceeds 'width'
+  p.broad = p.broad ?? false  // 宽幅展示; set if broaden view
+  p.pres = p.pres ?? PRES
+  return node.call(new Deco(p), o)
+}

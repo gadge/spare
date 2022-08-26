@@ -1,6 +1,5 @@
-import { Basics, Matrices, Misc, Objects, Vectors } from '@spare/deco/test/assets/candidates'
-import { DecoObject, logger }                       from '@spare/logger'
-import { decoFlat }                                 from '..'
+import { decoFlat }                                 from '../index.js'
+import { Basics, Matrices, Misc, Objects, Vectors } from '../../deco/test/assets/candidates'
 
 const candidates = {
   a: 100,
@@ -11,5 +10,5 @@ const candidates = {
   ...Misc
 }
 
-candidates |> DecoObject({ read: decoFlat })|> logger
+candidates |> decoFlat |> console.log
 

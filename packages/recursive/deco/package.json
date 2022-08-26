@@ -20,9 +20,9 @@
   "dependencies": {
     "@aryth/comparer": "^0.6.8",
     "@ject/oneself": "^0.0.17",
-    "@palett/enum-ansi-codes": "^0.11.1",
-    "@palett/presets": "^0.11.1",
-    "@palett/util-ansi": "^0.11.1",
+    "@palett/enum-ansi-codes": "^0.11.2",
+    "@palett/presets": "^0.11.2",
+    "@palett/util-ansi": "^0.11.2",
     "@spare/deco-colors": "^0.15.8",
     "@spare/deco-date": "^0.15.8",
     "@spare/deco-func": "^0.15.8",

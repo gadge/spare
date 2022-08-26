@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.6.8",
-    "@palett/flopper": "^0.11.1",
+    "@palett/flopper": "^0.11.2",
     "@spare/deco-string": "^0.15.8",
     "@spare/enum-chars": "^0.15.8",
     "@spare/phrasing": "^0.15.8",
