@@ -1,9 +1,9 @@
-import { rand }                              from '@aryth/rand'
-import { simpleObjectCollection }            from '@foba/foo'
-import { KELLY, LAVA, LILAC, NORSE, PAGODA } from '@palett/presets'
-import { RTSP }                              from '@texting/enum-chars'
-import { indexed }                           from '@vect/object-mapper'
-import { DecoObject }                        from '../index.js'
+import { rand }                   from '@aryth/rand'
+import { simpleObjectCollection } from '@foba/foo'
+import { KELLY, PAGODA }          from '@palett/presets'
+import { RTSP }                   from '@texting/enum-chars'
+import { indexed }                from '@vect/object-mapper'
+import { DecoObject }             from '../index.js'
 
 let SimpleObjects = simpleObjectCollection({ h: 12 })
 

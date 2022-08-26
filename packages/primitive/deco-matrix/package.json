@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.11.3",
+    "@palett/presets": "^0.11.4",
     "@spare/deco": "^0.15.10",
     "@spare/enum-chars": "^0.15.10",
     "@vect/enum-matrix-directions": "^0.6.13"
