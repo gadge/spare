@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.11.2",
+    "@palett/presets": "^0.11.3",
     "@spare/deco": "^0.15.9"
   },
   "repository": {

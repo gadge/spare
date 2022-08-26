@@ -1,4 +1,4 @@
-import { DyeFab } from '@palett/dye'
+import { HexDye, HslDye } from '@palett/dye'
 
-export const hslFab = DyeFab.hsl()
-export const hexFab = DyeFab.hex()
+export const hslDye = new HslDye()
+export const hexDye = new HexDye()

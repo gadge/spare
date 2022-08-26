@@ -1,5 +1,4 @@
-import { Typo }                                 from '@spare/deco'
-import { Re }                                   from '@spare/deco/target/Joins.js'
+import { Re, Typo }                             from '@spare/deco'
 import { DA, SP }                               from '@texting/enum-chars'
 import { splitCamel, splitLiteral, splitSnake } from '@texting/splitter'
 

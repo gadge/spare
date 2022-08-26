@@ -7,7 +7,7 @@ import { reshape }                                        from '@vect/matrix-ini
 import { Typo }                                           from '../../../target/Typo.js'
 import { Passage }                                        from '../../helpers/Passage.js'
 import { fluoMatrix }                                     from '../resources/fluoMatrix.js'
-import {Typo as TypoB}                                    from '../resources/Typo.js'
+import { Typo as TypoB }                                  from '../resources/Typo.js'
 
 const MATRICES = {
   empty: [ [] ],

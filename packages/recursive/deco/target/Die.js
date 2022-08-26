@@ -1,5 +1,5 @@
 import { value }   from '@texting/string-value'
-import { compare } from '../target/utils/compare.js'
+import { compare } from './utils/compare.js'
 
 function onto(x, y, z, at) {
   this[at++] = x

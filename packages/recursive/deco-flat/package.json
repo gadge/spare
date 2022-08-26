@@ -18,21 +18,16 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.11.2",
-    "@palett/fluo-entries": "^0.11.2",
-    "@palett/fluo-vector": "^0.11.2",
-    "@palett/presets": "^0.11.2",
+    "@palett/presets": "^0.11.3",
+    "@spare/deco": "^0.15.9",
     "@spare/deco-colors": "^0.15.9",
-    "@spare/deco-config": "^0.15.9",
     "@spare/deco-date": "^0.15.9",
     "@spare/deco-func": "^0.15.9",
-    "@spare/enum-chars": "^0.15.9",
-    "@spare/preset-deco": "^0.15.9",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-loose": "^0.1.19",
     "@typen/typ": "^0.1.19",
-    "@vect/column-mapper": "^0.7.16"
+    "@vect/object-mapper": "^0.7.16"
   },
   "repository": {
     "type": "git",

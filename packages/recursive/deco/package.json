@@ -19,10 +19,9 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.6.8",
-    "@ject/oneself": "^0.0.17",
-    "@palett/enum-ansi-codes": "^0.11.2",
-    "@palett/presets": "^0.11.2",
-    "@palett/util-ansi": "^0.11.2",
+    "@palett/enum-ansi-codes": "^0.11.3",
+    "@palett/presets": "^0.11.3",
+    "@palett/util-ansi": "^0.11.3",
     "@spare/deco-colors": "^0.15.9",
     "@spare/deco-date": "^0.15.9",
     "@spare/deco-func": "^0.15.9",
@@ -42,7 +41,10 @@
     "@vect/matrix-index": "^0.7.16",
     "@vect/object-mapper": "^0.7.16",
     "@vect/vector-index": "^0.7.16",
-    "@vect/vector-init": "^0.7.16"
+    "@vect/vector-init": "^0.7.16",
+    "@aryth/math": "^0.6.8",
+    "@palett/convert": "^0.11.3",
+    "@vect/enum-matrix-directions": "^0.6.13"
   },
   "repository": {
     "type": "git",

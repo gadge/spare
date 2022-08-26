@@ -1,6 +1,6 @@
-import { parenth }                      from '@texting/bracket'
 import { DecoPale }                     from '@spare/deco-pale'
 import { decoString, decoVector, says } from '@spare/logger'
+import { parenth }                      from '@texting/bracket'
 
 const { quote } = require('@spare/quote')
 

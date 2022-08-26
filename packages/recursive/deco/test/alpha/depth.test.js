@@ -1,6 +1,6 @@
 import { RTSP }     from '@texting/enum-chars'
-import { isVector } from '@vect/vector-index'
 import { indexed }  from '@vect/object-mapper'
+import { isVector } from '@vect/vector-index'
 
 const ARRAYS = {
   null: null,

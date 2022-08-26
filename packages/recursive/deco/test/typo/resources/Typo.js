@@ -11,9 +11,9 @@ import { draft }               from '@vect/matrix-init'
 import { wind }                from '@vect/object-init'
 import { max }                 from '@vect/vector-indicator'
 import { init, iso }           from '@vect/vector-init'
-import { Cate }           from '../../../target/Cate.js'
-import { Die }              from '../../../target/Die.js'
-import { padAnsi, padTypo } from '../../../target/utils/padTypo.js'
+import { Cate }                from '../../../target/Cate.js'
+import { Die }                 from '../../../target/Die.js'
+import { padAnsi, padTypo }    from '../../../target/utils/padTypo.js'
 
 
 export function parseStr(x) {

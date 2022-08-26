@@ -1,5 +1,5 @@
-import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Typo }                   from '@spare/deco'
+import { SUBTLE } from '@palett/presets'
+import { Typo }   from '@spare/deco'
 
 const { string } = Typo.prototype
 

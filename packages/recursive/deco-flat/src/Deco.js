@@ -1,5 +1,5 @@
 import { Typo }                                   from '@spare/deco'
-import { BRC, BRK, PAL }                          from '@spare/deco-colors'
+import { PAL }                                    from '@spare/deco-colors'
 import { decoDateTime }                           from '@spare/deco-date'
 import { funcName }                               from '@spare/deco-func'
 import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
@@ -29,8 +29,8 @@ export class Deco extends Typo {
     if (t === FUN) return funcName(x)
     if (t === OBJ) {
       const pt = typ(x)
-      if (pt === ARRAY) return this.nodeVector(x, id) |> BRK[id & 7]
-      if (pt === OBJECT) return this.nodeObject(x, id) |> BRC[id & 7]
+      if (pt === ARRAY) return this.nodeVector(x, id) // |> BRK[id & 7]
+      if (pt === OBJECT) return this.nodeObject(x, id) // |> BRC[id & 7]
       if (pt === DATE) return decoDateTime(x)
       return `${x}`
     }
@@ -48,13 +48,7 @@ export class Deco extends Typo {
     return this.vector(vec, NaN)
   }
   nodeObject(obj, id = 0) {
-    obj = mapKeyVal(obj, (k, v) => {
-      const sr = id + 2 + k.length + 2
-      const nx = this.br
-        ? sr >= (this.th >> 1) ? (id + 4) : sr
-        : id + 2
-      return this.node(v, nx, sr) // nx could also be id+2, alternatively
-    })
+    obj = mapKeyVal(obj, (k, v) => this.node(v, id + 1))
     return this.object(obj, NaN, id)
   }
 }
