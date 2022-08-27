@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-flat",
-  "version": "0.15.11",
+  "version": "0.15.12",
   "description": "Colored stringify",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,10 +19,10 @@
   },
   "dependencies": {
     "@palett/presets": "^0.11.6",
-    "@spare/deco": "^0.15.11",
-    "@spare/deco-colors": "^0.15.11",
-    "@spare/deco-date": "^0.15.11",
-    "@spare/deco-func": "^0.15.11",
+    "@spare/deco": "^0.15.12",
+    "@spare/deco-colors": "^0.15.12",
+    "@spare/deco-date": "^0.15.12",
+    "@spare/deco-func": "^0.15.12",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-loose": "^0.1.19",

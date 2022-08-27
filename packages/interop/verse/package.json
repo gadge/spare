@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.15.11",
+  "version": "0.15.12",
   "description": "A debugging tool",
   "main": "dist/index.cjs",
   "exports": {
@@ -20,14 +20,14 @@
   "dependencies": {
     "@analys/crostab-init": "^0.6.14",
     "@analys/table-init": "^0.6.14",
-    "@spare/deco-entries": "^0.15.11",
-    "@spare/deco-matrix": "^0.15.11",
-    "@spare/deco-object": "^0.15.11",
-    "@spare/deco-samples": "^0.15.11",
-    "@spare/deco-vector": "^0.15.11",
-    "@spare/enum-brackets": "^0.15.11",
-    "@spare/preset-verse": "^0.15.11",
-    "@spare/quote": "^0.15.11",
+    "@spare/deco-entries": "^0.15.12",
+    "@spare/deco-matrix": "^0.15.12",
+    "@spare/deco-object": "^0.15.12",
+    "@spare/deco-samples": "^0.15.12",
+    "@spare/deco-vector": "^0.15.12",
+    "@spare/enum-brackets": "^0.15.12",
+    "@spare/preset-verse": "^0.15.12",
+    "@spare/quote": "^0.15.12",
     "@texting/bracket": "^0.1.13",
     "@texting/liner": "^0.1.13"
   },
