@@ -1,20 +1,20 @@
-import { Preset }                                     from '@palett/presets'
-import { hasAnsi }                                    from '@texting/charset-ansi'
-import { BRACKET, NONE }                              from '@texting/enum-brackets'
-import { COLF, COSP, LF, RTSP, SP }                   from '@texting/enum-chars'
-import { lange, length }                              from '@texting/lange'
-import { splitLiteral }                               from '@texting/splitter'
-import { value }                                      from '@texting/string-value'
-import { NUM, OBJ, STR, SYM }                         from '@typen/enum-data-types'
-import { parseNum }                                   from '@typen/num-strict'
-import { COLUMNWISE, POINTWISE, ROWWISE }             from '@vect/enum-matrix-directions'
-import { height, width }                              from '@vect/matrix-index'
-import { init, iso }                                  from '@vect/vector-init'
-import { cate, Cate }                                 from './Cate.js'
-import { Die }                                        from './Die.js'
-import { Re, tabs }                                   from './Joins.js'
-import { hslToInt, initialize, limFF, render, scale } from './utils/colors.js'
-import { padAnsi, padTypo }                           from './utils/padTypo.js'
+import { hslToInt, limFF, Preset, render, scale } from '@palett/presets'
+import { hasAnsi }                                from '@texting/charset-ansi'
+import { BRACKET, NONE }                          from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP, SP }               from '@texting/enum-chars'
+import { lange, length }                          from '@texting/lange'
+import { splitLiteral }                           from '@texting/splitter'
+import { value }                                  from '@texting/string-value'
+import { NUM, OBJ, STR, SYM }                     from '@typen/enum-data-types'
+import { parseNum }                               from '@typen/num-strict'
+import { COLUMNWISE, POINTWISE, ROWWISE }         from '@vect/enum-matrix-directions'
+import { height, width }                          from '@vect/matrix-index'
+import { init, iso }                              from '@vect/vector-init'
+import { cate, Cate }                             from './Cate.js'
+import { Die }                                    from './Die.js'
+import { Re, tabs }                               from './Joins.js'
+import { initialize }                             from './utils/initialize.js'
+import { padAnsi, padTypo }                       from './utils/padTypo.js'
 
 export function parseStr(x) {
   const p = typeof x
@@ -26,7 +26,7 @@ const { Str: S, Num: N, NaN: E } = Cate
 export class Typo {
   /** @type {function} */ str = parseStr
   /** @type {function} */ num = parseNum
-  /** @type {function} */ len = length
+  /** @type {function} */ len = lange
   /** @type {function} */ pad = padAnsi
   /** @type {Preset}   */ tbd = null
   /** @type {Preset}   */ nbd = null
@@ -35,7 +35,7 @@ export class Typo {
   constructor(conf, pres) {
     if (conf.str) this.str = conf.str
     if (conf.num) this.num = conf.num
-    if (conf.ansi) this.len = lange
+    if (conf.ansi === false) this.len = length
     if (conf.fill) this.pad = conf.ansi
       ? conf.fill === SP ? padAnsi : padAnsi.bind(conf)
       : conf.fill === SP ? padTypo : padTypo.bind(conf)

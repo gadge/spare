@@ -56,8 +56,8 @@
     "@foba/vector-number": "^0.5.7",
     "@foba/vector-string": "^0.5.7",
     "@ject/pipe": "^0.0.17",
-    "@palett/enum-font-effects": "^0.11.4",
-    "@palett/presets": "^0.11.4",
+    "@palett/enum-font-effects": "^0.11.6",
+    "@palett/presets": "^0.11.6",
     "@palett/says": "^0.9.10",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.2",
@@ -76,7 +76,7 @@
     "gulp": "^4.0.2",
     "lerna": "^5.4.3",
     "rollup": "^2.78.1",
-    "rollup-plugin-fileinfo": "^0.3.5"
+    "rollup-plugin-fileinfo": "^0.3.6"
   },
   "packageManager": "yarn@3.2.1"
 }
