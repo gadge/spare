@@ -28,10 +28,10 @@ const typo = new Typo({
   pres: { pos: BESQUE, neg: OCEAN, str: PAGODA },
 })
 
-const WD = 42
+const WD = 86
 const LINE = '+'.repeat(WD) + WD
 LINE |> console.log
 for (let [ key, text ] of indexed(STRINGS)) {
-  key + RTSP + typo.string(text, WD, 4, key.length + 2,) |> console.log
+  key + RTSP + typo.string(WD, text, 4, key.length + 2,) |> console.log
   LINE |> console.log
 }

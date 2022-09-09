@@ -24,7 +24,8 @@ const { string } = Typo.prototype
  */
 export function DecoString(p = {}) {
   p.pres = p.pres ?? SUBTLE
-  return string.bind(new Typo(p))
+  p.thres = p.thres ?? 0
+  return string.bind(new Typo(p), p.thres)
 }
 
 /**
@@ -35,7 +36,8 @@ export function DecoString(p = {}) {
  */
 export function decoString(str, p = {}) {
   p.pres = p.pres ?? SUBTLE
-  return string.call(new Typo(p), str, p.thres, p.indent, p.surge)
+  p.thres = p.thres ?? 0
+  return string.call(new Typo(p), p.thres, str, p.indent, p.surge)
 }
 
 

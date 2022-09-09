@@ -1,13 +1,11 @@
 import { rand }                   from '@aryth/rand'
-import { simpleVectorCollection } from '@foba/foo'
 import { NumberVectorCollection } from '@foba/vector'
 import { DECANTE, METRO, SUMMER } from '@palett/presets'
-import { BRK }                    from '@spare/enum-brackets'
-import { says }                   from '@spare/xr'
-import { mapVal }                 from '@vect/object-mapper'
+import { SP }                     from '@spare/enum-chars'
+import { indexed }                from '@vect/object-mapper'
 import { DecoVector }             from '../index.js'
 
-const Strangers = {
+const VECTORS = {
   empty: [],
   arithmetic: NumberVectorCollection.flopShuffle(),
   soleElement: [ rand(256) ],
@@ -15,28 +13,11 @@ const Strangers = {
   misc: [ null, undefined, NaN, 'Infinity', '+', 1.2E+1, 1.2E+2, 1.2E+3, 1.2E+4 ]
 }
 
-const SimpleVectors = mapVal(simpleVectorCollection({ h: 16 }), Object.values)
 
-const candidates = { ...Strangers, ...SimpleVectors }
-
-candidates |> console.log
-
-export class VectorDecoTest {
-  static test() {
-    const decoVector = DecoVector({
-      // head: 4,
-      // tail: 4,
-      indexed: false,
-      bracket: BRK,
-      presets: [ SUMMER, DECANTE, METRO ],
-      delim: ', ',
-      discrete: false,
-      label: 1,
-    })
-    for (const [ key, vector ] of Object.entries(candidates)) {
-      decoVector(vector, 32, 0) |> says[key]
-    }
-  }
+const WD = 24
+const LINE = '+'.repeat(WD) + WD
+const decoVector = DecoVector({ thres: WD, pres: { str: METRO, pos: SUMMER, neg: DECANTE }, })
+for (const [ key, vector ] of indexed(VECTORS)) {
+  key + SP + decoVector(vector, 0, key.length + 2) |> console.log
+  LINE |> console.log
 }
-
-VectorDecoTest.test()

@@ -55,7 +55,7 @@ export class Deco extends Typo {
 
   threshold(id) { return (id >> 1) < this.vt ? 0 : this.th }
   nodeString(str, id = 0, sr) {
-    return this.string(str, this.th, this.br ? id : id + 2, sr)
+    return this.string(this.th, str, this.br ? id : id + 2, sr)
   }
   nodeVector(vec, id = 0) {
     switch (depth(vec)) {
@@ -64,12 +64,12 @@ export class Deco extends Typo {
       case 1:
         vec = vec.map(v => this.node(v, id + 2))
         const th = vec.length <= 2 ? NaN : this.threshold(id)
-        return this.vector(vec, th, id)
+        return this.vector(th, vec, id)
       case 2:
         return this.matrix(vec, POINTWISE, id)
       default:
         vec = vec.map(v => this.node(v, id + 1))
-        return this.vector(vec, NaN)
+        return this.vector(NaN, vec)
     }
   }
   nodeObject(obj, id = 0) {
@@ -80,6 +80,6 @@ export class Deco extends Typo {
         : id + 2
       return this.node(v, nx, sr) // nx could also be id+2, alternatively
     })
-    return this.object(obj, this.threshold(id), id)
+    return this.object(this.threshold(id), obj, id)
   }
 }

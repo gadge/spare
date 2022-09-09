@@ -28,12 +28,14 @@ const { entries } = Typo.prototype
  */
 export const DecoEntries = (p = {}) => {
   p.pres = p.pres ?? PRES
-  return entries.bind(new Typo(p))
+  p.thres = p.thres ?? 0
+  return entries.bind(new Typo(p), p.thres)
 }
 
 export const decoEntries = (ent, p = {}) => {
   p.pres = p.pres ?? PRES
-  return entries.call(new Typo(p), ent, p.thres, p.indent)
+  p.thres = p.thres ?? 0
+  return entries.call(new Typo(p), p.thres, ent, p.indent)
 }
 
 export {

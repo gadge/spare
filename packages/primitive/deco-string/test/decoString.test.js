@@ -22,9 +22,8 @@ const LINE = '+'.repeat(WD) + WD
 const PRES = { pos: SUMMER, neg: DECANTE, str: SUBTLE }
 for (const [ key, text ] of indexed(STRINGS)) {
   key |> console.log
-  const colored = decoString(text, { pres: PRES }, 36)
+  const colored = decoString(text, { pres: PRES, thres: 36 })
   colored |> console.log
-  // says[key].asc
   LINE |> console.log
 }
 

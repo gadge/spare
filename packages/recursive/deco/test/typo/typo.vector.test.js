@@ -23,6 +23,6 @@ const typo = new Typo({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, s
 const WD = 16
 const LINE = '+'.repeat(WD) + WD
 for (let [ key, vec ] of indexed(VECTORS)) {
-  key + SP + typo.vector(vec, NaN, 2, key.length + 2) |> console.log
+  key + SP + typo.vector(WD, vec, 2, key.length + 2) |> console.log
   LINE |> console.log
 }

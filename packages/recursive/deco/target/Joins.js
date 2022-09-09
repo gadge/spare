@@ -1,7 +1,8 @@
-import { min }                    from '@aryth/comparer'
-import { NONE }                   from '@texting/enum-brackets'
-import { COSP, LF, RTSP, SP, VO } from '@texting/enum-chars'
-import { lange }                  from '@texting/lange'
+import { min }                          from '@aryth/comparer'
+import { CO }                           from '@spare/enum-chars'
+import { NONE }                         from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP, SP, VO } from '@texting/enum-chars'
+import { lange }                        from '@texting/lange'
 
 export const BRAC = [
   [ '', '' ], // NONE = 0
@@ -110,13 +111,13 @@ export class Re {
     if (cl) tx += LF + tabs(id)
     return tx
   }
-  static object(ts, de = COSP, wd = 80, id = 0, sr = 0) {
+  static entries(ts, de = RTSP, tr = COSP, wd = 80, id = 0, sr = 0) {
     const cn = ts.length, ws = ts.ws ?? ts.map(lange)
-    let tx = '', cx = ' ', i = 0, j = 1, hi = sr + ws[i] + 2 + ws[j], tb = tabs(id + 2), tw = tb.length, cl = hi > wd, dw = de?.length
+    let tx = '', cx = ' ', i = 0, j = 1, hi = sr + ws[i] + 2 + ws[j], tb = tabs(id + 2), tw = tb.length, cl = hi > wd, dw = tr?.length
     while (j < cn) {
       if (hi > wd) tx += cx + LF, cx = tb, hi = tw + ws[i] + 2 + ws[j]
-      cx += ts[i] + RTSP + ts[j] , hi += ws[i += 2] + 2 + ws[j += 2] + dw
-      if (j < cn) cx += de
+      cx += ts[i] + de + ts[j] , hi += ws[i += 2] + 2 + ws[j += 2] + dw
+      if (j < cn) cx += COSP
     }
     if (cx.length) tx += cx + ' '
     if (cl) tx += LF + tabs(id)

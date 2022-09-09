@@ -42,9 +42,10 @@ const typo = new Typo({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, s
 //   TB + key + RTSP + typo.object(obj, true, 1) |> console.log
 // }
 
-const WD = 32
+const WD = 40
 const LINE = '+'.repeat(WD) + WD
 for (let [ key, obj ] of indexed(OBJECTS)) {
-  key + SP + typo.object(obj, WD, 0, key.length + 1) |> console.log
+  key + SP + typo.object(WD, obj, 0, key.length + 1) |> console.log
   LINE |> console.log
+  // '' |> console.log
 }

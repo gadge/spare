@@ -29,12 +29,14 @@ const { vector } = Typo.prototype
  */
 export const DecoVector = (p = {}) => {
   p.pres = p.pres ?? PRES
-  return vector.bind(new Typo(p))
+  p.thres = p.thres ?? 0
+  return vector.bind(new Typo(p), p.thres)
 }
 
 export const decoVector = (vec, p = {}) => {
   p.pres = p.pres ?? PRES
-  return vector.call(new Typo(p), vec, p.thres, p.indent, p.surge)
+  p.thres = p.thres ?? 0
+  return vector.call(new Typo(p), p.thres, vec, p.indent, p.surge)
 }
 
 export {

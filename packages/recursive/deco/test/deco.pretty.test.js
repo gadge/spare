@@ -1,6 +1,6 @@
 import { flop, flopValue }                          from '@aryth/rand'
 import { Quotes }                                   from '@foba/quotes-creativity'
-import { BESQUE, OCEAN, SUBTLE }                    from '@palett/presets'
+import { METRO, PAGODA, SUBTLE }                    from '@palett/presets'
 import { deco }                                     from '../index.js'
 import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates'
 
@@ -16,7 +16,8 @@ const CANDIDATES = {
 const WD = 54
 const LINE = '+'.repeat(WD) + WD
 const CONF = {
-  pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE },
+  // ansi: true,
+  pres: { pos: PAGODA, neg: METRO, str: SUBTLE },
   vert: 6,
   depth: 18,
   width: WD,

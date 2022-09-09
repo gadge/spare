@@ -39,5 +39,5 @@ const ENTRIES = {
 const typo = new Typo({ pres: { pos: BESQUE, neg: OCEAN, str: METRO } })
 
 for (let [ key, ent ] of indexed(ENTRIES)) {
-  TB + TB + key + SP + typo.entries(ent, false, 2) |> console.log
+  key + SP + typo.entries(NaN, ent, 0) |> console.log
 }

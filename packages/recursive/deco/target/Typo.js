@@ -123,7 +123,13 @@ export class Typo {
     }
     return ts
   }
-  flatMatrix(mat) {
+  flatMatrix(mat, dr) {
+    if (dr === POINTWISE) return this.flatPoints(mat)
+    if (dr === ROWWISE) return this.flatRows(mat)
+    if (dr === COLUMNWISE) return this.flatColumns(mat)
+    return this.flatPoints(mat)
+  }
+  flatPoints(mat) {
     const ht = height(mat), wd = width(mat), cn = ht * wd
     const ts = Array(cn), ns = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), bd = new Die(this.uns)
     for (let i = 0, p = 0; i < ht; i++) {
@@ -172,43 +178,38 @@ export class Typo {
     return ts
   }
 
-  string(str, th, id, sr) {
+  string(thres, str, id, sr) {
     const vec = splitLiteral(str)
-    return Re.string(this.flatVector(vec), '', th, id, sr)
+    return Re.string(this.flatVector(vec), '', thres, id, sr)
   }
-  vector(vec, th, id = 0, sr = 0) {
-    const cn = vec?.length ?? 0
-    if (cn === 0) { return '[]' }
-    const ts = this.flatVector(vec)
-    if (th > 0) { return '[' + Re.vector(ts, COSP, th, id, sr) + ']' }
-    if (th === 0 && cn > 1) { return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']' }
-    else { return '[ ' + Re.chain(ts, COSP) + ' ]' }
+  vector(thres, vec, id = 0, sr = 0) {
+    const ts = this.flatVector(vec), count = vec?.length ?? 0
+    if (count === 0) return '[]'
+    if (thres > 0) return '[' + Re.vector(ts, COSP, thres, id, sr) + ']'
+    if (count === 1) return '[ ' + Re.chain(ts, COSP) + ' ]'
+    if (thres === 0) return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']'
+    return '[ ' + Re.chain(ts, COSP) + ' ]'
   }
-  object(obj, th, id = 0, sr = 0) {
-    let ts = this.flatObject(obj), cn = ts.length
-    if (cn === 0) { return '{}' }
-    if (th > 0) { return '{' + Re.object(ts, COSP, th, id, sr + 2) + '}' }
-    if (th === 0 && cn > 2) { return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}' }
-    else { return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }' }
+  object(thres, obj, id = 0, sr = 0) {
+    let ts = this.flatObject(obj), count = ts.length
+    if (count === 0) return '{}'
+    if (thres > 0) return '{' + Re.entries(ts, RTSP, COLF, thres, id, sr + 2) + '}'
+    if (count === 2) return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }'
+    if (thres === 0) return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}'
+    return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }'
   }
-  entries(ent, th, id = 0) {
-    const cn = ent?.length ?? 0
-    if (cn === 0) return '[]'
-    const ts = this.flatEntries(ent, th &&= cn > 1)
-    return th > 0
-      ? '[' + LF + Re.shape(ts, COSP, LF, BRACKET, 2, id + 1) + LF + tabs(id) + ']'
-      : '[' + Re.group(ts, COSP, COSP, BRACKET, 2) + ']'
+  entries(thres, ent, id = 0, sr = 0) {
+    const count = ent?.length ?? 0, ts = this.flatEntries(ent, thres === 0 && count > 1)
+    if (count === 0) return '[]'
+    if (thres > 0) return '[' + Re.entries(ts, COSP, COLF, thres, id, sr + 2) + ']'
+    if (count === 2) return '[ ' + Re.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
+    if (thres === 0) return '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, 2, id + 2) + LF + tabs(id) + ']'
+    return '[ ' + Re.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
   }
-  matrix(mat, dr, id = 0) {
-    const ts =
-            dr === POINTWISE ? this.flatMatrix(mat) :
-              dr === ROWWISE ? this.flatRows(mat) :
-                dr === COLUMNWISE ? this.flatColumns(mat) :
-                  this.flatMatrix(mat)
-    const cn = ts.length, wd = width(mat)
-    return cn <= wd
-      ? '[[ ' + Re.chain(ts, COSP) + ' ]]'
-      : '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
+  matrix(mat, direct, id = 0) {
+    const ts = this.flatMatrix(mat, direct), count = ts?.length ?? 0, wd = width(mat)
+    if (count <= wd) return '[[ ' + Re.chain(ts, COSP) + ' ]]'
+    return '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
   }
 }
 
