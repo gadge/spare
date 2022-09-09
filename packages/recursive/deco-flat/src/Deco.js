@@ -41,14 +41,14 @@ export class Deco extends Typo {
   }
 
   nodeString(str, id = 0) {
-    return this.string(str, NaN, id)
+    return this.string(NaN, str, id)
   }
   nodeVector(vec, id = 0) {
     vec = vec.map(v => this.node(v, id + 1))
-    return this.vector(vec, NaN)
+    return this.vector(NaN, vec)
   }
   nodeObject(obj, id = 0) {
     obj = mapKeyVal(obj, (k, v) => this.node(v, id + 1))
-    return this.object(obj, NaN, id)
+    return this.object(NaN, obj, id)
   }
 }

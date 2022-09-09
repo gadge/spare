@@ -27,7 +27,7 @@ export class Deco extends Typo {
     super(conf)
     this.dp = conf.depth ?? conf.dp ?? 8     // 更高级不展示
     this.vt = conf.vert ?? conf.vt ?? 1      // 更低级竖排显示
-    this.th = conf.width ?? conf.th ?? 80    // 换行宽度
+    this.th = conf.thres ?? conf.width ?? conf.th ?? 80    // 换行宽度
     this.br = conf.broad ?? conf.br ?? false // 宽幅展示
   }
   static build(conf) { return new Deco(conf) }
@@ -49,7 +49,8 @@ export class Deco extends Typo {
       return `${x}`
     }
     if (t === BOO) return PAL.BOO(x)
-    if (t === UND || t === SYM) return PAL.UDF(x)
+    if (t === UND) return PAL.UDF(x)
+    if (t === SYM) return PAL.UDF(x.toString())
     return `${x}`
   }
 

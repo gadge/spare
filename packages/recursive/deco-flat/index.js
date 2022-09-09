@@ -16,10 +16,11 @@ const node = Deco.prototype.node
 export const DecoFlat = (p = {}) => {
   p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
   p.vert = p.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
-  p.width = p.width ?? 512    // 换行宽度; linefeed if line width exceeds 'width'
+  p.thres = p.width ?? NaN    // 换行宽度; linefeed if line width exceeds 'width'
   p.broad = p.broad ?? false  // 宽幅展示; set if broaden view
   p.pres = p.pres ?? PRES
-  return node.bind(new Deco(p))
+  const deco = new Deco(p)
+  return deco.node.bind(deco)
 }
 
 /**
@@ -30,8 +31,9 @@ export const DecoFlat = (p = {}) => {
 export const decoFlat = (o, p = {}) => {
   p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
   p.vert = p.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
-  p.width = p.width ?? 512    // 换行宽度; linefeed if line width exceeds 'width'
+  p.width = p.width ?? NaN    // 换行宽度; linefeed if line width exceeds 'width'
   p.broad = p.broad ?? false  // 宽幅展示; set if broaden view
   p.pres = p.pres ?? PRES
-  return node.call(new Deco(p), o)
+  const deco = new Deco(p)
+  return deco.node(o)
 }

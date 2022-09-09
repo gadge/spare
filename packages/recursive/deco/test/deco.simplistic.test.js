@@ -1,5 +1,4 @@
 import { FRESH, METRO, OCEAN } from '@palett/presets'
-import { logger }              from '@spare/logger'
 import { Deco }                from '../target/Deco.js'
 
 const candidates = [
@@ -21,5 +20,9 @@ const candidates = [
 ]
 
 
-const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO }, vt: 4 })
-deco.node(candidates) |> logger
+const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO }, vert: 4, thres: NaN })
+
+deco.node(candidates) |> console.log
+deco.node({ foo: 1, date: new Date(), vec: [ 1, 2, 3 ], symbol: Symbol.for('shake') }) |> console.log
+deco.node('shake') |> console.log
+deco.node(123) |> console.log

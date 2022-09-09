@@ -16,7 +16,7 @@ export class TableTypo {
 
   * pointwiseLines({ head, side, rows }) {
     const { kpr, vpr } = this
-    const ht = rows.length, wd = head?.length ?? width(rows), cn = ht * wd
+    const ht = rows?.length ?? 0, wd = head?.length ?? width(rows), cn = ht * wd
     const rts = Array(cn), rns = Array(cn), sts = Array(ht), sns = Array(ht), hts = Array(wd), hns = Array(wd)
     const rbd = new Die(vpr.uns), hbd = head ? new Die(kpr.uns) : null, sbd = side ? new Die(kpr.uns) : null
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)

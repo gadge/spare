@@ -1,4 +1,0 @@
-280 error Error: Command failed with exit code 128: git push --follow-tags --no-verify --atomic origin master
-280 error fatal: unable to access 'https://github.com/gadge/spare/': Could not resolve host: github.com
-280 error     at makeError (/home/alkindus/banyan/spare/node_modules/execa/lib/error.js:60:11)
-280 error     at handlePromise (/home/alkindus/banyan/spare/node_modules/execa/index.js:118:26)

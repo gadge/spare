@@ -16,11 +16,10 @@ const CANDIDATES = {
 const WD = 54
 const LINE = '+'.repeat(WD) + WD
 const CONF = {
-  // ansi: true,
   pres: { pos: PAGODA, neg: METRO, str: SUBTLE },
   vert: 6,
   depth: 18,
-  width: WD,
+  thres: NaN,
   broad: true
 }
 

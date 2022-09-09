@@ -1,6 +1,5 @@
 import { BESQUE, METRO, OCEAN, SUBTLE } from '@palett/presets'
-import { decoTable, paleTable }         from '../index.js'
-import { TableTypo }                    from '../target/Typo.js'
+import { decoTable }                    from '../index.js'
 
 const AoEIIUnitsAttackByStages = {
   side: [ 'Imperial', 'Castle', 'Feudal', 'Dark' ],
