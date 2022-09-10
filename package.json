@@ -74,9 +74,9 @@
     "@vect/vector-init": "^0.7.16",
     "@vect/vector-select": "^0.7.15",
     "gulp": "^4.0.2",
-    "lerna": "^5.5.0",
+    "lerna": "^5.5.1",
     "rollup": "^2.79.0",
-    "rollup-plugin-fileinfo": "^0.3.7"
+    "rollup-plugin-fileinfo": "^0.3.8"
   },
   "packageManager": "yarn@3.2.1"
 }
