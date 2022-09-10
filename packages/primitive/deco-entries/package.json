@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-entries",
-  "version": "0.15.12",
+  "version": "0.15.15",
   "description": "A debugging tool",
   "main": "./dist/index.cjs",
   "exports": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@palett/presets": "^0.11.6",
-    "@spare/deco": "^0.15.12",
+    "@spare/deco": "^0.15.15",
     "@texting/enum-chars": "^0.1.13"
   },
   "repository": {

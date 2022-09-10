@@ -1,6 +1,6 @@
 {
   "name": "@spare/arc",
-  "version": "0.15.12",
+  "version": "0.15.15",
   "description": "Arc",
   "main": "dist/index.cjs",
   "exports": {
