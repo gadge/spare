@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@spare/deco": "^0.15.15",
-    "@spare/vector-margin": "^0.15.15"
+    "@spare/vector-margin": "^0.15.15",
+    "@palett/presets": "^0.11.6"
   },
   "repository": {
     "type": "git",
