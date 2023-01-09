@@ -78,5 +78,5 @@
     "rollup": "^2.79.0",
     "rollup-plugin-fileinfo": "^0.3.8"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.3.1"
 }
