@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-func",
-  "version": "0.15.15",
+  "version": "0.15.16",
   "description": "Colored stringify date",
   "main": "./dist/index.cjs",
   "exports": {
@@ -21,10 +21,10 @@
     "@palett/cards": "^0.11.6",
     "@palett/convert": "^0.11.6",
     "@palett/dye": "^0.11.6",
-    "@spare/deco-config": "^0.15.15",
-    "@spare/enum-chars": "^0.15.15",
-    "@spare/preset-deco": "^0.15.15",
-    "@spare/translator": "^0.15.15",
+    "@spare/deco-config": "^0.15.16",
+    "@spare/enum-chars": "^0.15.16",
+    "@spare/preset-deco": "^0.15.16",
+    "@spare/translator": "^0.15.16",
     "@texting/bracket": "^0.1.13",
     "@texting/lange": "^0.1.13"
   },
