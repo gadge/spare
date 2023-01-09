@@ -21,7 +21,7 @@
     "@spare/deco-vector": "^0.15.15",
     "@spare/enum-chars": "^0.15.15",
     "@spare/regex-phrasing": "^0.15.15",
-    "@vect/vector-mapper": "^0.7.16"
+    "@vect/vector-mapper": "^0.7.20"
   },
   "repository": {
     "type": "git",

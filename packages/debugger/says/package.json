@@ -29,7 +29,7 @@
     "@texting/bracket": "^0.1.13",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enums": "^0.1.19",
-    "@vect/object-mapper": "^0.7.16"
+    "@vect/object-mapper": "^0.7.20"
   },
   "repository": {
     "type": "git",
