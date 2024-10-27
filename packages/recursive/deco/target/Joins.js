@@ -1,7 +1,7 @@
 import { min }                          from '@aryth/comparer'
 import { CO }                           from '@spare/enum-chars'
 import { NONE }                         from '@texting/enum-brackets'
-import { COLF, COSP, LF, RTSP, SP, VO } from '@texting/enum-chars'
+import { COSP, LF, RTSP, SP, VO } from '@texting/enum-chars'
 import { lange }                        from '@texting/lange'
 
 export const BRAC = [

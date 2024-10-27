@@ -19,4 +19,4 @@ export const getParameterNames = (fn) => {
     : result
 }
 
-getParameterNames(func) |> delogger
+delogger(getParameterNames(func))

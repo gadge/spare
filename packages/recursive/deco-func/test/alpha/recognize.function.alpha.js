@@ -15,7 +15,7 @@ import { argnames }            from './argnames'
 
 export const FUNC_REG = /\((.*?)\)\s+\{/
 export const LAMB_REG = /\(?(.*?)\)?\s+=>/
-const dye = Dye(Cards.indigo.accent_3 |> hexToRgb, UNDERLINE)
+const dye = Dye(hexToRgb(Cards.indigo.accent_3), UNDERLINE)
 
 const samples = Object.entries(ComplexCollection).map(([name, func]) => {
   let ms

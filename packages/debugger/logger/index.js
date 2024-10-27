@@ -1,4 +1,4 @@
-export { logger, logNeL }              from './src/logger'
+export { logger, logNeL }              from './src/logger.js'
 export { deco, Deco }                  from '@spare/deco'
 export { decoString, DecoString }      from '@spare/deco-string'
 export { decoVector, DecoVector }      from '@spare/deco-vector'

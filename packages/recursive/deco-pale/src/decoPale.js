@@ -18,15 +18,15 @@ export function decoPale(node) {
   if (node === void 0 || node === null) return node
   const t = typeof node
   if (t === NUM || t === BOO) return node
-  if (t === STR) return loose && isNumeric(node) ? node : (node |> cite)
-  if (t === FUN) return _decoFunc.call(DEFN, node) |> cite
+  if (t === STR) return loose && isNumeric(node) ? node : (cite(node))
+  if (t === FUN) return cite(_decoFunc.call(DEFN, node))
   if (t === OBJ) {
     const pt = typ(node)
-    if (pt === ARRAY) return node.map(decoPale.bind(this)).join(COSP) |> bracket
-    if (pt === OBJECT) return mutate(Object.entries(node), decoKey, decoPale.bind(this)).map(pairEnt).join(COSP) |> brace
-    if (pt === DATE) return `${formatDate(node)}'${formatTime(node)}` |> cite
+    if (pt === ARRAY) return bracket(node.map(decoPale.bind(this)).join(COSP))
+    if (pt === OBJECT) return brace(mutate(Object.entries(node), decoKey, decoPale.bind(this)).map(pairEnt).join(COSP))
+    if (pt === DATE) return cite(`${formatDate(node)}'${formatTime(node)}`)
   }
-  return String(node) |> cite
+  return cite(String(node))
 }
 
 

@@ -14,7 +14,7 @@ export const renderEntries = function (entries, lv) {
     width = this.object?.width ?? this.width ?? 0,
     unit = this.object?.unit ?? this.unit ?? 0
   let pad
-  const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = entries |> mutateKeyPad)
+  const rows = (lv < vert || entries.some(([, v]) => lange(v) > unit) || !width) && (pad = mutateKeyPad(entries))
     ? mutate(entries, ([k, v]) => lpad(k, pad) + RTSP + v)
     : wrapEntries(entries, width)
   return rows.length > 1

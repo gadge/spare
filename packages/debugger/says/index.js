@@ -1,4 +1,4 @@
-import { Says } from './src/Says'
+import { Says } from './src/Says.js'
 
 /** @type {Function|Says} */
 const says = new Says()

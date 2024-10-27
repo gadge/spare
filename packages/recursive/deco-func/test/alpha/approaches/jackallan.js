@@ -11,4 +11,4 @@ function getParamNames (func) {
   return result
 }
 
-getParamNames(comboCollection) |> delogger
+delogger(getParamNames(comboCollection))

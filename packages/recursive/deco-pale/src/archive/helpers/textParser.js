@@ -6,16 +6,16 @@ const TextParsers = {
   loose: (x, t) => {
     if (t === NUM) return x
     if (t === STR) return isNumeric(x) ? x : quote(x)
-    return x.toString() |> quote
+    return quote(x.toString())
   },
   standard: (x, t) => {
     if (t === NUM) return x
-    if (t === STR) return x |> quote
-    return x.toString() |> quote
+    if (t === STR) return quote(x)
+    return quote(x.toString())
   },
   strict: (x, t) => {
-    if (t === NUM) return x|> quote
-    if (t === STR) return x|> quote
-    return x.toString() |> quote
+    if (t === NUM) return quote(x)
+    if (t === STR) return quote(x)
+    return quote(x.toString())
   },
 }

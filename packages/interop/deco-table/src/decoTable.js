@@ -1,7 +1,7 @@
 import { MUTATE_PIGMENT } from '@palett/enum-colorant-modes'
 import { fluoMatrix }     from '@palett/fluo-matrix'
 import { fluoVector }     from '@palett/fluo-vector'
-import { AEU }            from '@spare/enum-chars'
+import { AEU }            from '@texting/enum-chars'
 import { liner }          from '@texting/liner'
 import { tableMargin }    from '@spare/table-margin'
 import { tablePadder }    from '@spare/table-padder'

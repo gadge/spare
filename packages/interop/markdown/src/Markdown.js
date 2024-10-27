@@ -60,9 +60,8 @@ export class Markdown {
     const { dash = RTSP, level, prefix, suffix, pad } = option
     entries = entriesMargin(entries, option) // use head, tail, keyRead, read, rule
     entries = pad ? entriesPadder(entries, option) : entries // use ansi, fill
-    return entries
-      .map(([ k, v ]) => (prefix ?? '') + k + dash + v.trimEnd() + (suffix ?? ''))
-      |> Liner({ delim, level })
+    return Liner({ delim, level })(entries
+      .map(([ k, v ]) => (prefix ?? '') + k + dash + v.trimEnd() + (suffix ?? '')))
   }
   /***
    *
@@ -91,11 +90,11 @@ export class Markdown {
     if (!height || !width || !labelWidth) return AEU
     table = tableMargin(table, option) // use: top, left, bottom ,right, read, headRead
     let { head, rule, rows } = tablePadder(table, option)// use: ansi, full
-    return [
+    return Liner({ delim: LF, level: option.level })([
       '| ' + head.join(' | ') + ' |',
       '| ' + rule.join(' | ') + ' |',
       ...rows.map(row => '| ' + row.join(' | ') + ' |')
-    ] |> Liner({ delim: LF, level: option.level })
+    ])
   }
 }
 

@@ -37,4 +37,4 @@ export const LIST = [
 ]
 
 export const SET = new Set(LIST.sort())
-SET |> console.log
+console.log(SET)

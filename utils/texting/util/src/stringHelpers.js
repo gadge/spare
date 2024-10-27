@@ -9,7 +9,7 @@ const totx = x => `${x}`
 
 const isTab = (c) => c === '\t' || c === ' '
 const tabify = (tx) => {
-  const i = tx |> deNaTab
+  const i = deNaTab(tx)
   return endsBracs(tx) ? tx : `${tx.substring(0, i)}[${tx.substring(i)}]`
 }
 const deNaTab = (tx) => {

@@ -1,5 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { SP }                     from '@spare/enum-chars'
+import { SP }                     from '@texting/enum-chars'
 import { TableTypo }              from './target/Typo.js'
 
 export { TableTypo }

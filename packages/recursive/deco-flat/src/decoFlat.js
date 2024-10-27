@@ -17,8 +17,8 @@ export function _decoFlat(lv, node) {
   if (t === FUN) return _decoFunc.call(DECOFUN_CONFIG, node)
   if (t === OBJ) {
     const pt = typ(node)
-    if (pt === ARRAY) return deVec.call(this, lv, node) |> BRK[lv & 7]
-    if (pt === OBJECT) return deOb.call(this, lv, node) |> BRC[lv & 7]
+    if (pt === ARRAY) return BRK[lv & 7](deVec.call(this, lv, node))
+    if (pt === OBJECT) return BRC[lv & 7](deOb.call(this, lv, node))
     if (pt === DATE) return decoDateTime(node)
     return `${node}`
   }

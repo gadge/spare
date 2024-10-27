@@ -35,7 +35,7 @@ export const foldToVector = function (text) {
 export const foldArc = function (text) {
   const context = this
   const delim = this?.delim ?? LF
-  const vec = text |> foldToVector.bind(context)
+  const vec = foldToVector.bind(context)(text)
   return vec.join(delim)
 }
 

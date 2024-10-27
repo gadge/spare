@@ -15,7 +15,7 @@ export const matches = (body, regex) => {
       diff: wd?.length,
       end: regex.lastIndex,
       match: wd,
-      group: group |> decoVector
+      group: decoVector(group)
     })
   }
   return samples
@@ -27,7 +27,7 @@ export const fracture = (body, regex) => {
   while ((ms = regex.exec(body)) && ([match, ...group] = ms)) {
     curr = ms.index
     block = body.slice(prev, curr)
-    samples.push({ prev, curr, block, match, group: group |> decoVector })
+    samples.push({ prev, curr, block, match, group: decoVector(group) })
     prev = regex.lastIndex
   }
   return samples

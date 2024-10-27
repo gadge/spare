@@ -1,6 +1,6 @@
-import { Roster } from './Roster'
-import { Steno }  from './Steno'
-import { Keep }   from './TextUtil'
+import { Roster } from './Roster.js'
+import { Steno }  from './Steno.js'
+import { Keep }   from './TextUtil.js'
 
 export class Rosters {
   static main = Roster.build() // ITALIC

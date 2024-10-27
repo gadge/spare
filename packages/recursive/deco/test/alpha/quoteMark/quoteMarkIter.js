@@ -8,8 +8,8 @@ const APOS = '\'', DITTO = '"', GRAV = '`'
 
 const logStatus = (text, l, ms, rx) => {
   const r = ms.index, n = rx.lastIndex;
-  (`${ text.slice(l, r) |> parenth|> decoString } ${ ms[0] |> parenth|> decoString }`) |> says['sp']
-    .br(l).p('->').br(r + ':' + n)
+  says['sp']
+    .br(l).p('->').br(r + ':' + n)((`${(decoString(parenth(text.slice(l, r))))} ${(decoString(parenth(ms[0])))}`))
 }
 export const parser = (text) => {
   const rx = /(?<!\\)['"`]/g
@@ -34,7 +34,7 @@ const candidates = [
 const test = () => {
   const decoPale = DecoPale({ quote: quote })
   for (let candidate of candidates) {
-    candidate |> decoPale|> parser |> decoVector |> says['test'].br(candidate |> decoPale|> decoString)
+    says['test'].br(decoString(decoPale(candidate)))(decoVector(parser(decoPale(candidate))))
   }
 }
 test()

@@ -24,7 +24,7 @@ export const cosmetics = function (samples) {
         delim, top, bottom, left, right, bracket, discrete, level, presets
       } = this
   let [ pick, head ] = fields
-    ? (lookupKeys.call(sample, fields) |> unwind)
+    ? (unwind(lookupKeys.call(sample, fields)))
     : [ keys, keys.slice() ]
   const { head: l, tail: r, dash: dashY } = sizing(pick, left, right)
   const { head: t, tail: b, dash: dashX } = sizing(samples, top, bottom)

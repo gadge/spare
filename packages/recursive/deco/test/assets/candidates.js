@@ -9,8 +9,8 @@ export const Basics = {
   null: null,
   undefined: undefined,
   boolean: Boolean(rand(2)),
-  string: StringVectorCollection.flopShuffle({}) |> flop,
-  number: NumberVectorCollection.flopShuffle({}) |> flop,
+  string: flop(StringVectorCollection.flopShuffle({})),
+  number: flop(NumberVectorCollection.flopShuffle({})),
   date: new Date()
 }
 

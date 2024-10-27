@@ -19,14 +19,14 @@ export const foldToVector = function (text) {
   }
   if (ls < text.length) lines.push(text.slice(ls))
   if (fli) lines[0] = lines[0].slice(fli)
-  lines |> deco |> logger
+  logger(deco(lines))
   return lines
 }
 
 export const fold = function (text) {
   const context = this
   const delim = this?.delim ?? ''
-  const vec = text |> foldToVector.bind(context)
+  const vec = foldToVector.bind(context)(text)
   return vec.join(delim)
 }
 

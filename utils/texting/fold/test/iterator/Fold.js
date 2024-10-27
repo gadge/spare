@@ -64,7 +64,7 @@ class It {
 }
 
 for (let [ key, quote ] of indexed(QUOTES)) {
-  LINE |> console.log
-  key + ': ' + It.chain(fold.text(quote, key.length + 2), '\n') |> console.log
-  LINE |> console.log
+  console.log(LINE)
+  console.log(key + ': ' + It.chain(fold.text(quote, key.length + 2), '\n'))
+  console.log(LINE)
 }

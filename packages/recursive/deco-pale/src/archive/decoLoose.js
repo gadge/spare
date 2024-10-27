@@ -18,12 +18,12 @@ export function decoValue(node) {
   const t = typeof node
   if (t === NUM || t === BOO) return node
   if (t === STR) return tenseQuote(node)
-  if (t === FUN) return _decoFunc.call(DEFN, node) |> tenseQuote
+  if (t === FUN) return tenseQuote(_decoFunc.call(DEFN, node))
   if (t === OBJ) {
     const pt = typ(node)
-    if (pt === ARRAY) return node.map(decoValue).join(COSP) |> bracket
-    if (pt === OBJECT) return mutate(Object.entries(node), decoKey, decoValue).map(pairEnt).join(COSP) |> brace
-    if (pt === DATE) return `${formatDate(node)}'${formatTime(node)}` |> tenseQuote
+    if (pt === ARRAY) return bracket(node.map(decoValue).join(COSP))
+    if (pt === OBJECT) return brace(mutate(Object.entries(node), decoKey, decoValue).map(pairEnt).join(COSP))
+    if (pt === DATE) return tenseQuote(`${formatDate(node)}'${formatTime(node)}`)
   }
-  return node.toString() |> tenseQuote
+  return tenseQuote(node.toString())
 }

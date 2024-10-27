@@ -87,7 +87,7 @@ export class Verse {
     p = presetMatrix(p)
     const { delim, level } = p
     const lines = _decoMatrix.call(p, matrix)
-    return joinLines(lines, delim, level) |> doBracket
+    return doBracket(joinLines(lines, delim, level))
   }
 
   /**
@@ -107,7 +107,7 @@ export class Verse {
     p = presetSamples(p)
     const { delim, level } = p
     const lines = _decoSamples.call(p, samples)
-    return joinLines(lines, delim, level) |> doBracket
+    return doBracket(joinLines(lines, delim, level))
   }
 
   /**
@@ -127,7 +127,7 @@ export class Verse {
    */
   static crostab(crostab, p = {}) {
     p = presetCrostab(p)
-    const { side, head, rows } = crostab |> matchSliceCrostab
+    const { side, head, rows } = matchSliceCrostab(crostab)
     const { delim, level, keyRead } = p
     const [ s, h, r ] = keyRead ? [ SIDE, HEAD, ROWS ].map(keyRead) : [ SIDE, HEAD, ROWS ]
     const lines = [
@@ -135,7 +135,7 @@ export class Verse {
       h + ': ' + Verse.vector(head, p),
       r + ': ' + Verse.matrix(rows, p)
     ]
-    return joinLines(lines, delim, level - 1) |> brace
+    return brace(joinLines(lines, delim, level - 1))
   }
 
   /**
@@ -155,7 +155,7 @@ export class Verse {
    */
   static table(table, p = {}) {
     p = presetTable(p)
-    const { head, rows } = table |> matchSliceTable
+    const { head, rows } = matchSliceTable(table)
     // if (!head?.length) return brace()
     const { delim, level, keyRead } = p
     const [ h, r ] = keyRead ? [ HEAD, ROWS ].map(keyRead) : [ HEAD, ROWS ]
@@ -163,7 +163,7 @@ export class Verse {
       h + ': ' + Verse.vector(head, p),
       r + ': ' + Verse.matrix(rows, p)
     ]
-    return joinLines(lines, delim, level - 1) |> brace
+    return brace(joinLines(lines, delim, level - 1))
   }
 }
 

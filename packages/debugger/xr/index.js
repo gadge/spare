@@ -1,6 +1,6 @@
-import { ProxyUtil }       from './src/ProxyUtil'
-import { Rosters, Stenos } from './src/singletons'
-import { Steno }           from './src/Steno'
+import { ProxyUtil }       from './src/ProxyUtil.js'
+import { Rosters, Stenos } from './src/singletons.js'
+import { Steno }           from './src/Steno.js'
 
 
 /**

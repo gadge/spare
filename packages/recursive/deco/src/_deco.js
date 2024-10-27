@@ -38,10 +38,10 @@ export function prettyNode(node, level = 0, indent) {
   if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this)
   if (t === OBJ) {
     const { depth } = this, pt = typ(node)
-    if (pt === ARRAY) return level >= depth ? '[array]' : deVe.call(this, node.slice(), level) |> BRK[level & 7]
-    if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> BRC[level & 7]
+    if (pt === ARRAY) return level >= depth ? '[array]' : BRK[level & 7](deVe.call(this, node.slice(), level))
+    if (pt === OBJECT) return level >= depth ? '{object}' : BRC[level & 7](deEn.call(this, Object.entries(node), level))
     if (pt === DATE) return level >= depth ? decoDate(node) : decoDateTime(node)
-    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [ ...node.entries() ], level) |> BRK[level & 7]
+    if (pt === MAP) return level >= depth ? '(map)' : BRK[level & 7](deEn.call(this, [ ...node.entries() ], level))
     if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [ ...node ], level)}]`
     return `${node}`
   }
@@ -56,10 +56,10 @@ export function plainNode(node, level = 0, indent) {
   if (t === FUN) return level >= this.depth ? funcName(node) : decoFunc(node, this)
   if (t === OBJ) {
     const { depth } = this, pt = typ(node)
-    if (pt === ARRAY) return level >= depth ? '[array]' : deVe.call(this, node.slice(), level) |> bracket
-    if (pt === OBJECT) return level >= depth ? '{object}' : deEn.call(this, Object.entries(node), level) |> brace
+    if (pt === ARRAY) return level >= depth ? '[array]' : bracket(deVe.call(this, node.slice(), level))
+    if (pt === OBJECT) return level >= depth ? '{object}' : brace(deEn.call(this, Object.entries(node), level))
     if (pt === DATE) return level >= depth ? formatDate(node) : formatDateTime(node)
-    if (pt === MAP) return level >= depth ? '(map)' : deEn.call(this, [ ...node.entries() ], level) |> bracket
+    if (pt === MAP) return level >= depth ? '(map)' : bracket(deEn.call(this, [ ...node.entries() ], level))
     if (pt === SET) return level >= depth ? '(set)' : `set:[${deVe.call(this, [ ...node ], level)}]`
     return `${node}`
   }

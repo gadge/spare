@@ -1,8 +1,8 @@
-import { min }                from '@aryth/comparer'
-import { bracket, parenth }   from '@texting/bracket'
+import { min } from '@aryth/comparer'
+import { bracket, parenth } from '@texting/bracket'
 import { clearAnsi, hasAnsi } from '@texting/charset-ansi'
 import { camelToSnake } from '@texting/phrasing'
-import { Rosters }      from './singletons'
+import { Rosters } from './singletons.js'
 
 export function identify(tx) {
   const pos = min(//.exec(tx)?.index, /\b\w/.exec(tx)?.index)
@@ -21,7 +21,7 @@ export class Keep {
   static make(fn) { return tx => hasBr(tx) ? tx : fn(tx) }
   /** @type {function} */ static bracket = Keep.make(bracket)
   /** @type {function} */ static parenth = Keep.make(parenth)
-  /** @type {function} */ static snakePrettyKey = Keep.make(x => x|> ansiOrSnake |> Rosters.main.get |> bracket)
+  /** @type {function} */ static snakePrettyKey = Keep.make(x => bracket(Rosters.main.get(ansiOrSnake(x))))
 }
 
 

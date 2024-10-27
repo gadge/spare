@@ -1,11 +1,10 @@
-import { LF }                      from '@spare/enum-chars'
-import { SP }                      from '@texting/enum-chars'
+import { LF } from '@spare/enum-chars'
+import { SP } from '@texting/enum-chars'
 import { DEF, NUM, OBJ, STR, SYM } from '@typen/enum-data-types'
-import { nullish, valid }          from '@typen/nullish'
-import { ProxyUtil }               from './ProxyUtil'
-import { Record }                  from './Record'
-import { identify, Keep }          from './TextUtil'
-
+import { nullish, valid } from '@typen/nullish'
+import { ProxyUtil } from './ProxyUtil.js'
+import { Record } from './Record.js'
+import { identify, Keep } from './TextUtil.js'
 
 /**
  * @type {function}
@@ -29,7 +28,7 @@ export class Steno extends Function {
       apply(steno, thisArg, args) {
         // `>> [proxy].call (${args}) (${+steno})`  |> console.log
         return console.log(steno.toString(), steno.renderMany(args).replace(/^ +/, '')), steno.proxy
-      },
+      }
     })
   }
 

@@ -12,6 +12,6 @@ export const paramNames = (fn) => {
 }
 
 for (const [name, func] of Object.entries(ComplexCollection)) {
-  paramNames(func) |> says[name]
+  says[name](paramNames(func))
 }
 

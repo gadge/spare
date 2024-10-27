@@ -1,4 +1,4 @@
-import { SP }                      from '@spare/enum-chars'
+import { SP }                      from '@texting/enum-chars'
 import { isNumeric }               from '@typen/num-strict'
 import { ansiPadLength }           from '../utils/ansiPadLength'
 import { lpad }                    from '../utils/LPad'

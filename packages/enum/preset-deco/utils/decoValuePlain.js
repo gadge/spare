@@ -19,8 +19,8 @@ export function decoValue (o) {
 
 const a = [[1], [2]]
 const b = { foo: 1, bar: 2, date: new Date(), kha: [[1], [2, 3]] }
-decoValue(a) |> logger
-decoValue(b) |> logger
+logger(decoValue(a))
+logger(decoValue(b))
 
 
 

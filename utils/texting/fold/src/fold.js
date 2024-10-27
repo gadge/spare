@@ -23,7 +23,7 @@ export const foldToVector = function (text) {
 export const fold = function (text) {
   const context = this
   const delim = this?.delim ?? LF
-  const lines = text |> foldToVector.bind(context)
+  const lines = foldToVector.bind(context)(text)
   return lines.join(delim)
 }
 
