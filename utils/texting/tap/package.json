@@ -1,6 +1,6 @@
 {
   "name": "@spare/tap",
-  "version": "0.15.16",
+  "version": "0.16.0",
   "description": "Join strings together",
   "type": "module",
   "exports": "./dist/index.js",
