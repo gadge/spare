@@ -2,14 +2,14 @@
   "name": "@spare/charset",
   "version": "0.15.16",
   "description": "Regex sets",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/regex-charset": "^0.15.16"
+    "@spare/regex-charset": "workspace:^"
   },
   "repository": {
     "type": "git",

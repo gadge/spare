@@ -2,14 +2,14 @@
   "name": "@spare/deco-crostab",
   "version": "0.15.16",
   "description": "A debugging tool",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -19,11 +19,19 @@
   },
   "dependencies": {
     "@palett/presets": "^0.11.6",
-    "@spare/deco": "^0.15.16",
-    "@texting/enum-chars": "^0.1.13",
+    "@spare/deco": "workspace:^",
+    "@spare/deco-table": "workspace:^",
+    "@spare/enum-chars": "workspace:^",
+    "@texting/enum-chars": "^0.2.1",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/matrix-index": "^0.7.20",
-    "@vect/vector-init": "^0.7.20"
+    "@vect/matrix-index": "^0.8.0",
+    "@vect/vector-init": "^0.8.0"
+  },
+  "devDependencies": {
+    "@spare/xr": "workspace:^",
+    "@typen/num-strict": "^0.1.19",
+    "@valjoux/timestamp-pretty": "^0.3.21",
+    "@vect/vector-index": "^0.8.0"
   },
   "repository": {
     "type": "git",
@@ -41,8 +49,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "013714aadebaa9af337026663bf023dd382725c7",
-  "devDependencies": {
-    "@vect/vector-index": "^0.7.20"
-  }
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }

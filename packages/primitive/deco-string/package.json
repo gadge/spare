@@ -2,14 +2,14 @@
   "name": "@spare/deco-string",
   "version": "0.15.16",
   "description": "Color a string",
-  "main": "./dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -21,11 +21,11 @@
     "@palett/enum-colorant-modes": "^0.11.6",
     "@palett/fluo-vector": "^0.11.6",
     "@palett/presets": "^0.11.6",
-    "@spare/deco": "^0.15.16",
-    "@texting/charset-ansi": "^0.1.13",
-    "@texting/enum-chars": "^0.1.13",
-    "@texting/fold": "^0.1.13",
-    "@texting/splitter": "^0.1.13"
+    "@spare/deco": "workspace:^",
+    "@texting/charset-ansi": "^0.2.1",
+    "@texting/enum-chars": "^0.2.1",
+    "@texting/fold": "^0.2.1",
+    "@texting/splitter": "^0.2.1"
   },
   "repository": {
     "type": "git",

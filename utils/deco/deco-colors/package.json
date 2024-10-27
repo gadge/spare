@@ -2,14 +2,14 @@
   "name": "@spare/deco-colors",
   "version": "0.15.16",
   "description": "A light and simple console debug tool.",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -22,8 +22,8 @@
     "@palett/convert": "^0.11.6",
     "@palett/dye": "^0.11.6",
     "@palett/presets": "^0.11.6",
-    "@spare/preset-deco": "^0.15.16",
-    "@vect/object-mapper": "^0.7.20"
+    "@spare/preset-deco": "workspace:^",
+    "@vect/object-mapper": "^0.8.0"
   },
   "repository": {
     "type": "git",

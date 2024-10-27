@@ -2,14 +2,14 @@
   "name": "@spare/deco-flat",
   "version": "0.15.16",
   "description": "Colored stringify",
-  "main": "./dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -19,15 +19,15 @@
   },
   "dependencies": {
     "@palett/presets": "^0.11.6",
-    "@spare/deco": "^0.15.16",
-    "@spare/deco-colors": "^0.15.16",
-    "@spare/deco-date": "^0.15.16",
-    "@spare/deco-func": "^0.15.16",
+    "@spare/deco": "workspace:^",
+    "@spare/deco-colors": "workspace:^",
+    "@spare/deco-date": "workspace:^",
+    "@spare/deco-func": "workspace:^",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-loose": "^0.1.19",
     "@typen/typ": "^0.1.19",
-    "@vect/object-mapper": "^0.7.20"
+    "@vect/object-mapper": "^0.8.0"
   },
   "repository": {
     "type": "git",

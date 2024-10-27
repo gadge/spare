@@ -2,14 +2,14 @@
   "name": "@spare/deco-samples",
   "version": "0.15.16",
   "description": "A debugging tool",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,25 +18,25 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@analys/convert": "^0.6.14",
-    "@analys/samples-select": "^0.6.14",
-    "@aryth/math": "^0.6.9",
+    "@analys/convert": "^0.7.2",
+    "@analys/samples-select": "^0.7.2",
+    "@aryth/math": "^0.7.0",
     "@palett/enum-colorant-modes": "^0.11.6",
     "@palett/fluo-matrix": "^0.11.6",
     "@palett/fluo-vector": "^0.11.6",
-    "@spare/deco-config": "^0.15.16",
-    "@spare/deco-flat": "^0.15.16",
-    "@spare/deco-vector": "^0.15.16",
-    "@spare/enum-brackets": "^0.15.16",
-    "@spare/enum-chars": "^0.15.16",
-    "@spare/matrix-padder": "^0.15.16",
-    "@spare/preset-deco": "^0.15.16",
-    "@spare/table-margin": "^0.15.16",
-    "@spare/vector-padder": "^0.15.16",
-    "@texting/liner": "^0.1.13",
+    "@spare/deco-config": "workspace:^",
+    "@spare/deco-flat": "workspace:^",
+    "@spare/deco-vector": "workspace:^",
+    "@spare/enum-brackets": "workspace:^",
+    "@spare/enum-chars": "workspace:^",
+    "@spare/matrix-padder": "workspace:^",
+    "@spare/preset-deco": "workspace:^",
+    "@spare/table-margin": "workspace:^",
+    "@spare/vector-padder": "workspace:^",
+    "@texting/liner": "^0.2.1",
     "@vect/entries-unwind": "^0.6.13",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/vector-zipper": "^0.7.20"
+    "@vect/vector-zipper": "^0.8.0"
   },
   "repository": {
     "type": "git",

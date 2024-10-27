@@ -2,14 +2,14 @@
   "name": "@spare/logger",
   "version": "0.15.16",
   "description": "A debugging tool",
-  "main": "./dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,21 +18,21 @@
     "test": "node -r @babel/register test/logger.test.js"
   },
   "dependencies": {
-    "@spare/deco": "^0.15.16",
-    "@spare/deco-crostab": "^0.15.16",
-    "@spare/deco-entries": "^0.15.16",
-    "@spare/deco-flat": "^0.15.16",
-    "@spare/deco-func": "^0.15.16",
-    "@spare/deco-matrix": "^0.15.16",
-    "@spare/deco-object": "^0.15.16",
-    "@spare/deco-pale": "^0.15.16",
-    "@spare/deco-samples": "^0.15.16",
-    "@spare/deco-string": "^0.15.16",
-    "@spare/deco-table": "^0.15.16",
-    "@spare/deco-vector": "^0.15.16",
-    "@spare/says": "^0.15.16",
-    "@spare/xr": "^0.15.16",
-    "@texting/enum-chars": "^0.1.13"
+    "@spare/deco": "workspace:^",
+    "@spare/deco-crostab": "workspace:^",
+    "@spare/deco-entries": "workspace:^",
+    "@spare/deco-flat": "workspace:^",
+    "@spare/deco-func": "workspace:^",
+    "@spare/deco-matrix": "workspace:^",
+    "@spare/deco-object": "workspace:^",
+    "@spare/deco-pale": "workspace:^",
+    "@spare/deco-samples": "workspace:^",
+    "@spare/deco-string": "workspace:^",
+    "@spare/deco-table": "workspace:^",
+    "@spare/deco-vector": "workspace:^",
+    "@spare/says": "workspace:^",
+    "@spare/xr": "workspace:^",
+    "@texting/enum-chars": "^0.2.1"
   },
   "repository": {
     "type": "git",

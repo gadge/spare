@@ -2,14 +2,14 @@
   "name": "@spare/field-padder",
   "version": "0.15.16",
   "description": "Pad field (keyed column)",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,16 +18,16 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.6.9",
-    "@spare/enum-chars": "^0.15.16",
-    "@spare/enum-full-angle-chars": "^0.15.16",
-    "@spare/fullwidth": "^0.15.16",
-    "@texting/enum-chars": "^0.1.13",
-    "@texting/enum-chars-fullwidth": "^0.1.13",
-    "@texting/lange": "^0.1.13",
-    "@texting/padder": "^0.1.13",
+    "@aryth/comparer": "^0.7.0",
+    "@spare/enum-chars": "workspace:^",
+    "@spare/enum-full-angle-chars": "workspace:^",
+    "@spare/fullwidth": "workspace:^",
+    "@texting/enum-chars": "^0.2.1",
+    "@texting/enum-chars-fullwidth": "^0.2.1",
+    "@texting/lange": "^0.2.1",
+    "@texting/padder": "^0.2.1",
     "@vect/vector-indicator": "^0.6.13",
-    "@vect/vector-mapper": "^0.7.20"
+    "@vect/vector-mapper": "^0.8.0"
   },
   "repository": {
     "type": "git",

@@ -2,14 +2,14 @@
   "name": "@spare/deco-pale",
   "version": "0.15.16",
   "description": "Colored stringify",
-  "main": "./dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,24 +18,24 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/cite": "^0.15.16",
-    "@spare/deco-config": "^0.15.16",
-    "@spare/deco-func": "^0.15.16",
-    "@spare/deco-object": "^0.15.16",
-    "@spare/deco-util": "^0.15.16",
-    "@spare/deco-vector": "^0.15.16",
-    "@spare/enum-brackets": "^0.15.16",
-    "@spare/enum-chars": "^0.15.16",
-    "@spare/preset-deco": "^0.15.16",
-    "@spare/quote": "^0.15.16",
-    "@texting/bracket": "^0.1.13",
+    "@spare/cite": "workspace:^",
+    "@spare/deco-config": "workspace:^",
+    "@spare/deco-func": "workspace:^",
+    "@spare/deco-object": "workspace:^",
+    "@spare/deco-util": "workspace:^",
+    "@spare/deco-vector": "workspace:^",
+    "@spare/enum-brackets": "workspace:^",
+    "@spare/enum-chars": "workspace:^",
+    "@spare/preset-deco": "workspace:^",
+    "@spare/quote": "workspace:^",
+    "@texting/bracket": "^0.2.1",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/enum-object-types": "^0.1.19",
     "@typen/num-strict": "^0.1.19",
     "@typen/typ": "^0.1.19",
     "@valjoux/format-date": "^0.3.21",
     "@valjoux/format-time": "^0.3.21",
-    "@vect/entries-mapper": "^0.7.20"
+    "@vect/entries-mapper": "^0.8.0"
   },
   "repository": {
     "type": "git",

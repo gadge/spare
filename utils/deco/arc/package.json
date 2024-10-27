@@ -2,14 +2,14 @@
   "name": "@spare/arc",
   "version": "0.15.16",
   "description": "Arc",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,16 +18,16 @@
     "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@aryth/bound": "^0.6.9",
+    "@aryth/bound": "^0.7.0",
     "@palett/projector": "^0.11.6",
-    "@texting/lange": "^0.1.13",
-    "@texting/padder": "^0.1.13",
-    "@texting/string-value": "^0.1.13",
+    "@texting/lange": "^0.2.1",
+    "@texting/padder": "^0.2.1",
+    "@texting/string-value": "^0.2.1",
     "@typen/enum-data-types": "^0.1.19",
     "@typen/literal": "^0.1.19",
     "@typen/num-strict": "^0.1.19",
-    "@vect/matrix-index": "^0.7.20",
-    "@vect/matrix-init": "^0.7.20",
+    "@vect/matrix-index": "^0.8.0",
+    "@vect/matrix-init": "^0.8.0",
     "@vect/vector-indicator": "^0.6.13"
   },
   "repository": {

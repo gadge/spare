@@ -2,14 +2,14 @@
   "name": "@spare/verse",
   "version": "0.15.16",
   "description": "A debugging tool",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,18 +18,18 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@analys/crostab-init": "^0.6.14",
-    "@analys/table-init": "^0.6.14",
-    "@spare/deco-entries": "^0.15.16",
-    "@spare/deco-matrix": "^0.15.16",
-    "@spare/deco-object": "^0.15.16",
-    "@spare/deco-samples": "^0.15.16",
-    "@spare/deco-vector": "^0.15.16",
-    "@spare/enum-brackets": "^0.15.16",
-    "@spare/preset-verse": "^0.15.16",
-    "@spare/quote": "^0.15.16",
-    "@texting/bracket": "^0.1.13",
-    "@texting/liner": "^0.1.13"
+    "@analys/crostab-init": "^0.7.2",
+    "@analys/table-init": "^0.7.2",
+    "@spare/deco-entries": "workspace:^",
+    "@spare/deco-matrix": "workspace:^",
+    "@spare/deco-object": "workspace:^",
+    "@spare/deco-samples": "workspace:^",
+    "@spare/deco-vector": "workspace:^",
+    "@spare/enum-brackets": "workspace:^",
+    "@spare/preset-verse": "workspace:^",
+    "@spare/quote": "workspace:^",
+    "@texting/bracket": "^0.2.1",
+    "@texting/liner": "^0.2.1"
   },
   "repository": {
     "type": "git",

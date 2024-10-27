@@ -2,14 +2,14 @@
   "name": "@spare/matrix-padder",
   "version": "0.15.16",
   "description": "A debugging tool",
-  "main": "dist/index.cjs",
-  "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -18,11 +18,14 @@
     "test": "node -r @babel/register test/matrix-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.6.9",
-    "@texting/lange": "^0.1.13",
-    "@texting/padder": "^0.1.13",
-    "@vect/columns-stat": "^0.7.20",
-    "@vect/matrix-zipper": "^0.7.20"
+    "@aryth/comparer": "^0.7.0",
+    "@texting/charset-fullwidth": "^0.2.1",
+    "@texting/lange": "^0.2.1",
+    "@texting/padder": "^0.2.1",
+    "@vect/columns-mapper": "^0.8.0",
+    "@vect/columns-stat": "^0.8.0",
+    "@vect/matrix-mapper": "^0.8.0",
+    "@vect/matrix-zipper": "^0.8.0"
   },
   "repository": {
     "type": "git",
