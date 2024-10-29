@@ -1,4 +1,4 @@
-import { delogger } from '../index'
-import { Deco }     from '../src/logger'
+import { delogger } from '../index.js'
+import { Deco }     from '../src/logger.js'
 
-Deco({ top: 2 })|> delogger
+delogger(Deco({ top: 2 }))

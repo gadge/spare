@@ -2,7 +2,7 @@ import { flop, flopValue }                          from '@aryth/rand'
 import { Quotes }                                   from '@foba/quotes-creativity'
 import { METRO, PAGODA, SUBTLE }                    from '@palett/presets'
 import { deco }                                     from '../index.js'
-import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates'
+import { Basics, Matrices, Misc, Objects, Vectors } from './assets/candidates.js'
 
 const CANDIDATES = {
   ...Basics,
@@ -10,7 +10,7 @@ const CANDIDATES = {
   ...Matrices,
   ...Objects,
   ...Misc,
-  ...(Quotes|> flopValue |> flop)
+  ...(flop(flopValue(Quotes)))
 }
 
 const WD = 54
@@ -23,10 +23,10 @@ const CONF = {
   broad: true
 }
 
-LINE |> console.log
-deco(CANDIDATES, CONF) |> console.log
-LINE |> console.log
-deco([ 'foo', 'bar' ]) |> console.log
+console.log(LINE)
+console.log(deco(CANDIDATES, CONF))
+console.log(LINE)
+console.log(deco([ 'foo', 'bar' ]))
 
-null |> deco |> console.log;
-({ some: null }) |> deco |> console.log
+console.log(deco(null))
+console.log(deco(({ some: null })))

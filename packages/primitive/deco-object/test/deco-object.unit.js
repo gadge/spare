@@ -14,9 +14,9 @@ let SimpleObjects = Object.fromEntries([
 ])
 
 
-SimpleObjects |> console.log
+console.log(SimpleObjects)
 
 for (const [ key, obj ] of indexed(SimpleObjects)) {
   const decoObject = DecoObject({ thres: 0, pres: { str: SUBTLE, num: PAGODA } })
-  key + RTSP + decoObject(obj) |> console.log
+  console.log(key + RTSP + decoObject(obj))
 }

@@ -1,8 +1,8 @@
-import { fileInfo } from 'rollup-plugin-fileinfo'
-import json from '@rollup/plugin-json'
-import { readFile } from 'fs/promises'
+import { fileInfo }   from 'rollup-plugin-fileinfo'
+import json           from '@rollup/plugin-json'
+import { readFile }   from 'fs/promises'
 import { subFolders } from '@acq/path'
-import { resolve } from "node:path";
+import { resolve }    from 'node:path'
 
 const tasks = {}
 for await(const space of [ 'packages', 'utils' ]) {

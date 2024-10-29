@@ -33,6 +33,6 @@ const CONF = {
   width: WD
 }
 
-LINE |> console.log
-deco(NESTED, CONF) |> console.log
-LINE |> console.log
+console.log(LINE)
+console.log(deco(NESTED, CONF))
+console.log(LINE)
