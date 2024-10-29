@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "A sentence builder",
   "type": "module",
   "exports": "./dist/index.js",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@ject/mixin": "^0.0.17",
-    "@spare/enum-loggers": "^0.16.0",
+    "@spare/enum-loggers": "^0.16.1",
     "@valjoux/timestamp-pretty": "^0.4.0"
   },
   "repository": {

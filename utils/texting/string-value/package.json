@@ -1,6 +1,6 @@
 {
   "name": "@spare/string-value",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "Get quasi pseudo value of a string",
   "type": "module",
   "exports": "./dist/index.js",

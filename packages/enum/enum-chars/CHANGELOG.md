@@ -1,5 +1,11 @@
 # @spare/enum-chars
 
+## 0.16.1
+
+### Patch Changes
+
+- minor fix
+
 ## 0.16.0
 
 ### Minor Changes

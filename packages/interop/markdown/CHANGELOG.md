@@ -1,5 +1,18 @@
 # @spare/markdown
 
+## 0.16.1
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-chars@0.16.1
+  - @spare/entries-margin@0.16.1
+  - @spare/matrix-margin@0.16.1
+  - @spare/vector-margin@0.16.1
+  - @spare/entries-padder@0.16.1
+  - @spare/table-padder@0.16.1
+
 ## 0.16.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # @spare/vector-margin
 
+## 0.16.1
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/util@0.16.1
+
 ## 0.16.0
 
 ### Minor Changes
