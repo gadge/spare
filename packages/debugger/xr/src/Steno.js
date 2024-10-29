@@ -1,10 +1,10 @@
-import { LF } from '@spare/enum-chars'
-import { SP } from '@texting/enum-chars'
+import { LF }                      from '@spare/enum-chars'
+import { SP }                      from '@texting/enum-chars'
 import { DEF, NUM, OBJ, STR, SYM } from '@typen/enum-data-types'
-import { nullish, valid } from '@typen/nullish'
-import { ProxyUtil } from './ProxyUtil.js'
-import { Record } from './Record.js'
-import { identify, Keep } from './TextUtil.js'
+import { nullish, valid }          from '@typen/nullish'
+import { ProxyUtil }               from './ProxyUtil.js'
+import { Record }                  from './Record.js'
+import { identify, Keep }          from './TextUtil.js'
 
 /**
  * @type {function}
