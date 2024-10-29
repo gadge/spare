@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-entries.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.11.6",
+    "@palett/presets": "^0.12.0",
     "@spare/deco": "workspace:^",
     "@texting/enum-chars": "^0.2.1"
   },

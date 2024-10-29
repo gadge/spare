@@ -23,8 +23,8 @@
     "@texting/enum-chars": "^0.2.1",
     "@texting/enum-chars-fullwidth": "^0.2.1",
     "@texting/lange": "^0.2.1",
-    "@typen/nullish": "^0.1.19",
-    "@typen/num-strict": "^0.1.19"
+    "@typen/nullish": "^0.2.0",
+    "@typen/num-strict": "^0.2.0"
   },
   "repository": {
     "type": "git",

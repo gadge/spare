@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.11.6",
+    "@palett/presets": "^0.12.0",
     "@spare/deco": "workspace:^",
     "@spare/deco-table": "workspace:^",
     "@spare/enum-chars": "workspace:^",
@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@spare/xr": "workspace:^",
-    "@typen/num-strict": "^0.1.19",
-    "@valjoux/timestamp-pretty": "^0.3.21",
+    "@typen/num-strict": "^0.2.0",
+    "@valjoux/timestamp-pretty": "^0.4.0",
     "@vect/vector-index": "^0.8.0"
   },
   "repository": {

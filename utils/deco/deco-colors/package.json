@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.11.6",
-    "@palett/convert": "^0.11.6",
-    "@palett/dye": "^0.11.6",
-    "@palett/presets": "^0.11.6",
+    "@palett/cards": "^0.12.0",
+    "@palett/convert": "^0.12.0",
+    "@palett/dye": "^0.12.0",
+    "@palett/presets": "^0.12.0",
     "@spare/preset-deco": "workspace:^",
     "@vect/object-mapper": "^0.8.0"
   },

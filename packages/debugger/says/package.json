@@ -19,16 +19,16 @@
   },
   "dependencies": {
     "@ject/callable": "^0.0.17",
-    "@palett/convert": "^0.11.6",
-    "@palett/dye": "^0.11.6",
-    "@palett/enum-font-effects": "^0.11.6",
-    "@palett/flopper": "^0.11.6",
+    "@palett/convert": "^0.12.0",
+    "@palett/dye": "^0.12.0",
+    "@palett/enum-font-effects": "^0.12.0",
+    "@palett/flopper": "^0.12.0",
     "@spare/deco-string": "workspace:^",
     "@spare/enum-chars": "workspace:^",
     "@spare/util": "workspace:^",
     "@texting/bracket": "^0.2.1",
-    "@typen/enum-data-types": "^0.1.19",
-    "@typen/enums": "^0.1.19",
+    "@typen/enum-data-types": "^0.2.0",
+    "@typen/enums": "^0.2.0",
     "@vect/object-mapper": "^0.8.0"
   },
   "repository": {

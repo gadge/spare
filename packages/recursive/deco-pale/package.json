@@ -29,12 +29,12 @@
     "@spare/preset-deco": "workspace:^",
     "@spare/quote": "workspace:^",
     "@texting/bracket": "^0.2.1",
-    "@typen/enum-data-types": "^0.1.19",
-    "@typen/enum-object-types": "^0.1.19",
-    "@typen/num-strict": "^0.1.19",
-    "@typen/typ": "^0.1.19",
-    "@valjoux/format-date": "^0.3.21",
-    "@valjoux/format-time": "^0.3.21",
+    "@typen/enum-data-types": "^0.2.0",
+    "@typen/enum-object-types": "^0.2.0",
+    "@typen/num-strict": "^0.2.0",
+    "@typen/typ": "^0.2.0",
+    "@valjoux/format-date": "^0.4.0",
+    "@valjoux/format-time": "^0.4.0",
     "@vect/entries-mapper": "^0.8.0"
   },
   "repository": {

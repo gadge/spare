@@ -18,15 +18,15 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.11.6",
+    "@palett/presets": "^0.12.0",
     "@spare/deco": "workspace:^",
     "@spare/deco-colors": "workspace:^",
     "@spare/deco-date": "workspace:^",
     "@spare/deco-func": "workspace:^",
-    "@typen/enum-data-types": "^0.1.19",
-    "@typen/enum-object-types": "^0.1.19",
-    "@typen/num-loose": "^0.1.19",
-    "@typen/typ": "^0.1.19",
+    "@typen/enum-data-types": "^0.2.0",
+    "@typen/enum-object-types": "^0.2.0",
+    "@typen/num-loose": "^0.2.0",
+    "@typen/typ": "^0.2.0",
     "@vect/object-mapper": "^0.8.0"
   },
   "repository": {

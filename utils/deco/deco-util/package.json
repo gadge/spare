@@ -40,6 +40,6 @@
   "homepage": "https://github.com/gadge/spare#readme",
   "gitHead": "013714aadebaa9af337026663bf023dd382725c7",
   "devDependencies": {
-    "@typen/numeral": "^0.1.19"
+    "@typen/numeral": "^0.2.0"
   }
 }
