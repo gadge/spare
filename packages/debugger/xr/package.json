@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@ject/mixin": "^0.0.17",
-    "@spare/enum-loggers": "^0.16.1",
+    "@spare/enum-loggers": "workspace:^",
     "@valjoux/timestamp-pretty": "^0.4.0"
   },
   "repository": {

@@ -280,8 +280,8 @@ importers:
         specifier: ^0.0.17
         version: 0.0.17
       '@spare/enum-loggers':
-        specifier: ^0.16.0
-        version: 0.16.0
+        specifier: workspace:^
+        version: link:../../enum/enum-loggers
       '@valjoux/timestamp-pretty':
         specifier: ^0.4.0
         version: 0.4.0
@@ -2294,10 +2294,6 @@ packages:
 
   '@spare/enum-full-angle-chars@0.16.0':
     resolution: {integrity: sha512-Sen8rxi0f8fqulM1z8nurIxuHxBn8eGS98JM7ZD4gVuPKIXtMh/a9grGDiZKqKS8Xhvi/ZiJXW0LGHCghtny+w==}
-    engines: {node: '>=22.0.0'}
-
-  '@spare/enum-loggers@0.16.0':
-    resolution: {integrity: sha512-Bm4KaIC4Jo0E5lNjMdt91FBbfli6nm48HllKi6WyaSTmkSHtf1C9cdDE7gwZNIs1yA44m4rTxX6rWPgN6tZlDQ==}
     engines: {node: '>=22.0.0'}
 
   '@spare/phrasing@0.16.0':
@@ -5963,8 +5959,6 @@ snapshots:
   '@spare/enum-full-angle-chars@0.15.16': {}
 
   '@spare/enum-full-angle-chars@0.16.0': {}
-
-  '@spare/enum-loggers@0.16.0': {}
 
   '@spare/phrasing@0.16.0':
     dependencies:
