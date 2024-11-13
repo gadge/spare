@@ -10,8 +10,8 @@
 [![github last commit](https://img.shields.io/github/last-commit/gadge/spare?logo=github&style=flat-square)][url-github]
 [![github commits](https://img.shields.io/github/commit-activity/t/gadge/spare?logo=github&style=flat-square)][url-github]
 [![node version](https://img.shields.io/node/v/@spare/deco/latest?logo=node.js&style=flat-square)]()
-[![github repo size](https://img.shields.io/github/repo-size/crostab/analys)]()
-[![github code size](https://img.shields.io/github/languages/code-size/crostab/analys)]()
+[![github repo size](https://img.shields.io/github/repo-size/gadge/spare)]()
+[![github code size](https://img.shields.io/github/languages/code-size/gadge/spare)]()
 
 [//]: <> (Link)
 
