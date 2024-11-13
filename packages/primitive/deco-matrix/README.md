@@ -1,4 +1,4 @@
-## @spare/decoPale-rows
+## @spare/deco-rows
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,7 +15,7 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/decoPale-rows
+$ npm install @spare/deco-rows
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ import { Temp } from '@spare/logger-rows'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
@@ -40,5 +40,5 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/deco-rows
 [quality-url]: http://packagequality.com/#?package=@spare/deco-rows
-[github-url]: https://github.com/hoyeungw/@spare/deco-rows
+[github-url]: https://github.com/gadge/@spare/deco-rows
 [size-url]: https://packagephobia.now.sh/result?p=@spare/deco-rows

@@ -1,4 +1,4 @@
-## @spare/decoPale-crostab
+## @spare/deco-crostab
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,7 +15,7 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/decoPale-crostab
+$ npm install @spare/deco-crostab
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ import { Temp } from '@spare/logger-crostab'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
@@ -40,5 +40,5 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/deco-crostab
 [quality-url]: http://packagequality.com/#?package=@spare/deco-crostab
-[github-url]: https://github.com/hoyeungw/@spare/deco-crostab
+[github-url]: https://github.com/gadge/@spare/deco-crostab
 [size-url]: https://packagephobia.now.sh/result?p=@spare/deco-crostab

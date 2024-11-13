@@ -1,4 +1,4 @@
-## @spare/preset-decoPale
+## @spare/preset-deco
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,7 +15,7 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/preset-decoPale
+$ npm install @spare/preset-deco
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ import { Temp } from '@spare/logger-vector'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
@@ -40,5 +40,5 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/preset-deco
 [quality-url]: http://packagequality.com/#?package=@spare/preset-deco
-[github-url]: https://github.com/hoyeungw/@spare/preset-deco
+[github-url]: https://github.com/gadge/@spare/preset-deco
 [size-url]: https://packagephobia.now.sh/result?p=@spare/preset-deco

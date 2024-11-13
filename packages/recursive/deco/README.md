@@ -1,29 +1,37 @@
-## @spare/decoPale
-A stringify tool to javascript object
+<div align="center">
+  <img alt="banner" src="../../../media/spare-banner.svg">
+  <p align="center">@spare/deco - light and simple debug tool</p>
+</div>
 
-[![npm version][npm-image]][npm-url]
-[![npm quality][quality-image]][quality-url]
-[![npm download][download-image]][npm-url]
-[![npm total-download][total-download-image]][npm-url]
-[![size][size]][size-url]
-[![npm license][license-image]][npm-url]
+[![npm-version](https://img.shields.io/npm/v/@spare/deco?logo=npm&style=flat-square)][url-npm]
+[![npm-downloads](https://img.shields.io/npm/dm/@spare/deco?logo=npm&style=flat-square)]()
+[![npm-dependents](https://img.shields.io/librariesio/dependents/npm/@spare/deco?logo=npm&style=flat-square)]()
+[![npm-last-update](https://img.shields.io/npm/last-update/@spare/deco?logo=npm&style=flat-square)]()
+[![npm-maintenance](https://img.shields.io/npms-io/maintenance-score/@spare/deco?logo=npm&style=flat-square)]()
+[![npm-license](https://img.shields.io/npm/l/@spare/deco?logo=npm&style=flat-square)]()
+[![node-version](https://img.shields.io/node/v/@spare/deco/latest?logo=node.js&style=flat-square)]()
+[![lang-version](https://img.shields.io/badge/ECMAScript-6-F7DF1E?logo=javascript&style=flat-square)]()
+[![npm-unpacked-size](https://img.shields.io/npm/unpacked-size/@spare/deco?logo=hackthebox&style=flat-square)]()
+[![pp-install-size](https://flat.badgen.net/packagephobia/install/@spare/deco?icon=npm)]()
+[![pp-publish-size](https://flat.badgen.net/packagephobia/publish/@spare/deco?icon=npm)]()
 
-## Features
+[//]: <> (Link)
 
-- ES2015 syntax
+[url-github]: https://github.com/gadge/spare
+[url-npm]: https://npmjs.org/package/@spare/deco
 
 ## Install
 ```console
-$ npm install @spare/decoPale
+$ npm install @spare/deco
 ```
 
 ## Usage
 ```js
-import { Temp } from '@spare/decoPale'
+import { Temp } from '@spare/deco'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 

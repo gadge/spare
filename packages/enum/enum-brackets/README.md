@@ -35,7 +35,7 @@ for (let tx of list) {
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
@@ -51,5 +51,5 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/enum-brackets
 [quality-url]: http://packagequality.com/#?package=@spare/enum-brackets
-[github-url]: https://github.com/hoyeungw/@spare/enum-brackets
+[github-url]: https://github.com/gadge/@spare/enum-brackets
 [size-url]: https://packagephobia.now.sh/result?p=@spare/enum-brackets

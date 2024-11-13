@@ -1,16 +1,26 @@
-## @spare/xr
-A stringify tool to javascript object
+<div align="center">
+  <img alt="banner" src="../../../media/spare-banner.svg">
+  <p align="center">@spare/xr - add parenthesis and brackets in console log</p>
+</div>
 
-[![npm version][npm-image]][npm-url]
-[![npm quality][quality-image]][quality-url]
-[![npm download][download-image]][npm-url]
-[![npm total-download][total-download-image]][npm-url]
-[![size][size]][size-url]
-[![npm license][license-image]][npm-url]
+[![npm-version](https://img.shields.io/npm/v/@spare/xr?logo=npm&style=flat-square)][url-npm]
+[![npm-downloads](https://img.shields.io/npm/dm/@spare/xr?logo=npm&style=flat-square)]()
+[![npm-dependents](https://img.shields.io/librariesio/dependents/npm/@spare/xr?logo=npm&style=flat-square)]()
+[![npm-last-update](https://img.shields.io/npm/last-update/@spare/xr?logo=npm&style=flat-square)]()
+[![npm-maintenance](https://img.shields.io/npms-io/maintenance-score/@spare/xr?logo=npm&style=flat-square)]()
+[![npm-license](https://img.shields.io/npm/l/@spare/xr?logo=npm&style=flat-square)]()
+[![github-commit](https://img.shields.io/github/commit-activity/t/gadge/spare?logo=github&style=flat-square)][url-github]
+[![node-version](https://img.shields.io/node/v/@spare/xr/latest?logo=node.js&style=flat-square)]()
+[![npm-unpacked-size](https://img.shields.io/npm/unpacked-size/@spare/xr?logo=hackthebox&style=flat-square)]()
+
+[//]: <> (Link)
+
+[url-github]: https://github.com/gadge/spare
+[url-npm]: https://npmjs.org/package/@spare/xr
 
 ## Features
 
-- ES2015 syntax
+- Add parenthesis and brackets in console log
 
 ## Install
 ```console
@@ -23,7 +33,7 @@ import { Temp } from '@spare/xr'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 

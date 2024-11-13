@@ -1,42 +1,40 @@
-## @spare/decoPale-func
-Colored stringify date
+<div align="center">
+  <img alt="banner" src="../../../media/spare-banner.svg">
+  <p align="center">@spare/deco-flat - flatten deco</p>
+</div>
 
-[![npm version][npm-image]][npm-url]
-[![npm quality][quality-image]][quality-url]
-[![npm download][download-image]][npm-url]
-[![npm total-download][total-download-image]][npm-url]
-[![size][size]][size-url]
-[![npm license][license-image]][npm-url]
+[![npm-version](https://img.shields.io/npm/v/@spare/deco-flat?logo=npm&style=flat-square)][url-npm]
+[![npm-downloads](https://img.shields.io/npm/dm/@spare/deco-flat?logo=npm&style=flat-square)]()
+[![npm-dependents](https://img.shields.io/librariesio/dependents/npm/@spare/deco-flat?logo=npm&style=flat-square)]()
+[![npm-last-update](https://img.shields.io/npm/last-update/@spare/deco-flat?logo=npm&style=flat-square)]()
+[![npm-maintenance](https://img.shields.io/npms-io/maintenance-score/@spare/deco-flat?logo=npm&style=flat-square)]()
+[![npm-license](https://img.shields.io/npm/l/@spare/deco-flat?logo=npm&style=flat-square)]()
+[![node-version](https://img.shields.io/node/v/@spare/deco-flat/latest?logo=node.js&style=flat-square)]()
+[![lang-version](https://img.shields.io/badge/ECMAScript-6-F7DF1E?logo=javascript&style=flat-square)]()
+[![npm-unpacked-size](https://img.shields.io/npm/unpacked-size/@spare/deco-flat?logo=hackthebox&style=flat-square)]()
+[![pp-install-size](https://flat.badgen.net/packagephobia/install/@spare/deco-flat?icon=npm)]()
+[![pp-publish-size](https://flat.badgen.net/packagephobia/publish/@spare/deco-flat?icon=npm)]()
+
+[//]: <> (Link)
+
+[url-github]: https://github.com/gadge/spare
+[url-npm]: https://npmjs.org/package/@spare/deco-flat
 
 ## Features
 
-- ES2015 syntax
+- Flatten deco
 
 ## Install
 ```console
-$ npm install @spare/decoPale-func
+$ npm install @spare/deco-flat
 ```
 
 ## Usage
 ```js
-import { Temp } from '@spare/decoPale-func'
+import { decoFlat, DecoFlat } from '@spare/deco-flat'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
-
-[//]: <> (Shields)
-[npm-image]: https://img.shields.io/npm/v/@spare/deco-func.svg?style=flat-square
-[quality-image]: http://npm.packagequality.com/shield/@spare/deco-func.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@spare/deco-func.svg?style=flat-square
-[total-download-image]:https://img.shields.io/npm/dt/@spare/deco-func.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/@spare/deco-func.svg?style=flat-square
-[commit-image]: https://img.shields.io/github/commit-activity/y/hoyeungw/spare?style=flat-square
-[size]: https://flat.badgen.net/packagephobia/install/@spare/deco-func
-
-[//]: <> (Link)
-[npm-url]: https://npmjs.org/package/@spare/deco-func
-[quality-url]: http://packagequality.com/#?package=@spare/deco-func
-[size-url]: https://packagephobia.now.sh/result?p=@spare/deco-func

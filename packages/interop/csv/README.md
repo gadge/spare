@@ -40,5 +40,5 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/csv
 [quality-url]: http://packagequality.com/#?package=@spare/csv
-[github-url]: https://github.com/hoyeungw/@spare/csv
+[github-url]: https://github.com/gadge/@spare/csv
 [size-url]: https://packagephobia.now.sh/result?p=@spare/csv

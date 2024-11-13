@@ -1,4 +1,4 @@
-## @spare/decoPale-table
+## @spare/deco-table
 A stringify tool to javascript object
 
 [![npm version][npm-image]][npm-url]
@@ -15,7 +15,7 @@ A stringify tool to javascript object
 
 ## Install
 ```console
-$ npm install @spare/decoPale-table
+$ npm install @spare/deco-table
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ import { Temp } from '@spare/logger-table'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
@@ -40,5 +40,5 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/deco-table
 [quality-url]: http://packagequality.com/#?package=@spare/deco-table
-[github-url]: https://github.com/hoyeungw/@spare/deco-table
+[github-url]: https://github.com/gadge/@spare/deco-table
 [size-url]: https://packagephobia.now.sh/result?p=@spare/deco-table

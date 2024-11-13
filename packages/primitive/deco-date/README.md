@@ -1,29 +1,39 @@
-## @spare/decoPale-date
-Colored stringify date
+<div align="center">
+  <img alt="banner" src="../../../media/spare-banner.svg">
+  <p align="center">@spare/deco-date - pretty date</p>
+</div>
 
-[![npm version][npm-image]][npm-url]
-[![npm quality][quality-image]][quality-url]
-[![npm download][download-image]][npm-url]
-[![npm total-download][total-download-image]][npm-url]
-[![size][size]][size-url]
-[![npm license][license-image]][npm-url]
+[![npm-version](https://img.shields.io/npm/v/@spare/deco-date?logo=npm&style=flat-square)][url-npm]
+[![npm-downloads](https://img.shields.io/npm/dm/@spare/deco-date?logo=npm&style=flat-square)]()
+[![npm-dependents](https://img.shields.io/librariesio/dependents/npm/@spare/deco-date?logo=npm&style=flat-square)]()
+[![npm-last-update](https://img.shields.io/npm/last-update/@spare/deco-date?logo=npm&style=flat-square)]()
+[![npm-maintenance](https://img.shields.io/npms-io/maintenance-score/@spare/deco-date?logo=npm&style=flat-square)]()
+[![npm-license](https://img.shields.io/npm/l/@spare/deco-date?logo=npm&style=flat-square)]()
+[![github-commit](https://img.shields.io/github/commit-activity/t/gadge/spare?logo=github&style=flat-square)][url-github]
+[![node-version](https://img.shields.io/node/v/@spare/deco-date/latest?logo=node.js&style=flat-square)]()
+[![npm-unpacked-size](https://img.shields.io/npm/unpacked-size/@spare/deco-date?logo=hackthebox&style=flat-square)]()
+
+[//]: <> (Link)
+
+[url-github]: https://github.com/gadge/spare
+[url-npm]: https://npmjs.org/package/@spare/deco-date
 
 ## Features
 
-- ES2015 syntax
+- Pretty date
 
 ## Install
 ```console
-$ npm install @spare/decoPale-date
+$ npm install @spare/deco-date
 ```
 
 ## Usage
 ```js
-import { Temp } from '@spare/decoPale-date'
+import { decoDate, decoTime, decoDateTime } from '@spare/deco-date'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 

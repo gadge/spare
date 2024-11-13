@@ -24,7 +24,7 @@ import { Temp } from '@spare/logger-vector'
 ```
 
 ## Meta
-[LICENSE (MIT)](/LICENSE)
+[LICENSE (MIT)](LICENSE)
 
 Copyright (c) 2019-present, Haoyang (Vincent) Wang
 
@@ -40,5 +40,5 @@ Copyright (c) 2019-present, Haoyang (Vincent) Wang
 [//]: <> (Link)
 [npm-url]: https://npmjs.org/package/@spare/markdown
 [quality-url]: http://packagequality.com/#?package=@spare/markdown
-[github-url]: https://github.com/hoyeungw/@spare/markdown
+[github-url]: https://github.com/gadge/@spare/markdown
 [size-url]: https://packagephobia.now.sh/result?p=@spare/markdown
