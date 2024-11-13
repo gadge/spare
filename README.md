@@ -10,6 +10,8 @@
 [![github last commit](https://img.shields.io/github/last-commit/gadge/spare?logo=github&style=flat-square)][url-github]
 [![github commits](https://img.shields.io/github/commit-activity/t/gadge/spare?logo=github&style=flat-square)][url-github]
 [![node version](https://img.shields.io/node/v/@spare/deco/latest?logo=node.js&style=flat-square)]()
+[![github repo size](https://img.shields.io/github/repo-size/crostab/analys)]()
+[![github code size](https://img.shields.io/github/languages/code-size/crostab/analys)]()
 
 [//]: <> (Link)
 
@@ -34,9 +36,13 @@ $ npm install @spare/<tool-name>
 
 |                                                     |                                                 |                       |
 |-----------------------------------------------------|-------------------------------------------------|-----------------------|
-| [**logger**](packages/debugger/logger)              | console.log with prettier format                | ![v][logger-dm]       |
+| [**logger**](packages/debugger/logger)              | Console log with prettier format                | ![v][logger-dm]       |
+| [**says**](packages/debugger/says)                  | Console log with head mark                      | ![v][says-dm]         |
 | [**xr**](packages/debugger/xr)                      | Sentenced log content builder                   | ![v][xr-dm]           |
-| [**verse**](packages/interop/verse)                 | Stringify, ready to write to js or json file    | ![v][verse-dm]        |
+| [**deco**](packages/recursive/deco)                 | Stringify any object with color highlight       | ![v][deco-dm]         |
+| [**deco-flat**](packages/recursive/deco-flat)       | Stringify and flatten                           | ![v][deco-flat-dm]    |
+| [**deco-func**](packages/recursive/deco-func)       | Stringify function                              | ![v][deco-func-dm]    |
+| [**deco-pale**](packages/recursive/deco-pale)       | Stringify without color                         | ![v][deco-pale-dm]    |
 | [**deco-vector**](packages/primitive/deco-vector)   | Stringify array(vector) with color highlight    | ![v][deco-vector-dm]  |
 | [**deco-matrix**](packages/primitive/deco-matrix)   | Stringify 2d-array(matrix) with color highlight | ![v][deco-matrix-dm]  |
 | [**deco-object**](packages/primitive/deco-object)   | Stringify object with color highlight           | ![v][deco-object-dm]  |
@@ -44,29 +50,26 @@ $ npm install @spare/<tool-name>
 | [**deco-samples**](packages/interop/deco-samples)   | Stringify samples with color highlight          | ![v][deco-samples-dm] |
 | [**deco-table**](packages/interop/deco-table)       | Stringify table with color highlight            | ![v][deco-table-dm]   |
 | [**deco-crostab**](packages/interop/deco-crostab)   | Stringify crostab with color highlight          | ![v][deco-crostab-dm] |
+| [**verse**](packages/interop/verse)                 | Stringify, ready to write to js or json file    | ![v][verse-dm]        |
 |                                                     |                                                 |                       |
 
 [//]: <> (Local routes)
 
-[logger-dm]:              https://flat.badgen.net/npm/dm/@spare/logger
-
-[xr-dm]:                  https://flat.badgen.net/npm/dm/@spare/xr
-
-[verse-dm]:               https://flat.badgen.net/npm/dm/@spare/verse
-
-[deco-vector-dm]:          https://flat.badgen.net/npm/dm/@spare/deco-vector
-
-[deco-matrix-dm]:          https://flat.badgen.net/npm/dm/@spare/deco-matrix
-
-[deco-object-dm]:          https://flat.badgen.net/npm/dm/@spare/deco-object
-
-[deco-entries-dm]:         https://flat.badgen.net/npm/dm/@spare/deco-entries
-
-[deco-samples-dm]:         https://flat.badgen.net/npm/dm/@spare/deco-samples
-
-[deco-table-dm]:           https://flat.badgen.net/npm/dm/@spare/deco-table
-
-[deco-crostab-dm]:         https://flat.badgen.net/npm/dm/@spare/deco-crostab
+[logger-dm]:       https://flat.badgen.net/npm/dm/@spare/logger
+[says-dm]:         https://flat.badgen.net/npm/dm/@spare/says
+[xr-dm]:           https://flat.badgen.net/npm/dm/@spare/xr
+[deco-dm]:         https://flat.badgen.net/npm/dm/@spare/deco
+[deco-flat-dm]:    https://flat.badgen.net/npm/dm/@spare/deco-flat
+[deco-func-dm]:    https://flat.badgen.net/npm/dm/@spare/deco-func
+[deco-pale-dm]:    https://flat.badgen.net/npm/dm/@spare/deco-pale
+[deco-vector-dm]:  https://flat.badgen.net/npm/dm/@spare/deco-vector
+[deco-matrix-dm]:  https://flat.badgen.net/npm/dm/@spare/deco-matrix
+[deco-object-dm]:  https://flat.badgen.net/npm/dm/@spare/deco-object
+[deco-entries-dm]: https://flat.badgen.net/npm/dm/@spare/deco-entries
+[deco-samples-dm]: https://flat.badgen.net/npm/dm/@spare/deco-samples
+[deco-table-dm]:   https://flat.badgen.net/npm/dm/@spare/deco-table
+[deco-crostab-dm]: https://flat.badgen.net/npm/dm/@spare/deco-crostab
+[verse-dm]:        https://flat.badgen.net/npm/dm/@spare/verse
 
 ## License
 
