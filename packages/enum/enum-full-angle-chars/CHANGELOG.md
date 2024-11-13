@@ -1,5 +1,11 @@
 # @spare/enum-full-angle-chars
 
+## 0.16.2
+
+### Patch Changes
+
+- minor fix
+
 ## 0.16.1
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @spare/table-margin
 
+## 0.16.2
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/matrix-margin@0.16.2
+  - @spare/vector-margin@0.16.2
+
 ## 0.16.1
 
 ### Patch Changes

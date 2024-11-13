@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-pale",
-  "version": "0.16.1",
+  "version": "0.16.2",
   "description": "Preset for pale",
   "type": "module",
   "exports": "./dist/index.js",

@@ -1,5 +1,20 @@
 # @spare/verse
 
+## 0.16.2
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-brackets@0.16.2
+  - @spare/preset-verse@0.16.2
+  - @spare/deco-samples@0.16.2
+  - @spare/deco-entries@0.16.2
+  - @spare/deco-matrix@0.16.2
+  - @spare/deco-object@0.16.2
+  - @spare/deco-vector@0.16.2
+  - @spare/quote@0.16.2
+
 ## 0.16.1
 
 ### Patch Changes

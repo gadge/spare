@@ -1,5 +1,13 @@
 # @spare/deco-config
 
+## 0.16.2
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/preset-deco@0.16.2
+
 ## 0.16.1
 
 ### Patch Changes

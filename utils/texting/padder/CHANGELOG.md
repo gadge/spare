@@ -1,5 +1,14 @@
 # @spare/padder
 
+## 0.16.2
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/charset@0.16.2
+  - @spare/fullwidth@0.16.2
+
 ## 0.16.1
 
 ### Patch Changes

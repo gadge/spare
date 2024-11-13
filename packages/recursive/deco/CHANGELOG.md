@@ -1,5 +1,16 @@
 # @spare/deco
 
+## 0.16.2
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-chars@0.16.2
+  - @spare/deco-date@0.16.2
+  - @spare/deco-func@0.16.2
+  - @spare/deco-colors@0.16.2
+
 ## 0.16.1
 
 ### Patch Changes
