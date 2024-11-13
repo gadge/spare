@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@analys/crostab-init": "^0.7.2",
-    "@analys/table-init": "^0.7.2",
+    "@analys/crostab-init": "^0.7.3",
+    "@analys/table-init": "^0.7.3",
     "@spare/deco-entries": "workspace:^",
     "@spare/deco-matrix": "workspace:^",
     "@spare/deco-object": "workspace:^",
@@ -28,8 +28,8 @@
     "@spare/enum-brackets": "workspace:^",
     "@spare/preset-verse": "workspace:^",
     "@spare/quote": "workspace:^",
-    "@texting/bracket": "^0.2.1",
-    "@texting/liner": "^0.2.1"
+    "@texting/bracket": "^0.2.2",
+    "@texting/liner": "^0.2.2"
   },
   "repository": {
     "type": "git",

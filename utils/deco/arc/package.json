@@ -18,11 +18,11 @@
     "test": "node -r @babel/register test/deco-util.test.js"
   },
   "dependencies": {
-    "@aryth/bound": "^0.7.0",
+    "@aryth/bound": "^0.7.3",
     "@palett/projector": "^0.12.0",
-    "@texting/lange": "^0.2.1",
-    "@texting/padder": "^0.2.1",
-    "@texting/string-value": "^0.2.1",
+    "@texting/lange": "^0.2.2",
+    "@texting/padder": "^0.2.2",
+    "@texting/string-value": "^0.2.2",
     "@typen/enum-data-types": "^0.2.0",
     "@typen/literal": "^0.2.0",
     "@typen/num-strict": "^0.2.0",

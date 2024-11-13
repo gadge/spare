@@ -20,9 +20,9 @@
   "dependencies": {
     "@spare/charset": "workspace:^",
     "@spare/fullwidth": "workspace:^",
-    "@texting/enum-chars": "^0.2.1",
-    "@texting/enum-chars-fullwidth": "^0.2.1",
-    "@texting/lange": "^0.2.1",
+    "@texting/enum-chars": "^0.2.2",
+    "@texting/enum-chars-fullwidth": "^0.2.2",
+    "@texting/lange": "^0.2.2",
     "@typen/nullish": "^0.2.0",
     "@typen/num-strict": "^0.2.0"
   },

@@ -20,7 +20,7 @@
   "dependencies": {
     "@spare/enum-chars": "workspace:^",
     "@spare/enum-full-angle-chars": "workspace:^",
-    "@texting/lange": "^0.2.1",
+    "@texting/lange": "^0.2.2",
     "@typen/enum-data-types": "^0.2.0",
     "@typen/num-strict": "^0.2.0",
     "@vect/matrix": "^0.8.0",

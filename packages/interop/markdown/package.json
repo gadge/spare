@@ -24,7 +24,7 @@
     "@spare/matrix-margin": "workspace:^",
     "@spare/table-padder": "workspace:^",
     "@spare/vector-margin": "workspace:^",
-    "@texting/liner": "^0.2.1",
+    "@texting/liner": "^0.2.2",
     "@vect/matrix": "^0.8.0",
     "@vect/vector-merge": "^0.6.13"
   },

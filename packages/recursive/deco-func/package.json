@@ -25,11 +25,11 @@
     "@spare/enum-chars": "workspace:^",
     "@spare/preset-deco": "workspace:^",
     "@spare/translator": "workspace:^",
-    "@texting/bracket": "^0.2.1",
-    "@texting/lange": "^0.2.1"
+    "@texting/bracket": "^0.2.2",
+    "@texting/lange": "^0.2.2"
   },
   "devDependencies": {
-    "@ject/rename": "^0.0.17"
+    "@ject/rename": "^0.1.1"
   },
   "repository": {
     "type": "git",

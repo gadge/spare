@@ -20,7 +20,7 @@
   "dependencies": {
     "@palett/presets": "^0.12.0",
     "@spare/deco": "workspace:^",
-    "@texting/enum-chars": "^0.2.1"
+    "@texting/enum-chars": "^0.2.2"
   },
   "repository": {
     "type": "git",

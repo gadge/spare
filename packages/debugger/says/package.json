@@ -18,7 +18,7 @@
     "test": "babel-node test/archive/test.index.js"
   },
   "dependencies": {
-    "@ject/callable": "^0.0.17",
+    "@ject/callable": "^0.1.1",
     "@palett/convert": "^0.12.0",
     "@palett/dye": "^0.12.0",
     "@palett/enum-font-effects": "^0.12.0",
@@ -26,14 +26,14 @@
     "@spare/deco-string": "workspace:^",
     "@spare/enum-chars": "workspace:^",
     "@spare/util": "workspace:^",
-    "@texting/bracket": "^0.2.1",
+    "@texting/bracket": "^0.2.2",
     "@typen/enum-data-types": "^0.2.0",
     "@typen/enums": "^0.2.0",
     "@vect/object-mapper": "^0.8.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoyeungw/palett.git"
+    "url": "git+https://github.com/gadge/spare.git"
   },
   "keywords": [
     "debug",
@@ -42,12 +42,12 @@
   "author": {
     "name": "Hoyeung Wong",
     "email": "hoyeungw@outlook.com",
-    "url": "https://github.com/hoyeungw"
+    "url": "https://github.com/gadge"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hoyeungw/spare/xr"
+    "url": "https://github.com/gadge/spare/says"
   },
-  "homepage": "https://github.com/hoyeungw/spare/xr#readme",
+  "homepage": "https://github.com/gadge/spare/says#readme",
   "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }

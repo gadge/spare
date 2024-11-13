@@ -28,7 +28,7 @@
     "@spare/enum-chars": "workspace:^",
     "@spare/preset-deco": "workspace:^",
     "@spare/quote": "workspace:^",
-    "@texting/bracket": "^0.2.1",
+    "@texting/bracket": "^0.2.2",
     "@typen/enum-data-types": "^0.2.0",
     "@typen/enum-object-types": "^0.2.0",
     "@typen/num-strict": "^0.2.0",
