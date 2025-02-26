@@ -12,5 +12,3 @@ export { decoFunc, DecoFunc }          from '@spare/deco-func'
 export { decoPale, DecoPale }          from '@spare/deco-pale'
 export { decoFlat, DecoFlat }          from '@spare/deco-flat'
 export { Xr, xr, ros, cr, x, $, says } from '@spare/xr'
-
-

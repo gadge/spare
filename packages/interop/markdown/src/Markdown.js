@@ -1,7 +1,7 @@
 import { entriesMargin } from '@spare/entries-margin'
 import { entriesPadder } from '@spare/entries-padder'
 import { AEU, LF, RTSP } from '@spare/enum-chars'
-import { liner, Liner }  from '@texting/liner'
+import { liner }         from '@texting/liner'
 import { tableMargin }   from '@spare/table-margin'
 import { tablePadder }   from '@spare/table-padder'
 import { size }          from '@vect/matrix'
@@ -60,8 +60,10 @@ export class Markdown {
     const { dash = RTSP, level, prefix, suffix, pad } = option
     entries = entriesMargin(entries, option) // use head, tail, keyRead, read, rule
     entries = pad ? entriesPadder(entries, option) : entries // use ansi, fill
-    return Liner({ delim, level })(entries
-      .map(([ k, v ]) => (prefix ?? '') + k + dash + v.trimEnd() + (suffix ?? '')))
+    return liner(
+      entries.map(([ k, v ]) => (prefix ?? '') + k + dash + v.trimEnd() + (suffix ?? '')),
+      { delim, level }
+    )
   }
   /***
    *

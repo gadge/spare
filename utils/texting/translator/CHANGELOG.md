@@ -1,5 +1,11 @@
 # @spare/translator
 
+## 0.16.3
+
+### Patch Changes
+
+- minor fix
+
 ## 0.16.2
 
 ### Patch Changes

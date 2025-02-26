@@ -1,5 +1,16 @@
 # @spare/xr
 
+## 0.16.3
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/says@0.16.3
+  - @spare/enum-chars@0.16.3
+  - @spare/deco-string@0.16.3
+  - @spare/phrasing@0.16.3
+
 ## 0.16.2
 
 ### Patch Changes

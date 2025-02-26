@@ -14,7 +14,7 @@ const mag = new Mag(0)
 const crostab = flopValue(CrostabCollection)
 const rows = crostab.rows
 const [ h, w ] = size(rows)
-rows[h - 2][w - 2] = "三点水"
+rows[h - 2][w - 2] = "星云"
 logger(DecoMatrix({ direct: COLUMNWISE })(crostab.rows))
 crostab.side[0] = '二零七七'
 says['crostab'](Deco({

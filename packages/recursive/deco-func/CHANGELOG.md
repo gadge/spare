@@ -1,5 +1,16 @@
 # @spare/deco-func
 
+## 0.16.3
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-chars@0.16.3
+  - @spare/preset-deco@0.16.3
+  - @spare/deco-config@0.16.3
+  - @spare/translator@0.16.3
+
 ## 0.16.2
 
 ### Patch Changes

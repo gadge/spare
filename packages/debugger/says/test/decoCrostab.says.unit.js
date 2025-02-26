@@ -4,4 +4,4 @@ import { says }              from '../index'
 
 const crostab = CrostabCollection.flopShuffle()
 
-crostab |> decoCrostab |> says['crostab']
+says['crostab'](decoCrostab(crostab))

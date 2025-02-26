@@ -1,5 +1,13 @@
 # @spare/matrix-margin
 
+## 0.16.3
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/util@0.16.3
+
 ## 0.16.2
 
 ### Patch Changes

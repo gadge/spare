@@ -1,5 +1,13 @@
 # @spare/charset
 
+## 0.16.3
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/regex-charset@0.16.3
+
 ## 0.16.2
 
 ### Patch Changes
