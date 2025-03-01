@@ -10,27 +10,27 @@ import { parseNum }                               from '@typen/num-strict'
 import { COLUMNWISE, POINTWISE, ROWWISE }         from '@vect/enum-matrix-directions'
 import { height, width }                          from '@vect/matrix-index'
 import { init, iso }                              from '@vect/vector-init'
-import { cate, Cate }                             from './Cate.js'
-import { Die }                                    from './Die.js'
-import { Re, tabs }                               from './Joins.js'
-import { initialize }                             from './utils/initialize.js'
-import { padAnsi, padTypo }                       from './utils/padTypo.js'
+import { initialize }                             from '../utils/initialize.js'
+import { padAnsi, padTypo }                       from '../utils/padTypo.js'
+import { Concat, tabs }                           from './Concat.js'
+import { Grad }                                   from './Grad.js'
+import { checkSub, Sub }                          from './Sub.js'
 
 export function parseStr(x) {
   const p = typeof x
   return x === null ? '' + x : p === OBJ || p === SYM ? x.toString() : p === STR ? x : '' + x
 }
 
-const { Str: S, Num: N, NaN: E } = Cate
+const { Str: S, Num: N, NaN: E } = Sub
 
-export class Typo {
+export class Node {
   /** @type {function} */ str = parseStr
   /** @type {function} */ num = parseNum
   /** @type {function} */ len = lange
   /** @type {function} */ pad = padAnsi
-  /** @type {Preset}   */ tbd = null
-  /** @type {Preset}   */ nbd = null
-  /** @type {Preset}   */ pbd = null
+  /** @type {Preset} string preset   */ tbd = null
+  /** @type {Preset} number preset   */ nbd = null
+  /** @type {Preset} positive preset */ pbd = null
 
   constructor(conf, pres) {
     if (conf.str) this.str = conf.str
@@ -74,7 +74,7 @@ export class Typo {
 
   store(ts, ns, bd, x, i) {
     let c, t, n, g
-    typeof x === NUM ? (t = '' + x, n = x, c = N) : (t = this.str(x), n = this.num(x), c = cate(n, t), g = hasAnsi(t))
+    typeof x === NUM ? (t = '' + x, n = x, c = N) : (t = this.str(x), n = this.num(x), c = checkSub(n, t), g = hasAnsi(t))
     ts[i] = c === S && !(g = hasAnsi(t)) ? bd.noteStr(t) : t
     ns[i] = c === S ? (g ? null : void 0) : c === N ? bd.noteNum(n) : NaN
     return this.len(t)
@@ -89,7 +89,7 @@ export class Typo {
 
   flatVector(vec) {
     const cn = vec.length, ts = Array(cn), ns = Array(cn), ws = ts.ws = Array(cn)
-    const bd = new Die(this.uns)
+    const bd = new Grad(this.uns)
     let wd = 0, i
     for (i = 0; i < cn; i++) if ((ws[i] = this.store(ts, ns, bd, vec[i], i)) > wd) wd = ws[i]
     for (i = 0, bd.lever(this, wd); i < cn; i++) ts[i] = this.render(bd, ts[i], ns[i])
@@ -98,7 +98,7 @@ export class Typo {
   flatEntries(ent, pad) {
     let ht = ent.length, cn = ht << 1, kw = 0, vw = 0, i = -1
     const ts = Array(cn), ns = Array(cn), ws = ts.ws = Array(cn)
-    const kd = new Die(this.uns), vd = new Die(this.uns)
+    const kd = new Grad(this.uns), vd = new Grad(this.uns)
     for (let [ key, val ] of ent) {
       if ((ws[++i] = this.store(ts, ns, kd, key, i)) > kw) kw = ws[i]
       if ((ws[++i] = this.store(ts, ns, vd, val, i)) > vw) vw = ws[i]
@@ -111,7 +111,7 @@ export class Typo {
   }
   flatObject(obj) {
     const ts = [], ns = [], ws = ts.ws = []
-    const kd = new Die(this.uns), vd = new Die(this.uns)
+    const kd = new Grad(this.uns), vd = new Grad(this.uns)
     let kw = 0, vw = 0, i = -1, hi
     for (let k in obj) {
       if ((ws[++i] = this.store(ts, ns, kd, k, i)) > kw) kw = ws[i]
@@ -131,7 +131,7 @@ export class Typo {
   }
   flatPoints(mat) {
     const ht = height(mat), wd = width(mat), cn = ht * wd
-    const ts = Array(cn), ns = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), bd = new Die(this.uns)
+    const ts = Array(cn), ns = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), bd = new Grad(this.uns)
     for (let i = 0, p = 0; i < ht; i++) {
       for (let j = 0, r = mat[i], w; j < wd; j++) {
         w = this.store(ts, ns, bd, r[j], p++)
@@ -147,7 +147,7 @@ export class Typo {
   }
   flatRows(mat) {
     const ht = height(mat), wd = width(mat), cn = ht * wd
-    const ts = Array(cn), ns = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), bds = init(ht, () => new Die(this.uns))
+    const ts = Array(cn), ns = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), bds = init(ht, () => new Grad(this.uns))
     for (let i = 0, p = 0; i < ht; i++) {
       for (let j = 0, r = mat[i], w; j < wd; j++) {
         w = this.store(ts, ns, bds[i], r[j], p++)
@@ -163,7 +163,7 @@ export class Typo {
   }
   flatColumns(mat) {
     const ht = height(mat), wd = width(mat), cn = ht * wd
-    const ts = Array(cn), ns = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), bds = init(wd, () => new Die(this.uns))
+    const ts = Array(cn), ns = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), bds = init(wd, () => new Grad(this.uns))
     for (let i = 0, p = 0; i < ht; i++) {
       for (let j = 0, r = mat[i], w; j < wd; j++) {
         w = this.store(ts, ns, bds[j], r[j], p++)
@@ -180,43 +180,36 @@ export class Typo {
 
   string(thres, str, id, sr) {
     const vec = splitLiteral(str)
-    return Re.string(this.flatVector(vec), '', thres, id, sr)
+    return Concat.string(this.flatVector(vec), '', thres, id, sr)
   }
   vector(thres, vec, id = 0, sr = 0) {
     const ts = this.flatVector(vec), count = vec?.length ?? 0
     if (count === 0) return '[]'
-    if (thres > 0) return '[' + Re.vector(ts, COSP, thres, id, sr) + ']'
-    if (count === 1) return '[ ' + Re.chain(ts, COSP) + ' ]'
-    if (thres === 0) return '[' + LF + Re.stand(ts, COLF, id + 2) + LF + tabs(id) + ']'
-    return '[ ' + Re.chain(ts, COSP) + ' ]'
+    if (thres > 0) return '[' + Concat.vector(ts, COSP, thres, id, sr) + ']'
+    if (count === 1) return '[ ' + Concat.chain(ts, COSP) + ' ]'
+    if (thres === 0) return '[' + LF + Concat.stand(ts, COLF, id + 2) + LF + tabs(id) + ']'
+    return '[ ' + Concat.chain(ts, COSP) + ' ]'
   }
   object(thres, obj, id = 0, sr = 0) {
     let ts = this.flatObject(obj), count = ts.length
     if (count === 0) return '{}'
-    if (thres > 0) return '{' + Re.entries(ts, RTSP, COLF, thres, id, sr + 2) + '}'
-    if (count === 2) return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }'
-    if (thres === 0) return '{' + LF + Re.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}'
-    return '{ ' + Re.group(ts, RTSP, COSP, NONE, 2) + ' }'
+    if (thres > 0) return '{' + Concat.entries(ts, RTSP, COLF, thres, id, sr + 2) + '}'
+    if (count === 2) return '{ ' + Concat.group(ts, RTSP, COSP, NONE, 2) + ' }'
+    if (thres === 0) return '{' + LF + Concat.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}'
+    return '{ ' + Concat.group(ts, RTSP, COSP, NONE, 2) + ' }'
   }
   entries(thres, ent, id = 0, sr = 0) {
     const count = ent?.length ?? 0, ts = this.flatEntries(ent, thres === 0 && count > 1)
     if (count === 0) return '[]'
-    if (thres > 0) return '[' + Re.entries(ts, COSP, COLF, thres, id, sr + 2) + ']'
-    if (count === 2) return '[ ' + Re.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
-    if (thres === 0) return '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, 2, id + 2) + LF + tabs(id) + ']'
-    return '[ ' + Re.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
+    if (thres > 0) return '[' + Concat.entries(ts, COSP, COLF, thres, id, sr + 2) + ']'
+    if (count === 2) return '[ ' + Concat.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
+    if (thres === 0) return '[' + LF + Concat.shape(ts, COSP, COLF, BRACKET, 2, id + 2) + LF + tabs(id) + ']'
+    return '[ ' + Concat.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
   }
   matrix(mat, direct, id = 0) {
     const ts = this.flatMatrix(mat, direct), count = ts?.length ?? 0, wd = width(mat)
-    if (count <= wd) return '[[ ' + Re.chain(ts, COSP) + ' ]]'
-    return '[' + LF + Re.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
+    if (count <= wd) return '[[ ' + Concat.chain(ts, COSP) + ' ]]'
+    return '[' + LF + Concat.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
   }
 }
-
-// matrix2(mat, id = 0, sr = 0) {
-//   const ts = this.flatMatrix(mat), cn = ts.length, wd = width(mat)
-//   return cn <= wd
-//     ? '[' + Re.chain(ts, COSP) + ']'
-//     : '[' + Re.matrix(ts, COSP, wd, id, sr) + ']'
-// }
 

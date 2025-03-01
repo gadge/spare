@@ -1,15 +1,14 @@
-import { min }                          from '@aryth/comparer'
-import { CO }                           from '@spare/enum-chars'
-import { NONE }                         from '@texting/enum-brackets'
+import { min }                    from '@aryth/comparer'
+import { NONE }                   from '@texting/enum-brackets'
 import { COSP, LF, RTSP, SP, VO } from '@texting/enum-chars'
-import { lange }                        from '@texting/lange'
+import { lange }                  from '@texting/lange'
 
 export const BRAC = [
   [ '', '' ], // NONE = 0
   [ '(', ')' ], // PARENTH = 1
   [ '[', ']' ], // BRACKET = 2
   [ '{', '}' ], // BRACE = 3
-  [ '<', '>' ], // ANGLEBR = 4
+  [ '<', '>' ] // ANGLEBR = 4
 ]
 
 export const BRSP = [
@@ -17,35 +16,16 @@ export const BRSP = [
   [ '( ', ' )' ], // PARENTH = 1
   [ '[ ', ' ]' ], // BRACKET = 2
   [ '{ ', ' }' ], // BRACE = 3
-  [ '< ', ' >' ], // ANGLEBR = 4
+  [ '< ', ' >' ] // ANGLEBR = 4
 ]
 
 
-export class Tb {
-
-}
+export class Tb {}
 
 /** @type {function} */ export const tabs = n => n <= 0 ? '' : Tb[n] ?? (Tb[n] = SP.repeat(n))
 
-export class It {
-  static chain(iter, de) {
-    let tx, d, v
-    ({ done: d, value: v } = iter.next())
-    tx = d ? '' : v
-    for (let x of iter) tx += de + x
-    return tx
-  }
-  static stand(iter, tr, id = 0) {
-    const tb = tabs(id)
-    let tx, d, v
-    ({ done: d, value: v } = iter.next())
-    tx = d ? '' : tb + v
-    for (let x of iter) tx += tr + tb + x
-    return tx
-  }
-}
 
-export class Re {
+export class Concat {
   static chain(ts, de = VO) {
     if (!ts?.length) return ''
     let i = 0, hi = ts.length, tx = ts[i]
@@ -84,7 +64,7 @@ export class Re {
     return tx
   }
   static string(ts, de = '', wd = 80, id = 0, sr = 0) {
-    if (!wd) return Re.chain(ts, de)
+    if (!wd) return Concat.chain(ts, de)
     const cn = ts.length, ws = ts.ws ?? ts.map(lange)
     let tx = '', cx = '', ph = '', i = 0, p = sr + ws[i], rn = false
     const tb = tabs(id), tw = tb.length, dw = de?.length
@@ -113,7 +93,8 @@ export class Re {
   }
   static entries(ts, de = RTSP, tr = COSP, wd = 80, id = 0, sr = 0) {
     const cn = ts.length, ws = ts.ws ?? ts.map(lange)
-    let tx = '', cx = ' ', i = 0, j = 1, hi = sr + ws[i] + 2 + ws[j], tb = tabs(id + 2), tw = tb.length, cl = hi > wd, dw = tr?.length
+    let tx = '', cx = ' ', i = 0, j = 1, hi = sr + ws[i] + 2 + ws[j], tb = tabs(id + 2), tw = tb.length, cl = hi > wd,
+      dw = tr?.length
     while (j < cn) {
       if (hi > wd) tx += cx + LF, cx = tb, hi = tw + ws[i] + 2 + ws[j]
       cx += ts[i] + de + ts[j] , hi += ws[i += 2] + 2 + ws[j += 2] + dw

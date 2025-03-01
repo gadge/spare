@@ -1,5 +1,5 @@
 import { value }   from '@texting/string-value'
-import { compare } from './utils/compare.js'
+import { compare } from '../utils/compare.js'
 
 function onto(x, y, z, at) {
   this[at++] = x
@@ -8,15 +8,15 @@ function onto(x, y, z, at) {
   return this
 }
 
-export class Die {
-  u
-  s
-  t
-  m
-  n
-  p
-  q
-  w
+export class Grad {
+  /** @type {boolean} A boolean indicating whether the Die instance is unsigned */ u
+  /** @type {number} The result of applying the value function to sx with width w */ s
+  /** @type {number} The result of applying the value function to tx with width w */ t
+  /** @type {number} The minimum numerical value recorded */ m
+  /** @type {number} The maximum numerical value recorded */ n
+  /** @type {number} The minimum positive numerical value recorded */ p
+  /** @type {number} The maximum positive numerical value recorded */ q
+  /** @type {number} The width parameter used in value calculations */ w
   constructor(uns) { this.u = uns }
   static iso(uns) {
     const vec = Array(9)
@@ -50,8 +50,7 @@ export class Die {
       return this.n === void 0
         ? (this.n = v, this.m = v)
         : v < this.m ? (this.m = v) : v > this.n ? (this.n = v) : v
-    }
-    else {
+    } else {
       if (v > 0) return this.p === void 0
         ? (this.p = this.q = v)
         : v < this.p ? (this.p = v) : v > this.q ? (this.q = v) : v
