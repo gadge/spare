@@ -1,6 +1,6 @@
 import { entriesMargin } from '@spare/entries-margin'
 import { entriesPadder } from '@spare/entries-padder'
-import { AEU, LF, RTSP } from '@spare/enum-chars'
+import { AEU, LF, RTSP } from '@texting/enum-chars' // Updated import path
 import { liner }         from '@texting/liner'
 import { tableMargin }   from '@spare/table-margin'
 import { tablePadder }   from '@spare/table-padder'

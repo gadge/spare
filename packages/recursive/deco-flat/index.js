@@ -1,10 +1,11 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { Deco }                   from './src/Deco.js'
+import { _decoFlat as deco }      from './src/decoFlat.js'
 
 const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
-  pos: BESQUE,
+  pos: BESQUE
 }
 
 const node = Deco.prototype.node
@@ -37,3 +38,6 @@ export const decoFlat = (o, p = {}) => {
   const deco = new Deco(p)
   return deco.node(o)
 }
+
+export { Deco }
+export { deco }

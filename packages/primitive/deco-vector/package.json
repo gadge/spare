@@ -19,8 +19,14 @@
   },
   "dependencies": {
     "@palett/presets": "^0.12.0",
-    "@spare/deco": "workspace:^",
+    "@spare/node": "workspace:^",
     "@spare/vector-margin": "workspace:^"
+  },
+  "devDependencies": {
+    "@texting/string-value": "^0.2.2",
+    "@valjoux/timestamp-pretty": "^0.4.0",
+    "@texting/enum-chars": "^0.2.2",
+    "@vect/object-mapper": "^0.8.0"
   },
   "repository": {
     "type": "git",
@@ -38,8 +44,5 @@
     "url": "https://github.com/gadge/spare"
   },
   "homepage": "https://github.com/gadge/spare#readme",
-  "gitHead": "013714aadebaa9af337026663bf023dd382725c7",
-  "devDependencies": {
-    "@texting/string-value": "^0.2.2"
-  }
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
 }

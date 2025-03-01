@@ -1,6 +1,6 @@
 import { decoFlat }   from '@spare/deco-flat'
 import { BRK }        from '@spare/enum-brackets'
-import { COSP }       from '@spare/enum-chars'
+import { COSP }       from '@texting/enum-chars'
 import { COLUMNWISE } from '@vect/enum-matrix-directions'
 
 // CONF_DECO_SAMPLES

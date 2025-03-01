@@ -1,6 +1,7 @@
 import { PAL }                                    from '@spare/deco-colors'
 import { decoDate, decoDateTime }                 from '@spare/deco-date'
 import { decoFunc, funcName }                     from '@spare/deco-func'
+import { Node }                                   from '@spare/node'
 import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT, SET }               from '@typen/enum-object-types'
 import { isNumeric }                              from '@typen/num-loose'
@@ -8,17 +9,15 @@ import { typ }                                    from '@typen/typ'
 import { POINTWISE }                              from '@vect/enum-matrix-directions'
 import { mapKeyVal }                              from '@vect/object-mapper'
 import { isVector }                               from '@vect/vector-index'
-import { Typo }                                   from './Typo.js'
 
 export function depth(node) {
   let d = 0
   while (true) {
-    if (isVector(node)) { [ node ] = node, d++ }
-    else { return d }
+    if (isVector(node)) { [ node ] = node, d++ } else { return d }
   }
 }
 
-export class Deco extends Typo {
+export class Deco extends Node {
   dp
   vt
   th

@@ -19,9 +19,23 @@
   },
   "dependencies": {
     "@palett/presets": "^0.12.0",
-    "@spare/deco": "workspace:^",
-    "@spare/enum-chars": "workspace:^",
-    "@vect/enum-matrix-directions": "^0.6.13"
+    "@spare/node": "workspace:^",
+    "@texting/enum-chars": "^0.2.2",
+    "@vect/enum-matrix-directions": "^0.6.13",
+    "@ject/oneself": "^0.1.2",
+    "@palett/enum-colorant-modes": "^0.12.0",
+    "@palett/fluo-matrix": "^0.12.0",
+    "@texting/bracket": "^0.2.2",
+    "@texting/liner": "^0.2.2",
+    "@spare/matrix-margin": "workspace:^",
+    "@spare/matrix-padder": "workspace:^",
+    "@vect/matrix-index": "^0.8.0"
+  },
+  "devDependencies": {
+    "@spare/enum-brackets": "workspace:^",
+    "@spare/says": "workspace:^",
+    "@vect/matrix-index": "^0.8.0",
+    "@vect/object-mapper": "^0.8.0"
   },
   "repository": {
     "type": "git",

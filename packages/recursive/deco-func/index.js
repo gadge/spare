@@ -1,6 +1,7 @@
-import { DECOFUN_CONFIG, DECOFUNC_CONFIG } from './resources/config'
-import { _decoFunc }                       from './src/_decoFunc'
+import { DECOFUN_CONFIG, DECOFUNC_CONFIG } from './resources/config.js'
+import { _decoFunc }                       from './src/_decoFunc.js'
 
+export { DECOFUN_CONFIG, DECOFUNC_CONFIG }
 export { _decoFunc }
 
 const parseConfig = p => {
@@ -28,8 +29,5 @@ export const decoFunc = (func, p = DECOFUNC_CONFIG) => _decoFunc.call(parseConfi
  */
 export const DecoFunc = (p = DECOFUNC_CONFIG) => _decoFunc.bind(parseConfig(p))
 
-export { funcName } from './src/funcName'
-
-export { argnames } from './src/argnames'
-
-export { DECOFUN_CONFIG } from './resources/config'
+export { argnames } from './src/argnames.js'
+export { funcName } from './src/funcName.js'

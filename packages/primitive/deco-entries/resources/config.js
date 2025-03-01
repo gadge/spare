@@ -1,6 +1,6 @@
 import { decoFlat } from '@spare/deco-flat'
 import { BRK }      from '@spare/enum-brackets'
-import { LF }       from '@spare/enum-chars'
+import { LF }       from '@texting/enum-chars'
 
 // CONF_DECO_ENTRIES
 

@@ -1,14 +1,14 @@
-import { Typo }                                   from '@spare/deco'
 import { PAL }                                    from '@spare/deco-colors'
 import { decoDateTime }                           from '@spare/deco-date'
 import { funcName }                               from '@spare/deco-func'
+import { Node }                                   from '@spare/node'
 import { BIG, BOO, FUN, NUM, OBJ, STR, SYM, UND } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT }                    from '@typen/enum-object-types'
 import { isNumeric }                              from '@typen/num-loose'
 import { typ }                                    from '@typen/typ'
 import { mapKeyVal }                              from '@vect/object-mapper'
 
-export class Deco extends Typo {
+export class Deco extends Node {
   dp
   th
   br

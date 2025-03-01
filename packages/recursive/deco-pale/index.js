@@ -1,7 +1,8 @@
-export { decoKey }          from './src/decoKey'
-import { cite }             from '@spare/cite'
-import { decoPale as deco } from './src/decoPale'
+export { decoKey }          from './src/decoKey.js'
+import { cite }             from '@texting/cite'
+import { decoPale as deco } from './src/decoPale.js'
 
+export { deco }
 
 const presetConfig = p => {
   p.loose = p.loose ?? true

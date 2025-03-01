@@ -1,4 +1,4 @@
-import { Die, tabs, Typo }                from '@spare/deco'
+import { Grad, tabs, Node }                from '@spare/node'
 import { DA, LF, SP, VO }                 from '@texting/enum-chars'
 import { COLUMNWISE, POINTWISE, ROWWISE } from '@vect/enum-matrix-directions'
 import { init }                           from '@vect/vector-init'
@@ -6,19 +6,19 @@ import { width }                          from '@vect/matrix-index'
 
 const VB = ' | ', CX = '-+-'
 
-export class TableTypo {
+export class TableNode {
   kpr
   vpr
   constructor(conf) {
-    this.kpr = new Typo(conf, conf.keys)
-    this.vpr = new Typo(conf)
+    this.kpr = new Node(conf, conf.keys)
+    this.vpr = new Node(conf)
   }
 
   * pointwiseLines({ head, side, rows }) {
     const { kpr, vpr } = this
     const ht = rows?.length ?? 0, wd = head?.length ?? width(rows), cn = ht * wd
     const rts = Array(cn), rns = Array(cn), sts = Array(ht), sns = Array(ht), hts = Array(wd), hns = Array(wd)
-    const rbd = new Die(vpr.uns), hbd = head ? new Die(kpr.uns) : null, sbd = side ? new Die(kpr.uns) : null
+    const rbd = new Grad(vpr.uns), hbd = head ? new Grad(kpr.uns) : null, sbd = side ? new Grad(kpr.uns) : null
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
     if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sts, sns, sbd, side[i], i)) > sw) sw = xs[i] }
@@ -42,7 +42,7 @@ export class TableTypo {
     const { kpr, vpr } = this
     const ht = rows.length, wd = head?.length ?? width(rows), cn = ht * wd
     const rts = Array(cn), rns = Array(cn), sts = Array(ht), sns = Array(ht), hts = Array(wd), hns = Array(wd)
-    const bds = init(ht, () => new Die(vpr.uns)), hbd = new Die(kpr.uns), sbd = new Die(kpr.uns)
+    const bds = init(ht, () => new Grad(vpr.uns)), hbd = new Grad(kpr.uns), sbd = new Grad(kpr.uns)
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
     if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sts, sns, sbd, side[i], i)) > sw) sw = xs[i] }
@@ -66,7 +66,7 @@ export class TableTypo {
     const { kpr, vpr } = this
     const ht = rows.length, wd = head?.length ?? width(rows), cn = ht * wd
     const rts = Array(cn), rns = Array(cn), sts = Array(ht), sns = Array(ht), hts = Array(wd), hns = Array(wd)
-    const bds = init(wd, () => new Die(vpr.uns)), hbd = new Die(kpr.uns), sbd = new Die(kpr.uns)
+    const bds = init(wd, () => new Grad(vpr.uns)), hbd = new Grad(kpr.uns), sbd = new Grad(kpr.uns)
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
     if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sts, sns, sbd, side[i], i)) > sw) sw = xs[i] }

@@ -4,11 +4,11 @@ import { MUTATE_PIGMENT }        from '@palett/enum-colorant-modes'
 import { fluoMatrix }            from '@palett/fluo-matrix'
 import { fluoVector }            from '@palett/fluo-vector'
 import { deco as decoVector }    from '@spare/deco-vector'
-import { COLF, COSP, ELLIP, SP } from '@spare/enum-chars'
-import { liner }                 from '@texting/liner'
 import { matrixPadder }          from '@spare/matrix-padder'
 import { tableMargin }           from '@spare/table-margin'
 import { vectorPadder }          from '@spare/vector-padder'
+import { COLF, COSP, ELLIP, SP } from '@texting/enum-chars'
+import { liner }                 from '@texting/liner'
 import { zipper }                from '@vect/vector-zipper'
 
 export const decoSamples = function (samples) {
@@ -22,9 +22,9 @@ export const decoSamples = function (samples) {
   rows = matrixPadder(rows, config)
   const { presets } = config
   if (presets) {
-    const [alpha, beta, gamma] = presets
-    head = fluoVector.call(MUTATE_PIGMENT, head, [alpha, gamma ?? beta])
-    rows = fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, [alpha, beta])
+    const [ alpha, beta, gamma ] = presets
+    head = fluoVector.call(MUTATE_PIGMENT, head, [ alpha, gamma ?? beta ])
+    rows = fluoMatrix.call(MUTATE_PIGMENT, rows, config.direct, [ alpha, beta ])
   }
   let lines = rows.map(line => '{ ' + (zipper(head, line, (h, x) => h + ':' + x).join(COSP)) + ' }')
   if (indexed) {

@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@palett/presets": "^0.12.0",
-    "@spare/deco": "workspace:^",
+    "@spare/node": "workspace:^",
     "@texting/enum-chars": "^0.2.2"
   },
   "repository": {

@@ -1,7 +1,7 @@
 import { Callable }         from '@ject/callable'
 import { bracket, parenth } from '@texting/bracket'
 import { decoString }       from '@spare/deco-string'
-import { LF, SP }           from '@spare/enum-chars'
+import { LF, SP }           from '@texting/enum-chars'
 import { FUN, STR }         from '@typen/enum-data-types'
 
 const NAME = 'name'

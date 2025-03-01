@@ -1,8 +1,8 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { SP }                     from '@texting/enum-chars'
-import { TableTypo }              from './target/Typo.js'
+import { TableNode }              from './target/TableNode.js'
 
-export { TableTypo }
+export { TableNode }
 
 /**
  * @typedef {Object}    Opt
@@ -20,10 +20,10 @@ export { TableTypo }
 const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
-  pos: BESQUE,
+  pos: BESQUE
 }
 
-const { table } = TableTypo.prototype
+const { table } = TableNode.prototype
 
 /**
  * @param {Opt} p
@@ -33,14 +33,14 @@ export const DecoTable = (p = {}) => {
   p.pres = p.pres ?? PRES
   p.fill = p.fill ?? SP
   p.ansi = p.ansi ?? true
-  return table.bind(new TableTypo(p))
+  return table.bind(new TableNode(p))
 }
 
 export const decoTable = (vec, p = {}, id) => {
   p.pres = p.pres ?? PRES
   p.fill = p.fill ?? SP
   p.ansi = p.ansi ?? true
-  return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
+  return table.call(new TableNode(p), vec, p.direct, id ?? p.indent)
 }
 
 /**
@@ -50,18 +50,18 @@ export const decoTable = (vec, p = {}, id) => {
 export const PaleTable = (p = {}) => {
   p.fill = p.fill ?? SP
   p.ansi = p.ansi ?? true
-  return table.bind(new TableTypo(p))
+  return table.bind(new TableNode(p))
 }
 
 export const paleTable = (vec, p = {}, id) => {
   p.fill = p.fill ?? SP
   p.ansi = p.ansi ?? true
-  return table.call(new TableTypo(p), vec, p.direct, id ?? p.indent)
+  return table.call(new TableNode(p), vec, p.direct, id ?? p.indent)
 }
 
 export {
   decoTable as deco,
-  DecoTable as Deco,
+  DecoTable as Deco
 }
 
 

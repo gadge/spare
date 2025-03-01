@@ -1,4 +1,5 @@
 import { logger } from '@spare/logger'
+import { test }   from 'node:test'
 
 const candidates = {
   null: null,

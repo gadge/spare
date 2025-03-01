@@ -1,9 +1,9 @@
 import { DecoConfig }             from '@spare/deco-config'
 import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config'
+import { CONFIG }                 from './resources/config.js'
 import { decoSamples }            from './src/decoSamples.js'
 
-export { decoSamples, decoSamples as _decoSamples }
+export { decoSamples }
 
 /**
  *

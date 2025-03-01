@@ -1,10 +1,10 @@
-import { LF }                      from '@spare/enum-chars'
-import { SP }                      from '@texting/enum-chars'
-import { DEF, NUM, OBJ, STR, SYM } from '@typen/enum-data-types'
-import { nullish, valid }          from '@typen/nullish'
-import { ProxyUtil }               from './ProxyUtil.js'
-import { Record }                  from './Record.js'
-import { identify, Keep }          from './TextUtil.js'
+import { LF }                                 from '@texting/enum-chars'
+import { SP }                                 from '@texting/enum-chars'
+import { DEF, NUM, OBJ, STR, SYM }            from '@typen/enum-data-types'
+import { nullish, valid }                     from '@typen/nullish'
+import { ProxyUtil }                          from './ProxyUtil.js'
+import { Record }                             from './Record.js'
+import { identify, keepBracket, keepParenth } from './TextUtil.js'
 
 /**
  * @type {function}
@@ -13,8 +13,8 @@ export class Steno extends Function {
   /** @type {Proxy<Steno>} */ proxy
   /** @type {string}       */ prefix = ''
   /** @type {Array}        */ list = []
-  /** @type {function(*):string} */ keyFn = Keep.bracket
-  /** @type {function(*):string} */ valFn = Keep.parenth
+  /** @type {function(*):string} */ keyFn = keepBracket
+  /** @type {function(*):string} */ valFn = keepParenth
   /** @type {function():string}  */ info
 
   constructor(title, prefix, keyFn, valFn) {

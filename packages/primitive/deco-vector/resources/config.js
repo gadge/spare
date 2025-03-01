@@ -1,6 +1,6 @@
 import { decoFlat } from '@spare/deco-flat'
 import { BRK }      from '@spare/enum-brackets'
-import { COLF }     from '@spare/enum-chars'
+import { COLF }     from '@texting/enum-chars'
 
 // CONF_DECO_VECTOR
 

@@ -1,4 +1,4 @@
-import { CO, COSP }  from '@spare/enum-chars'
+import { CO, COSP }  from '@texting/enum-chars'
 import { lange }     from '@texting/lange'
 import { joinLines } from '@texting/liner'
 import { iterate }   from '@vect/vector-mapper'

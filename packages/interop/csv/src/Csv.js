@@ -1,4 +1,4 @@
-import { AEU, LF }      from '@spare/enum-chars'
+import { AEU, LF }      from '@texting/enum-chars'
 import { tableMargin }  from '@spare/table-margin'
 import { tablePadder }  from '@spare/table-padder'
 import { mutate, size } from '@vect/matrix'

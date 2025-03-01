@@ -18,7 +18,8 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/regex-charset": "workspace:^"
+    "@spare/regex-charset": "workspace:^",
+    "@spare/charset": "workspace:^"
   },
   "repository": {
     "type": "git",

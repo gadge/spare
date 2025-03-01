@@ -1,5 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Typo }                   from '@spare/deco'
+import { Node } from '@spare/node'
 
 /**
  * @typedef {Object}    Opt
@@ -20,7 +20,7 @@ const PRES = {
   pos: BESQUE,
 }
 
-const { entries } = Typo.prototype
+const { entries } = Node.prototype
 
 /**
  * @param {Opt} p
@@ -29,13 +29,13 @@ const { entries } = Typo.prototype
 export const DecoEntries = (p = {}) => {
   p.pres = p.pres ?? PRES
   p.thres = p.thres ?? 0
-  return entries.bind(new Typo(p), p.thres)
+  return entries.bind(new Node(p), p.thres)
 }
 
 export const decoEntries = (ent, p = {}) => {
   p.pres = p.pres ?? PRES
   p.thres = p.thres ?? 0
-  return entries.call(new Typo(p), p.thres, ent, p.indent)
+  return entries.call(new Node(p), p.thres, ent, p.indent)
 }
 
 export {

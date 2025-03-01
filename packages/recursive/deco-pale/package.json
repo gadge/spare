@@ -18,17 +18,17 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@spare/cite": "workspace:^",
     "@spare/deco-config": "workspace:^",
     "@spare/deco-func": "workspace:^",
     "@spare/deco-object": "workspace:^",
     "@spare/deco-util": "workspace:^",
     "@spare/deco-vector": "workspace:^",
     "@spare/enum-brackets": "workspace:^",
-    "@spare/enum-chars": "workspace:^",
     "@spare/preset-deco": "workspace:^",
     "@spare/quote": "workspace:^",
     "@texting/bracket": "^0.2.2",
+    "@texting/cite": "^0.2.2",
+    "@texting/enum-chars": "^0.2.2",
     "@typen/enum-data-types": "^0.2.0",
     "@typen/enum-object-types": "^0.2.0",
     "@typen/num-strict": "^0.2.0",
@@ -36,6 +36,10 @@
     "@valjoux/format-date": "^0.4.0",
     "@valjoux/format-time": "^0.4.0",
     "@vect/entries-mapper": "^0.8.0"
+  },
+  "devDependencies": {
+    "@spare/xr": "workspace:^",
+    "@texting/enum-quotes": "^0.2.2"
   },
   "repository": {
     "type": "git",

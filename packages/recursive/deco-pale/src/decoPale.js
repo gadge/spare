@@ -1,7 +1,7 @@
 import { brace, bracket }          from '@texting/bracket'
 import { _decoFunc } from '@spare/deco-func'
 import { pairEnt }   from '@spare/deco-util'
-import { COSP }      from '@spare/enum-chars'
+import { COSP }      from '@texting/enum-chars'
 import { BOO, FUN, NUM, OBJ, STR } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT }     from '@typen/enum-object-types'
 import { isNumeric }               from '@typen/num-strict'
@@ -9,8 +9,8 @@ import { typ }                     from '@typen/typ'
 import { formatDate }              from '@valjoux/format-date'
 import { formatTime }              from '@valjoux/format-time'
 import { mutate }                  from '@vect/entries-mapper'
-import { DEFN }                    from '../resources/DEFN'
-import { decoKey }                 from './decoKey'
+import { DEFN }                    from '../resources/DEFN.js'
+import { decoKey }                 from './decoKey.js'
 
 // for esm js, number/strings are treated by their type
 export function decoPale(node) {

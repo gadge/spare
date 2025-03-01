@@ -1,7 +1,7 @@
 import { SUBTLE } from '@palett/presets'
-import { Typo }   from '@spare/deco'
+import { Node }   from '@spare/node'
 
-const { string } = Typo.prototype
+const { string } = Node.prototype
 
 /**
  * @typedef {Object}    Opt
@@ -25,7 +25,7 @@ const { string } = Typo.prototype
 export function DecoString(p = {}) {
   p.pres = p.pres ?? SUBTLE
   p.thres = p.thres ?? 0
-  return string.bind(new Typo(p), p.thres)
+  return string.bind(new Node(p), p.thres)
 }
 
 /**
@@ -37,7 +37,7 @@ export function DecoString(p = {}) {
 export function decoString(str, p = {}) {
   p.pres = p.pres ?? SUBTLE
   p.thres = p.thres ?? 0
-  return string.call(new Typo(p), p.thres, str, p.indent, p.surge)
+  return string.call(new Node(p), p.thres, str, p.indent, p.surge)
 }
 
 

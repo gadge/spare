@@ -15,7 +15,7 @@
   },
   "scripts": {
     "pub": "npm publish",
-    "test": "node -r @babel/register test/test.index.js"
+    "test": "node --test ./test/deca.plain.test.js"
   },
   "dependencies": {
     "@aryth/comparer": "^0.7.3",
@@ -27,10 +27,12 @@
     "@spare/deco-colors": "workspace:^",
     "@spare/deco-date": "workspace:^",
     "@spare/deco-func": "workspace:^",
-    "@spare/enum-chars": "workspace:^",
+    "@texting/enum-chars": "^0.2.2",
     "@texting/charset-ansi": "^0.2.2",
     "@texting/enum-brackets": "^0.2.2",
-    "@texting/enum-chars": "^0.2.2",
+    "@texting/liner": "^0.2.2",
+    "@spare/deco-string": "workspace:^",
+    "@vect/entries-mapper": "^0.8.0",
     "@texting/lange": "^0.2.2",
     "@texting/padder": "^0.2.2",
     "@texting/splitter": "^0.2.2",
@@ -44,8 +46,10 @@
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix-index": "^0.8.0",
     "@vect/object-mapper": "^0.8.0",
+    "@vect/vector-mapper": "^0.8.0",
     "@vect/vector-index": "^0.8.0",
-    "@vect/vector-init": "^0.8.0"
+    "@vect/vector-init": "^0.8.0",
+    "@spare/node": "workspace:^"
   },
   "repository": {
     "type": "git",

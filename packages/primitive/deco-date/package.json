@@ -22,6 +22,9 @@
     "@spare/preset-deco": "workspace:^",
     "@valjoux/timestamp-pretty": "^0.4.0"
   },
+  "devDependencies": {
+    "@spare/xr": "workspace:^"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gadge/spare.git"

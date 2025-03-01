@@ -1,4 +1,4 @@
-// import { max } from '../src/vectorStringProperties'
+// import { max } from '../src2/vectorStringProperties'
 import { simpleVectors } from '@foba/foo'
 import { makeEmbedded }  from '@foba/util'
 import { lange }         from '@texting/lange'

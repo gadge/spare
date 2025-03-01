@@ -1,9 +1,9 @@
-import { CO, COSP, RTSP }  from '@spare/enum-chars'
+import { CO, COSP, RTSP }  from '@texting/enum-chars'
 import { lange }           from '@texting/lange'
 import { joinLines }       from '@texting/liner'
 import { LPad }            from '@texting/padder'
 import { iterate, mutate } from '@vect/vector-mapper'
-import { mutateKeyPad }    from './mutateKeyPad'
+import { mutateKeyPad }    from './mutateKeyPad.js'
 
 
 const lpad = LPad({ ansi: true })

@@ -31,6 +31,11 @@
     "@texting/bracket": "^0.2.2",
     "@texting/liner": "^0.2.2"
   },
+  "devDependencies": {
+    "@spare/deco-pale": "workspace:^",
+    "@spare/xr": "workspace:^",
+    "@spare/deco": "workspace:^"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gadge/spare.git"

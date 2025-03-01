@@ -3,7 +3,7 @@ import { presetFlopper } from '@palett/flopper'
 import { decoString }    from "@spare/deco-string"
 import { FUN }           from '@typen/enum-data-types'
 import { mapper }        from '@vect/object-mapper'
-import { Pal }           from './Pal'
+import { Pal }           from './Pal.js'
 
 /* @typedef {{max:string,min:string,na:string}} Preset */
 /* @typedef {function(string):string} Pal */

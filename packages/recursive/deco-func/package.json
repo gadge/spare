@@ -22,14 +22,15 @@
     "@palett/convert": "^0.12.0",
     "@palett/dye": "^0.12.0",
     "@spare/deco-config": "workspace:^",
-    "@spare/enum-chars": "workspace:^",
+    "@texting/enum-chars": "^0.2.2",
     "@spare/preset-deco": "workspace:^",
     "@spare/translator": "workspace:^",
     "@texting/bracket": "^0.2.2",
     "@texting/lange": "^0.2.2"
   },
   "devDependencies": {
-    "@ject/rename": "^0.1.1"
+    "@ject/rename": "^0.1.1",
+    "@typen/num-loose": "^0.2.0"
   },
   "repository": {
     "type": "git",

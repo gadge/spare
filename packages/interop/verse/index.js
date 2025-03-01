@@ -1,1 +1,1 @@
-export { Verse } from './src/Verse'
+export { Verse } from './src/Verse.js'

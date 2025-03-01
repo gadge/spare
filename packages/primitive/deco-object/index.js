@@ -1,5 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Typo }                   from '@spare/deco'
+import { Node }                   from '@spare/node'
 
 /**
  * @typedef {Object}    Opt
@@ -18,10 +18,10 @@ import { Typo }                   from '@spare/deco'
 const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
-  pos: BESQUE,
+  pos: BESQUE
 }
 
-const { object } = Typo.prototype
+const { object } = Node.prototype
 
 /**
  * @param {Opt} p
@@ -30,18 +30,18 @@ const { object } = Typo.prototype
 export const DecoObject = (p = {}) => {
   p.pres = p.pres ?? PRES
   p.thres = p.thres ?? 0
-  return object.bind(new Typo(p), p.thres)
+  return object.bind(new Node(p), p.thres)
 }
 
 export const decoObject = (obj, p = {}) => {
   p.pres = p.pres ?? PRES
   p.thres = p.thres ?? 0
-  return object.call(new Typo(p), p.thres, obj, p.indent, p.surge)
+  return object.call(new Node(p), p.thres, obj, p.indent, p.surge)
 }
 
 export {
   decoObject as deco,
-  DecoObject as Deco,
+  DecoObject as Deco
 }
 
 // {boolean}        [p.discrete]

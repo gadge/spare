@@ -1,6 +1,6 @@
 import { decoFlat }   from '@spare/deco-flat'
 import { BRC }        from '@spare/enum-brackets'
-import { COLF, RTSP } from '@spare/enum-chars'
+import { COLF, RTSP } from '@texting/enum-chars'
 
 // CONF_DECO_OBJECT
 

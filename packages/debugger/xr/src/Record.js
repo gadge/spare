@@ -1,4 +1,4 @@
-import { SP }               from '@spare/enum-chars'
+import { SP }               from '@texting/enum-chars'
 import { bracket, parenth } from '@texting/bracket'
 import { tapBy }            from '@texting/tap'
 

@@ -1,6 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Typo }                   from '@spare/deco'
-import { SP }                     from '@spare/enum-chars'
+import { Node } from '@spare/node'
 
 /**
  * @typedef {Object}    Opt
@@ -21,7 +20,7 @@ const PRES = {
   pos: BESQUE,
 }
 
-const { matrix } = Typo.prototype
+const { matrix } = Node.prototype
 
 /**
  * @param {Opt} p
@@ -29,14 +28,14 @@ const { matrix } = Typo.prototype
  */
 export const DecoMatrix = (p = {}) => {
   p.pres = p.pres ?? PRES
-  return matrix.bind(new Typo(p))
+  return matrix.bind(new Node(p))
 }
 
 export const decoMatrix = (mat, p = {}) => {
   p.pres = p.pres ?? PRES
   // p.direct = p.direct ?? POINTWISE
   // p.indent = p.indent ?? 0
-  return matrix.call(new Typo(p), mat, p.direct, p.indent)
+  return matrix.call(new Node(p), mat, p.direct, p.indent)
 }
 
 export {

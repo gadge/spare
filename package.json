@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "node --test -experimental-test-coverage",
+    "test": "node --test ./packages/*/*/test/*.test.js -experimental-test-coverage",
     "upint": "pnpm up -i -r --latest",
     "check": "pnpm outdated",
     "changeset-add": "pnpm changeset add",
@@ -27,6 +27,9 @@
     "@aryth/comparer": "^0.7.3",
     "@aryth/rand": "^0.7.3",
     "@aryth/rank-vector": "^0.7.3",
+    "@babel/generator": "^7.26.9",
+    "@babel/parser": "^7.26.9",
+    "@babel/traverse": "^7.26.9",
     "@changesets/cli": "^2.28.1",
     "@cliche/mag": "^0.0.5",
     "@flua/utils": "^0.3.7",
@@ -60,6 +63,7 @@
     "@vect/object-init": "^0.8.0",
     "@vect/vector-init": "^0.8.0",
     "@vect/vector-select": "^0.8.0",
+    "glob": "^11.0.1",
     "gulp": "^5.0.0",
     "rollup": "^4.34.8",
     "rollup-plugin-fileinfo": "^0.3.8"

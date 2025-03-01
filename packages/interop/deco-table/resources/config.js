@@ -1,5 +1,5 @@
 import { decoFlat }   from '@spare/deco-flat'
-import { LF }         from '@spare/enum-chars'
+import { LF }         from '@texting/enum-chars'
 import { COLUMNWISE } from '@vect/enum-matrix-directions'
 
 // CONF_DECO_TABLE

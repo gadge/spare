@@ -1,8 +1,8 @@
 import { parenth }                                        from '@texting/bracket'
-import { SP }                                             from '@spare/enum-chars'
+import { SP }                                             from '@texting/enum-chars'
 import { lange }                                          from '@texting/lange'
-import { argsDye, arrowDye, bodyDye, nameDye, PresetDye } from '../resources/dyes'
-import { funcName }                                       from './funcName'
+import { argsDye, arrowDye, bodyDye, nameDye, PresetDye } from '../resources/dyes.js'
+import { funcName }                                       from './funcName.js'
 
 export const FUNCTION_BODY = /function\s*(\w*)\s*\(([\w\s,]+)\)\s*\{\s*return(.+);?\s*\}/gs
 export const THIS_REG = /\bthis\b/

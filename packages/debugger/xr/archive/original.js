@@ -1,5 +1,5 @@
 import { bracket as bracket$2, parenth as parenth$2 } from '@texting/bracket'
-import { SP, COSP, CO }                               from '@spare/enum-chars'
+import { SP, COSP, CO }                               from '@texting/enum-chars'
 import { Cards }                                      from '@palett/cards'
 import { Dye }                                        from '@palett/dye'
 import { hasAnsi, clearAnsi }                         from '@spare/charset'

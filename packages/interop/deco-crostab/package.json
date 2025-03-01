@@ -19,9 +19,8 @@
   },
   "dependencies": {
     "@palett/presets": "^0.12.0",
-    "@spare/deco": "workspace:^",
+    "@spare/node": "workspace:^",
     "@spare/deco-table": "workspace:^",
-    "@spare/enum-chars": "workspace:^",
     "@texting/enum-chars": "^0.2.2",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix-index": "^0.8.0",
