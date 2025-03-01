@@ -1,5 +1,26 @@
 # @spare/logger
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+- Updated dependencies
+  - @spare/says@0.16.4
+  - @spare/xr@0.16.4
+  - @spare/deco-crostab@0.16.4
+  - @spare/deco-samples@0.16.4
+  - @spare/deco-table@0.16.4
+  - @spare/deco-entries@0.16.4
+  - @spare/deco-matrix@0.16.4
+  - @spare/deco-object@0.16.4
+  - @spare/deco-string@0.16.4
+  - @spare/deco-vector@0.16.4
+  - @spare/deco@0.16.4
+  - @spare/deco-flat@0.16.4
+  - @spare/deco-func@0.16.4
+  - @spare/deco-pale@0.16.4
+
 ## 0.16.3
 
 ### Patch Changes

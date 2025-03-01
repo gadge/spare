@@ -1,7 +1,6 @@
+import { says }     from '@spare/logger'
 import { test }     from 'node:test'
 import { decoFlat } from '../index.js'
-import { says }     from '@spare/logger'
-import { test } from 'node:test'
 
 const candidates = {
   empty: '',

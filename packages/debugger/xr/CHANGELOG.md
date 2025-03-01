@@ -1,5 +1,15 @@
 # @spare/xr
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+- Updated dependencies
+  - @spare/says@0.16.4
+  - @spare/deco-string@0.16.4
+  - @spare/phrasing@0.16.4
+
 ## 0.16.3
 
 ### Patch Changes

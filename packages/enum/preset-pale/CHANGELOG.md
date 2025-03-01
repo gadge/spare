@@ -1,5 +1,15 @@
 # @spare/preset-pale
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+- Updated dependencies
+  - @spare/enum-brackets@0.16.4
+  - @spare/deco-pale@0.16.4
+  - @spare/quote@0.16.4
+
 ## 0.16.3
 
 ### Patch Changes

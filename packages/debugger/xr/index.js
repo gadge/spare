@@ -2,7 +2,6 @@ import { ProxyUtil }       from './src/ProxyUtil.js'
 import { Rosters, Stenos } from './src/singletons.js'
 import { Steno }           from './src/Steno.js'
 
-
 /**
  *
  * @param {string} [word]

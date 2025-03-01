@@ -1,5 +1,16 @@
 # @spare/table-padder
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+- Updated dependencies
+  - @spare/enum-chars@0.16.4
+  - @spare/enum-full-angle-chars@0.16.4
+  - @spare/matrix-padder@0.16.4
+  - @spare/fullwidth@0.16.4
+
 ## 0.16.3
 
 ### Patch Changes

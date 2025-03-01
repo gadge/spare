@@ -22,5 +22,4 @@ test('deco-vector', () => {
     console.log(key + SP + decoVector(vector, 0, key.length + 2))
     console.log(LINE)
   }
-
 })

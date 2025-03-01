@@ -1,5 +1,13 @@
 # @spare/matrix-margin
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+- Updated dependencies
+  - @spare/util@0.16.4
+
 ## 0.16.3
 
 ### Patch Changes

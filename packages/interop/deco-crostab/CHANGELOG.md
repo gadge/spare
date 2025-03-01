@@ -1,5 +1,14 @@
 # @spare/deco-crostab
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+- Updated dependencies
+  - @spare/deco-table@0.16.4
+  - @spare/node@0.16.4
+
 ## 0.16.3
 
 ### Patch Changes

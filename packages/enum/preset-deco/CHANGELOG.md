@@ -1,5 +1,11 @@
 # @spare/preset-deco
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+
 ## 0.16.3
 
 ### Patch Changes

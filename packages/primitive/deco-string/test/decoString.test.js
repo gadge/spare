@@ -18,14 +18,17 @@ const STRINGS = {
   MANTIS: 'M.A.N.T.I.S.'
 }
 
-const WD = 36
-const LINE = '+'.repeat(WD) + WD
-const PRES = { pos: SUMMER, neg: DECANTE, str: SUBTLE }
-for (const [ key, text ] of indexed(STRINGS)) {
-  console.log(key)
-  const colored = decoString(text, { pres: PRES, thres: 36 })
-  console.log(colored)
-  console.log(LINE)
-}
+test('deco-string', () => {
+  const WD = 36
+  const LINE = '+'.repeat(WD) + WD
+  const PRES = { pos: SUMMER, neg: DECANTE, str: SUBTLE }
+  for (const [ key, text ] of indexed(STRINGS)) {
+    console.log(key)
+    const colored = decoString(text, { pres: PRES, thres: 36 })
+    console.log(colored)
+    console.log(LINE)
+  }
+})
+
 
 

@@ -1,7 +1,7 @@
 import { TableCollection } from '@foba/table'
 import { says }            from '@spare/logger'
+import { test }            from 'node:test'
 import { DecoTable }       from '../index.js'
-import { test } from 'node:test'
 
 const table = TableCollection.flopShuffle()
 

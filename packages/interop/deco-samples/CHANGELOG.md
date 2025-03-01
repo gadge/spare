@@ -1,5 +1,20 @@
 # @spare/deco-samples
 
+## 0.16.4
+
+### Patch Changes
+
+- decouple Typo from @spare/deco to Node in new @spare/node
+- Updated dependencies
+  - @spare/enum-brackets@0.16.4
+  - @spare/preset-deco@0.16.4
+  - @spare/deco-vector@0.16.4
+  - @spare/deco-flat@0.16.4
+  - @spare/deco-config@0.16.4
+  - @spare/table-margin@0.16.4
+  - @spare/matrix-padder@0.16.4
+  - @spare/vector-padder@0.16.4
+
 ## 0.16.3
 
 ### Patch Changes
