@@ -20,25 +20,20 @@
   "dependencies": {
     "@analys/convert": "^0.7.3",
     "@analys/samples-select": "^0.7.3",
-    "@aryth/math": "^0.7.3",
-    "@palett/enum-colorant-modes": "^0.12.0",
-    "@palett/fluo-matrix": "^0.12.0",
-    "@palett/fluo-vector": "^0.12.0",
+    "@palett/presets": "^0.12.1",
     "@spare/deco-config": "workspace:^",
     "@spare/deco-flat": "workspace:^",
-    "@spare/deco-vector": "workspace:^",
     "@spare/enum-brackets": "workspace:^",
-    "@texting/enum-chars": "^0.2.2",
-    "@spare/matrix-padder": "workspace:^",
+    "@spare/node": "workspace:^",
     "@spare/preset-deco": "workspace:^",
-    "@spare/table-margin": "workspace:^",
-    "@spare/vector-padder": "workspace:^",
-    "@texting/liner": "^0.2.2",
-    "@vect/entries-unwind": "^0.6.13",
+    "@texting/enum-brackets": "^0.2.2",
+    "@texting/enum-chars": "^0.2.2",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/vector-zipper": "^0.8.0"
+    "@vect/matrix-index": "^0.6.13",
+    "@vect/vector-init": "^0.8.0"
   },
   "devDependencies": {
+    "@spare/says": "workspace:^",
     "@spare/xr": "workspace:^"
   },
   "repository": {

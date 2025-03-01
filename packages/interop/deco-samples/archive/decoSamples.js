@@ -13,7 +13,7 @@ import { zipper }                from '@vect/vector-zipper'
 
 export const decoSamples = function (samples) {
   const config = this, original = samples
-  let { fields, indexed, bracket, discrete, level } = config
+  let { fields, indexed, bracket, discrete, level, direct } = config
   if (indexed) { samples = Object.values(samples) }
   if (!(samples?.length)) return '[]'
   if (fields) { samples = samplesSelect(samples, fields) }

@@ -1,67 +1,41 @@
-import { DecoConfig }             from '@spare/deco-config'
-import { DUAL_PRESET_COLLECTION } from '@spare/preset-deco'
-import { CONFIG }                 from './resources/config.js'
-import { decoSamples }            from './src/decoSamples.js'
+import { samplesToTable }           from '@analys/convert'
+import { samplesSelect }            from '@analys/samples-select'
+import { BESQUE, ENSIGN, SUBTLE }   from '@palett/presets'
+import { Concat, Node, tabs }       from '@spare/node'
+import { BRACE }                    from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP, SP } from '@texting/enum-chars'
+import { width }                    from '@vect/matrix-index'
 
-export { decoSamples }
+const PRES = {
+  str: SUBTLE,
+  neg: ENSIGN,
+  pos: BESQUE
+}
 
-/**
- *
- * @param {Object} [p]
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim=', ']
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {*[]} [p.fields]
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, PLANET, SUBTLE]]
- * @param {number} [p.direct=COLUMNWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.left]
- * @param {number} [p.bottom]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi=false]
- * @param {number} [p.level=0]
- *
- * @returns {string}
- */
-export const Deco = (p = {}) => decoSamples
-  .bind(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION))
 
-/**
- *
- * @param {*[][]} samples
- * @param {Object} [p]
- *
- * @param {boolean} [p.discrete]
- * @param {string} [p.delim=', ']
- *
- * @param {boolean|number} [p.bracket=true]
- *
- * @param {*[]} [p.fields]
- * @param {boolean} [p.indexed=true]
- * @param {Function} [p.keyRead]
- * @param {Function} [p.read]
- *
- * @param {Object|Object[]} [p.presets=[FRESH, PLANET, SUBTLE]]
- * @param {number} [p.direct=COLUMNWISE]
- *
- * @param {number} [p.top]
- * @param {number} [p.left]
- * @param {number} [p.bottom]
- * @param {number} [p.right]
- *
- * @param {boolean} [p.ansi=false]
- * @param {number} [p.level=0]
- *
- * @returns {string}
- */
-export const deco = (samples, p = {}) => decoSamples
-  .call(DecoConfig.parse(p, CONFIG, DUAL_PRESET_COLLECTION), samples)
+// /**
+//  * @param {Opt} p
+//  * @returns {function}
+//  */
+// export const DecoSamples = (p = {}) => {
+//   p.pres = p.pres ?? PRES
+//   p.fill = p.fill ?? SP
+//   p.ansi = p.ansi ?? true
+//   return table.bind(new TableNode(p))
+// }
+
+
+export function decoSamples(samples, p = {}, keyPres, valuePres) {
+  p.pres = p.pres ?? PRES
+  p.fill = p.fill ?? SP
+  p.ansi = p.ansi ?? true
+  const keyNode = new Node(p, keyPres ?? p.pres)
+  const valueNode = new Node(p, valuePres ?? p.pres)
+  let { fields, indexed, indent, direct } = p
+  if (fields) { samples = samplesSelect(samples, fields) }
+  const { head, rows } = samplesToTable(samples)
+  const headTexts = keyNode.flatVector(head)
+  const rowsTexts = valueNode.flatMatrix(rows, direct), count = rowsTexts?.length ?? 0, wd = width(rows)
+  if (count <= wd) return '[{ ' + Concat.chain(rowsTexts, COSP) + ' }]'
+  return '[' + LF + Concat.reshape(rowsTexts, (x, j) => headTexts[j] + RTSP + x, COSP, COLF, BRACE, wd, indent + 2) + LF + tabs(indent) + ']'
+}
