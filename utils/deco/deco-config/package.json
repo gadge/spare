@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-config.test.js"
   },
   "dependencies": {
-    "@palett/fluo": "^0.12.0",
+    "@palett/fluo": "^0.12.1",
     "@spare/preset-deco": "workspace:^",
     "@typen/nullish": "^0.2.0",
     "@vect/object-update": "^0.8.0"

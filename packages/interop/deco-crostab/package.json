@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.0",
-    "@spare/node": "workspace:^",
+    "@palett/presets": "^0.12.1",
     "@spare/deco-table": "workspace:^",
+    "@spare/node": "workspace:^",
     "@texting/enum-chars": "^0.2.2",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix-index": "^0.8.0",

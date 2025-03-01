@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.0",
+    "@palett/presets": "^0.12.1",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {

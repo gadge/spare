@@ -63,6 +63,20 @@ export class Concat {
     }
     return tx
   }
+  static reshape(ts, fn, de = COSP, tr = LF, br = NONE, wd = 2, id = 0) {
+    let [ L, R ] = BRSP[br]
+    if (!ts?.length) return L.at(0) + R.at(-1)
+    let hi = ts.length, tx = ''
+    L = tabs(id) + L
+    for (let i = 0, p = (wd = min(wd, hi)), cx; i < hi; p += wd) {
+      let ci = 0
+      cx = L + fn(ts[i], ci)
+      while (++i < p) cx += de + fn(ts[i], ++ci)
+      tx += cx + R
+      if (p < hi) tx += tr
+    }
+    return tx
+  }
   static string(ts, de = '', wd = 80, id = 0, sr = 0) {
     if (!wd) return Concat.chain(ts, de)
     const cn = ts.length, ws = ts.ws ?? ts.map(lange)

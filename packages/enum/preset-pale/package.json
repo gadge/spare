@@ -19,11 +19,11 @@
   },
   "dependencies": {
     "@ject/pipe": "^0.1.1",
-    "@palett/presets": "^0.12.0",
+    "@palett/presets": "^0.12.1",
     "@spare/deco-pale": "workspace:^",
     "@spare/enum-brackets": "workspace:^",
-    "@texting/enum-chars": "^0.2.2",
     "@spare/quote": "workspace:^",
+    "@texting/enum-chars": "^0.2.2",
     "@vect/enum-matrix-directions": "^0.6.13"
   },
   "repository": {
