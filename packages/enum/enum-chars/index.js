@@ -20,4 +20,4 @@ export {
   DOSP,
   COSP,
   COLF
-} from './resources/chars'
+} from './resources/chars.js'

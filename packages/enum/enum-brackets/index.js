@@ -8,4 +8,4 @@ export {
   BRK,
   BRC,
   ANBR,
-} from './resources/brackets'
+} from './resources/brackets.js'

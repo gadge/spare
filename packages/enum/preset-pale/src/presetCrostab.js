@@ -1,5 +1,5 @@
 import { decoPale } from '@spare/deco-pale'
-import { LF }       from '@spare/enum-chars'
+import { LF }       from '@texting/enum-chars'
 
 /**
  * @param {Object} p

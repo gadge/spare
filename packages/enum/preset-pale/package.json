@@ -22,7 +22,7 @@
     "@palett/presets": "^0.12.0",
     "@spare/deco-pale": "workspace:^",
     "@spare/enum-brackets": "workspace:^",
-    "@spare/enum-chars": "workspace:^",
+    "@texting/enum-chars": "^0.2.2",
     "@spare/quote": "workspace:^",
     "@vect/enum-matrix-directions": "^0.6.13"
   },

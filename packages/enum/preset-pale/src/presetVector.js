@@ -1,6 +1,6 @@
 import { decoPale } from '@spare/deco-pale'
 import { BRK }      from '@spare/enum-brackets'
-import { COLF }     from '@spare/enum-chars'
+import { COLF }     from '@texting/enum-chars'
 
 /***
  *

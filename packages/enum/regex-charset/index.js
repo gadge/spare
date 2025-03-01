@@ -1,5 +1,5 @@
-export { ANSI, ASTRAL, HAN }       from './resources/oneoff'
-export { ANSI_G, ASTRAL_G, HAN_G } from './resources/global'
+export { ANSI, ASTRAL, HAN }       from './resources/oneoff.js'
+export { ANSI_G, ASTRAL_G, HAN_G } from './resources/global.js'
 export {
   HALF_CHARS,
   GEN_PUNCS,
@@ -12,5 +12,5 @@ export {
   FULL_NUM,
   FULL_UPPER,
   FULL_LOWER,
-}                                  from './resources/elements'
+}                                  from './resources/elements.js'
 

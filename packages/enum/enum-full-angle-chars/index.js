@@ -7,4 +7,4 @@ export {
   DASH,
   // ELLIP,
   // AEU,
-} from './resources/chars'
+} from './resources/chars.js'

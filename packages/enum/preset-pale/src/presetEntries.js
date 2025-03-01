@@ -1,6 +1,6 @@
 import { decoPale } from '@spare/deco-pale'
 import { BRK }      from '@spare/enum-brackets'
-import { LF }       from '@spare/enum-chars'
+import { LF }       from '@texting/enum-chars'
 
 /***
  * @param {Object} p

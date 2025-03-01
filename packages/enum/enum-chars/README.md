@@ -23,7 +23,7 @@ $ npm install @spare/enum-chars
 
 ## Usage
 ```js
-import { lange } from '@spare/enum-chars'
+import { lange } from '@texting/enum-chars'
 const list = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',

@@ -20,6 +20,9 @@
   "dependencies": {
     "@palett/presets": "^0.12.0"
   },
+  "devDependencies": {
+    "@ject/oneself": "^0.1.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gadge/spare.git"

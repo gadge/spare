@@ -4,4 +4,4 @@ export {
   GB18030,
   ASCII,
   ARRAYBUFFER,
-} from './resources/encodings'
+} from './resources/encodings.js'

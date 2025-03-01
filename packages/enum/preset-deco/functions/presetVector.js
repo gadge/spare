@@ -1,6 +1,6 @@
 import { decoFlat }                       from '@spare/deco-flat'
 import { BRK }                            from '@spare/enum-brackets'
-import { COLF }                           from '@spare/enum-chars'
+import { COLF }                           from '@texting/enum-chars'
 import { LITERAL_PRESET, NUMERIC_PRESET } from '../resources/dyePresets'
 import { DecoConfig } from '@spare/deco-config'
 

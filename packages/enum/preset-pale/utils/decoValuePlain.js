@@ -1,5 +1,5 @@
 import { brace, bracket } from '@texting/bracket'
-import { COSP, RT }       from '@spare/enum-chars'
+import { COSP, RT }       from '@texting/enum-chars'
 import { logger }         from '@spare/logger'
 import { OBJ }            from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT } from '@typen/enum-object-types'

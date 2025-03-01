@@ -7,4 +7,4 @@ export {
   CAPWORD,
   DASH_CAPREST,
   CAPREST,
-} from './resources/regex'
+} from './resources/regex.js'

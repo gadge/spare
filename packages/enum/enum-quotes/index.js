@@ -6,4 +6,4 @@ export {
   QM2,
   APOS,
   DITTO
-} from './resources/quotationMarks'
+} from './resources/quotationMarks.js'

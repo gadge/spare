@@ -21,7 +21,7 @@
     "@ject/pipe": "^0.1.1",
     "@spare/deco-pale": "workspace:^",
     "@spare/enum-brackets": "workspace:^",
-    "@spare/enum-chars": "workspace:^",
+    "@texting/enum-chars": "^0.2.2",
     "@spare/quote": "workspace:^"
   },
   "repository": {
