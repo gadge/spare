@@ -1,8 +1,8 @@
-import { Grad, tabs, Node }                from '@spare/node'
+import { Grad, Node, tabs }               from '@spare/node'
 import { DA, LF, SP, VO }                 from '@texting/enum-chars'
 import { COLUMNWISE, POINTWISE, ROWWISE } from '@vect/enum-matrix-directions'
-import { init }                           from '@vect/vector-init'
 import { width }                          from '@vect/matrix-index'
+import { init }                           from '@vect/vector-init'
 
 const VB = ' | ', CX = '-+-'
 

@@ -4,10 +4,10 @@ import { makeEmbedded }              from '@foba/util'
 import { decoCrostab, logger, says } from '@spare/logger'
 import { strategies }                from '@valjoux/strategies'
 import { dateTime }                  from '@valjoux/timestamp-pretty'
-import { deco }                      from '../index'
-import { test } from 'node:test'
+import { test }                      from 'node:test'
+import { deco }                      from '../index.js'
 
-const test = () => {
+test('decoTables strategies', () => {
   const { lapse, result } = strategies({
     repeat: 1E+4,
     candidates: makeEmbedded({
@@ -17,7 +17,7 @@ const test = () => {
     }),
     methods: {
       arch: x => x,
-      dev: (mx) => deco(mx),
+      dev: (mx) => deco(mx)
       // bench: (mx) => mapper(mx, x => typeof x === STR ? x.trim() : x)
     }
   })
@@ -26,5 +26,4 @@ const test = () => {
   const FUNCTION_TAG = 'dev'
   for (let member of result.side)
     says[member].br(FUNCTION_TAG)(result.cell(member, FUNCTION_TAG))
-}
-test()
+})

@@ -1,6 +1,6 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { SP }                     from '@texting/enum-chars'
-import { TableNode }              from './target/TableNode.js'
+import { TableNode }              from './src/TableNode.js'
 
 export { TableNode }
 
