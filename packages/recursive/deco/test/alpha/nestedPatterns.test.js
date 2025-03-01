@@ -1,15 +1,16 @@
 import { pipe }             from '@ject/pipe'
 import { decoFlat }         from '@spare/deco-flat'
 import { logger, says, Xr } from '@spare/logger'
-import { delogger }         from '../..'
+import { delogger }         from '../../index.js'
+import { test } from 'node:test'
 
 const SF = '\uFFFF'
 const Parser = (...regs) => pipe.apply(null, regs.map(x => parser.bind(x)))
 const parser = function (text) {
   const reg = this ?? /\([^()]*\)/, vec = []
   let index = 0, match, phrase, left, right
-  while ((match = reg.exec(text)) && ([phrase] = match) && ([left, right] = phrase.split(SF))) {
-    Xr().match(match).left(left).right(right) |> says['match']
+  while ((match = reg.exec(text)) && ([ phrase ] = match) && ([ left, right ] = phrase.split(SF))) {
+    says['match'](Xr().match(match).left(left).right(right))
     if (!right) {
       index = vec.push(phrase) - 1
     } else {
@@ -31,7 +32,7 @@ const a = {
   foo: `a`,
   bar: 'b',
   zen: 'c',
-  points: [new Point(1, 2), new Point(3, 4), new Point(5, 6),]
+  points: [ new Point(1, 2), new Point(3, 4), new Point(5, 6) ]
 }
 
 a |> decoFlat |> logger
@@ -49,9 +50,8 @@ const test = () => {
   ]
   const p = Parser(braceReg)
   for (let candidate of candidates) {
-    candidate |> p |> delogger
+    delogger(p(candidate))
   }
-
 }
 
 test()

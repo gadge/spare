@@ -5,25 +5,26 @@ import { decoCrostab, logger, says } from '@spare/logger'
 import { strategies }                from '@valjoux/strategies'
 import { dateTime }                  from '@valjoux/timestamp-pretty'
 import { deco }                      from '../index'
+import { test } from 'node:test'
 
 const test = () => {
   const { lapse, result } = strategies({
     repeat: 1E+4,
-    candidates: {
+    candidates: makeEmbedded({
       BistroDutyRoster: TableCollection.BistroDutyRoster,
       AeroEngineSpecs: Table.from(TableCollection.AeroEngineSpecs).find({ country: x => x === 'US' }),
       AgeOfEmpiresIIUnits: Table.from(TableCollection.AgeOfEmpiresIIUnits).find({ building: x => x === 'Archery Range' })
-    } |> makeEmbedded,
+    }),
     methods: {
       arch: x => x,
       dev: (mx) => deco(mx),
       // bench: (mx) => mapper(mx, x => typeof x === STR ? x.trim() : x)
     }
   })
-  lapse |> decoCrostab |> says['lapse'].p(dateTime())
-  '' |> logger
+  says['lapse'].p(dateTime())(decoCrostab(lapse))
+  logger('')
   const FUNCTION_TAG = 'dev'
   for (let member of result.side)
-    result.cell(member, FUNCTION_TAG)  |> says[member].br(FUNCTION_TAG)
+    says[member].br(FUNCTION_TAG)(result.cell(member, FUNCTION_TAG))
 }
 test()

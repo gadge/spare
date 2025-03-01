@@ -1,5 +1,6 @@
 import { says } from '@spare/xr'
 import { Xr }   from '@spare/logger'
+import { test } from 'node:test'
 
 const ARC = /[a-cx-z]/
 const EDGE = /[a-c|x-z]/

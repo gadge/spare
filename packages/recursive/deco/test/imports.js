@@ -1,4 +1,6 @@
-export const LIST = [
+import { test } from 'node:test'
+
+const LIST = [
   '@aryth/math',
   '@palett/convert',
   '@palett/enum-ansi-codes',
@@ -33,8 +35,11 @@ export const LIST = [
   '@typen/num-strict',
   '@vect/matrix',
   '@vect/matrix-index',
-  '@vect/vector-init',
+  '@vect/vector-init'
 ]
 
-export const SET = new Set(LIST.sort())
-console.log(SET)
+test('imports', () => {
+  const SET = new Set(LIST.sort())
+  console.log(SET)
+})
+

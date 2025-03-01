@@ -1,5 +1,5 @@
 import { says }              from '@spare/logger'
-import { ComplexCollection } from '../../assets/ComboCollection'
+import { ComplexCollection } from '../../assets/ComboCollection.js'
 
 export const paramNames = (fn) => {
   return fn.toString()

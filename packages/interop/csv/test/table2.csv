@@ -1,0 +1,7 @@
+symbol,companyName                  ,industry                      ,ceo                  ,sector                ,price ,mktCap      
+JD    ,JD.com Inc.                  ,Online Media                  ,Qiangdong Richard Liu,Technology            , 38.84, 56712614000
+BABA  ,Alibaba Group Holding Limited,Retail - Apparel & Specialty  ,Yong Daniel Zhang    ,Consumer Cyclical     ,205.61,563679790000
+..    ,..                           ,..                            ,..                   ,..                    ,..    ,..          
+IQ    ,"iQIYI, Inc.                  ",Internet Content & Information,null                 ,Communication Services, 23.98, 17434419200
+BILI  ,Bilibili Inc.                ,Electronic Gaming & Multimedia,null                 ,Communication Services, 26.72,  8714006500
+LK    ,Luckin Coffee Inc.           ,Restaurants                   ,null                 ,Consumer Cyclical     , 38.33,  8964160500

@@ -4,6 +4,7 @@ import { says } from '@spare/xr'
 import { strategies } from '@valjoux/strategies'
 import { dateTime } from '@valjoux/timestamp-pretty'
 import { decoCrostab } from '../index.js'
+import { test } from 'node:test'
 
 const test = () => {
   const { lapse, result } = strategies({

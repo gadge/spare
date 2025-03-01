@@ -3,7 +3,8 @@ import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
 import { decoCrostab, logger, says }                      from '@spare/logger'
 import { strategies }                                     from '@valjoux/strategies'
 import { dateTime }                                       from '@valjoux/timestamp-pretty'
-import { deco }                                           from '../index'
+import { deco }                                           from '../index.js'
+import { test } from 'node:test'
 
 const Strangers = {
   empty: [],

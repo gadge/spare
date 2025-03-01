@@ -2,11 +2,11 @@ import { Cards }               from '@palett/cards'
 import { hexToRgb }            from '@palett/convert'
 import { Dye }                 from '@palett/dye'
 import { UNDERLINE }           from '@palett/enum-font-effects'
-import { SP }                  from '@spare/enum-chars'
+import { SP }                  from '@texting/enum-chars'
 import { decoSamples, logger } from '@spare/logger'
 import { quote }               from '@spare/quote'
-import { ComplexCollection }   from '../assets/ComboCollection'
-import { argnames }            from './argnames'
+import { ComplexCollection }   from '../assets/ComboCollection.js'
+import { argnames }            from './argnames.js'
 
 // no comments
 // no destructuring assignment

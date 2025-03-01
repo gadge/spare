@@ -1,5 +1,6 @@
 import { METRO, SUBTLE } from '@palett/presets'
 import { DecoEntries, logger, says } from '../index.js'
+import { test } from 'node:test'
 
 const candidates = {
   ob: ({ foo: 'bar', kha: 'mia' }),
@@ -11,7 +12,8 @@ const candidates = {
   eps: Number.EPSILON
 }
 
-logger(candidates)
-
-says.logger(DecoEntries({ presets: [ SUBTLE, METRO ] })(Object.entries(candidates)))
+test('logger test', () => {
+  logger(candidates)
+  says.logger(DecoEntries({ presets: [ SUBTLE, METRO ] })(Object.entries(candidates)))
+})
 

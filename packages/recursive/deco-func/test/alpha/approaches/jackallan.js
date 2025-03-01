@@ -1,5 +1,5 @@
 import { delogger }        from '@spare/deco'
-import { comboCollection } from '../../assets/comboParam'
+import { comboCollection } from '../../assets/comboParam.js'
 
 const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg
 const ARGUMENT_NAMES = /([^\s,]+)/g

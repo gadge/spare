@@ -5,7 +5,8 @@ import { STR }                                            from '@typen/enum-data
 import { strategies }                                     from '@valjoux/strategies'
 import { dateTime }                                       from '@valjoux/timestamp-pretty'
 import { mapper }                                         from '@vect/matrix'
-import { deco }                                           from '../index'
+import { deco }                                           from '../index.js'
+import { test } from 'node:test'
 
 const test = () => {
   const { lapse, result } = strategies({

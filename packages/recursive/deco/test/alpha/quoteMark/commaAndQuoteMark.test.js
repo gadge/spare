@@ -1,5 +1,6 @@
 import { decoVector, logger } from '@spare/logger'
 import { ripper }             from '@spare/ripper'
+import { test } from 'node:test'
 
 export const parser = (text) => {
   return ripper.call(/,(?=(?:[^']*'[^']*')*[^']*$)/g, text)
