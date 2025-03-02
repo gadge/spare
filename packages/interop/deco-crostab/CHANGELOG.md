@@ -1,5 +1,14 @@
 # @spare/deco-crostab
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/deco-table@0.16.7
+  - @spare/node@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes

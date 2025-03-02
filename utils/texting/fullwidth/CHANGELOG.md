@@ -1,5 +1,16 @@
 # @spare/fullwidth
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-chars@0.16.7
+  - @spare/enum-full-angle-chars@0.16.7
+  - @spare/regex-charset@0.16.7
+  - @spare/charset@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes

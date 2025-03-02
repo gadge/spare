@@ -1,6 +1,6 @@
 {
   "name": "@spare/charset",
-  "version": "0.16.6",
+  "version": "0.16.7",
   "description": "Regex sets",
   "type": "module",
   "exports": "./dist/index.js",

@@ -1,5 +1,14 @@
 # @spare/cite
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/quote@0.16.7
+  - @spare/translator@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes

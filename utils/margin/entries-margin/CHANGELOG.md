@@ -1,5 +1,14 @@
 # @spare/entries-margin
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/vector-margin@0.16.7
+  - @spare/util@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes

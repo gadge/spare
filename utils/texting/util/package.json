@@ -1,6 +1,6 @@
 {
   "name": "@spare/util",
-  "version": "0.16.6",
+  "version": "0.16.7",
   "description": "A util toolset for @spare.",
   "type": "module",
   "exports": "./dist/index.js",

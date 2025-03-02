@@ -1,5 +1,14 @@
 # @spare/deco-vector
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/node@0.16.7
+  - @spare/vector-margin@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes

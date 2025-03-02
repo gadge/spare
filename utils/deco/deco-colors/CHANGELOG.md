@@ -1,5 +1,13 @@
 # @spare/deco-colors
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/preset-deco@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes

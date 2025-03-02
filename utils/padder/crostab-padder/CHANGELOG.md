@@ -1,5 +1,14 @@
 # @spare/crostab-padder
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/field-padder@0.16.7
+  - @spare/table-padder@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@spare/arc",
-  "version": "0.16.6",
+  "version": "0.16.7",
   "description": "Arc",
   "type": "module",
   "exports": "./dist/index.js",

@@ -1,5 +1,25 @@
 # @spare/logger
 
+## 0.16.7
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/xr@0.16.7
+  - @spare/deco-crostab@0.16.7
+  - @spare/deco-samples@0.16.7
+  - @spare/deco-table@0.16.7
+  - @spare/deco-entries@0.16.7
+  - @spare/deco-matrix@0.16.7
+  - @spare/deco-object@0.16.7
+  - @spare/deco-string@0.16.7
+  - @spare/deco-vector@0.16.7
+  - @spare/deco@0.16.7
+  - @spare/deco-flat@0.16.7
+  - @spare/deco-func@0.16.7
+  - @spare/deco-pale@0.16.7
+
 ## 0.16.6
 
 ### Patch Changes
