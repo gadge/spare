@@ -55,36 +55,37 @@ export class Node {
   get uns() { return !this.pbd }
   get tNaN() { return this.tbd.nan }
   get nNaN() { return this.nbd.nan }
-  preStr(die, val) {
-    const vdf = val - (die.s ?? 0), { tbd } = this
-    return hslToInt(scale(vdf, die[0], tbd[0]), limFF(vdf, die[1], tbd[1]), limFF(vdf, die[2], tbd[2]))
+  preStr(grad, val) {
+    const vdf = val - (grad.s ?? 0), { tbd } = this
+    return hslToInt(scale(vdf, grad[0], tbd[0]), limFF(vdf, grad[1], tbd[1]), limFF(vdf, grad[2], tbd[2]))
   }
-  preNum(die, val) {
+  preNum(grad, val) {
     if (isNaN(val)) return this.tNaN
     if (this.uns || val < 0) {
-      const vdf = val - (die.m ?? 0), { nbd } = this
-      return hslToInt(scale(vdf, die[3], nbd[0]), limFF(vdf, die[4], nbd[1]), limFF(vdf, die[5], nbd[2]))
+      const vdf = val - (grad.m ?? 0), { nbd } = this
+      return hslToInt(scale(vdf, grad[3], nbd[0]), limFF(vdf, grad[4], nbd[1]), limFF(vdf, grad[5], nbd[2]))
     }
     if (val > 0) {
-      const vdf = val - (die.p ?? 0), { pbd } = this
-      return hslToInt(scale(vdf, die[6], pbd[0]), limFF(vdf, die[7], pbd[1]), limFF(vdf, die[8], pbd[2]))
+      const vdf = val - (grad.p ?? 0), { pbd } = this
+      return hslToInt(scale(vdf, grad[6], pbd[0]), limFF(vdf, grad[7], pbd[1]), limFF(vdf, grad[8], pbd[2]))
     }
     return this.nNaN
   }
 
-  store(ts, ns, bd, x, i) {
+  store(tvs, nvs, grad, x, i) {
     let c, t, n, g
     typeof x === NUM ? (t = '' + x, n = x, c = N) : (t = this.str(x), n = this.num(x), c = checkSub(n, t), g = hasAnsi(t))
-    ts[i] = c === S && !(g = hasAnsi(t)) ? bd.noteStr(t) : t
-    ns[i] = c === S ? (g ? null : void 0) : c === N ? bd.noteNum(n) : NaN
+    tvs[i] = c === S && !(g = hasAnsi(t)) ? grad.noteStr(t) : t
+    nvs[i] = c === S ? (g ? null : void 0) : c === N ? grad.noteNum(n) : NaN
     return this.len(t)
   }
-  render(bd, t, n, w) {
-    if (w) t = this.pad(t, n, w)
-    if (this.mono || n === null) return t
-    if (n === void 0) return this.tbd ? render.call(this, this.preStr(bd, value(t, bd.w)), t) : t
-    if (isNaN(n)) return this.tbd ? render.call(this, this.tNaN, t) : t
-    return this.nbd ? render.call(this, this.preNum(bd, n), t) : t
+
+  render(grad, x, nv, wd) {
+    if (wd) x = this.pad(x, nv, wd)
+    if (this.mono || nv === null) return x
+    if (nv === void 0) return this.tbd ? render.call(this, this.preStr(grad, value(x, grad.w)), x) : x
+    if (isNaN(nv)) return this.tbd ? render.call(this, this.tNaN, x) : x
+    return this.nbd ? render.call(this, this.preNum(grad, nv), x) : x
   }
 
   flatVector(vec) {
@@ -178,38 +179,45 @@ export class Node {
     return ts
   }
 
-  string(thres, str, id, sr) {
+  /**
+   * @param {number} thr width of each line
+   * @param {string} str input string
+   * @param {number} ind indent
+   * @param {number} sur surge
+   * @return {string}
+   */
+  string(thr, str, ind, sur) {
     const vec = splitLiteral(str)
-    return Concat.string(this.flatVector(vec), '', thres, id, sr)
+    return Concat.string(this.flatVector(vec), '', thr, ind, sur)
   }
-  vector(thres, vec, id = 0, sr = 0) {
+  vector(thr, vec, ind = 0, sur = 0) {
     const ts = this.flatVector(vec), count = vec?.length ?? 0
     if (count === 0) return '[]'
-    if (thres > 0) return '[' + Concat.vector(ts, COSP, thres, id, sr) + ']'
+    if (thr > 0) return '[' + Concat.vector(ts, COSP, thr, ind, sur) + ']'
     if (count === 1) return '[ ' + Concat.chain(ts, COSP) + ' ]'
-    if (thres === 0) return '[' + LF + Concat.stand(ts, COLF, id + 2) + LF + tabs(id) + ']'
+    if (thr === 0) return '[' + LF + Concat.stand(ts, COLF, ind + 2) + LF + tabs(ind) + ']'
     return '[ ' + Concat.chain(ts, COSP) + ' ]'
   }
-  object(thres, obj, id = 0, sr = 0) {
+  object(thr, obj, ind = 0, sur = 0) {
     let ts = this.flatObject(obj), count = ts.length
     if (count === 0) return '{}'
-    if (thres > 0) return '{' + Concat.entries(ts, RTSP, COLF, thres, id, sr + 2) + '}'
+    if (thr > 0) return '{' + Concat.entries(ts, RTSP, COLF, thr, ind, sur + 2) + '}'
     if (count === 2) return '{ ' + Concat.group(ts, RTSP, COSP, NONE, 2) + ' }'
-    if (thres === 0) return '{' + LF + Concat.shape(ts, RTSP, COLF, NONE, 2, id + 2) + LF + tabs(id) + '}'
+    if (thr === 0) return '{' + LF + Concat.shape(ts, RTSP, COLF, NONE, 2, ind + 2) + LF + tabs(ind) + '}'
     return '{ ' + Concat.group(ts, RTSP, COSP, NONE, 2) + ' }'
   }
-  entries(thres, ent, id = 0, sr = 0) {
-    const count = ent?.length ?? 0, ts = this.flatEntries(ent, thres === 0 && count > 1)
+  entries(thr, ent, ind = 0, sur = 0) {
+    const count = ent?.length ?? 0, ts = this.flatEntries(ent, thr === 0 && count > 1)
     if (count === 0) return '[]'
-    if (thres > 0) return '[' + Concat.entries(ts, COSP, COLF, thres, id, sr + 2) + ']'
+    if (thr > 0) return '[' + Concat.entries(ts, COSP, COLF, thr, ind, sur + 2) + ']'
     if (count === 2) return '[ ' + Concat.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
-    if (thres === 0) return '[' + LF + Concat.shape(ts, COSP, COLF, BRACKET, 2, id + 2) + LF + tabs(id) + ']'
+    if (thr === 0) return '[' + LF + Concat.shape(ts, COSP, COLF, BRACKET, 2, ind + 2) + LF + tabs(ind) + ']'
     return '[ ' + Concat.group(ts, COSP, COSP, BRACKET, 2) + ' ]'
   }
-  matrix(mat, direct, id = 0) {
+  matrix(mat, direct, ind = 0) {
     const ts = this.flatMatrix(mat, direct), count = ts?.length ?? 0, wd = width(mat)
     if (count <= wd) return '[[ ' + Concat.chain(ts, COSP) + ' ]]'
-    return '[' + LF + Concat.shape(ts, COSP, COLF, BRACKET, wd, id + 2) + LF + tabs(id) + ']'
+    return '[' + LF + Concat.shape(ts, COSP, COLF, BRACKET, wd, ind + 2) + LF + tabs(ind) + ']'
   }
 }
 
