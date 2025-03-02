@@ -11,7 +11,7 @@ import { Pal }           from './Pal.js'
 
 export class Says {
   /** @type {Object<string,Pal>} */ #roster = {}
-  /** @type {Generator<Preset>}  */ #pool = presetFlopper({ exhausted: false })
+  /** @type {Generator<Preset>}  */ #pool = presetFlopper(false)
   /** @type {string[]}           */ #effects = undefined
 
   constructor(roster, effects) {
@@ -30,10 +30,9 @@ export class Says {
 
   static build({ roster, effects = [ ITALIC ] } = {}) { return new Says(roster, effects) }
 
-  aboard(name, presets) {
-    const decoConf = { presets: presets ?? this.#pool.next().value, effects: this.#effects }
-    const decoName = decoString(String(name), decoConf)
-    return this.#roster[name] = Pal.build(decoName, { decoConf })
+  aboard(name, pres) {
+    const decoName = decoString(String(name), { pres: pres ||= this.#pool.next().value })
+    return this.#roster[name] = Pal.build(decoName, pres)
   }
 
   roster(name) { return name?.length ? (this.#roster[name] ?? this.aboard(name)).name : null }

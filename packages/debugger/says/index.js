@@ -1,10 +1,10 @@
 import { Says } from './src/Says.js'
 
-/** @type {Function|Says} */
+/** @type {Object<string,(name: string) => void>|Says} */
 const says = new Says()
 
-/** @type {Function} */
-      // const ros = says.roster.bind(says)
+/** @type {(name: string) => string} */
+  // const ros = says.roster.bind(says)
 const ros = (name) => says.roster(name)
 
 export { Says, says, ros }

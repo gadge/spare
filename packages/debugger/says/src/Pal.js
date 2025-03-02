@@ -1,6 +1,6 @@
 import { Callable }         from '@ject/callable'
-import { bracket, parenth } from '@texting/bracket'
 import { decoString }       from '@spare/deco-string'
+import { bracket, parenth } from '@texting/bracket'
 import { LF, SP }           from '@texting/enum-chars'
 import { FUN, STR }         from '@typen/enum-data-types'
 
@@ -17,13 +17,13 @@ export class Pal extends Callable {
   /** @type {string}   */ prefix = ''
   /** @type {Function} */ logger = console.log
   /** @type {Function} */ att = void 0
-  /** @type {{max:*,min:*,na:*}} */ decoConf
-  constructor(value = '', { prefix, logger, attach, decoConf } = {}) {
+  /** @type {{max:*,min:*,na:*}} */ pres
+  constructor(value = '', { prefix, logger, attach, pres } = {}) {
     super(text => Pal.prototype.sentence.call(this, text))
     Reflect.defineProperty(this, NAME, { value, writable: true })
     if (prefix) this.prefix = prefix
     if (logger) this.logger = logger
-    if (decoConf) this.decoConf = decoConf
+    if (pres) this.pres = pres
   }
 
   /**
@@ -49,7 +49,7 @@ export class Pal extends Callable {
     )
   }
 
-  render(message) { return decoString(String(message), this.decoConf) }
+  render(message) { return decoString(String(message), { pres: this.pres }) }
   p(words) { return this.des += SP + words, this }
   br(words) { return this.des += SP + bracket(words), this }
   pr(words) { return this.des += SP + parenth(words), this }
