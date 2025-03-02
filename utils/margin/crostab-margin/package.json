@@ -1,6 +1,6 @@
 {
   "name": "@spare/crostab-margin",
-  "version": "0.16.4",
+  "version": "0.16.6",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./dist/index.js",

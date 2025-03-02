@@ -1,5 +1,23 @@
 # @spare/quote
 
+## 0.16.6
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-quotes@0.16.6
+  - @spare/enum-chars@0.16.6
+
+## 0.16.5
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-chars@0.16.5
+  - @spare/enum-quotes@0.16.5
+
 ## 0.16.4
 
 ### Patch Changes

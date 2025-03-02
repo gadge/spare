@@ -1,5 +1,23 @@
 # @spare/splitter
 
+## 0.16.6
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/regex-phrasing@0.16.6
+  - @spare/ripper@0.16.6
+
+## 0.16.5
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/regex-phrasing@0.16.5
+  - @spare/ripper@0.16.5
+
 ## 0.16.4
 
 ### Patch Changes

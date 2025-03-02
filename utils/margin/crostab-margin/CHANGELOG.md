@@ -1,5 +1,23 @@
 # @spare/crostab-margin
 
+## 0.16.6
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/matrix-margin@0.16.6
+  - @spare/vector-margin@0.16.6
+
+## 0.16.5
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/matrix-margin@0.16.5
+  - @spare/vector-margin@0.16.5
+
 ## 0.16.4
 
 ### Patch Changes

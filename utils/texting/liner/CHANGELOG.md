@@ -1,5 +1,25 @@
 # @spare/liner
 
+## 0.16.6
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-brackets@0.16.6
+  - @spare/enum-chars@0.16.6
+  - @spare/bracket@0.16.6
+
+## 0.16.5
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/enum-brackets@0.16.5
+  - @spare/enum-chars@0.16.5
+  - @spare/bracket@0.16.5
+
 ## 0.16.4
 
 ### Patch Changes

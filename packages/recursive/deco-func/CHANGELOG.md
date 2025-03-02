@@ -1,5 +1,25 @@
 # @spare/deco-func
 
+## 0.16.6
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/preset-deco@0.16.6
+  - @spare/translator@0.16.6
+  - @spare/deco-config@0.16.6
+
+## 0.16.5
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/preset-deco@0.16.5
+  - @spare/deco-config@0.16.5
+  - @spare/translator@0.16.5
+
 ## 0.16.4
 
 ### Patch Changes

@@ -1,5 +1,23 @@
 # @spare/lange
 
+## 0.16.6
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/regex-charset@0.16.6
+  - @spare/charset@0.16.6
+
+## 0.16.5
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/regex-charset@0.16.5
+  - @spare/charset@0.16.5
+
 ## 0.16.4
 
 ### Patch Changes

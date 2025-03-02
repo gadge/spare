@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco",
-  "version": "0.16.4",
+  "version": "0.16.6",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "exports": "./dist/index.js",
@@ -18,7 +18,7 @@
     "test": "node --test ./test/deca.plain.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.1",
+    "@palett/presets": "^0.12.3",
     "@spare/deco-colors": "workspace:^",
     "@spare/deco-date": "workspace:^",
     "@spare/deco-func": "workspace:^",

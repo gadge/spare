@@ -1,6 +1,6 @@
 {
   "name": "@spare/quote",
-  "version": "0.16.4",
+  "version": "0.16.6",
   "description": "Add quotation mark to string",
   "type": "module",
   "exports": "./dist/index.js",
