@@ -1,17 +1,16 @@
 import { DECANTE, SUBTLE, SUMMER } from '@palett/presets'
 import { indexed }                 from '@vect/object-mapper'
+import { test }                    from 'node:test'
 import { decoString }              from '../index.js'
-import { test } from 'node:test'
-
 
 const STRINGS = {
-  'Hamlet AIS2L72': "Thou know'st 'tis common; all that lives must die,\n" +
+  'Hamlet AIS2L72': 'Thou know\'st \'tis common; all that lives must die,\n' +
     'Passing through nature to eternity.',
   'The Two Gentlemen of Verona AIIIS1L178': 'Except I be by Sylvia in the night,\n' +
     'There is no music in the nightingale.',
-  'King Lear AIVS6L55': "**Thy life's a miracle.**",
-  'Some Like It Hot': "Nobody's perfect.",
-  'Dr. Strangelove': "Gentlemen, you can't fight in here! This is the war room!",
+  'King Lear AIVS6L55': '**Thy life\'s a miracle.**',
+  'Some Like It Hot': 'Nobody\'s perfect.',
+  'Dr. Strangelove': 'Gentlemen, you can\'t fight in here! This is the war room!',
   'The Dark Knight': 'Why so serious?',
   Terminatrix: 'Terminator 3 Rise of the Machines',
   MechanicalHound: 'Fahrenheit 451',
@@ -21,11 +20,9 @@ const STRINGS = {
 test('deco-string', () => {
   const WD = 36
   const LINE = '+'.repeat(WD) + WD
-  const PRES = { pos: SUMMER, neg: DECANTE, str: SUBTLE }
   for (const [ key, text ] of indexed(STRINGS)) {
     console.log(key)
-    const colored = decoString(text, { pres: PRES, thres: 36 })
-    console.log(colored)
+    console.log(decoString(text, { pres: { pos: SUMMER, neg: DECANTE, str: SUBTLE }, thres: 36 }))
     console.log(LINE)
   }
 })
