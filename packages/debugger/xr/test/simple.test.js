@@ -1,7 +1,9 @@
 import { deco as decoCrostab } from '@spare/deco-crostab'
 import { deco as decoMatrix }  from '@spare/deco-matrix'
-import { $, says }             from '../index.js'
-import { test }                from 'node:test'
+
+import { test }    from 'node:test'
+import { $, says } from '../index.js'
+
 
 test('simple test', () => {
   says['MasterIO'](1080)

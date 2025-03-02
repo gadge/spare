@@ -1,4 +1,4 @@
-import { ProxyUtil }       from './src/ProxyUtil.js'
+import { bid }             from './src/ProxyUtil.js'
 import { Rosters, Stenos } from './src/singletons.js'
 import { Steno }           from './src/Steno.js'
 
@@ -11,13 +11,22 @@ import { Steno }           from './src/Steno.js'
 export const Xr = Steno.build
 
 export const ros = name => Rosters.main.get(name)
-export const xr = word => Stenos.flat.iso(word)
-export const cr = word => Stenos.camel.iso(word)
-/** @type {function} */
-export const x = new Proxy(Stenos.flat, { get(steno, key) { return steno.iso()[key] } })
-/** @type {function} */
-export const $ = new Proxy(Stenos.camel, { get(steno, key) { return steno.iso()[key] } })
-/** @type {function} */
+
+export const xr = word => Stenos.flat.init(word)
+
+export const cr = word => Stenos.camel.init(word)
+
+/** @type {Object<string, Steno|((x: *) => string)>} */
+export const x = new Proxy(Stenos.flat, {
+  get(steno, key) { return steno.boot()[key] }
+})
+
+/** @type {Object<string, Steno|((x: *) => string)>} */
+export const $ = new Proxy(Stenos.camel, {
+  get(steno, key) { return steno.boot()[key] }
+})
+
+/** @type {Object<string, Steno|((x: *) => void)>} */
 export const says = new Proxy(Rosters.main, {
-  get(roster, key) { return ProxyUtil.methodOrNull(Stenos.host, key) ?? Stenos.host.iso(key) }
+  get(roster, key) { return bid.call(Stenos.host, key) ?? Stenos.host.init(key) }
 })

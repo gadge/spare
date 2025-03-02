@@ -1,6 +1,5 @@
-import { Callable }               from '@ject/callable'
-import { assign, inherit, mixin } from '@ject/mixin'
-import { bracket }                from '@texting/bracket'
+import { mixin }   from '@ject/mixin'
+import { bracket } from '@texting/bracket'
 
 // class Callable extends Function {
 //   constructor(f) {
@@ -21,8 +20,8 @@ class Logger extends mixin(Function, Array) {
     super()
     // assign(this, Array())
     return new Proxy(this, {
-      apply: (logger, thisArg, args) => {
-        Logger.prototype.writeLine.apply(logger, args)
+      apply: (target, thisArg, args) => {
+        Logger.prototype.writeLine.apply(target, args)
       }
     })
   }

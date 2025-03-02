@@ -1,10 +1,9 @@
-import { LF }                                 from '@texting/enum-chars'
-import { SP }                                 from '@texting/enum-chars'
-import { DEF, NUM, OBJ, STR, SYM }            from '@typen/enum-data-types'
-import { nullish, valid }                     from '@typen/nullish'
-import { ProxyUtil }                          from './ProxyUtil.js'
-import { Record }                             from './Record.js'
-import { identify, keepBracket, keepParenth } from './TextUtil.js'
+import { LF, SP }                           from '@texting/enum-chars'
+import { DEF, NUM, OBJ, STR, SYM }          from '@typen/enum-data-types'
+import { nullish, valid }                   from '@typen/nullish'
+import { bid }                              from './ProxyUtil.js'
+import { Record }                           from './Record.js'
+import { getInd, retBr, retPr, sepPreBody } from './text-utils.js'
 
 /**
  * @type {function}
@@ -13,49 +12,44 @@ export class Steno extends Function {
   /** @type {Proxy<Steno>} */ proxy
   /** @type {string}       */ prefix = ''
   /** @type {Array}        */ list = []
-  /** @type {function(*):string} */ keyFn = keepBracket
-  /** @type {function(*):string} */ valFn = keepParenth
-  /** @type {function():string}  */ info
+  /** @type {(key:*)=>string} */ keyFn = retBr
+  /** @type {(val:*)=>string} */ valFn = retPr
+  /** @type {()=>string}  */ info
 
-  constructor(title, prefix, keyFn, valFn) {
+  constructor(title, keyFn, valFn) {
     super()
-    this.init(title, prefix, keyFn, valFn)
+    this.init(title, keyFn, valFn)
     return new Proxy(this, {
-      get(steno, key, proxy) {
-        // `>> [proxy] .get (${typeof key === SYM ? key.description : key}) (${+steno})`  |> console.log
-        return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Steno.prototype.rec.bind(steno, key)
+      get(tar, key, proxy) {
+        // console.log(`>> [proxy].get (${typeof key === SYM ? key.description : key}) (${+tar})`)
+        tar.proxy = proxy
+        return bid.call(tar, key) ?? Steno.prototype.rec.bind(tar, key)
       },
-      apply(steno, thisArg, args) {
-        // `>> [proxy].call (${args}) (${+steno})`  |> console.log
-        return console.log(steno.toString(), steno.renderMany(args).replace(/^ +/, '')), steno.proxy
+      apply(tar, ctx, args) {
+        // console.log(`>> [proxy].call (${args}) ${tar} (${+tar})`)
+        console.log(String(tar), args.map(tar.render, tar).join(SP))
+        return tar.proxy
       }
     })
   }
 
   static build(text, keyFn, valFn) {
-    const [ prefix, title ] = identify(text)
-    return new Steno(title, prefix, keyFn, valFn)
+    return new Steno(text, keyFn, valFn)
   }
 
-  iso(text, keyFn, valFn) {
-    const [ prefix, title ] = identify(text)
-    this.init(title, prefix, keyFn, valFn)
-    return this.proxy
-  }
-
-  init(title, prefix, keyFn, valFn) {
+  init(text, keyFn, valFn) {
+    const [ prefix, title ] = sepPreBody(text)
     if (keyFn) this.keyFn = keyFn
     if (valFn) this.valFn = valFn
     if (this.list.length) this.list.length = 0
-    if (title?.length) this.list.push(this.keyFn(identify.body(title)))
+    if (title?.length) this.list.push(this.keyFn(title))
     this.prefix = prefix ?? ''
     return this.proxy
   }
 
-  get indent() {
-    let ms, ph
-    if ((ms = this.prefix?.match(/\s+/)) && ([ ph ] = ms)) return ph
-    return ''
+  boot() {
+    if (this.list.length) this.list.length = 0
+    return this.proxy
   }
 
   asc() { return this.prefix = SP + SP + this.prefix, this.proxy }
@@ -65,7 +59,7 @@ export class Steno extends Function {
 
   rec(key, value) { return this.list.push(Record.build(key, value)), this.proxy }
 
-  p(...x) { return this.list.push.apply(this.list, x), this.proxy }
+  p(...x) { return this.list.push(...x), this.proxy }
   br(x) { return this.list.push(Record.ofKey(x)), this.proxy }
   pr(x) { return this.list.push(Record.ofVal(x)), this.proxy }
 
@@ -73,7 +67,7 @@ export class Steno extends Function {
    * @param {Record} record
    * @returns {string}
    */
-  renderRecord(record) {
+  #renderRecord(record) {
     let { key, val } = record
     return valid(key)
       ? valid(val)
@@ -82,29 +76,25 @@ export class Steno extends Function {
         ? this.valFn(val) : ''
   }
 
-  renderMany(list) {
-    return !list?.length
-      ? ''
-      : list.length === 1
-        ? Steno.prototype.render.call(this, list[0])
-        : list.map(Steno.prototype.render.bind(this)).join(SP)
-  }
   render(x) {
-    const { indent } = this
-    function prep(x) { return (x += '').includes(LF) ? (LF + x).replace(/\n/g, LF + indent) : x }
-    if (nullish(x)) return x
-    if (typeof x === STR) return prep(x)
-    if (typeof x === OBJ) return prep(x instanceof Record ? this.renderRecord(x) : x)
+    const tx = this.#format(x)
+    return tx.includes(LF) ? (LF + tx).replace(/\n/g, LF + getInd(this.prefix)) : tx
+  }
+
+  #format(x) {
+    if (nullish(x)) return x + ''
+    if (typeof x === STR) return x
+    if (typeof x === OBJ) return x instanceof Record ? this.#renderRecord(x) : x + ''
     if (typeof x === SYM) return x.description // BOO / FUN / NUM / BIG
-    return prep(x)
+    return x + ''
   }
 
   log(message) { return console.log(this.toString() + SP + this.render(message)), this.proxy }
 
   toString() {
-    const list = this.list.map(x => this.render(x), this)
+    const list = this.list.map(this.render, this)
     let prefix = this.prefix ?? ''
-    if (this.info instanceof Function) prefix += (/\s$/.test(prefix) ? '' : SP) + this.info()
+    if (this.info) prefix += (/\s$/.test(prefix) ? '' : SP) + this.info()
     return prefix + (/\s$/.test(prefix) ? '' : SP) + list.join(SP)
   }
 

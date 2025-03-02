@@ -1,7 +1,7 @@
-import { LF }        from '@texting/enum-chars'
 import { logger }    from '@spare/logger'
-import { ros, says } from '../index.js'
+import { LF }        from '@texting/enum-chars'
 import { test }      from 'node:test'
+import { ros, says } from '../index.js'
 
 test('says', () => {
   says.chef('what to do')
@@ -10,6 +10,7 @@ test('says', () => {
   says.tournant.asc().asc()('anything i can do for you')
   says.aboyeur('no,\n just stand by, \nand wait for order')
   says.tournant('yes')
+  says['david adjaye']('designing')
   says['  >> client']('waiting')
   says['  >> client'].br('tiktok-ing')('waiting, too')
   logger(LF + 'registered roster')

@@ -4,7 +4,7 @@ import { hasAnsi }       from '@texting/charset-ansi'
 
 export class Roster {
   /** @type {Object<string,string>} */ #roll = {}
-  /** @type {Generator<Preset>}     */ #pool = presetFlopper({ exhausted: false })
+  /** @type {Generator<Preset>}     */ #pool = presetFlopper(false)
   /** @type {?string[]}             */ effects = null
 
   constructor(effects) {
@@ -15,18 +15,8 @@ export class Roster {
 
   list() { return this.#roll }
 
-  /**
-   * @param {Preset} [pres]
-   * @returns {Object}
-   */
-  config(pres) {
-    if (pres) return { pres: { str: pres, num: pres, effects: this.effects } }
-    const { done, value } = pres ?? this.#pool.next()
-    return done ? {} : { pres: { str: value, num: value, effects: this.effects } }
-  }
-
   aboard(name, pres) {
-    return this.#roll[name] = decoString(name, this.config(pres))
+    return this.#roll[name] = decoString(String(name), { pres: pres ?? this.#pool.next().value })
   }
 
   get(name) {
