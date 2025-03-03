@@ -24,12 +24,12 @@ $ npm install @spare/enum-encodings
 ## Usage
 ```js
 import { lange } from '@spare/constants-encodings'
-const #queue = [
+const list = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',
   '\u{1F3C3}2\u{1F525}7',
 ]
-for (let tx of #queue) {
+for (let tx of list) {
   console.log(`[${tx}] [length] (${tx.length}) [lange] (${lange(tx)})`)
 }
 ```
