@@ -1,0 +1,56 @@
+{
+  "name": "@spare/plot",
+  "version": "0.16.7",
+  "description": "Chain key-value pairs for prettified log",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/test.index.js"
+  },
+  "dependencies": {
+    "@aryth/comparer": "^0.7.3",
+    "@palett/flopper": "^0.12.3",
+    "@spare/deco-string": "workspace:^",
+    "@texting/bracket": "^0.2.2",
+    "@texting/charset-ansi": "^0.2.2",
+    "@texting/enum-chars": "^0.2.2",
+    "@texting/phrasing": "^0.2.2",
+    "@texting/tap": "^0.2.2",
+    "@typen/enum-data-types": "^0.2.0",
+    "@typen/nullish": "^0.2.0"
+  },
+  "devDependencies": {
+    "@ject/mixin": "^0.1.1",
+    "@spare/deco-crostab": "workspace:^",
+    "@spare/deco-matrix": "workspace:^",
+    "@spare/enum-loggers": "workspace:^",
+    "@valjoux/timestamp-pretty": "^0.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gadge/spare.git"
+  },
+  "keywords": [
+    "test",
+    "console",
+    "debug",
+    "print"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gadge/spare"
+  },
+  "homepage": "https://github.com/gadge/spare#readme",
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
+}
