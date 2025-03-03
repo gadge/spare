@@ -24,12 +24,12 @@ $ npm install @spare/quote
 ## Usage
 ```js
 import { quote } from '@spare/quote'
-const list = [
+const #queue = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',
   '\u{1F3C3}2\u{1F525}7',
 ]
-for (let tx of list) {
+for (let tx of #queue) {
   console.log(`[${tx}] [length] (${tx.length}) [quote] (${quote(tx)})`)
 }
 ```

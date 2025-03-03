@@ -1,4 +1,4 @@
-# @spare/deco-flat
+# @spare/deco-plain
 
 ## 0.16.7
 
