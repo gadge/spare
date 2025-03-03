@@ -30,7 +30,7 @@
     "@spare/deco-string": "workspace:^",
     "@spare/deco-table": "workspace:^",
     "@spare/deco-vector": "workspace:^",
-    "@spare/xr": "workspace:^",
+    "@spare/plot": "workspace:^",
     "@texting/enum-chars": "^0.2.2"
   },
   "repository": {
