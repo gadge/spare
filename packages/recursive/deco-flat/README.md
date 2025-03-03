@@ -1,6 +1,6 @@
 <div align="center">
   <img alt="banner" src="../../../media/spare-banner.svg">
-  <p align="center">@spare/deco-plain - flatten deco</p>
+  <p align="center">@spare/deco-flat - flatten deco</p>
 </div>
 
 [![npm-version](https://img.shields.io/npm/v/@spare/deco-flat?logo=npm&style=flat-square)][url-npm]
@@ -26,12 +26,12 @@
 
 ## Install
 ```console
-$ npm install @spare/deco-plain
+$ npm install @spare/deco-flat
 ```
 
 ## Usage
 ```js
-import { decoFlat, DecoFlat } from '@spare/deco-plain'
+import { decoFlat, DecoFlat } from '@spare/deco-flat'
 ```
 
 ## Meta
