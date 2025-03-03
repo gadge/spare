@@ -1,32 +1,36 @@
-import { bid }             from './src/ProxyUtil.js'
-import { Rosters, Stenos } from './src/singletons.js'
-import { Steno }           from './src/Steno.js'
+import { Plot }      from './src/Plot.js'
+import { Roster }    from './src/Roster.js'
+import { snakeRole } from './util/string.js'
 
-/**
- *
- * @param {string} [word]
- * @returns {Steno}
- * @constructor
- */
-export const Xr = Steno.build
+export class Rosters {
+  static #main
+  static get instance() { return this.#main ?? (this.#main = Roster.build()) }
+}
 
-export const ros = name => Rosters.main.get(name)
+export class Stenos {
+  static #main
+  static #camel
+  static get plain() { return this.#main ?? (this.#main = Plot.build()) }
+  static get snake() { return this.#camel ?? (this.#camel = Plot.build('', snakeRole)) }
+}
 
-export const xr = word => Stenos.flat.init(word)
+export const Xr = Plot.build
 
-export const cr = word => Stenos.camel.init(word)
+export const ros = Rosters.instance.get.bind(Rosters.instance)
 
-/** @type {Object<string, Steno|((x: *) => string)>} */
-export const x = new Proxy(Stenos.flat, {
-  get(steno, key) { return steno.boot()[key] }
+export const xr = word => Stenos.plain.init(word)
+
+/** @type {Object<string, Plot|((x: *) => string)>} */
+export const $ = new Proxy({}, {
+  get(tar, key) { return Stenos.snake.init(key) }
 })
 
-/** @type {Object<string, Steno|((x: *) => string)>} */
-export const $ = new Proxy(Stenos.camel, {
-  get(steno, key) { return steno.boot()[key] }
+/** @type {Object<string, Plot|((x: *) => void)>} */
+export const says = new Proxy({}, {
+  get(tar, key) { return Stenos.snake.init(key) }
 })
 
-/** @type {Object<string, Steno|((x: *) => void)>} */
-export const says = new Proxy(Rosters.main, {
-  get(roster, key) { return bid.call(Stenos.host, key) ?? Stenos.host.init(key) }
-})
+
+
+
+

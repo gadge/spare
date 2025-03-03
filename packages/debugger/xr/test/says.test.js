@@ -5,9 +5,9 @@ import { ros, says } from '../index.js'
 
 test('says', () => {
   says.chef('what to do')
-  says.worker.asc()('how would i know')
+  says.worker('how would i know')
   says.worker('i\'ll be there tmr')
-  says.tournant.asc().asc()('anything i can do for you')
+  says.tournant('anything i can do for you')
   says.aboyeur('no,\n just stand by, \nand wait for order')
   says.tournant('yes')
   says['david adjaye']('designing')

@@ -1,6 +1,6 @@
 import { logger }     from '@spare/logger'
 import { test }       from 'node:test'
-import { sepPreBody } from '../src/text-utils.js'
+import { sepPreBody } from '../util/string.js'
 
 const candidates = [
   undefined,

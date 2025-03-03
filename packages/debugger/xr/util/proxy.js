@@ -2,7 +2,7 @@ import { FUN } from '@typen/enum-data-types'
 
 // `>> (${typeof name === SYM ? name.description : name}) @ [${+ctx}]`  |> console.log
 
-export function bid(name) {
+export function scan(name) {
   if (!(name in this)) return null
   const item = this[name]
   return typeof item === FUN ? item.bind(this) : null
@@ -12,13 +12,13 @@ export function bid(name) {
 // TODO: unfinished ProxyFab
 // export class ProxyFab {
 //   /**
-//    * @param {Steno} steno
-//    * @returns {Steno}
+//    * @param {Plot} steno
+//    * @returns {Plot}
 //    */
 //   static make(steno) {
 //     return new Proxy(steno, {
 //       get(steno, key, proxy) {
-//         return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Steno.prototype.rec.bind(steno, key)
+//         return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Plot.prototype.rec.bind(steno, key)
 //       },
 //     })
 //   }
@@ -30,13 +30,13 @@ export function bid(name) {
 //     })
 //   }
 //   /**
-//    * @param {Steno} steno
-//    * @returns {Steno}
+//    * @param {Plot} steno
+//    * @returns {Plot}
 //    */
 //   static makeSays(steno) {
 //     return new Proxy(steno, {
 //       get(steno, key, proxy) {
-//         return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Steno.prototype.rec.bind(steno, key)
+//         return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Plot.prototype.rec.bind(steno, key)
 //       },
 //       apply(steno, thisArg, args) {
 //         return console.log(steno.toString(), args.map(x => steno.render(x)).join(SP))

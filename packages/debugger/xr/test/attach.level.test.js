@@ -1,14 +1,15 @@
-import { ERROR, WARN } from '@spare/enum-loggers'
-import { dateTime }    from '@valjoux/timestamp-pretty'
-import { test }        from 'node:test'
-import { says }        from '../index.js'
+import { DEBUG, ERROR, TRACE, WARN } from '@spare/enum-loggers'
+import { dateTime }                  from '@valjoux/timestamp-pretty'
+import { test }                      from 'node:test'
+import { says }                      from '../index.js'
 
 test('attach level test', () => {
   says.attach(dateTime)
-// Stenos.camel.info |> decoFunc |> logger
-  says[WARN].br('001').asc()('warned')
-  says[ERROR].br(2).asc().asc().asc()('errored')
-// 'logged' |> says[LOG].br(LOG)
-// 'informed' |> says[INFO].br(INFO).asc()
-// 'informed again' |> says[INFO].br(INFO).asc()
+// Stenos.snake.#badge |> decoFunc |> logger
+  says[WARN].br('001')('warned')
+  says[' ' + TRACE].br(TRACE)('logged')
+  says[DEBUG].br(DEBUG)('informed')
+  says[ERROR].br(2)('errored')
+  says[ERROR].pr(2)('errored again')
+// 'informed again' |> says[INFO].br(INFO)
 })

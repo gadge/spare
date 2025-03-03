@@ -8,7 +8,7 @@ import { $, says } from '../index.js'
 test('simple test', () => {
   says['MasterIO'](1080)
   says['>> MasterIO'](2560)
-  says['MasterIO'](3840)
+  says['  MasterIO'](3840)
 
   says['MasterIO'].br('savePairsToExcel')($['x'](24)['y'](16))
   says['  >> MasterIO'](decoMatrix([ [ 1, 2, 3 ] ]))

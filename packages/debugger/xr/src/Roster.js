@@ -3,26 +3,24 @@ import { decoString }    from '@spare/deco-string'
 import { hasAnsi }       from '@texting/charset-ansi'
 
 export class Roster {
-  /** @type {Object<string,string>} */ #roll = {}
+  /** @type {Object<string,string>} */ #cast = {}
   /** @type {Generator<Preset>}     */ #pool = presetFlopper(false)
-  /** @type {?string[]}             */ effects = null
 
-  constructor(effects) {
-    if (effects) this.effects = effects
-  }
+  constructor() {}
 
-  static build(...effects) { return new Roster(effects) }
+  static build() { return new Roster() }
 
-  list() { return this.#roll }
+  list() { return this.#cast }
 
-  aboard(name, pres) {
-    return this.#roll[name] = decoString(String(name), { pres: pres ?? this.#pool.next().value })
+  aboard(name) {
+    // console.log('>> [roster] aboard', decoString(String(name), { pres: value }))
+    return this.#cast[name] = decoString(String(name), { pres: this.#pool.next().value })
   }
 
   get(name) {
     if (!name?.length) return null
     if (hasAnsi(name)) return name
-    return this.#roll[name] ?? this.aboard(name)
+    return this.#cast[name] ?? this.aboard(name)
   }
 }
 
