@@ -1,8 +1,8 @@
-import { Deco, logger }       from '@spare/logger'
-import { SYM }                from '@typen/enum-data-types'
-import { test }               from 'node:test'
-import { ros, says, PlotSet } from '../../index.js'
-import { Plot }               from '../../src/Plot.js'
+import { Deco, logger }  from '@spare/logger'
+import { SYM }           from '@typen/enum-data-types'
+import { test }          from 'node:test'
+import { PlotSet, says } from '../../index.js'
+import { Plot }          from '../../src/Plot.js'
 
 const deco = Deco({ width: 192 })
 test('steno', () => {

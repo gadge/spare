@@ -1,5 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Node } from '@spare/node'
+import { Node }                   from '@spare/node'
 
 /**
  * @typedef {Object}    Opt
@@ -17,30 +17,30 @@ import { Node } from '@spare/node'
 const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
-  pos: BESQUE,
+  pos: BESQUE
 }
 
 const { entries } = Node.prototype
 
 /**
- * @param {Opt} p
+ * @param {Opt} conf
  * @returns {function}
  */
-export const DecoEntries = (p = {}) => {
-  p.pres = p.pres ?? PRES
-  p.thres = p.thres ?? 0
-  return entries.bind(new Node(p), p.thres)
+export const DecoEntries = (conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  conf.thres = conf.thres ?? 0
+  return entries.bind(new Node(conf), conf.thres)
 }
 
-export const decoEntries = (ent, p = {}) => {
-  p.pres = p.pres ?? PRES
-  p.thres = p.thres ?? 0
-  return entries.call(new Node(p), p.thres, ent, p.indent)
+export const decoEntries = (ent, conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  conf.thres = conf.thres ?? 0
+  return entries.call(new Node(conf), ent, conf.thres, conf.indent)
 }
 
 export {
   decoEntries as deco,
-  DecoEntries as Deco,
+  DecoEntries as Deco
 }
 
 // {boolean}         [p.discrete]

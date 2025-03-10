@@ -49,8 +49,8 @@
     "@foba/vector-number": "^0.6.1",
     "@foba/vector-string": "^0.6.1",
     "@ject/pipe": "^0.1.1",
-    "@palett/enum-font-effects": "^0.12.3",
-    "@palett/presets": "^0.12.3",
+    "@palett/enum-font-effects": "^0.12.11",
+    "@palett/presets": "^0.12.11",
     "@palett/says": "^0.9.10",
     "@rollup/plugin-json": "^6.0.0",
     "@spare/logger": "workspace:^",
@@ -68,7 +68,7 @@
     "@vect/vector-select": "^0.8.0",
     "glob": "^11.0.1",
     "gulp": "^5.0.0",
-    "rollup": "^4.34.9",
+    "rollup": "^4.35.0",
     "rollup-plugin-fileinfo": "^0.3.8"
   }
 }

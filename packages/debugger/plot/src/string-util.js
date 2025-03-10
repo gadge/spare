@@ -32,7 +32,7 @@ function ansiOrSnake(tx) {
 }
 
 export function snakeRole(tx) {
-  // console.log('snakeRole', `(${tx})`)
+  // console.log('snakeRole', `(${t})`)
   return hasBPr(tx) ? tx : bracket(Rosters.instance.get(ansiOrSnake(tx)))
 }
 

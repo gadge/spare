@@ -22,8 +22,8 @@ export const entriesPadder = (entries, options = DEFAULT_OPTIONS) => {
 // raw = raw || entries
 // let zipper
 // return dye
-//   ? (zipper = Trizipper((tx, va, dy) => lpad(tx, kwd) |> dy, (tx, va, dy) => pad(tx, vwd, va) |> dy),
+//   ? (zipper = Trizipper((t, va, dy) => lpad(t, kwd) |> dy, (t, va, dy) => pad(t, vwd, va) |> dy),
 //     zipper(entries, raw, dye))
-//   : (zipper = Duozipper(tx => lpad(tx, kwd), (tx, va) => pad(tx, vwd, va)),
+//   : (zipper = Duozipper(t => lpad(t, kwd), (t, va) => pad(t, vwd, va)),
 //     zipper(entries, raw))
 

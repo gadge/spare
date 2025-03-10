@@ -1,6 +1,6 @@
 {
   "name": "@spare/arc",
-  "version": "0.16.7",
+  "version": "0.16.8",
   "description": "Arc",
   "type": "module",
   "exports": "./dist/index.js",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@aryth/bound": "^0.7.3",
-    "@palett/projector": "^0.12.3",
+    "@palett/projector": "^0.12.11",
     "@texting/lange": "^0.2.2",
     "@texting/padder": "^0.2.2",
     "@texting/string-value": "^0.2.2",

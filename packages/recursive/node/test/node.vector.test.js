@@ -20,10 +20,11 @@ const VECTORS = {
 
 test('node vector', () => {
   const node = new Node({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: PAGODA } })
-  const WD = 16
+  const WD = 48
 
   for (let [ key, vec ] of indexed(VECTORS)) {
-    const formatted = node.vector(WD, vec, 2, key.length + 2)
+    const formatted = node.vector(vec, WD, 2, key.length + 2)
+    // console.log(node.presm)
     console.log(key + SP + formatted)
     console.log('+'.repeat(WD) + WD)
   }

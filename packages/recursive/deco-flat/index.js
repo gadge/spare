@@ -1,6 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Deco }                   from './src/Deco.js'
-import { _decoFlat as deco }      from './src/decoFlat.js'
+import { Denode }                 from './src/Denode.js'
 
 const PRES = {
   str: SUBTLE,
@@ -8,36 +7,33 @@ const PRES = {
   pos: BESQUE
 }
 
-const node = Deco.prototype.node
-
 /**
- * @param {{[depth],[vert],[width],[broad],[pres]}} p
+ * @param {{[depth],[vert],[width],[broad],[pres]}} conf
  * @returns {function(*):string}
  */
-export const DecoFlat = (p = {}) => {
-  p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
-  p.vert = p.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
-  p.thres = p.width ?? NaN    // 换行宽度; linefeed if line width exceeds 'width'
-  p.broad = p.broad ?? false  // 宽幅展示; set if broaden view
-  p.pres = p.pres ?? PRES
-  const deco = new Deco(p)
+export const DecoFlat = (conf = {}) => {
+  conf.depth = conf.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
+  conf.vert = conf.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
+  conf.thres = conf.width ?? NaN    // 换行宽度; linefeed if line width exceeds 'width'
+  conf.broad = conf.broad ?? false  // 宽幅展示; set if broaden view
+  conf.pres = conf.pres ?? PRES
+  const deco = new Denode(conf)
   return deco.node.bind(deco)
 }
 
 /**
- * @param {*} o
- * @param {{[depth],[vert],[width],[broad],[pres]}} [p]
+ * @param {*} obj
+ * @param {{[depth],[vert],[width],[broad],[pres]}} [conf]
  * @returns {string}
  */
-export const decoFlat = (o, p = {}) => {
-  p.depth = p.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
-  p.vert = p.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
-  p.width = p.width ?? NaN    // 换行宽度; linefeed if line width exceeds 'width'
-  p.broad = p.broad ?? false  // 宽幅展示; set if broaden view
-  p.pres = p.pres ?? PRES
-  const deco = new Deco(p)
-  return deco.node(o)
+export const decoFlat = (obj, conf = {}) => {
+  conf.depth = conf.depth ?? 8      // 更高位不展示; only detail levels under 'depth'
+  conf.vert = conf.vert ?? 128      // 更低位竖排列; vertically show all levels under 'vert'
+  conf.width = conf.width ?? NaN    // 换行宽度; linefeed if line width exceeds 'width'
+  conf.broad = conf.broad ?? false  // 宽幅展示; set if broaden view
+  conf.pres = conf.pres ?? PRES
+  const deco = new Denode(conf)
+  return deco.node(obj)
 }
 
-export { Deco }
-export { deco }
+export { Denode }

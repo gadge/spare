@@ -15,7 +15,7 @@ export class Arc {
     this.cats = cats
     this.hi = this.size
   }
-  get width() { return this.strs.pad ?? (this.strs.pad = this.size ? maxBy(this.strs, lange) : 0)}
+  get width() { return this.strs.#pad ?? (this.strs.#pad = this.size ? maxBy(this.strs, lange) : 0)}
   get size() { return this.strs.length }
   pad(fill = ' ', ansi = false) {
     const { strs, nums, size, width } = this

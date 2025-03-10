@@ -22,13 +22,13 @@ export function noteStr(x) {
   if (pad === void 0) {
     this.lo = x
     this.hi = x
-    this.pad = this.wd(x)
+    this.#pad = this.wd(x)
   }
   else {
     const w = this.wd(x)
     if (x < lo) this.lo = x
     else if (x > hi) this.hi = x
-    if (w > pad) this.pad = w
+    if (w > pad) this.#pad = w
   }
   return x
 }
@@ -90,7 +90,7 @@ export class ArcFab {
       this.mut = mut
     }
   }
-  static create(vec, conf) { return (new ArcFab(conf?.num, conf?.str, conf?.mut)).vector(vec) }
+  static create(vec, conf) { return (new ArcFab(conf?.#num, conf?.#str, conf?.mut)).vector(vec) }
   noteValTo(x, vec) {
     const { lo, hi } = vec
     if (lo === void 0) return vec.lo = x, vec.hi = x

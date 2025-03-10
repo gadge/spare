@@ -96,7 +96,7 @@ class XrStream extends Callable {
   /** @type {number} */
 
   indent
-  /** @type {{br:{major:Function,minor:Function},pa:{major:Function,minor:Function}} */
+  /** @type {{broad:{major:Function,minor:Function},pa:{major:Function,minor:Function}} */
 
   #conf = {}
 

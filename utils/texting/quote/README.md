@@ -29,8 +29,8 @@ const list = [
   '\u001b[3;4;31mhatsu\u001b[0m',
   '\u{1F3C3}2\u{1F525}7',
 ]
-for (let tx of list) {
-  console.log(`[${tx}] [length] (${tx.length}) [quote] (${quote(tx)})`)
+for (let t of list) {
+  console.log(`[${t}] [length] (${t.length}) [quote] (${quote(t)})`)
 }
 ```
 

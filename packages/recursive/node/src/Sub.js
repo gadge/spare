@@ -7,6 +7,6 @@ export class Sub {
   static NaN = 3
 }
 
-export function checkSub(n, t) {
+export function detSub(n, t) {
   return isNumeric(n) ? 0 : isLiteral(t) ? 1 : 3
 }

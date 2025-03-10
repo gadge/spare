@@ -37,8 +37,9 @@ const ENTRIES = {
 }
 
 test('node entries', () => {
-  const node = new Node({ pres: { pos: BESQUE, neg: OCEAN, str: METRO } })
+  const node = new Node({ pos: BESQUE, neg: OCEAN, str: METRO })
   for (let [ key, ent ] of indexed(ENTRIES)) {
-    console.log(key + SP + node.entries(NaN, ent, 0))
+    // console.log(demo(node.pbd, 5))
+    console.log(key + SP + node.entries(ent, NaN, 0))
   }
 })

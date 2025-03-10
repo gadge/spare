@@ -1,5 +1,11 @@
 # @spare/arc
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+
 ## 0.16.7
 
 ### Patch Changes

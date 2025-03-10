@@ -23,19 +23,19 @@ const PRES = {
 const { matrix } = Node.prototype
 
 /**
- * @param {Opt} p
+ * @param {Opt} conf
  * @returns {function}
  */
-export const DecoMatrix = (p = {}) => {
-  p.pres = p.pres ?? PRES
-  return matrix.bind(new Node(p))
+export const DecoMatrix = (conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  return matrix.bind(new Node(conf))
 }
 
-export const decoMatrix = (mat, p = {}) => {
-  p.pres = p.pres ?? PRES
-  // p.direct = p.direct ?? POINTWISE
-  // p.indent = p.indent ?? 0
-  return matrix.call(new Node(p), mat, p.direct, p.indent)
+export const decoMatrix = (mat, conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  // conf.direct = conf.direct ?? POINTWISE
+  // conf.indent = conf.indent ?? 0
+  return matrix.call(new Node(conf), mat, conf.direct, conf.indent)
 }
 
 export {

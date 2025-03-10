@@ -1,6 +1,6 @@
 import { BESQUE, OCEAN, SUBTLE } from '@palett/presets'
-import { Deco }                  from '../target/Deco.js'
 import { test }                  from 'node:test'
+import { Denode }                from '../src/Denode.js'
 
 const VECTORS = {
   empty: [],
@@ -61,7 +61,7 @@ const VECTORS = {
 
 const WD = 54
 const LINE = '+'.repeat(WD) + WD
-const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE }, vt: 1, th: WD })
+const deco = new Denode({ fill: ' ', ansi: true, pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE }, vt: 1, th: WD })
 
 test('deco vectors unit', () => {
   console.log(LINE)

@@ -1,63 +1,89 @@
-import { value }   from '@texting/string-value'
-import { compare } from '../utils/compare.js'
+import { hsiToHsl, modHsiTo, Presm } from '@palett/pres'
+import { value }                     from '@texting/string-value'
+import { compare }                   from '../utils/compare.js'
 
-function onto(x, y, z, at) {
-  this[at++] = x
-  this[at++] = y
-  this[at++] = z
+function onto(i, x, y, z) {
+  this[i++] = x
+  this[i++] = y
+  this[i++] = z
   return this
 }
 
 export class Grad {
-  /** @type {boolean} A boolean indicating whether the Die instance is unsigned */ u
-  /** @type {number} The result of applying the value function to sx with width w */ s
-  /** @type {number} The result of applying the value function to tx with width w */ t
-  /** @type {number} The minimum numerical value recorded */ m
-  /** @type {number} The maximum numerical value recorded */ n
-  /** @type {number} The minimum positive numerical value recorded */ p
-  /** @type {number} The maximum positive numerical value recorded */ q
-  /** @type {number} The width parameter used in value calculations */ w
+  /** @type {boolean} unsigned mode: ignore pos/neg diff */ u
+  /** @type {number} min x-axis value */ xb
+  /** @type {number} max x-axis value */ xp
+  /** @type {number} min y-axis value */ yb
+  /** @type {number} max y-axis value */ yp
+  /** @type {number} min z-axis value */ zb
+  /** @type {number} max z-axis value */ zp
+  /** @type {number} max width of ref str */ wd
   constructor(uns) { this.u = uns }
-  static iso(uns) {
+  static build(uns) {
     const vec = Array(9)
     vec.u = !!uns
     return vec
   }
-  lever(pro, w) {
-    this.w = w
-    if (pro.tbd && this.sx !== void 0) {
-      this.s = value(this.sx, w), this.t = value(this.tx, w)
-      const df = this.t - this.s, [ hb, sb, lb, hp, sp, lp ] = pro.tbd
-      df ? onto.call(this, (hp - hb) / df, (sp - sb) / df, (lp - lb) / df, 0) : onto.call(this, 0, 0, 0, 0)
+  get xdf() { return this.xp - this.xb}
+  get ydf() { return this.yp - this.yb }
+  get zdf() { return this.zp - this.zb}
+
+  /**
+   * @param {Presm} presm preset(xb) to render string, negative and positive number values
+   * @param {number} width width of string format of the value referenced
+   * @returns {Grad}
+   */
+  lever(presm, width) {
+    this.wd = width
+    if (presm.hasX && this.xb !== void 0) {
+      this.xb = value(this.xb, width), this.xp = value(this.xp, width)
+      const df = this.xdf, [ dh, ds, dl ] = presm.xdf
+      df ? onto.call(this, 0, dh / df, ds / df, dl / df) : onto.call(this, 0, 0, 0, 0)
     }
-    if (pro.nbd && this.m !== void 0) {
-      const df = this.n - this.m, [ hb, sb, lb, hp, sp, lp ] = pro.nbd
-      df ? onto.call(this, (hp - hb) / df, (sp - sb) / df, (lp - lb) / df, 3) : onto.call(this, 0, 0, 0, 3)
+    if (presm.hasY && this.yb !== void 0) {
+      const df = this.ydf, [ dh, ds, dl ] = presm.ydf
+      df ? onto.call(this, 3, dh / df, ds / df, dl / df) : onto.call(this, 3, 0, 0, 0)
     }
-    if (pro.pbd && this.p !== void 0) {
-      const df = this.q - this.p, [ hb, sb, lb, hp, sp, lp ] = pro.pbd
-      df ? onto.call(this, (hp - hb) / df, (sp - sb) / df, (lp - lb) / df, 6) : onto.call(this, 0, 0, 0, 6)
+    if (presm.hasZ && this.zb !== void 0) {
+      const df = this.zdf, [ dh, ds, dl ] = presm.zdf
+      df ? onto.call(this, 6, dh / df, ds / df, dl / df) : onto.call(this, 6, 0, 0, 0)
     }
     return this
   }
-  noteStr(t) {
-    return this.tx === void 0
-      ? (this.tx = t, this.sx = t)
-      : compare(t, this.sx) < 0 ? (this.sx = t) : compare(t, this.tx) > 0 ? (this.tx = t) : t
+  recStr(t) {
+    return this.xp === void 0
+      ? (this.xp = t, this.xb = t)
+      : compare(t, this.xb) < 0 ? (this.xb = t) : compare(t, this.xp) > 0 ? (this.xp = t) : t
   }
-  noteNum(v) {
+  recNum(v) {
     if (this.u) {
-      return this.n === void 0
-        ? (this.n = v, this.m = v)
-        : v < this.m ? (this.m = v) : v > this.n ? (this.n = v) : v
+      return this.yp === void 0
+        ? (this.yp = v, this.yb = v)
+        : v < this.yb ? (this.yb = v) : v > this.yp ? (this.yp = v) : v
     } else {
-      if (v > 0) return this.p === void 0
-        ? (this.p = this.q = v)
-        : v < this.p ? (this.p = v) : v > this.q ? (this.q = v) : v
-      if (v < 0) return this.m === void 0
-        ? (this.m = this.n = v)
-        : v < this.m ? (this.m = v) : v > this.n ? (this.n = v) : v
+      if (v < 0) return this.zb === void 0
+        ? (this.zb = this.zp = v)
+        : v < this.zb ? (this.zb = v) : v > this.zp ? (this.zp = v) : v
+      if (v > 0) return this.yb === void 0
+        ? (this.yb = this.yp = v)
+        : v < this.yb ? (this.yb = v) : v > this.yp ? (this.yp = v) : v
       return v
     }
+  }
+  rgiStr(presm, val) {
+    const df = val - (this.xb ?? 0)
+    return modHsiTo(presm[0], df * this[0], df * this[1], df * this[2])
+  }
+  rgiNum(presm, val) {
+    if (isNaN(val)) return presm.nan
+    if (!presm.hasZ || val > 0) {
+      const df = val - (this.yb ?? 0)
+      return modHsiTo(presm[2], df * this[3], df * this[4], df * this[5])
+    }
+    if (val < 0) {
+      const df = val - (this.zb ?? 0)
+      return modHsiTo(presm[4], df * this[6], df * this[7], df * this[8])
+    }
+    return presm.nan
   }
 }

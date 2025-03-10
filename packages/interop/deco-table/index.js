@@ -26,37 +26,37 @@ const PRES = {
 const { table } = TableNode.prototype
 
 /**
- * @param {Opt} p
+ * @param {Opt} conf
  * @returns {function}
  */
-export const DecoTable = (p = {}) => {
-  p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.bind(new TableNode(p))
+export const DecoTable = (conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.bind(new TableNode(conf))
 }
 
-export const decoTable = (vec, p = {}, id) => {
-  p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.call(new TableNode(p), vec, p.direct, id ?? p.indent)
+export const decoTable = (vec, conf = {}, ind) => {
+  conf.pres = conf.pres ?? PRES
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.call(new TableNode(conf), vec, conf.direct, ind ?? conf.indent)
 }
 
 /**
- * @param {Opt} p
+ * @param {Opt} conf
  * @returns {function}
  */
-export const PaleTable = (p = {}) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.bind(new TableNode(p))
+export const PaleTable = (conf = {}) => {
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.bind(new TableNode(conf))
 }
 
-export const paleTable = (vec, p = {}, id) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.call(new TableNode(p), vec, p.direct, id ?? p.indent)
+export const paleTable = (vec, conf = {}, id) => {
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.call(new TableNode(conf), vec, conf.direct, id ?? conf.indent)
 }
 
 export {

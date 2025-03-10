@@ -1,5 +1,13 @@
 # @spare/bracket
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/enum-brackets@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

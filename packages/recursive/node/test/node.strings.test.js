@@ -1,8 +1,8 @@
-import { BESQUE, OCEAN, PAGODA } from '@palett/presets'
-import { RTSP }                  from '@texting/enum-chars'
-import { indexed }               from '@vect/object-mapper'
-import { test }                  from 'node:test'
-import { Node }                  from '../src/Node.js'
+import { OCEAN }   from '@palett/presets'
+import { RTSP }    from '@texting/enum-chars'
+import { indexed } from '@vect/object-mapper'
+import { test }    from 'node:test'
+import { Node }    from '../src/Node.js'
 
 export const STRINGS = {
   empty: '',
@@ -25,15 +25,13 @@ export const STRINGS = {
 }
 
 test('node strings', () => {
-  const node = new Node({
-    pres: { pos: BESQUE, neg: OCEAN, str: PAGODA }
-  })
+  const node = new Node(OCEAN)
   const WD = 64
   const LINE = '+'.repeat(WD) + WD
 
   console.log(LINE)
   for (let [ key, text ] of indexed(STRINGS)) {
-    console.log(key + RTSP + node.string(WD, text, 4, key.length + 2))
+    console.log(key + RTSP + node.string( text,WD, 4, key.length + 2))
     console.log(LINE)
   }
 })

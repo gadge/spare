@@ -11,5 +11,5 @@ test('attach level test', () => {
   says[DEBUG].br(DEBUG)('informed')
   says[ERROR].br(2)('errored')
   says[ERROR].pr(2)('errored again')
-// 'informed again' |> says[INFO].br(INFO)
+// 'informed again' |> says[INFO].broad(INFO)
 })

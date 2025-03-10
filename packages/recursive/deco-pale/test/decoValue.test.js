@@ -1,8 +1,7 @@
-import { Basics, Vectors } from '../../deco/test/assets/candidates.js'
-import { APOS }            from '@texting/enum-quotes'
-import { says }            from '@spare/logger'
-import { decoPale }        from '../index.js'
-import { test }            from 'node:test'
+import { says }     from '@spare/logger'
+import { test }     from 'node:test'
+import { Vectors }  from '../../deco/test/assets/candidates.js'
+import { decoPale } from '../index.js'
 
 test('decoPale', async () => {
   for (const [ key, value ] of Object.entries({

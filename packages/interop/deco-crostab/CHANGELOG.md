@@ -1,5 +1,14 @@
 # @spare/deco-crostab
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/deco-table@0.16.8
+  - @spare/node@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

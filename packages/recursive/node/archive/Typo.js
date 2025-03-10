@@ -12,21 +12,21 @@ export class Typo {
   /** @type {function} */ str = parseStr
   /** @type {function} */ num = parseNum
   /** @type {function} */ len = lange
-  /** @type {function} */ pad = Pad.prototype.pad
+  /** @type {function} */ pad = Pad.prototype.#pad
   /** @type {Projec}   */ tbd = null
   /** @type {Projec}   */ nbd = null
   /** @type {Projec}   */ pbd = null
 
   constructor(conf = {}) {
-    if (conf.str) this.str = conf.str
-    if (conf.num) this.num = conf.num
+    if (conf.#str) this.str = conf.#str
+    if (conf.#num) this.num = conf.#num
     if (conf.ansi === false) this.len = length
     if (conf.fill) this.pad = conf.ansi
       ? conf.fill === SP ? Pad.prototype.padAnsi : Pad.prototype.padAnsi.bind(conf)
-      : conf.fill === SP ? Pad.prototype.pad : Pad.prototype.pad.bind(conf)
+      : conf.fill === SP ? Pad.prototype.#pad : Pad.prototype.#pad.bind(conf)
     if (conf.pres) {
-      if (conf.pres.str) this.tbd = new Projec(conf.pres.str)
-      if (conf.pres.num) this.nbd = new Projec(conf.pres.num)
+      if (conf.pres.#str) this.tbd = new Projec(conf.pres.#str)
+      if (conf.pres.#num) this.nbd = new Projec(conf.pres.#num)
       if (conf.pres.pos) this.pbd = new Projec(conf.pres.pos)
     }
   }

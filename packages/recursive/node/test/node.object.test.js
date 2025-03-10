@@ -46,7 +46,7 @@ test('node object', () => {
 // }
 
   for (let [ key, obj ] of indexed(OBJECTS)) {
-    console.log(key + SP + node.object(WD, obj, 0, key.length + 1))
+    console.log(key + SP + node.object(obj, WD, 0, key.length + 1))
     console.log(LINE)
   }
 })

@@ -17,13 +17,13 @@ export const vectorPadder = (vec, { ansi, fill }) => {
   // let zipper
   // return raw
   //   ? dye
-  //     ? (zipper = Trizipper((tx, va, dy) => padder(tx, width, va) |> dy),
+  //     ? (zipper = Trizipper((t, va, dy) => padder(t, width, va) |> dy),
   //       zipper(vec, raw, dye))
-  //     : (zipper = Duozipper((tx, va) => padder(tx, width, va)),
+  //     : (zipper = Duozipper((t, va) => padder(t, width, va)),
   //       zipper(vec, raw))
   //   : dye
-  //     ? (zipper = Duozipper((tx, dy) => padder(tx, width, tx) |> dy),
+  //     ? (zipper = Duozipper((t, dy) => padder(t, width, t) |> dy),
   //       zipper(vec, dye))
-  //     : (mapper(vec, tx => padder(tx, width, tx)))
+  //     : (mapper(vec, t => padder(t, width, t)))
 }
 

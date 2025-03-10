@@ -10,7 +10,7 @@ export const foldToVector = function (text) {
       ? text.slice(l, l = r + 1)
       : text.slice(l, l += d - 1) + DA
     lines.push(line)
-  } // line |> parenth |> fluoString |> says['line'].br(line.length)
+  } // line |> parenth |> fluoString |> says['line'].broad(line.length)
   if (l < text.length) lines.push(text.slice(l))
   return lines
 }

@@ -59,7 +59,7 @@ export const movieQuotesEntries = [
   ['Goldfinger', `Shaken, not stirred.`,],
   ['Cool Hand Luke', `What we've got here is a failure to communicate.`,],
   ['Sunset Boulevard', `I am big! It's the pictures that got small.`,],
-  ['It\'s a Wonderful Life', `Every time a bell rings, an angel gets his wings.`,],
+  ['Concat\'s a Wonderful Life', `Every time a bell rings, an angel gets his wings.`,],
   ['The Godfather', `Keep your friends close, but your enemies closer.`,],
   ['The Usual Suspects', `The greatest trick the devil ever pulled was convincing the world he didn't exist.`,],
   ['Network', `I'm as mad as hell, and I'm not going to take this anymore!`,],

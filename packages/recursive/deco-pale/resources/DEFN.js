@@ -1,1 +1,1 @@
-export const DEFN = { pr: false }
+export const DEFN = { pretty: false }

@@ -19,8 +19,8 @@ export function fluoMatrix(rows = []) {
   rows = matrixPadder(rows, config) // use: ansi
   rows = matrixPretty(rows, config.presets) // use: direct, presets, effects
   return rows.map(row => br(row.join(COSP), BRACKET))
-  // const br = Br(bracket) ?? oneself
-  // return liner(rows.map(row => br(row.join(delim))), { discrete, delim: COLF, bracket, level })
+  // const broad = Br(bracket) ?? oneself
+  // return liner(rows.map(row => broad(row.join(delim))), { discrete, delim: COLF, bracket, level })
 }
 
 /**

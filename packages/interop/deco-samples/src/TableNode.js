@@ -21,11 +21,11 @@ export class TableNode {
     const rbd = new Grad(vpr.uns), hbd = head ? new Grad(kpr.uns) : null, sbd = side ? new Grad(kpr.uns) : null
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
-    if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sts, sns, sbd, side[i], i)) > sw) sw = xs[i] }
-    if (head) for (let j = 0; j < wd; j++) { if ((ys[j] = kpr.store(hts, hns, hbd, head[j], j)) > hw) hw = ys[j] }
+    if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sbd,sts, sns,  side[i], i)) > sw) sw = xs[i] }
+    if (head) for (let j = 0; j < wd; j++) { if ((ys[j] = kpr.store(hbd,hts, hns,  head[j], j)) > hw) hw = ys[j] }
     for (let i = 0; i < ht; i++) {
       for (let j = 0, row = rows[i]; j < wd; j++) {
-        (w = vpr.store(rts, rns, rbd, row[j], p++)), (w > xs[i]) && (xs[i] = w), (w > ys[j]) && (ys[j] = w)
+        (w = vpr.store(rbd, rts, rns, row[j], p++)), (w > xs[i]) && (xs[i] = w), (w > ys[j]) && (ys[j] = w)
       }
     }
     hbd?.lever(kpr, hw), sbd?.lever(kpr, sw)
@@ -45,11 +45,11 @@ export class TableNode {
     const bds = init(ht, () => new Grad(vpr.uns)), hbd = new Grad(kpr.uns), sbd = new Grad(kpr.uns)
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
-    if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sts, sns, sbd, side[i], i)) > sw) sw = xs[i] }
-    if (head) for (let j = 0; j < wd; j++) { if ((ys[j] = kpr.store(hts, hns, hbd, head[j], j)) > hw) hw = ys[j] }
+    if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store( sbd,sts, sns, side[i], i)) > sw) sw = xs[i] }
+    if (head) for (let j = 0; j < wd; j++) { if ((ys[j] = kpr.store(hbd, hts, hns, head[j], j)) > hw) hw = ys[j] }
     for (let i = 0; i < ht; i++) {
       for (let j = 0, row = rows[i]; j < wd; j++) {
-        (w = vpr.store(rts, rns, bds[i], row[j], p++)), (w > xs[i]) && (xs[i] = w), (w > ys[j]) && (ys[j] = w)
+        (w = vpr.store(bds[i],rts, rns,  row[j], p++)), (w > xs[i]) && (xs[i] = w), (w > ys[j]) && (ys[j] = w)
       }
     }
     hbd?.lever(kpr, hw), sbd?.lever(kpr, sw)
@@ -69,11 +69,11 @@ export class TableNode {
     const bds = init(wd, () => new Grad(vpr.uns)), hbd = new Grad(kpr.uns), sbd = new Grad(kpr.uns)
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
-    if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sts, sns, sbd, side[i], i)) > sw) sw = xs[i] }
-    if (head) for (let j = 0; j < wd; j++) { if ((ys[j] = kpr.store(hts, hns, hbd, head[j], j)) > hw) hw = ys[j] }
+    if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = kpr.store(sbd,sts, sns, side[i], i)) > sw) sw = xs[i] }
+    if (head) for (let j = 0; j < wd; j++) { if ((ys[j] = kpr.store( hbd,hts, hns, head[j], j)) > hw) hw = ys[j] }
     for (let i = 0; i < ht; i++) {
       for (let j = 0, row = rows[i]; j < wd; j++) {
-        (w = vpr.store(rts, rns, bds[j], row[j], p++)), (w > xs[i]) && (xs[i] = w), (w > ys[j]) && (ys[j] = w)
+        (w = vpr.store(bds[j],rts, rns,  row[j], p++)), (w > xs[i]) && (xs[i] = w), (w > ys[j]) && (ys[j] = w)
       }
     }
     hbd?.lever(kpr, hw), sbd?.lever(kpr, sw)

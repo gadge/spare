@@ -24,19 +24,19 @@ const PRES = {
 const { vector } = Node.prototype
 
 /**
- * @param {Opt} p
+ * @param {Opt} conf
  * @returns {function}
  */
-export const DecoVector = (p = {}) => {
-  p.pres = p.pres ?? PRES
-  p.thres = p.thres ?? 0
-  return vector.bind(new Node(p), p.thres)
+export const DecoVector = (conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  conf.thres = conf.thres ?? 0
+  return vector.bind(new Node(conf), conf.thres)
 }
 
-export const decoVector = (vec, p = {}) => {
-  p.pres = p.pres ?? PRES
-  p.thres = p.thres ?? 0
-  return vector.call(new Node(p), p.thres, vec, p.indent, p.surge)
+export const decoVector = (vec, conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  conf.thres = conf.thres ?? 0
+  return vector.call(new Node(conf),vec, conf.thres,  conf.indent, conf.surge)
 }
 
 export {

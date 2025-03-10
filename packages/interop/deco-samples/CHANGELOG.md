@@ -1,5 +1,17 @@
 # @spare/deco-samples
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/enum-brackets@0.16.8
+  - @spare/preset-deco@0.16.8
+  - @spare/deco-flat@0.16.8
+  - @spare/node@0.16.8
+  - @spare/deco-config@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

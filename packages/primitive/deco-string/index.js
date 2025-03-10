@@ -19,37 +19,37 @@ const { string } = Node.prototype
 
 /**
  *
- * @param {Opt}    p
+ * @param {Opt}    conf
  * @returns {function}
  */
-export function DecoString(p = {}) {
-  p.pres = p.pres ?? SUBTLE
-  p.thres = p.thres ?? 0
-  return string.bind(new Node(p), p.thres)
+export function DecoString(conf) {
+  conf.pres = conf.pres ?? SUBTLE
+  conf.thres = conf.thres ?? 0
+  return string.bind(new Node(conf), conf.thres)
 }
 
 /**
  *
  * @param {string} str
- * @param {Opt}    [p]
+ * @param {Opt}    [conf]
  * @returns {string}
  */
-export function decoString(str, p = {}) {
-  p.pres = p.pres ?? SUBTLE
-  p.thres = p.thres ?? 0
-  return string.call(new Node(p), p.thres, str, p.indent, p.surge)
+export function decoString(str, conf) {
+  conf.pres = conf.pres ?? SUBTLE
+  conf.thres = conf.thres ?? 0
+  return string.call(new Node(conf),str,  conf.thres, conf.indent, conf.surge)
 }
 
 
 // {string} text
-// {Object} [p]
-// {number} [p.width=80]
-// {number} [p.indent]
-// {number} [p.firstLineIndent]
-// {Object[]} [p.presets]
-// {string[]} [p.effects]
-// {Function} [p.vectify]
-// {Function} [p.joiner]
+// {Object} [conf]
+// {number} [conf.width=80]
+// {number} [conf.indent]
+// {number} [conf.firstLineIndent]
+// {Object[]} [conf.presets]
+// {string[]} [conf.effects]
+// {Function} [conf.vectify]
+// {Function} [conf.joiner]
 
 
 

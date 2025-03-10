@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.16.7",
+  "version": "0.16.8",
   "description": "Color a string",
   "type": "module",
   "exports": "./dist/index.js",
@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.12.3",
-    "@palett/fluo-vector": "^0.12.3",
-    "@palett/presets": "^0.12.3",
+    "@palett/enum-colorant-modes": "^0.12.11",
+    "@palett/fluo-vector": "^0.12.11",
+    "@palett/presets": "^0.12.11",
     "@spare/node": "workspace:^",
     "@texting/charset-ansi": "^0.2.2",
     "@texting/enum-chars": "^0.2.2",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/csv",
-  "version": "0.16.7",
+  "version": "0.16.8",
   "description": "Csv table formatter",
   "type": "module",
   "exports": "./dist/index.js",

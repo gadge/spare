@@ -1,10 +1,10 @@
-import { presetFlopper } from '@palett/flopper'
-import { decoString }    from '@spare/deco-string'
-import { hasAnsi }       from '@texting/charset-ansi'
+import { presFlopper } from '@palett/flopper'
+import { decoString }  from '@spare/deco-string'
+import { hasAnsi }     from '@texting/charset-ansi'
 
 export class Roster {
   /** @type {Object<string,string>} */ #cast = {}
-  /** @type {Generator<Preset>}     */ #pool = presetFlopper(false)
+  /** @type {Generator<Preset>}     */ #pool = presFlopper(false)
 
   constructor() {}
 

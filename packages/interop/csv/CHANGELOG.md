@@ -1,5 +1,14 @@
 # @spare/csv
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/table-margin@0.16.8
+  - @spare/table-padder@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

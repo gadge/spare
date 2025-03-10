@@ -1,6 +1,6 @@
 import { FRESH, METRO, OCEAN } from '@palett/presets'
-import { Deco }                from '../target/Deco.js'
 import { test }                from 'node:test'
+import { Denode }              from '../src/Denode.js'
 
 const candidates = [
   {
@@ -20,7 +20,7 @@ const candidates = [
 ]
 
 test('deco simplistic', () => {
-  const deco = new Deco({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO }, vert: 4, thres: NaN })
+  const deco = new Denode({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO }, vert: 4, thres: NaN })
 
   console.log(deco.node(candidates))
   console.log(deco.node({ foo: 1, date: new Date(), vec: [ 1, 2, 3 ], symbol: Symbol.for('shake') }))

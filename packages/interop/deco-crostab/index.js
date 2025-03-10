@@ -18,48 +18,48 @@ import { SP }                     from '@texting/enum-chars'
 const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
-  pos: BESQUE,
+  pos: BESQUE
 }
 
 const { table } = TableNode.prototype
 
 /**
- * @param {Opt} p
+ * @param {Opt} conf
  * @returns {function}
  */
-export const DecoCrostab = (p = {}) => {
-  p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.bind(new TableNode(p))
+export const DecoCrostab = (conf = {}) => {
+  conf.pres = conf.pres ?? PRES
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.bind(new TableNode(conf))
 }
 
-export const decoCrostab = (vec, p = {}, id) => {
-  p.pres = p.pres ?? PRES
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.call(new TableNode(p), vec, p.direct, id ?? p.indent)
+export const decoCrostab = (vec, conf = {}, ind) => {
+  conf.pres = conf.pres ?? PRES
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.call(new TableNode(conf), vec, conf.direct, ind ?? conf.indent)
 }
 
 /**
- * @param {Opt} p
+ * @param {Opt} conf
  * @returns {function}
  */
-export const PaleCrostab = (p = {}) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.bind(new TableNode(p))
+export const PaleCrostab = (conf = {}) => {
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.bind(new TableNode(conf))
 }
 
-export const paleCrostab = (vec, p = {}, id) => {
-  p.fill = p.fill ?? SP
-  p.ansi = p.ansi ?? true
-  return table.call(new TableNode(p), vec, p.direct, id ?? p.indent)
+export const paleCrostab = (vec, conf = {}, ind) => {
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  return table.call(new TableNode(conf), vec, conf.direct, ind ?? conf.indent)
 }
 
 export {
   decoCrostab as deco,
-  DecoCrostab as Deco,
+  DecoCrostab as Deco
 }
 
 

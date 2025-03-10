@@ -1,33 +1,37 @@
-import { DECOFUN_CONFIG, DECOFUNC_CONFIG } from './resources/config.js'
-import { _decoFunc }                       from './src/_decoFunc.js'
+import { DECOFUN_CONFIG, DECOFUNC_CONFIG }                  from './resources/config.js'
+import { abbrev, flatten, funcToLined, prettify, toLambda } from './src/_decoFunc.js'
 
 export { DECOFUN_CONFIG, DECOFUNC_CONFIG }
-export { _decoFunc }
 
-const parseConfig = p => {
-  p.pr = p.pretty ?? p.pr ?? true
-  p.fw = p.flatMark ?? p.fw ?? 160
-  p.aw = p.abbrMark ?? p.aw ?? 192
-  return p
-}
 /**
  * @param {Function} func
- * @param {Object} p
- * @param {boolean} [p.pretty=true]
- * @param {number} [p.flatMark=160]
- * @param {number} [p.abbrMark=192]
+ * @param {Object} conf
+ * @param {boolean} [conf.pretty=true]
+ * @param {number} [conf.flatWd=160]
+ * @param {number} [conf.abbrWd=192]
  * @returns {string}
  */
-export const decoFunc = (func, p = DECOFUNC_CONFIG) => _decoFunc.call(parseConfig(p), func)
+export function decoFunc(func, conf) {
+  const pretty = conf.pretty ?? this.pretty ?? true
+  const flatWd = conf.flatWd ?? this.flatWd ?? 160
+  const abbrWd = conf.abbrWd ?? this.abbrWd ?? 192
+  let text
+  text = funcToLined(func)
+  text = flatten(text, flatWd)
+  text = toLambda(text, pretty, func?.name)
+  text = abbrev(text, abbrWd, func)
+  return prettify(text, pretty)
+}
 
 /**
- * @param {Object} p
- * @param {boolean} [p.pretty=true]
- * @param {number} [p.flatMark=160]
- * @param {number} [p.abbrMark=192]
- * @returns {Function}
+ * @param {Object} conf
+ * @param {boolean} [conf.pretty=true]
+ * @param {number} [conf.flatWd=160]
+ * @param {number} [conf.abbrWd=192]
+ * @returns {(func:Function) => string}
  */
-export const DecoFunc = (p = DECOFUNC_CONFIG) => _decoFunc.bind(parseConfig(p))
+export const DecoFunc = (conf = DECOFUNC_CONFIG) => decoFunc.bind(conf)
 
 export { argnames } from './src/argnames.js'
 export { funcName } from './src/funcName.js'
+export { decoFunc as _decoFunc }

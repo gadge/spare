@@ -1,9 +1,9 @@
-import { ITALIC }        from '@palett/enum-font-effects'
-import { presetFlopper } from '@palett/flopper'
-import { decoString }    from '@spare/deco-string'
-import { FUN }           from '@typen/enum-data-types'
-import { mapper }        from '@vect/object-mapper'
-import { Pal }           from './Pal.js'
+import { ITALIC }      from '@palett/enum-font-effects'
+import { presFlopper } from '@palett/flopper'
+import { decoString }  from '@spare/deco-string'
+import { FUN }         from '@typen/enum-data-types'
+import { mapper }      from '@vect/object-mapper'
+import { Pal }         from './Pal.js'
 
 /* @typedef {{max:string,min:string,na:string}} Preset */
 
@@ -11,7 +11,7 @@ import { Pal }           from './Pal.js'
 
 export class Says {
   /** @type {Object<string,Pal>} */ #roster = {}
-  /** @type {Generator<Preset>}  */ #pool = presetFlopper(false)
+  /** @type {Generator<Preset>}  */ #pool = presFlopper(false)
   /** @type {string[]}           */ #effects = undefined
 
   constructor(roster, effects) {

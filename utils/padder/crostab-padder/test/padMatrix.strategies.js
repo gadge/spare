@@ -34,7 +34,7 @@ const test = () => {
         const pad = Pad()
         const widths = maxWidths(mx)
         return mapper(mx, (tx, i, j) => pad(tx, widths[j]))
-        // const zipper = Duozipper((tx, va, i, j) => pad(tx, widths[j], va))
+        // const zipper = Duozipper((t, va, i, j) => pad(t, widths[j], va))
         // return zipper(mx, raw ?? mx)
       },
       dev: (mx, raw) => {

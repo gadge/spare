@@ -1,5 +1,16 @@
 # @spare/table-padder
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/enum-chars@0.16.8
+  - @spare/enum-full-angle-chars@0.16.8
+  - @spare/matrix-padder@0.16.8
+  - @spare/fullwidth@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

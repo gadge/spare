@@ -76,8 +76,8 @@ export class Typo {
     if (cfg.value) this.val = value
     if (cfg.fill) this.pad = cfg.ansi ? priPad.bind(cfg) : fixPad.bind(cfg)
     if (cfg.pres) {
-      if (cfg.pres.str) this.tpr = new Projec(cfg.pres.str)
-      if (cfg.pres.num) this.npr = new Projec(cfg.pres.num)
+      if (cfg.pres.#str) this.tpr = new Projec(cfg.pres.#str)
+      if (cfg.pres.#num) this.npr = new Projec(cfg.pres.#num)
       if (cfg.pres.neg) this.npr = new Projec(cfg.pres.neg)
       if (cfg.pres.pos) this.ppr = new Projec(cfg.pres.pos)
     }

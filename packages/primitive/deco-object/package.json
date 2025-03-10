@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-object",
-  "version": "0.16.7",
+  "version": "0.16.8",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./dist/index.js",
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.3",
+    "@palett/presets": "^0.12.11",
     "@spare/node": "workspace:^"
   },
   "repository": {

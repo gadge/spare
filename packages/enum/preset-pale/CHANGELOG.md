@@ -1,5 +1,15 @@
 # @spare/preset-pale
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/enum-brackets@0.16.8
+  - @spare/deco-pale@0.16.8
+  - @spare/quote@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

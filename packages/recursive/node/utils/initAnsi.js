@@ -22,7 +22,7 @@ import {
 }             from '@palett/enum-ansi-codes'
 import { SC } from '@palett/util-ansi'
 
-export function initialize(effects) {
+export function initAnsi(effects) {
   let head = '', tail = ''
   if (effects) for (let t of effects) {
     t === 'bold' ? (head += BOL_ON + SC, tail += BOL_OFF + SC) // BOLD

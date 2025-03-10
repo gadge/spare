@@ -27,10 +27,10 @@ export const foldToVector = function (text) {
 
 // (line = text.slice(l, r)) |> parenth|> fluoString
 //   |> says['line']
-//   .br(l).p(DA).br(line.length).p(DA).br(r + ':' + (r + d))
-//   .p('|').br(hold).p(c).p('->').br(r + d + w)
-//   .p('|').br(c > hold ? 'A' : NXL.test(blank) ? 'B' : '_')
-//   .p('|').br([...blank].map(c => c.charCodeAt(0)) |> decoFlat).br(NXL.test(blank))
+//   .broad(l).p(DA).broad(line.length).p(DA).broad(r + ':' + (r + d))
+//   .p('|').broad(hold).p(c).p('->').broad(r + d + w)
+//   .p('|').broad(c > hold ? 'A' : NXL.test(blank) ? 'B' : '_')
+//   .p('|').broad([...blank].map(c => c.charCodeAt(0)) |> decoFlat).broad(NXL.test(blank))
 
 export const foldArc = function (text) {
   const context = this

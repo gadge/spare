@@ -1,4 +1,4 @@
-import { tabs } from '../src/Concat.js'
+import { tabs } from '../src/Fold.js'
 
 export class Join {
   static chain(iter, de) {

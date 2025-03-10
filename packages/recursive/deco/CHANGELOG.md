@@ -1,5 +1,16 @@
 # @spare/deco
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/deco-date@0.16.8
+  - @spare/deco-func@0.16.8
+  - @spare/node@0.16.8
+  - @spare/deco-colors@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

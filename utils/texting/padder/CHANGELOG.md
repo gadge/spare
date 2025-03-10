@@ -1,5 +1,14 @@
 # @spare/padder
 
+## 0.16.8
+
+### Patch Changes
+
+- add @spare/plot
+- Updated dependencies
+  - @spare/charset@0.16.8
+  - @spare/fullwidth@0.16.8
+
 ## 0.16.7
 
 ### Patch Changes

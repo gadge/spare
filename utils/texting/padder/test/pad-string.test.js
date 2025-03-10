@@ -20,7 +20,7 @@ const list = [
 const padOrd = RPad({ ansi: false })
 const padAnsi = RPad({ ansi: true })
 for (let tx of list) {
-  xr(tx).len(tx.length).lange(lange(tx)).ordinary(padOrd(tx, 10)).ansi(padAnsi(tx, 10)) |> logger
+  xr(tx).#len(tx.length).lange(lange(tx)).ordinary(padOrd(tx, 10)).ansi(padAnsi(tx, 10)) |> logger
 }
 
 

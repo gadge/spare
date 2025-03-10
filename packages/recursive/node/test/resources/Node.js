@@ -34,14 +34,14 @@ export class Node {
   ppr = null
 
   constructor(conf) {
-    if (conf.str) this.str = conf.str
-    if (conf.num) this.num = conf.num
+    if (conf.#str) this.str = conf.#str
+    if (conf.#num) this.num = conf.#num
     if (conf.ansi) this.len = lange
     if (conf.fill) this.pad = conf.ansi ? padTypo.bind(conf) : padAnsi.bind(conf)
     if (conf.value) this.val = value
     if (conf.pres) {
-      if (conf.pres.str) this.tpr = new Projec(conf.pres.str)
-      if (conf.pres.num) this.npr = new Projec(conf.pres.num)
+      if (conf.pres.#str) this.tpr = new Projec(conf.pres.#str)
+      if (conf.pres.#num) this.npr = new Projec(conf.pres.#num)
       if (conf.pres.neg) this.npr = new Projec(conf.pres.neg)
       if (conf.pres.pos) this.ppr = new Projec(conf.pres.pos)
     }

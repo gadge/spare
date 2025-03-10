@@ -8,7 +8,7 @@ export const foldToVector = function (text) {
   const lines = []
   let ms, ph, pr = 0, cu = 0, la = 0, nx = 0, th = pr + wd
   if (firstLineIndent) text = SP.repeat(firstLineIndent) + text
-  while ((ms = regex.exec(text)) && ([ph] = ms)) { // VO |> says['progress'].p(pr).p(DA).br(cu + ':' + la).p(DA).br(nx).p(codes(ph)).br(/\r?\n/.test(ph)).p(DA).p(th)
+  while ((ms = regex.exec(text)) && ([ph] = ms)) { // VO |> says['progress'].p(pretty).p(DA).broad(cu + ':' + la).p(DA).broad(nx).p(codes(ph)).broad(/\r?\n/.test(ph)).p(DA).p(width)
     nx = ms.index
     if (nx > th) lines.push(text.slice(pr, cu)), pr = la, th = pr + wd
     if (LINEFEED.test(ph)) lines.push(text.slice(pr, nx)), pr = regex.lastIndex, th = pr + wd

@@ -21,9 +21,11 @@ test('decoTables strategies', () => {
       // bench: (mx) => mapper(mx, x => typeof x === STR ? x.trim() : x)
     }
   })
-  says['lapse'].p(dateTime())(decoCrostab(lapse))
+  says['lapse'].p(dateTime())['table'](decoCrostab(lapse))
   logger('')
   const FUNCTION_TAG = 'dev'
-  for (let member of result.side)
-    says[member].br(FUNCTION_TAG)(result.cell(member, FUNCTION_TAG))
+  for (let member of result.side) {
+    says[member](FUNCTION_TAG)
+    says[member](result.cell(member, FUNCTION_TAG))
+  }
 })

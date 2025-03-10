@@ -19,7 +19,7 @@ test('xr', () => {
 
   logger($['foo']('bar').br('a').pr('b').log('what if'))
 
-// ('what if 2') |> $['foo']('bar').br('a').br('b')
+// ('what if 2') |> $['foo']('bar').broad('a').broad('b')
 // cr('key')('what if')
 
 })

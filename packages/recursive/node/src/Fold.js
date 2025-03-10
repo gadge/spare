@@ -25,7 +25,7 @@ export class Tb {}
 /** @type {function} */ export const tabs = n => n <= 0 ? '' : Tb[n] ?? (Tb[n] = SP.repeat(n))
 
 
-export class Concat {
+export class Fold {
   static chain(txs, de = VO) {
     if (!txs?.length) return ''
     let i = 0, hi = txs.length, tx = txs[i]
@@ -69,7 +69,7 @@ export class Concat {
    * Reshapes an array of strings by applying a function to each element, grouping them, and adding delimiters and brackets.
    *
    * @param {string[]} txs - The array of strings to reshape.
-   * @param {(tx: string, index: number) => string} fn - The function to apply to each string element.
+   * @param {(t: string, index: number) => string} fn - The function to apply to each string element.
    * @param {string} [de=COSP] - The delimiter to use between elements within a group.
    * @param {string} [tra=LF] - The trailing string to use between groups.
    * @param {number} [bra=NONE] - The bracket type to use (NONE, PARENTH, BRACKET, BRACE, ANGLEBR).
@@ -77,7 +77,7 @@ export class Concat {
    * @param {number} [ind=0] - The indentation level.
    * @returns {string} The reshaped string.
    * @example
-   * Concat.reshape(['a', 'b', 'c', 'd'], (x, i) => x.toUpperCase(), ',', '\n', 1, 2, 1) // returns "( A , B )\n( C , D )"
+   * Fold.reshape(['a', 'b', 'c', 'd'], (x, i) => x.toUpperCase(), ',', '\n', 1, 2, 1) // returns "( A , B )\n( C , D )"
    */
   static reshape(txs, fn, de = COSP, tra = LF, bra = NONE, thr = 2, ind = 0) {
     let [ L, R ] = BRSP[bra]
@@ -94,7 +94,7 @@ export class Concat {
     return tx
   }
   static string(txs, de = '', thr = 80, ind = 0, sur = 0) {
-    if (!thr) return Concat.chain(txs, de)
+    if (!thr) return Fold.chain(txs, de)
     const cn = txs.length, ws = txs.ws ?? txs.map(lange)
     let tx = '', cx = '', ph = '', i = 0, p = sur + ws[i], rn = false
     const tb = tabs(ind), tw = tb.length, dw = de?.length

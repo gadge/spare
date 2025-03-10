@@ -8,19 +8,19 @@ import { isNumeric }                              from '@typen/num-loose'
 import { typ }                                    from '@typen/typ'
 import { mapKeyVal }                              from '@vect/object-mapper'
 
-export class Deco extends Node {
-  dp
-  th
-  br
+export class Denode extends Node {
+  depth
+  width
+  broad
   constructor(conf) {
     super(conf)
-    this.dp = conf.depth ?? conf.dp ?? 8     // 更高级不展示
-    this.th = conf.width ?? conf.th ?? 80    // 换行宽度
-    this.br = conf.broad ?? conf.br ?? false // 宽幅展示
+    this.depth = conf.depth ?? conf.dp ?? 8     // 更高级不展示
+    this.width = conf.width ?? conf.th ?? 80    // 换行宽度
+    this.broad = conf.broad ?? conf.br ?? false // 宽幅展示
   }
-  static build(conf) { return new Deco(conf) }
-  static deco(x, conf) { return (new Deco(conf)).node(x) }
-  static make(conf) { return Deco.prototype.node.bind(new Deco(conf)) }
+  static build(conf) { return new Denode(conf) }
+  static deco(x, conf) { return (new Denode(conf)).node(x) }
+  static make(conf) { return Denode.prototype.node.bind(new Denode(conf)) }
 
   node(x, id) {
     const t = typeof x
@@ -41,14 +41,14 @@ export class Deco extends Node {
   }
 
   nodeString(str, id = 0) {
-    return this.string(NaN, str, id)
+    return this.string(str, NaN, id)
   }
   nodeVector(vec, id = 0) {
     vec = vec.map(v => this.node(v, id + 1))
-    return this.vector(NaN, vec)
+    return this.vector(vec, NaN)
   }
   nodeObject(obj, id = 0) {
     obj = mapKeyVal(obj, (k, v) => this.node(v, id + 1))
-    return this.object(NaN, obj, id)
+    return this.object(obj, NaN, id)
   }
 }
