@@ -1,50 +1,56 @@
-import { Plot }                  from './src/Plot.js'
-import { Roster }                from './src/Roster.js'
-import { sepPreBody, snakeRole } from './src/string-util.js'
+import { presFlopper }          from '@palett/flopper'
+import { MIDTONE }              from '@palett/nuance-midtone'
+import { bracket }              from '@texting/bracket'
+import { Plot }                 from './src/Plot.js'
+import { Roster }               from './src/Roster.js'
+import { ansiOrSnake, hasBrPr } from './src/string-util.js'
 
-export class Rosters {
-  static #main
-  static get instance() { return this.#main ?? (this.#main = Roster.build()) }
+export class Ross {
+  static #pool
+  static #camp
+  static get pool() { return Ross.#pool ?? (Ross.#pool = presFlopper.call({ flow: MIDTONE }))}
+  static get camp() { return Ross.#camp ?? (Ross.#camp = Roster.build(Ross.pool)) }
+  static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ross.camp.sign(ansiOrSnake(tx))) }
 }
 
-export class PlotSet {
-  static #capture
-  static #console
-  static #plainCapture
-  static get capture() { return this.#capture ?? (this.#capture = Plot.build('', snakeRole)) }
-  static get console() { return this.#console ?? (this.#console = Plot.build('', snakeRole)) }
-  static get plainCapture() { return this.#plainCapture ?? (this.#plainCapture = Plot.build('')) }
+export class Plots {
+  static #dock
+  static #loom
+  static #nein
+  static get dock() { return this.#dock ?? (this.#dock = Plot.build('', Ross.dispatch)) }
+  static get loom() { return this.#loom ?? (this.#loom = Plot.build('', Ross.dispatch)) }
+  static get nein() { return this.#nein ?? (this.#nein = Plot.build('')) }
 }
 
 export const Xr = Plot.build
 
-export const ros = Rosters.instance.get.bind(Rosters.instance)
+export const ros = Ross.dispatch
 
-export const xr = word => PlotSet.capture.init(word)
+export const xr = word => Plots.dock.init(word)
 
 /** @type {Object<string, Plot|((x: *) => string)>} */
-export const $ = new Proxy(PlotSet.capture, {
-  get(tar, key) {
-    tar.init(sepPreBody(key))
-    return tar.noteProxy
-  }
+export const $ = new Proxy(Plots.dock, {
+  get(plot, key) {
+    plot.init(key)
+    return plot.recProxy
+  },
 })
 
 // /** @type {Object<string, Plot|((x: *) => string)>} */
-// export const $$ = new Proxy(PlotSet.plainCapture, {
-//   sign(tar, key) {
-//     tar.ini(spinOff(key))
-//     return tar.noteProxy
+// export const $$ = new Proxy(Plots.nein, {
+//   sign(plot, key) {
+//     plot.ini(spinOff(key))
+//     return plot.recProxy
 //   }
 // })
 
 /** @type {Object<string, Plot|((x: *) => string)>} */
-export const says = new Proxy(PlotSet.console, {
-  get(tar, key) {
-    tar.init(sepPreBody(key))
-    // console.log('>> [trap].index', '[key]', `(${String(key).padStart(12)})`, '[tar]', tar + '')
-    return tar.logProxy
-  }
+export const says = new Proxy(Plots.loom, {
+  get(plot, key) {
+    plot.init(key)
+    // loom.log('>> [trap].index', '[key]', `(${String(key).padStart(12)})`, '[plot]', plot + '')
+    return plot.logProxy
+  },
 })
 
 

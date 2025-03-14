@@ -1,5 +1,13 @@
 # @spare/xr
 
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/deco-string@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

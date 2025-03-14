@@ -1,39 +1,37 @@
-import { COSP, LF, SP }         from '@texting/enum-chars'
-import { DEF, NUM, STR, SYM }   from '@typen/enum-data-types'
-import { inspect }              from 'node:util'
-import { Handlers }             from './ProxyHandlers.js'
-import { getInd, retBr, retPr } from './string-util.js'
+import { COSP, LF, SP }                                 from '@texting/enum-chars'
+import { DEF, NUM, STR, SYM }                           from '@typen/enum-data-types'
+import { inspect }                                      from 'node:util'
+import { Interceptor }                                  from './Interceptor.js'
+import { carveIndent, retBracket, retParenth, spinOff } from './string-util.js'
 
 export class Plot {
   /** @type {Proxy<Object|Plot>}                */ #proxy
   /** @type {Proxy<Object|((xs: *) => string)>} */ #logProxy
-  /** @type {Proxy<Object|((xs: *) => string)>} */ #noteProxy
+  /** @type {Proxy<Object|((xs: *) => string)>} */ #recProxy
   /** @type {string}          */ #intro = ''
   /** @type {Array<string>}   */ #queue = []
-  /** @type {(key:*)=>string} */ #keyFn = retBr
-  /** @type {(val:*)=>string} */ #valFn = retPr
+  /** @type {(key:*)=>string} */ #keyFn = retBracket
+  /** @type {(val:*)=>string} */ #valFn = retParenth
   /** @type {()=>string}  */ #stamp = null
 
-  constructor(title, keyFn, valFn) {
+  constructor(title, key, val) {
     this.init(title)
-    if (keyFn) this.#keyFn = keyFn
-    if (valFn) this.#valFn = valFn
+    if (key) this.#keyFn = key
+    if (val) this.#valFn = val
   }
 
   static build(text, keyFn, valFn) { return new Plot(text, keyFn, valFn) }
 
-  get proxy() { return this.#proxy ||= new Proxy(this, Handlers.index(this.note)) }
-  get logProxy() { return this.#logProxy ||= new Proxy(this.log.bind(this), Handlers.index(this.log, this)) }
-  get noteProxy() { return this.#noteProxy ||= new Proxy(this.note.bind(this), Handlers.index(this.note, this)) }
+  get proxy() { return this.#proxy ||= new Proxy(this, Interceptor.index(this.rec)) }
+  get recProxy() { return this.#recProxy ||= new Proxy(this.rec.bind(this), Interceptor.index(this.rec, this)) }
+  get logProxy() { return this.#logProxy ||= new Proxy(this.log.bind(this), Interceptor.index(this.log, this)) }
 
-  init(value) {
+  init(key) {
     this.flush()
-    let intro
-    if (Array.isArray(value)) { [ intro, value ] = value }
-    // console.log(`>> [ini].call [intro] (${intro}) [value] (${value})`)
+    const [ intro, name ] = spinOff(key) // console.log(`>> [ini].call [intro] (${intro}) [value] (${value})`)
     if (intro) this.#intro = intro
-    if (value) this.sign(value)
-    return this.noteProxy
+    if (name) this.reg(name)
+    return this.recProxy
   }
 
   flush() { this.#queue.length = 0 }
@@ -46,8 +44,8 @@ export class Plot {
     console.log(this.toString())
     return this.#logProxy
   }
-  sign(k) { return this.#queue.push(this.#keyFn(k)), this.proxy }
-  note(...xs) { return this.#queue.push(this.#valFn(xs.join(COSP))), this.proxy }
+  reg(k) { return this.#queue.push(this.#keyFn(k)), this.proxy }
+  rec(...xs) { return this.#queue.push(this.#valFn(xs.join(COSP))), this.proxy }
   br(x) { return this.#queue.push(this.#keyFn(x)), this.proxy }
   pr(...xs) { return this.#queue.push(xs.map(this.#valFn, this).join(COSP)), this.proxy }
   p(...xs) { return this.#queue.push(this.#valFn(xs.join(COSP))), this.proxy }
@@ -55,7 +53,7 @@ export class Plot {
   render(x) {
     const tx = typeof x === STR ? x : typeof x === SYM ? x.description : x + ''
     return tx.includes(LF)
-      ? (LF + tx).replace(/\n/g, LF + getInd(this.#intro))
+      ? (LF + tx).replace(/\n/g, LF + carveIndent(this.#intro))
       : tx
   }
 

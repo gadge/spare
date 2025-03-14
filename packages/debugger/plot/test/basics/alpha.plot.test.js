@@ -1,12 +1,12 @@
 import { Deco, logger }  from '@spare/logger'
 import { SYM }           from '@typen/enum-data-types'
-import { test }          from 'node:test'
-import { PlotSet, says } from '../../index.js'
-import { Plot }          from '../../src/Plot.js'
+import { test }        from 'node:test'
+import { Plots, says } from '../../index.js'
+import { Plot }        from '../../src/Plot.js'
 
 const deco = Deco({ width: 192 })
 test('steno', () => {
-  const x = PlotSet.capture.init('>> what')
+  const x = Plots.capture.init('>> what')
 
   says['Object']('keys')['Plot            '](deco(Object.keys(Plot)))
   says['Object']('keys')['Plot.prototype  '](deco(Object.keys(Plot.prototype)))

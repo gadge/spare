@@ -2,25 +2,28 @@ import { presFlopper } from '@palett/flopper'
 import { decoString }  from '@spare/deco-string'
 import { hasAnsi }     from '@texting/charset-ansi'
 
+
 export class Roster {
   /** @type {Object<string,string>} */ #cast = {}
-  /** @type {Generator<Preset>}     */ #pool = presFlopper(false)
+  /** @type {Generator<Preset>}     */ #pool
 
-  constructor() {}
-
-  static build() { return new Roster() }
-
-  list() { return this.#cast }
-
-  aboard(name) {
-    // console.log('>> [roster] reg', decoString(String(name), { pres: this.#pool.next().value }))
-    return this.#cast[name] = decoString(String(name), { pres: this.#pool.next().value })
+  constructor(presGen) {
+    this.#pool = presGen ?? presFlopper(false)
   }
 
-  get(name) {
-    if (!name?.length) return ''
+  static build(presGen) { return new Roster(presGen) }
+
+  cast() { return this.#cast }
+
+  reg(name) {
+    // console.log('>> [roster] reg', decoString(String(name), { pres: value }))
+    return this.#cast[name] = decoString.call(this.#pool.next().value, String(name))
+  }
+
+  sign(name) {
+    if (!name?.length) return null
     if (hasAnsi(name)) return name
-    return this.#cast[name] ?? this.aboard(name)
+    return this.#cast[name] ?? this.reg(name)
   }
 }
 

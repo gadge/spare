@@ -3,7 +3,7 @@ import { test }         from 'node:test'
 import { $, says, xr }  from '../index.js'
 
 test('xr', () => {
-  console.log($['Ridley Scott'].p('->')['films'].p('->')['Alien'](1979)['Blade Runner'](1982)['Thelma & Louise'](1991))
+  console.log($['Ridley Scott'].p('->')['films']('some').p('->')['Alien'](1979)['Blade Runner'](1982)['Thelma & Louise'](1991))
   console.log($['Stephen King']('books')['Carrie'](1974)['The Shining'](1977)['The Stand'](1978))
   says['Lamborghini']('supercars')['Filippo Perini']('Aventador', 'Huracán')['Luc Donckerwolke']('Murciélago')['Marcello Gandini']('Diablo', 'Countach')
 
