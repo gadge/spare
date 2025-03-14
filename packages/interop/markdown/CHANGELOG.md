@@ -1,5 +1,31 @@
 # @spare/markdown
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/entries-margin@0.16.12
+  - @spare/entries-padder@0.16.12
+  - @spare/matrix-margin@0.16.12
+  - @spare/vector-margin@0.16.12
+  - @spare/table-margin@0.16.12
+  - @spare/table-padder@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/entries-margin@0.16.11
+  - @spare/matrix-margin@0.16.11
+  - @spare/table-margin@0.16.11
+  - @spare/vector-margin@0.16.11
+  - @spare/entries-padder@0.16.11
+  - @spare/table-padder@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

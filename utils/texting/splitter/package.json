@@ -1,6 +1,6 @@
 {
   "name": "@spare/splitter",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "Join lines together",
   "type": "module",
   "exports": "./dist/index.js",

@@ -1,5 +1,23 @@
 # @spare/entries-margin
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/vector-margin@0.16.12
+  - @spare/util@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/vector-margin@0.16.11
+  - @spare/util@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

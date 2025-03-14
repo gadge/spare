@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-util",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./dist/index.js",

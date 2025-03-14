@@ -1,5 +1,35 @@
 # @spare/deco-pale
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/deco-object@0.16.12
+  - @spare/deco-vector@0.16.12
+  - @spare/deco-func@0.16.12
+  - @spare/enum-brackets@0.16.12
+  - @spare/preset-deco@0.16.12
+  - @spare/deco-config@0.16.12
+  - @spare/deco-util@0.16.12
+  - @spare/quote@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/enum-brackets@0.16.11
+  - @spare/preset-deco@0.16.11
+  - @spare/deco-object@0.16.11
+  - @spare/deco-vector@0.16.11
+  - @spare/deco-func@0.16.11
+  - @spare/deco-config@0.16.11
+  - @spare/deco-util@0.16.11
+  - @spare/quote@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

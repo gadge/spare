@@ -5,25 +5,24 @@ import { Plot }                 from './src/Plot.js'
 import { Roster }               from './src/Roster.js'
 import { ansiOrSnake, hasBrPr } from './src/util/string.js'
 
-export class Ross {
+export class Ros {
   static #pool
   static #camp
-  static get pool() { return Ross.#pool ?? (Ross.#pool = presFlopper.call({ flow: MIDTONE }))}
-  static get camp() { return Ross.#camp ?? (Ross.#camp = Roster.build(Ross.pool)) }
+  static get pool() { return Ros.#pool ?? (Ros.#pool = presFlopper.call({ flow: MIDTONE }))}
+  static get camp() { return Ros.#camp ?? (Ros.#camp = Roster.build(Ros.pool)) }
+  static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ros.camp.sign(ansiOrSnake(tx))) }
 }
-
-export function keyProcCamp(tx) { return hasBrPr(tx) ? tx : bracket(Ross.camp.sign(ansiOrSnake(tx))) }
 
 export class Plots {
   static #nein
   static #loom
   static #port
   static get nein() { return Plots.#nein ?? (Plots.#nein = Plot.build()) }
-  static get loom() { return Plots.#loom ?? (Plots.#loom = Plot.build(keyProcCamp)) }
-  static get port() { return Plots.#port ?? (Plots.#port = Plot.build(keyProcCamp)) }
+  static get loom() { return Plots.#loom ?? (Plots.#loom = Plot.build(Ros.dispatch)) }
+  static get port() { return Plots.#port ?? (Plots.#port = Plot.build(Ros.dispatch)) }
 }
 
-export const ros = name => Ross.camp.sign(name)
+export const ros = name => Ros.camp.sign(name)
 
 export const xn = word => Plots.nein.init(word)
 

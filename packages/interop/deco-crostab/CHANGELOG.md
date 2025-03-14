@@ -1,5 +1,23 @@
 # @spare/deco-crostab
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/deco-table@0.16.12
+  - @spare/node@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/deco-table@0.16.11
+  - @spare/node@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

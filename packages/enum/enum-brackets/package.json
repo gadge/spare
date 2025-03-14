@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-brackets",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "String brackets",
   "type": "module",
   "exports": "./dist/index.js",

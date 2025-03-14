@@ -1,5 +1,12 @@
 # @spare/xr
 
+## 0.16.12
+
+### Patch Changes
+
+- Updated dependencies
+  - @spare/deco-string@0.16.12
+
 ## 0.16.11
 
 ### Patch Changes

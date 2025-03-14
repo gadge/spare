@@ -1,6 +1,6 @@
 {
   "name": "@spare/fullwidth",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "Convert between half-width and full-width",
   "type": "module",
   "exports": "./dist/index.js",

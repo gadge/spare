@@ -1,6 +1,6 @@
 {
   "name": "@spare/preset-deco",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "Preset for deco",
   "type": "module",
   "exports": "./dist/index.js",

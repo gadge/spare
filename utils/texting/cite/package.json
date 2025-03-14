@@ -1,6 +1,6 @@
 {
   "name": "@spare/cite",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "Process string for file write",
   "type": "module",
   "exports": "./dist/index.js",

@@ -1,5 +1,21 @@
 # @spare/fold
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/enum-chars@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/enum-chars@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

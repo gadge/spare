@@ -1,5 +1,29 @@
 # @spare/deco-samples
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/deco-flat@0.16.12
+  - @spare/enum-brackets@0.16.12
+  - @spare/preset-deco@0.16.12
+  - @spare/node@0.16.12
+  - @spare/deco-config@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/enum-brackets@0.16.11
+  - @spare/preset-deco@0.16.11
+  - @spare/deco-flat@0.16.11
+  - @spare/node@0.16.11
+  - @spare/deco-config@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

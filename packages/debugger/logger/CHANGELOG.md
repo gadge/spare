@@ -1,5 +1,45 @@
 # @spare/logger
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/deco-entries@0.16.12
+  - @spare/deco-matrix@0.16.12
+  - @spare/deco-object@0.16.12
+  - @spare/deco-string@0.16.12
+  - @spare/deco-vector@0.16.12
+  - @spare/deco-crostab@0.16.12
+  - @spare/deco-samples@0.16.12
+  - @spare/deco-flat@0.16.12
+  - @spare/deco-func@0.16.12
+  - @spare/deco-pale@0.16.12
+  - @spare/deco-table@0.16.12
+  - @spare/deco@0.16.12
+  - @spare/plot@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/plot@0.16.11
+  - @spare/deco-crostab@0.16.11
+  - @spare/deco-samples@0.16.11
+  - @spare/deco-table@0.16.11
+  - @spare/deco-entries@0.16.11
+  - @spare/deco-matrix@0.16.11
+  - @spare/deco-object@0.16.11
+  - @spare/deco-string@0.16.11
+  - @spare/deco-vector@0.16.11
+  - @spare/deco@0.16.11
+  - @spare/deco-flat@0.16.11
+  - @spare/deco-func@0.16.11
+  - @spare/deco-pale@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

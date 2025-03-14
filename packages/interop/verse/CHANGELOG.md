@@ -1,5 +1,35 @@
 # @spare/verse
 
+## 0.16.12
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/deco-entries@0.16.12
+  - @spare/deco-matrix@0.16.12
+  - @spare/deco-object@0.16.12
+  - @spare/deco-vector@0.16.12
+  - @spare/deco-samples@0.16.12
+  - @spare/enum-brackets@0.16.12
+  - @spare/preset-verse@0.16.12
+  - @spare/quote@0.16.12
+
+## 0.16.11
+
+### Patch Changes
+
+- restructure class, change interface, redefine usage
+- Updated dependencies
+  - @spare/enum-brackets@0.16.11
+  - @spare/preset-verse@0.16.11
+  - @spare/deco-samples@0.16.11
+  - @spare/deco-entries@0.16.11
+  - @spare/deco-matrix@0.16.11
+  - @spare/deco-object@0.16.11
+  - @spare/deco-vector@0.16.11
+  - @spare/quote@0.16.11
+
 ## 0.16.10
 
 ### Patch Changes

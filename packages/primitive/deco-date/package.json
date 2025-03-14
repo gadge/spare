@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-date",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "Colored stringify date",
   "type": "module",
   "exports": "./dist/index.js",

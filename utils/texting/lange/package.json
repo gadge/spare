@@ -1,6 +1,6 @@
 {
   "name": "@spare/lange",
-  "version": "0.16.10",
+  "version": "0.16.12",
   "description": "Get string length s.t. correcting astral codes and skipping ansi codes",
   "type": "module",
   "exports": "./dist/index.js",
