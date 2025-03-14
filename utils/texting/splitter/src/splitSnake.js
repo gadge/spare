@@ -1,5 +1,5 @@
 /**
- * snake or kebab phrase -> split vector
+ * loom or kebab phrase -> split vector
  * @param {string} phrase - dashed phrase
  * @returns {string[]}
  */

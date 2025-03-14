@@ -1,5 +1,17 @@
 # @spare/vector-padder
 
+## 0.16.10
+
+### Patch Changes
+
+- minor fix
+
+## 0.16.9
+
+### Patch Changes
+
+- update interface
+
 ## 0.16.8
 
 ### Patch Changes

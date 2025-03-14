@@ -1,5 +1,25 @@
 # @spare/phrasing
 
+## 0.16.10
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/deco-vector@0.16.10
+  - @spare/regex-phrasing@0.16.10
+  - @spare/enum-chars@0.16.10
+
+## 0.16.9
+
+### Patch Changes
+
+- update interface
+- Updated dependencies
+  - @spare/enum-chars@0.16.9
+  - @spare/regex-phrasing@0.16.9
+  - @spare/deco-vector@0.16.9
+
 ## 0.16.8
 
 ### Patch Changes

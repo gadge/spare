@@ -24,12 +24,12 @@ $ npm install @spare/regex-phrasing
 ## Usage
 ```js
 import { lange } from '@spare/regex-phrasing'
-const list = [
+const cast = [
   'tolstoy',
   '\u001b[3;4;31mhatsu\u001b[0m',
   '\u{1F3C3}2\u{1F525}7',
 ]
-for (let t of list) {
+for (let t of cast) {
   console.log(`[${t}] [length] (${t.length}) [lange] (${lange(t)})`)
 }
 ```

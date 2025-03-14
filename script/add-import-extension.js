@@ -32,7 +32,7 @@ const addJsExtensionToImports = (code, filePath) => {
 /**
  * Recursively finds all JavaScript files within a directory.
  * @param {string} dir - The directory to search.
- * @param {string[]} [fileList=[]] - Accumulator for the file list.
+ * @param {string[]} [fileList=[]] - Accumulator for the file cast.
  * @param {string[]} [ignoreDirs=['node_modules', 'dist']] - Directories to ignore.
  * @returns {Promise<string[]>} - A promise that resolves to an array of file paths.
  */

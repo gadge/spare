@@ -8,10 +8,10 @@ import { fieldWidth } from './fieldWidth'
  *
  * @param {object} field
  * @param {string} field.name
- * @param {string[]} field.list
+ * @param {string[]} field.cast
  * @param {object} config
  * @param {boolean} [config.ansi]
- * @returns {{name:string,rule:string,list:string[]}}
+ * @returns {{name:string,rule:string,cast:string[]}}
  */
 export const fieldPadderFull = (field, config = {}) => {
   const { name, list } = field

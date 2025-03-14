@@ -40,8 +40,8 @@ export function noteStr(x) {
 //     this.neg = new Bound(n < 0 ? n : MAX, n < 0 ? n : MIN)
 //   }
 //   else {
-//     if (n > 0) pos.note(n)
-//     if (n < 0) neg.note(n)
+//     if (n > 0) pos.reg(n)
+//     if (n < 0) neg.reg(n)
 //   }
 //   return n
 // }
@@ -180,8 +180,8 @@ export class ArcFab {
 //       nums.neg = new Bound(n < 0 ? n : MAX, n < 0 ? n : MIN)
 //     }
 //     else {
-//       if (n > 0) pos.note(n)
-//       if (n < 0) neg.note(n)
+//       if (n > 0) pos.reg(n)
+//       if (n < 0) neg.reg(n)
 //     }
 //     return n
 //   }

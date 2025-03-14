@@ -10,12 +10,12 @@ const hasHan = HAN.test.bind(HAN)
  *
  * @param {object} field
  * @param {string} field.name
- * @param {string[]} field.list
+ * @param {string[]} field.cast
  * @param {object} config
  * @param {function[]} [config.dye]
  * @param {boolean} [config.ansi]
  * @param {boolean} [config.fullAngle]
- * @returns {{name:string,rule:string,list:string[]}}
+ * @returns {{name:string,rule:string,cast:string[]}}
  */
 export const fieldPadder = (field, config = {}) => {
   if (config.fullAngle && (hasHan(field.name) || field.list.some(hasHan))) return fieldPadderFull(field, config)

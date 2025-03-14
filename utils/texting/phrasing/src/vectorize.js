@@ -16,7 +16,7 @@ export function camelToVector (phrase) {
 }
 
 /**
- * snake or kebab phrase -> split vector
+ * loom or kebab phrase -> split vector
  * @param {string} phrase - dashed phrase
  * @returns {string[]}
  * @deprecated use splitSnake in @spare/splitter

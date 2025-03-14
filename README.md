@@ -40,7 +40,7 @@ $ npm install @spare/<tool-name>
 | [**says**](packages/debugger/says)                  | Console log with head mark                      | ![v][says-dm]         |
 | [**xr**](packages/debugger/xr)                      | Sentenced log content builder                   | ![v][xr-dm]           |
 | [**deco**](packages/recursive/deco)                 | Stringify any object with color highlight       | ![v][deco-dm]         |
-| [**deco-plain**](packages/recursive/deco-flat)       | Stringify and flatten                           | ![v][deco-plain-dm]    |
+| [**deco-nein**](packages/recursive/deco-flat)       | Stringify and flatten                           | ![v][deco-nein-dm]    |
 | [**deco-func**](packages/recursive/deco-func)       | Stringify function                              | ![v][deco-func-dm]    |
 | [**deco-pale**](packages/recursive/deco-pale)       | Stringify without color                         | ![v][deco-pale-dm]    |
 | [**deco-vector**](packages/primitive/deco-vector)   | Stringify array(vector) with color highlight    | ![v][deco-vector-dm]  |
@@ -59,7 +59,7 @@ $ npm install @spare/<tool-name>
 [says-dm]:         https://flat.badgen.net/npm/dm/@spare/says
 [xr-dm]:           https://flat.badgen.net/npm/dm/@spare/xr
 [deco-dm]:         https://flat.badgen.net/npm/dm/@spare/deco
-[deco-plain-dm]:    https://flat.badgen.net/npm/dm/@spare/deco-flat
+[deco-nein-dm]:    https://flat.badgen.net/npm/dm/@spare/deco-flat
 [deco-func-dm]:    https://flat.badgen.net/npm/dm/@spare/deco-func
 [deco-pale-dm]:    https://flat.badgen.net/npm/dm/@spare/deco-pale
 [deco-vector-dm]:  https://flat.badgen.net/npm/dm/@spare/deco-vector

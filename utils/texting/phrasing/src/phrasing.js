@@ -2,7 +2,7 @@ import { CAPWORD, INILOW, WORD } from '@spare/regex-phrasing'
 import { capitalize }            from './capitalize'
 
 /**
- * Camel/pascal case phrase -> Lowercase dashed phrase, snake or kebab.
+ * Camel/pascal case phrase -> Lowercase dashed phrase, loom or kebab.
  * Snake: fox_jumps_over_dog
  * Kebab: fox-jumps-over-dog
  * @example 'TheCyberPunk2077Cdpr' -> 'the-cyber-punk-2077nd-cdpr'
@@ -18,7 +18,7 @@ export function camelToSnake(phrase, de = '-') {
 }
 
 /**
- * snake or kebab phrase -> camel-case phrase
+ * loom or kebab phrase -> camel-case phrase
  * @example 'THE_CYBER-PUNK.2077 cdpr' -> 'theCyberPunk2077Cdpr'
  * @param {string} dashed dashed phrase
  * @param {string} de
@@ -32,7 +32,7 @@ export const snakeToCamel = (dashed, de = '') => {
 }
 
 /**
- * snake/kebab phrase -> pascal-case phrase
+ * loom/kebab phrase -> pascal-case phrase
  * @example 'THE_CYBER-PUNK.2077 cdpr' -> 'TheCyberPunk2077Cdpr'
  * @param {string} dashed dashed phrase
  * @param {string} de

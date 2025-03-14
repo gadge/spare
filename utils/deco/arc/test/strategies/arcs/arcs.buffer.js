@@ -21,7 +21,7 @@ console.log(arr.join()) // 0,0,104,101,108,108,111,0
 
 const str = "Hello €我"
 
-// get string length in bytes
+// sign string length in bytes
 const bytes = Buffer.byteLength(str, "utf-8")
 
 console.log(bytes) // 12

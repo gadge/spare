@@ -1,6 +1,6 @@
 {
   "name": "@spare/table-padder",
-  "version": "0.16.8",
+  "version": "0.16.10",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./dist/index.js",
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/table-padder.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.7.3",
+    "@aryth/comparer": "^0.7.4",
     "@spare/enum-chars": "workspace:^",
     "@spare/enum-full-angle-chars": "workspace:^",
     "@spare/fullwidth": "workspace:^",
