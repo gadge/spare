@@ -1,7 +1,8 @@
-import { logger, Xr } from '@spare/logger'
-import { pair }       from '@vect/object-init'
-import { deco }       from '../index.js'
-import { test }       from 'node:test'
+import { PAGODA, PINE } from '@palett/presets'
+import { logger }       from '@spare/logger'
+import { pair }         from '@vect/object-init'
+import { test }         from 'node:test'
+import { deco }         from '../index.js'
 
 const MERGE = -1
 const ACCUM = 0
@@ -17,11 +18,11 @@ const candidates = {
   oneRowed: [ { foo: INCRE } ],
   fieldOnly: { foo: null },
   mixedObject: [ { foo: INCRE }, FOO, { kha: ACCUM } ],
-  mixedArray: [ [ FOO, MERGE ], KHA, [ MIA, ACCUM ] ]
+  mixedArray: [ [ FOO, MERGE ], KHA, [ MIA, ACCUM ] ],
 }
 
 test('deco simpler unit', () => {
   for (const [ key, value ] of Object.entries(candidates)) {
-    logger(Xr(key).parsed(deco(value)))
+    logger(key, deco.call({ str: PAGODA, num: PINE }, value))
   }
 })

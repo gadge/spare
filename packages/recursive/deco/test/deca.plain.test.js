@@ -15,7 +15,7 @@ const candidates = {
   ...(flop(flopValue(Quotes)))
 }
 
-test('deco plain', () => {
+test('deco nein', () => {
   logger(Deco({
     // pres: false,
     depth: 6,

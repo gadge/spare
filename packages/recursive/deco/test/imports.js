@@ -35,7 +35,7 @@ const LIST = [
   '@typen/num-strict',
   '@vect/matrix',
   '@vect/matrix-index',
-  '@vect/vector-init'
+  '@vect/vector-ini'
 ]
 
 test('imports', () => {

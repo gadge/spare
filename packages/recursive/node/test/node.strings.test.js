@@ -1,8 +1,9 @@
-import { OCEAN }   from '@palett/presets'
-import { RTSP }    from '@texting/enum-chars'
-import { indexed } from '@vect/object-mapper'
-import { test }    from 'node:test'
-import { Node }    from '../src/Node.js'
+import { Presm }                from '@palett/pres'
+import { BESQUE, METRO, OCEAN } from '@palett/presets'
+import { RTSP }                 from '@texting/enum-chars'
+import { indexed }              from '@vect/object-mapper'
+import { test }                 from 'node:test'
+import { Node }                 from '../src/Node.js'
 
 export const STRINGS = {
   empty: '',
@@ -21,17 +22,17 @@ export const STRINGS = {
     'Their medicinal gum. ',
   positives: '1-2-3-4-5-6-7-8-9',
   negatives: '(-1) (-2) (-3) (-4) (-5) (-6) (-7) (-8) (-9)',
-  book: 'Sharifian, Farzad - Cultural Linguistics Cultural Conceptualisations and Language'
+  book: 'Sharifian, Farzad - Cultural Linguistics Cultural Conceptualisations and Language',
 }
 
 test('node strings', () => {
-  const node = new Node(OCEAN)
+  const node = new Node({ pres: Presm.build(BESQUE, OCEAN, METRO) })
   const WD = 64
   const LINE = '+'.repeat(WD) + WD
 
   console.log(LINE)
   for (let [ key, text ] of indexed(STRINGS)) {
-    console.log(key + RTSP + node.string( text,WD, 4, key.length + 2))
+    console.log(key + RTSP + node.string(text, WD, 4, key.length + 2))
     console.log(LINE)
   }
 })

@@ -29,6 +29,7 @@ import { decoKey }                 from './src/decoKey.js'
  * @return {string|*}
  */
 export function decoPale(node, conf) {
+  conf = conf ?? this ?? {}
   // const { loose = true, cite = citeFn } = conf ?? this ?? {}
   const loose = conf?.loose ?? this?.loose ?? true
   const cite = conf?.cite ?? this?.cite ?? citeFn
@@ -46,12 +47,13 @@ export function decoPale(node, conf) {
   return cite(String(node))
 }
 
+
 /**
  *
  * @param {Object} conf
  * @param {boolean} [conf.loose]
  * @param {Function|string|number} [conf.quote]
  */
-export const DecoPale = (conf = {}) => decoPale.bind(conf)
+export function DecoPale(conf = {}) { return decoPale.bind(conf) }
 
 export { decoKey } from './src/decoKey.js'

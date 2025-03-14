@@ -17,6 +17,14 @@ export function depth(node) {
   }
 }
 
+export function isMatrix(list) {
+  const hi = list.length, wd = list[0].length
+  for (let i = 0, row; i < hi; i++) {
+    if ((row = list[i]).length !== wd) return false
+  }
+  return true
+}
+
 export class Denode extends Node {
   depth
   vert
@@ -66,7 +74,8 @@ export class Denode extends Node {
         const wd = vec.length <= 2 ? NaN : this.threshold(id)
         return this.vector(vec, wd, id)
       case 2:
-        return this.matrix(vec, POINTWISE, id)
+        if (isMatrix(vec)) return this.matrix(vec, POINTWISE, id)
+      // CRUCIAL: else fall through default
       default:
         vec = vec.map(v => this.node(v, id + 1))
         return this.vector(vec, NaN)

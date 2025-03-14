@@ -1,58 +1,49 @@
 import { render }                         from '@palett/dye'
-import { Pres, Presm }                    from '@palett/pres'
+import { Presm }                          from '@palett/pres'
 import { hasAnsi }                        from '@texting/charset-ansi'
 import { BRACKET, NONE }                  from '@texting/enum-brackets'
 import { COLF, COSP, LF, RTSP, SP }       from '@texting/enum-chars'
 import { lange, length }                  from '@texting/lange'
 import { splitLiteral }                   from '@texting/splitter'
 import { value }                          from '@texting/string-value'
-import { NUM, OBJ, STR, SYM }             from '@typen/enum-data-types'
+import { NUM }                            from '@typen/enum-data-types'
 import { parseNum }                       from '@typen/num-strict'
 import { COLUMNWISE, POINTWISE, ROWWISE } from '@vect/enum-matrix-directions'
 import { height, width }                  from '@vect/matrix-index'
 import { init, iso }                      from '@vect/vector-init'
-import { initAnsi }                       from '../utils/initAnsi.js'
-import { padAnsi, padTypo }               from '../utils/padTypo.js'
+import { evalStr }                        from './evalStr.js'
 import { Fold, tabs }                     from './Fold.js'
 import { Grad }                           from './Grad.js'
 import { detSub, Sub }                    from './Sub.js'
+import { initAnsi }                       from './utils/initAnsi.js'
+import { padAnsi, padTypo }               from './utils/padTypo.js'
 
-export function parseStr(x) {
-  const p = typeof x
-  return x === null ? '' + x : p === OBJ || p === SYM ? x.toString() : p === STR ? x : '' + x
-}
 
 const { Str: S, Num: N, NaN: E } = Sub
 
 export class Node {
-  /** @type {(x:string)=>number} */ #tev = parseStr
-  /** @type {(x:number)=>number} */ #nev = parseNum
-  /** @type {(x:string)=>number} */ #len = lange
+  /** @type {(x:string)=>string} evaluate string   */ #tev = evalStr
+  /** @type {(x:number)=>number} evaluate number   */ #nev = parseNum
+  /** @type {(x:string)=>number} get string length */ #len = lange
   /** @type {(t:string,n:number,w:number)=>string} */ #pad = padAnsi
-  /** @type {Presm} string preset          */ #psm = null
+  /** @type {Presm} string preset                  */ #psm
 
   constructor(conf) {
-    if (!conf) return this
-    if (conf.tev) this.#tev = conf.tev
-    if (conf.nev) this.#nev = conf.nev
-    if (conf.ansi === false) this.#len = length
-    if (conf.fill) this.#pad = conf.ansi
-      ? conf.fill === SP ? padAnsi : padAnsi.bind(conf)
-      : conf.fill === SP ? padTypo : padTypo.bind(conf)
-    if (conf.pres === false) return this
-    this.presm = conf.pres ? conf.pres : conf
+    this.#tev = conf?.tev ?? evalStr
+    this.#nev = conf?.nev ?? parseNum
+    this.#len = conf?.ansi !== false ? lange : length
+    this.#pad = conf?.fill
+      ? conf.ansi ? conf.fill === SP ? padAnsi : padAnsi.bind(conf) : conf.fill === SP ? padTypo : padTypo.bind(conf)
+      : padAnsi
+    this.presm = conf?.pres !== false ? conf.pres : undefined // if (o.attr) initAnsi.call(this, o.attr)
+
   }
 
   get presm() { return this.#psm }
-  set presm(value) {
-    if (!value) return
-    if (value.attr) initAnsi.call(this, value.attr)
-    if (value instanceof Presm) return (this.#psm = value)
-    if (value instanceof Pres) return (this.#psm = Presm.build(value, value))
-    const presm = this.#psm = Presm.build(typeof value.str === OBJ ? value.str : undefined)
-    if (typeof value.num === OBJ) presm.ybd = value.num
-    if (typeof value.pos === OBJ) presm.ybd = value.pos
-    if (typeof value.neg === OBJ) presm.zbd = value.neg
+  set presm(o) {
+    if (!o) return
+    if (o.attr) initAnsi.call(this, o.attr)
+    this.#psm = o
   }
 
   get mono() { return !this.presm?.hasX }
@@ -70,22 +61,24 @@ export class Node {
     if (wd) tv = this.#pad(tv, nv, wd)
     if (this.mono || nv === null) return tv
     const presm = this.presm
-    if (nv === void 0) return presm.hasX ? render.call(this, grad.rgiStr(this.presm, value(tv, grad.w)), tv) : tv
+    if (nv === void 0) { // console.log('calling rgistr', 'tv', tv, 'grad.wd', grad.wd)
+      return presm.hasX ? render.call(this, grad.rgiStr(this.presm, value(tv, grad.wd)), tv) : tv
+    }
     if (!isNaN(nv)) return presm.hasY ? render.call(this, grad.rgiNum(this.presm, nv), tv) : tv
     return presm.hasX ? render.call(this, this.presm.nan, tv) : tv
   }
 
   /**
    * @param {string} str input string
-   * @param {number} wd width of each line
+   * @param {number} thr width of each line
    * @param {number} ind indent
    * @param {number} sur surge
    * @return {string}
    */
-  string(str, wd, ind, sur) {
+  string(str, thr, ind, sur) {
     const vec = splitLiteral(str)
     if (!vec.length) return ''
-    return Fold.string(this.flatVector(vec), '', wd, ind, sur)
+    return Fold.string(this.flatVector(vec), '', thr, ind, sur)
   }
 
   vector(vec, thr, ind = 0, sur = 0) {
@@ -127,7 +120,7 @@ export class Node {
     let wd = 0, i
     for (i = 0; i < len; i++) if ((wds[i] = this.store(grad, tvs, nvs, vec[i], i)) > wd) wd = wds[i]
     for (i = 0, grad.lever(this.presm, wd); i < len; i++) tvs[i] = this.render(grad, tvs[i], nvs[i])
-    return tvs
+    return tvs //console.log('tvs', tvs, 'nvs', nvs, 'wds', wds)
   }
 
   flatEntries(ent, pad) {
@@ -170,15 +163,17 @@ export class Node {
   flatPoints(mat) {
     const ht = height(mat), wd = width(mat), cn = ht * wd
     const tvs = Array(cn), nvs = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0), grad = new Grad(this.uns)
+    let wp = 0
     for (let i = 0, p = 0; i < ht; i++) {
       for (let j = 0, r = mat[i], w; j < wd; j++) {
         w = this.store(grad, tvs, nvs, r[j], p++)
         if (w > xs[i]) xs[i] = w
         if (w > ys[j]) ys[j] = w
+        if (w > wp) wp = w
       }
     }
+    grad.lever(this.presm, wp) // console.log('tvs', tvs, 'nvs', nvs, 'rowwise widths', xs, 'columnwise widths', ys)
     for (let i = 0, p = 0; i < ht; i++) {
-      grad.lever(this.presm, xs[i])
       for (let j = 0; j < wd; j++, p++) tvs[p] = this.render(grad, tvs[p], nvs[p], ys[j])
     }
     return tvs

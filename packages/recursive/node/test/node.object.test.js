@@ -1,3 +1,4 @@
+import { Presm }               from '@palett/pres'
 import { FRESH, METRO, OCEAN } from '@palett/presets'
 import { SP }                  from '@texting/enum-chars'
 import { indexed }             from '@vect/object-mapper'
@@ -9,6 +10,7 @@ const OBJECTS = {
   Single: {
     foo: 'bar'
   },
+  mixedArray: [ [ 'Arch', 'Merge' ], 'Dock', [ 'Bolt', 'Accum' ] ],
   BrentPrices: Object.fromEntries([
     [ '1988', 14.91 ],
     [ '1989', 18.23 ],
@@ -37,7 +39,7 @@ const OBJECTS = {
 }
 
 test('node object', () => {
-  const node = new Node({ fill: ' ', ansi: true, pres: { pos: FRESH, neg: OCEAN, str: METRO } })
+  const node = new Node({ fill: ' ', ansi: true, pres: Presm.build( FRESH,  OCEAN,  METRO ) })
   const WD = 40
   const LINE = '+'.repeat(WD) + WD
 

@@ -1,6 +1,6 @@
-import { hsiToHsl, modHsiTo, Presm } from '@palett/pres'
-import { value }                     from '@texting/string-value'
-import { compare }                   from '../utils/compare.js'
+import { modHsiTo, Presm } from '@palett/pres'
+import { value }           from '@texting/string-value'
+import { compare }         from './utils/compare.js'
 
 function onto(i, x, y, z) {
   this[i++] = x
@@ -35,6 +35,7 @@ export class Grad {
    */
   lever(presm, width) {
     this.wd = width
+    if (!presm) return this
     if (presm.hasX && this.xb !== void 0) {
       this.xb = value(this.xb, width), this.xp = value(this.xp, width)
       const df = this.xdf, [ dh, ds, dl ] = presm.xdf
@@ -48,6 +49,8 @@ export class Grad {
       const df = this.zdf, [ dh, ds, dl ] = presm.zdf
       df ? onto.call(this, 6, dh / df, ds / df, dl / df) : onto.call(this, 6, 0, 0, 0)
     }
+    // console.log('presm', `x(${presm.hasX})`, presm.xdf, `y(${presm.hasY})`, presm.ydf, `z(${presm.hasZ})`, presm.zdf)
+    // console.log(`grad(${this.wd})`, `x(${this.xdf})`, [ this[0], this[1], this[2] ], `y(${this.ydf})`, [ this[3], this[4], this[5] ], `z(${this.zdf})`, [ this[6], this[7], this[8] ])
     return this
   }
   recStr(t) {
@@ -71,7 +74,7 @@ export class Grad {
     }
   }
   rgiStr(presm, val) {
-    const df = val - (this.xb ?? 0)
+    const df = val - (this.xb ?? 0) // console.log(val, 'df', df, 'dh', df * this[0], 'ds', df * this[1], 'dl', df * this[2])
     return modHsiTo(presm[0], df * this[0], df * this[1], df * this[2])
   }
   rgiNum(presm, val) {

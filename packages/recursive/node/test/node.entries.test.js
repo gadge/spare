@@ -1,3 +1,4 @@
+import { Presm }                from '@palett/pres'
 import { BESQUE, METRO, OCEAN } from '@palett/presets'
 import { SP }                   from '@texting/enum-chars'
 import { indexed }              from '@vect/object-mapper'
@@ -7,7 +8,7 @@ import { Node }                 from '../src/Node.js'
 const ENTRIES = {
   Empty: [],
   Single: [
-    [ 'foo', 'bar' ]
+    [ 'foo', 'bar' ],
   ],
   BrentPrices: [
     [ '1988', 14.91 ],
@@ -16,7 +17,7 @@ const ENTRIES = {
     [ '2002', 24.99 ],
     [ '2009', 61.74 ],
     [ '2013', 108.56 ],
-    [ '2018', 71.34 ]
+    [ '2018', 71.34 ],
   ],
   MortalityRates: [
     [ 'InfectiousAndParasitic', 211.3 ],
@@ -25,19 +26,19 @@ const ENTRIES = {
     [ 'HIV', 44.6 ],
     [ 'ChronicObstructivePulmonary', 44.1 ],
     [ 'PerinatalConditions', 39.6 ],
-    [ 'Tuberculosis', 25.2 ]
+    [ 'Tuberculosis', 25.2 ],
   ],
   Actresses: [
     [ 'The Piano', 'Holly Hunter' ],
     [ 'Titanic', 'Kate Winslet' ],
     [ 'Hilary and Jackie', 'Emily Watson' ],
     [ 'The Devil Wears Prada', 'Meryl Streep' ],
-    [ 'Precious', 'Gabourey Sidibe' ]
-  ]
+    [ 'Precious', 'Gabourey Sidibe' ],
+  ],
 }
 
 test('node entries', () => {
-  const node = new Node({ pos: BESQUE, neg: OCEAN, str: METRO })
+  const node = new Node({ pres: Presm.build(BESQUE, OCEAN, METRO) })
   for (let [ key, ent ] of indexed(ENTRIES)) {
     // console.log(demo(node.pbd, 5))
     console.log(key + SP + node.entries(ent, NaN, 0))

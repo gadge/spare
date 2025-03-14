@@ -12,9 +12,10 @@ export { DECOFUN_CONFIG, DECOFUNC_CONFIG }
  * @returns {string}
  */
 export function decoFunc(func, conf) {
-  const pretty = conf.pretty ?? this.pretty ?? true
-  const flatWd = conf.flatWd ?? this.flatWd ?? 160
-  const abbrWd = conf.abbrWd ?? this.abbrWd ?? 192
+  conf = conf ?? this ?? {}
+  const pretty = conf.pretty ?? true
+  const flatWd = conf.flatWd ?? 160
+  const abbrWd = conf.abbrWd ?? 192
   let text
   text = funcToLined(func)
   text = flatten(text, flatWd)

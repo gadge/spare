@@ -48,7 +48,7 @@
 //
 //   it('should handle ANSI strings correctly', () => {
 //     const typo = new Node({ ansi: true })
-//     const input = [ '\u001b[32mcolored\u001b[0m', 'plain' ]
+//     const input = [ '\u001b[32mcolored\u001b[0m', 'nein' ]
 //     const result = typo.flatVector(input)
 //
 //     expect(result[0]).toContain('\u001b[32m')
