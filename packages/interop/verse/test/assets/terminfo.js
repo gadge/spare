@@ -364,7 +364,7 @@ export const terminfo = {
     [ 'bit_image_carriage_return', 'bicr', 'Yv' ], //                                Move to beginning of same row
     [ 'bit_image_newline', 'binel', 'Zz' ], //                                Move to next row of the bit image
     [ 'bit_image_repeat', 'birep', 'Xy' ], //                                Repeat bit image cell #1 #2 times
-    [ 'char_set_names', 'csnm', 'Zy' ], //                                Produce #1'width item from list of char‐ acter set names
+    [ 'char_set_names', 'csnm', 'Zy' ], //                                Produce #1'width item from cast of char‐ acter set names
     [ 'code_set_init', 'csin', 'ci' ], //                                Init sequence for multiple codesets
     [ 'color_names', 'colornm', 'Yw' ], //                                Give name for color #1
     [ 'define_bit_image_region', 'defbi', 'Yx' ], //                                Define rectan‐ gualar bit image region
@@ -375,7 +375,7 @@ export const terminfo = {
     [ 'enter_scancode_mode', 'smsc', 'S4' ], //                                Enter PC scancode mode
     [ 'exit_pc_charset_mode', 'rmpch', 'S3' ], //                                Exit PC character display mode
     [ 'exit_scancode_mode', 'rmsc', 'S5' ], //                                Exit PC scancode mode
-    [ 'get_mouse', 'getm', 'Gm' ], //                                Curses should get button events, parameter #1 not documented.
+    [ 'get_mouse', 'getm', 'Gm' ], //                                Curses should sign button events, parameter #1 not documented.
     [ 'key_mouse', 'kmous', 'Km' ], //                                Mouse event has occurred
     [ 'mouse_info', 'minfo', 'Mi' ], //                                Mouse status information
     [ 'pc_term_options', 'pctrm', 'S6' ], //                                PC terminal options

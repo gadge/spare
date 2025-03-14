@@ -1,5 +1,6 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { TableNode }              from '@spare/deco-table'
+import { parsePresm }             from '@spare/node'
 import { SP }                     from '@texting/enum-chars'
 
 /**
@@ -18,48 +19,63 @@ import { SP }                     from '@texting/enum-chars'
 const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
-  pos: BESQUE
+  pos: BESQUE,
 }
 
 const { table } = TableNode.prototype
 
+
+/**
+ * @param {Opt} [conf]
+ * @returns {(ctb:*, dir:[number], ind:[number])=>string}
+ */
+export function DecoCrostab(conf) {
+  conf = conf ?? this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  const direct = conf.direct, indent = conf.indent
+  const proc = table.bind(new TableNode(conf))
+  return (ctb, dir, ind) => proc(ctb, dir ?? direct, ind ?? indent)
+}
+
+export function decoCrostab(ctb, dir, ind) {
+  const conf = this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  const direct = conf.direct, indent = conf.indent
+  const node = new TableNode(conf)
+  return table.call(node, ctb, dir ?? direct, ind ?? indent)
+}
+
+
 /**
  * @param {Opt} conf
  * @returns {function}
  */
-export const DecoCrostab = (conf = {}) => {
-  conf.pres = conf.pres ?? PRES
+export function PaleCrostab(conf) {
+  conf = conf ?? this ?? {}
+  conf.pres = false
   conf.fill = conf.fill ?? SP
   conf.ansi = conf.ansi ?? true
-  return table.bind(new TableNode(conf))
+  const direct = conf.direct, indent = conf.indent
+  const proc = table.bind(new TableNode(conf))
+  return (table, dir, ind) => proc(table, dir ?? direct, ind ?? indent)
 }
 
-export const decoCrostab = (vec, conf = {}, ind) => {
-  conf.pres = conf.pres ?? PRES
+export function paleCrostab(vec, dir, ind) {
+  const conf = this ?? {}
+  conf.pres = false
   conf.fill = conf.fill ?? SP
   conf.ansi = conf.ansi ?? true
-  return table.call(new TableNode(conf), vec, conf.direct, ind ?? conf.indent)
-}
-
-/**
- * @param {Opt} conf
- * @returns {function}
- */
-export const PaleCrostab = (conf = {}) => {
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  return table.bind(new TableNode(conf))
-}
-
-export const paleCrostab = (vec, conf = {}, ind) => {
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  return table.call(new TableNode(conf), vec, conf.direct, ind ?? conf.indent)
+  const direct = conf.direct, indent = conf.indent
+  return table.call(new TableNode(conf), dir ?? direct, ind ?? indent)
 }
 
 export {
   decoCrostab as deco,
-  DecoCrostab as Deco
+  DecoCrostab as Deco,
 }
 
 

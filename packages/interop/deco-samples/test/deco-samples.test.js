@@ -2,8 +2,8 @@ import { tableToSamples }  from '@analys/convert'
 import { TableCollection } from '@foba/table'
 import { FRESH, PLANET }   from '@palett/presets'
 import { says }            from '@spare/xr'
-import { test } from 'node:test'
-import { Deco } from '../src/index.js'
+import { test }            from 'node:test'
+import { Deco }            from '../src/index.js'
 
 const tableCollection = Object.assign({},
   TableCollection.flopShuffle({ h: 11, keyed: true }),

@@ -1,4 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
+import { parsePresm }             from '@spare/node'
 import { SP }                     from '@texting/enum-chars'
 import { TableNode }              from './src/TableNode.js'
 
@@ -17,51 +18,61 @@ export { TableNode }
  * @typedef {?number}   Opt.right
  */
 
-const PRES = {
-  str: SUBTLE,
-  neg: ENSIGN,
-  pos: BESQUE
-}
+const PRES = { str: SUBTLE, neg: ENSIGN, pos: BESQUE }
 
 const { table } = TableNode.prototype
 
+
+/**
+ * @param {Opt} conf
+ * @returns {(table:*, dir:[number], ind:[number])=>string}
+ */
+export function DecoTable(conf) {
+  conf = conf ?? this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  const direct = conf.direct, indent = conf.indent
+  const proc = table.bind(new TableNode(conf))
+  return (table, dir, ind) => proc(table, dir ?? direct, ind ?? indent)
+}
+
+export function decoTable(tbl, dir, ind) {
+  const conf = this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  conf.fill = conf.fill ?? SP
+  conf.ansi = conf.ansi ?? true
+  const direct = conf.direct, indent = conf.indent
+  return table.call(new TableNode(conf), tbl, dir ?? direct, ind ?? indent)
+}
+
+
 /**
  * @param {Opt} conf
  * @returns {function}
  */
-export const DecoTable = (conf = {}) => {
-  conf.pres = conf.pres ?? PRES
+export function PaleTable(conf) {
+  conf = conf ?? this ?? {}
+  conf.pres = false
   conf.fill = conf.fill ?? SP
   conf.ansi = conf.ansi ?? true
-  return table.bind(new TableNode(conf))
+  const direct = conf.direct, indent = conf.indent
+  const proc = table.bind(new TableNode(conf))
+  return (table, dir, ind) => proc(table, dir ?? direct, ind ?? indent)
 }
 
-export const decoTable = (vec, conf = {}, ind) => {
-  conf.pres = conf.pres ?? PRES
+export function paleTable(table, dir, ind) {
+  const conf = this ?? {}
+  conf.pres = false
   conf.fill = conf.fill ?? SP
   conf.ansi = conf.ansi ?? true
-  return table.call(new TableNode(conf), vec, conf.direct, ind ?? conf.indent)
-}
-
-/**
- * @param {Opt} conf
- * @returns {function}
- */
-export const PaleTable = (conf = {}) => {
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  return table.bind(new TableNode(conf))
-}
-
-export const paleTable = (vec, conf = {}, id) => {
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  return table.call(new TableNode(conf), vec, conf.direct, id ?? conf.indent)
+  const direct = conf.direct, indent = conf.indent
+  return table.call(new TableNode(conf), dir ?? direct, ind ?? indent)
 }
 
 export {
   decoTable as deco,
-  DecoTable as Deco
+  DecoTable as Deco,
 }
 
 

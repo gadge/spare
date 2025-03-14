@@ -1,5 +1,31 @@
 # @spare/markdown
 
+## 0.16.10
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/entries-margin@0.16.10
+  - @spare/entries-padder@0.16.10
+  - @spare/matrix-margin@0.16.10
+  - @spare/vector-margin@0.16.10
+  - @spare/table-margin@0.16.10
+  - @spare/table-padder@0.16.10
+
+## 0.16.9
+
+### Patch Changes
+
+- update interface
+- Updated dependencies
+  - @spare/entries-margin@0.16.9
+  - @spare/matrix-margin@0.16.9
+  - @spare/table-margin@0.16.9
+  - @spare/vector-margin@0.16.9
+  - @spare/entries-padder@0.16.9
+  - @spare/table-padder@0.16.9
+
 ## 0.16.8
 
 ### Patch Changes

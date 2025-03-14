@@ -32,7 +32,7 @@ export class TableNode {
     if (head) { yield* this.headLines(hts, hns, ys, hbd, sbd) }
     let i, j, line
     for (i = 0, p = 0; i < ht; i++) {
-      line = side ? (kpr.render(sbd, sts[i], sns[i], sbd.w) + VB) : VO
+      line = side ? (kpr.render(sbd, sts[i], sns[i], sbd.wd) + VB) : VO
       for (j = 0, rbd.lever(vpr, xs[i]); j < wd; j++, p++) line += (j ? VB : VO) + vpr.render(rbd, rts[p], rns[p], ys[j])
       yield line
     }
@@ -56,7 +56,7 @@ export class TableNode {
     if (head) { yield* this.headLines(hts, hns, ys, hbd, sbd) }
     let i, j, line
     for (i = 0, p = 0; i < ht; i++) {
-      line = side ? (kpr.render(sbd, sts[i], sns[i], sbd.w) + VB) : VO
+      line = side ? (kpr.render(sbd, sts[i], sns[i], sbd.wd) + VB) : VO
       for (j = 0, bds[i].lever(vpr, xs[i]); j < wd; j++, p++) line += (j ? VB : VO) + vpr.render(bds[i], rts[p], rns[p], ys[j])
       yield line
     }
@@ -81,7 +81,7 @@ export class TableNode {
     let i, j, line
     for (j = 0; j < wd; j++) { bds[j].lever(vpr, ys[j]) }
     for (i = 0, p = 0; i < ht; i++) {
-      line = side ? (kpr.render(sbd, sts[i], sns[i], sbd.w) + VB) : VO
+      line = side ? (kpr.render(sbd, sts[i], sns[i], sbd.wd) + VB) : VO
       for (j = 0; j < wd; j++, p++) line += (j ? VB : VO) + vpr.render(bds[j], rts[p], rns[p], ys[j])
       yield line
     }
@@ -90,10 +90,10 @@ export class TableNode {
   * headLines(hts, hns, yws, hbd, sbd) {
     let j, line
     const kpr = this.kpr, wd = hts.length
-    line = sbd ? (SP.repeat(sbd.w) + VB) : VO
+    line = sbd ? (SP.repeat(sbd.wd) + VB) : VO
     for (j = 0; j < wd; j++) line += (j ? VB : VO) + kpr.render(hbd, hts[j], hns[j], yws[j])
     yield line
-    line = sbd ? (DA.repeat(sbd.w) + CX) : VO
+    line = sbd ? (DA.repeat(sbd.wd) + CX) : VO
     for (j = 0; j < wd; j++) line += (j ? CX : VO) + DA.repeat(yws[j])
     yield line
   }

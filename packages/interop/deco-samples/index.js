@@ -1,17 +1,17 @@
-import { samplesToTable }           from '@analys/convert'
-import { samplesSelect }            from '@analys/samples-select'
-import { BESQUE, ENSIGN, SUBTLE }   from '@palett/presets'
-import { Fold, Node, tabs }         from '@spare/node'
-import { BRACE }                    from '@texting/enum-brackets'
-import { COLF, COSP, LF, RTSP, SP } from '@texting/enum-chars'
-import { COLUMNWISE }               from '@vect/enum-matrix-directions'
-import { width }                    from '@vect/matrix-index'
-import { slice }                    from '@vect/object-init'
+import { samplesToTable }               from '@analys/convert'
+import { samplesSelect }                from '@analys/samples-select'
+import { BESQUE, ENSIGN, SUBTLE }       from '@palett/presets'
+import { Fold, Node, parsePresm, tabs } from '@spare/node'
+import { BRACE }                        from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP, SP }     from '@texting/enum-chars'
+import { COLUMNWISE }                   from '@vect/enum-matrix-directions'
+import { width }                        from '@vect/matrix-index'
+import { slice }                        from '@vect/object-init'
 
 const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
-  pos: BESQUE
+  pos: BESQUE,
 }
 
 
@@ -28,18 +28,19 @@ const PRES = {
 
 
 export function decoSamples(samples, conf) {
-  const vct = {}
-  vct.pres = conf?.pres ?? this?.pres ?? PRES
-  vct.fill = conf?.fill ?? this?.fill ?? SP
-  vct.ansi = conf?.ansi ?? this?.ansi ?? true
-  const fields = conf?.fields ?? this?.fields ?? null
-  const indexed = conf?.indexed ?? this?.indexed ?? false
-  const indent = conf?.indent ?? this?.indent ?? 0
-  const direct = conf?.direct ?? this?.direct ?? COLUMNWISE
-  const kct = conf.key ? slice(conf) : conf
-  if (conf.key) kct.pres = conf.key
-  const vn = new Node(vct)
-  const kn = new Node(vct)
+  const prev = conf ?? this ?? {}
+  const valConf = {}
+  valConf.pres = parsePresm(prev?.pres ?? prev, PRES)
+  valConf.fill = prev.fill ?? SP
+  valConf.ansi = prev.ansi ?? true
+  const fields = prev.fields ?? null
+  const indexed = prev.indexed ?? false
+  const indent = prev.indent ?? 0
+  const direct = prev.direct ?? COLUMNWISE
+  const keyConf = prev.key ? slice(valConf) : prev
+  if (prev.key) keyConf.pres = parsePresm(prev.key)
+  const kn = new Node(keyConf)
+  const vn = new Node(valConf)
   if (fields) { samples = samplesSelect(samples, fields) }
   const { head, rows } = samplesToTable(samples)
   const headTexts = kn.flatVector(head)

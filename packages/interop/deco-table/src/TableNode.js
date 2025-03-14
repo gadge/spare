@@ -25,10 +25,10 @@ export class TableNode {
   * headLines(tvs, nvs, wds, grad, sgr) {
     let j, line
     const kn = this.#knd, wd = tvs.length
-    line = sgr ? (SP.repeat(sgr.w) + VB) : VO
+    line = sgr ? (SP.repeat(sgr.wd) + VB) : VO
     for (j = 0; j < wd; j++) line += (j ? VB : VO) + kn.render(grad, tvs[j], nvs[j], wds[j])
     yield line
-    line = sgr ? (DA.repeat(sgr.w) + CX) : VO
+    line = sgr ? (DA.repeat(sgr.wd) + CX) : VO
     for (j = 0; j < wd; j++) line += (j ? CX : VO) + DA.repeat(wds[j])
     yield line
   }
@@ -51,7 +51,7 @@ export class TableNode {
     if (head) { yield* this.headLines(hts, hns, ys, hgr, sgr) }
     let i, j, line
     for (i = 0, p = 0; i < ht; i++) {
-      line = side ? (kn.render(sgr, sts[i], sns[i], sgr.w) + VB) : VO
+      line = side ? (kn.render(sgr, sts[i], sns[i], sgr.wd) + VB) : VO
       for (j = 0, vgr.lever(vn.presm, xs[i]); j < wd; j++, p++) line += (j ? VB : VO) + vn.render(vgr, vts[p], vns[p], ys[j])
       yield line
     }
@@ -75,7 +75,7 @@ export class TableNode {
     if (head) { yield* this.headLines(hts, hns, ys, hgr, sgr) }
     let i, j, line
     for (i = 0, p = 0; i < ht; i++) {
-      line = side ? (kn.render(sgr, sts[i], sns[i], sgr.w) + VB) : VO
+      line = side ? (kn.render(sgr, sts[i], sns[i], sgr.wd) + VB) : VO
       for (j = 0, vgr[i].lever(vn.presm, xs[i]); j < wd; j++, p++) line += (j ? VB : VO) + vn.render(vgr[i], vts[p], vns[p], ys[j])
       yield line
     }
@@ -100,7 +100,7 @@ export class TableNode {
     let i, j, line
     for (j = 0; j < wd; j++) { vgr[j].lever(vn.presm, ys[j]) }
     for (i = 0, p = 0; i < ht; i++) {
-      line = side ? (kn.render(sgr, sts[i], sns[i], sgr.w) + VB) : VO
+      line = side ? (kn.render(sgr, sts[i], sns[i], sgr.wd) + VB) : VO
       for (j = 0; j < wd; j++, p++) line += (j ? VB : VO) + vn.render(vgr[j], vts[p], vns[p], ys[j])
       yield line
     }
