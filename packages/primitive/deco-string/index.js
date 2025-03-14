@@ -1,5 +1,5 @@
-import { SUBTLE } from '@palett/presets'
-import { Node }   from '@spare/node'
+import { SUBTLE }           from '@palett/presets'
+import { Node, parsePresm } from '@spare/node'
 
 const { string } = Node.prototype
 
@@ -18,38 +18,22 @@ const { string } = Node.prototype
  */
 
 /**
- *
- * @param {Opt}    conf
- * @returns {function}
+ * @param {Opt} conf
+ * @returns {(str:string,thr:[number],ind:[number],sur:[number])=>string}
  */
 export function DecoString(conf) {
-  conf.pres = conf.pres ?? SUBTLE
-  conf.thres = conf.thres ?? 0
-  return string.bind(new Node(conf), conf.thres)
+  conf = conf ?? this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, SUBTLE)
+  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
+  const proc = string.bind(new Node(conf))
+  return (str, thr, ind, sur) => proc(str, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
-/**
- *
- * @param {string} str
- * @param {Opt}    [conf]
- * @returns {string}
- */
-export function decoString(str, conf) {
-  conf.pres = conf.pres ?? SUBTLE
-  conf.thres = conf.thres ?? 0
-  return string.call(new Node(conf),str,  conf.thres, conf.indent, conf.surge)
+export function decoString(str, thr, ind, sur) {
+  const conf = this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, SUBTLE)
+  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
+  return string.call(new Node(conf), str, thr ?? thres, ind ?? indent, sur ?? surge)
 }
-
-
-// {string} text
-// {Object} [conf]
-// {number} [conf.width=80]
-// {number} [conf.indent]
-// {number} [conf.firstLineIndent]
-// {Object[]} [conf.presets]
-// {string[]} [conf.effects]
-// {Function} [conf.vectify]
-// {Function} [conf.joiner]
-
 
 

@@ -1,7 +1,7 @@
-import { DECANTE, SUBTLE, SUMMER } from '@palett/presets'
-import { indexed }                 from '@vect/object-mapper'
-import { test }                    from 'node:test'
-import { decoString }              from '../index.js'
+import { BESQUE, DECANTE } from '@palett/presets'
+import { indexed }         from '@vect/object-mapper'
+import { test }       from 'node:test'
+import { decoString } from '../index.js'
 
 const STRINGS = {
   'Hamlet AIS2L72': 'Thou know\'st \'tis common; all that lives must die,\n' +
@@ -14,17 +14,24 @@ const STRINGS = {
   'The Dark Knight': 'Why so serious?',
   Terminatrix: 'Terminator 3 Rise of the Machines',
   MechanicalHound: 'Fahrenheit 451',
-  MANTIS: 'M.A.N.T.I.S.'
+  MANTIS: 'M.A.N.T.I.S.',
 }
 
 test('deco-string', () => {
   const WD = 36
   const LINE = '+'.repeat(WD) + WD
   for (const [ key, text ] of indexed(STRINGS)) {
+    const conf = {
+      pres: BESQUE,
+      thres: WD,
+      indent: 2,
+      surge: 1,
+    }
     console.log(key)
-    console.log(decoString(text, { pres: { pos: SUMMER, neg: DECANTE, str: SUBTLE }, thres: 36 }))
+    console.log(decoString.call(conf, text)) // , { pres: { pos: SUMMER, neg: DECANTE, str: SUBTLE }, thres: 36 }
     console.log(LINE)
   }
+  console.log('DONE')
 })
 
 

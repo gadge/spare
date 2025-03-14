@@ -1,7 +1,7 @@
 import { NumberObjects, StringObjects } from '@foba/object'
 import { indexed }                      from '@vect/object-mapper'
+import { test }                         from 'node:test'
 import { DecoEntries }                  from '../index.js'
-import { test } from 'node:test'
 
 export const ENTRIES_COLLECTION = Object.fromEntries([
   NumberObjects.flopShuffle({ entry: true }),
@@ -9,15 +9,17 @@ export const ENTRIES_COLLECTION = Object.fromEntries([
   NumberObjects.flopShuffle({ entry: true }),
   StringObjects.flopShuffle({ entry: true }),
   StringObjects.flopShuffle({ entry: true }),
-  StringObjects.flopShuffle({ entry: true })
+  StringObjects.flopShuffle({ entry: true }),
 ])
 
 console.log(ENTRIES_COLLECTION)
 
-const decoEntries = DecoEntries({ thres: NaN })
+const decoEntries = DecoEntries({ thres: NaN }) // thres = 0, list vertically
 
-for (const [ key, object ] of indexed(ENTRIES_COLLECTION)) {
-  const entries = [ ...indexed(object) ]
-  console.log(key)
-  console.log(decoEntries(entries))
-}
+test('decoEntries', () => {
+  for (const [ key, object ] of indexed(ENTRIES_COLLECTION)) {
+    const entries = [ ...indexed(object) ]
+    console.log(key)
+    console.log(decoEntries(entries))
+  }
+})

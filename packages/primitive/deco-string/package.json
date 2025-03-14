@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.16.8",
+  "version": "0.16.10",
   "description": "Color a string",
   "type": "module",
   "exports": "./dist/index.js",
@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/enum-colorant-modes": "^0.12.11",
-    "@palett/fluo-vector": "^0.12.11",
-    "@palett/presets": "^0.12.11",
+    "@palett/enum-colorant-modes": "^0.12.16",
+    "@palett/fluo-vector": "^0.12.16",
+    "@palett/presets": "^0.12.16",
     "@spare/node": "workspace:^",
     "@texting/charset-ansi": "^0.2.2",
     "@texting/enum-chars": "^0.2.2",
@@ -28,8 +28,8 @@
     "@texting/splitter": "^0.2.2"
   },
   "devDependencies": {
-    "@aryth/rand": "^0.7.3",
-    "@aryth/rank-vector": "^0.7.3",
+    "@aryth/rand": "^0.7.4",
+    "@aryth/rank-vector": "^0.7.4",
     "@foba/object-string": "^0.6.1",
     "@foba/quotes-creativity": "^0.6.1",
     "@foba/util": "^0.6.1",

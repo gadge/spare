@@ -1,5 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Node } from '@spare/node'
+import { Node, parsePresm }       from '@spare/node'
 
 /**
  * @typedef {Object}    Opt
@@ -14,46 +14,34 @@ import { Node } from '@spare/node'
  * @typedef {?number}   Opt.tail
  */
 
-const PRES = {
-  str: SUBTLE,
-  neg: ENSIGN,
-  pos: BESQUE,
-}
-
+const PRES = { str: SUBTLE, neg: ENSIGN, pos: BESQUE }
 const { matrix } = Node.prototype
+// const POINTWISE = 0;
+// const ROWWISE = 1;
+// const COLUMNWISE = 2;
+
 
 /**
  * @param {Opt} conf
- * @returns {function}
+ * @returns {(matrix:*[][],thr:[number],ind:[number],sur:[number])=>string}
  */
-export const DecoMatrix = (conf = {}) => {
-  conf.pres = conf.pres ?? PRES
-  return matrix.bind(new Node(conf))
+export function DecoMatrix(conf) {
+  conf = conf ?? this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const direct = conf.direct, indent = conf.indent
+  const proc = matrix.bind(new Node(conf))
+  return (mat, dir, ind) => proc(mat, dir ?? direct, ind ?? indent)
 }
 
-export const decoMatrix = (mat, conf = {}) => {
-  conf.pres = conf.pres ?? PRES
-  // conf.direct = conf.direct ?? POINTWISE
-  // conf.indent = conf.indent ?? 0
-  return matrix.call(new Node(conf), mat, conf.direct, conf.indent)
+export function decoMatrix(mat, dir, ind) {
+  const conf = this ?? {}
+  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const direct = conf.direct // default 0: pointwise
+  const indent = conf.indent
+  return matrix.call(new Node(conf), mat, dir ?? direct, ind ?? indent)
 }
 
 export {
   decoMatrix as deco,
   DecoMatrix as Deco,
 }
-
-// {Object}          p
-// {boolean}         [p.discrete]
-// {string}          [p.delim=', ']
-// {boolean|number}  [p.bracket=true]
-// {Function}        [p.read]
-// {Object|Object[]} [p.presets=[FRESH, OCEAN]]
-// {number}          [p.direct=ROWWISE]
-// {number}          [p.top]
-// {number}          [p.bottom]
-// {number}          [p.left]
-// {number}          [p.right]
-// {boolean}         [p.ansi]
-// {boolean}         [p.full]
-// {number}          [p.level=0]

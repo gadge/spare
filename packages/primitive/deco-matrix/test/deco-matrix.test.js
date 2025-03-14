@@ -1,29 +1,36 @@
 import { CrostabMatrixCollection, ModestMatrixCollection } from '@foba/foo'
-import { FRESH, METRO }                                    from '@palett/presets'
-import { BRACKET }                                         from '@spare/enum-brackets'
 import { isMatrix }                                        from '@vect/matrix-index'
 import { indexed }                                         from '@vect/object-mapper'
-import { DecoMatrix }                                      from '../index.js'
-import { test } from 'node:test'
+import { test }                                            from 'node:test'
+import { decoMatrix }                                      from '../index.js'
 
 const matrixCollection = Object.assign({},
   ModestMatrixCollection,
-  CrostabMatrixCollection
+  CrostabMatrixCollection,
 )
 
-matrixCollection |> console.log
+// console.log(matrixCollection)
 
-const decoMatrix = DecoMatrix({
-  left: 4,
-  right: 2,
-  presets: [ FRESH, METRO ],
-  discrete: false,
-  bracket: BRACKET,
+// const decoMatrix = DecoMatrix({
+//   left: 4,
+//   right: 2,
+//   presets: [ FRESH, METRO ],
+//   discrete: false,
+//   bracket: BRACKET,
+// })
+
+test('decoMatrix', () => {
+  for (let [ key, mat ] of indexed(matrixCollection)) {
+    if (!isMatrix(mat)) {
+      console.log(key, 'is not matrix')
+      continue
+    }
+    try {
+      console.log(key)
+      console.log(decoMatrix(mat,0)) // says[key]
+    } catch (e) {
+      console.log('error', e)
+    }
+  }
 })
-
-for (let [ key, mat ] of indexed(matrixCollection)) {
-  if (!isMatrix(mat)) continue
-  key |> console.log
-  mat |> decoMatrix |> console.log // says[key]
-}
 

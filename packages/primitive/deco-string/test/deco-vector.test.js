@@ -15,7 +15,7 @@ const Texts = init([
 test('deco-vector', () => {
   for (const [ key, text ] of Object.entries(Texts)) {
     says[key](text)
-    says[key](DecoString({ presets: [ INSTA ] })(text))
+    says[key](DecoString(INSTA)(text))
   }
 })
 
