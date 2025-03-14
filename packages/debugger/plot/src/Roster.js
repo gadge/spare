@@ -13,7 +13,7 @@ export class Roster {
   list() { return this.#cast }
 
   aboard(name) {
-    // console.log('>> [roster] aboard', decoString(String(name), { pres: this.#pool.next().value }))
+    // console.log('>> [roster] reg', decoString(String(name), { pres: this.#pool.next().value }))
     return this.#cast[name] = decoString(String(name), { pres: this.#pool.next().value })
   }
 

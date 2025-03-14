@@ -30,7 +30,7 @@ export class Plot {
     this.flush()
     let intro
     if (Array.isArray(value)) { [ intro, value ] = value }
-    // console.log(`>> [init].call [intro] (${intro}) [value] (${value})`)
+    // console.log(`>> [ini].call [intro] (${intro}) [value] (${value})`)
     if (intro) this.#intro = intro
     if (value) this.sign(value)
     return this.noteProxy

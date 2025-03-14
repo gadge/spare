@@ -3,9 +3,9 @@ import { dateTime }                  from '@valjoux/timestamp-pretty'
 import { test }                      from 'node:test'
 import { says }                      from '../index.js'
 
-test('attach level test', () => {
+test('att level test', () => {
   says.attach(dateTime)
-// Stenos.snake.#badge |> decoFunc |> logger
+// Plots.loom.#badge |> decoFunc |> logger
   says[WARN].br('001')('warned')
   says[' ' + TRACE].br(TRACE)('logged')
   says[DEBUG].br(DEBUG)('informed')

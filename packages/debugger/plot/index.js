@@ -32,8 +32,8 @@ export const $ = new Proxy(PlotSet.capture, {
 
 // /** @type {Object<string, Plot|((x: *) => string)>} */
 // export const $$ = new Proxy(PlotSet.plainCapture, {
-//   get(tar, key) {
-//     tar.init(sepPreBody(key))
+//   sign(tar, key) {
+//     tar.ini(spinOff(key))
 //     return tar.noteProxy
 //   }
 // })
