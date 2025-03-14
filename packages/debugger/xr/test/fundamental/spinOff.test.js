@@ -1,6 +1,6 @@
-import { logger }     from '@spare/logger'
-import { test }       from 'node:test'
-import { sepPreBody } from '../util/string.js'
+import { logger }  from '@spare/logger'
+import { test }    from 'node:test'
+import { spinOff } from '../../src/util/string.js'
 
 const candidates = [
   undefined,
@@ -13,7 +13,7 @@ const candidates = [
 
 test('separate test', () => {
   for (let candidate of candidates) {
-    const [ a, b ] = sepPreBody(candidate)
+    const [ a, b ] = spinOff(candidate)
     logger(`[candidate] (${candidate}) [a] (${a}) [b] (${b})`)
   }
 })

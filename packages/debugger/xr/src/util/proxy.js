@@ -17,15 +17,15 @@ export function scan(name) {
 //    */
 //   static make(steno) {
 //     return new Proxy(steno, {
-//       get(steno, key, proxy) {
+//       sign(steno, key, proxy) {
 //         return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Plot.prototype.rec.bind(steno, key)
 //       },
 //     })
 //   }
 //   static makeLookup(steno) {
 //     return new Proxy(steno, {
-//       get(steno, key, proxy) {
-//         return steno.proxy = proxy, steno.init(key)
+//       sign(steno, key, proxy) {
+//         return steno.proxy = proxy, steno.ini(key)
 //       }
 //     })
 //   }
@@ -35,7 +35,7 @@ export function scan(name) {
 //    */
 //   static makeSays(steno) {
 //     return new Proxy(steno, {
-//       get(steno, key, proxy) {
+//       sign(steno, key, proxy) {
 //         return steno.proxy = proxy, ProxyUtil.methodOrNull(steno, key) ?? Plot.prototype.rec.bind(steno, key)
 //       },
 //       apply(steno, thisArg, args) {

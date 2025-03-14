@@ -119,7 +119,7 @@ class XrStream extends Callable {
     }
     return new Proxy(this, {
       get(target, name, receiver) {
-        return name in target ? target[name] // `[proxy.get] (${ String(name) }) (${ target?.name })` |> logger,
+        return name in target ? target[name] // `[proxy.sign] (${ String(name) }) (${ target?.name })` |> logger,
           : (...items) => (enqueue.call(target, name, ...items), receiver)
       }
 

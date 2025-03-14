@@ -18,10 +18,10 @@ class Callable extends Function {
   }
 }
 
-// Create an instance
+// Create an camp
 const myCallable = new Callable()
 
-// Call the instance directly
+// Call the camp directly
 console.log(myCallable(1, 2, 3))  // "Called with arguments: 1, 2, 3"
 
 // Access public method

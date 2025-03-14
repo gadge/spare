@@ -1,82 +1,69 @@
-import { LF, SP }               from '@texting/enum-chars'
-import { DEF, NUM, STR, SYM }   from '@typen/enum-data-types'
-import { inspect }              from 'node:util'
-import { getInd, retBr, retPr } from '../util/string.js'
+import { LF, SP }                                       from '@texting/enum-chars'
+import { DEF, NUM, STR, SYM }                           from '@typen/enum-data-types'
+import { inspect }                                      from 'node:util'
+import { carveIndent, retBracket, retParenth, spinOff } from './util/string.js'
 
-// export function record(key, value) {
-//
-// }
+export const altSp = (x) => (x.length === 0 || x.endsWith(SP)) ? '' : SP
 
+//extends Function
 export class Plot extends Function {
-  /** @type {Proxy<Plot>} */ proxy
-  /** @type {string}       */ #intro = ''
-  /** @type {Array}        */ #queue = []
-  /** @type {(key:*)=>string} */ #keyFn = retBr
-  /** @type {(val:*)=>string} */ #valFn = retPr
-  /** @type {()=>string}  */ #stamp
+  /** @type {Proxy}           */ #indexer
+  /** @type {string}          */ #intro = ''
+  /** @type {Array}           */ #queue = []
+  /** @type {(key:*)=>string} */ #key = retBracket
+  /** @type {(val:*)=>string} */ #val = retParenth
+  /** @type {()=>string}      */ #stamp
 
-  constructor(title, keyFn, valFn) {
+  constructor(key, val) {
     super()
-    this.init(title)
-    if (keyFn) this.#keyFn = keyFn
-    if (valFn) this.#valFn = valFn
-    return new Proxy(this, {
-      get(tar, key, proxy) {
-        // console.log('>> [trap].index', '[key]', `(${typeof key === SYM ? key.description : key})`, '[tar]', tar, '[proxy]', proxy)
-        if (!tar.proxy) tar.proxy = proxy
-        if (key in tar) { return tar[key].bind(tar) }
-        return tar.recKey(key), tar.recVal.bind(tar)
-        // return scan.call(tar, key) ?? tar.rec.bind(tar, typeof key === SYM ? key.description : key)
-      },
-      apply(tar, ctx, args) {
-        // console.log('>> [trap].apply', '[args]', `(${args})`, '[ctx]', ctx, '[tar]', tar + '',tar.name)
-        if (ctx) { console.log(String(tar), ...args.map(tar.render, tar)) } else { tar.recVal(args[0]) }
-        // console.log(String(tar), ...args.map(tar.render, tar))
-        return tar.proxy
-      }
-    })
+    if (key) this.#key = key
+    if (val) this.#val = val
   }
 
-  static build(text, keyFn, valFn) { return new Plot(text, keyFn, valFn) }
+  static build(key, val) { return new Plot(key, val) }
 
-  init(value) {
-    let intro
-    if (Array.isArray(value)) { [ intro, value ] = value }
-    // console.log(`>> [init].call [intro] (${intro ?? ''}) [value] (${value})`)
-    this.flush()
-    if (intro) this.#intro = intro
-    if (value) this.#queue.push(this.#keyFn(value))
-    return this.proxy
+  get indexer() { return this.#indexer }
+
+  load(indexer) { return this.#indexer = indexer, this }
+  get length() { return this.#queue.length }
+
+  flush() {
+    this.#intro = ''
+    this.#queue.length = 0
   }
 
-  flush() { this.#queue.length = 0 }
-  attach(info) { return this.#stamp = info, this.proxy }
-  detach() { return this.#stamp = null, this.proxy }
+  att(info) { return this.#stamp = info, this.#indexer }
+  det() { return this.#stamp = null, this.#indexer }
 
   log(...args) {
     console.log(this.toString(), ...args.map(this.render, this))
     this.flush()
-    return this.proxy
   }
-  recKey(k) { return this.#queue.push(this.#keyFn(k)), this.proxy }
-  recVal(...vs) { return this.#queue.push(...vs.map(this.#valFn, this)), this.proxy }
-  rec(k, v) { return this.#queue.push(this.#keyFn(k), this.#valFn(v)), this.proxy }
-  br(x) { return this.#queue.push(this.#keyFn(x)), this.proxy }
-  pr(x) { return this.#queue.push(this.#valFn(x)), this.proxy }
-  p(...x) { return this.#queue.push(...x), this.proxy }
+  ini(k) {
+    // this.flush()
+    const [ intro, name ] = spinOff(k)
+    // console.log(`>> [ini].call [intro] (${intro ?? ''}) [name] (${name})`)
+    if (intro?.length) this.#intro = intro
+    if (name) this.#queue.push(this.#key(name))
+    return this.#indexer
+  }
+  reg(k) { return this.#queue.push(this.#key(k)), this.#indexer }
+  rec(...vs) { return this.#queue.push(...vs.map(this.#val, this)), this.#indexer }
+  p(...x) { return this.#queue.push(...x), this.#indexer }
+  br(x) { return this.#queue.push(this.#key(x)), this.#indexer }
+  pr(x) { return this.#queue.push(this.#val(x)), this.#indexer }
 
   render(x) {
     const tx = typeof x === STR ? x : typeof x === SYM ? x.description : x + ''
     return tx.includes(LF)
-      ? (LF + tx).replace(/\n/g, LF + getInd(this.#intro))
+      ? (LF + tx).replace(/\n/g, LF + carveIndent(this.#intro))
       : tx
   }
-
   toString() {
     const queue = this.#queue.map(this.render, this)
     let intro = this.#intro ?? ''
-    if (this.#stamp) intro += (/\s$/.test(intro) ? '' : SP) + this.#stamp()
-    return intro + (/\s$/.test(intro) ? '' : SP) + queue.join(SP)
+    if (this.#stamp) intro += altSp(intro) + this.#stamp()
+    return intro + altSp(intro) + queue.join(SP)
   }
 
   [Symbol.toPrimitive](type) {
@@ -91,8 +78,9 @@ export class Plot extends Function {
     }
   }
   [inspect.custom]() {
+    const output = this.toString()
     this.flush()
-    return this.toString()
+    return output
   }
 }
 

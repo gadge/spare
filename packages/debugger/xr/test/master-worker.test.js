@@ -10,7 +10,7 @@ test('simple test', () => {
   says['>> MasterIO'](2560)
   says['  MasterIO'](3840)
 
-  says['MasterIO'].br('savePairsToExcel')($['x'](24)['y'](16))
+  says['MasterIO']($['x'](24)['y'](16))
   says['  >> MasterIO'](decoMatrix([ [ 1, 2, 3 ] ]))
   const crostab = {
     side: [ '1', '2', '3' ],
@@ -21,5 +21,5 @@ test('simple test', () => {
       [ 0, 0, 0 ]
     ]
   }
-  says['  -- MasterIO'].br('crostab')(decoCrostab(crostab))
+  says['    << MasterIO'](decoCrostab(crostab))
 })

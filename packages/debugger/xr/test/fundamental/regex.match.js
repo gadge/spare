@@ -1,4 +1,4 @@
-import { sepPreBody } from '../../util/text-utils.js'
+import { sepPreBody } from '../../src/util/text-utils.js'
 
 const testStrings = [
   '  >> client',
