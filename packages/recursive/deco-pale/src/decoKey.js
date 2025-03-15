@@ -1,4 +1,4 @@
-import { tenseQuote } from '@spare/quote'
+import { tenseQuote } from '@texting/quote'
 import { isNumeric }  from '@typen/num-strict'
 
 export const decoKey = function (x) {

@@ -1,11 +1,11 @@
-import { fileInfo }   from 'rollup-plugin-fileinfo'
+import { subFolders } from '@acq/path'
 import json           from '@rollup/plugin-json'
 import { readFile }   from 'fs/promises'
-import { subFolders } from '@acq/path'
 import { resolve }    from 'node:path'
+import { fileInfo }   from 'rollup-plugin-fileinfo'
 
 const tasks = {}
-for await(const space of [ 'packages', 'utils' ]) {
+for await(const space of [ 'packages' ]) {
   const SPACE = resolve(process.cwd(), space)
   const BASES = await subFolders(SPACE)
   for await(const base of BASES) {
@@ -22,13 +22,13 @@ for await(const space of [ 'packages', 'utils' ]) {
         input: resolve(path, 'index.js'),
         output: {
           file: resolve(path, 'dist', 'index.js'),
-          format: 'esm'
+          format: 'esm',
         },
         external: Object.keys(dependencies ?? {}),
         plugins: [
           json(),
-          fileInfo()
-        ]
+          fileInfo(),
+        ],
       }
     }
   }

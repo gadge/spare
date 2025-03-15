@@ -1,0 +1,47 @@
+{
+  "name": "@spare/util",
+  "version": "0.16.16",
+  "description": "A util toolset for @spare.",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/test.index.js"
+  },
+  "dependencies": {
+    "@spare/regex-charset": "workspace:^",
+    "@spare/enum-chars": "workspace:^",
+    "@spare/enum-full-angle-chars": "workspace:^",
+    "@texting/lange": "^0.2.2",
+    "@typen/enum-data-types": "^0.2.0",
+    "@typen/num-strict": "^0.2.0",
+    "@vect/matrix": "^0.8.0",
+    "@vect/vector": "^0.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gadge/spare.git"
+  },
+  "keywords": [
+    "test",
+    "console",
+    "debug",
+    "print"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gadge/spare"
+  },
+  "homepage": "https://github.com/gadge/spare#readme",
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
+}

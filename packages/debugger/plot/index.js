@@ -5,26 +5,28 @@ import { Plot }                 from './src/Plot.js'
 import { Roster }               from './src/Roster.js'
 import { ansiOrSnake, hasBrPr } from './src/string-util.js'
 
-export class Ross {
+export { Plot, Roster }
+
+export class Ros {
   static #pool
   static #camp
-  static get pool() { return Ross.#pool ?? (Ross.#pool = presFlopper.call({ flow: MIDTONE }))}
-  static get camp() { return Ross.#camp ?? (Ross.#camp = Roster.build(Ross.pool)) }
-  static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ross.camp.sign(ansiOrSnake(tx))) }
+  static get pool() { return Ros.#pool ?? (Ros.#pool = presFlopper.call({ flow: MIDTONE }))}
+  static get camp() { return Ros.#camp ?? (Ros.#camp = Roster.build(Ros.pool)) }
+  static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ros.camp.sign(ansiOrSnake(tx))) }
 }
 
 export class Plots {
   static #dock
   static #loom
   static #nein
-  static get dock() { return this.#dock ?? (this.#dock = Plot.build('', Ross.dispatch)) }
-  static get loom() { return this.#loom ?? (this.#loom = Plot.build('', Ross.dispatch)) }
+  static get dock() { return this.#dock ?? (this.#dock = Plot.build('', Ros.dispatch)) }
+  static get loom() { return this.#loom ?? (this.#loom = Plot.build('', Ros.dispatch)) }
   static get nein() { return this.#nein ?? (this.#nein = Plot.build('')) }
 }
 
 export const Xr = Plot.build
 
-export const ros = Ross.dispatch
+export const ros = Ros.dispatch
 
 export const xr = word => Plots.dock.init(word)
 

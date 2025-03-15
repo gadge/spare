@@ -1,6 +1,6 @@
-import { presFlopper } from '@palett/flopper'
-import { decoString }  from '@spare/deco-string'
-import { hasAnsi }     from '@texting/charset-ansi'
+import { presFlopper, presShifter } from '@palett/flopper'
+import { decoString }               from '@spare/deco-string'
+import { hasAnsi }                  from '@texting/charset-ansi'
 
 
 export class Roster {
@@ -12,6 +12,10 @@ export class Roster {
   }
 
   static build(presGen) { return new Roster(presGen) }
+  static from(book, mode) {
+    const makeGen = mode === 'flop' ? presFlopper : mode === 'shift' ? presShifter : presFlopper
+    return new Roster(makeGen.call({ pres: book }))
+  }
 
   cast() { return this.#cast }
 

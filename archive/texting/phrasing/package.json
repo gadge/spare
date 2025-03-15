@@ -1,0 +1,45 @@
+{
+  "name": "@spare/phrasing",
+  "version": "0.16.16",
+  "description": "Convert among snake/kebab/camel/pascal phrasings",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pub": "npm publish",
+    "test": "node -r @babel/register test/test.index.js"
+  },
+  "dependencies": {
+    "@spare/deco-vector": "workspace:^",
+    "@spare/enum-chars": "workspace:^",
+    "@spare/regex-phrasing": "workspace:^",
+    "@vect/vector-mapper": "^0.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gadge/spare.git"
+  },
+  "keywords": [
+    "phrasing",
+    "split",
+    "camel",
+    "kebab",
+    "pascal",
+    "snake"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gadge/spare"
+  },
+  "homepage": "https://github.com/gadge/spare#readme",
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
+}

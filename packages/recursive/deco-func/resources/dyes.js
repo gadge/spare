@@ -1,6 +1,6 @@
 import { Blue, BlueGrey, Brown, DeepPurple, Grey, LightBlue, Lime, Purple } from '@palett/cards'
 import { HexDye }                                                           from '@palett/dye'
-import { makeReplaceable }                                                  from '@spare/translator'
+import { makeReplaceable }                                                  from '@texting/translator'
 
 const hexDye = new HexDye()
 export const nameDye = hexDye.make(Blue.lighten_2)

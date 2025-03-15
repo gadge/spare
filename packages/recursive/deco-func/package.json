@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-func",
-  "version": "0.16.12",
+  "version": "0.16.16",
   "description": "Colored stringify date",
   "type": "module",
   "exports": "./dist/index.js",
@@ -18,15 +18,12 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.12.16",
-    "@palett/convert": "^0.12.16",
-    "@palett/dye": "^0.12.16",
-    "@spare/deco-config": "workspace:^",
-    "@spare/preset-deco": "workspace:^",
-    "@spare/translator": "workspace:^",
+    "@palett/cards": "^0.12.17",
+    "@palett/dye": "^0.12.17",
     "@texting/bracket": "^0.2.2",
     "@texting/enum-chars": "^0.2.2",
-    "@texting/lange": "^0.2.2"
+    "@texting/lange": "^0.2.2",
+    "@texting/translator": "^0.2.2"
   },
   "devDependencies": {
     "@ject/rename": "^0.1.1",

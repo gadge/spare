@@ -1,7 +1,7 @@
-import { BESQUE, DECANTE } from '@palett/presets'
-import { indexed }         from '@vect/object-mapper'
+import { BESQUE }     from '@palett/presets'
+import { indexed }    from '@vect/object-mapper'
 import { test }       from 'node:test'
-import { decoString } from '../index.js'
+import { DecoString } from '../index.js'
 
 const STRINGS = {
   'Hamlet AIS2L72': 'Thou know\'st \'tis common; all that lives must die,\n' +
@@ -17,6 +17,7 @@ const STRINGS = {
   MANTIS: 'M.A.N.T.I.S.',
 }
 
+
 test('deco-string', () => {
   const WD = 36
   const LINE = '+'.repeat(WD) + WD
@@ -27,6 +28,7 @@ test('deco-string', () => {
       indent: 2,
       surge: 1,
     }
+    const decoString = DecoString(conf)
     console.log(key)
     console.log(decoString.call(conf, text)) // , { pres: { pos: SUMMER, neg: DECANTE, str: SUBTLE }, thres: 36 }
     console.log(LINE)

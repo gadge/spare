@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-samples",
-  "version": "0.16.12",
+  "version": "0.16.16",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./dist/index.js",
@@ -20,18 +20,13 @@
   "dependencies": {
     "@analys/convert": "^0.7.3",
     "@analys/samples-select": "^0.7.3",
-    "@palett/presets": "^0.12.16",
-    "@spare/deco-config": "workspace:^",
-    "@spare/deco-flat": "workspace:^",
-    "@spare/enum-brackets": "workspace:^",
+    "@palett/presets": "^0.12.17",
     "@spare/node": "workspace:^",
-    "@spare/preset-deco": "workspace:^",
     "@texting/enum-brackets": "^0.2.2",
     "@texting/enum-chars": "^0.2.2",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix-index": "^0.8.0",
-    "@vect/object-init": "^0.8.0",
-    "@vect/vector-init": "^0.8.0"
+    "@vect/object-init": "^0.8.0"
   },
   "devDependencies": {
     "@spare/says": "workspace:^",

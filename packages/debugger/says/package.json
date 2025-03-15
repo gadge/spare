@@ -1,6 +1,6 @@
 {
   "name": "@spare/says",
-  "version": "0.16.12",
+  "version": "0.16.16",
   "description": "A debug tool",
   "type": "module",
   "exports": "./dist/index.js",
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@ject/callable": "^0.1.2",
-    "@palett/enum-font-effects": "^0.12.16",
-    "@palett/flopper": "^0.12.16",
+    "@palett/enum-font-effects": "^0.12.17",
+    "@palett/flopper": "^0.12.17",
     "@spare/deco-string": "workspace:^",
     "@texting/bracket": "^0.2.2",
     "@texting/enum-chars": "^0.2.2",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@spare/deco": "workspace:^",
     "@spare/enum-loggers": "workspace:^",
-    "@spare/translator": "workspace:^",
+    "@texting/translator": "^0.2.2",
     "@spare/xr": "workspace:^",
     "@valjoux/timestamp-pretty": "^0.4.0"
   },

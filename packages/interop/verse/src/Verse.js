@@ -6,7 +6,7 @@ import { _decoMatrix }                     from '@spare/deco-matrix'
 import { _decoObject }                     from '@spare/deco-object'
 import { _decoSamples }                    from '@spare/deco-samples'
 import { _decoVector }                     from '@spare/deco-vector'
-import { BRACE, BRACKET }                  from '@spare/enum-brackets'
+import { BRACE, BRACKET }                  from '@texting/enum-brackets'
 import { joinLines, liner } from '@texting/liner'
 import {
   presetCrostab, presetEntries, presetEntriesAsObject, presetMatrix, presetObject, presetSamples, presetTable,

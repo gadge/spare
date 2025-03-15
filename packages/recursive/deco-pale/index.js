@@ -1,8 +1,7 @@
 import { decoFunc }                from '@spare/deco-func'
-import { pairEnt }                 from '@spare/deco-util'
 import { brace, bracket }          from '@texting/bracket'
 import { cite as citeFn }          from '@texting/cite'
-import { COSP }                    from '@texting/enum-chars'
+import { COSP, RT }                from '@texting/enum-chars'
 import { BOO, FUN, NUM, OBJ, STR } from '@typen/enum-data-types'
 import { ARRAY, DATE, OBJECT }     from '@typen/enum-object-types'
 import { isNumeric }               from '@typen/num-strict'
@@ -19,6 +18,8 @@ import { decoKey }                 from './src/decoKey.js'
 //   return p
 // }
 // export const decoPale = (x, conf = {}) => deco.call(presetConfig(conf), x)
+
+export const pairEnt = ([k, v]) => k + RT + v
 
 /**
  *

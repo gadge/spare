@@ -1,0 +1,34 @@
+{
+  "name": "@spare/translator",
+  "version": "0.16.16",
+  "description": "Translator, bulk replace string at a time",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gadge/spare.git"
+  },
+  "keywords": [
+    "replace",
+    "Symbol.replace",
+    "translate",
+    "translator",
+    "translation"
+  ],
+  "author": "Hoyeung Wong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gadge/spare"
+  },
+  "homepage": "https://github.com/gadge/spare#readme",
+  "gitHead": "013714aadebaa9af337026663bf023dd382725c7"
+}

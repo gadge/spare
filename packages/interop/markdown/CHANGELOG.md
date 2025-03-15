@@ -1,5 +1,57 @@
 # @spare/markdown
 
+## 0.16.16
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/entries-margin@0.16.16
+  - @spare/entries-padder@0.16.16
+  - @spare/matrix-margin@0.16.16
+  - @spare/vector-margin@0.16.16
+  - @spare/table-margin@0.16.16
+  - @spare/table-padder@0.16.16
+
+## 0.16.15
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/entries-margin@0.16.15
+  - @spare/entries-padder@0.16.15
+  - @spare/matrix-margin@0.16.15
+  - @spare/vector-margin@0.16.15
+  - @spare/table-margin@0.16.15
+  - @spare/table-padder@0.16.15
+
+## 0.16.14
+
+### Patch Changes
+
+- update dependencies
+- Updated dependencies
+  - @spare/entries-margin@0.16.14
+  - @spare/entries-padder@0.16.14
+  - @spare/matrix-margin@0.16.14
+  - @spare/vector-margin@0.16.14
+  - @spare/table-margin@0.16.14
+  - @spare/table-padder@0.16.14
+
+## 0.16.13
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/entries-margin@0.16.13
+  - @spare/matrix-margin@0.16.13
+  - @spare/table-margin@0.16.13
+  - @spare/vector-margin@0.16.13
+  - @spare/entries-padder@0.16.13
+  - @spare/table-padder@0.16.13
+
 ## 0.16.12
 
 ### Patch Changes

@@ -1,5 +1,85 @@
 # @spare/logger
 
+## 0.16.16
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/deco-entries@0.16.16
+  - @spare/deco-matrix@0.16.16
+  - @spare/deco-object@0.16.16
+  - @spare/deco-string@0.16.16
+  - @spare/deco-vector@0.16.16
+  - @spare/deco-crostab@0.16.16
+  - @spare/deco-samples@0.16.16
+  - @spare/deco-flat@0.16.16
+  - @spare/deco-func@0.16.16
+  - @spare/deco-pale@0.16.16
+  - @spare/deco-table@0.16.16
+  - @spare/deco@0.16.16
+  - @spare/plot@0.16.16
+
+## 0.16.15
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/deco-entries@0.16.15
+  - @spare/deco-matrix@0.16.15
+  - @spare/deco-object@0.16.15
+  - @spare/deco-string@0.16.15
+  - @spare/deco-vector@0.16.15
+  - @spare/deco-crostab@0.16.15
+  - @spare/deco-samples@0.16.15
+  - @spare/deco-flat@0.16.15
+  - @spare/deco-func@0.16.15
+  - @spare/deco-pale@0.16.15
+  - @spare/deco-table@0.16.15
+  - @spare/deco@0.16.15
+  - @spare/plot@0.16.15
+
+## 0.16.14
+
+### Patch Changes
+
+- update dependencies
+- Updated dependencies
+  - @spare/deco-entries@0.16.14
+  - @spare/deco-matrix@0.16.14
+  - @spare/deco-object@0.16.14
+  - @spare/deco-string@0.16.14
+  - @spare/deco-vector@0.16.14
+  - @spare/deco-crostab@0.16.14
+  - @spare/deco-samples@0.16.14
+  - @spare/deco-flat@0.16.14
+  - @spare/deco-func@0.16.14
+  - @spare/deco-pale@0.16.14
+  - @spare/deco-table@0.16.14
+  - @spare/deco@0.16.14
+  - @spare/plot@0.16.14
+
+## 0.16.13
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/plot@0.16.13
+  - @spare/deco-crostab@0.16.13
+  - @spare/deco-samples@0.16.13
+  - @spare/deco-table@0.16.13
+  - @spare/deco-entries@0.16.13
+  - @spare/deco-matrix@0.16.13
+  - @spare/deco-object@0.16.13
+  - @spare/deco-string@0.16.13
+  - @spare/deco-vector@0.16.13
+  - @spare/deco@0.16.13
+  - @spare/deco-flat@0.16.13
+  - @spare/deco-func@0.16.13
+  - @spare/deco-pale@0.16.13
+
 ## 0.16.12
 
 ### Patch Changes
