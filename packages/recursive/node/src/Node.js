@@ -11,15 +11,15 @@ import { parseNum }                       from '@typen/num-strict'
 import { COLUMNWISE, POINTWISE, ROWWISE } from '@vect/enum-matrix-directions'
 import { height, width }                  from '@vect/matrix-index'
 import { init, iso }                      from '@vect/vector-init'
-import { evalStr }                        from './evalStr.js'
 import { Fold, tabs }                     from './Fold.js'
 import { Grad }                           from './Grad.js'
 import { detSub, Sub }                    from './Sub.js'
+import { evalStr }                        from './utils/evalStr.js'
 import { initAnsi }                       from './utils/initAnsi.js'
 import { padAnsi, padTypo }               from './utils/padTypo.js'
 
 
-const { Str: S, Num: N, NaN: E } = Sub
+const { Str: S, Num: N, Han: H, NaN: E } = Sub
 
 export class Node {
   /** @type {(x:string)=>string} evaluate string   */ #tev = evalStr
@@ -49,15 +49,23 @@ export class Node {
   get mono() { return !this.presm?.hasX }
   get uns() { return !this.presm?.hasZ }
 
+  /**
+   * x is string:
+   *  x w/o ansi → store n as undefined
+   *  x w   ansi → store n = null
+   * x is number → store n as number
+   * x is NaN    → store n as NaN
+   */
   store(grad, tvs, nvs, x, i) {
-    let c, t, n, g
-    typeof x === NUM ? (t = '' + x, n = x, c = N) : (t = this.#tev(x), n = this.#nev(x), c = detSub(n, t), g = hasAnsi(t))
-    tvs[i] = c === S && !(g = hasAnsi(t)) ? grad.recStr(t) : t
-    nvs[i] = c === S ? (g ? null : void 0) : c === N ? grad.recNum(n) : NaN
-    return this.#len(t)
+    let c, t, n, woAn
+    typeof x === NUM ? (t = '' + x, n = x, c = N) : (t = this.#tev(x), n = this.#nev(x), c = detSub(n, t), woAn = !hasAnsi(t))
+    tvs[i] = (c === S || c === H) && woAn ? grad.recStr(t) : t
+    nvs[i] = (c === S || c === H) ? (woAn ? undefined : null) : c === N ? grad.recNum(n) : NaN
+    return this.#len(t) // console.log('calling store', 'tv', tvs[i], 'nv', nvs[i], 'gv', g)
   }
 
   render(grad, tv, nv, wd) {
+    // console.log('calling render', 'tv', tv, 'nv', nv, 'grad.wd', grad.wd)
     if (wd) tv = this.#pad(tv, nv, wd)
     if (this.mono || nv === null) return tv
     const presm = this.presm

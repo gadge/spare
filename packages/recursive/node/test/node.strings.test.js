@@ -20,6 +20,7 @@ export const STRINGS = {
     'Albeit unused to the melting mood,\n' +
     'Drop tears as fast as the Arabian trees\n' +
     'Their medicinal gum. ',
+  han: '珠江三角洲 Pearl River Delta, 黄河几字弯 Ordos Loop in Yellow River, 长江三角洲 Yangtze River Delta',
   positives: '1-2-3-4-5-6-7-8-9',
   negatives: '(-1) (-2) (-3) (-4) (-5) (-6) (-7) (-8) (-9)',
   book: 'Sharifian, Farzad - Cultural Linguistics Cultural Conceptualisations and Language',

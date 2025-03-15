@@ -7,16 +7,17 @@ import { test }                                           from 'node:test'
 import { Node }                                           from '../src/Node.js'
 
 const VECTORS = {
-  // empty: [],
-  // arithmetic: NumberVectorCollection.fibonacci(12),
-  // megaCity: StringVectorCollection.megaCities.slice(0, 16),
-  // textNum: NumberVectorCollection.primes(7).map(String),
-  // nums: [ 1, 2, 3, 0, -1, -2, -3 ],
-  // delta: [ 'Delta' ],
-  // pearl: [ 'Pearl River Delta' ],
+  empty: [],
+  arithmetic: NumberVectorCollection.fibonacci(12),
+  megaCity: StringVectorCollection.megaCities.slice(0, 16),
+  textNum: NumberVectorCollection.primes(7).map(String),
+  nums: [ 1, 2, 3, 0, -1, -2, -3 ],
+  delta: [ 'Delta' ],
+  pearl: [ 'Pearl River Delta' ],
+  han: [ '珠江三角洲 Pearl River Delta' ],
   alpha: [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n' ],
-  // misc: [ null, undefined, NaN, 'Infinity', '+', 1.2E+1, 1.2E+2, 1.2E+3, 1.2E+4 ],
-  // combo: [ 'kfc', 'starbucks', 'pepsi', '', '1', -12, '-36', 0, 500 ],
+  misc: [ null, undefined, NaN, 'Infinity', '+', 1.2E+1, 1.2E+2, 1.2E+3, 1.2E+4 ],
+  combo: [ 'kfc', 'starbucks', 'pepsi', '', '1', -12, '-36', 0, 500 ],
 }
 
 test('node vector', () => {
