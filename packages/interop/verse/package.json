@@ -25,15 +25,15 @@
     "@spare/deco-object": "workspace:^",
     "@spare/deco-samples": "workspace:^",
     "@spare/deco-vector": "workspace:^",
-    "@texting/enum-brackets": "^0.2.2",
     "@spare/preset-verse": "^0.16.16",
-    "@texting/bracket": "^0.2.2",
-    "@texting/liner": "^0.2.2"
+    "@texting/bracket": "^0.2.3",
+    "@texting/enum-brackets": "^0.2.3",
+    "@texting/liner": "^0.2.3"
   },
   "devDependencies": {
+    "@spare/deco": "workspace:^",
     "@spare/deco-pale": "workspace:^",
-    "@spare/xr": "workspace:^",
-    "@spare/deco": "workspace:^"
+    "@spare/xr": "workspace:^"
   },
   "repository": {
     "type": "git",

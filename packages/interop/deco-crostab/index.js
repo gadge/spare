@@ -1,7 +1,6 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { TableNode }              from '@spare/deco-table'
 import { parsePresm }             from '@spare/node'
-import { SP }                     from '@texting/enum-chars'
 
 /**
  * @typedef {Object}    Opt
@@ -26,27 +25,30 @@ const { table } = TableNode.prototype
 
 
 /**
- * @param {Opt} [conf]
- * @returns {(ctb:*, dir:[number], ind:[number])=>string}
+ * @param {Opt} conf
+ * @returns {(table:*, dir?:number, ind?:number)=>string}
  */
 export function DecoCrostab(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  const proc = table.bind(new TableNode(conf))
-  return (ctb, dir, ind) => proc(ctb, dir ?? direct, ind ?? indent)
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = parsePresm(conf?.key, vpm)
+  const proc = table.bind(new TableNode(kpm, vpm))
+  return (table, dir, ind) => proc(table, dir ?? direct, ind ?? indent)
 }
 
-export function decoCrostab(ctb, dir, ind) {
+export function decoCrostab(tbl, dir, ind) {
   const conf = this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  const node = new TableNode(conf)
-  return table.call(node, ctb, dir ?? direct, ind ?? indent)
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = parsePresm(conf?.key, vpm)
+  return table.call(new TableNode(kpm, vpm), tbl, dir ?? direct, ind ?? indent)
 }
 
 
@@ -56,21 +58,25 @@ export function decoCrostab(ctb, dir, ind) {
  */
 export function PaleCrostab(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = false
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  const proc = table.bind(new TableNode(conf))
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = null // parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = null // parsePresm(conf?.key, vpm)
+  const proc = table.bind(new TableNode(kpm, vpm))
   return (table, dir, ind) => proc(table, dir ?? direct, ind ?? indent)
 }
 
-export function paleCrostab(vec, dir, ind) {
+export function paleCrostab(tbl, dir, ind) {
   const conf = this ?? {}
-  conf.pres = false
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  return table.call(new TableNode(conf), dir ?? direct, ind ?? indent)
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = null // parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = null // parsePresm(conf?.key, vpm)
+  return table.call(new TableNode(kpm, vpm), tbl, dir ?? direct, ind ?? indent)
 }
 
 export {

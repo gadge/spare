@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.17",
+    "@palett/presets": "^0.12.19",
     "@spare/deco-table": "workspace:^",
     "@spare/node": "workspace:^",
-    "@texting/enum-chars": "^0.2.2"
+    "@texting/enum-chars": "^0.2.3"
   },
   "devDependencies": {
     "@spare/xr": "workspace:^",

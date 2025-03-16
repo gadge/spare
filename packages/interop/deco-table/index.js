@@ -1,6 +1,5 @@
 import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
 import { parsePresm }             from '@spare/node'
-import { SP }                     from '@texting/enum-chars'
 import { TableNode }              from './src/TableNode.js'
 
 export { TableNode }
@@ -25,25 +24,29 @@ const { table } = TableNode.prototype
 
 /**
  * @param {Opt} conf
- * @returns {(table:*, dir:[number], ind:[number])=>string}
+ * @returns {(table:*, dir?:number, ind?:number)=>string}
  */
 export function DecoTable(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  const proc = table.bind(new TableNode(conf))
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = parsePresm(conf?.key, vpm)
+  const proc = table.bind(new TableNode(kpm, vpm))
   return (table, dir, ind) => proc(table, dir ?? direct, ind ?? indent)
 }
 
 export function decoTable(tbl, dir, ind) {
   const conf = this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  return table.call(new TableNode(conf), tbl, dir ?? direct, ind ?? indent)
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = parsePresm(conf?.key, vpm)
+  return table.call(new TableNode(kpm, vpm), tbl, dir ?? direct, ind ?? indent)
 }
 
 
@@ -53,21 +56,25 @@ export function decoTable(tbl, dir, ind) {
  */
 export function PaleTable(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = false
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  const proc = table.bind(new TableNode(conf))
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = null // parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = null // parsePresm(conf?.key, vpm)
+  const proc = table.bind(new TableNode(kpm, vpm))
   return (table, dir, ind) => proc(table, dir ?? direct, ind ?? indent)
 }
 
-export function paleTable(table, dir, ind) {
+export function paleTable(tbl, dir, ind) {
   const conf = this ?? {}
-  conf.pres = false
-  conf.fill = conf.fill ?? SP
-  conf.ansi = conf.ansi ?? true
-  const direct = conf.direct, indent = conf.indent
-  return table.call(new TableNode(conf), dir ?? direct, ind ?? indent)
+  // conf.fill = conf.fill ?? SP
+  // conf.ansi = conf.ansi ?? true
+  const direct = conf.direct
+  const indent = conf.indent
+  const vpm = null // parsePresm(conf?.pres ?? conf, PRES)
+  const kpm = null // parsePresm(conf?.key, vpm)
+  return table.call(new TableNode(kpm, vpm), tbl, dir ?? direct, ind ?? indent)
 }
 
 export {

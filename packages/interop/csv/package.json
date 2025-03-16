@@ -18,16 +18,16 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@texting/enum-chars": "^0.2.2",
     "@spare/table-margin": "^0.16.16",
     "@spare/table-padder": "^0.16.16",
-    "@texting/liner": "^0.2.2",
+    "@texting/enum-chars": "^0.2.3",
+    "@texting/liner": "^0.2.3",
     "@vect/matrix": "^0.8.0"
   },
   "devDependencies": {
+    "@spare/deco": "workspace:^",
     "@spare/logger": "workspace:^",
-    "@spare/xr": "workspace:^",
-    "@spare/deco": "workspace:^"
+    "@spare/xr": "workspace:^"
   },
   "repository": {
     "type": "git",

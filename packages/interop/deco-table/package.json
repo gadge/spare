@@ -18,9 +18,10 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.17",
+    "@palett/presets": "^0.12.19",
     "@spare/node": "workspace:^",
-    "@texting/enum-chars": "^0.2.2",
+    "@spare/serial": "workspace:^",
+    "@texting/enum-chars": "^0.2.3",
     "@vect/enum-matrix-directions": "^0.6.13",
     "@vect/matrix-index": "^0.8.0",
     "@vect/vector-init": "^0.8.0"
