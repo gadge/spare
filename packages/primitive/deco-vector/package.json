@@ -18,12 +18,12 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.17",
+    "@palett/presets": "^0.12.19",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {
-    "@texting/enum-chars": "^0.2.2",
-    "@texting/string-value": "^0.2.2",
+    "@texting/enum-chars": "^0.2.3",
+    "@texting/string-value": "^0.2.3",
     "@valjoux/timestamp-pretty": "^0.4.0",
     "@vect/object-mapper": "^0.8.0"
   },

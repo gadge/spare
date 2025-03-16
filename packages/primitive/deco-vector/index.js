@@ -26,7 +26,7 @@ const { vector } = Node.prototype
 
 /**
  * @param {Opt} conf
- * @returns {(arr:*[],thr:[number],ind:[number],sur:[number])=>string}
+ * @returns {(arr:*[],thr?:number,ind?:number,sur?:number)=>string}
  */
 export function DecoVector(conf) {
   conf = conf ?? this ?? {}

@@ -19,7 +19,7 @@ const { string } = Node.prototype
 
 /**
  * @param {Opt} conf
- * @returns {(str:string,thr:[number],ind:[number],sur:[number])=>string}
+ * @returns {(str:string,thr?:number,ind?:number,sur?:number)=>string}
  */
 export function DecoString(conf) {
   conf = conf ?? this ?? {}
@@ -35,5 +35,4 @@ export function decoString(str, thr, ind, sur) {
   const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
   return string.call(new Node(conf), str, thr ?? thres, ind ?? indent, sur ?? surge)
 }
-
 

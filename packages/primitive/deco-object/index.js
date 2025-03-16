@@ -25,7 +25,7 @@ const { object } = Node.prototype
 
 /**
  * @param {Opt} conf
- * @returns {(o:{},thr:[number],ind:[number],sur:[number])=>string}
+ * @returns {(o:{},thr?:number,ind?:number,sur?:number)=>string}
  */
 export function DecoObject(conf) {
   conf = conf ?? this ?? {}

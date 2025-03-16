@@ -18,12 +18,12 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.17",
+    "@palett/presets": "^0.12.19",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {
-    "@texting/enum-brackets": "^0.2.2",
     "@spare/says": "workspace:^",
+    "@texting/enum-brackets": "^0.2.3",
     "@vect/matrix-index": "^0.8.0",
     "@vect/object-mapper": "^0.8.0"
   },

@@ -18,12 +18,12 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.17",
+    "@palett/presets": "^0.12.19",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {
-    "@aryth/rand": "^0.7.4",
-    "@aryth/rank-vector": "^0.7.4",
+    "@aryth/rand": "^0.7.5",
+    "@aryth/rank-vector": "^0.7.5",
     "@foba/object-string": "^0.6.1",
     "@foba/quotes-creativity": "^0.6.1",
     "@foba/util": "^0.6.1",
@@ -32,7 +32,7 @@
     "@spare/logger": "workspace:^",
     "@spare/node": "workspace:^",
     "@spare/xr": "workspace:^",
-    "@texting/splitter": "^0.2.2",
+    "@texting/splitter": "^0.2.3",
     "@valjoux/strategies": "^0.4.0",
     "@vect/object-init": "^0.8.0",
     "@vect/object-mapper": "^0.8.0"

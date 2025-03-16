@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-object.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.17",
+    "@palett/presets": "^0.12.19",
     "@spare/node": "workspace:^"
   },
   "repository": {
@@ -39,7 +39,7 @@
   "homepage": "https://github.com/gadge/spare#readme",
   "gitHead": "013714aadebaa9af337026663bf023dd382725c7",
   "devDependencies": {
-    "@texting/enum-chars": "^0.2.2",
+    "@texting/enum-chars": "^0.2.3",
     "@vect/object-mapper": "^0.8.0"
   }
 }

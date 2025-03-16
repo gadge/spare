@@ -23,7 +23,7 @@ const { matrix } = Node.prototype
 
 /**
  * @param {Opt} conf
- * @returns {(matrix:*[][],thr:[number],ind:[number],sur:[number])=>string}
+ * @returns {(matrix:*[][],thr?:number,ind?:number,sur?:number)=>string}
  */
 export function DecoMatrix(conf) {
   conf = conf ?? this ?? {}

@@ -21,7 +21,7 @@ const { entries } = Node.prototype
 
 /**
  * @param {Opt} conf
- * @returns {(ents:*[][],thr:[number],ind:[number],sur:[number])=>string}
+ * @returns {(ents:*[][],thr?:number,ind?:number,sur?:number)=>string}
  */
 export function DecoEntries(conf) {
   conf = conf ?? this ?? {}
