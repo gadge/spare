@@ -12,7 +12,7 @@ export class Passage {
   static duoMatrix(matA, matB) {
     matA = Passage.toLines(matA)
     matB = Passage.toLines(matB)
-    const fn = (a, b) => SP + a + COSP + b
+    const fn = (a, b) => SP + a + SP + b
     const linked = duozipper.call({ fn }, matA, matB)
     return linked.join(LF)
   }
@@ -21,7 +21,7 @@ export class Passage {
     matB = Passage.toLines(matB)
     matC = Passage.toLines(matC)
 
-    const fn = (a, b, c) => SP + a + COSP + b + COSP + c
+    const fn = (a, b, c) => SP + a + SP + b + SP + c
     const linked = trizipper.call({ fn }, matA, matB, matC)
     return linked.join(LF)
   }

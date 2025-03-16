@@ -39,7 +39,7 @@ const OBJECTS = {
 }
 
 test('node object', () => {
-  const node = new Node({ fill: ' ', ansi: true, pres: Presm.build( FRESH,  OCEAN,  METRO ) })
+  const node = Node.build(FRESH,  OCEAN,  METRO)
   const WD = 40
   const LINE = '+'.repeat(WD) + WD
 

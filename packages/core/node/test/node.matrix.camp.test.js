@@ -1,4 +1,3 @@
-import { Presm }                          from '@palett/pres'
 import { METRO, OCEAN, SUBTLE }           from '@palett/presets'
 import { COLUMNWISE, POINTWISE, ROWWISE } from '@vect/matrix'
 import { indexed, mapVal }                from '@vect/object-mapper'
@@ -7,6 +6,7 @@ import { Node }                           from '../src/Node.js'
 import { Passage }                        from './helpers/Passage.js'
 
 const MATRICES = {
+  emptyVector: [ [] ],
   emptyMatrix: [ [] ],
   oneRow: [ [ 0, 0, 1, 8 ] ],
   oneColumn: [ [ 0 ], [ 9 ], [ 11 ] ],
@@ -17,7 +17,7 @@ const MATRICES = {
 }
 
 test('node matrix camp', () => {
-  const node = new Node({ fill: ' ', ansi: true, pres: Presm.build(SUBTLE, OCEAN, METRO) })
+  const node = Node.build(SUBTLE, OCEAN, METRO)
   const matrices = mapVal(MATRICES, mat => node.matrix(mat, POINTWISE, 2))
   const rows = mapVal(MATRICES, mat => node.matrix(mat, ROWWISE))
   const columns = mapVal(MATRICES, mat => node.matrix(mat, COLUMNWISE))

@@ -1,7 +1,7 @@
 import { Pres, Presm, randPres } from '@palett/pres'
 import { OBJ, STR }              from '@typen/enum-data-types'
 
-function parsePres(unit) {
+export function parsePres(unit) {
   return unit instanceof Pres ? unit : typeof unit === STR ? randPres(unit) : null
 }
 

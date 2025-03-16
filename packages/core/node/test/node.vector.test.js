@@ -1,5 +1,4 @@
 import { NumberVectorCollection, StringVectorCollection } from '@foba/vector'
-import { Presm }                                          from '@palett/pres'
 import { PAGODA, PINE, PRETTY }                           from '@palett/presets'
 import { SP }                                             from '@texting/enum-chars'
 import { indexed }                                        from '@vect/object-mapper'
@@ -21,7 +20,7 @@ const VECTORS = {
 }
 
 test('node vector', () => {
-  const node = new Node({ fill: ' ', ansi: true, pres: Presm.build(PINE, PRETTY, PAGODA) })
+  const node = Node.build(PINE, PRETTY, PAGODA)
   const WD = 48
 
   for (let [ key, vec ] of indexed(VECTORS)) {

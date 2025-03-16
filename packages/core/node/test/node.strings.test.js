@@ -27,7 +27,7 @@ export const STRINGS = {
 }
 
 test('node strings', () => {
-  const node = new Node({ pres: Presm.build(BESQUE, OCEAN, METRO) })
+  const node = Node.build(BESQUE, OCEAN, METRO )
   const WD = 64
   const LINE = '+'.repeat(WD) + WD
 

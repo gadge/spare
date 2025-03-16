@@ -17,14 +17,14 @@ export class Roster {
     return new Roster(makeGen.call({ pres: book }))
   }
 
+
   cast() { return this.#cast }
 
   reg(name) {
-    // console.log('>> [roster] reg', decoString(String(name), { pres: value }))
     return this.#cast[name] = decoString.call(this.#pool.next().value, String(name))
   }
 
-  sign(name) {
+  ac(name) {
     if (!name?.length) return null
     if (hasAnsi(name)) return name
     return this.#cast[name] ?? this.reg(name)

@@ -31,7 +31,7 @@
     "@spare/deco-table": "workspace:^",
     "@spare/deco-vector": "workspace:^",
     "@spare/plot": "workspace:^",
-    "@texting/enum-chars": "^0.2.2"
+    "@texting/enum-chars": "^0.2.3"
   },
   "repository": {
     "type": "git",

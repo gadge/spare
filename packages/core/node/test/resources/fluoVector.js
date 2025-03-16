@@ -1,7 +1,7 @@
 import { boundaries }       from '@aryth/bound-vector'
 import { PresetCollection } from '@palett/fluo'
 import { Proj }             from '@palett/projector'
-import { _decoEntries }     from '@spare/deco-entries'
+import { _decoEntries }     from '@spare/node-entries'
 import { vectorMargin }     from '@spare/vector-margin'
 import { valid }            from '@typen/nullish'
 import { mapper }           from '@vect/vector-mapper'

@@ -1,4 +1,3 @@
-import { Presm }                from '@palett/pres'
 import { BESQUE, METRO, OCEAN } from '@palett/presets'
 import { SP }                   from '@texting/enum-chars'
 import { indexed }              from '@vect/object-mapper'
@@ -38,7 +37,8 @@ const ENTRIES = {
 }
 
 test('node entries', () => {
-  const node = new Node({ pres: Presm.build(BESQUE, OCEAN, METRO) })
+  const node = Node.build(BESQUE, OCEAN, METRO)
+  console.log(node.dim, node.hasX, node.hasY, node.hasZ)
   for (let [ key, ent ] of indexed(ENTRIES)) {
     // console.log(demo(node.pbd, 5))
     console.log(key + SP + node.entries(ent, NaN, 0))
