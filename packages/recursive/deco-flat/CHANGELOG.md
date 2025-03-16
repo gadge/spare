@@ -1,5 +1,16 @@
 # @spare/deco-flat
 
+## 0.16.17
+
+### Patch Changes
+
+- add @spare/serial
+- Updated dependencies
+  - @spare/node@0.16.17
+  - @spare/deco-colors@0.16.17
+  - @spare/deco-date@0.16.17
+  - @spare/deco-func@0.16.17
+
 ## 0.16.16
 
 ### Patch Changes

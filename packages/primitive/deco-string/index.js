@@ -23,16 +23,16 @@ const { string } = Node.prototype
  */
 export function DecoString(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, SUBTLE)
+  const presm = parsePresm(conf?.pres ?? conf, SUBTLE)
   const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  const proc = string.bind(new Node(conf))
+  const proc = string.bind(Node.init(presm))
   return (str, thr, ind, sur) => proc(str, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
 export function decoString(str, thr, ind, sur) {
   const conf = this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, SUBTLE)
+  const presm = parsePresm(conf?.pres ?? conf, SUBTLE)
   const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  return string.call(new Node(conf), str, thr ?? thres, ind ?? indent, sur ?? surge)
+  return string.call(Node.init(presm), str, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 

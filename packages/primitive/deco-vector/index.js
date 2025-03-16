@@ -30,17 +30,17 @@ const { vector } = Node.prototype
  */
 export function DecoVector(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const presm = parsePresm(conf?.pres ?? conf, PRES)
   const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  const proc = vector.bind(new Node(conf))
+  const proc = vector.bind(Node.init(presm))
   return (arr, thr, ind, sur) => proc(arr, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
 export function decoVector(arr, thr, ind, sur) {
   const conf = this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const presm = parsePresm(conf?.pres ?? conf, PRES)
   const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  return vector.call(new Node(conf), arr, thr ?? thres, ind ?? indent, sur ?? surge)
+  return vector.call(Node.init(presm), arr, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
 export {

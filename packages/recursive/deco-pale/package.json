@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-pale",
-  "version": "0.16.16",
+  "version": "0.16.17",
   "description": "Colored stringify",
   "type": "module",
   "exports": "./dist/index.js",

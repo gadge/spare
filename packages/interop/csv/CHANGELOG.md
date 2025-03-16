@@ -1,5 +1,11 @@
 # @spare/csv
 
+## 0.16.17
+
+### Patch Changes
+
+- add @spare/serial
+
 ## 0.16.16
 
 ### Patch Changes

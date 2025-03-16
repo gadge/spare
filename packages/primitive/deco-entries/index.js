@@ -14,7 +14,7 @@ import { Node, parsePresm }       from '@spare/node'
  * @typedef {?number}   Opt.tail
  */
 
-const PRES = { str: SUBTLE, neg: ENSIGN, pos: BESQUE, }
+const PRES = { str: SUBTLE, neg: ENSIGN, pos: BESQUE }
 
 const { entries } = Node.prototype
 
@@ -25,17 +25,17 @@ const { entries } = Node.prototype
  */
 export function DecoEntries(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const presm = parsePresm(conf?.pres ?? conf, PRES)
   const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  const proc = entries.bind(new Node(conf))
+  const proc = entries.bind(Node.init(presm))
   return (ents, thr, ind, sur) => proc(ents, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
 export function decoEntries(ent, thr, ind, sur) {
   const conf = this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const presm = parsePresm(conf?.pres ?? conf, PRES)
   const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  return entries.call(new Node(conf), ent, thr ?? thres, ind ?? indent, sur ?? surge)
+  return entries.call(Node.init(presm), ent, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
 export {

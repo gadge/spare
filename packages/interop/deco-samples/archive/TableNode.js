@@ -10,8 +10,8 @@ export class TableNode {
   kpr
   vpr
   constructor(conf) {
-    this.kpr = new Node(conf, conf.keys)
-    this.vpr = new Node(conf)
+    this.kpr = Node.init(conf, conf.keys)
+    this.vpr =Node.init(conf)
   }
 
   * pointwiseLines({ head, side, rows }) {

@@ -37,7 +37,7 @@ export class TableNode {
     const kpm = this.kpm, vpm = this.vpm
     const ht = rows?.length ?? 0, wd = head?.length ?? width(rows), cn = ht * wd
     const vts = Array(cn), vns = Array(cn), sts = Array(ht), sns = Array(ht), hts = Array(wd), hns = Array(wd)
-    const vgr = new Grad(vpm.dim), hgr = head ? new Grad(kpm.dim) : null, sgr = side ? new Grad(kpm.dim) : null
+    const vgr = new Grad(vpm?.dim), hgr = head ? new Grad(kpm?.dim) : null, sgr = side ? new Grad(kpm?.dim) : null
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, vw = 0, w = 0, p = 0
     if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = sgr.rec(sts, sns, side[i], i)) > sw) sw = xs[i] }
@@ -69,7 +69,7 @@ export class TableNode {
     const kpm = this.kpm, vpm = this.vpm
     const ht = rows.length, wd = head?.length ?? width(rows), cn = ht * wd
     const vts = Array(cn), vns = Array(cn), sts = Array(ht), sns = Array(ht), hts = Array(wd), hns = Array(wd)
-    const vgr = init(ht, () => new Grad(vpm.dim)), hgr = new Grad(kpm.dim), sgr = new Grad(kpm.dim)
+    const vgr = init(ht, () => new Grad(vpm?.dim)), hgr = new Grad(kpm?.dim), sgr = new Grad(kpm?.dim)
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
     if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = sgr.rec(sts, sns, side[i], i)) > sw) sw = xs[i] }
@@ -97,7 +97,7 @@ export class TableNode {
     const kpm = this.kpm, vpm = this.vpm
     const ht = rows.length, wd = head?.length ?? width(rows), cn = ht * wd
     const vts = Array(cn), vns = Array(cn), sts = Array(ht), sns = Array(ht), hts = Array(wd), hns = Array(wd)
-    const vgr = init(wd, () => new Grad(vpm.dim)), hgr = new Grad(kpm.dim), sgr = new Grad(kpm.dim)
+    const vgr = init(wd, () => new Grad(vpm?.dim)), hgr = new Grad(kpm?.dim), sgr = new Grad(kpm?.dim)
     const xs = Array(ht).fill(0), ys = Array(wd).fill(0)
     let sw = 0, hw = 0, w = 0, p = 0
     if (side) for (let i = 0; i < ht; i++) { if ((xs[i] = sgr.rec(sts, sns, side[i], i)) > sw) sw = xs[i] }

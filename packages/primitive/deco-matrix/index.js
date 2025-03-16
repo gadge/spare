@@ -27,18 +27,18 @@ const { matrix } = Node.prototype
  */
 export function DecoMatrix(conf) {
   conf = conf ?? this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const presm = parsePresm(conf?.pres ?? conf, PRES)
   const direct = conf.direct, indent = conf.indent
-  const proc = matrix.bind(new Node(conf))
+  const proc = matrix.bind(Node.init(presm))
   return (mat, dir, ind) => proc(mat, dir ?? direct, ind ?? indent)
 }
 
 export function decoMatrix(mat, dir, ind) {
   const conf = this ?? {}
-  conf.pres = parsePresm(conf?.pres ?? conf, PRES)
+  const presm = parsePresm(conf?.pres ?? conf, PRES)
   const direct = conf.direct // default 0: pointwise
   const indent = conf.indent
-  return matrix.call(new Node(conf), mat, dir ?? direct, ind ?? indent)
+  return matrix.call(Node.init(presm), mat, dir ?? direct, ind ?? indent)
 }
 
 export {

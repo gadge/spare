@@ -1,5 +1,17 @@
 # @spare/verse
 
+## 0.16.17
+
+### Patch Changes
+
+- add @spare/serial
+- Updated dependencies
+  - @spare/deco-samples@0.16.17
+  - @spare/deco-entries@0.16.17
+  - @spare/deco-matrix@0.16.17
+  - @spare/deco-object@0.16.17
+  - @spare/deco-vector@0.16.17
+
 ## 0.16.16
 
 ### Patch Changes
