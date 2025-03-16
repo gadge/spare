@@ -18,7 +18,7 @@
     "test": "node --test ./test/deca.plain.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.17",
+    "@palett/presets": "^0.12.19",
     "@spare/deco-colors": "workspace:^",
     "@spare/deco-date": "workspace:^",
     "@spare/deco-func": "workspace:^",

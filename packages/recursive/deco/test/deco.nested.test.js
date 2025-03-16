@@ -1,6 +1,6 @@
 import { BESQUE, OCEAN, SUBTLE } from '@palett/presets'
-import { deco }                  from '../index.js'
 import { test }                  from 'node:test'
+import { deco }                  from '../index.js'
 
 const NESTED = {
   EMPTY: {},
@@ -8,27 +8,27 @@ const NESTED = {
     Wines_spirit: {
       Moët_Chandon: { founded: 1743, origin: { France: 'Épernay' }, founder: [ 'Claude Moët' ] },
       Veuve_Clicquot: { founded: 1772, origin: { France: 'Reims' }, founder: [ 'Philippe Clicquot' ] },
-      Dom_Pérignon: { founded: 1921, origin: { France: 'Hautvillers' }, founder: [ 'Dom Pérignon' ] }
+      Dom_Pérignon: { founded: 1921, origin: { France: 'Hautvillers' }, founder: [ 'Dom Pérignon' ] },
     },
     Fashion_leather_goods: {
       Louis_Vuitton: {
         founded: 1854,
         origin: { France: 'Paris' },
         founder: 'Louis Vuitton',
-        creative: [ 'Nicolas Ghesquière' ]
+        creative: [ 'Nicolas Ghesquière' ],
       },
       Christian_Dior: {
         founded: 1946,
         origin: { France: 'Paris' },
         founder: 'Christian Dior',
-        creative: [ 'Maria Grazia Chiuri', 'Kim Jones' ]
+        creative: [ 'Maria Grazia Chiuri', 'Kim Jones' ],
       },
       Givenchy: {
         founded: 1952,
         origin: { France: 'Paris' },
         founder: 'Hubert de Givenchy',
-        creative: [ 'Matthew M. Williams' ]
-      }
+        creative: [ 'Matthew M. Williams' ],
+      },
     },
     Perfumes_cosmetics: {
       Acqua_di_Parma: { founded: 1916, origin: { Italy: 'Parma' }, founder: '', creative: [] },
@@ -36,22 +36,22 @@ const NESTED = {
         founded: 1828,
         origin: { France: 'Paris' },
         founder: 'Monsieur Pierre-François-Pascal Guerlain',
-        creative: [ 'Olivier Echaudemaison' ]
-      }
-    }
+        creative: [ 'Olivier Echaudemaison' ],
+      },
+    },
     // Watches_jewelry: {},
     // Selective_retailing: {},
     // Other_activities: {},
-  }
+  },
 }
 
 const WIDTH = 36
 const LINE = '+'.repeat(WIDTH) + WIDTH
 const CONF = {
-  pres: { pos: BESQUE, neg: OCEAN, str: SUBTLE },
+  pres: { str: SUBTLE, pos: BESQUE, neg: OCEAN },
   vert: 4,
   depth: 16,
-  width: WIDTH
+  width: WIDTH,
 }
 
 test('deco nested', () => {

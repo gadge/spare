@@ -19,10 +19,10 @@
   },
   "dependencies": {
     "@spare/deco-func": "workspace:^",
-    "@texting/bracket": "^0.2.2",
-    "@texting/cite": "^0.2.2",
-    "@texting/enum-chars": "^0.2.2",
-    "@texting/quote": "^0.2.2",
+    "@texting/bracket": "^0.2.3",
+    "@texting/cite": "^0.2.3",
+    "@texting/enum-chars": "^0.2.3",
+    "@texting/quote": "^0.2.3",
     "@typen/enum-data-types": "^0.2.0",
     "@typen/enum-object-types": "^0.2.0",
     "@typen/num-strict": "^0.2.0",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@spare/xr": "workspace:^",
-    "@texting/enum-quotes": "^0.2.2"
+    "@texting/enum-quotes": "^0.2.3"
   },
   "repository": {
     "type": "git",

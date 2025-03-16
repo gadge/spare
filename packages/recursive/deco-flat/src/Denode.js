@@ -8,15 +8,18 @@ import { isNumeric }                              from '@typen/num-loose'
 import { typ }                                    from '@typen/typ'
 import { mapKeyVal }                              from '@vect/object-mapper'
 
-export class Denode extends Node {
+const { string, vector, object } = Node.prototype
+
+export class Denode {
+  presm
   depth
   width
   broad
   constructor(conf) {
-    super(conf)
-    this.depth = conf.depth ?? conf.dp ?? 8     // 更高级不展示
-    this.width = conf.width ?? conf.th ?? 80    // 换行宽度
-    this.broad = conf.broad ?? conf.br ?? false // 宽幅展示
+    this.presm = conf.pres ?? null
+    this.depth = conf.depth ?? 8     // conf.dp 更高级不展示
+    this.width = conf.width ?? 80    // conf.th 换行宽度
+    this.broad = conf.broad ?? false // conf.br 宽幅展示
   }
   static build(conf) { return new Denode(conf) }
   static deco(x, conf) { return (new Denode(conf)).node(x) }
@@ -41,14 +44,14 @@ export class Denode extends Node {
   }
 
   nodeString(str, id = 0) {
-    return this.string(str, NaN, id)
+    return string.call(this.presm, str, NaN, id)
   }
   nodeVector(vec, id = 0) {
     vec = vec.map(v => this.node(v, id + 1))
-    return this.vector(vec, NaN)
+    return vector.call(this.presm, vec, NaN)
   }
   nodeObject(obj, id = 0) {
     obj = mapKeyVal(obj, (k, v) => this.node(v, id + 1))
-    return this.object(obj, NaN, id)
+    return object.call(this.presm, obj, NaN, id)
   }
 }

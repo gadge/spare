@@ -1,4 +1,3 @@
-import { says }     from '@spare/logger'
 import { test }     from 'node:test'
 import { decoFlat } from '../index.js'
 
@@ -21,11 +20,12 @@ const candidates = {
   symbol: Symbol('foo'),
   function: function (x) { return x * x },
   class: class Foo {constructor(x) { this.x = x }},
-  regexp: /foo/g
+  regexp: /foo/g,
 }
 
 test('decoFlat', () => {
   for (let [ key, value ] of Object.entries(candidates)) {
-    says[key](decoFlat(value))
+    // says[key](decoFlat(value))
+    console.log(key, decoFlat(value))
   }
 })

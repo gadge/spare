@@ -25,34 +25,36 @@ export function isMatrix(list) {
   return true
 }
 
-export class Denode extends Node {
+const { string, vector, object, matrix } = Node.prototype
+
+export class Denode {
   depth
   vert
   width
   broad
   constructor(conf) {
-    super(conf)
-    this.depth = conf.depth ?? conf.dp ?? 8     // 更高级不展示
-    this.vert = conf.vert ?? conf.vt ?? 1      // 更低级竖排显示
-    this.width = conf.thres ?? conf.width ?? conf.th ?? 80    // 换行宽度
-    this.broad = conf.broad ?? conf.br ?? false // 宽幅展示
+    this.presm = conf.pres ?? null
+    this.depth = conf.depth ?? 8     //  conf.dp 更高级不展示
+    this.vert = conf.vert ?? 1      //  conf.vt 更低级竖排显示
+    this.width = conf.thres ?? 80    //  conf.th 换行宽度
+    this.broad = conf.broad ?? false //  conf.br 宽幅展示
   }
   static build(conf) { return new Denode(conf) }
   static deco(x, conf) { return (new Denode(conf)).node(x) }
   static make(conf) { return Denode.prototype.node.bind(new Denode(conf)) }
 
-  node(x, id = 0, sr = 0) {
+  node(x, ind = 0, sur = 0) {
     const t = typeof x
-    if (t === STR) return isNumeric(x) ? x : this.nodeString(x, id, sr)
+    if (t === STR) return isNumeric(x) ? x : this.nodeString(x, ind, sur)
     if (t === NUM || t === BIG) return x
-    if (t === FUN) return (id >> 1) >= this.depth ? funcName(x) : decoFunc(x, this)
+    if (t === FUN) return (ind >> 1) >= this.depth ? funcName(x) : decoFunc(x, this)
     if (t === OBJ) {
       const { depth } = this, pt = typ(x)
-      if (pt === ARRAY) return (id >> 1) >= depth ? '[array]' : this.nodeVector(x, id)
-      if (pt === OBJECT) return (id >> 1) >= depth ? '{object}' : this.nodeObject(x, id)
-      if (pt === DATE) return (id >> 1) >= depth ? decoDate(x) : decoDateTime(x)
+      if (pt === ARRAY) return (ind >> 1) >= depth ? '[array]' : this.nodeVector(x, ind)
+      if (pt === OBJECT) return (ind >> 1) >= depth ? '{object}' : this.nodeObject(x, ind)
+      if (pt === DATE) return (ind >> 1) >= depth ? decoDate(x) : decoDateTime(x)
       // if (pt === MAP) return lv >= depth ? '(map)' : this.entries([ ...x.entries() ], lv)
-      if (pt === SET) return (id >> 1) >= depth ? '(set)' : `set:${this.nodeVector([ ...x ], id)}`
+      if (pt === SET) return (ind >> 1) >= depth ? '(set)' : `set:${this.nodeVector([ ...x ], ind)}`
       return `${x}`
     }
     if (t === BOO) return PAL.BOO(x)
@@ -63,7 +65,7 @@ export class Denode extends Node {
 
   threshold(id) { return (id >> 1) < this.vert ? 0 : this.width }
   nodeString(str, id = 0, sr) {
-    return this.string(str, this.width, this.broad ? id : id + 2, sr)
+    return string.call(this.presm, str, this.width, this.broad ? id : id + 2, sr)
   }
   nodeVector(vec, id = 0) {
     switch (depth(vec)) {
@@ -72,13 +74,13 @@ export class Denode extends Node {
       case 1:
         vec = vec.map(v => this.node(v, id + 2))
         const wd = vec.length <= 2 ? NaN : this.threshold(id)
-        return this.vector(vec, wd, id)
+        return vector.call(this.presm, vec, wd, id)
       case 2:
-        if (isMatrix(vec)) return this.matrix(vec, POINTWISE, id)
+        if (isMatrix(vec)) return matrix.call(this.presm, vec, POINTWISE, id)
       // CRUCIAL: else fall through default
       default:
         vec = vec.map(v => this.node(v, id + 1))
-        return this.vector(vec, NaN)
+        return vector.call(this.presm, vec, NaN)
     }
   }
   nodeObject(obj, id = 0) {
@@ -89,6 +91,6 @@ export class Denode extends Node {
         : id + 2
       return this.node(v, nx, sr) // nx could also be id+2, alternatively
     })
-    return this.object(obj, this.threshold(id), id)
+    return object.call(this.presm, obj, this.threshold(id), id)
   }
 }
