@@ -15,7 +15,7 @@ export function points(mat) {
   const presm = this
   const ht = height(mat), wd = width(mat), cn = ht * wd
   const series = Array(cn), values = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0)
-  const grad = new Grad(presm.dim)
+  const grad = new Grad(presm?.dim)
   let wp = 0
   for (let i = 0, p = 0; i < ht; i++) {
     for (let j = 0, r = mat[i], w; j < wd; j++) {
@@ -36,7 +36,7 @@ export function rows(mat) {
   const presm = this
   const ht = height(mat), wd = width(mat), cn = ht * wd
   const series = Array(cn), values = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0)
-  const grads = init(ht, () => new Grad(presm.dim))
+  const grads = init(ht, () => new Grad(presm?.dim))
   for (let i = 0, p = 0; i < ht; i++) {
     for (let j = 0, r = mat[i], w; j < wd; j++) {
       w = grads[i].rec(series, values, r[j], p++)
@@ -56,7 +56,7 @@ export function columns(mat) {
   const presm = this
   const ht = height(mat), wd = width(mat), cn = ht * wd
   const series = Array(cn), values = Array(cn), xs = iso(ht, 0), ys = iso(wd, 0)
-  const grads = init(wd, () => new Grad(presm.dim))
+  const grads = init(wd, () => new Grad(presm?.dim))
   for (let i = 0, p = 0; i < ht; i++) {
     for (let j = 0, r = mat[i], w; j < wd; j++) {
       w = grads[j].rec(series, values, r[j], p++)

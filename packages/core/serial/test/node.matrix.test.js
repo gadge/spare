@@ -1,8 +1,9 @@
 import { Presm }                from '@palett/pres'
 import { METRO, OCEAN, SUBTLE } from '@palett/presets'
+import { size }                 from '@vect/matrix-index'
 import { indexed }              from '@vect/object-mapper'
 import { test }                 from 'node:test'
-import { Node }                 from '../src/Node.js'
+import { matrix }               from '../src/matrix.js'
 
 const MATRICES = {
   emptyMatrix: [ [] ],
@@ -15,16 +16,16 @@ const MATRICES = {
 }
 
 test('node matrix fuse', () => {
-  const node = new Node({ fill: ' ', ansi: true, pres: Presm.build(SUBTLE, OCEAN, METRO) })
+  const presm = Presm.build(SUBTLE, OCEAN, METRO)
   console.log(MATRICES)
   for (let [ key, mat ] of indexed(MATRICES)) {
-    try{
+    try {
       // console.log(Passage.triMatrix(matrices[key], rows[key], columns[key]))
       console.log(key)
-      console.log(node.matrix(mat))
-    }
-    catch (e){
-      console.log('error', e);
+      const [ht,wd]=size(mat)
+      console.log(matrix.call(presm, mat))
+    } catch (e) {
+      console.log('error', e)
     }
   }
 })

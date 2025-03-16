@@ -7,7 +7,7 @@ export function vector(vec) {
   const presm = this
   const len = vec.length, series = Array(len), widths = series.wds = Array(len)
   if (!len) return series
-  const values = Array(len), grad = new Grad(presm.dim)
+  const values = Array(len), grad = new Grad(presm?.dim)
   let wd = 0, i
   for (i = 0; i < len; i++) if ((widths[i] = grad.rec(series, values, vec[i], i)) > wd) wd = widths[i]
   grad.lever(presm, wd)

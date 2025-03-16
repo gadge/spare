@@ -6,7 +6,7 @@ export function entries(ent, pad) {
   let ht = ent.length, cn = ht << 1, kw = 0, vw = 0, i = -1
   const series = Array(cn), values = Array(cn), widths = series.wds = Array(cn)
   if (!ht) return series
-  const kgr = new Grad(presm.dim), vgr = new Grad(presm.dim)
+  const kgr = new Grad(presm?.dim), vgr = new Grad(presm?.dim)
   for (let [ key, val ] of ent) {
     if ((widths[++i] = kgr.rec(series, values, key, i)) > kw) kw = widths[i]
     if ((widths[++i] = vgr.rec(series, values, val, i)) > vw) vw = widths[i]
