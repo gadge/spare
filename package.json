@@ -49,7 +49,7 @@
     "@foba/vector-number": "^0.6.1",
     "@foba/vector-string": "^0.6.1",
     "@ject/pipe": "^0.1.1",
-    "@palett/enum-font-effects": "^0.12.19",
+    "@palett/enum-font-effects": "^0.12.20",
     "@palett/presets": "^0.12.19",
     "@palett/says": "^0.9.10",
     "@rollup/plugin-json": "^6.0.0",

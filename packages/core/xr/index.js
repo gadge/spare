@@ -8,7 +8,7 @@ import { ansiOrSnake, hasBrPr } from './src/util/string.js'
 export class Ros {
   static #pool
   static #camp
-  static get pool() { return Ros.#pool ?? (Ros.#pool = presFlopper.call({ flow: MIDTONE }))}
+  static get pool() { return Ros.#pool ?? (Ros.#pool = presFlopper.call(MIDTONE))}
   static get camp() { return Ros.#camp ?? (Ros.#camp = Roster.build(Ros.pool)) }
   static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ros.camp.sign(ansiOrSnake(tx))) }
 }

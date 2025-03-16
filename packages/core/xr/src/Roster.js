@@ -15,7 +15,7 @@ export class Roster {
   cast() { return this.#cast }
 
   reg(name) {
-    // console.log('>> [roster] reg', decoString(String(name), { pres: value }))
+    console.log('>> [roster] reg', this.#pool.next().value,decoString.call(this.#pool.next().value, String(name)))
     return this.#cast[name] = decoString.call(this.#pool.next().value, String(name))
   }
 
