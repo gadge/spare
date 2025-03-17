@@ -1,4 +1,4 @@
-import { presFlopper }          from '@palett/flopper'
+import { rhodFlopper }          from '@palett/flopper'
 import { MIDTONE }              from '@palett/nuance-midtone'
 import { bracket }              from '@texting/bracket'
 import { Plot }                 from './src/Plot.js'
@@ -10,7 +10,7 @@ export { Plot, Roster }
 export class Ros {
   static #pool
   static #camp
-  static get pool() { return Ros.#pool ?? (Ros.#pool = presFlopper.call(MIDTONE))}
+  static get pool() { return Ros.#pool ?? (Ros.#pool = rhodFlopper.call({ density: 0.2, munsell: MIDTONE }))}
   static get camp() { return Ros.#camp ?? (Ros.#camp = Roster.build(Ros.pool)) }
   static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ros.camp.ac(ansiOrSnake(tx))) }
 }

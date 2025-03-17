@@ -1,6 +1,6 @@
 {
   "name": "@spare/xr",
-  "version": "0.16.17",
+  "version": "0.16.19",
   "description": "A sentence builder",
   "type": "module",
   "exports": "./dist/index.js",
@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.7.5",
-    "@palett/flopper": "^0.12.20",
-    "@palett/nuance-lotone": "^0.12.20",
-    "@palett/nuance-midtone": "^0.12.20",
+    "@aryth/comparer": "^0.7.6",
+    "@palett/flopper": "^0.12.22",
+    "@palett/nuance-lotone": "^0.12.22",
+    "@palett/nuance-midtone": "^0.12.22",
     "@spare/deco-string": "workspace:^",
     "@texting/bracket": "^0.2.3",
     "@texting/charset-ansi": "^0.2.3",
@@ -36,7 +36,7 @@
     "@spare/deco-crostab": "workspace:^",
     "@spare/deco-matrix": "workspace:^",
     "@spare/enum-loggers": "workspace:^",
-    "@valjoux/timestamp-pretty": "^0.4.0"
+    "@valjoux/timestamp-pretty": "^0.4.1"
   },
   "repository": {
     "type": "git",
