@@ -1,5 +1,21 @@
 # @spare/deco-matrix
 
+## 0.16.19
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/node@0.16.19
+
+## 0.16.18
+
+### Patch Changes
+
+- minor fix
+- Updated dependencies
+  - @spare/node@0.16.18
+
 ## 0.16.17
 
 ### Patch Changes

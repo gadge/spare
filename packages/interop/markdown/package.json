@@ -1,6 +1,6 @@
 {
   "name": "@spare/markdown",
-  "version": "0.16.17",
+  "version": "0.16.19",
   "description": "Markdown table formatter",
   "type": "module",
   "exports": "./dist/index.js",
