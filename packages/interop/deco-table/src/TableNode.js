@@ -55,8 +55,8 @@ export class TableNode {
     if (head) { yield* this.headLines(hts, hns, ys, hgr, sgr) }
     let i, j, line
     vgr.lever(vpm, vw)
-    console.log(sw, hw, vw)
-    console.log(vgr)
+    // console.log(sw, hw, vw)
+    // console.log(vgr)
     for (i = 0, p = 0; i < ht; i++) {
       line = side ? (rend.call(kpm, sgr, sts[i], sns[i], sgr.wd) + VB) : VO
       for (j = 0; j < wd; j++, p++)
