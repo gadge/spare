@@ -1,0 +1,1 @@
+export { Verse } from './Verse.js'

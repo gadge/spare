@@ -1,16 +1,21 @@
-import { decoFunc }                from '@spare/deco-func'
-import { brace, bracket }          from '@texting/bracket'
-import { cite as citeFn }          from '@texting/cite'
-import { COSP, RT }                from '@texting/enum-chars'
-import { BOO, FUN, NUM, OBJ, STR } from '@typen/enum-data-types'
-import { ARRAY, DATE, OBJECT }     from '@typen/enum-object-types'
-import { isNumeric }               from '@typen/num-strict'
-import { typ }                     from '@typen/typ'
-import { formatDate }              from '@valjoux/format-date'
-import { formatTime }              from '@valjoux/format-time'
-import { mutate }                  from '@vect/entries-mapper'
-import { DEFN }                    from './resources/DEFN.js'
-import { decoKey }                 from './src/decoKey.js'
+import { decoFunc } from '@spare/deco-func';
+import { bracket, brace } from '@texting/bracket';
+import { cite } from '@texting/cite';
+import { RT, COSP } from '@texting/enum-chars';
+import { NUM, BOO, STR, FUN, OBJ } from '@typen/enum-data-types';
+import { ARRAY, OBJECT, DATE } from '@typen/enum-object-types';
+import { isNumeric } from '@typen/num-strict';
+import { typ } from '@typen/typ';
+import { formatDate } from '@valjoux/format-date';
+import { formatTime } from '@valjoux/format-time';
+import { mutate } from '@vect/entries-mapper';
+import { tenseQuote } from '@texting/quote';
+
+const DEFN = { pretty: false };
+
+const decoKey = function (x) {
+  return (/\W/.test(x) || isNumeric(x)) ? tenseQuote(x) : x
+};
 
 // const presetConfig = p => {
 //   p.loose = p.loose ?? true
@@ -19,7 +24,7 @@ import { decoKey }                 from './src/decoKey.js'
 // }
 // export const decoPale = (x, conf = {}) => deco.call(presetConfig(conf), x)
 
-export const pairEnt = ([k, v]) => k + RT + v
+const pairEnt = ([ k, v ]) => k + RT + v;
 
 /**
  *
@@ -29,23 +34,23 @@ export const pairEnt = ([k, v]) => k + RT + v
  * @param {Function} [conf.cite] function to deal with string
  * @return {string|*}
  */
-export function decoPale(node, conf) {
-  conf = conf ?? this ?? {}
+function decoPale(node, conf) {
+  conf = conf ?? this ?? {};
   // const { loose = true, cite = citeFn } = conf ?? this ?? {}
-  const loose = conf?.loose ?? this?.loose ?? true
-  const cite = conf?.cite ?? this?.cite ?? citeFn
+  const loose = conf?.loose ?? this?.loose ?? true;
+  const cite$1 = conf?.cite ?? this?.cite ?? cite;
   if (node === void 0 || node === null) return node
-  const t = typeof node
+  const t = typeof node;
   if (t === NUM || t === BOO) return node
-  if (t === STR) return loose && isNumeric(node) ? node : cite(node)
-  if (t === FUN) return cite(decoFunc.call(DEFN, node))
+  if (t === STR) return loose && isNumeric(node) ? node : cite$1(node)
+  if (t === FUN) return cite$1(decoFunc.call(DEFN, node))
   if (t === OBJ) {
-    const pt = typ(node)
+    const pt = typ(node);
     if (pt === ARRAY) return bracket(node.map(decoPale.bind(this)).join(COSP))
     if (pt === OBJECT) return brace(mutate(Object.entries(node), decoKey, decoPale.bind(this)).map(pairEnt).join(COSP))
-    if (pt === DATE) return cite(`${formatDate(node)}'${formatTime(node)}`)
+    if (pt === DATE) return cite$1(`${formatDate(node)}'${formatTime(node)}`)
   }
-  return cite(String(node))
+  return cite$1(String(node))
 }
 
 
@@ -55,6 +60,6 @@ export function decoPale(node, conf) {
  * @param {boolean} [conf.loose]
  * @param {Function|string|number} [conf.quote]
  */
-export function DecoPale(conf = {}) { return decoPale.bind(conf) }
+function DecoPale(conf = {}) { return decoPale.bind(conf) }
 
-export { decoKey } from './src/decoKey.js'
+export { DecoPale, decoKey, decoPale, pairEnt };

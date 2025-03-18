@@ -1,13 +1,13 @@
-import { hexToRgi }                                                              from '@palett/convert'
-import { Pres, Presm, randPres }                                                 from '@palett/pres'
-import { serialEntries, serialMatrix, serialObject, serialVector, serialString } from '@spare/serial'
-import { BRACKET, NONE }                                                         from '@texting/enum-brackets'
-import { COLF, COSP, LF, RTSP }                                                  from '@texting/enum-chars'
-import { splitLiteral }                                                          from '@texting/splitter'
-import { OBJ, STR }                                                              from '@typen/enum-data-types'
-import { width }                                                                 from '@vect/matrix-index'
-import { Fold, tabs }                                                            from './Fold.js'
-import { parsePres }                                                             from './utils/parsePresm.js'
+import { hexToRgi }                                                from '@palett/convert'
+import { Pres, Presm, randPres }                                   from '@palett/pres'
+import { serialEntries, serialMatrix, serialObject, serialVector } from '@spare/serial'
+import { BRACKET, NONE }                                           from '@texting/enum-brackets'
+import { COLF, COSP, LF, RTSP }                                    from '@texting/enum-chars'
+import { splitLiteral }                                            from '@texting/splitter'
+import { OBJ, STR }                                                from '@typen/enum-data-types'
+import { width }                                                   from '@vect/matrix-index'
+import { Fold, tabs }                                              from './Fold.js'
+import { parsePres }                                               from './utils/parsePresm.js'
 
 export class Node extends Presm {
   constructor(xb, xp, yb, yp, zb, zp, nan) {

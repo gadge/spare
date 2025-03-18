@@ -1,5 +1,18 @@
 # @spare/deco
 
+## 0.16.20
+
+### Patch Changes
+
+- minor fix
+- minor fix
+- Updated dependencies
+- Updated dependencies
+  - @spare/node@0.16.20
+  - @spare/deco-colors@0.16.20
+  - @spare/deco-date@0.16.20
+  - @spare/deco-func@0.16.20
+
 ## 0.16.19
 
 ### Patch Changes

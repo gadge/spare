@@ -2,8 +2,7 @@ import { min }                        from '@aryth/comparer'
 import { bracket, parenth }           from '@texting/bracket'
 import { clearAnsi, hasAnsi }         from '@texting/charset-ansi'
 import { camelToSnake, snakeToCamel } from '@texting/phrasing'
-import { SYM } from '@typen/enum-data-types'
-import { Ros } from '../index.js'
+import { SYM }                        from '@typen/enum-data-types'
 
 export function hasBrPr(tx) { return /^\s*[(\[{].*[)\]}]\s*$/.test(hasAnsi(tx) ? clearAnsi(tx) : tx) }
 

@@ -1,5 +1,5 @@
-import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Node, parsePresm }       from '@spare/node'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets';
+import { Node, parsePresm } from '@spare/node';
 
 /**
  * @typedef {Object}    Opt
@@ -19,32 +19,27 @@ const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
   pos: BESQUE,
-}
+};
 
-const { object } = Node.prototype
+const { object } = Node.prototype;
 
 /**
  * @param {Opt} conf
  * @returns {(o:{},thr?:number,ind?:number,sur?:number)=>string}
  */
-export function DecoObject(conf) {
-  conf = conf ?? this ?? {}
-  const presm = parsePresm(conf?.pres ?? conf, PRES)
-  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  const proc = object.bind(Node.init(presm))
+function DecoObject(conf) {
+  conf = conf ?? this ?? {};
+  const presm = parsePresm(conf?.pres ?? conf, PRES);
+  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge;
+  const proc = object.bind(Node.init(presm));
   return (o, thr, ind, sur) => proc(o, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
-export function decoObject(ent, thr, ind, sur) {
-  const conf = this ?? {}
-  const presm = parsePresm(conf?.pres ?? conf, PRES)
-  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
+function decoObject(ent, thr, ind, sur) {
+  const conf = this ?? {};
+  const presm = parsePresm(conf?.pres ?? conf, PRES);
+  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge;
   return object.call(Node.init(presm), ent, thr ?? thres, ind ?? indent, sur ?? surge)
-}
-
-export {
-  decoObject as deco,
-  DecoObject as Deco,
 }
 
 // {boolean}        [p.discrete]
@@ -58,3 +53,5 @@ export {
 // {number}         [p.tail]
 // {boolean}        [p.ansi]
 // {number}         [p.level]
+
+export { DecoObject as Deco, DecoObject, decoObject as deco, decoObject };

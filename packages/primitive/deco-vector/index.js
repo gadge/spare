@@ -1,5 +1,5 @@
-import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets'
-import { Node, parsePresm }       from '@spare/node'
+import { BESQUE, ENSIGN, SUBTLE } from '@palett/presets';
+import { Node, parsePresm } from '@spare/node';
 
 /**
  * @typedef {Object}    Opt
@@ -19,33 +19,28 @@ const PRES = {
   str: SUBTLE,
   neg: ENSIGN,
   pos: BESQUE,
-}
+};
 
-const { vector } = Node.prototype
+const { vector } = Node.prototype;
 
 
 /**
  * @param {Opt} conf
  * @returns {(arr:*[],thr?:number,ind?:number,sur?:number)=>string}
  */
-export function DecoVector(conf) {
-  conf = conf ?? this ?? {}
-  const presm = parsePresm(conf?.pres ?? conf, PRES)
-  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
-  const proc = vector.bind(Node.init(presm))
+function DecoVector(conf) {
+  conf = conf ?? this ?? {};
+  const presm = parsePresm(conf?.pres ?? conf, PRES);
+  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge;
+  const proc = vector.bind(Node.init(presm));
   return (arr, thr, ind, sur) => proc(arr, thr ?? thres, ind ?? indent, sur ?? surge)
 }
 
-export function decoVector(arr, thr, ind, sur) {
-  const conf = this ?? {}
-  const presm = parsePresm(conf?.pres ?? conf, PRES)
-  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge
+function decoVector(arr, thr, ind, sur) {
+  const conf = this ?? {};
+  const presm = parsePresm(conf?.pres ?? conf, PRES);
+  const thres = conf.thres ?? 0, indent = conf.indent, surge = conf.surge;
   return vector.call(Node.init(presm), arr, thr ?? thres, ind ?? indent, sur ?? surge)
-}
-
-export {
-  decoVector as deco,
-  DecoVector as Deco,
 }
 
 // {boolean}         [p.discrete]
@@ -59,3 +54,5 @@ export {
 // {number}          [p.tail]
 // {boolean}         [p.ansi]
 // {number}          [p.level=0]
+
+export { DecoVector as Deco, DecoVector, decoVector as deco, decoVector };
