@@ -1,6 +1,6 @@
 {
   "name": "@spare/serial",
-  "version": "0.16.20",
+  "version": "0.16.21",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "exports": "./index.js",
@@ -18,9 +18,9 @@
     "test": "node --test ./test/deca.plain.test.js"
   },
   "dependencies": {
-    "@palett/dye": "^0.12.22",
-    "@palett/pres": "^0.12.22",
-    "@palett/util-ansi": "^0.12.22",
+    "@palett/dye": "^0.12.24",
+    "@palett/pres": "^0.12.24",
+    "@palett/util-ansi": "^0.12.24",
     "@texting/charset-ansi": "^0.2.3",
     "@texting/charset-fullwidth": "^0.2.3",
     "@texting/enum-chars": "^0.2.3",

@@ -1,4 +1,5 @@
 import { rhodFlopper }          from '@palett/flopper'
+import { Munsell }              from '@palett/munsell'
 import { MIDTONE }              from '@palett/nuance-midtone'
 import { bracket }              from '@texting/bracket'
 import { Plot }                 from './Plot.js'
@@ -8,10 +9,12 @@ import { ansiOrSnake, hasBrPr } from './string-util.js'
 export { Plot, Roster }
 
 export class Ros {
-  static #pool
+  static #midtone
+  static #flopper
   static #camp
-  static get pool() { return Ros.#pool ?? (Ros.#pool = rhodFlopper.call({ density: 0.2, munsell: MIDTONE }))}
-  static get camp() { return Ros.#camp ?? (Ros.#camp = Roster.build(Ros.pool)) }
+  static get midtone() { return Ros.#midtone ?? (Ros.#midtone = Munsell.build(MIDTONE)) }
+  static get flopper() {return Ros.#flopper ?? (Ros.#flopper = rhodFlopper.call({ petals: 4, density: 0.2, minL: 48, munsell: Ros.midtone }))}
+  static get camp() { return Ros.#camp ?? (Ros.#camp = Roster.build(Ros.flopper)) }
   static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ros.camp.ac(ansiOrSnake(tx))) }
 }
 

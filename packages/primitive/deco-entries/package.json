@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-entries",
-  "version": "0.16.20",
+  "version": "0.16.21",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-entries.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.22",
+    "@palett/presets": "^0.12.24",
     "@spare/node": "workspace:^"
   },
   "repository": {

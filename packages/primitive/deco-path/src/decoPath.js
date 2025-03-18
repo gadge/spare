@@ -13,6 +13,7 @@ export const pad = Function.prototype.call.bind(String.prototype.padStart)
 export class Cache {
   static #midtone
   static #flopper
+  static cast = {}
   static get midtone() { return this.#midtone ?? (this.#midtone = Munsell.build(MIDTONE)) }
   static get flopper() { return this.#flopper ?? (this.#flopper = shiftFlopper.call(Cache.midtone)) }
 }
@@ -24,6 +25,14 @@ export class Fades {
   }
   static build(count) { return new Fades(Cache.midtone, count) }
   deco(path) { return decoPath.call(this.flopper.next().value, path) }
+}
+
+export function acPath(path) {
+  if (path in Cache.cast) return Cache.cast[path]
+  const pres = this ?? Cache.flopper.next().value
+  const series = splitter.call(/[\\\/]+/g, path)
+  const vector = serialVector.call(parsePresm(pres), series)
+  return Cache.cast[path] = vector.join('')
 }
 
 export function decoPath(path) {

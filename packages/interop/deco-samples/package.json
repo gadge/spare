@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-samples",
-  "version": "0.16.20",
+  "version": "0.16.21",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@analys/convert": "^0.7.3",
     "@analys/samples-select": "^0.7.3",
-    "@palett/presets": "^0.12.22",
+    "@palett/presets": "^0.12.24",
     "@spare/node": "workspace:^",
     "@spare/serial": "workspace:^",
     "@texting/enum-brackets": "^0.2.3",
