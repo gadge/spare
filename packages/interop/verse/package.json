@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.16.22",
+  "version": "0.16.23",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",

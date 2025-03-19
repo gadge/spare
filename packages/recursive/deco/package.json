@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco",
-  "version": "0.16.22",
+  "version": "0.16.23",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "exports": "./index.js",
@@ -18,7 +18,7 @@
     "test": "node --test ./test/deca.plain.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.25",
+    "@palett/presets": "^0.12.26",
     "@spare/deco-colors": "workspace:^",
     "@spare/deco-date": "workspace:^",
     "@spare/deco-func": "workspace:^",
@@ -28,8 +28,8 @@
     "@typen/num-loose": "^0.2.0",
     "@typen/typ": "^0.2.0",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/object-mapper": "^0.8.0",
-    "@vect/vector-index": "^0.8.0"
+    "@vect/object-mapper": "^0.8.2",
+    "@vect/vector-index": "^0.8.2"
   },
   "repository": {
     "type": "git",

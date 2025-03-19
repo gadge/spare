@@ -1,6 +1,5 @@
-import { Presm } from '@palett/pres'
-import { rend }  from './core.js'
-import { Grad }  from './Grad.js'
+import { rend } from './core.js'
+import { Grad } from './Grad.js'
 
 export function vector(vec) {
   /** @type {Presm} */

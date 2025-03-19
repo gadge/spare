@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.16.22",
+  "version": "0.16.23",
   "description": "Color a string",
   "type": "module",
   "exports": "./index.js",
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.25",
+    "@palett/presets": "^0.12.26",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {
@@ -33,9 +33,9 @@
     "@spare/node": "workspace:^",
     "@spare/xr": "workspace:^",
     "@texting/splitter": "^0.2.3",
-    "@valjoux/strategies": "^0.4.1",
-    "@vect/object-init": "^0.8.0",
-    "@vect/object-mapper": "^0.8.0"
+    "@valjoux/strategies": "^0.4.3",
+    "@vect/object-init": "^0.8.2",
+    "@vect/object-mapper": "^0.8.2"
   },
   "repository": {
     "type": "git",

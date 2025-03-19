@@ -1,15 +1,16 @@
-import { says } from '../index.js'
+import { test } from 'node:test'
+import { says } from '../src/index.js'
 
-// test('says', () => {
-says.chef('what to do')
-says.worker('how would i know')
-says.worker('i\'ll be there tmr')
-says.tournant('anything i can do for you')
-says.aboyeur('no,\n just stand by, \nand wait for order')
-says.tournant('yes')
-says['david adjaye']('designing')
-says['  >> client']('waiting')
-says['  >> client'].p('tiktok-ing')['jacobsen']('waiting, too')
+test('says', () => {
+  says.chef('what to do')
+  says.worker('how would i know')
+  says.worker('i\'ll be there tmr')
+  says.tournant('anything i can do for you')
+  says.aboyeur('no,\n just stand by, \nand wait for order')
+  says.tournant('yes')
+  says['david adjaye']('designing')
+  says['  >> client']('waiting')
+  says['  >> client'].p('tiktok-ing')['jacobsen']('waiting, too')
 //   logger(LF + 'registered roster')
 // // says.roster() |> Deco({ vo: 1 }) |> logNeL
 //
@@ -23,5 +24,4 @@ says['  >> client'].p('tiktok-ing')['jacobsen']('waiting, too')
 //   for (let name of candidates) {
 //     logger(ros(name))
 //   }
-
-// })
+})

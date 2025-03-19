@@ -1,5 +1,5 @@
 import { test }    from 'node:test'
-import { $, says } from '../index.js'
+import { $, says } from '../src/index.js'
 
 test('xr beta', () => {
   console.log($['Ridley Scott'].p('->')['']('films')['Alien'](1979)['Blade Runner'](1982)['Thelma & Louise'](1991))

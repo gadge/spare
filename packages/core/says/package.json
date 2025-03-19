@@ -1,6 +1,6 @@
 {
   "name": "@spare/says",
-  "version": "0.16.22",
+  "version": "0.16.23",
   "description": "A debug tool",
   "type": "module",
   "exports": "./index.js",
@@ -19,20 +19,20 @@
   },
   "dependencies": {
     "@ject/callable": "^0.1.2",
-    "@palett/enum-font-effects": "^0.12.25",
-    "@palett/flopper": "^0.12.25",
+    "@palett/enum-font-effects": "^0.12.26",
+    "@palett/flopper": "^0.12.26",
     "@spare/deco-string": "workspace:^",
     "@texting/bracket": "^0.2.3",
     "@texting/enum-chars": "^0.2.3",
     "@typen/enum-data-types": "^0.2.0",
-    "@vect/object-mapper": "^0.8.0"
+    "@vect/object-mapper": "^0.8.2"
   },
   "devDependencies": {
     "@spare/deco": "workspace:^",
     "@spare/enum-loggers": "workspace:^",
     "@spare/xr": "workspace:^",
     "@texting/translator": "^0.2.3",
-    "@valjoux/timestamp-pretty": "^0.4.1"
+    "@valjoux/timestamp-pretty": "^0.4.3"
   },
   "repository": {
     "type": "git",

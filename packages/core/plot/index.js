@@ -1,4 +1,4 @@
-import { presFlopper, rhodFlopper, presShifter } from '@palett/flopper';
+import { presFlopper, rhodFlopper, presShifter, shiftFlopper, stageFlopper } from '@palett/flopper';
 import { Munsell } from '@palett/munsell';
 import { MIDTONE } from '@palett/nuance-midtone';
 import { bracket, parenth } from '@texting/bracket';
@@ -7,7 +7,7 @@ import { SYM, STR, NUM, DEF } from '@typen/enum-data-types';
 import { inspect } from 'node:util';
 import { min } from '@aryth/comparer';
 import { clearAnsi, hasAnsi } from '@texting/charset-ansi';
-import { snakeToCamel, camelToSnake } from '@texting/phrasing';
+import '@texting/phrasing';
 import { decoString } from '@spare/deco-string';
 
 class Interceptor {
@@ -46,12 +46,6 @@ function spinOff(tx) {
   if (/^\w.*\w$/.test(tx)) return [ null, tx ]
   const pos = min(//.exec(tx)?.index, /\b\w/.exec(tx)?.index);
   return pos ? [ tx.slice(0, pos), tx.slice(pos) ] : [ null, tx ]
-}
-
-function ansiOrSnake(tx) {
-  if (!tx || hasAnsi(tx)) return tx
-  if (/\s/.test(tx)) tx = snakeToCamel(tx);
-  return camelToSnake(tx)
 }
 
 class Plot {
@@ -159,49 +153,51 @@ class Roster {
   }
 }
 
-class Ros {
+class Index {
   static #midtone
-  static #flopper
-  static #camp
-  static get midtone() { return Ros.#midtone ?? (Ros.#midtone = Munsell.build(MIDTONE)) }
-  static get flopper() {return Ros.#flopper ?? (Ros.#flopper = rhodFlopper.call({ petals: 4, density: 0.2, minL: 48, munsell: Ros.midtone }))}
-  static get camp() { return Ros.#camp ?? (Ros.#camp = Roster.build(Ros.flopper)) }
-  static dispatch(tx) { return hasBrPr(tx) ? tx : bracket(Ros.camp.ac(ansiOrSnake(tx))) }
+  static get midtone() { return this.#midtone ?? (this.#midtone = Munsell.build(MIDTONE)) }
 }
 
-class Plots {
-  static #dock
-  static #loom
-  static #nein
-  static get dock() { return this.#dock ?? (this.#dock = Plot.build('', Ros.dispatch)) }
-  static get loom() { return this.#loom ?? (this.#loom = Plot.build('', Ros.dispatch)) }
-  static get nein() { return this.#nein ?? (this.#nein = Plot.build('')) }
+class Stage {
+  static #sm
+  static #ro
+  static #pl
+  static get sm() {return this.#sm ?? (this.#sm = stageFlopper.call(Index.midtone, 48))}
+  static get ro() { return this.#ro ?? (this.#ro = Roster.build(this.sm)) }
+  static get plot() { return this.#pl ?? (this.#pl = Plot.build('', this.br)) }
+  static ac(tx) { return Stage.ro.ac(tx) }
+  static br(tx) { return hasBrPr(tx) ? tx : bracket(Stage.ac(tx)) }
+}
+
+class Shift {
+  static #sm
+  static #ro
+  static #pl
+  static get sm() {return this.#sm ?? (this.#sm = shiftFlopper.call(Index.midtone))}
+  static get ro() { return this.#ro ?? (this.#ro = Roster.build(this.sm)) }
+  static get plot() { return this.#pl ?? (this.#pl = Plot.build('', Stage.br)) }
+  static ac(tx) { return Shift.ro.ac(tx) }
+  static br(tx) { return hasBrPr(tx) ? tx : bracket(Shift.ac(tx)) }
 }
 
 const Xr = Plot.build;
 
-const ros = Ros.dispatch;
+const ros = Stage.ac;
+const ac = Stage.ac;
+const ob = Shift.ac;
 
-const xr = word => Plots.dock.init(word);
+const xr = word => Stage.plot.init(word);
 
 /** @type {Object<string, Plot|((x: *) => string)>} */
-const $ = new Proxy(Plots.dock, {
+const $ = new Proxy(Shift.plot, {
   get(plot, key) {
     plot.init(key);
     return plot.recProxy
   },
 });
 
-// /** @type {Object<string, Plot|((x: *) => string)>} */
-// export const $$ = new Proxy(Plots.nein, {
-//   sign(plot, key) {
-//     plot.ini(spinOff(key))
-//     return plot.recProxy
-//   }
-// })
-
 /** @type {Object<string, Plot|((x: *) => string)>} */
-const says = new Proxy(Plots.loom, {
+const says = new Proxy(Stage.plot, {
   get(plot, key) {
     plot.init(key);
     // loom.log('>> [trap].index', '[key]', `(${String(key).padStart(12)})`, '[plot]', plot + '')
@@ -209,4 +205,4 @@ const says = new Proxy(Plots.loom, {
   },
 });
 
-export { $, Plot, Plots, Ros, Roster, Xr, ros, says, xr };
+export { $, Index, Plot, Roster, Shift, Stage, Xr, ac, ob, ros, says, xr };

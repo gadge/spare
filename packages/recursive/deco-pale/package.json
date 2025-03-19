@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-pale",
-  "version": "0.16.22",
+  "version": "0.16.23",
   "description": "Colored stringify",
   "type": "module",
   "exports": "./index.js",
@@ -27,9 +27,9 @@
     "@typen/enum-object-types": "^0.2.0",
     "@typen/num-strict": "^0.2.0",
     "@typen/typ": "^0.2.0",
-    "@valjoux/format-date": "^0.4.1",
-    "@valjoux/format-time": "^0.4.1",
-    "@vect/entries-mapper": "^0.8.0"
+    "@valjoux/format-date": "^0.4.3",
+    "@valjoux/format-time": "^0.4.3",
+    "@vect/entries-mapper": "^0.8.2"
   },
   "devDependencies": {
     "@spare/xr": "workspace:^",

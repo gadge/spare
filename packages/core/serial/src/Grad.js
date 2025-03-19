@@ -1,12 +1,12 @@
-import { modHsiTo, Presm } from '@palett/pres'
-import { hasAnsi }         from '@texting/charset-ansi'
-import { lange as len }    from '@texting/lange'
-import { value }           from '@texting/string-value'
-import { NUM }             from '@typen/enum-data-types'
-import { compare }         from './utils/compare.js'
-import { onto }            from './utils/onto.js'
-import { id, Sub }         from './utils/Sub.js'
-import { num, str }        from './utils/validate.js'
+import { modHsiTo }     from '@palett/pres'
+import { hasAnsi }      from '@texting/charset-ansi'
+import { lange as len } from '@texting/lange'
+import { value }        from '@texting/string-value'
+import { NUM }          from '@typen/enum-data-types'
+import { compare }      from './utils/compare.js'
+import { onto }         from './utils/onto.js'
+import { id, Sub }      from './utils/Sub.js'
+import { num, str }     from './utils/validate.js'
 
 const { NaN: E, Num: N, Str: S, Han: H } = Sub
 
