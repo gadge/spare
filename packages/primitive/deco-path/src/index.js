@@ -1,1 +1,1 @@
-export { pad, Fades, decoPath } from './decoPath.js'
+export { pad, Cache, Fades, decoPath, acPath } from './decoPath.js'

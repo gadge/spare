@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-matrix",
-  "version": "0.16.21",
+  "version": "0.16.22",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-matrix.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.24",
+    "@palett/presets": "^0.12.25",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {

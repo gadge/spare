@@ -1,4 +1,4 @@
-import { fadeFlopper, shiftFlopper } from '@palett/flopper';
+import { shiftFlopper, fadeFlopper } from '@palett/flopper';
 import { Munsell } from '@palett/munsell';
 import { MIDTONE } from '@palett/nuance-midtone';
 import { parsePresm } from '@spare/node';
@@ -19,11 +19,20 @@ class Cache {
 
 class Fades {
   flopper
-  constructor(munsell, count) {
-    this.flopper = fadeFlopper.call(munsell, count);
-  }
+  #curr
+  constructor(munsell, count) { this.flopper = fadeFlopper.call(munsell, count); }
   static build(count) { return new Fades(Cache.midtone, count) }
-  deco(path) { return decoPath.call(this.flopper.next().value, path) }
+  curr() { return this.#curr ?? (this.#curr = this.flopper.next().value) }
+  next() { return this.#curr = this.flopper.next().value }
+  deco(path) { return decoPath.call(this.#curr = this.flopper.next().value, path) }
+}
+
+function acPath(path) {
+  if (path in Cache.cast) return Cache.cast[path]
+  const pres = this ?? Cache.flopper.next().value;
+  const series = splitter.call(/[\\\/]+/g, path);
+  const vector = serialVector.call(parsePresm(pres), series);
+  return Cache.cast[path] = vector.join('')
 }
 
 function decoPath(path) {
@@ -33,4 +42,4 @@ function decoPath(path) {
   return vector.join('')
 }
 
-export { Fades, decoPath, pad };
+export { Cache, Fades, acPath, decoPath, pad };

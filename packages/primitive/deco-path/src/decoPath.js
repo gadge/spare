@@ -20,11 +20,12 @@ export class Cache {
 
 export class Fades {
   flopper
-  constructor(munsell, count) {
-    this.flopper = fadeFlopper.call(munsell, count)
-  }
+  #curr
+  constructor(munsell, count) { this.flopper = fadeFlopper.call(munsell, count) }
   static build(count) { return new Fades(Cache.midtone, count) }
-  deco(path) { return decoPath.call(this.flopper.next().value, path) }
+  curr() { return this.#curr ?? (this.#curr = this.flopper.next().value) }
+  next() { return this.#curr = this.flopper.next().value }
+  deco(path) { return decoPath.call(this.#curr = this.flopper.next().value, path) }
 }
 
 export function acPath(path) {

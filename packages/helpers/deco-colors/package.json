@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-colors",
-  "version": "0.16.21",
+  "version": "0.16.22",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "exports": "./index.js",
@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/cards": "^0.12.24",
-    "@palett/convert": "^0.12.24",
-    "@palett/dye": "^0.12.24",
-    "@palett/presets": "^0.12.24",
+    "@palett/cards": "^0.12.25",
+    "@palett/convert": "^0.12.25",
+    "@palett/dye": "^0.12.25",
+    "@palett/presets": "^0.12.25",
     "@spare/preset-deco": "^0.16.16",
     "@vect/object-mapper": "^0.8.0"
   },

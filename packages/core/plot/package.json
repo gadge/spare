@@ -1,6 +1,6 @@
 {
   "name": "@spare/plot",
-  "version": "0.16.21",
+  "version": "0.16.22",
   "description": "Chain key-value pairs for prettified log",
   "type": "module",
   "exports": "./index.js",
@@ -18,10 +18,10 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.7.6",
-    "@palett/flopper": "^0.12.24",
-    "@palett/munsell": "^0.12.24",
-    "@palett/nuance-midtone": "^0.12.24",
+    "@aryth/comparer": "^0.7.7",
+    "@palett/flopper": "^0.12.25",
+    "@palett/munsell": "^0.12.25",
+    "@palett/nuance-midtone": "^0.12.25",
     "@spare/deco-string": "workspace:^",
     "@texting/bracket": "^0.2.3",
     "@texting/charset-ansi": "^0.2.3",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.16.21",
+  "version": "0.16.22",
   "description": "Color a string",
   "type": "module",
   "exports": "./index.js",
@@ -18,12 +18,12 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.24",
+    "@palett/presets": "^0.12.25",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {
-    "@aryth/rand": "^0.7.6",
-    "@aryth/rank-vector": "^0.7.6",
+    "@aryth/rand": "^0.7.7",
+    "@aryth/rank-vector": "^0.7.7",
     "@foba/object-string": "^0.6.1",
     "@foba/quotes-creativity": "^0.6.1",
     "@foba/util": "^0.6.1",
