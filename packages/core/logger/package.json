@@ -1,6 +1,6 @@
 {
   "name": "@spare/logger",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",

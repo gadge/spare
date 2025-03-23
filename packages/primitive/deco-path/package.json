@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-path",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "Colored stringify path",
   "type": "module",
   "exports": "./index.js",
@@ -18,9 +18,9 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/flopper": "^0.12.26",
-    "@palett/munsell": "^0.12.26",
-    "@palett/nuance-midtone": "^0.12.26",
+    "@palett/flopper": "^0.12.27",
+    "@palett/munsell": "^0.12.27",
+    "@palett/nuance-midtone": "^0.12.27",
     "@spare/node": "workspace:^",
     "@spare/serial": "workspace:^",
     "@texting/splitter": "^0.2.3"

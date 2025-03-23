@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-crostab",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/deco-crostab.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.26",
+    "@palett/presets": "^0.12.27",
     "@spare/deco-table": "workspace:^",
     "@spare/node": "workspace:^",
     "@texting/enum-chars": "^0.2.3"
@@ -27,7 +27,7 @@
     "@spare/xr": "workspace:^",
     "@typen/num-strict": "^0.2.0",
     "@valjoux/timestamp-pretty": "^0.4.3",
-    "@vect/vector-index": "^0.8.2"
+    "@vect/vector-index": "^0.8.5"
   },
   "repository": {
     "type": "git",

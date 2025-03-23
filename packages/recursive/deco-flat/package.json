@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-flat",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "Colored stringify",
   "type": "module",
   "exports": "./index.js",
@@ -18,7 +18,7 @@
     "test": "node -r @babel/register test/test.index.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.26",
+    "@palett/presets": "^0.12.27",
     "@spare/deco-colors": "workspace:^",
     "@spare/deco-date": "workspace:^",
     "@spare/deco-func": "workspace:^",
@@ -27,7 +27,7 @@
     "@typen/enum-object-types": "^0.2.0",
     "@typen/num-loose": "^0.2.0",
     "@typen/typ": "^0.2.0",
-    "@vect/object-mapper": "^0.8.2"
+    "@vect/object-mapper": "^0.8.5"
   },
   "repository": {
     "type": "git",

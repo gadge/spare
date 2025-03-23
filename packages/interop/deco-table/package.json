@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-table",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -18,13 +18,13 @@
     "test": "node -r @babel/register test/deco-table.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.26",
+    "@palett/presets": "^0.12.27",
     "@spare/node": "workspace:^",
     "@spare/serial": "workspace:^",
     "@texting/enum-chars": "^0.2.3",
     "@vect/enum-matrix-directions": "^0.6.13",
-    "@vect/matrix-index": "^0.8.2",
-    "@vect/vector-init": "^0.8.2"
+    "@vect/matrix-index": "^0.8.5",
+    "@vect/vector-init": "^0.8.5"
   },
   "repository": {
     "type": "git",

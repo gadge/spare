@@ -1,6 +1,6 @@
 {
   "name": "@spare/markdown",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "Markdown table formatter",
   "type": "module",
   "exports": "./index.js",
@@ -24,7 +24,7 @@
     "@spare/table-padder": "^0.16.16",
     "@texting/enum-chars": "^0.2.3",
     "@texting/liner": "^0.2.3",
-    "@vect/matrix": "^0.8.2"
+    "@vect/matrix": "^0.8.5"
   },
   "repository": {
     "type": "git",

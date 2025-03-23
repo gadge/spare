@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-vector",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -18,14 +18,14 @@
     "test": "node -r @babel/register test/deco-vector.test.js"
   },
   "dependencies": {
-    "@palett/presets": "^0.12.26",
+    "@palett/presets": "^0.12.27",
     "@spare/node": "workspace:^"
   },
   "devDependencies": {
     "@texting/enum-chars": "^0.2.3",
     "@texting/string-value": "^0.2.3",
     "@valjoux/timestamp-pretty": "^0.4.3",
-    "@vect/object-mapper": "^0.8.2"
+    "@vect/object-mapper": "^0.8.5"
   },
   "repository": {
     "type": "git",

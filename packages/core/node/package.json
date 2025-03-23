@@ -1,6 +1,6 @@
 {
   "name": "@spare/node",
-  "version": "0.16.23",
+  "version": "0.16.24",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "exports": "./index.js",
@@ -19,20 +19,20 @@
   },
   "dependencies": {
     "@aryth/comparer": "^0.7.7",
-    "@palett/convert": "^0.12.26",
-    "@palett/enum-ansi-codes": "^0.12.26",
-    "@palett/pres": "^0.12.26",
-    "@palett/util-ansi": "^0.12.26",
+    "@palett/convert": "^0.12.27",
+    "@palett/enum-ansi-codes": "^0.12.27",
+    "@palett/pres": "^0.12.27",
+    "@palett/util-ansi": "^0.12.27",
     "@spare/serial": "workspace:^",
     "@texting/enum-brackets": "^0.2.3",
     "@texting/enum-chars": "^0.2.3",
     "@texting/lange": "^0.2.3",
     "@texting/splitter": "^0.2.3",
     "@typen/enum-data-types": "^0.2.0",
-    "@vect/matrix-index": "^0.8.2"
+    "@vect/matrix-index": "^0.8.5"
   },
   "devDependencies": {
-    "@vect/vector-zipper": "^0.8.2"
+    "@vect/vector-zipper": "^0.8.5"
   },
   "repository": {
     "type": "git",
