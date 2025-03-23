@@ -1,6 +1,6 @@
 {
   "name": "@spare/csv",
-  "version": "0.16.24",
+  "version": "0.16.25",
   "description": "Csv table formatter",
   "type": "module",
   "exports": "./index.js",
@@ -22,7 +22,8 @@
     "@spare/table-padder": "^0.16.16",
     "@texting/enum-chars": "^0.2.3",
     "@texting/liner": "^0.2.3",
-    "@vect/matrix": "^0.8.5"
+    "@vect/matrix-mapper": "^0.8.5",
+    "@vect/matrix-index": "^0.8.5"
   },
   "devDependencies": {
     "@spare/deco": "workspace:^",

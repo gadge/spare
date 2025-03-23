@@ -1,6 +1,6 @@
 {
   "name": "@spare/node",
-  "version": "0.16.24",
+  "version": "0.16.25",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "exports": "./index.js",
@@ -18,11 +18,11 @@
     "test": "node --test ./test/deca.plain.test.js"
   },
   "dependencies": {
-    "@aryth/comparer": "^0.7.7",
-    "@palett/convert": "^0.12.27",
-    "@palett/enum-ansi-codes": "^0.12.27",
-    "@palett/pres": "^0.12.27",
-    "@palett/util-ansi": "^0.12.27",
+    "@aryth/comparer": "^0.7.8",
+    "@palett/convert": "^0.12.28",
+    "@palett/enum-ansi-codes": "^0.12.28",
+    "@palett/pres": "^0.12.28",
+    "@palett/util-ansi": "^0.12.28",
     "@spare/serial": "workspace:^",
     "@texting/enum-brackets": "^0.2.3",
     "@texting/enum-chars": "^0.2.3",

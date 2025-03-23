@@ -1,7 +1,8 @@
-import { AEU, LF }      from '@texting/enum-chars'
-import { tableMargin }  from '@spare/table-margin'
-import { tablePadder }  from '@spare/table-padder'
-import { mutate, size } from '@vect/matrix'
+import { tableMargin } from '@spare/table-margin'
+import { tablePadder } from '@spare/table-padder'
+import { AEU, LF }     from '@texting/enum-chars'
+import { size }        from '@vect/matrix-index'
+import { mutate }      from '@vect/matrix-mapper'
 
 export class Csv {
   /***

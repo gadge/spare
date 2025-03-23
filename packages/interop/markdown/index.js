@@ -4,7 +4,7 @@ import { RTSP, LF, AEU } from '@texting/enum-chars';
 import { liner } from '@texting/liner';
 import { tableMargin } from '@spare/table-margin';
 import { tablePadder } from '@spare/table-padder';
-import { size } from '@vect/matrix';
+import { size } from '@vect/matrix-index';
 
 class Markdown {
 

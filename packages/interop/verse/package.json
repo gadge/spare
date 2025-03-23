@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.16.24",
+  "version": "0.16.25",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/verse.test.js"
   },
   "dependencies": {
-    "@analys/crostab-init": "^0.7.3",
-    "@analys/table-init": "^0.7.3",
+    "@analys/crostab-init": "^0.7.4",
+    "@analys/table-init": "^0.7.4",
     "@spare/deco-entries": "workspace:^",
     "@spare/deco-matrix": "workspace:^",
     "@spare/deco-object": "workspace:^",
