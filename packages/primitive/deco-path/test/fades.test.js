@@ -1,5 +1,6 @@
-import { test }   from 'node:test'
-import { ac, ob } from '../src/index.js'
+import { distinct } from '@vect/vector-select'
+import { test }     from 'node:test'
+import { Fades }    from '../src/decoPath.js'
 
 const CANDIDATES = [
   'C:\\Users\\times\\Dev\\spare>',
@@ -14,10 +15,14 @@ const CANDIDATES = [
   'C:\\Users\\times\\Dev\\vect>',
   'C:\\Users\\times\\Dev\\crostab>',
   'C:\\Users\\times\\Dev\\valjoux>',
+  'C:\\Users\\times\\Dev\\valjoux>',
+  'C:\\Users\\times\\Dev\\valjoux>',
 ]
 
-test('decoPath', () => {
+test('fades', () => {
+  const fades = Fades.from(distinct(CANDIDATES))
+  console.log(fades.length)
   for (let path of CANDIDATES) {
-    console.log(ac(path))
+    console.log(fades.ac(path))
   }
 })

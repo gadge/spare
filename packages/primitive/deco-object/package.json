@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-object",
-  "version": "0.16.25",
+  "version": "0.16.26",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -39,7 +39,7 @@
   "homepage": "https://github.com/gadge/spare#readme",
   "gitHead": "013714aadebaa9af337026663bf023dd382725c7",
   "devDependencies": {
-    "@texting/enum-chars": "^0.2.3",
-    "@vect/object-mapper": "^0.8.5"
+    "@texting/enum-chars": "^0.2.6",
+    "@vect/object-mapper": "^0.8.6"
   }
 }

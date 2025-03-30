@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-pale",
-  "version": "0.16.25",
+  "version": "0.16.26",
   "description": "Colored stringify",
   "type": "module",
   "exports": "./index.js",
@@ -19,21 +19,21 @@
   },
   "dependencies": {
     "@spare/deco-func": "workspace:^",
-    "@texting/bracket": "^0.2.3",
-    "@texting/cite": "^0.2.3",
-    "@texting/enum-chars": "^0.2.3",
-    "@texting/quote": "^0.2.3",
+    "@texting/bracket": "^0.2.6",
+    "@texting/cite": "^0.2.6",
+    "@texting/enum-chars": "^0.2.6",
+    "@texting/quote": "^0.2.6",
     "@typen/enum-data-types": "^0.2.0",
     "@typen/enum-object-types": "^0.2.0",
     "@typen/num-strict": "^0.2.0",
     "@typen/typ": "^0.2.0",
     "@valjoux/format-date": "^0.4.4",
     "@valjoux/format-time": "^0.4.4",
-    "@vect/entries-mapper": "^0.8.5"
+    "@vect/entries-mapper": "^0.8.6"
   },
   "devDependencies": {
     "@spare/xr": "workspace:^",
-    "@texting/enum-quotes": "^0.2.3"
+    "@texting/enum-quotes": "^0.2.6"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/logger",
-  "version": "0.16.25",
+  "version": "0.16.26",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -31,7 +31,7 @@
     "@spare/deco-table": "workspace:^",
     "@spare/deco-vector": "workspace:^",
     "@spare/plot": "workspace:^",
-    "@texting/enum-chars": "^0.2.3"
+    "@texting/enum-chars": "^0.2.6"
   },
   "repository": {
     "type": "git",

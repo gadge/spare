@@ -1,8 +1,8 @@
-import { COSP, LF, SP }                                 from '@texting/enum-chars'
-import { DEF, NUM, STR, SYM }                           from '@typen/enum-data-types'
-import { inspect }                                      from 'node:util'
-import { Interceptor }                                  from './Interceptor.js'
-import { carveIndent, retBracket, retParenth, spinOff } from './string-util.js'
+import { COSP, LF, SP }                         from '@texting/enum-chars'
+import { DEF, NUM, STR, SYM }                   from '@typen/enum-data-types'
+import { inspect }                              from 'node:util'
+import { Interceptor }                          from './Interceptor.js'
+import { carveIndent, retBra, retPar, spinOff } from './string-util.js'
 
 export class Plot {
   /** @type {Proxy<Object|Plot>}                */ #proxy
@@ -10,14 +10,14 @@ export class Plot {
   /** @type {Proxy<Object|((xs: *) => string)>} */ #recProxy
   /** @type {string}          */ #intro = ''
   /** @type {Array<string>}   */ #queue = []
-  /** @type {(key:*)=>string} */ #keyFn = retBracket
-  /** @type {(val:*)=>string} */ #valFn = retParenth
+  /** @type {(key:*)=>string} */ #key = retBra
+  /** @type {(val:*)=>string} */ #val = retPar
   /** @type {()=>string}  */ #stamp = null
 
   constructor(title, key, val) {
     this.init(title)
-    if (key) this.#keyFn = key
-    if (val) this.#valFn = val
+    if (key) this.#key = key
+    if (val) this.#val = val
   }
 
   static build(text, keyFn, valFn) { return new Plot(text, keyFn, valFn) }
@@ -29,7 +29,7 @@ export class Plot {
   init(key) {
     this.flush()
     const [ intro, name ] = spinOff(key) // console.log(`>> [ini].call [intro] (${intro}) [value] (${value})`)
-    if (intro) this.#intro = intro
+    this.#intro = intro
     if (name) this.reg(name)
     return this.recProxy
   }
@@ -44,11 +44,11 @@ export class Plot {
     console.log(this.toString())
     return this.#logProxy
   }
-  reg(k) { return this.#queue.push(this.#keyFn(k)), this.proxy }
-  rec(...xs) { return this.#queue.push(this.#valFn(xs.join(COSP))), this.proxy }
-  br(x) { return this.#queue.push(this.#keyFn(x)), this.proxy }
-  pr(...xs) { return this.#queue.push(xs.map(this.#valFn, this).join(COSP)), this.proxy }
-  p(...xs) { return this.#queue.push(this.#valFn(xs.join(COSP))), this.proxy }
+  reg(k) { return this.#queue.push(this.#key(k)), this.proxy }
+  rec(...xs) { return this.#queue.push(this.#val(xs.join(COSP))), this.proxy }
+  br(x) { return this.#queue.push(this.#key(x)), this.proxy }
+  pr(...xs) { return this.#queue.push(xs.map(this.#val, this).join(COSP)), this.proxy }
+  p(...xs) { return this.#queue.push(this.#val(xs.join(COSP))), this.proxy }
 
   render(x) {
     const tx = typeof x === STR ? x : typeof x === SYM ? x.description : x + ''
@@ -58,9 +58,8 @@ export class Plot {
   }
 
   toString() {
-    // console.log('intro', `(${this.#intro})`, 'queue', `(${this.#queue})`)
     let intro = this.#intro ?? ''
-    if (this.#stamp) intro += (/\s$/.test(intro) ? '' : SP) + this.#stamp()
+    if (this.#stamp) intro += (!intro?.length || /\s$/.test(intro) ? '' : SP) + this.#stamp() + SP
     return intro + this.#queue.map(this.render, this).join(SP) // + (/\s$/.test(intro) ? '' : SP) +
   }
 

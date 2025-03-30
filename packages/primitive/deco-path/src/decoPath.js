@@ -3,6 +3,7 @@ import { Munsell }                                 from '@palett/munsell'
 import { MIDTONE }                                 from '@palett/nuance-midtone'
 import { parsePresm }                              from '@spare/node'
 import { serialVector }                            from '@spare/serial'
+import { hasAnsi }                                 from '@texting/charset-ansi'
 import { splitter }                                from '@texting/splitter'
 
 
@@ -33,11 +34,19 @@ export class Local {
 export class Fades {
   flopper
   #curr
-  constructor(munsell, count) { this.flopper = fadeFlopper.call(munsell, count) }
+  #cast = {}
+  #length
+  constructor(munsell, count) {
+    this.#length = count
+    this.flopper = fadeFlopper.call(munsell, count)
+  }
+  static from(arrayLike) { return new Fades(Index.midtone, arrayLike.length) }
   static build(count) { return new Fades(Index.midtone, count) }
-  curr() { return this.#curr ?? (this.#curr = this.flopper.next().value) }
+  get length() { return this.#length }
+  curr() { return this.#curr ?? (this.#curr = this.next()) }
   next() { return this.#curr = this.flopper.next().value }
-  deco(path) { return decoPath.call(this.#curr = this.flopper.next().value, path) }
+  deco(path) { return this.#cast[path] = decoPath.call(this.next(), path) }
+  ac(name) { return !name?.length ? null : hasAnsi(name) ? name : this.#cast[name] ?? this.deco(name) }
 }
 
 export function ac(path) { return decoPath.call(Stage.next(), path) }

@@ -2,8 +2,8 @@ import { presFlopper, rhodFlopper, presShifter, shiftFlopper, stageFlopper } fro
 import { Munsell } from '@palett/munsell';
 import { MIDTONE } from '@palett/nuance-midtone';
 import { bracket, parenth } from '@texting/bracket';
+import { SYM, STR, NUM, DEF, FUN } from '@typen/enum-data-types';
 import { COSP, LF, SP } from '@texting/enum-chars';
-import { SYM, STR, NUM, DEF } from '@typen/enum-data-types';
 import { inspect } from 'node:util';
 import { min } from '@aryth/comparer';
 import { clearAnsi, hasAnsi } from '@texting/charset-ansi';
@@ -30,11 +30,11 @@ class Interceptor {
   }
 }
 
-function hasBrPr(tx) { return /^\s*[(\[{].*[)\]}]\s*$/.test(hasAnsi(tx) ? clearAnsi(tx) : tx) }
+function hasEnc(tx) { return /^\s*[(\[{].*[)\]}]\s*$/.test(hasAnsi(tx) ? clearAnsi(tx) : tx) }
 
-function retBracket(tx) { return hasBrPr(typeof tx === SYM ? tx.description : tx) ? tx : bracket(tx) }
+function retBra(tx) { return hasEnc(typeof tx === SYM ? tx.description : tx) ? tx : bracket(tx) }
 
-function retParenth(tx) { return hasBrPr(typeof tx === SYM ? tx.description : tx) ? tx : parenth(tx) }
+function retPar(tx) { return hasEnc(typeof tx === SYM ? tx.description : tx) ? tx : parenth(tx) }
 
 function carveIndent(tx) {
   let ms, ph;
@@ -54,14 +54,14 @@ class Plot {
   /** @type {Proxy<Object|((xs: *) => string)>} */ #recProxy
   /** @type {string}          */ #intro = ''
   /** @type {Array<string>}   */ #queue = []
-  /** @type {(key:*)=>string} */ #keyFn = retBracket
-  /** @type {(val:*)=>string} */ #valFn = retParenth
+  /** @type {(key:*)=>string} */ #key = retBra
+  /** @type {(val:*)=>string} */ #val = retPar
   /** @type {()=>string}  */ #stamp = null
 
   constructor(title, key, val) {
     this.init(title);
-    if (key) this.#keyFn = key;
-    if (val) this.#valFn = val;
+    if (key) this.#key = key;
+    if (val) this.#val = val;
   }
 
   static build(text, keyFn, valFn) { return new Plot(text, keyFn, valFn) }
@@ -73,7 +73,7 @@ class Plot {
   init(key) {
     this.flush();
     const [ intro, name ] = spinOff(key); // console.log(`>> [ini].call [intro] (${intro}) [value] (${value})`)
-    if (intro) this.#intro = intro;
+    this.#intro = intro;
     if (name) this.reg(name);
     return this.recProxy
   }
@@ -88,11 +88,11 @@ class Plot {
     console.log(this.toString());
     return this.#logProxy
   }
-  reg(k) { return this.#queue.push(this.#keyFn(k)), this.proxy }
-  rec(...xs) { return this.#queue.push(this.#valFn(xs.join(COSP))), this.proxy }
-  br(x) { return this.#queue.push(this.#keyFn(x)), this.proxy }
-  pr(...xs) { return this.#queue.push(xs.map(this.#valFn, this).join(COSP)), this.proxy }
-  p(...xs) { return this.#queue.push(this.#valFn(xs.join(COSP))), this.proxy }
+  reg(k) { return this.#queue.push(this.#key(k)), this.proxy }
+  rec(...xs) { return this.#queue.push(this.#val(xs.join(COSP))), this.proxy }
+  br(x) { return this.#queue.push(this.#key(x)), this.proxy }
+  pr(...xs) { return this.#queue.push(xs.map(this.#val, this).join(COSP)), this.proxy }
+  p(...xs) { return this.#queue.push(this.#val(xs.join(COSP))), this.proxy }
 
   render(x) {
     const tx = typeof x === STR ? x : typeof x === SYM ? x.description : x + '';
@@ -102,9 +102,8 @@ class Plot {
   }
 
   toString() {
-    // console.log('intro', `(${this.#intro})`, 'queue', `(${this.#queue})`)
     let intro = this.#intro ?? '';
-    if (this.#stamp) intro += (/\s$/.test(intro) ? '' : SP) + this.#stamp();
+    if (this.#stamp) intro += (!intro?.length || /\s$/.test(intro) ? '' : SP) + this.#stamp() + SP;
     return intro + this.#queue.map(this.render, this).join(SP) // + (/\s$/.test(intro) ? '' : SP) +
   }
 
@@ -142,9 +141,9 @@ class Roster {
 
   cast() { return this.#cast }
 
-  reg(name) {
-    return this.#cast[name] = decoString.call(this.#pool.next().value, String(name))
-  }
+  next() { return this.#pool.next().value }
+
+  reg(name) { return this.#cast[name] = decoString.call(this.next(), String(name)) }
 
   ac(name) {
     if (!name?.length) return null
@@ -166,7 +165,7 @@ class Stage {
   static get ro() { return this.#ro ?? (this.#ro = Roster.build(this.sm)) }
   static get plot() { return this.#pl ?? (this.#pl = Plot.build('', this.br)) }
   static ac(tx) { return Stage.ro.ac(tx) }
-  static br(tx) { return hasBrPr(tx) ? tx : bracket(Stage.ac(tx)) }
+  static br(tx) { return hasEnc(tx) ? tx : bracket(Stage.ac(tx)) }
 }
 
 class Shift {
@@ -177,7 +176,7 @@ class Shift {
   static get ro() { return this.#ro ?? (this.#ro = Roster.build(this.sm)) }
   static get plot() { return this.#pl ?? (this.#pl = Plot.build('', Stage.br)) }
   static ac(tx) { return Shift.ro.ac(tx) }
-  static br(tx) { return hasBrPr(tx) ? tx : bracket(Shift.ac(tx)) }
+  static br(tx) { return hasEnc(tx) ? tx : bracket(Shift.ac(tx)) }
 }
 
 const Xr = Plot.build;
@@ -200,6 +199,8 @@ const $ = new Proxy(Shift.plot, {
 const says = new Proxy(Stage.plot, {
   get(plot, key) {
     plot.init(key);
+    let item;
+    if (key in plot && (item = plot[key])) return typeof item === FUN ? item.bind(plot) : item
     // loom.log('>> [trap].index', '[key]', `(${String(key).padStart(12)})`, '[plot]', plot + '')
     return plot.logProxy
   },

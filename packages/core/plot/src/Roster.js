@@ -23,9 +23,9 @@ export class Roster {
 
   cast() { return this.#cast }
 
-  reg(name) {
-    return this.#cast[name] = decoString.call(this.#pool.next().value, String(name))
-  }
+  next() { return this.#pool.next().value }
+
+  reg(name) { return this.#cast[name] = decoString.call(this.next(), String(name)) }
 
   ac(name) {
     if (!name?.length) return null

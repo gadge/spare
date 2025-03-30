@@ -21,5 +21,5 @@ test('simple test', () => {
       [ 0, 0, 0 ]
     ]
   }
-  says['  -- MasterIO'].br('crostab')[''](decoCrostab(crostab))
+  says['  -- MasterIO'](decoCrostab(crostab))
 })

@@ -4,11 +4,11 @@ import { clearAnsi, hasAnsi }         from '@texting/charset-ansi'
 import { camelToSnake, snakeToCamel } from '@texting/phrasing'
 import { SYM }                        from '@typen/enum-data-types'
 
-export function hasBrPr(tx) { return /^\s*[(\[{].*[)\]}]\s*$/.test(hasAnsi(tx) ? clearAnsi(tx) : tx) }
+export function hasEnc(tx) { return /^\s*[(\[{].*[)\]}]\s*$/.test(hasAnsi(tx) ? clearAnsi(tx) : tx) }
 
-export function retBracket(tx) { return hasBrPr(typeof tx === SYM ? tx.description : tx) ? tx : bracket(tx) }
+export function retBra(tx) { return hasEnc(typeof tx === SYM ? tx.description : tx) ? tx : bracket(tx) }
 
-export function retParenth(tx) { return hasBrPr(typeof tx === SYM ? tx.description : tx) ? tx : parenth(tx) }
+export function retPar(tx) { return hasEnc(typeof tx === SYM ? tx.description : tx) ? tx : parenth(tx) }
 
 export function trimInit(tx) { return tx.replace(/^ +/, '') }
 

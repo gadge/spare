@@ -1,6 +1,6 @@
 {
   "name": "@spare/verse",
-  "version": "0.16.25",
+  "version": "0.16.26",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -26,9 +26,9 @@
     "@spare/deco-samples": "workspace:^",
     "@spare/deco-vector": "workspace:^",
     "@spare/preset-verse": "^0.16.16",
-    "@texting/bracket": "^0.2.3",
-    "@texting/enum-brackets": "^0.2.3",
-    "@texting/liner": "^0.2.3"
+    "@texting/bracket": "^0.2.6",
+    "@texting/enum-brackets": "^0.2.6",
+    "@texting/liner": "^0.2.6"
   },
   "devDependencies": {
     "@spare/deco": "workspace:^",

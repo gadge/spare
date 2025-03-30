@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-func",
-  "version": "0.16.25",
+  "version": "0.16.26",
   "description": "Colored stringify date",
   "type": "module",
   "exports": "./index.js",
@@ -20,10 +20,10 @@
   "dependencies": {
     "@palett/cards": "^0.12.28",
     "@palett/dye": "^0.12.28",
-    "@texting/bracket": "^0.2.3",
-    "@texting/enum-chars": "^0.2.3",
-    "@texting/lange": "^0.2.3",
-    "@texting/translator": "^0.2.3"
+    "@texting/bracket": "^0.2.6",
+    "@texting/enum-chars": "^0.2.6",
+    "@texting/lange": "^0.2.6",
+    "@texting/translator": "^0.2.6"
   },
   "devDependencies": {
     "@ject/rename": "^0.1.1",

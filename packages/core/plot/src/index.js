@@ -2,9 +2,10 @@ import { shiftFlopper, stageFlopper } from '@palett/flopper'
 import { Munsell }                    from '@palett/munsell'
 import { MIDTONE }                    from '@palett/nuance-midtone'
 import { bracket }                    from '@texting/bracket'
+import { FUN }                        from '@typen/enum-data-types'
 import { Plot }                       from './Plot.js'
-import { Roster }                     from './Roster.js'
-import { hasBrPr }                    from './string-util.js'
+import { Roster } from './Roster.js'
+import { hasEnc } from './string-util.js'
 
 export { Plot, Roster }
 
@@ -21,7 +22,7 @@ export class Stage {
   static get ro() { return this.#ro ?? (this.#ro = Roster.build(this.sm)) }
   static get plot() { return this.#pl ?? (this.#pl = Plot.build('', this.br)) }
   static ac(tx) { return Stage.ro.ac(tx) }
-  static br(tx) { return hasBrPr(tx) ? tx : bracket(Stage.ac(tx)) }
+  static br(tx) { return hasEnc(tx) ? tx : bracket(Stage.ac(tx)) }
 }
 
 export class Shift {
@@ -32,7 +33,7 @@ export class Shift {
   static get ro() { return this.#ro ?? (this.#ro = Roster.build(this.sm)) }
   static get plot() { return this.#pl ?? (this.#pl = Plot.build('', Stage.br)) }
   static ac(tx) { return Shift.ro.ac(tx) }
-  static br(tx) { return hasBrPr(tx) ? tx : bracket(Shift.ac(tx)) }
+  static br(tx) { return hasEnc(tx) ? tx : bracket(Shift.ac(tx)) }
 }
 
 export const Xr = Plot.build
@@ -55,6 +56,8 @@ export const $ = new Proxy(Shift.plot, {
 export const says = new Proxy(Stage.plot, {
   get(plot, key) {
     plot.init(key)
+    let item
+    if (key in plot && (item = plot[key])) return typeof item === FUN ? item.bind(plot) : item
     // loom.log('>> [trap].index', '[key]', `(${String(key).padStart(12)})`, '[plot]', plot + '')
     return plot.logProxy
   },

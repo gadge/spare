@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-path",
-  "version": "0.16.25",
+  "version": "0.16.26",
   "description": "Colored stringify path",
   "type": "module",
   "exports": "./index.js",
@@ -23,7 +23,8 @@
     "@palett/nuance-midtone": "^0.12.28",
     "@spare/node": "workspace:^",
     "@spare/serial": "workspace:^",
-    "@texting/splitter": "^0.2.3"
+    "@texting/charset-ansi": "^0.2.6",
+    "@texting/splitter": "^0.2.6"
   },
   "repository": {
     "type": "git",
