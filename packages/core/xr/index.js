@@ -60,6 +60,7 @@ class Plot extends Function {
   flush() {
     this.#intro = '';
     this.#queue.length = 0;
+    this.#indexer = null;
   }
 
   att(info) { return this.#stamp = info, this.#indexer }
@@ -71,7 +72,7 @@ class Plot extends Function {
   }
   ini(k) {
     // this.flush()
-    const [ intro, name ] = spinOff(k);
+    const [intro, name] = spinOff(k);
     // console.log(`>> [ini].call [intro] (${intro ?? ''}) [name] (${name})`)
     if (intro?.length) this.#intro = intro;
     if (name) this.#queue.push(this.#key(name));
@@ -100,7 +101,9 @@ class Plot extends Function {
     switch (type) {
       case STR:
       case DEF:
-        return this.toString()
+        const output = this.toString();
+        this.flush();
+        return output
       case NUM:
         return this.#queue.length
       default:
@@ -184,7 +187,7 @@ const $ = new Proxy(Plots.loom, {
 const says = new Proxy(Plots.port, {
   get(plot, key, proxy) {
     if (!plot.indexer) plot.load(proxy);
-    // console.log('>> [trap].index', '[key]', `(${symOrStr(key)})`, '[target]', plot, `([${symOrStr(key)}] in plot)`, key in plot)
+    // console.log('>> [trap].index', '[key]', `(${(key)})`, '[target]', plot, `([${(key)}] in plot)`, key in plot)
     if (key in plot) { return plot[key].bind(plot) }
     plot.length ? plot.reg(key) : plot.ini(key);
     return plot.log.bind(plot)

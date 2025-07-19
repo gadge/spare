@@ -1,6 +1,6 @@
 {
   "name": "@spare/enum-loggers",
-  "version": "0.16.26",
+  "version": "0.16.27",
   "description": "String quotes",
   "type": "module",
   "exports": "./index.js",

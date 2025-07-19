@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco",
-  "version": "0.16.26",
+  "version": "0.16.27",
   "description": "A light and simple console debug tool.",
   "type": "module",
   "exports": "./index.js",

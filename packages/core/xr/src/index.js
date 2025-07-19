@@ -46,7 +46,7 @@ export const $ = new Proxy(Plots.loom, {
 export const says = new Proxy(Plots.port, {
   get(plot, key, proxy) {
     if (!plot.indexer) plot.load(proxy)
-    // console.log('>> [trap].index', '[key]', `(${symOrStr(key)})`, '[target]', plot, `([${symOrStr(key)}] in plot)`, key in plot)
+    // console.log('>> [trap].index', '[key]', `(${(key)})`, '[target]', plot, `([${(key)}] in plot)`, key in plot)
     if (key in plot) { return plot[key].bind(plot) }
     plot.length ? plot.reg(key) : plot.ini(key)
     return plot.log.bind(plot)

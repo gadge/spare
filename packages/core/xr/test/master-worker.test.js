@@ -1,25 +1,24 @@
 import { deco as decoCrostab } from '@spare/deco-crostab'
 import { deco as decoMatrix }  from '@spare/deco-matrix'
-
-import { test }    from 'node:test'
-import { $, says } from '../index.js'
-
+import { test }                from 'node:test'
+import { $, says }             from '../src/index.js'
 
 test('simple test', () => {
   says['MasterIO'](1080)
   says['>> MasterIO'](2560)
   says['  MasterIO'](3840)
 
-  says['MasterIO']($['x'](24)['y'](16))
-  says['  >> MasterIO'](decoMatrix([ [ 1, 2, 3 ] ]))
+  says['MasterIO']($['a'](8)['b'](16))
+  says['MasterIO']($['c'](32)['d'](64))
+  says['  >> MasterIO'](decoMatrix([[1, 2, 3]]))
   const crostab = {
-    side: [ '1', '2', '3' ],
-    head: [ 'A', 'B', 'C' ],
+    side: ['1', '2', '3'],
+    head: ['A', 'B', 'C'],
     rows: [
-      [ 0, 0, 0 ],
-      [ 0, 0, 0 ],
-      [ 0, 0, 0 ]
-    ]
+      [1, 0, 0],
+      [0, 10, 0],
+      [0, 0, 100],
+    ],
   }
   says['    << MasterIO'](decoCrostab(crostab))
 })

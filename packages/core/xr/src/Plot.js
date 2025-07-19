@@ -30,6 +30,7 @@ export class Plot extends Function {
   flush() {
     this.#intro = ''
     this.#queue.length = 0
+    this.#indexer = null
   }
 
   att(info) { return this.#stamp = info, this.#indexer }
@@ -41,7 +42,7 @@ export class Plot extends Function {
   }
   ini(k) {
     // this.flush()
-    const [ intro, name ] = spinOff(k)
+    const [intro, name] = spinOff(k)
     // console.log(`>> [ini].call [intro] (${intro ?? ''}) [name] (${name})`)
     if (intro?.length) this.#intro = intro
     if (name) this.#queue.push(this.#key(name))
@@ -70,7 +71,9 @@ export class Plot extends Function {
     switch (type) {
       case STR:
       case DEF:
-        return this.toString()
+        const output = this.toString()
+        this.flush()
+        return output
       case NUM:
         return this.#queue.length
       default:
@@ -83,9 +86,3 @@ export class Plot extends Function {
     return output
   }
 }
-
-
-
-
-
-

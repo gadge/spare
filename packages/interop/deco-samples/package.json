@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-samples",
-  "version": "0.16.26",
+  "version": "0.16.27",
   "description": "A debugging tool",
   "type": "module",
   "exports": "./index.js",
@@ -18,8 +18,8 @@
     "test": "node -r @babel/register test/deco-samples.test.js"
   },
   "dependencies": {
-    "@analys/convert": "^0.7.4",
-    "@analys/samples-select": "^0.7.4",
+    "@analys/convert": "^0.7.5",
+    "@analys/samples-select": "^0.7.5",
     "@palett/presets": "^0.12.28",
     "@spare/node": "workspace:^",
     "@spare/serial": "workspace:^",
