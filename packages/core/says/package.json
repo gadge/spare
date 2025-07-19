@@ -1,6 +1,6 @@
 {
   "name": "@spare/says",
-  "version": "0.16.27",
+  "version": "0.16.28",
   "description": "A debug tool",
   "type": "module",
   "exports": "./index.js",

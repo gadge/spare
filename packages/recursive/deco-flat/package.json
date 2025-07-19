@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-flat",
-  "version": "0.16.27",
+  "version": "0.16.28",
   "description": "Colored stringify",
   "type": "module",
   "exports": "./index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@spare/plot",
-  "version": "0.16.27",
+  "version": "0.16.28",
   "description": "Chain key-value pairs for prettified log",
   "type": "module",
   "exports": "./index.js",

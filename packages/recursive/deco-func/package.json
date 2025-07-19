@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-func",
-  "version": "0.16.27",
+  "version": "0.16.28",
   "description": "Colored stringify date",
   "type": "module",
   "exports": "./index.js",

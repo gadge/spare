@@ -1,6 +1,6 @@
 {
   "name": "@spare/deco-string",
-  "version": "0.16.27",
+  "version": "0.16.28",
   "description": "Color a string",
   "type": "module",
   "exports": "./index.js",
